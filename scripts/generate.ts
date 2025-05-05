@@ -107,7 +107,7 @@ async function generate() {
   const registry = new OpenAPIRegistry();
 
   // Generate the schemas
-  const schemaTypes = generateSchemaTypes(apiSpec.components?.schemas);
+  const schemaTypes = generateSchemas(apiSpec.components?.schemas);
 
   // Ensure the generated directory exists
   mkdirSync(join(__dirname, '../src/generated'), { recursive: true });
@@ -138,33 +138,79 @@ async function generate() {
   );
 }
 
-function generateSchemaTypes(schemas: any): string {
-  if (!schemas) return '';
+function generateSchemas(schemas: Record<string, any>): string {
+  const code: string[] = [];
+  const generatedSchemas = new Set<string>();
 
-  // First pass: collect all schema names and their sanitized versions
-  const schemaMap = new Map<string, string>();
-  Object.keys(schemas).forEach(name => {
-    const sanitized = sanitizeSchemaName(name);
-    schemaMap.set(name, sanitized);
-  });
+  // Add imports
+  code.push('import { z } from "zod";');
+  code.push('');
 
-  const imports = `import { z } from 'zod';\n\n`;
-  
-  // First, declare all schema references to handle circular dependencies
-  const schemaReferences = Object.entries(schemas).map(([name]) => {
-    const sanitized = schemaMap.get(name)!;
-    return `export const ${sanitized}: z.ZodType<any> = z.lazy(() => ${sanitized}Schema);`;
-  }).join('\n');
+  // First pass: declare all schema variables to handle circular dependencies
+  for (const [name, _] of Object.entries(schemas)) {
+    const baseName = sanitizeTypeName(name);
+    const schemaName = `${baseName}Schema`;
+    code.push(`export const ${schemaName}: z.ZodType<any> = z.lazy(() => ${schemaName}Impl);`);
+  }
+  code.push('');
 
-  // Then declare all schema implementations
-  const schemaImplementations = Object.entries(schemas).map(([name, schema]) => {
-    const sanitized = schemaMap.get(name)!;
-    const zodSchema = generateZodSchema(schema);
-    return `export const ${sanitized}Schema = ${zodSchema};
-export type ${sanitized.replace(/Schema$/, '')} = z.infer<typeof ${sanitized}>;`;
-  }).join('\n\n');
+  // Second pass: implement the schemas
+  for (const [name, schema] of Object.entries(schemas)) {
+    const baseName = sanitizeTypeName(name);
+    const schemaName = `${baseName}Schema`;
+    const implName = `${schemaName}Impl`;
+    const typeName = baseName;
 
-  return imports + schemaReferences + '\n\n' + schemaImplementations;
+    if (generatedSchemas.has(schemaName)) {
+      continue;
+    }
+
+    const schemaDefinition = generateSchemaForType(schema);
+    code.push(`const ${implName} = ${schemaDefinition};`);
+    code.push(`export type ${typeName} = z.infer<typeof ${schemaName}>;`);
+    code.push('');
+    generatedSchemas.add(schemaName);
+  }
+
+  return code.join('\n');
+}
+
+function generateSchemaForType(schema: any): string {
+  if (schema.$ref) {
+    const refType = schema.$ref.split('/').pop();
+    if (!refType) throw new Error(`Invalid $ref: ${schema.$ref}`);
+    return `${sanitizeTypeName(refType)}Schema`;
+  }
+
+  if (schema.type === 'array' && schema.items) {
+    return `z.array(${generateSchemaForType(schema.items)})`;
+  }
+
+  if (schema.type === 'object' || schema.properties) {
+    const properties = schema.properties || {};
+    const required = schema.required || [];
+    const propertyLines = Object.entries(properties).map(([propName, propSchema]) => {
+      const isRequired = required.includes(propName);
+      return `  "${propName}": ${generateSchemaForType(propSchema)}${isRequired ? '' : '.optional()'}`;
+    });
+    return `z.object({\n${propertyLines.join(',\n')}\n})`;
+  }
+
+  if (schema.enum) {
+    return `z.enum([${schema.enum.map((e: string) => `"${e}"`).join(', ')}])`;
+  }
+
+  switch (schema.type) {
+    case 'string':
+      return 'z.string()';
+    case 'number':
+    case 'integer':
+      return 'z.number()';
+    case 'boolean':
+      return 'z.boolean()';
+    default:
+      return 'z.any()';
+  }
 }
 
 function generateApi(spec: OpenAPISpec): { index: string; clientFiles: { [key: string]: string } } {
@@ -210,30 +256,81 @@ export class ${className} extends BaseVXOlympusClient {${methods.join('\n')}}`;
   return { index: indexContent, clientFiles };
 }
 
-function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
-  const operationId = operation.operationId;
-  if (!operationId) {
-    throw new Error(`Operation at ${path} ${method} is missing operationId`);
+function generateMethodName(operation: OpenAPIOperation): string {
+  if (!operation.operationId) {
+    throw new Error('Operation ID is required');
   }
+  
+  // Remove HTTP method suffix (e.g., UsingGET, UsingPOST, etc.)
+  let methodName = operation.operationId.replace(/Using(GET|POST|PUT|DELETE|PATCH)$/, '');
+  
+  // If this is a POST/PUT with a request body, append 'WithData'
+  if (operation.requestBody) {
+    methodName += 'WithData';
+  }
+  
+  return methodName;
+}
 
+function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
+  const methodName = generateMethodName(operation);
   const pathParams = operation.parameters?.filter(p => p.in === 'path') || [];
   const queryParams = operation.parameters?.filter(p => p.in === 'query') || [];
   const hasRequestBody = operation.requestBody != null;
+  const responseSchema = operation.responses?.['200']?.content?.['application/json']?.schema;
+  const returnType = responseSchema ? generateTypeForSchema(responseSchema) : 'void';
+
+  // Build JSDoc comment
+  const jsdoc = ['  /**'];
+  
+  // Add param descriptions
+  pathParams.forEach(p => {
+    jsdoc.push(`   * @param {string} ${p.name} - Path parameter`);
+  });
+  if (hasRequestBody) {
+    jsdoc.push(`   * @param {object} data - Request body`);
+  }
+  if (queryParams.length > 0) {
+    jsdoc.push(`   * @param {object} queryParams - Query parameters`);
+    queryParams.forEach(p => {
+      const type = p.schema?.type || 'any';
+      jsdoc.push(`   * @param {${type}} queryParams.${p.name} - Query parameter`);
+    });
+  }
+  jsdoc.push(`   * @param {RequestInit} [options] - Fetch options`);
+  jsdoc.push(`   * @returns {Promise<${returnType}>}`);
+  jsdoc.push('   */');
 
   // Build method parameters
   const methodParams = [];
   
-  // Add path parameters
-  methodParams.push(...pathParams.map(p => `${p.name}: string`));
+  // Add path parameters with proper types
+  methodParams.push(...pathParams.map(p => {
+    const schema = p.schema || {};
+    const type = schema.type === 'string' && schema.enum ? 
+      (schema.enum as string[]).map(e => `'${e}'`).join(' | ') : 
+      'string';
+    return `${p.name}: ${type}`;
+  }));
   
-  // Add request body if needed
+  // Add request body if needed with proper type
   if (hasRequestBody) {
-    methodParams.push('data: any');
+    const schema = operation.requestBody?.content?.['application/json']?.schema;
+    const type = schema ? generateTypeForSchema(schema) : 'any';
+    methodParams.push(`data: ${type}`);
   }
   
-  // Add query parameters if needed
+  // Add query parameters if needed with proper types
   if (queryParams.length > 0) {
-    methodParams.push('queryParams: any');
+    const queryType = queryParams.map(param => {
+      const schema = param.schema || {};
+      let type = generateTypeForSchema(schema);
+      if (schema.type === 'string' && schema.enum) {
+        type = (schema.enum as string[]).map(e => `'${e}'`).join(' | ');
+      }
+      return `${param.name}?: ${type}`;
+    }).join('; ');
+    methodParams.push(`queryParams?: { ${queryType} }`);
   }
   
   // Add options parameter
@@ -245,11 +342,22 @@ function generateApiMethod(operation: OpenAPIOperation, path: string, method: st
     urlPath = urlPath.replace(`{${param.name}}`, `\${encodeURIComponent(${param.name})}`);
   }
 
+  // Build query string if needed
+  let queryString = '';
+  if (queryParams.length > 0) {
+    queryString = `
+    const params = new URLSearchParams();
+    if (queryParams) {
+      ${queryParams.map(p => `if (queryParams.${p.name} !== undefined) params.set('${p.name}', String(queryParams.${p.name}));`).join('\n      ')}
+    }
+    const queryString = params.toString();`;
+  }
+
   // Generate the method
-  return `
-  async ${operationId}(${methodParams.join(', ')}) {
-    const url = \`\${this.baseUrl}${urlPath}\`;
-    const response = await this.makeRequest(url, {
+  return `${jsdoc.join('\n')}
+  async ${methodName}(${methodParams.join(', ')}): Promise<${returnType}> {
+    const url = \`\${this.baseUrl}${urlPath}\`;${queryString}
+    const response = await this.makeRequest<${returnType}>(url${queryParams.length > 0 ? ' + (queryString ? `?\${queryString}` : \'\')' : ''}, {
       method: '${method.toUpperCase()}',
       ${hasRequestBody ? 'body: JSON.stringify(data),' : ''}
       ...options,

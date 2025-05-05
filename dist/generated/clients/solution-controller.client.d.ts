@@ -1,8 +1,28 @@
 import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
 export declare class SolutionControllerClient extends BaseVXOlympusClient {
-    getSolutionTemplateDetailsUsingGET(solutionTemplateId: string, options?: RequestInit): Promise<unknown>;
-    getSolutionTemplateInfosUsingGET(options?: RequestInit): Promise<unknown>;
-    getSolutionTemplateInstructionsUsingGET(solutionTemplateId: string, options?: RequestInit): Promise<unknown>;
-    uninstallSolutionTemplateUsingDELETE(solutionTemplateId: string, options?: RequestInit): Promise<unknown>;
-    installSolutionTemplateUsingPOST(solutionTemplateId: string, options?: RequestInit): Promise<unknown>;
+    getSolutionTemplateDetails(solutionTemplateId: string, options?: RequestInit): Promise<schemas.TenantSolutionTemplateDetails>;
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.TenantSolutionTemplateInfo>>}
+     */
+    getSolutionTemplateInfos(options?: RequestInit): Promise<Array<schemas.TenantSolutionTemplateInfo>>;
+    /**
+     * @param {string} solutionTemplateId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.TenantSolutionTemplateInstructions>}
+     */
+    getSolutionTemplateInstructions(solutionTemplateId: string, options?: RequestInit): Promise<schemas.TenantSolutionTemplateInstructions>;
+    /**
+     * @param {string} solutionTemplateId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    uninstallSolutionTemplate(solutionTemplateId: string, options?: RequestInit): Promise<void>;
+    /**
+     * @param {string} solutionTemplateId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.SolutionInstallResponse>}
+     */
+    installSolutionTemplate(solutionTemplateId: string, options?: RequestInit): Promise<schemas.SolutionInstallResponse>;
 }

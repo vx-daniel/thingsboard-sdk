@@ -1,4 +1,5 @@
 import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
 export declare class UsageInfoControllerClient extends BaseVXOlympusClient {
-    getTenantUsageInfoUsingGET(options?: RequestInit): Promise<unknown>;
+    getTenantUsageInfo(options?: RequestInit): Promise<schemas.UsageInfo>;
 }

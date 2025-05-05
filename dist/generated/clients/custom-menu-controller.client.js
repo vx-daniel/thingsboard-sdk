@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomMenuControllerClient = void 0;
 const base_client_1 = require("../../base-client");
 class CustomMenuControllerClient extends base_client_1.BaseVXOlympusClient {
-    async getCurrentCustomMenuUsingGET(options = {}) {
+    async getCurrentCustomMenu(options = {}) {
         const url = `${this.baseUrl}/api/customMenu/currentCustomMenu`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -11,7 +11,11 @@ class CustomMenuControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getCustomMenuUsingGET(options = {}) {
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomMenu>}
+     */
+    async getCustomMenu(options = {}) {
         const url = `${this.baseUrl}/api/customMenu/customMenu`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -19,7 +23,12 @@ class CustomMenuControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async saveCustomMenuUsingPOST(data, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomMenu>}
+     */
+    async saveCustomMenuWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/customMenu/customMenu`;
         const response = await this.makeRequest(url, {
             method: 'POST',

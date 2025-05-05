@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RuleChainControllerClient = void 0;
 const base_client_1 = require("../../base-client");
 class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
-    async assignRuleChainToEdgeUsingPOST(edgeId, ruleChainId, options = {}) {
+    async assignRuleChainToEdge(edgeId, ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/ruleChain/${encodeURIComponent(ruleChainId)}`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -11,7 +11,13 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async unassignRuleChainFromEdgeUsingDELETE(edgeId, ruleChainId, options = {}) {
+    /**
+     * @param {string} edgeId - Path parameter
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async unassignRuleChainFromEdge(edgeId, ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/ruleChain/${encodeURIComponent(ruleChainId)}`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',
@@ -19,15 +25,45 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getEdgeRuleChainsUsingGET(edgeId, queryParams, options = {}) {
+    /**
+     * @param {string} edgeId - Path parameter
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_RuleChain>}
+     */
+    async getEdgeRuleChains(edgeId, queryParams, options = {}) {
         const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async saveRuleChainUsingPOST_1(data, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async saveRuleChainUsingPOST_1WithData(data, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -36,7 +72,11 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getAutoAssignToEdgeRuleChainsUsingGET(options = {}) {
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.RuleChain>>}
+     */
+    async getAutoAssignToEdgeRuleChains(options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/autoAssignToEdgeRuleChains`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -44,7 +84,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async saveRuleChainUsingPOST(data, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async saveRuleChainWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/device/default`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -53,16 +98,33 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async saveRuleChainMetaDataUsingPOST(data, queryParams, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {object} queryParams - Query parameters
+     * @param {boolean} queryParams.updateRelated - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChainMetaData>}
+     */
+    async saveRuleChainMetaDataWithData(data, queryParams, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/metadata{?updateRelated}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.updateRelated !== undefined)
+                params.set('updateRelated', String(queryParams.updateRelated));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'POST',
             body: JSON.stringify(data),
             ...options,
         });
         return response;
     }
-    async isTbelEnabledUsingGET(options = {}) {
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<boolean>}
+     */
+    async isTbelEnabled(options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/tbelEnabled`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -70,16 +132,34 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async testScriptUsingPOST(data, queryParams, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {object} queryParams - Query parameters
+     * @param {string} queryParams.scriptLang - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.JsonNode>}
+     */
+    async testScriptWithData(data, queryParams, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/testScript{?scriptLang}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.scriptLang !== undefined)
+                params.set('scriptLang', String(queryParams.scriptLang));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'POST',
             body: JSON.stringify(data),
             ...options,
         });
         return response;
     }
-    async getRuleChainByIdUsingGET(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async getRuleChainById(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -87,7 +167,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async deleteRuleChainUsingDELETE(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    async deleteRuleChain(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',
@@ -95,7 +180,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async setAutoAssignToEdgeRuleChainUsingPOST(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async setAutoAssignToEdgeRuleChain(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/autoAssignToEdge`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -103,7 +193,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async unsetAutoAssignToEdgeRuleChainUsingDELETE(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async unsetAutoAssignToEdgeRuleChain(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/autoAssignToEdge`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',
@@ -111,7 +206,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async setEdgeTemplateRootRuleChainUsingPOST(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async setEdgeTemplateRootRuleChain(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/edgeTemplateRoot`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -119,7 +219,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getRuleChainMetaDataUsingGET(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChainMetaData>}
+     */
+    async getRuleChainMetaData(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/metadata`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -127,7 +232,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getRuleChainOutputLabelsUsingGET(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<string>>}
+     */
+    async getRuleChainOutputLabels(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/output/labels`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -135,7 +245,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getRuleChainOutputLabelsUsageUsingGET(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.RuleChainOutputLabelsUsage>>}
+     */
+    async getRuleChainOutputLabelsUsage(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/output/labels/usage`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -143,7 +258,12 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async setRootRuleChainUsingPOST(ruleChainId, options = {}) {
+    /**
+     * @param {string} ruleChainId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChain>}
+     */
+    async setRootRuleChain(ruleChainId, options = {}) {
         const url = `${this.baseUrl}/api/ruleChain/${encodeURIComponent(ruleChainId)}/root`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -151,32 +271,89 @@ class RuleChainControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async exportRuleChainsUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.limit - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.RuleChainData>}
+     */
+    async exportRuleChains(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/ruleChains/export{?limit}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.limit !== undefined)
+                params.set('limit', String(queryParams.limit));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async importRuleChainsUsingPOST(data, queryParams, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {object} queryParams - Query parameters
+     * @param {boolean} queryParams.overwrite - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.RuleChainImportResult>>}
+     */
+    async importRuleChainsWithData(data, queryParams, options = {}) {
         const url = `${this.baseUrl}/api/ruleChains/import{?overwrite}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.overwrite !== undefined)
+                params.set('overwrite', String(queryParams.overwrite));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'POST',
             body: JSON.stringify(data),
             ...options,
         });
         return response;
     }
-    async getRuleChainsUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.type - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_RuleChain>}
+     */
+    async getRuleChains(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.type !== undefined)
+                params.set('type', String(queryParams.type));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async getLatestRuleNodeDebugInputUsingGET(ruleNodeId, options = {}) {
+    /**
+     * @param {string} ruleNodeId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.JsonNode>}
+     */
+    async getLatestRuleNodeDebugInput(ruleNodeId, options = {}) {
         const url = `${this.baseUrl}/api/ruleNode/${encodeURIComponent(ruleNodeId)}/debugIn`;
         const response = await this.makeRequest(url, {
             method: 'GET',

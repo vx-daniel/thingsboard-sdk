@@ -1,1658 +1,1821 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-export const AccountTwoFaSettingsSchema: z.ZodType<any> = z.lazy(() => AccountTwoFaSettingsSchemaSchema);
-export const ActivateUserRequestSchema: z.ZodType<any> = z.lazy(() => ActivateUserRequestSchemaSchema);
-export const AdminSettingsSchema: z.ZodType<any> = z.lazy(() => AdminSettingsSchemaSchema);
-export const AdminSettingsIdSchema: z.ZodType<any> = z.lazy(() => AdminSettingsIdSchemaSchema);
-export const AffectedTenantAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => AffectedTenantAdministratorsFilterSchemaSchema);
-export const AffectedUserFilterSchema: z.ZodType<any> = z.lazy(() => AffectedUserFilterSchemaSchema);
-export const AlarmSchema: z.ZodType<any> = z.lazy(() => AlarmSchemaSchema);
-export const AlarmAssigneeSchema: z.ZodType<any> = z.lazy(() => AlarmAssigneeSchemaSchema);
-export const AlarmAssignmentNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmAssignmentNotificationRuleTriggerConfigSchemaSchema);
-export const AlarmCommentSchema: z.ZodType<any> = z.lazy(() => AlarmCommentSchemaSchema);
-export const AlarmCommentIdSchema: z.ZodType<any> = z.lazy(() => AlarmCommentIdSchemaSchema);
-export const AlarmCommentInfoSchema: z.ZodType<any> = z.lazy(() => AlarmCommentInfoSchemaSchema);
-export const AlarmCommentNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmCommentNotificationRuleTriggerConfigSchemaSchema);
-export const AlarmConditionSchema: z.ZodType<any> = z.lazy(() => AlarmConditionSchemaSchema);
-export const AlarmConditionFilterSchema: z.ZodType<any> = z.lazy(() => AlarmConditionFilterSchemaSchema);
-export const AlarmConditionFilterKeySchema: z.ZodType<any> = z.lazy(() => AlarmConditionFilterKeySchemaSchema);
-export const AlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => AlarmConditionSpecSchemaSchema);
-export const AlarmCountQuerySchema: z.ZodType<any> = z.lazy(() => AlarmCountQuerySchemaSchema);
-export const AlarmDataSchema: z.ZodType<any> = z.lazy(() => AlarmDataSchemaSchema);
-export const AlarmDataPageLinkSchema: z.ZodType<any> = z.lazy(() => AlarmDataPageLinkSchemaSchema);
-export const AlarmDataQuerySchema: z.ZodType<any> = z.lazy(() => AlarmDataQuerySchemaSchema);
-export const AlarmIdSchema: z.ZodType<any> = z.lazy(() => AlarmIdSchemaSchema);
-export const AlarmInfoSchema: z.ZodType<any> = z.lazy(() => AlarmInfoSchemaSchema);
-export const AlarmNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmNotificationRuleTriggerConfigSchemaSchema);
-export const AlarmRuleSchema: z.ZodType<any> = z.lazy(() => AlarmRuleSchemaSchema);
-export const AlarmScheduleSchema: z.ZodType<any> = z.lazy(() => AlarmScheduleSchemaSchema);
-export const AllUsersFilterSchema: z.ZodType<any> = z.lazy(() => AllUsersFilterSchemaSchema);
-export const AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaSchema);
-export const AllowedPermissionsInfoSchema: z.ZodType<any> = z.lazy(() => AllowedPermissionsInfoSchemaSchema);
-export const AnyTimeScheduleSchema: z.ZodType<any> = z.lazy(() => AnyTimeScheduleSchemaSchema);
-export const ApiUsageLimitNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => ApiUsageLimitNotificationRuleTriggerConfigSchemaSchema);
-export const ApiUsageStateFilterSchema: z.ZodType<any> = z.lazy(() => ApiUsageStateFilterSchemaSchema);
-export const ArrayNodeSchema: z.ZodType<any> = z.lazy(() => ArrayNodeSchemaSchema);
-export const AssetSchema: z.ZodType<any> = z.lazy(() => AssetSchemaSchema);
-export const AssetIdSchema: z.ZodType<any> = z.lazy(() => AssetIdSchemaSchema);
-export const AssetInfoSchema: z.ZodType<any> = z.lazy(() => AssetInfoSchemaSchema);
-export const AssetProfileSchema: z.ZodType<any> = z.lazy(() => AssetProfileSchemaSchema);
-export const AssetProfileIdSchema: z.ZodType<any> = z.lazy(() => AssetProfileIdSchemaSchema);
-export const AssetProfileInfoSchema: z.ZodType<any> = z.lazy(() => AssetProfileInfoSchemaSchema);
-export const AssetSearchQuerySchema: z.ZodType<any> = z.lazy(() => AssetSearchQuerySchemaSchema);
-export const AssetSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => AssetSearchQueryFilterSchemaSchema);
-export const AssetTypeFilterSchema: z.ZodType<any> = z.lazy(() => AssetTypeFilterSchemaSchema);
-export const AtomicIntegerSchema: z.ZodType<any> = z.lazy(() => AtomicIntegerSchemaSchema);
-export const AttributeExportDataSchema: z.ZodType<any> = z.lazy(() => AttributeExportDataSchemaSchema);
-export const AttributesEntityViewSchema: z.ZodType<any> = z.lazy(() => AttributesEntityViewSchemaSchema);
-export const AuditLogSchema: z.ZodType<any> = z.lazy(() => AuditLogSchemaSchema);
-export const AuditLogIdSchema: z.ZodType<any> = z.lazy(() => AuditLogIdSchemaSchema);
-export const AutoVersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => AutoVersionCreateConfigSchemaSchema);
-export const AwsSnsSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => AwsSnsSmsProviderConfigurationSchemaSchema);
-export const BackupCodeTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => BackupCodeTwoFaAccountConfigSchemaSchema);
-export const BackupCodeTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => BackupCodeTwoFaProviderConfigSchemaSchema);
-export const BlobEntityIdSchema: z.ZodType<any> = z.lazy(() => BlobEntityIdSchemaSchema);
-export const BlobEntityInfoSchema: z.ZodType<any> = z.lazy(() => BlobEntityInfoSchemaSchema);
-export const BlobEntityWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => BlobEntityWithCustomerInfoSchemaSchema);
-export const BooleanFilterPredicateSchema: z.ZodType<any> = z.lazy(() => BooleanFilterPredicateSchemaSchema);
-export const BranchInfoSchema: z.ZodType<any> = z.lazy(() => BranchInfoSchemaSchema);
-export const BulkImportRequestSchema: z.ZodType<any> = z.lazy(() => BulkImportRequestSchemaSchema);
-export const BulkImportResult_Of_AssetSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_AssetSchemaSchema);
-export const BulkImportResult_Of_DeviceSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_DeviceSchemaSchema);
-export const BulkImportResult_Of_EdgeSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_EdgeSchemaSchema);
-export const ButtonSchema: z.ZodType<any> = z.lazy(() => ButtonSchemaSchema);
-export const ByteArrayResourceSchema: z.ZodType<any> = z.lazy(() => ByteArrayResourceSchemaSchema);
-export const ByteBufferSchema: z.ZodType<any> = z.lazy(() => ByteBufferSchemaSchema);
-export const ChangePasswordRequestSchema: z.ZodType<any> = z.lazy(() => ChangePasswordRequestSchemaSchema);
-export const CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaSchema);
-export const ClaimRequestSchema: z.ZodType<any> = z.lazy(() => ClaimRequestSchemaSchema);
-export const ClearRuleSchema: z.ZodType<any> = z.lazy(() => ClearRuleSchemaSchema);
-export const ClientAttributesQueryingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ClientAttributesQueryingSnmpCommunicationConfigSchemaSchema);
-export const CoapDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceProfileTransportConfigurationSchemaSchema);
-export const CoapDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceTransportConfigurationSchemaSchema);
-export const CoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceTypeConfigurationSchemaSchema);
-export const ColumnMappingSchema: z.ZodType<any> = z.lazy(() => ColumnMappingSchemaSchema);
-export const ComparisonTsValueSchema: z.ZodType<any> = z.lazy(() => ComparisonTsValueSchemaSchema);
-export const ComplexFilterPredicateSchema: z.ZodType<any> = z.lazy(() => ComplexFilterPredicateSchemaSchema);
-export const ComplexVersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => ComplexVersionCreateRequestSchemaSchema);
-export const ComponentDescriptorSchema: z.ZodType<any> = z.lazy(() => ComponentDescriptorSchemaSchema);
-export const ComponentDescriptorIdSchema: z.ZodType<any> = z.lazy(() => ComponentDescriptorIdSchemaSchema);
-export const ContactBased_Of_objectSchema: z.ZodType<any> = z.lazy(() => ContactBased_Of_objectSchemaSchema);
-export const ConverterSchema: z.ZodType<any> = z.lazy(() => ConverterSchemaSchema);
-export const ConverterIdSchema: z.ZodType<any> = z.lazy(() => ConverterIdSchemaSchema);
-export const CustomMenuSchema: z.ZodType<any> = z.lazy(() => CustomMenuSchemaSchema);
-export const CustomMenuItemSchema: z.ZodType<any> = z.lazy(() => CustomMenuItemSchemaSchema);
-export const CustomTimeScheduleSchema: z.ZodType<any> = z.lazy(() => CustomTimeScheduleSchemaSchema);
-export const CustomTimeScheduleItemSchema: z.ZodType<any> = z.lazy(() => CustomTimeScheduleItemSchemaSchema);
-export const CustomTranslationSchema: z.ZodType<any> = z.lazy(() => CustomTranslationSchemaSchema);
-export const CustomerSchema: z.ZodType<any> = z.lazy(() => CustomerSchemaSchema);
-export const CustomerIdSchema: z.ZodType<any> = z.lazy(() => CustomerIdSchemaSchema);
-export const CustomerInfoSchema: z.ZodType<any> = z.lazy(() => CustomerInfoSchemaSchema);
-export const CustomerUsersFilterSchema: z.ZodType<any> = z.lazy(() => CustomerUsersFilterSchemaSchema);
-export const DashboardSchema: z.ZodType<any> = z.lazy(() => DashboardSchemaSchema);
-export const DashboardIdSchema: z.ZodType<any> = z.lazy(() => DashboardIdSchemaSchema);
-export const DashboardInfoSchema: z.ZodType<any> = z.lazy(() => DashboardInfoSchemaSchema);
-export const DebugConverterEventFilterSchema: z.ZodType<any> = z.lazy(() => DebugConverterEventFilterSchemaSchema);
-export const DebugIntegrationEventFilterSchema: z.ZodType<any> = z.lazy(() => DebugIntegrationEventFilterSchemaSchema);
-export const DefaultCoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultCoapDeviceTypeConfigurationSchemaSchema);
-export const DefaultDeviceConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceConfigurationSchemaSchema);
-export const DefaultDeviceProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceProfileConfigurationSchemaSchema);
-export const DefaultDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceProfileTransportConfigurationSchemaSchema);
-export const DefaultDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceTransportConfigurationSchemaSchema);
-export const DefaultRuleChainCreateRequestSchema: z.ZodType<any> = z.lazy(() => DefaultRuleChainCreateRequestSchemaSchema);
-export const DefaultTenantProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultTenantProfileConfigurationSchemaSchema);
-export const DeferredResult_Of_EntityDataDiffSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_EntityDataDiffSchemaSchema);
-export const DeferredResult_Of_EntityDataInfoSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_EntityDataInfoSchemaSchema);
-export const DeferredResult_Of_List_BranchInfo_Schema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_List_BranchInfo_SchemaSchema);
-export const DeferredResult_Of_List_VersionedEntityInfo_Schema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema);
-export const DeferredResult_Of_PageData_EntityVersion_Schema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_PageData_EntityVersion_SchemaSchema);
-export const DeferredResult_Of_RepositorySettingsSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_RepositorySettingsSchemaSchema);
-export const DeferredResult_Of_ResponseEntitySchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_ResponseEntitySchemaSchema);
-export const DeferredResult_Of_VoidSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_VoidSchemaSchema);
-export const DeferredResult_Of_uuidSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_uuidSchemaSchema);
-export const DeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => DeliveryMethodNotificationTemplateSchemaSchema);
-export const DeviceSchema: z.ZodType<any> = z.lazy(() => DeviceSchemaSchema);
-export const DeviceActivityNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => DeviceActivityNotificationRuleTriggerConfigSchemaSchema);
-export const DeviceConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceConfigurationSchemaSchema);
-export const DeviceCredentialsSchema: z.ZodType<any> = z.lazy(() => DeviceCredentialsSchemaSchema);
-export const DeviceCredentialsIdSchema: z.ZodType<any> = z.lazy(() => DeviceCredentialsIdSchemaSchema);
-export const DeviceDataSchema: z.ZodType<any> = z.lazy(() => DeviceDataSchemaSchema);
-export const DeviceExportDataSchema: z.ZodType<any> = z.lazy(() => DeviceExportDataSchemaSchema);
-export const DeviceGroupOtaPackageSchema: z.ZodType<any> = z.lazy(() => DeviceGroupOtaPackageSchemaSchema);
-export const DeviceIdSchema: z.ZodType<any> = z.lazy(() => DeviceIdSchemaSchema);
-export const DeviceInfoSchema: z.ZodType<any> = z.lazy(() => DeviceInfoSchemaSchema);
-export const DeviceProfileSchema: z.ZodType<any> = z.lazy(() => DeviceProfileSchemaSchema);
-export const DeviceProfileAlarmSchema: z.ZodType<any> = z.lazy(() => DeviceProfileAlarmSchemaSchema);
-export const DeviceProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileConfigurationSchemaSchema);
-export const DeviceProfileDataSchema: z.ZodType<any> = z.lazy(() => DeviceProfileDataSchemaSchema);
-export const DeviceProfileIdSchema: z.ZodType<any> = z.lazy(() => DeviceProfileIdSchemaSchema);
-export const DeviceProfileInfoSchema: z.ZodType<any> = z.lazy(() => DeviceProfileInfoSchemaSchema);
-export const DeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileProvisionConfigurationSchemaSchema);
-export const DeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileTransportConfigurationSchemaSchema);
-export const DeviceSearchQuerySchema: z.ZodType<any> = z.lazy(() => DeviceSearchQuerySchemaSchema);
-export const DeviceSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => DeviceSearchQueryFilterSchemaSchema);
-export const DeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceTransportConfigurationSchemaSchema);
-export const DeviceTypeFilterSchema: z.ZodType<any> = z.lazy(() => DeviceTypeFilterSchemaSchema);
-export const DisabledDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => DisabledDeviceProfileProvisionConfigurationSchemaSchema);
-export const DurationAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => DurationAlarmConditionSpecSchemaSchema);
-export const DynamicValue_Of_booleanSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_booleanSchemaSchema);
-export const DynamicValue_Of_doubleSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_doubleSchemaSchema);
-export const DynamicValue_Of_intSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_intSchemaSchema);
-export const DynamicValue_Of_longSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_longSchemaSchema);
-export const DynamicValue_Of_stringSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_stringSchemaSchema);
-export const EdgeSchema: z.ZodType<any> = z.lazy(() => EdgeSchemaSchema);
-export const EdgeEventSchema: z.ZodType<any> = z.lazy(() => EdgeEventSchemaSchema);
-export const EdgeEventIdSchema: z.ZodType<any> = z.lazy(() => EdgeEventIdSchemaSchema);
-export const EdgeIdSchema: z.ZodType<any> = z.lazy(() => EdgeIdSchemaSchema);
-export const EdgeInfoSchema: z.ZodType<any> = z.lazy(() => EdgeInfoSchemaSchema);
-export const EdgeInstructionsSchema: z.ZodType<any> = z.lazy(() => EdgeInstructionsSchemaSchema);
-export const EdgeSearchQuerySchema: z.ZodType<any> = z.lazy(() => EdgeSearchQuerySchemaSchema);
-export const EdgeSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => EdgeSearchQueryFilterSchemaSchema);
-export const EdgeTypeFilterSchema: z.ZodType<any> = z.lazy(() => EdgeTypeFilterSchemaSchema);
-export const EfentoCoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => EfentoCoapDeviceTypeConfigurationSchemaSchema);
-export const EmailDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => EmailDeliveryMethodNotificationTemplateSchemaSchema);
-export const EmailTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => EmailTwoFaAccountConfigSchemaSchema);
-export const EmailTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => EmailTwoFaProviderConfigSchemaSchema);
-export const EntitiesByGroupNameFilterSchema: z.ZodType<any> = z.lazy(() => EntitiesByGroupNameFilterSchemaSchema);
-export const EntitiesLimitNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => EntitiesLimitNotificationRuleTriggerConfigSchemaSchema);
-export const EntityActionNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => EntityActionNotificationRuleTriggerConfigSchemaSchema);
-export const EntityCountQuerySchema: z.ZodType<any> = z.lazy(() => EntityCountQuerySchemaSchema);
-export const EntityDataSchema: z.ZodType<any> = z.lazy(() => EntityDataSchemaSchema);
-export const EntityDataDiffSchema: z.ZodType<any> = z.lazy(() => EntityDataDiffSchemaSchema);
-export const EntityDataInfoSchema: z.ZodType<any> = z.lazy(() => EntityDataInfoSchemaSchema);
-export const EntityDataPageLinkSchema: z.ZodType<any> = z.lazy(() => EntityDataPageLinkSchemaSchema);
-export const EntityDataQuerySchema: z.ZodType<any> = z.lazy(() => EntityDataQuerySchemaSchema);
-export const EntityDataSortOrderSchema: z.ZodType<any> = z.lazy(() => EntityDataSortOrderSchemaSchema);
-export const EntityExportData_Of_objectSchema: z.ZodType<any> = z.lazy(() => EntityExportData_Of_objectSchemaSchema);
-export const EntityFilterSchema: z.ZodType<any> = z.lazy(() => EntityFilterSchemaSchema);
-export const EntityGroupSchema: z.ZodType<any> = z.lazy(() => EntityGroupSchemaSchema);
-export const EntityGroupExportDataSchema: z.ZodType<any> = z.lazy(() => EntityGroupExportDataSchemaSchema);
-export const EntityGroupFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupFilterSchemaSchema);
-export const EntityGroupIdSchema: z.ZodType<any> = z.lazy(() => EntityGroupIdSchemaSchema);
-export const EntityGroupInfoSchema: z.ZodType<any> = z.lazy(() => EntityGroupInfoSchemaSchema);
-export const EntityGroupListFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupListFilterSchemaSchema);
-export const EntityGroupNameFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupNameFilterSchemaSchema);
-export const EntityIdSchema: z.ZodType<any> = z.lazy(() => EntityIdSchemaSchema);
-export const EntityInfoSchema: z.ZodType<any> = z.lazy(() => EntityInfoSchemaSchema);
-export const EntityKeySchema: z.ZodType<any> = z.lazy(() => EntityKeySchemaSchema);
-export const EntityListFilterSchema: z.ZodType<any> = z.lazy(() => EntityListFilterSchemaSchema);
-export const EntityLoadErrorSchema: z.ZodType<any> = z.lazy(() => EntityLoadErrorSchemaSchema);
-export const EntityNameFilterSchema: z.ZodType<any> = z.lazy(() => EntityNameFilterSchemaSchema);
-export const EntityRelationSchema: z.ZodType<any> = z.lazy(() => EntityRelationSchemaSchema);
-export const EntityRelationInfoSchema: z.ZodType<any> = z.lazy(() => EntityRelationInfoSchemaSchema);
-export const EntityRelationsQuerySchema: z.ZodType<any> = z.lazy(() => EntityRelationsQuerySchemaSchema);
-export const EntitySubtypeSchema: z.ZodType<any> = z.lazy(() => EntitySubtypeSchemaSchema);
-export const EntityTypeFilterSchema: z.ZodType<any> = z.lazy(() => EntityTypeFilterSchemaSchema);
-export const EntityTypeLoadResultSchema: z.ZodType<any> = z.lazy(() => EntityTypeLoadResultSchemaSchema);
-export const EntityTypeVersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionCreateConfigSchemaSchema);
-export const EntityTypeVersionLoadConfigSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionLoadConfigSchemaSchema);
-export const EntityTypeVersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionLoadRequestSchemaSchema);
-export const EntityVersionSchema: z.ZodType<any> = z.lazy(() => EntityVersionSchemaSchema);
-export const EntityViewSchema: z.ZodType<any> = z.lazy(() => EntityViewSchemaSchema);
-export const EntityViewIdSchema: z.ZodType<any> = z.lazy(() => EntityViewIdSchemaSchema);
-export const EntityViewInfoSchema: z.ZodType<any> = z.lazy(() => EntityViewInfoSchemaSchema);
-export const EntityViewSearchQuerySchema: z.ZodType<any> = z.lazy(() => EntityViewSearchQuerySchemaSchema);
-export const EntityViewSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => EntityViewSearchQueryFilterSchemaSchema);
-export const EntityViewTypeFilterSchema: z.ZodType<any> = z.lazy(() => EntityViewTypeFilterSchemaSchema);
-export const ErrorEventFilterSchema: z.ZodType<any> = z.lazy(() => ErrorEventFilterSchemaSchema);
-export const EscalatedNotificationRuleRecipientsConfigSchema: z.ZodType<any> = z.lazy(() => EscalatedNotificationRuleRecipientsConfigSchemaSchema);
-export const EventFilterSchema: z.ZodType<any> = z.lazy(() => EventFilterSchemaSchema);
-export const EventIdSchema: z.ZodType<any> = z.lazy(() => EventIdSchemaSchema);
-export const EventInfoSchema: z.ZodType<any> = z.lazy(() => EventInfoSchemaSchema);
-export const ExportableEntity_Of_EntityIdSchema: z.ZodType<any> = z.lazy(() => ExportableEntity_Of_EntityIdSchemaSchema);
-export const FaviconSchema: z.ZodType<any> = z.lazy(() => FaviconSchemaSchema);
-export const FeaturesInfoSchema: z.ZodType<any> = z.lazy(() => FeaturesInfoSchemaSchema);
-export const FilterPredicateValue_Of_booleanSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_booleanSchemaSchema);
-export const FilterPredicateValue_Of_doubleSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_doubleSchemaSchema);
-export const FilterPredicateValue_Of_intSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_intSchemaSchema);
-export const FilterPredicateValue_Of_longSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_longSchemaSchema);
-export const FilterPredicateValue_Of_stringSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_stringSchemaSchema);
-export const GroupEntityExportDataSchema: z.ZodType<any> = z.lazy(() => GroupEntityExportDataSchemaSchema);
-export const GroupPermissionSchema: z.ZodType<any> = z.lazy(() => GroupPermissionSchemaSchema);
-export const GroupPermissionIdSchema: z.ZodType<any> = z.lazy(() => GroupPermissionIdSchemaSchema);
-export const GroupPermissionInfoSchema: z.ZodType<any> = z.lazy(() => GroupPermissionInfoSchemaSchema);
-export const HasId_Of_objectSchema: z.ZodType<any> = z.lazy(() => HasId_Of_objectSchemaSchema);
-export const HomeDashboardSchema: z.ZodType<any> = z.lazy(() => HomeDashboardSchemaSchema);
-export const HomeDashboardInfoSchema: z.ZodType<any> = z.lazy(() => HomeDashboardInfoSchemaSchema);
-export const ImageExportDataSchema: z.ZodType<any> = z.lazy(() => ImageExportDataSchemaSchema);
-export const InputStreamSchema: z.ZodType<any> = z.lazy(() => InputStreamSchemaSchema);
-export const IntegrationSchema: z.ZodType<any> = z.lazy(() => IntegrationSchemaSchema);
-export const IntegrationIdSchema: z.ZodType<any> = z.lazy(() => IntegrationIdSchemaSchema);
-export const IntegrationInfoSchema: z.ZodType<any> = z.lazy(() => IntegrationInfoSchemaSchema);
-export const IntegrationLifecycleEventNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaSchema);
-export const JWT_PairSchema: z.ZodType<any> = z.lazy(() => JWT_PairSchemaSchema);
-export const JWT_SettingsSchema: z.ZodType<any> = z.lazy(() => JWT_SettingsSchemaSchema);
-export const JsonNodeSchema: z.ZodType<any> = z.lazy(() => JsonNodeSchemaSchema);
-export const JsonTransportPayloadConfigurationSchema: z.ZodType<any> = z.lazy(() => JsonTransportPayloadConfigurationSchemaSchema);
-export const KeyFilterSchema: z.ZodType<any> = z.lazy(() => KeyFilterSchemaSchema);
-export const KeyFilterPredicateSchema: z.ZodType<any> = z.lazy(() => KeyFilterPredicateSchemaSchema);
-export const LastVisitedDashboardInfoSchema: z.ZodType<any> = z.lazy(() => LastVisitedDashboardInfoSchemaSchema);
-export const LicenseUsageInfoSchema: z.ZodType<any> = z.lazy(() => LicenseUsageInfoSchemaSchema);
-export const LifeCycleEventFilterSchema: z.ZodType<any> = z.lazy(() => LifeCycleEventFilterSchemaSchema);
-export const LoginRequestSchema: z.ZodType<any> = z.lazy(() => LoginRequestSchemaSchema);
-export const LoginResponseSchema: z.ZodType<any> = z.lazy(() => LoginResponseSchemaSchema);
-export const LoginWhiteLabelingParamsSchema: z.ZodType<any> = z.lazy(() => LoginWhiteLabelingParamsSchemaSchema);
-export const LwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => LwM2MBootstrapServerCredentialSchemaSchema);
-export const LwM2mInstanceSchema: z.ZodType<any> = z.lazy(() => LwM2mInstanceSchemaSchema);
-export const LwM2mObjectSchema: z.ZodType<any> = z.lazy(() => LwM2mObjectSchemaSchema);
-export const LwM2mResourceObserveSchema: z.ZodType<any> = z.lazy(() => LwM2mResourceObserveSchemaSchema);
-export const Lwm2mDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => Lwm2mDeviceProfileTransportConfigurationSchemaSchema);
-export const Lwm2mDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => Lwm2mDeviceTransportConfigurationSchemaSchema);
-export const MappingSchema: z.ZodType<any> = z.lazy(() => MappingSchemaSchema);
-export const MergedGroupPermissionInfoSchema: z.ZodType<any> = z.lazy(() => MergedGroupPermissionInfoSchemaSchema);
-export const MergedGroupTypePermissionInfoSchema: z.ZodType<any> = z.lazy(() => MergedGroupTypePermissionInfoSchemaSchema);
-export const MergedUserPermissionsSchema: z.ZodType<any> = z.lazy(() => MergedUserPermissionsSchemaSchema);
-export const MicrosoftTeamsDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaSchema);
-export const MicrosoftTeamsNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => MicrosoftTeamsNotificationTargetConfigSchemaSchema);
-export const MqttDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => MqttDeviceProfileTransportConfigurationSchemaSchema);
-export const MqttDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => MqttDeviceTransportConfigurationSchemaSchema);
-export const NewPlatformVersionNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => NewPlatformVersionNotificationRuleTriggerConfigSchemaSchema);
-export const NoSecLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => NoSecLwM2MBootstrapServerCredentialSchemaSchema);
-export const NodeConnectionInfoSchema: z.ZodType<any> = z.lazy(() => NodeConnectionInfoSchemaSchema);
-export const NotificationSchema: z.ZodType<any> = z.lazy(() => NotificationSchemaSchema);
-export const NotificationDeliveryMethodConfigSchema: z.ZodType<any> = z.lazy(() => NotificationDeliveryMethodConfigSchemaSchema);
-export const NotificationIdSchema: z.ZodType<any> = z.lazy(() => NotificationIdSchemaSchema);
-export const NotificationInfoSchema: z.ZodType<any> = z.lazy(() => NotificationInfoSchemaSchema);
-export const NotificationPrefSchema: z.ZodType<any> = z.lazy(() => NotificationPrefSchemaSchema);
-export const NotificationRequestSchema: z.ZodType<any> = z.lazy(() => NotificationRequestSchemaSchema);
-export const NotificationRequestConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRequestConfigSchemaSchema);
-export const NotificationRequestIdSchema: z.ZodType<any> = z.lazy(() => NotificationRequestIdSchemaSchema);
-export const NotificationRequestInfoSchema: z.ZodType<any> = z.lazy(() => NotificationRequestInfoSchemaSchema);
-export const NotificationRequestPreviewSchema: z.ZodType<any> = z.lazy(() => NotificationRequestPreviewSchemaSchema);
-export const NotificationRequestStatsSchema: z.ZodType<any> = z.lazy(() => NotificationRequestStatsSchemaSchema);
-export const NotificationRuleSchema: z.ZodType<any> = z.lazy(() => NotificationRuleSchemaSchema);
-export const NotificationRuleConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleConfigSchemaSchema);
-export const NotificationRuleIdSchema: z.ZodType<any> = z.lazy(() => NotificationRuleIdSchemaSchema);
-export const NotificationRuleInfoSchema: z.ZodType<any> = z.lazy(() => NotificationRuleInfoSchemaSchema);
-export const NotificationRuleRecipientsConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleRecipientsConfigSchemaSchema);
-export const NotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleTriggerConfigSchemaSchema);
-export const NotificationSettingsSchema: z.ZodType<any> = z.lazy(() => NotificationSettingsSchemaSchema);
-export const NotificationTargetSchema: z.ZodType<any> = z.lazy(() => NotificationTargetSchemaSchema);
-export const NotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => NotificationTargetConfigSchemaSchema);
-export const NotificationTemplateSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateSchemaSchema);
-export const NotificationTemplateConfigSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateConfigSchemaSchema);
-export const NotificationTemplateIdSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateIdSchemaSchema);
-export const NumericFilterPredicateSchema: z.ZodType<any> = z.lazy(() => NumericFilterPredicateSchemaSchema);
-export const OAuth2BasicMapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2BasicMapperConfigSchemaSchema);
-export const OAuth2ClientInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientInfoSchemaSchema);
-export const OAuth2ClientRegistrationTemplateSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientRegistrationTemplateSchemaSchema);
-export const OAuth2ClientRegistrationTemplateIdSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientRegistrationTemplateIdSchemaSchema);
-export const OAuth2CustomMapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2CustomMapperConfigSchemaSchema);
-export const OAuth2DomainInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2DomainInfoSchemaSchema);
-export const OAuth2InfoSchema: z.ZodType<any> = z.lazy(() => OAuth2InfoSchemaSchema);
-export const OAuth2MapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2MapperConfigSchemaSchema);
-export const OAuth2MobileInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2MobileInfoSchemaSchema);
-export const OAuth2ParamsInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2ParamsInfoSchemaSchema);
-export const OAuth2RegistrationInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2RegistrationInfoSchemaSchema);
-export const ObjectAttributesSchema: z.ZodType<any> = z.lazy(() => ObjectAttributesSchemaSchema);
-export const ObjectNodeSchema: z.ZodType<any> = z.lazy(() => ObjectNodeSchemaSchema);
-export const OriginatorEntityOwnerUsersFilterSchema: z.ZodType<any> = z.lazy(() => OriginatorEntityOwnerUsersFilterSchemaSchema);
-export const OtaPackageSchema: z.ZodType<any> = z.lazy(() => OtaPackageSchemaSchema);
-export const OtaPackageIdSchema: z.ZodType<any> = z.lazy(() => OtaPackageIdSchemaSchema);
-export const OtaPackageInfoSchema: z.ZodType<any> = z.lazy(() => OtaPackageInfoSchemaSchema);
-export const OtherConfigurationSchema: z.ZodType<any> = z.lazy(() => OtherConfigurationSchemaSchema);
-export const PSKLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => PSKLwM2MBootstrapServerCredentialSchemaSchema);
-export const PageData_Of_AlarmCommentInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmCommentInfoSchemaSchema);
-export const PageData_Of_AlarmDataSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmDataSchemaSchema);
-export const PageData_Of_AlarmInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmInfoSchemaSchema);
-export const PageData_Of_AssetInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetInfoSchemaSchema);
-export const PageData_Of_AssetProfileInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetProfileInfoSchemaSchema);
-export const PageData_Of_AssetProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetProfileSchemaSchema);
-export const PageData_Of_AssetSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetSchemaSchema);
-export const PageData_Of_AuditLogSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AuditLogSchemaSchema);
-export const PageData_Of_BlobEntityWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_BlobEntityWithCustomerInfoSchemaSchema);
-export const PageData_Of_ContactBased_object_Schema: z.ZodType<any> = z.lazy(() => PageData_Of_ContactBased_object_SchemaSchema);
-export const PageData_Of_ConverterSchema: z.ZodType<any> = z.lazy(() => PageData_Of_ConverterSchemaSchema);
-export const PageData_Of_CustomerInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_CustomerInfoSchemaSchema);
-export const PageData_Of_CustomerSchema: z.ZodType<any> = z.lazy(() => PageData_Of_CustomerSchemaSchema);
-export const PageData_Of_DashboardInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DashboardInfoSchemaSchema);
-export const PageData_Of_DeviceInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceInfoSchemaSchema);
-export const PageData_Of_DeviceProfileInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceProfileInfoSchemaSchema);
-export const PageData_Of_DeviceProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceProfileSchemaSchema);
-export const PageData_Of_DeviceSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceSchemaSchema);
-export const PageData_Of_EdgeEventSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeEventSchemaSchema);
-export const PageData_Of_EdgeInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeInfoSchemaSchema);
-export const PageData_Of_EdgeSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeSchemaSchema);
-export const PageData_Of_EntityDataSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityDataSchemaSchema);
-export const PageData_Of_EntityGroupInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityGroupInfoSchemaSchema);
-export const PageData_Of_EntityInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityInfoSchemaSchema);
-export const PageData_Of_EntitySubtypeSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntitySubtypeSchemaSchema);
-export const PageData_Of_EntityVersionSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityVersionSchemaSchema);
-export const PageData_Of_EntityViewInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityViewInfoSchemaSchema);
-export const PageData_Of_EntityViewSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityViewSchemaSchema);
-export const PageData_Of_EventInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EventInfoSchemaSchema);
-export const PageData_Of_IntegrationInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_IntegrationInfoSchemaSchema);
-export const PageData_Of_IntegrationSchema: z.ZodType<any> = z.lazy(() => PageData_Of_IntegrationSchemaSchema);
-export const PageData_Of_NotificationRequestInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationRequestInfoSchemaSchema);
-export const PageData_Of_NotificationRuleInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationRuleInfoSchemaSchema);
-export const PageData_Of_NotificationTargetSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationTargetSchemaSchema);
-export const PageData_Of_NotificationTemplateSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationTemplateSchemaSchema);
-export const PageData_Of_NotificationSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationSchemaSchema);
-export const PageData_Of_OtaPackageInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_OtaPackageInfoSchemaSchema);
-export const PageData_Of_QueueSchema: z.ZodType<any> = z.lazy(() => PageData_Of_QueueSchemaSchema);
-export const PageData_Of_RoleSchema: z.ZodType<any> = z.lazy(() => PageData_Of_RoleSchemaSchema);
-export const PageData_Of_RuleChainSchema: z.ZodType<any> = z.lazy(() => PageData_Of_RuleChainSchemaSchema);
-export const PageData_Of_SchedulerEventInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_SchedulerEventInfoSchemaSchema);
-export const PageData_Of_ShortEntityViewSchema: z.ZodType<any> = z.lazy(() => PageData_Of_ShortEntityViewSchemaSchema);
-export const PageData_Of_TbResourceInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TbResourceInfoSchemaSchema);
-export const PageData_Of_TenantInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantInfoSchemaSchema);
-export const PageData_Of_TenantProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantProfileSchemaSchema);
-export const PageData_Of_TenantSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantSchemaSchema);
-export const PageData_Of_UserEmailInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserEmailInfoSchemaSchema);
-export const PageData_Of_UserInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserInfoSchemaSchema);
-export const PageData_Of_UserSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserSchemaSchema);
-export const PageData_Of_WidgetTypeInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_WidgetTypeInfoSchemaSchema);
-export const PageData_Of_WidgetsBundleSchema: z.ZodType<any> = z.lazy(() => PageData_Of_WidgetsBundleSchemaSchema);
-export const PaletteSchema: z.ZodType<any> = z.lazy(() => PaletteSchemaSchema);
-export const PaletteSettingsSchema: z.ZodType<any> = z.lazy(() => PaletteSettingsSchemaSchema);
-export const PlatformTwoFaSettingsSchema: z.ZodType<any> = z.lazy(() => PlatformTwoFaSettingsSchemaSchema);
-export const PlatformUsersNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => PlatformUsersNotificationTargetConfigSchemaSchema);
-export const PowerSavingConfigurationSchema: z.ZodType<any> = z.lazy(() => PowerSavingConfigurationSchemaSchema);
-export const ProcessingStrategySchema: z.ZodType<any> = z.lazy(() => ProcessingStrategySchemaSchema);
-export const ProtoTransportPayloadConfigurationSchema: z.ZodType<any> = z.lazy(() => ProtoTransportPayloadConfigurationSchemaSchema);
-export const QueueSchema: z.ZodType<any> = z.lazy(() => QueueSchemaSchema);
-export const QueueIdSchema: z.ZodType<any> = z.lazy(() => QueueIdSchemaSchema);
-export const RPKLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => RPKLwM2MBootstrapServerCredentialSchemaSchema);
-export const RateLimitsNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => RateLimitsNotificationRuleTriggerConfigSchemaSchema);
-export const RawDataEventFilterSchema: z.ZodType<any> = z.lazy(() => RawDataEventFilterSchemaSchema);
-export const RelationEntityTypeFilterSchema: z.ZodType<any> = z.lazy(() => RelationEntityTypeFilterSchemaSchema);
-export const RelationsQueryFilterSchema: z.ZodType<any> = z.lazy(() => RelationsQueryFilterSchemaSchema);
-export const RelationsSearchParametersSchema: z.ZodType<any> = z.lazy(() => RelationsSearchParametersSchemaSchema);
-export const RepeatingAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => RepeatingAlarmConditionSpecSchemaSchema);
-export const ReportConfigSchema: z.ZodType<any> = z.lazy(() => ReportConfigSchemaSchema);
-export const RepositorySettingsSchema: z.ZodType<any> = z.lazy(() => RepositorySettingsSchemaSchema);
-export const RepositorySettingsInfoSchema: z.ZodType<any> = z.lazy(() => RepositorySettingsInfoSchemaSchema);
-export const ResetPasswordEmailRequestSchema: z.ZodType<any> = z.lazy(() => ResetPasswordEmailRequestSchemaSchema);
-export const ResetPasswordRequestSchema: z.ZodType<any> = z.lazy(() => ResetPasswordRequestSchemaSchema);
-export const ResourceSchema: z.ZodType<any> = z.lazy(() => ResourceSchemaSchema);
-export const ResponseEntitySchema: z.ZodType<any> = z.lazy(() => ResponseEntitySchemaSchema);
-export const RoleSchema: z.ZodType<any> = z.lazy(() => RoleSchemaSchema);
-export const RoleIdSchema: z.ZodType<any> = z.lazy(() => RoleIdSchemaSchema);
-export const RpcSchema: z.ZodType<any> = z.lazy(() => RpcSchemaSchema);
-export const RpcIdSchema: z.ZodType<any> = z.lazy(() => RpcIdSchemaSchema);
-export const RuleChainSchema: z.ZodType<any> = z.lazy(() => RuleChainSchemaSchema);
-export const RuleChainConnectionInfoSchema: z.ZodType<any> = z.lazy(() => RuleChainConnectionInfoSchemaSchema);
-export const RuleChainDataSchema: z.ZodType<any> = z.lazy(() => RuleChainDataSchemaSchema);
-export const RuleChainDebugEventFilterSchema: z.ZodType<any> = z.lazy(() => RuleChainDebugEventFilterSchemaSchema);
-export const RuleChainExportDataSchema: z.ZodType<any> = z.lazy(() => RuleChainExportDataSchemaSchema);
-export const RuleChainIdSchema: z.ZodType<any> = z.lazy(() => RuleChainIdSchemaSchema);
-export const RuleChainImportResultSchema: z.ZodType<any> = z.lazy(() => RuleChainImportResultSchemaSchema);
-export const RuleChainMetaDataSchema: z.ZodType<any> = z.lazy(() => RuleChainMetaDataSchemaSchema);
-export const RuleChainOutputLabelsUsageSchema: z.ZodType<any> = z.lazy(() => RuleChainOutputLabelsUsageSchemaSchema);
-export const RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaSchema);
-export const RuleNodeSchema: z.ZodType<any> = z.lazy(() => RuleNodeSchemaSchema);
-export const RuleNodeDebugEventFilterSchema: z.ZodType<any> = z.lazy(() => RuleNodeDebugEventFilterSchemaSchema);
-export const RuleNodeIdSchema: z.ZodType<any> = z.lazy(() => RuleNodeIdSchemaSchema);
-export const SaveDeviceWithCredentialsRequestSchema: z.ZodType<any> = z.lazy(() => SaveDeviceWithCredentialsRequestSchemaSchema);
-export const SaveOtaPackageInfoRequestSchema: z.ZodType<any> = z.lazy(() => SaveOtaPackageInfoRequestSchemaSchema);
-export const SchedulerEventSchema: z.ZodType<any> = z.lazy(() => SchedulerEventSchemaSchema);
-export const SchedulerEventFilterSchema: z.ZodType<any> = z.lazy(() => SchedulerEventFilterSchemaSchema);
-export const SchedulerEventIdSchema: z.ZodType<any> = z.lazy(() => SchedulerEventIdSchemaSchema);
-export const SchedulerEventInfoSchema: z.ZodType<any> = z.lazy(() => SchedulerEventInfoSchemaSchema);
-export const SchedulerEventWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => SchedulerEventWithCustomerInfoSchemaSchema);
-export const SecuritySettingsSchema: z.ZodType<any> = z.lazy(() => SecuritySettingsSchemaSchema);
-export const SelfRegistrationParamsSchema: z.ZodType<any> = z.lazy(() => SelfRegistrationParamsSchemaSchema);
-export const ShareGroupRequestSchema: z.ZodType<any> = z.lazy(() => ShareGroupRequestSchemaSchema);
-export const SharedAttributesSettingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => SharedAttributesSettingSnmpCommunicationConfigSchemaSchema);
-export const ShortCustomerInfoSchema: z.ZodType<any> = z.lazy(() => ShortCustomerInfoSchemaSchema);
-export const ShortEntityViewSchema: z.ZodType<any> = z.lazy(() => ShortEntityViewSchemaSchema);
-export const SignUpRequestSchema: z.ZodType<any> = z.lazy(() => SignUpRequestSchemaSchema);
-export const SignUpSelfRegistrationParamsSchema: z.ZodType<any> = z.lazy(() => SignUpSelfRegistrationParamsSchemaSchema);
-export const SimpleAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => SimpleAlarmConditionSpecSchemaSchema);
-export const SingleEntityFilterSchema: z.ZodType<any> = z.lazy(() => SingleEntityFilterSchemaSchema);
-export const SingleEntityVersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => SingleEntityVersionCreateRequestSchemaSchema);
-export const SingleEntityVersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => SingleEntityVersionLoadRequestSchemaSchema);
-export const SlackConversationSchema: z.ZodType<any> = z.lazy(() => SlackConversationSchemaSchema);
-export const SlackDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => SlackDeliveryMethodNotificationTemplateSchemaSchema);
-export const SlackNotificationDeliveryMethodConfigSchema: z.ZodType<any> = z.lazy(() => SlackNotificationDeliveryMethodConfigSchemaSchema);
-export const SlackNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => SlackNotificationTargetConfigSchemaSchema);
-export const SmppSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => SmppSmsProviderConfigurationSchemaSchema);
-export const SmsDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => SmsDeliveryMethodNotificationTemplateSchemaSchema);
-export const SmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => SmsProviderConfigurationSchemaSchema);
-export const SmsTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => SmsTwoFaAccountConfigSchemaSchema);
-export const SmsTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => SmsTwoFaProviderConfigSchemaSchema);
-export const SnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => SnmpCommunicationConfigSchemaSchema);
-export const SnmpDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => SnmpDeviceProfileTransportConfigurationSchemaSchema);
-export const SnmpDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => SnmpDeviceTransportConfigurationSchemaSchema);
-export const SnmpMappingSchema: z.ZodType<any> = z.lazy(() => SnmpMappingSchemaSchema);
-export const SolutionInstallResponseSchema: z.ZodType<any> = z.lazy(() => SolutionInstallResponseSchemaSchema);
-export const SpecificTimeScheduleSchema: z.ZodType<any> = z.lazy(() => SpecificTimeScheduleSchemaSchema);
-export const StarredDashboardInfoSchema: z.ZodType<any> = z.lazy(() => StarredDashboardInfoSchemaSchema);
-export const StateEntityOwnerFilterSchema: z.ZodType<any> = z.lazy(() => StateEntityOwnerFilterSchemaSchema);
-export const StatisticsEventFilterSchema: z.ZodType<any> = z.lazy(() => StatisticsEventFilterSchemaSchema);
-export const StringFilterPredicateSchema: z.ZodType<any> = z.lazy(() => StringFilterPredicateSchemaSchema);
-export const SubmitStrategySchema: z.ZodType<any> = z.lazy(() => SubmitStrategySchemaSchema);
-export const SystemAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => SystemAdministratorsFilterSchemaSchema);
-export const SystemInfoSchema: z.ZodType<any> = z.lazy(() => SystemInfoSchemaSchema);
-export const SystemInfoDataSchema: z.ZodType<any> = z.lazy(() => SystemInfoDataSchemaSchema);
-export const TbImageDeleteResultSchema: z.ZodType<any> = z.lazy(() => TbImageDeleteResultSchemaSchema);
-export const TbResourceSchema: z.ZodType<any> = z.lazy(() => TbResourceSchemaSchema);
-export const TbResourceIdSchema: z.ZodType<any> = z.lazy(() => TbResourceIdSchemaSchema);
-export const TbResourceInfoSchema: z.ZodType<any> = z.lazy(() => TbResourceInfoSchemaSchema);
-export const TelemetryEntityViewSchema: z.ZodType<any> = z.lazy(() => TelemetryEntityViewSchemaSchema);
-export const TelemetryMappingConfigurationSchema: z.ZodType<any> = z.lazy(() => TelemetryMappingConfigurationSchemaSchema);
-export const TelemetryQueryingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => TelemetryQueryingSnmpCommunicationConfigSchemaSchema);
-export const TenantSchema: z.ZodType<any> = z.lazy(() => TenantSchemaSchema);
-export const TenantAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => TenantAdministratorsFilterSchemaSchema);
-export const TenantIdSchema: z.ZodType<any> = z.lazy(() => TenantIdSchemaSchema);
-export const TenantInfoSchema: z.ZodType<any> = z.lazy(() => TenantInfoSchemaSchema);
-export const TenantProfileSchema: z.ZodType<any> = z.lazy(() => TenantProfileSchemaSchema);
-export const TenantProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => TenantProfileConfigurationSchemaSchema);
-export const TenantProfileDataSchema: z.ZodType<any> = z.lazy(() => TenantProfileDataSchemaSchema);
-export const TenantProfileIdSchema: z.ZodType<any> = z.lazy(() => TenantProfileIdSchemaSchema);
-export const TenantProfileQueueConfigurationSchema: z.ZodType<any> = z.lazy(() => TenantProfileQueueConfigurationSchemaSchema);
-export const TenantSolutionTemplateDetailsSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateDetailsSchemaSchema);
-export const TenantSolutionTemplateInfoSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateInfoSchemaSchema);
-export const TenantSolutionTemplateInstructionsSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateInstructionsSchemaSchema);
-export const TestSmsRequestSchema: z.ZodType<any> = z.lazy(() => TestSmsRequestSchemaSchema);
-export const ThingsboardCredentialsExpiredResponseSchema: z.ZodType<any> = z.lazy(() => ThingsboardCredentialsExpiredResponseSchemaSchema);
-export const ThingsboardErrorResponseSchema: z.ZodType<any> = z.lazy(() => ThingsboardErrorResponseSchemaSchema);
-export const ToDeviceRpcRequestSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ToDeviceRpcRequestSnmpCommunicationConfigSchemaSchema);
-export const ToServerRpcRequestSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ToServerRpcRequestSnmpCommunicationConfigSchemaSchema);
-export const TotpTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => TotpTwoFaAccountConfigSchemaSchema);
-export const TotpTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => TotpTwoFaProviderConfigSchemaSchema);
-export const TransportPayloadTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => TransportPayloadTypeConfigurationSchemaSchema);
-export const TsValueSchema: z.ZodType<any> = z.lazy(() => TsValueSchemaSchema);
-export const TwilioSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => TwilioSmsProviderConfigurationSchemaSchema);
-export const TwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => TwoFaAccountConfigSchemaSchema);
-export const TwoFaAccountConfigUpdateRequestSchema: z.ZodType<any> = z.lazy(() => TwoFaAccountConfigUpdateRequestSchemaSchema);
-export const TwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => TwoFaProviderConfigSchemaSchema);
-export const TwoFaProviderInfoSchema: z.ZodType<any> = z.lazy(() => TwoFaProviderInfoSchemaSchema);
-export const UpdateMessageSchema: z.ZodType<any> = z.lazy(() => UpdateMessageSchemaSchema);
-export const UsageInfoSchema: z.ZodType<any> = z.lazy(() => UsageInfoSchemaSchema);
-export const UserSchema: z.ZodType<any> = z.lazy(() => UserSchemaSchema);
-export const UserDashboardsInfoSchema: z.ZodType<any> = z.lazy(() => UserDashboardsInfoSchemaSchema);
-export const UserEmailInfoSchema: z.ZodType<any> = z.lazy(() => UserEmailInfoSchemaSchema);
-export const UserGroupListFilterSchema: z.ZodType<any> = z.lazy(() => UserGroupListFilterSchemaSchema);
-export const UserIdSchema: z.ZodType<any> = z.lazy(() => UserIdSchemaSchema);
-export const UserInfoSchema: z.ZodType<any> = z.lazy(() => UserInfoSchemaSchema);
-export const UserListFilterSchema: z.ZodType<any> = z.lazy(() => UserListFilterSchemaSchema);
-export const UserNotificationSettingsSchema: z.ZodType<any> = z.lazy(() => UserNotificationSettingsSchemaSchema);
-export const UserPasswordPolicySchema: z.ZodType<any> = z.lazy(() => UserPasswordPolicySchemaSchema);
-export const UserRoleFilterSchema: z.ZodType<any> = z.lazy(() => UserRoleFilterSchemaSchema);
-export const UsersFilterSchema: z.ZodType<any> = z.lazy(() => UsersFilterSchemaSchema);
-export const VersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => VersionCreateConfigSchemaSchema);
-export const VersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => VersionCreateRequestSchemaSchema);
-export const VersionCreationResultSchema: z.ZodType<any> = z.lazy(() => VersionCreationResultSchemaSchema);
-export const VersionLoadConfigSchema: z.ZodType<any> = z.lazy(() => VersionLoadConfigSchemaSchema);
-export const VersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => VersionLoadRequestSchemaSchema);
-export const VersionLoadResultSchema: z.ZodType<any> = z.lazy(() => VersionLoadResultSchemaSchema);
-export const VersionedEntityInfoSchema: z.ZodType<any> = z.lazy(() => VersionedEntityInfoSchemaSchema);
-export const WebDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => WebDeliveryMethodNotificationTemplateSchemaSchema);
-export const WhiteLabelingSchema: z.ZodType<any> = z.lazy(() => WhiteLabelingSchemaSchema);
-export const WhiteLabelingParamsSchema: z.ZodType<any> = z.lazy(() => WhiteLabelingParamsSchemaSchema);
-export const WidgetTypeSchema: z.ZodType<any> = z.lazy(() => WidgetTypeSchemaSchema);
-export const WidgetTypeDetailsSchema: z.ZodType<any> = z.lazy(() => WidgetTypeDetailsSchemaSchema);
-export const WidgetTypeExportDataSchema: z.ZodType<any> = z.lazy(() => WidgetTypeExportDataSchemaSchema);
-export const WidgetTypeIdSchema: z.ZodType<any> = z.lazy(() => WidgetTypeIdSchemaSchema);
-export const WidgetTypeInfoSchema: z.ZodType<any> = z.lazy(() => WidgetTypeInfoSchemaSchema);
-export const WidgetsBundleSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleSchemaSchema);
-export const WidgetsBundleExportDataSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleExportDataSchemaSchema);
-export const WidgetsBundleIdSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleIdSchemaSchema);
-export const X509CertificateChainProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => X509CertificateChainProvisionConfigurationSchemaSchema);
-export const X509LwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => X509LwM2MBootstrapServerCredentialSchemaSchema);
+export const AccountTwoFaSettingsSchema: z.ZodType<any> = z.lazy(() => AccountTwoFaSettingsSchemaImpl);
+export const ActivateUserRequestSchema: z.ZodType<any> = z.lazy(() => ActivateUserRequestSchemaImpl);
+export const AdminSettingsSchema: z.ZodType<any> = z.lazy(() => AdminSettingsSchemaImpl);
+export const AdminSettingsIdSchema: z.ZodType<any> = z.lazy(() => AdminSettingsIdSchemaImpl);
+export const AffectedTenantAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => AffectedTenantAdministratorsFilterSchemaImpl);
+export const AffectedUserFilterSchema: z.ZodType<any> = z.lazy(() => AffectedUserFilterSchemaImpl);
+export const AlarmSchema: z.ZodType<any> = z.lazy(() => AlarmSchemaImpl);
+export const AlarmAssigneeSchema: z.ZodType<any> = z.lazy(() => AlarmAssigneeSchemaImpl);
+export const AlarmAssignmentNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmAssignmentNotificationRuleTriggerConfigSchemaImpl);
+export const AlarmCommentSchema: z.ZodType<any> = z.lazy(() => AlarmCommentSchemaImpl);
+export const AlarmCommentIdSchema: z.ZodType<any> = z.lazy(() => AlarmCommentIdSchemaImpl);
+export const AlarmCommentInfoSchema: z.ZodType<any> = z.lazy(() => AlarmCommentInfoSchemaImpl);
+export const AlarmCommentNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmCommentNotificationRuleTriggerConfigSchemaImpl);
+export const AlarmConditionSchema: z.ZodType<any> = z.lazy(() => AlarmConditionSchemaImpl);
+export const AlarmConditionFilterSchema: z.ZodType<any> = z.lazy(() => AlarmConditionFilterSchemaImpl);
+export const AlarmConditionFilterKeySchema: z.ZodType<any> = z.lazy(() => AlarmConditionFilterKeySchemaImpl);
+export const AlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => AlarmConditionSpecSchemaImpl);
+export const AlarmCountQuerySchema: z.ZodType<any> = z.lazy(() => AlarmCountQuerySchemaImpl);
+export const AlarmDataSchema: z.ZodType<any> = z.lazy(() => AlarmDataSchemaImpl);
+export const AlarmDataPageLinkSchema: z.ZodType<any> = z.lazy(() => AlarmDataPageLinkSchemaImpl);
+export const AlarmDataQuerySchema: z.ZodType<any> = z.lazy(() => AlarmDataQuerySchemaImpl);
+export const AlarmIdSchema: z.ZodType<any> = z.lazy(() => AlarmIdSchemaImpl);
+export const AlarmInfoSchema: z.ZodType<any> = z.lazy(() => AlarmInfoSchemaImpl);
+export const AlarmNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => AlarmNotificationRuleTriggerConfigSchemaImpl);
+export const AlarmRuleSchema: z.ZodType<any> = z.lazy(() => AlarmRuleSchemaImpl);
+export const AlarmScheduleSchema: z.ZodType<any> = z.lazy(() => AlarmScheduleSchemaImpl);
+export const AllUsersFilterSchema: z.ZodType<any> = z.lazy(() => AllUsersFilterSchemaImpl);
+export const AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaImpl);
+export const AllowedPermissionsInfoSchema: z.ZodType<any> = z.lazy(() => AllowedPermissionsInfoSchemaImpl);
+export const AnyTimeScheduleSchema: z.ZodType<any> = z.lazy(() => AnyTimeScheduleSchemaImpl);
+export const ApiUsageLimitNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => ApiUsageLimitNotificationRuleTriggerConfigSchemaImpl);
+export const ApiUsageStateFilterSchema: z.ZodType<any> = z.lazy(() => ApiUsageStateFilterSchemaImpl);
+export const ArrayNodeSchema: z.ZodType<any> = z.lazy(() => ArrayNodeSchemaImpl);
+export const AssetSchema: z.ZodType<any> = z.lazy(() => AssetSchemaImpl);
+export const AssetIdSchema: z.ZodType<any> = z.lazy(() => AssetIdSchemaImpl);
+export const AssetInfoSchema: z.ZodType<any> = z.lazy(() => AssetInfoSchemaImpl);
+export const AssetProfileSchema: z.ZodType<any> = z.lazy(() => AssetProfileSchemaImpl);
+export const AssetProfileIdSchema: z.ZodType<any> = z.lazy(() => AssetProfileIdSchemaImpl);
+export const AssetProfileInfoSchema: z.ZodType<any> = z.lazy(() => AssetProfileInfoSchemaImpl);
+export const AssetSearchQuerySchema: z.ZodType<any> = z.lazy(() => AssetSearchQuerySchemaImpl);
+export const AssetSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => AssetSearchQueryFilterSchemaImpl);
+export const AssetTypeFilterSchema: z.ZodType<any> = z.lazy(() => AssetTypeFilterSchemaImpl);
+export const AtomicIntegerSchema: z.ZodType<any> = z.lazy(() => AtomicIntegerSchemaImpl);
+export const AttributeExportDataSchema: z.ZodType<any> = z.lazy(() => AttributeExportDataSchemaImpl);
+export const AttributesEntityViewSchema: z.ZodType<any> = z.lazy(() => AttributesEntityViewSchemaImpl);
+export const AuditLogSchema: z.ZodType<any> = z.lazy(() => AuditLogSchemaImpl);
+export const AuditLogIdSchema: z.ZodType<any> = z.lazy(() => AuditLogIdSchemaImpl);
+export const AutoVersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => AutoVersionCreateConfigSchemaImpl);
+export const AwsSnsSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => AwsSnsSmsProviderConfigurationSchemaImpl);
+export const BackupCodeTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => BackupCodeTwoFaAccountConfigSchemaImpl);
+export const BackupCodeTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => BackupCodeTwoFaProviderConfigSchemaImpl);
+export const BlobEntityIdSchema: z.ZodType<any> = z.lazy(() => BlobEntityIdSchemaImpl);
+export const BlobEntityInfoSchema: z.ZodType<any> = z.lazy(() => BlobEntityInfoSchemaImpl);
+export const BlobEntityWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => BlobEntityWithCustomerInfoSchemaImpl);
+export const BooleanFilterPredicateSchema: z.ZodType<any> = z.lazy(() => BooleanFilterPredicateSchemaImpl);
+export const BranchInfoSchema: z.ZodType<any> = z.lazy(() => BranchInfoSchemaImpl);
+export const BulkImportRequestSchema: z.ZodType<any> = z.lazy(() => BulkImportRequestSchemaImpl);
+export const BulkImportResult_Of_AssetSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_AssetSchemaImpl);
+export const BulkImportResult_Of_DeviceSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_DeviceSchemaImpl);
+export const BulkImportResult_Of_EdgeSchema: z.ZodType<any> = z.lazy(() => BulkImportResult_Of_EdgeSchemaImpl);
+export const ButtonSchema: z.ZodType<any> = z.lazy(() => ButtonSchemaImpl);
+export const ByteArrayResourceSchema: z.ZodType<any> = z.lazy(() => ByteArrayResourceSchemaImpl);
+export const ByteBufferSchema: z.ZodType<any> = z.lazy(() => ByteBufferSchemaImpl);
+export const ChangePasswordRequestSchema: z.ZodType<any> = z.lazy(() => ChangePasswordRequestSchemaImpl);
+export const CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaImpl);
+export const ClaimRequestSchema: z.ZodType<any> = z.lazy(() => ClaimRequestSchemaImpl);
+export const ClearRuleSchema: z.ZodType<any> = z.lazy(() => ClearRuleSchemaImpl);
+export const ClientAttributesQueryingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ClientAttributesQueryingSnmpCommunicationConfigSchemaImpl);
+export const CoapDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceProfileTransportConfigurationSchemaImpl);
+export const CoapDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceTransportConfigurationSchemaImpl);
+export const CoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => CoapDeviceTypeConfigurationSchemaImpl);
+export const ColumnMappingSchema: z.ZodType<any> = z.lazy(() => ColumnMappingSchemaImpl);
+export const ComparisonTsValueSchema: z.ZodType<any> = z.lazy(() => ComparisonTsValueSchemaImpl);
+export const ComplexFilterPredicateSchema: z.ZodType<any> = z.lazy(() => ComplexFilterPredicateSchemaImpl);
+export const ComplexVersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => ComplexVersionCreateRequestSchemaImpl);
+export const ComponentDescriptorSchema: z.ZodType<any> = z.lazy(() => ComponentDescriptorSchemaImpl);
+export const ComponentDescriptorIdSchema: z.ZodType<any> = z.lazy(() => ComponentDescriptorIdSchemaImpl);
+export const ContactBased_Of_objectSchema: z.ZodType<any> = z.lazy(() => ContactBased_Of_objectSchemaImpl);
+export const ConverterSchema: z.ZodType<any> = z.lazy(() => ConverterSchemaImpl);
+export const ConverterIdSchema: z.ZodType<any> = z.lazy(() => ConverterIdSchemaImpl);
+export const CustomMenuSchema: z.ZodType<any> = z.lazy(() => CustomMenuSchemaImpl);
+export const CustomMenuItemSchema: z.ZodType<any> = z.lazy(() => CustomMenuItemSchemaImpl);
+export const CustomTimeScheduleSchema: z.ZodType<any> = z.lazy(() => CustomTimeScheduleSchemaImpl);
+export const CustomTimeScheduleItemSchema: z.ZodType<any> = z.lazy(() => CustomTimeScheduleItemSchemaImpl);
+export const CustomTranslationSchema: z.ZodType<any> = z.lazy(() => CustomTranslationSchemaImpl);
+export const CustomerSchema: z.ZodType<any> = z.lazy(() => CustomerSchemaImpl);
+export const CustomerIdSchema: z.ZodType<any> = z.lazy(() => CustomerIdSchemaImpl);
+export const CustomerInfoSchema: z.ZodType<any> = z.lazy(() => CustomerInfoSchemaImpl);
+export const CustomerUsersFilterSchema: z.ZodType<any> = z.lazy(() => CustomerUsersFilterSchemaImpl);
+export const DashboardSchema: z.ZodType<any> = z.lazy(() => DashboardSchemaImpl);
+export const DashboardIdSchema: z.ZodType<any> = z.lazy(() => DashboardIdSchemaImpl);
+export const DashboardInfoSchema: z.ZodType<any> = z.lazy(() => DashboardInfoSchemaImpl);
+export const DebugConverterEventFilterSchema: z.ZodType<any> = z.lazy(() => DebugConverterEventFilterSchemaImpl);
+export const DebugIntegrationEventFilterSchema: z.ZodType<any> = z.lazy(() => DebugIntegrationEventFilterSchemaImpl);
+export const DefaultCoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultCoapDeviceTypeConfigurationSchemaImpl);
+export const DefaultDeviceConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceConfigurationSchemaImpl);
+export const DefaultDeviceProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceProfileConfigurationSchemaImpl);
+export const DefaultDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceProfileTransportConfigurationSchemaImpl);
+export const DefaultDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultDeviceTransportConfigurationSchemaImpl);
+export const DefaultRuleChainCreateRequestSchema: z.ZodType<any> = z.lazy(() => DefaultRuleChainCreateRequestSchemaImpl);
+export const DefaultTenantProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DefaultTenantProfileConfigurationSchemaImpl);
+export const DeferredResult_Of_EntityDataDiffSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_EntityDataDiffSchemaImpl);
+export const DeferredResult_Of_EntityDataInfoSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_EntityDataInfoSchemaImpl);
+export const DeferredResult_Of_List_Of_BranchInfoSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_List_Of_BranchInfoSchemaImpl);
+export const DeferredResult_Of_List_Of_VersionedEntityInfoSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_List_Of_VersionedEntityInfoSchemaImpl);
+export const DeferredResult_Of_PageData_Of_EntityVersionSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_PageData_Of_EntityVersionSchemaImpl);
+export const DeferredResult_Of_RepositorySettingsSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_RepositorySettingsSchemaImpl);
+export const DeferredResult_Of_ResponseEntitySchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_ResponseEntitySchemaImpl);
+export const DeferredResult_Of_VoidSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_VoidSchemaImpl);
+export const DeferredResult_Of_uuidSchema: z.ZodType<any> = z.lazy(() => DeferredResult_Of_uuidSchemaImpl);
+export const DeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => DeliveryMethodNotificationTemplateSchemaImpl);
+export const DeviceSchema: z.ZodType<any> = z.lazy(() => DeviceSchemaImpl);
+export const DeviceActivityNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => DeviceActivityNotificationRuleTriggerConfigSchemaImpl);
+export const DeviceConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceConfigurationSchemaImpl);
+export const DeviceCredentialsSchema: z.ZodType<any> = z.lazy(() => DeviceCredentialsSchemaImpl);
+export const DeviceCredentialsIdSchema: z.ZodType<any> = z.lazy(() => DeviceCredentialsIdSchemaImpl);
+export const DeviceDataSchema: z.ZodType<any> = z.lazy(() => DeviceDataSchemaImpl);
+export const DeviceExportDataSchema: z.ZodType<any> = z.lazy(() => DeviceExportDataSchemaImpl);
+export const DeviceGroupOtaPackageSchema: z.ZodType<any> = z.lazy(() => DeviceGroupOtaPackageSchemaImpl);
+export const DeviceIdSchema: z.ZodType<any> = z.lazy(() => DeviceIdSchemaImpl);
+export const DeviceInfoSchema: z.ZodType<any> = z.lazy(() => DeviceInfoSchemaImpl);
+export const DeviceProfileSchema: z.ZodType<any> = z.lazy(() => DeviceProfileSchemaImpl);
+export const DeviceProfileAlarmSchema: z.ZodType<any> = z.lazy(() => DeviceProfileAlarmSchemaImpl);
+export const DeviceProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileConfigurationSchemaImpl);
+export const DeviceProfileDataSchema: z.ZodType<any> = z.lazy(() => DeviceProfileDataSchemaImpl);
+export const DeviceProfileIdSchema: z.ZodType<any> = z.lazy(() => DeviceProfileIdSchemaImpl);
+export const DeviceProfileInfoSchema: z.ZodType<any> = z.lazy(() => DeviceProfileInfoSchemaImpl);
+export const DeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileProvisionConfigurationSchemaImpl);
+export const DeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceProfileTransportConfigurationSchemaImpl);
+export const DeviceSearchQuerySchema: z.ZodType<any> = z.lazy(() => DeviceSearchQuerySchemaImpl);
+export const DeviceSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => DeviceSearchQueryFilterSchemaImpl);
+export const DeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => DeviceTransportConfigurationSchemaImpl);
+export const DeviceTypeFilterSchema: z.ZodType<any> = z.lazy(() => DeviceTypeFilterSchemaImpl);
+export const DisabledDeviceProfileProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => DisabledDeviceProfileProvisionConfigurationSchemaImpl);
+export const DurationAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => DurationAlarmConditionSpecSchemaImpl);
+export const DynamicValue_Of_booleanSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_booleanSchemaImpl);
+export const DynamicValue_Of_doubleSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_doubleSchemaImpl);
+export const DynamicValue_Of_intSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_intSchemaImpl);
+export const DynamicValue_Of_longSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_longSchemaImpl);
+export const DynamicValue_Of_stringSchema: z.ZodType<any> = z.lazy(() => DynamicValue_Of_stringSchemaImpl);
+export const EdgeSchema: z.ZodType<any> = z.lazy(() => EdgeSchemaImpl);
+export const EdgeEventSchema: z.ZodType<any> = z.lazy(() => EdgeEventSchemaImpl);
+export const EdgeEventIdSchema: z.ZodType<any> = z.lazy(() => EdgeEventIdSchemaImpl);
+export const EdgeIdSchema: z.ZodType<any> = z.lazy(() => EdgeIdSchemaImpl);
+export const EdgeInfoSchema: z.ZodType<any> = z.lazy(() => EdgeInfoSchemaImpl);
+export const EdgeInstructionsSchema: z.ZodType<any> = z.lazy(() => EdgeInstructionsSchemaImpl);
+export const EdgeSearchQuerySchema: z.ZodType<any> = z.lazy(() => EdgeSearchQuerySchemaImpl);
+export const EdgeSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => EdgeSearchQueryFilterSchemaImpl);
+export const EdgeTypeFilterSchema: z.ZodType<any> = z.lazy(() => EdgeTypeFilterSchemaImpl);
+export const EfentoCoapDeviceTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => EfentoCoapDeviceTypeConfigurationSchemaImpl);
+export const EmailDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => EmailDeliveryMethodNotificationTemplateSchemaImpl);
+export const EmailTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => EmailTwoFaAccountConfigSchemaImpl);
+export const EmailTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => EmailTwoFaProviderConfigSchemaImpl);
+export const EntitiesByGroupNameFilterSchema: z.ZodType<any> = z.lazy(() => EntitiesByGroupNameFilterSchemaImpl);
+export const EntitiesLimitNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => EntitiesLimitNotificationRuleTriggerConfigSchemaImpl);
+export const EntityActionNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => EntityActionNotificationRuleTriggerConfigSchemaImpl);
+export const EntityCountQuerySchema: z.ZodType<any> = z.lazy(() => EntityCountQuerySchemaImpl);
+export const EntityDataSchema: z.ZodType<any> = z.lazy(() => EntityDataSchemaImpl);
+export const EntityDataDiffSchema: z.ZodType<any> = z.lazy(() => EntityDataDiffSchemaImpl);
+export const EntityDataInfoSchema: z.ZodType<any> = z.lazy(() => EntityDataInfoSchemaImpl);
+export const EntityDataPageLinkSchema: z.ZodType<any> = z.lazy(() => EntityDataPageLinkSchemaImpl);
+export const EntityDataQuerySchema: z.ZodType<any> = z.lazy(() => EntityDataQuerySchemaImpl);
+export const EntityDataSortOrderSchema: z.ZodType<any> = z.lazy(() => EntityDataSortOrderSchemaImpl);
+export const EntityExportData_Of_objectSchema: z.ZodType<any> = z.lazy(() => EntityExportData_Of_objectSchemaImpl);
+export const EntityFilterSchema: z.ZodType<any> = z.lazy(() => EntityFilterSchemaImpl);
+export const EntityGroupSchema: z.ZodType<any> = z.lazy(() => EntityGroupSchemaImpl);
+export const EntityGroupExportDataSchema: z.ZodType<any> = z.lazy(() => EntityGroupExportDataSchemaImpl);
+export const EntityGroupFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupFilterSchemaImpl);
+export const EntityGroupIdSchema: z.ZodType<any> = z.lazy(() => EntityGroupIdSchemaImpl);
+export const EntityGroupInfoSchema: z.ZodType<any> = z.lazy(() => EntityGroupInfoSchemaImpl);
+export const EntityGroupListFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupListFilterSchemaImpl);
+export const EntityGroupNameFilterSchema: z.ZodType<any> = z.lazy(() => EntityGroupNameFilterSchemaImpl);
+export const EntityIdSchema: z.ZodType<any> = z.lazy(() => EntityIdSchemaImpl);
+export const EntityInfoSchema: z.ZodType<any> = z.lazy(() => EntityInfoSchemaImpl);
+export const EntityKeySchema: z.ZodType<any> = z.lazy(() => EntityKeySchemaImpl);
+export const EntityListFilterSchema: z.ZodType<any> = z.lazy(() => EntityListFilterSchemaImpl);
+export const EntityLoadErrorSchema: z.ZodType<any> = z.lazy(() => EntityLoadErrorSchemaImpl);
+export const EntityNameFilterSchema: z.ZodType<any> = z.lazy(() => EntityNameFilterSchemaImpl);
+export const EntityRelationSchema: z.ZodType<any> = z.lazy(() => EntityRelationSchemaImpl);
+export const EntityRelationInfoSchema: z.ZodType<any> = z.lazy(() => EntityRelationInfoSchemaImpl);
+export const EntityRelationsQuerySchema: z.ZodType<any> = z.lazy(() => EntityRelationsQuerySchemaImpl);
+export const EntitySubtypeSchema: z.ZodType<any> = z.lazy(() => EntitySubtypeSchemaImpl);
+export const EntityTypeFilterSchema: z.ZodType<any> = z.lazy(() => EntityTypeFilterSchemaImpl);
+export const EntityTypeLoadResultSchema: z.ZodType<any> = z.lazy(() => EntityTypeLoadResultSchemaImpl);
+export const EntityTypeVersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionCreateConfigSchemaImpl);
+export const EntityTypeVersionLoadConfigSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionLoadConfigSchemaImpl);
+export const EntityTypeVersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => EntityTypeVersionLoadRequestSchemaImpl);
+export const EntityVersionSchema: z.ZodType<any> = z.lazy(() => EntityVersionSchemaImpl);
+export const EntityViewSchema: z.ZodType<any> = z.lazy(() => EntityViewSchemaImpl);
+export const EntityViewIdSchema: z.ZodType<any> = z.lazy(() => EntityViewIdSchemaImpl);
+export const EntityViewInfoSchema: z.ZodType<any> = z.lazy(() => EntityViewInfoSchemaImpl);
+export const EntityViewSearchQuerySchema: z.ZodType<any> = z.lazy(() => EntityViewSearchQuerySchemaImpl);
+export const EntityViewSearchQueryFilterSchema: z.ZodType<any> = z.lazy(() => EntityViewSearchQueryFilterSchemaImpl);
+export const EntityViewTypeFilterSchema: z.ZodType<any> = z.lazy(() => EntityViewTypeFilterSchemaImpl);
+export const ErrorEventFilterSchema: z.ZodType<any> = z.lazy(() => ErrorEventFilterSchemaImpl);
+export const EscalatedNotificationRuleRecipientsConfigSchema: z.ZodType<any> = z.lazy(() => EscalatedNotificationRuleRecipientsConfigSchemaImpl);
+export const EventFilterSchema: z.ZodType<any> = z.lazy(() => EventFilterSchemaImpl);
+export const EventIdSchema: z.ZodType<any> = z.lazy(() => EventIdSchemaImpl);
+export const EventInfoSchema: z.ZodType<any> = z.lazy(() => EventInfoSchemaImpl);
+export const ExportableEntity_Of_EntityIdSchema: z.ZodType<any> = z.lazy(() => ExportableEntity_Of_EntityIdSchemaImpl);
+export const FaviconSchema: z.ZodType<any> = z.lazy(() => FaviconSchemaImpl);
+export const FeaturesInfoSchema: z.ZodType<any> = z.lazy(() => FeaturesInfoSchemaImpl);
+export const FilterPredicateValue_Of_booleanSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_booleanSchemaImpl);
+export const FilterPredicateValue_Of_doubleSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_doubleSchemaImpl);
+export const FilterPredicateValue_Of_intSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_intSchemaImpl);
+export const FilterPredicateValue_Of_longSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_longSchemaImpl);
+export const FilterPredicateValue_Of_stringSchema: z.ZodType<any> = z.lazy(() => FilterPredicateValue_Of_stringSchemaImpl);
+export const GroupEntityExportDataSchema: z.ZodType<any> = z.lazy(() => GroupEntityExportDataSchemaImpl);
+export const GroupPermissionSchema: z.ZodType<any> = z.lazy(() => GroupPermissionSchemaImpl);
+export const GroupPermissionIdSchema: z.ZodType<any> = z.lazy(() => GroupPermissionIdSchemaImpl);
+export const GroupPermissionInfoSchema: z.ZodType<any> = z.lazy(() => GroupPermissionInfoSchemaImpl);
+export const HasId_Of_objectSchema: z.ZodType<any> = z.lazy(() => HasId_Of_objectSchemaImpl);
+export const HomeDashboardSchema: z.ZodType<any> = z.lazy(() => HomeDashboardSchemaImpl);
+export const HomeDashboardInfoSchema: z.ZodType<any> = z.lazy(() => HomeDashboardInfoSchemaImpl);
+export const ImageExportDataSchema: z.ZodType<any> = z.lazy(() => ImageExportDataSchemaImpl);
+export const InputStreamSchema: z.ZodType<any> = z.lazy(() => InputStreamSchemaImpl);
+export const IntegrationSchema: z.ZodType<any> = z.lazy(() => IntegrationSchemaImpl);
+export const IntegrationIdSchema: z.ZodType<any> = z.lazy(() => IntegrationIdSchemaImpl);
+export const IntegrationInfoSchema: z.ZodType<any> = z.lazy(() => IntegrationInfoSchemaImpl);
+export const IntegrationLifecycleEventNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaImpl);
+export const JWT_PairSchema: z.ZodType<any> = z.lazy(() => JWT_PairSchemaImpl);
+export const JWT_SettingsSchema: z.ZodType<any> = z.lazy(() => JWT_SettingsSchemaImpl);
+export const JsonNodeSchema: z.ZodType<any> = z.lazy(() => JsonNodeSchemaImpl);
+export const JsonTransportPayloadConfigurationSchema: z.ZodType<any> = z.lazy(() => JsonTransportPayloadConfigurationSchemaImpl);
+export const KeyFilterSchema: z.ZodType<any> = z.lazy(() => KeyFilterSchemaImpl);
+export const KeyFilterPredicateSchema: z.ZodType<any> = z.lazy(() => KeyFilterPredicateSchemaImpl);
+export const LastVisitedDashboardInfoSchema: z.ZodType<any> = z.lazy(() => LastVisitedDashboardInfoSchemaImpl);
+export const LicenseUsageInfoSchema: z.ZodType<any> = z.lazy(() => LicenseUsageInfoSchemaImpl);
+export const LifeCycleEventFilterSchema: z.ZodType<any> = z.lazy(() => LifeCycleEventFilterSchemaImpl);
+export const LoginRequestSchema: z.ZodType<any> = z.lazy(() => LoginRequestSchemaImpl);
+export const LoginResponseSchema: z.ZodType<any> = z.lazy(() => LoginResponseSchemaImpl);
+export const LoginWhiteLabelingParamsSchema: z.ZodType<any> = z.lazy(() => LoginWhiteLabelingParamsSchemaImpl);
+export const LwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => LwM2MBootstrapServerCredentialSchemaImpl);
+export const LwM2mInstanceSchema: z.ZodType<any> = z.lazy(() => LwM2mInstanceSchemaImpl);
+export const LwM2mObjectSchema: z.ZodType<any> = z.lazy(() => LwM2mObjectSchemaImpl);
+export const LwM2mResourceObserveSchema: z.ZodType<any> = z.lazy(() => LwM2mResourceObserveSchemaImpl);
+export const Lwm2mDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => Lwm2mDeviceProfileTransportConfigurationSchemaImpl);
+export const Lwm2mDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => Lwm2mDeviceTransportConfigurationSchemaImpl);
+export const MappingSchema: z.ZodType<any> = z.lazy(() => MappingSchemaImpl);
+export const MergedGroupPermissionInfoSchema: z.ZodType<any> = z.lazy(() => MergedGroupPermissionInfoSchemaImpl);
+export const MergedGroupTypePermissionInfoSchema: z.ZodType<any> = z.lazy(() => MergedGroupTypePermissionInfoSchemaImpl);
+export const MergedUserPermissionsSchema: z.ZodType<any> = z.lazy(() => MergedUserPermissionsSchemaImpl);
+export const MicrosoftTeamsDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaImpl);
+export const MicrosoftTeamsNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => MicrosoftTeamsNotificationTargetConfigSchemaImpl);
+export const MqttDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => MqttDeviceProfileTransportConfigurationSchemaImpl);
+export const MqttDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => MqttDeviceTransportConfigurationSchemaImpl);
+export const NewPlatformVersionNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => NewPlatformVersionNotificationRuleTriggerConfigSchemaImpl);
+export const NoSecLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => NoSecLwM2MBootstrapServerCredentialSchemaImpl);
+export const NodeConnectionInfoSchema: z.ZodType<any> = z.lazy(() => NodeConnectionInfoSchemaImpl);
+export const NotificationSchema: z.ZodType<any> = z.lazy(() => NotificationSchemaImpl);
+export const NotificationDeliveryMethodConfigSchema: z.ZodType<any> = z.lazy(() => NotificationDeliveryMethodConfigSchemaImpl);
+export const NotificationIdSchema: z.ZodType<any> = z.lazy(() => NotificationIdSchemaImpl);
+export const NotificationInfoSchema: z.ZodType<any> = z.lazy(() => NotificationInfoSchemaImpl);
+export const NotificationPrefSchema: z.ZodType<any> = z.lazy(() => NotificationPrefSchemaImpl);
+export const NotificationRequestSchema: z.ZodType<any> = z.lazy(() => NotificationRequestSchemaImpl);
+export const NotificationRequestConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRequestConfigSchemaImpl);
+export const NotificationRequestIdSchema: z.ZodType<any> = z.lazy(() => NotificationRequestIdSchemaImpl);
+export const NotificationRequestInfoSchema: z.ZodType<any> = z.lazy(() => NotificationRequestInfoSchemaImpl);
+export const NotificationRequestPreviewSchema: z.ZodType<any> = z.lazy(() => NotificationRequestPreviewSchemaImpl);
+export const NotificationRequestStatsSchema: z.ZodType<any> = z.lazy(() => NotificationRequestStatsSchemaImpl);
+export const NotificationRuleSchema: z.ZodType<any> = z.lazy(() => NotificationRuleSchemaImpl);
+export const NotificationRuleConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleConfigSchemaImpl);
+export const NotificationRuleIdSchema: z.ZodType<any> = z.lazy(() => NotificationRuleIdSchemaImpl);
+export const NotificationRuleInfoSchema: z.ZodType<any> = z.lazy(() => NotificationRuleInfoSchemaImpl);
+export const NotificationRuleRecipientsConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleRecipientsConfigSchemaImpl);
+export const NotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => NotificationRuleTriggerConfigSchemaImpl);
+export const NotificationSettingsSchema: z.ZodType<any> = z.lazy(() => NotificationSettingsSchemaImpl);
+export const NotificationTargetSchema: z.ZodType<any> = z.lazy(() => NotificationTargetSchemaImpl);
+export const NotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => NotificationTargetConfigSchemaImpl);
+export const NotificationTemplateSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateSchemaImpl);
+export const NotificationTemplateConfigSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateConfigSchemaImpl);
+export const NotificationTemplateIdSchema: z.ZodType<any> = z.lazy(() => NotificationTemplateIdSchemaImpl);
+export const NumericFilterPredicateSchema: z.ZodType<any> = z.lazy(() => NumericFilterPredicateSchemaImpl);
+export const OAuth2BasicMapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2BasicMapperConfigSchemaImpl);
+export const OAuth2ClientInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientInfoSchemaImpl);
+export const OAuth2ClientRegistrationTemplateSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientRegistrationTemplateSchemaImpl);
+export const OAuth2ClientRegistrationTemplateIdSchema: z.ZodType<any> = z.lazy(() => OAuth2ClientRegistrationTemplateIdSchemaImpl);
+export const OAuth2CustomMapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2CustomMapperConfigSchemaImpl);
+export const OAuth2DomainInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2DomainInfoSchemaImpl);
+export const OAuth2InfoSchema: z.ZodType<any> = z.lazy(() => OAuth2InfoSchemaImpl);
+export const OAuth2MapperConfigSchema: z.ZodType<any> = z.lazy(() => OAuth2MapperConfigSchemaImpl);
+export const OAuth2MobileInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2MobileInfoSchemaImpl);
+export const OAuth2ParamsInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2ParamsInfoSchemaImpl);
+export const OAuth2RegistrationInfoSchema: z.ZodType<any> = z.lazy(() => OAuth2RegistrationInfoSchemaImpl);
+export const ObjectAttributesSchema: z.ZodType<any> = z.lazy(() => ObjectAttributesSchemaImpl);
+export const ObjectNodeSchema: z.ZodType<any> = z.lazy(() => ObjectNodeSchemaImpl);
+export const OriginatorEntityOwnerUsersFilterSchema: z.ZodType<any> = z.lazy(() => OriginatorEntityOwnerUsersFilterSchemaImpl);
+export const OtaPackageSchema: z.ZodType<any> = z.lazy(() => OtaPackageSchemaImpl);
+export const OtaPackageIdSchema: z.ZodType<any> = z.lazy(() => OtaPackageIdSchemaImpl);
+export const OtaPackageInfoSchema: z.ZodType<any> = z.lazy(() => OtaPackageInfoSchemaImpl);
+export const OtherConfigurationSchema: z.ZodType<any> = z.lazy(() => OtherConfigurationSchemaImpl);
+export const PSKLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => PSKLwM2MBootstrapServerCredentialSchemaImpl);
+export const PageData_Of_AlarmCommentInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmCommentInfoSchemaImpl);
+export const PageData_Of_AlarmDataSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmDataSchemaImpl);
+export const PageData_Of_AlarmInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AlarmInfoSchemaImpl);
+export const PageData_Of_AssetInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetInfoSchemaImpl);
+export const PageData_Of_AssetProfileInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetProfileInfoSchemaImpl);
+export const PageData_Of_AssetProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetProfileSchemaImpl);
+export const PageData_Of_AssetSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AssetSchemaImpl);
+export const PageData_Of_AuditLogSchema: z.ZodType<any> = z.lazy(() => PageData_Of_AuditLogSchemaImpl);
+export const PageData_Of_BlobEntityWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_BlobEntityWithCustomerInfoSchemaImpl);
+export const PageData_Of_ContactBased_Of_objectSchema: z.ZodType<any> = z.lazy(() => PageData_Of_ContactBased_Of_objectSchemaImpl);
+export const PageData_Of_ConverterSchema: z.ZodType<any> = z.lazy(() => PageData_Of_ConverterSchemaImpl);
+export const PageData_Of_CustomerInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_CustomerInfoSchemaImpl);
+export const PageData_Of_CustomerSchema: z.ZodType<any> = z.lazy(() => PageData_Of_CustomerSchemaImpl);
+export const PageData_Of_DashboardInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DashboardInfoSchemaImpl);
+export const PageData_Of_DeviceInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceInfoSchemaImpl);
+export const PageData_Of_DeviceProfileInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceProfileInfoSchemaImpl);
+export const PageData_Of_DeviceProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceProfileSchemaImpl);
+export const PageData_Of_DeviceSchema: z.ZodType<any> = z.lazy(() => PageData_Of_DeviceSchemaImpl);
+export const PageData_Of_EdgeEventSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeEventSchemaImpl);
+export const PageData_Of_EdgeInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeInfoSchemaImpl);
+export const PageData_Of_EdgeSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EdgeSchemaImpl);
+export const PageData_Of_EntityDataSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityDataSchemaImpl);
+export const PageData_Of_EntityGroupInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityGroupInfoSchemaImpl);
+export const PageData_Of_EntityInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityInfoSchemaImpl);
+export const PageData_Of_EntitySubtypeSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntitySubtypeSchemaImpl);
+export const PageData_Of_EntityVersionSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityVersionSchemaImpl);
+export const PageData_Of_EntityViewInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityViewInfoSchemaImpl);
+export const PageData_Of_EntityViewSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EntityViewSchemaImpl);
+export const PageData_Of_EventInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_EventInfoSchemaImpl);
+export const PageData_Of_IntegrationInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_IntegrationInfoSchemaImpl);
+export const PageData_Of_IntegrationSchema: z.ZodType<any> = z.lazy(() => PageData_Of_IntegrationSchemaImpl);
+export const PageData_Of_NotificationRequestInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationRequestInfoSchemaImpl);
+export const PageData_Of_NotificationRuleInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationRuleInfoSchemaImpl);
+export const PageData_Of_NotificationTargetSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationTargetSchemaImpl);
+export const PageData_Of_NotificationTemplateSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationTemplateSchemaImpl);
+export const PageData_Of_NotificationSchema: z.ZodType<any> = z.lazy(() => PageData_Of_NotificationSchemaImpl);
+export const PageData_Of_OtaPackageInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_OtaPackageInfoSchemaImpl);
+export const PageData_Of_QueueSchema: z.ZodType<any> = z.lazy(() => PageData_Of_QueueSchemaImpl);
+export const PageData_Of_RoleSchema: z.ZodType<any> = z.lazy(() => PageData_Of_RoleSchemaImpl);
+export const PageData_Of_RuleChainSchema: z.ZodType<any> = z.lazy(() => PageData_Of_RuleChainSchemaImpl);
+export const PageData_Of_SchedulerEventInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_SchedulerEventInfoSchemaImpl);
+export const PageData_Of_ShortEntityViewSchema: z.ZodType<any> = z.lazy(() => PageData_Of_ShortEntityViewSchemaImpl);
+export const PageData_Of_TbResourceInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TbResourceInfoSchemaImpl);
+export const PageData_Of_TenantInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantInfoSchemaImpl);
+export const PageData_Of_TenantProfileSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantProfileSchemaImpl);
+export const PageData_Of_TenantSchema: z.ZodType<any> = z.lazy(() => PageData_Of_TenantSchemaImpl);
+export const PageData_Of_UserEmailInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserEmailInfoSchemaImpl);
+export const PageData_Of_UserInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserInfoSchemaImpl);
+export const PageData_Of_UserSchema: z.ZodType<any> = z.lazy(() => PageData_Of_UserSchemaImpl);
+export const PageData_Of_WidgetTypeInfoSchema: z.ZodType<any> = z.lazy(() => PageData_Of_WidgetTypeInfoSchemaImpl);
+export const PageData_Of_WidgetsBundleSchema: z.ZodType<any> = z.lazy(() => PageData_Of_WidgetsBundleSchemaImpl);
+export const PaletteSchema: z.ZodType<any> = z.lazy(() => PaletteSchemaImpl);
+export const PaletteSettingsSchema: z.ZodType<any> = z.lazy(() => PaletteSettingsSchemaImpl);
+export const PlatformTwoFaSettingsSchema: z.ZodType<any> = z.lazy(() => PlatformTwoFaSettingsSchemaImpl);
+export const PlatformUsersNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => PlatformUsersNotificationTargetConfigSchemaImpl);
+export const PowerSavingConfigurationSchema: z.ZodType<any> = z.lazy(() => PowerSavingConfigurationSchemaImpl);
+export const ProcessingStrategySchema: z.ZodType<any> = z.lazy(() => ProcessingStrategySchemaImpl);
+export const ProtoTransportPayloadConfigurationSchema: z.ZodType<any> = z.lazy(() => ProtoTransportPayloadConfigurationSchemaImpl);
+export const QueueSchema: z.ZodType<any> = z.lazy(() => QueueSchemaImpl);
+export const QueueIdSchema: z.ZodType<any> = z.lazy(() => QueueIdSchemaImpl);
+export const RPKLwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => RPKLwM2MBootstrapServerCredentialSchemaImpl);
+export const RateLimitsNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => RateLimitsNotificationRuleTriggerConfigSchemaImpl);
+export const RawDataEventFilterSchema: z.ZodType<any> = z.lazy(() => RawDataEventFilterSchemaImpl);
+export const RelationEntityTypeFilterSchema: z.ZodType<any> = z.lazy(() => RelationEntityTypeFilterSchemaImpl);
+export const RelationsQueryFilterSchema: z.ZodType<any> = z.lazy(() => RelationsQueryFilterSchemaImpl);
+export const RelationsSearchParametersSchema: z.ZodType<any> = z.lazy(() => RelationsSearchParametersSchemaImpl);
+export const RepeatingAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => RepeatingAlarmConditionSpecSchemaImpl);
+export const ReportConfigSchema: z.ZodType<any> = z.lazy(() => ReportConfigSchemaImpl);
+export const RepositorySettingsSchema: z.ZodType<any> = z.lazy(() => RepositorySettingsSchemaImpl);
+export const RepositorySettingsInfoSchema: z.ZodType<any> = z.lazy(() => RepositorySettingsInfoSchemaImpl);
+export const ResetPasswordEmailRequestSchema: z.ZodType<any> = z.lazy(() => ResetPasswordEmailRequestSchemaImpl);
+export const ResetPasswordRequestSchema: z.ZodType<any> = z.lazy(() => ResetPasswordRequestSchemaImpl);
+export const ResourceSchema: z.ZodType<any> = z.lazy(() => ResourceSchemaImpl);
+export const ResponseEntitySchema: z.ZodType<any> = z.lazy(() => ResponseEntitySchemaImpl);
+export const RoleSchema: z.ZodType<any> = z.lazy(() => RoleSchemaImpl);
+export const RoleIdSchema: z.ZodType<any> = z.lazy(() => RoleIdSchemaImpl);
+export const RpcSchema: z.ZodType<any> = z.lazy(() => RpcSchemaImpl);
+export const RpcIdSchema: z.ZodType<any> = z.lazy(() => RpcIdSchemaImpl);
+export const RuleChainSchema: z.ZodType<any> = z.lazy(() => RuleChainSchemaImpl);
+export const RuleChainConnectionInfoSchema: z.ZodType<any> = z.lazy(() => RuleChainConnectionInfoSchemaImpl);
+export const RuleChainDataSchema: z.ZodType<any> = z.lazy(() => RuleChainDataSchemaImpl);
+export const RuleChainDebugEventFilterSchema: z.ZodType<any> = z.lazy(() => RuleChainDebugEventFilterSchemaImpl);
+export const RuleChainExportDataSchema: z.ZodType<any> = z.lazy(() => RuleChainExportDataSchemaImpl);
+export const RuleChainIdSchema: z.ZodType<any> = z.lazy(() => RuleChainIdSchemaImpl);
+export const RuleChainImportResultSchema: z.ZodType<any> = z.lazy(() => RuleChainImportResultSchemaImpl);
+export const RuleChainMetaDataSchema: z.ZodType<any> = z.lazy(() => RuleChainMetaDataSchemaImpl);
+export const RuleChainOutputLabelsUsageSchema: z.ZodType<any> = z.lazy(() => RuleChainOutputLabelsUsageSchemaImpl);
+export const RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema: z.ZodType<any> = z.lazy(() => RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaImpl);
+export const RuleNodeSchema: z.ZodType<any> = z.lazy(() => RuleNodeSchemaImpl);
+export const RuleNodeDebugEventFilterSchema: z.ZodType<any> = z.lazy(() => RuleNodeDebugEventFilterSchemaImpl);
+export const RuleNodeIdSchema: z.ZodType<any> = z.lazy(() => RuleNodeIdSchemaImpl);
+export const SaveDeviceWithCredentialsRequestSchema: z.ZodType<any> = z.lazy(() => SaveDeviceWithCredentialsRequestSchemaImpl);
+export const SaveOtaPackageInfoRequestSchema: z.ZodType<any> = z.lazy(() => SaveOtaPackageInfoRequestSchemaImpl);
+export const SchedulerEventSchema: z.ZodType<any> = z.lazy(() => SchedulerEventSchemaImpl);
+export const SchedulerEventFilterSchema: z.ZodType<any> = z.lazy(() => SchedulerEventFilterSchemaImpl);
+export const SchedulerEventIdSchema: z.ZodType<any> = z.lazy(() => SchedulerEventIdSchemaImpl);
+export const SchedulerEventInfoSchema: z.ZodType<any> = z.lazy(() => SchedulerEventInfoSchemaImpl);
+export const SchedulerEventWithCustomerInfoSchema: z.ZodType<any> = z.lazy(() => SchedulerEventWithCustomerInfoSchemaImpl);
+export const SecuritySettingsSchema: z.ZodType<any> = z.lazy(() => SecuritySettingsSchemaImpl);
+export const SelfRegistrationParamsSchema: z.ZodType<any> = z.lazy(() => SelfRegistrationParamsSchemaImpl);
+export const ShareGroupRequestSchema: z.ZodType<any> = z.lazy(() => ShareGroupRequestSchemaImpl);
+export const SharedAttributesSettingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => SharedAttributesSettingSnmpCommunicationConfigSchemaImpl);
+export const ShortCustomerInfoSchema: z.ZodType<any> = z.lazy(() => ShortCustomerInfoSchemaImpl);
+export const ShortEntityViewSchema: z.ZodType<any> = z.lazy(() => ShortEntityViewSchemaImpl);
+export const SignUpRequestSchema: z.ZodType<any> = z.lazy(() => SignUpRequestSchemaImpl);
+export const SignUpSelfRegistrationParamsSchema: z.ZodType<any> = z.lazy(() => SignUpSelfRegistrationParamsSchemaImpl);
+export const SimpleAlarmConditionSpecSchema: z.ZodType<any> = z.lazy(() => SimpleAlarmConditionSpecSchemaImpl);
+export const SingleEntityFilterSchema: z.ZodType<any> = z.lazy(() => SingleEntityFilterSchemaImpl);
+export const SingleEntityVersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => SingleEntityVersionCreateRequestSchemaImpl);
+export const SingleEntityVersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => SingleEntityVersionLoadRequestSchemaImpl);
+export const SlackConversationSchema: z.ZodType<any> = z.lazy(() => SlackConversationSchemaImpl);
+export const SlackDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => SlackDeliveryMethodNotificationTemplateSchemaImpl);
+export const SlackNotificationDeliveryMethodConfigSchema: z.ZodType<any> = z.lazy(() => SlackNotificationDeliveryMethodConfigSchemaImpl);
+export const SlackNotificationTargetConfigSchema: z.ZodType<any> = z.lazy(() => SlackNotificationTargetConfigSchemaImpl);
+export const SmppSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => SmppSmsProviderConfigurationSchemaImpl);
+export const SmsDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => SmsDeliveryMethodNotificationTemplateSchemaImpl);
+export const SmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => SmsProviderConfigurationSchemaImpl);
+export const SmsTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => SmsTwoFaAccountConfigSchemaImpl);
+export const SmsTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => SmsTwoFaProviderConfigSchemaImpl);
+export const SnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => SnmpCommunicationConfigSchemaImpl);
+export const SnmpDeviceProfileTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => SnmpDeviceProfileTransportConfigurationSchemaImpl);
+export const SnmpDeviceTransportConfigurationSchema: z.ZodType<any> = z.lazy(() => SnmpDeviceTransportConfigurationSchemaImpl);
+export const SnmpMappingSchema: z.ZodType<any> = z.lazy(() => SnmpMappingSchemaImpl);
+export const SolutionInstallResponseSchema: z.ZodType<any> = z.lazy(() => SolutionInstallResponseSchemaImpl);
+export const SpecificTimeScheduleSchema: z.ZodType<any> = z.lazy(() => SpecificTimeScheduleSchemaImpl);
+export const StarredDashboardInfoSchema: z.ZodType<any> = z.lazy(() => StarredDashboardInfoSchemaImpl);
+export const StateEntityOwnerFilterSchema: z.ZodType<any> = z.lazy(() => StateEntityOwnerFilterSchemaImpl);
+export const StatisticsEventFilterSchema: z.ZodType<any> = z.lazy(() => StatisticsEventFilterSchemaImpl);
+export const StringFilterPredicateSchema: z.ZodType<any> = z.lazy(() => StringFilterPredicateSchemaImpl);
+export const SubmitStrategySchema: z.ZodType<any> = z.lazy(() => SubmitStrategySchemaImpl);
+export const SystemAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => SystemAdministratorsFilterSchemaImpl);
+export const SystemInfoSchema: z.ZodType<any> = z.lazy(() => SystemInfoSchemaImpl);
+export const SystemInfoDataSchema: z.ZodType<any> = z.lazy(() => SystemInfoDataSchemaImpl);
+export const TbImageDeleteResultSchema: z.ZodType<any> = z.lazy(() => TbImageDeleteResultSchemaImpl);
+export const TbResourceSchema: z.ZodType<any> = z.lazy(() => TbResourceSchemaImpl);
+export const TbResourceIdSchema: z.ZodType<any> = z.lazy(() => TbResourceIdSchemaImpl);
+export const TbResourceInfoSchema: z.ZodType<any> = z.lazy(() => TbResourceInfoSchemaImpl);
+export const TelemetryEntityViewSchema: z.ZodType<any> = z.lazy(() => TelemetryEntityViewSchemaImpl);
+export const TelemetryMappingConfigurationSchema: z.ZodType<any> = z.lazy(() => TelemetryMappingConfigurationSchemaImpl);
+export const TelemetryQueryingSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => TelemetryQueryingSnmpCommunicationConfigSchemaImpl);
+export const TenantSchema: z.ZodType<any> = z.lazy(() => TenantSchemaImpl);
+export const TenantAdministratorsFilterSchema: z.ZodType<any> = z.lazy(() => TenantAdministratorsFilterSchemaImpl);
+export const TenantIdSchema: z.ZodType<any> = z.lazy(() => TenantIdSchemaImpl);
+export const TenantInfoSchema: z.ZodType<any> = z.lazy(() => TenantInfoSchemaImpl);
+export const TenantProfileSchema: z.ZodType<any> = z.lazy(() => TenantProfileSchemaImpl);
+export const TenantProfileConfigurationSchema: z.ZodType<any> = z.lazy(() => TenantProfileConfigurationSchemaImpl);
+export const TenantProfileDataSchema: z.ZodType<any> = z.lazy(() => TenantProfileDataSchemaImpl);
+export const TenantProfileIdSchema: z.ZodType<any> = z.lazy(() => TenantProfileIdSchemaImpl);
+export const TenantProfileQueueConfigurationSchema: z.ZodType<any> = z.lazy(() => TenantProfileQueueConfigurationSchemaImpl);
+export const TenantSolutionTemplateDetailsSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateDetailsSchemaImpl);
+export const TenantSolutionTemplateInfoSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateInfoSchemaImpl);
+export const TenantSolutionTemplateInstructionsSchema: z.ZodType<any> = z.lazy(() => TenantSolutionTemplateInstructionsSchemaImpl);
+export const TestSmsRequestSchema: z.ZodType<any> = z.lazy(() => TestSmsRequestSchemaImpl);
+export const ThingsboardCredentialsExpiredResponseSchema: z.ZodType<any> = z.lazy(() => ThingsboardCredentialsExpiredResponseSchemaImpl);
+export const ThingsboardErrorResponseSchema: z.ZodType<any> = z.lazy(() => ThingsboardErrorResponseSchemaImpl);
+export const ToDeviceRpcRequestSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ToDeviceRpcRequestSnmpCommunicationConfigSchemaImpl);
+export const ToServerRpcRequestSnmpCommunicationConfigSchema: z.ZodType<any> = z.lazy(() => ToServerRpcRequestSnmpCommunicationConfigSchemaImpl);
+export const TotpTwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => TotpTwoFaAccountConfigSchemaImpl);
+export const TotpTwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => TotpTwoFaProviderConfigSchemaImpl);
+export const TransportPayloadTypeConfigurationSchema: z.ZodType<any> = z.lazy(() => TransportPayloadTypeConfigurationSchemaImpl);
+export const TsValueSchema: z.ZodType<any> = z.lazy(() => TsValueSchemaImpl);
+export const TwilioSmsProviderConfigurationSchema: z.ZodType<any> = z.lazy(() => TwilioSmsProviderConfigurationSchemaImpl);
+export const TwoFaAccountConfigSchema: z.ZodType<any> = z.lazy(() => TwoFaAccountConfigSchemaImpl);
+export const TwoFaAccountConfigUpdateRequestSchema: z.ZodType<any> = z.lazy(() => TwoFaAccountConfigUpdateRequestSchemaImpl);
+export const TwoFaProviderConfigSchema: z.ZodType<any> = z.lazy(() => TwoFaProviderConfigSchemaImpl);
+export const TwoFaProviderInfoSchema: z.ZodType<any> = z.lazy(() => TwoFaProviderInfoSchemaImpl);
+export const UpdateMessageSchema: z.ZodType<any> = z.lazy(() => UpdateMessageSchemaImpl);
+export const UsageInfoSchema: z.ZodType<any> = z.lazy(() => UsageInfoSchemaImpl);
+export const UserSchema: z.ZodType<any> = z.lazy(() => UserSchemaImpl);
+export const UserDashboardsInfoSchema: z.ZodType<any> = z.lazy(() => UserDashboardsInfoSchemaImpl);
+export const UserEmailInfoSchema: z.ZodType<any> = z.lazy(() => UserEmailInfoSchemaImpl);
+export const UserGroupListFilterSchema: z.ZodType<any> = z.lazy(() => UserGroupListFilterSchemaImpl);
+export const UserIdSchema: z.ZodType<any> = z.lazy(() => UserIdSchemaImpl);
+export const UserInfoSchema: z.ZodType<any> = z.lazy(() => UserInfoSchemaImpl);
+export const UserListFilterSchema: z.ZodType<any> = z.lazy(() => UserListFilterSchemaImpl);
+export const UserNotificationSettingsSchema: z.ZodType<any> = z.lazy(() => UserNotificationSettingsSchemaImpl);
+export const UserPasswordPolicySchema: z.ZodType<any> = z.lazy(() => UserPasswordPolicySchemaImpl);
+export const UserRoleFilterSchema: z.ZodType<any> = z.lazy(() => UserRoleFilterSchemaImpl);
+export const UsersFilterSchema: z.ZodType<any> = z.lazy(() => UsersFilterSchemaImpl);
+export const VersionCreateConfigSchema: z.ZodType<any> = z.lazy(() => VersionCreateConfigSchemaImpl);
+export const VersionCreateRequestSchema: z.ZodType<any> = z.lazy(() => VersionCreateRequestSchemaImpl);
+export const VersionCreationResultSchema: z.ZodType<any> = z.lazy(() => VersionCreationResultSchemaImpl);
+export const VersionLoadConfigSchema: z.ZodType<any> = z.lazy(() => VersionLoadConfigSchemaImpl);
+export const VersionLoadRequestSchema: z.ZodType<any> = z.lazy(() => VersionLoadRequestSchemaImpl);
+export const VersionLoadResultSchema: z.ZodType<any> = z.lazy(() => VersionLoadResultSchemaImpl);
+export const VersionedEntityInfoSchema: z.ZodType<any> = z.lazy(() => VersionedEntityInfoSchemaImpl);
+export const WebDeliveryMethodNotificationTemplateSchema: z.ZodType<any> = z.lazy(() => WebDeliveryMethodNotificationTemplateSchemaImpl);
+export const WhiteLabelingSchema: z.ZodType<any> = z.lazy(() => WhiteLabelingSchemaImpl);
+export const WhiteLabelingParamsSchema: z.ZodType<any> = z.lazy(() => WhiteLabelingParamsSchemaImpl);
+export const WidgetTypeSchema: z.ZodType<any> = z.lazy(() => WidgetTypeSchemaImpl);
+export const WidgetTypeDetailsSchema: z.ZodType<any> = z.lazy(() => WidgetTypeDetailsSchemaImpl);
+export const WidgetTypeExportDataSchema: z.ZodType<any> = z.lazy(() => WidgetTypeExportDataSchemaImpl);
+export const WidgetTypeIdSchema: z.ZodType<any> = z.lazy(() => WidgetTypeIdSchemaImpl);
+export const WidgetTypeInfoSchema: z.ZodType<any> = z.lazy(() => WidgetTypeInfoSchemaImpl);
+export const WidgetsBundleSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleSchemaImpl);
+export const WidgetsBundleExportDataSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleExportDataSchemaImpl);
+export const WidgetsBundleIdSchema: z.ZodType<any> = z.lazy(() => WidgetsBundleIdSchemaImpl);
+export const X509CertificateChainProvisionConfigurationSchema: z.ZodType<any> = z.lazy(() => X509CertificateChainProvisionConfigurationSchemaImpl);
+export const X509LwM2MBootstrapServerCredentialSchema: z.ZodType<any> = z.lazy(() => X509LwM2MBootstrapServerCredentialSchemaImpl);
 
-export const AccountTwoFaSettingsSchemaSchema = z.object({
-  "configs": z.record(z.string(), TwoFaAccountConfigSchema)
+const AccountTwoFaSettingsSchemaImpl = z.object({
+  "configs": z.object({
+
+}).optional()
 });
 export type AccountTwoFaSettings = z.infer<typeof AccountTwoFaSettingsSchema>;
 
-export const ActivateUserRequestSchemaSchema = z.object({
-  "activateToken": z.string(),
-  "password": z.string()
+const ActivateUserRequestSchemaImpl = z.object({
+  "activateToken": z.string().optional(),
+  "password": z.string().optional()
 });
 export type ActivateUserRequest = z.infer<typeof ActivateUserRequestSchema>;
 
-export const AdminSettingsSchemaSchema = z.object({
-  "id": AdminSettingsIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "key": z.string(),
-  "jsonValue": JsonNodeSchema
+const AdminSettingsSchemaImpl = z.object({
+  "id": AdminSettingsIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "key": z.string().optional(),
+  "jsonValue": JsonNodeSchema.optional()
 });
 export type AdminSettings = z.infer<typeof AdminSettingsSchema>;
 
-export const AdminSettingsIdSchemaSchema = z.object({
+const AdminSettingsIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type AdminSettingsId = z.infer<typeof AdminSettingsIdSchema>;
 
-export const AffectedTenantAdministratorsFilterSchemaSchema = z.object({});
+const AffectedTenantAdministratorsFilterSchemaImpl = z.object({
+
+});
 export type AffectedTenantAdministratorsFilter = z.infer<typeof AffectedTenantAdministratorsFilterSchema>;
 
-export const AffectedUserFilterSchemaSchema = z.object({});
+const AffectedUserFilterSchemaImpl = z.object({
+
+});
 export type AffectedUserFilter = z.infer<typeof AffectedUserFilterSchema>;
 
-export const AlarmSchemaSchema = z.object({
-  "id": AlarmIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const AlarmSchemaImpl = z.object({
+  "id": AlarmIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
   "originator": EntityIdSchema,
   "severity": z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
   "acknowledged": z.boolean(),
   "cleared": z.boolean(),
-  "assigneeId": UserIdSchema,
-  "startTs": z.number(),
-  "endTs": z.number(),
-  "ackTs": z.number(),
-  "clearTs": z.number(),
-  "assignTs": z.number(),
-  "details": JsonNodeSchema,
-  "propagateToOwnerHierarchy": z.boolean(),
-  "propagate": z.boolean(),
-  "propagateToTenant": z.boolean(),
-  "propagateRelationTypes": z.array(z.string()),
-  "propagateToOwner": z.boolean(),
+  "assigneeId": UserIdSchema.optional(),
+  "startTs": z.number().optional(),
+  "endTs": z.number().optional(),
+  "ackTs": z.number().optional(),
+  "clearTs": z.number().optional(),
+  "assignTs": z.number().optional(),
+  "details": JsonNodeSchema.optional(),
+  "propagateToOwnerHierarchy": z.boolean().optional(),
+  "propagate": z.boolean().optional(),
+  "propagateToTenant": z.boolean().optional(),
+  "propagateRelationTypes": z.array(z.string()).optional(),
+  "propagateToOwner": z.boolean().optional(),
   "status": z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
 export type Alarm = z.infer<typeof AlarmSchema>;
 
-export const AlarmAssigneeSchemaSchema = z.object({
-  "email": z.string(),
-  "firstName": z.string(),
-  "id": UserIdSchema,
-  "lastName": z.string()
+const AlarmAssigneeSchemaImpl = z.object({
+  "email": z.string().optional(),
+  "firstName": z.string().optional(),
+  "id": UserIdSchema.optional(),
+  "lastName": z.string().optional()
 });
 export type AlarmAssignee = z.infer<typeof AlarmAssigneeSchema>;
 
-export const AlarmAssignmentNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const AlarmAssignmentNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "alarmSeverities": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+  "alarmStatuses": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+  "alarmTypes": z.array(z.string()).optional(),
+  "notifyOn": z.array(z.enum(["ASSIGNED", "UNASSIGNED"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type AlarmAssignmentNotificationRuleTriggerConfig = z.infer<typeof AlarmAssignmentNotificationRuleTriggerConfigSchema>;
 
-export const AlarmCommentSchemaSchema = z.object({
-  "id": AlarmCommentIdSchema,
-  "createdTime": z.number(),
-  "alarmId": EntityIdSchema,
-  "userId": UserIdSchema,
+const AlarmCommentSchemaImpl = z.object({
+  "id": AlarmCommentIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "alarmId": EntityIdSchema.optional(),
+  "userId": UserIdSchema.optional(),
   "name": z.string(),
-  "type": z.enum(["OTHER", "SYSTEM"]),
-  "comment": JsonNodeSchema
+  "type": z.enum(["OTHER", "SYSTEM"]).optional(),
+  "comment": JsonNodeSchema.optional()
 });
 export type AlarmComment = z.infer<typeof AlarmCommentSchema>;
 
-export const AlarmCommentIdSchemaSchema = z.object({
+const AlarmCommentIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type AlarmCommentId = z.infer<typeof AlarmCommentIdSchema>;
 
-export const AlarmCommentInfoSchemaSchema = z.object({
-  "id": AlarmCommentIdSchema,
-  "createdTime": z.number(),
-  "alarmId": EntityIdSchema,
-  "userId": UserIdSchema,
+const AlarmCommentInfoSchemaImpl = z.object({
+  "id": AlarmCommentIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "alarmId": EntityIdSchema.optional(),
+  "userId": UserIdSchema.optional(),
   "name": z.string(),
-  "type": z.enum(["OTHER", "SYSTEM"]),
-  "comment": JsonNodeSchema,
-  "email": z.string(),
-  "firstName": z.string(),
-  "lastName": z.string()
+  "type": z.enum(["OTHER", "SYSTEM"]).optional(),
+  "comment": JsonNodeSchema.optional(),
+  "email": z.string().optional(),
+  "firstName": z.string().optional(),
+  "lastName": z.string().optional()
 });
 export type AlarmCommentInfo = z.infer<typeof AlarmCommentInfoSchema>;
 
-export const AlarmCommentNotificationRuleTriggerConfigSchemaSchema = z.object({
-  "alarmSeverities": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-  "alarmStatuses": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-  "alarmTypes": z.array(z.string()),
-  "notifyOnCommentUpdate": z.boolean(),
-  "onlyUserComments": z.boolean(),
-  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const AlarmCommentNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "alarmSeverities": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+  "alarmStatuses": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+  "alarmTypes": z.array(z.string()).optional(),
+  "notifyOnCommentUpdate": z.boolean().optional(),
+  "onlyUserComments": z.boolean().optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
 export type AlarmCommentNotificationRuleTriggerConfig = z.infer<typeof AlarmCommentNotificationRuleTriggerConfigSchema>;
 
-export const AlarmConditionSchemaSchema = z.object({
-  "condition": z.array(AlarmConditionFilterSchema),
-  "spec": AlarmConditionSpecSchema
+const AlarmConditionSchemaImpl = z.object({
+  "condition": z.array(AlarmConditionFilterSchema).optional(),
+  "spec": AlarmConditionSpecSchema.optional()
 });
 export type AlarmCondition = z.infer<typeof AlarmConditionSchema>;
 
-export const AlarmConditionFilterSchemaSchema = z.object({
-  "key": AlarmConditionFilterKeySchema,
-  "valueType": z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]),
-  "value": z.object({}),
-  "predicate": KeyFilterPredicateSchema
+const AlarmConditionFilterSchemaImpl = z.object({
+  "key": AlarmConditionFilterKeySchema.optional(),
+  "valueType": z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]).optional(),
+  "value": z.object({
+
+}).optional(),
+  "predicate": KeyFilterPredicateSchema.optional()
 });
 export type AlarmConditionFilter = z.infer<typeof AlarmConditionFilterSchema>;
 
-export const AlarmConditionFilterKeySchemaSchema = z.object({
-  "type": z.enum(["ATTRIBUTE", "CONSTANT", "ENTITY_FIELD", "TIME_SERIES"]),
-  "key": z.string()
+const AlarmConditionFilterKeySchemaImpl = z.object({
+  "type": z.enum(["ATTRIBUTE", "CONSTANT", "ENTITY_FIELD", "TIME_SERIES"]).optional(),
+  "key": z.string().optional()
 });
 export type AlarmConditionFilterKey = z.infer<typeof AlarmConditionFilterKeySchema>;
 
-export const AlarmConditionSpecSchemaSchema = z.object({});
+const AlarmConditionSpecSchemaImpl = z.object({
+
+});
 export type AlarmConditionSpec = z.infer<typeof AlarmConditionSpecSchema>;
 
-export const AlarmCountQuerySchemaSchema = z.object({
-  "assigneeId": UserIdSchema,
-  "endTs": z.number(),
-  "entityFilter": EntityFilterSchema,
-  "keyFilters": z.array(KeyFilterSchema),
-  "searchPropagatedAlarms": z.boolean(),
-  "severityList": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-  "startTs": z.number(),
-  "statusList": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-  "timeWindow": z.number(),
-  "typeList": z.array(z.string())
+const AlarmCountQuerySchemaImpl = z.object({
+  "assigneeId": UserIdSchema.optional(),
+  "endTs": z.number().optional(),
+  "entityFilter": EntityFilterSchema.optional(),
+  "keyFilters": z.array(KeyFilterSchema).optional(),
+  "searchPropagatedAlarms": z.boolean().optional(),
+  "severityList": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+  "startTs": z.number().optional(),
+  "statusList": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+  "timeWindow": z.number().optional(),
+  "typeList": z.array(z.string()).optional()
 });
 export type AlarmCountQuery = z.infer<typeof AlarmCountQuerySchema>;
 
-export const AlarmDataSchemaSchema = z.object({
-  "entityId": EntityIdSchema,
-  "latest": z.record(z.string(), z.object({})),
-  "id": AlarmIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const AlarmDataSchemaImpl = z.object({
+  "entityId": EntityIdSchema.optional(),
+  "latest": z.object({
+
+}).optional(),
+  "id": AlarmIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
   "originator": EntityIdSchema,
   "severity": z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
   "acknowledged": z.boolean(),
   "cleared": z.boolean(),
-  "assigneeId": UserIdSchema,
-  "startTs": z.number(),
-  "endTs": z.number(),
-  "ackTs": z.number(),
-  "clearTs": z.number(),
-  "assignTs": z.number(),
-  "details": JsonNodeSchema,
-  "propagateToOwnerHierarchy": z.boolean(),
-  "propagate": z.boolean(),
-  "propagateToTenant": z.boolean(),
-  "propagateRelationTypes": z.array(z.string()),
-  "propagateToOwner": z.boolean(),
-  "originatorName": z.string(),
-  "originatorLabel": z.string(),
-  "assignee": AlarmAssigneeSchema,
+  "assigneeId": UserIdSchema.optional(),
+  "startTs": z.number().optional(),
+  "endTs": z.number().optional(),
+  "ackTs": z.number().optional(),
+  "clearTs": z.number().optional(),
+  "assignTs": z.number().optional(),
+  "details": JsonNodeSchema.optional(),
+  "propagateToOwnerHierarchy": z.boolean().optional(),
+  "propagate": z.boolean().optional(),
+  "propagateToTenant": z.boolean().optional(),
+  "propagateRelationTypes": z.array(z.string()).optional(),
+  "propagateToOwner": z.boolean().optional(),
+  "originatorName": z.string().optional(),
+  "originatorLabel": z.string().optional(),
+  "assignee": AlarmAssigneeSchema.optional(),
   "status": z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
 export type AlarmData = z.infer<typeof AlarmDataSchema>;
 
-export const AlarmDataPageLinkSchemaSchema = z.object({
-  "assigneeId": UserIdSchema,
-  "dynamic": z.boolean(),
-  "endTs": z.number(),
-  "page": z.number(),
-  "pageSize": z.number(),
-  "searchPropagatedAlarms": z.boolean(),
-  "severityList": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-  "sortOrder": EntityDataSortOrderSchema,
-  "startTs": z.number(),
-  "statusList": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-  "textSearch": z.string(),
-  "timeWindow": z.number(),
-  "typeList": z.array(z.string())
+const AlarmDataPageLinkSchemaImpl = z.object({
+  "assigneeId": UserIdSchema.optional(),
+  "dynamic": z.boolean().optional(),
+  "endTs": z.number().optional(),
+  "page": z.number().optional(),
+  "pageSize": z.number().optional(),
+  "searchPropagatedAlarms": z.boolean().optional(),
+  "severityList": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+  "sortOrder": EntityDataSortOrderSchema.optional(),
+  "startTs": z.number().optional(),
+  "statusList": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+  "textSearch": z.string().optional(),
+  "timeWindow": z.number().optional(),
+  "typeList": z.array(z.string()).optional()
 });
 export type AlarmDataPageLink = z.infer<typeof AlarmDataPageLinkSchema>;
 
-export const AlarmDataQuerySchemaSchema = z.object({
-  "alarmFields": z.array(EntityKeySchema),
-  "entityFields": z.array(EntityKeySchema),
-  "entityFilter": EntityFilterSchema,
-  "keyFilters": z.array(KeyFilterSchema),
-  "latestValues": z.array(EntityKeySchema),
-  "pageLink": AlarmDataPageLinkSchema
+const AlarmDataQuerySchemaImpl = z.object({
+  "alarmFields": z.array(EntityKeySchema).optional(),
+  "entityFields": z.array(EntityKeySchema).optional(),
+  "entityFilter": EntityFilterSchema.optional(),
+  "keyFilters": z.array(KeyFilterSchema).optional(),
+  "latestValues": z.array(EntityKeySchema).optional(),
+  "pageLink": AlarmDataPageLinkSchema.optional()
 });
 export type AlarmDataQuery = z.infer<typeof AlarmDataQuerySchema>;
 
-export const AlarmIdSchemaSchema = z.object({
+const AlarmIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ALARM"])
 });
 export type AlarmId = z.infer<typeof AlarmIdSchema>;
 
-export const AlarmInfoSchemaSchema = z.object({
-  "id": AlarmIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const AlarmInfoSchemaImpl = z.object({
+  "id": AlarmIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
   "originator": EntityIdSchema,
   "severity": z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
   "acknowledged": z.boolean(),
   "cleared": z.boolean(),
-  "assigneeId": UserIdSchema,
-  "startTs": z.number(),
-  "endTs": z.number(),
-  "ackTs": z.number(),
-  "clearTs": z.number(),
-  "assignTs": z.number(),
-  "details": JsonNodeSchema,
-  "propagateToOwnerHierarchy": z.boolean(),
-  "propagate": z.boolean(),
-  "propagateToTenant": z.boolean(),
-  "propagateRelationTypes": z.array(z.string()),
-  "propagateToOwner": z.boolean(),
-  "originatorName": z.string(),
-  "originatorLabel": z.string(),
-  "assignee": AlarmAssigneeSchema,
+  "assigneeId": UserIdSchema.optional(),
+  "startTs": z.number().optional(),
+  "endTs": z.number().optional(),
+  "ackTs": z.number().optional(),
+  "clearTs": z.number().optional(),
+  "assignTs": z.number().optional(),
+  "details": JsonNodeSchema.optional(),
+  "propagateToOwnerHierarchy": z.boolean().optional(),
+  "propagate": z.boolean().optional(),
+  "propagateToTenant": z.boolean().optional(),
+  "propagateRelationTypes": z.array(z.string()).optional(),
+  "propagateToOwner": z.boolean().optional(),
+  "originatorName": z.string().optional(),
+  "originatorLabel": z.string().optional(),
+  "assignee": AlarmAssigneeSchema.optional(),
   "status": z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
 export type AlarmInfo = z.infer<typeof AlarmInfoSchema>;
 
-export const AlarmNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const AlarmNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "alarmSeverities": z.array(z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+  "alarmTypes": z.array(z.string()).optional(),
+  "clearRule": ClearRuleSchema.optional(),
+  "notifyOn": z.array(z.enum(["ACKNOWLEDGED", "CLEARED", "CREATED", "SEVERITY_CHANGED"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type AlarmNotificationRuleTriggerConfig = z.infer<typeof AlarmNotificationRuleTriggerConfigSchema>;
 
-export const AlarmRuleSchemaSchema = z.object({
-  "condition": AlarmConditionSchema,
-  "schedule": AlarmScheduleSchema,
-  "alarmDetails": z.string(),
-  "dashboardId": DashboardIdSchema
+const AlarmRuleSchemaImpl = z.object({
+  "condition": AlarmConditionSchema.optional(),
+  "schedule": AlarmScheduleSchema.optional(),
+  "alarmDetails": z.string().optional(),
+  "dashboardId": DashboardIdSchema.optional()
 });
 export type AlarmRule = z.infer<typeof AlarmRuleSchema>;
 
-export const AlarmScheduleSchemaSchema = z.object({
-  "dynamicValue": DynamicValue_Of_stringSchema,
-  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const AlarmScheduleSchemaImpl = z.object({
+  "dynamicValue": DynamicValue_Of_stringSchema.optional(),
+  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
 export type AlarmSchedule = z.infer<typeof AlarmScheduleSchema>;
 
-export const AllUsersFilterSchemaSchema = z.object({});
+const AllUsersFilterSchemaImpl = z.object({
+
+});
 export type AllUsersFilter = z.infer<typeof AllUsersFilterSchema>;
 
-export const AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaSchema = z.object({
-  "provisionDeviceSecret": z.string()
+const AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaImpl = z.object({
+  "provisionDeviceSecret": z.string().optional()
 });
 export type AllowCreateNewDevicesDeviceProfileProvisionConfiguration = z.infer<typeof AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema>;
 
-export const AllowedPermissionsInfoSchemaSchema = z.object({
-  "userOwnerId": EntityIdSchema,
-  "userPermissions": MergedUserPermissionsSchema,
-  "allowedResources": z.array(z.enum(["ADMIN_SETTINGS", "ALARM", "ALL", "API_USAGE_STATE", "ASSET", "ASSET_GROUP", "ASSET_PROFILE", "AUDIT_LOG", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "CUSTOMER_GROUP", "DASHBOARD", "DASHBOARD_GROUP", "DEVICE", "DEVICE_GROUP", "DEVICE_PROFILE", "EDGE", "EDGE_GROUP", "ENTITY_VIEW", "ENTITY_VIEW_GROUP", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "OAUTH2_CONFIGURATION_INFO", "OAUTH2_CONFIGURATION_TEMPLATE", "OTA_PACKAGE", "PROFILE", "QUEUE", "ROLE", "RULE_CHAIN", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "USER_GROUP", "VERSION_CONTROL", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"])),
-  "operationsByResource": z.record(z.string(), z.array(z.string())),
-  "allowedForGroupRoleOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])),
-  "allowedForGroupOwnerOnlyOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])),
-  "allowedForGroupOwnerOnlyGroupOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"]))
+const AllowedPermissionsInfoSchemaImpl = z.object({
+  "userOwnerId": EntityIdSchema.optional(),
+  "userPermissions": MergedUserPermissionsSchema.optional(),
+  "allowedResources": z.array(z.enum(["ADMIN_SETTINGS", "ALARM", "ALL", "API_USAGE_STATE", "ASSET", "ASSET_GROUP", "ASSET_PROFILE", "AUDIT_LOG", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "CUSTOMER_GROUP", "DASHBOARD", "DASHBOARD_GROUP", "DEVICE", "DEVICE_GROUP", "DEVICE_PROFILE", "EDGE", "EDGE_GROUP", "ENTITY_VIEW", "ENTITY_VIEW_GROUP", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "OAUTH2_CONFIGURATION_INFO", "OAUTH2_CONFIGURATION_TEMPLATE", "OTA_PACKAGE", "PROFILE", "QUEUE", "ROLE", "RULE_CHAIN", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "USER_GROUP", "VERSION_CONTROL", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+  "operationsByResource": z.object({
+
+}).optional(),
+  "allowedForGroupRoleOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional(),
+  "allowedForGroupOwnerOnlyOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional(),
+  "allowedForGroupOwnerOnlyGroupOperations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional()
 });
 export type AllowedPermissionsInfo = z.infer<typeof AllowedPermissionsInfoSchema>;
 
-export const AnyTimeScheduleSchemaSchema = z.object({
-  "dynamicValue": DynamicValue_Of_stringSchema,
-  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const AnyTimeScheduleSchemaImpl = z.object({
+  "dynamicValue": DynamicValue_Of_stringSchema.optional(),
+  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
 export type AnyTimeSchedule = z.infer<typeof AnyTimeScheduleSchema>;
 
-export const ApiUsageLimitNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const ApiUsageLimitNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "apiFeatures": z.array(z.enum(["ALARM", "DB", "EMAIL", "JS", "RE", "SMS", "TBEL", "TRANSPORT"])).optional(),
+  "notifyOn": z.array(z.enum(["DISABLED", "ENABLED", "WARNING"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type ApiUsageLimitNotificationRuleTriggerConfig = z.infer<typeof ApiUsageLimitNotificationRuleTriggerConfigSchema>;
 
-export const ApiUsageStateFilterSchemaSchema = z.lazy(() => z.object({}));
+const ApiUsageStateFilterSchemaImpl = z.object({
+  "customerId": CustomerIdSchema.optional()
+});
 export type ApiUsageStateFilter = z.infer<typeof ApiUsageStateFilterSchema>;
 
-export const ArrayNodeSchemaSchema = z.object({});
+const ArrayNodeSchemaImpl = z.object({
+
+});
 export type ArrayNode = z.infer<typeof ArrayNodeSchema>;
 
-export const AssetSchemaSchema = z.object({
-  "id": AssetIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const AssetSchemaImpl = z.object({
+  "id": AssetIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
-  "type": z.string(),
-  "label": z.string(),
-  "assetProfileId": AssetProfileIdSchema,
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema
+  "type": z.string().optional(),
+  "label": z.string().optional(),
+  "assetProfileId": AssetProfileIdSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional()
 });
 export type Asset = z.infer<typeof AssetSchema>;
 
-export const AssetIdSchemaSchema = z.object({
+const AssetIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ASSET"])
 });
 export type AssetId = z.infer<typeof AssetIdSchema>;
 
-export const AssetInfoSchemaSchema = z.object({
-  "id": AssetIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const AssetInfoSchemaImpl = z.object({
+  "id": AssetIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
-  "type": z.string(),
-  "label": z.string(),
-  "assetProfileId": AssetProfileIdSchema,
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema)
+  "type": z.string().optional(),
+  "label": z.string().optional(),
+  "assetProfileId": AssetProfileIdSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional()
 });
 export type AssetInfo = z.infer<typeof AssetInfoSchema>;
 
-export const AssetProfileSchemaSchema = z.object({
-  "id": AssetProfileIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "name": z.string(),
-  "default": z.boolean(),
-  "defaultDashboardId": DashboardIdSchema,
-  "defaultRuleChainId": RuleChainIdSchema,
-  "defaultQueueName": z.string(),
-  "description": z.string(),
-  "image": z.string(),
-  "defaultEdgeRuleChainId": RuleChainIdSchema
+const AssetProfileSchemaImpl = z.object({
+  "id": AssetProfileIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "name": z.string().optional(),
+  "default": z.boolean().optional(),
+  "defaultDashboardId": DashboardIdSchema.optional(),
+  "defaultRuleChainId": RuleChainIdSchema.optional(),
+  "defaultQueueName": z.string().optional(),
+  "description": z.string().optional(),
+  "image": z.string().optional(),
+  "defaultEdgeRuleChainId": RuleChainIdSchema.optional()
 });
 export type AssetProfile = z.infer<typeof AssetProfileSchema>;
 
-export const AssetProfileIdSchemaSchema = z.object({
+const AssetProfileIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ASSET_PROFILE"])
 });
 export type AssetProfileId = z.infer<typeof AssetProfileIdSchema>;
 
-export const AssetProfileInfoSchemaSchema = z.object({
-  "id": EntityIdSchema,
-  "name": z.string(),
-  "image": z.string(),
-  "defaultDashboardId": DashboardIdSchema,
-  "tenantId": TenantIdSchema
+const AssetProfileInfoSchemaImpl = z.object({
+  "id": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "image": z.string().optional(),
+  "defaultDashboardId": DashboardIdSchema.optional(),
+  "tenantId": TenantIdSchema.optional()
 });
 export type AssetProfileInfo = z.infer<typeof AssetProfileInfoSchema>;
 
-export const AssetSearchQuerySchemaSchema = z.object({
-  "relationType": z.string(),
-  "assetTypes": z.array(z.string()),
-  "parameters": RelationsSearchParametersSchema
+const AssetSearchQuerySchemaImpl = z.object({
+  "relationType": z.string().optional(),
+  "assetTypes": z.array(z.string()).optional(),
+  "parameters": RelationsSearchParametersSchema.optional()
 });
 export type AssetSearchQuery = z.infer<typeof AssetSearchQuerySchema>;
 
-export const AssetSearchQueryFilterSchemaSchema = z.lazy(() => z.object({}));
+const AssetSearchQueryFilterSchemaImpl = z.object({
+  "assetTypes": z.array(z.string()).optional(),
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "fetchLastLevelOnly": z.boolean().optional(),
+  "maxLevel": z.number().optional(),
+  "relationType": z.string().optional(),
+  "rootEntity": EntityIdSchema.optional()
+});
 export type AssetSearchQueryFilter = z.infer<typeof AssetSearchQueryFilterSchema>;
 
-export const AssetTypeFilterSchemaSchema = z.lazy(() => z.object({}));
+const AssetTypeFilterSchemaImpl = z.object({
+  "assetNameFilter": z.string().optional(),
+  "assetTypes": z.array(z.string()).optional()
+});
 export type AssetTypeFilter = z.infer<typeof AssetTypeFilterSchema>;
 
-export const AtomicIntegerSchemaSchema = z.object({
-  "acquire": z.number(),
-  "andDecrement": z.number(),
-  "andIncrement": z.number(),
-  "opaque": z.number(),
-  "plain": z.number()
+const AtomicIntegerSchemaImpl = z.object({
+  "acquire": z.number().optional(),
+  "andDecrement": z.number().optional(),
+  "andIncrement": z.number().optional(),
+  "opaque": z.number().optional(),
+  "plain": z.number().optional()
 });
 export type AtomicInteger = z.infer<typeof AtomicIntegerSchema>;
 
-export const AttributeExportDataSchemaSchema = z.object({
-  "booleanValue": z.boolean(),
-  "doubleValue": z.number(),
-  "jsonValue": z.string(),
-  "key": z.string(),
-  "lastUpdateTs": z.number(),
-  "longValue": z.number(),
-  "strValue": z.string()
+const AttributeExportDataSchemaImpl = z.object({
+  "booleanValue": z.boolean().optional(),
+  "doubleValue": z.number().optional(),
+  "jsonValue": z.string().optional(),
+  "key": z.string().optional(),
+  "lastUpdateTs": z.number().optional(),
+  "longValue": z.number().optional(),
+  "strValue": z.string().optional()
 });
 export type AttributeExportData = z.infer<typeof AttributeExportDataSchema>;
 
-export const AttributesEntityViewSchemaSchema = z.object({
+const AttributesEntityViewSchemaImpl = z.object({
   "cs": z.array(z.string()),
   "sh": z.array(z.string()),
   "ss": z.array(z.string())
 });
 export type AttributesEntityView = z.infer<typeof AttributesEntityViewSchema>;
 
-export const AuditLogSchemaSchema = z.object({
-  "id": AuditLogIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "entityId": EntityIdSchema,
-  "entityName": z.string(),
-  "userId": UserIdSchema,
-  "userName": z.string(),
-  "actionType": z.enum(["ACTIVATED", "ADDED", "ADDED_COMMENT", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_DELETE", "ALARM_UNASSIGNED", "ASSIGNED_FROM_TENANT", "ASSIGNED_TO_CUSTOMER", "ASSIGNED_TO_EDGE", "ASSIGNED_TO_TENANT", "ATTRIBUTES_DELETED", "ATTRIBUTES_READ", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_READ", "CREDENTIALS_UPDATED", "DELETED", "DELETED_COMMENT", "LOCKOUT", "LOGIN", "LOGOUT", "MADE_PRIVATE", "MADE_PUBLIC", "PROVISION_FAILURE", "PROVISION_SUCCESS", "RELATIONS_DELETED", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "REST_API_RULE_ENGINE_CALL", "RPC_CALL", "SMS_SENT", "SUSPENDED", "TIMESERIES_DELETED", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_CUSTOMER", "UNASSIGNED_FROM_EDGE", "UPDATED", "UPDATED_COMMENT"]),
-  "actionData": JsonNodeSchema,
-  "actionStatus": z.enum(["FAILURE", "SUCCESS"]),
-  "actionFailureDetails": z.string()
+const AuditLogSchemaImpl = z.object({
+  "id": AuditLogIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "entityId": EntityIdSchema.optional(),
+  "entityName": z.string().optional(),
+  "userId": UserIdSchema.optional(),
+  "userName": z.string().optional(),
+  "actionType": z.enum(["ACTIVATED", "ADDED", "ADDED_COMMENT", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_DELETE", "ALARM_UNASSIGNED", "ASSIGNED_FROM_TENANT", "ASSIGNED_TO_CUSTOMER", "ASSIGNED_TO_EDGE", "ASSIGNED_TO_TENANT", "ATTRIBUTES_DELETED", "ATTRIBUTES_READ", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_READ", "CREDENTIALS_UPDATED", "DELETED", "DELETED_COMMENT", "LOCKOUT", "LOGIN", "LOGOUT", "MADE_PRIVATE", "MADE_PUBLIC", "PROVISION_FAILURE", "PROVISION_SUCCESS", "RELATIONS_DELETED", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "REST_API_RULE_ENGINE_CALL", "RPC_CALL", "SMS_SENT", "SUSPENDED", "TIMESERIES_DELETED", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_CUSTOMER", "UNASSIGNED_FROM_EDGE", "UPDATED", "UPDATED_COMMENT"]).optional(),
+  "actionData": JsonNodeSchema.optional(),
+  "actionStatus": z.enum(["FAILURE", "SUCCESS"]).optional(),
+  "actionFailureDetails": z.string().optional()
 });
 export type AuditLog = z.infer<typeof AuditLogSchema>;
 
-export const AuditLogIdSchemaSchema = z.object({
+const AuditLogIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type AuditLogId = z.infer<typeof AuditLogIdSchema>;
 
-export const AutoVersionCreateConfigSchemaSchema = z.object({
-  "branch": z.string(),
-  "saveAttributes": z.boolean(),
-  "saveCredentials": z.boolean(),
-  "saveGroupEntities": z.boolean(),
-  "savePermissions": z.boolean(),
-  "saveRelations": z.boolean()
+const AutoVersionCreateConfigSchemaImpl = z.object({
+  "branch": z.string().optional(),
+  "saveAttributes": z.boolean().optional(),
+  "saveCredentials": z.boolean().optional(),
+  "saveGroupEntities": z.boolean().optional(),
+  "savePermissions": z.boolean().optional(),
+  "saveRelations": z.boolean().optional()
 });
 export type AutoVersionCreateConfig = z.infer<typeof AutoVersionCreateConfigSchema>;
 
-export const AwsSnsSmsProviderConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const AwsSnsSmsProviderConfigurationSchemaImpl = z.object({
+  "accessKeyId": z.string().optional(),
+  "secretAccessKey": z.string().optional(),
+  "region": z.string().optional()
+});
 export type AwsSnsSmsProviderConfiguration = z.infer<typeof AwsSnsSmsProviderConfigurationSchema>;
 
-export const BackupCodeTwoFaAccountConfigSchemaSchema = z.object({
-  "codes": z.array(z.string()),
-  "codesLeft": z.number(),
-  "useByDefault": z.boolean()
+const BackupCodeTwoFaAccountConfigSchemaImpl = z.object({
+  "codes": z.array(z.string()).optional(),
+  "codesLeft": z.number().optional(),
+  "useByDefault": z.boolean().optional()
 });
 export type BackupCodeTwoFaAccountConfig = z.infer<typeof BackupCodeTwoFaAccountConfigSchema>;
 
-export const BackupCodeTwoFaProviderConfigSchemaSchema = z.object({
-  "codesQuantity": z.number()
+const BackupCodeTwoFaProviderConfigSchemaImpl = z.object({
+  "codesQuantity": z.number().optional()
 });
 export type BackupCodeTwoFaProviderConfig = z.infer<typeof BackupCodeTwoFaProviderConfigSchema>;
 
-export const BlobEntityIdSchemaSchema = z.object({
+const BlobEntityIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["BLOB_ENTITY"])
 });
 export type BlobEntityId = z.infer<typeof BlobEntityIdSchema>;
 
-export const BlobEntityInfoSchemaSchema = z.object({
-  "id": BlobEntityIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "name": z.string(),
-  "type": z.string(),
-  "contentType": z.enum(["application/pdf", "image/jpeg", "image/png"]),
-  "additionalInfo": JsonNodeSchema
+const BlobEntityInfoSchemaImpl = z.object({
+  "id": BlobEntityIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "type": z.string().optional(),
+  "contentType": z.enum(["application/pdf", "image/jpeg", "image/png"]).optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type BlobEntityInfo = z.infer<typeof BlobEntityInfoSchema>;
 
-export const BlobEntityWithCustomerInfoSchemaSchema = z.object({
-  "id": BlobEntityIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "name": z.string(),
-  "type": z.string(),
-  "contentType": z.enum(["application/pdf", "image/jpeg", "image/png"]),
-  "additionalInfo": JsonNodeSchema,
-  "customerTitle": z.string(),
-  "customerIsPublic": z.object({})
+const BlobEntityWithCustomerInfoSchemaImpl = z.object({
+  "id": BlobEntityIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "type": z.string().optional(),
+  "contentType": z.enum(["application/pdf", "image/jpeg", "image/png"]).optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "customerTitle": z.string().optional(),
+  "customerIsPublic": z.object({
+
+}).optional()
 });
 export type BlobEntityWithCustomerInfo = z.infer<typeof BlobEntityWithCustomerInfoSchema>;
 
-export const BooleanFilterPredicateSchemaSchema = z.lazy(() => z.object({}));
+const BooleanFilterPredicateSchemaImpl = z.object({
+  "operation": z.enum(["EQUAL", "NOT_EQUAL"]).optional(),
+  "value": FilterPredicateValue_Of_booleanSchema.optional()
+});
 export type BooleanFilterPredicate = z.infer<typeof BooleanFilterPredicateSchema>;
 
-export const BranchInfoSchemaSchema = z.object({
-  "default": z.boolean(),
-  "name": z.string()
+const BranchInfoSchemaImpl = z.object({
+  "default": z.boolean().optional(),
+  "name": z.string().optional()
 });
 export type BranchInfo = z.infer<typeof BranchInfoSchema>;
 
-export const BulkImportRequestSchemaSchema = z.object({
-  "customerId": CustomerIdSchema,
-  "entityGroupId": z.string(),
-  "file": z.string(),
-  "mapping": MappingSchema
+const BulkImportRequestSchemaImpl = z.object({
+  "customerId": CustomerIdSchema.optional(),
+  "entityGroupId": z.string().optional(),
+  "file": z.string().optional(),
+  "mapping": MappingSchema.optional()
 });
 export type BulkImportRequest = z.infer<typeof BulkImportRequestSchema>;
 
-export const BulkImportResult_Of_AssetSchemaSchema = z.object({
-  "created": AtomicIntegerSchema,
-  "errors": AtomicIntegerSchema,
-  "errorsList": z.array(z.string()),
-  "updated": AtomicIntegerSchema
+const BulkImportResult_Of_AssetSchemaImpl = z.object({
+  "created": AtomicIntegerSchema.optional(),
+  "errors": AtomicIntegerSchema.optional(),
+  "errorsList": z.array(z.string()).optional(),
+  "updated": AtomicIntegerSchema.optional()
 });
 export type BulkImportResult_Of_Asset = z.infer<typeof BulkImportResult_Of_AssetSchema>;
 
-export const BulkImportResult_Of_DeviceSchemaSchema = z.object({
-  "created": AtomicIntegerSchema,
-  "errors": AtomicIntegerSchema,
-  "errorsList": z.array(z.string()),
-  "updated": AtomicIntegerSchema
+const BulkImportResult_Of_DeviceSchemaImpl = z.object({
+  "created": AtomicIntegerSchema.optional(),
+  "errors": AtomicIntegerSchema.optional(),
+  "errorsList": z.array(z.string()).optional(),
+  "updated": AtomicIntegerSchema.optional()
 });
 export type BulkImportResult_Of_Device = z.infer<typeof BulkImportResult_Of_DeviceSchema>;
 
-export const BulkImportResult_Of_EdgeSchemaSchema = z.object({
-  "created": AtomicIntegerSchema,
-  "errors": AtomicIntegerSchema,
-  "errorsList": z.array(z.string()),
-  "updated": AtomicIntegerSchema
+const BulkImportResult_Of_EdgeSchemaImpl = z.object({
+  "created": AtomicIntegerSchema.optional(),
+  "errors": AtomicIntegerSchema.optional(),
+  "errorsList": z.array(z.string()).optional(),
+  "updated": AtomicIntegerSchema.optional()
 });
 export type BulkImportResult_Of_Edge = z.infer<typeof BulkImportResult_Of_EdgeSchema>;
 
-export const ButtonSchemaSchema = z.object({
-  "dashboardId": z.string(),
-  "dashboardState": z.string(),
-  "enabled": z.boolean(),
-  "link": z.string(),
-  "linkType": z.enum(["DASHBOARD", "LINK"]),
-  "setEntityIdInState": z.boolean(),
-  "text": z.string()
+const ButtonSchemaImpl = z.object({
+  "dashboardId": z.string().optional(),
+  "dashboardState": z.string().optional(),
+  "enabled": z.boolean().optional(),
+  "link": z.string().optional(),
+  "linkType": z.enum(["DASHBOARD", "LINK"]).optional(),
+  "setEntityIdInState": z.boolean().optional(),
+  "text": z.string().optional()
 });
 export type Button = z.infer<typeof ButtonSchema>;
 
-export const ByteArrayResourceSchemaSchema = z.object({
-  "byteArray": z.string(),
-  "description": z.string(),
-  "file": z.string(),
-  "filename": z.string(),
-  "inputStream": InputStreamSchema,
-  "open": z.boolean(),
-  "readable": z.boolean(),
-  "uri": z.string(),
-  "url": z.string()
+const ByteArrayResourceSchemaImpl = z.object({
+  "byteArray": z.string().optional(),
+  "description": z.string().optional(),
+  "file": z.string().optional(),
+  "filename": z.string().optional(),
+  "inputStream": InputStreamSchema.optional(),
+  "open": z.boolean().optional(),
+  "readable": z.boolean().optional(),
+  "uri": z.string().optional(),
+  "url": z.string().optional()
 });
 export type ByteArrayResource = z.infer<typeof ByteArrayResourceSchema>;
 
-export const ByteBufferSchemaSchema = z.object({
-  "char": z.string(),
-  "direct": z.boolean(),
-  "double": z.number(),
-  "float": z.number(),
-  "int": z.number(),
-  "long": z.number(),
-  "readOnly": z.boolean(),
-  "short": z.number()
+const ByteBufferSchemaImpl = z.object({
+  "char": z.string().optional(),
+  "direct": z.boolean().optional(),
+  "double": z.number().optional(),
+  "float": z.number().optional(),
+  "int": z.number().optional(),
+  "long": z.number().optional(),
+  "readOnly": z.boolean().optional(),
+  "short": z.number().optional()
 });
 export type ByteBuffer = z.infer<typeof ByteBufferSchema>;
 
-export const ChangePasswordRequestSchemaSchema = z.object({
-  "currentPassword": z.string(),
-  "newPassword": z.string()
+const ChangePasswordRequestSchemaImpl = z.object({
+  "currentPassword": z.string().optional(),
+  "newPassword": z.string().optional()
 });
 export type ChangePasswordRequest = z.infer<typeof ChangePasswordRequestSchema>;
 
-export const CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaSchema = z.object({
-  "provisionDeviceSecret": z.string()
+const CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaImpl = z.object({
+  "provisionDeviceSecret": z.string().optional()
 });
 export type CheckPreProvisionedDevicesDeviceProfileProvisionConfiguration = z.infer<typeof CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema>;
 
-export const ClaimRequestSchemaSchema = z.object({
-  "secretKey": z.string()
+const ClaimRequestSchemaImpl = z.object({
+  "secretKey": z.string().optional()
 });
 export type ClaimRequest = z.infer<typeof ClaimRequestSchema>;
 
-export const ClearRuleSchemaSchema = z.object({
-  "alarmStatuses": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"]))
+const ClearRuleSchemaImpl = z.object({
+  "alarmStatuses": z.array(z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional()
 });
 export type ClearRule = z.infer<typeof ClearRuleSchema>;
 
-export const ClientAttributesQueryingSnmpCommunicationConfigSchemaSchema = z.object({
-  "mappings": z.array(SnmpMappingSchema),
-  "queryingFrequencyMs": z.number(),
-  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ClientAttributesQueryingSnmpCommunicationConfigSchemaImpl = z.object({
+  "mappings": z.array(SnmpMappingSchema).optional(),
+  "queryingFrequencyMs": z.number().optional(),
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
 export type ClientAttributesQueryingSnmpCommunicationConfig = z.infer<typeof ClientAttributesQueryingSnmpCommunicationConfigSchema>;
 
-export const CoapDeviceProfileTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const CoapDeviceProfileTransportConfigurationSchemaImpl = z.object({
+  "clientSettings": PowerSavingConfigurationSchema.optional(),
+  "coapDeviceTypeConfiguration": CoapDeviceTypeConfigurationSchema.optional()
+});
 export type CoapDeviceProfileTransportConfiguration = z.infer<typeof CoapDeviceProfileTransportConfigurationSchema>;
 
-export const CoapDeviceTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const CoapDeviceTransportConfigurationSchemaImpl = z.object({
+  "edrxCycle": z.number().optional(),
+  "pagingTransmissionWindow": z.number().optional(),
+  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+  "psmActivityTimer": z.number().optional()
+});
 export type CoapDeviceTransportConfiguration = z.infer<typeof CoapDeviceTransportConfigurationSchema>;
 
-export const CoapDeviceTypeConfigurationSchemaSchema = z.object({});
+const CoapDeviceTypeConfigurationSchemaImpl = z.object({
+
+});
 export type CoapDeviceTypeConfiguration = z.infer<typeof CoapDeviceTypeConfigurationSchema>;
 
-export const ColumnMappingSchemaSchema = z.object({
-  "key": z.string(),
-  "type": z.enum(["ACCESS_TOKEN", "CLOUD_ENDPOINT", "DESCRIPTION", "EDGE_LICENSE_KEY", "IS_GATEWAY", "LABEL", "LWM2M_BOOTSTRAP_SERVER_PUBLIC_KEY_OR_ID", "LWM2M_BOOTSTRAP_SERVER_SECRET_KEY", "LWM2M_BOOTSTRAP_SERVER_SECURITY_MODE", "LWM2M_CLIENT_CERT", "LWM2M_CLIENT_ENDPOINT", "LWM2M_CLIENT_IDENTITY", "LWM2M_CLIENT_KEY", "LWM2M_CLIENT_SECURITY_CONFIG_MODE", "LWM2M_SERVER_CLIENT_PUBLIC_KEY_OR_ID", "LWM2M_SERVER_CLIENT_SECRET_KEY", "LWM2M_SERVER_SECURITY_MODE", "MQTT_CLIENT_ID", "MQTT_PASSWORD", "MQTT_USER_NAME", "NAME", "ROUTING_KEY", "SECRET", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "SNMP_COMMUNITY_STRING", "SNMP_HOST", "SNMP_PORT", "SNMP_VERSION", "TIMESERIES", "TYPE", "X509"])
+const ColumnMappingSchemaImpl = z.object({
+  "key": z.string().optional(),
+  "type": z.enum(["ACCESS_TOKEN", "CLOUD_ENDPOINT", "DESCRIPTION", "EDGE_LICENSE_KEY", "IS_GATEWAY", "LABEL", "LWM2M_BOOTSTRAP_SERVER_PUBLIC_KEY_OR_ID", "LWM2M_BOOTSTRAP_SERVER_SECRET_KEY", "LWM2M_BOOTSTRAP_SERVER_SECURITY_MODE", "LWM2M_CLIENT_CERT", "LWM2M_CLIENT_ENDPOINT", "LWM2M_CLIENT_IDENTITY", "LWM2M_CLIENT_KEY", "LWM2M_CLIENT_SECURITY_CONFIG_MODE", "LWM2M_SERVER_CLIENT_PUBLIC_KEY_OR_ID", "LWM2M_SERVER_CLIENT_SECRET_KEY", "LWM2M_SERVER_SECURITY_MODE", "MQTT_CLIENT_ID", "MQTT_PASSWORD", "MQTT_USER_NAME", "NAME", "ROUTING_KEY", "SECRET", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "SNMP_COMMUNITY_STRING", "SNMP_HOST", "SNMP_PORT", "SNMP_VERSION", "TIMESERIES", "TYPE", "X509"]).optional()
 });
 export type ColumnMapping = z.infer<typeof ColumnMappingSchema>;
 
-export const ComparisonTsValueSchemaSchema = z.object({
-  "current": TsValueSchema,
-  "previous": TsValueSchema
+const ComparisonTsValueSchemaImpl = z.object({
+  "current": TsValueSchema.optional(),
+  "previous": TsValueSchema.optional()
 });
 export type ComparisonTsValue = z.infer<typeof ComparisonTsValueSchema>;
 
-export const ComplexFilterPredicateSchemaSchema = z.lazy(() => z.object({}));
+const ComplexFilterPredicateSchemaImpl = z.object({
+  "operation": z.enum(["AND", "OR"]).optional(),
+  "predicates": z.array(KeyFilterPredicateSchema).optional()
+});
 export type ComplexFilterPredicate = z.infer<typeof ComplexFilterPredicateSchema>;
 
-export const ComplexVersionCreateRequestSchemaSchema = z.lazy(() => z.object({}));
+const ComplexVersionCreateRequestSchemaImpl = z.object({
+  "branch": z.string().optional(),
+  "entityTypes": z.object({
+
+}).optional(),
+  "syncStrategy": z.enum(["MERGE", "OVERWRITE"]).optional(),
+  "type": z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+  "versionName": z.string().optional()
+});
 export type ComplexVersionCreateRequest = z.infer<typeof ComplexVersionCreateRequestSchema>;
 
-export const ComponentDescriptorSchemaSchema = z.object({
-  "id": ComponentDescriptorIdSchema,
-  "createdTime": z.number(),
-  "type": z.enum(["ACTION", "ANALYTICS", "ENRICHMENT", "EXTERNAL", "FILTER", "FLOW", "TRANSFORMATION"]),
-  "scope": z.enum(["TENANT"]),
-  "clusteringMode": z.enum(["ENABLED", "SINGLETON", "USER_PREFERENCE"]),
-  "name": z.string(),
-  "clazz": z.string(),
-  "configurationDescriptor": JsonNodeSchema,
-  "configurationVersion": z.number(),
-  "actions": z.string()
+const ComponentDescriptorSchemaImpl = z.object({
+  "id": ComponentDescriptorIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "type": z.enum(["ACTION", "ANALYTICS", "ENRICHMENT", "EXTERNAL", "FILTER", "FLOW", "TRANSFORMATION"]).optional(),
+  "scope": z.enum(["TENANT"]).optional(),
+  "clusteringMode": z.enum(["ENABLED", "SINGLETON", "USER_PREFERENCE"]).optional(),
+  "name": z.string().optional(),
+  "clazz": z.string().optional(),
+  "configurationDescriptor": JsonNodeSchema.optional(),
+  "configurationVersion": z.number().optional(),
+  "actions": z.string().optional()
 });
 export type ComponentDescriptor = z.infer<typeof ComponentDescriptorSchema>;
 
-export const ComponentDescriptorIdSchemaSchema = z.object({
+const ComponentDescriptorIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type ComponentDescriptorId = z.infer<typeof ComponentDescriptorIdSchema>;
 
-export const ContactBased_Of_objectSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "address": z.string(),
-  "address2": z.string(),
-  "city": z.string(),
-  "country": z.string(),
-  "createdTime": z.number(),
-  "email": z.string(),
-  "id": z.object({}),
-  "name": z.string(),
-  "phone": z.string(),
-  "state": z.string(),
-  "zip": z.string()
+const ContactBased_Of_objectSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "address": z.string().optional(),
+  "address2": z.string().optional(),
+  "city": z.string().optional(),
+  "country": z.string().optional(),
+  "createdTime": z.number().optional(),
+  "email": z.string().optional(),
+  "id": z.object({
+
+}).optional(),
+  "name": z.string().optional(),
+  "phone": z.string().optional(),
+  "state": z.string().optional(),
+  "zip": z.string().optional()
 });
 export type ContactBased_Of_object = z.infer<typeof ContactBased_Of_objectSchema>;
 
-export const ConverterSchemaSchema = z.object({
-  "id": ConverterIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
+const ConverterSchemaImpl = z.object({
+  "id": ConverterIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
   "name": z.string(),
   "type": z.enum(["DOWNLINK", "UPLINK"]),
-  "debugMode": z.boolean(),
-  "configuration": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema,
-  "edgeTemplate": z.boolean()
+  "debugMode": z.boolean().optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "edgeTemplate": z.boolean().optional()
 });
 export type Converter = z.infer<typeof ConverterSchema>;
 
-export const ConverterIdSchemaSchema = z.object({
+const ConverterIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["CONVERTER"])
 });
 export type ConverterId = z.infer<typeof ConverterIdSchema>;
 
-export const CustomMenuSchemaSchema = z.object({
+const CustomMenuSchemaImpl = z.object({
   "disabledMenuItems": z.array(z.string()),
   "menuItems": z.array(CustomMenuItemSchema)
 });
 export type CustomMenu = z.infer<typeof CustomMenuSchema>;
 
-export const CustomMenuItemSchemaSchema = z.object({
+const CustomMenuItemSchemaImpl = z.object({
   "name": z.string(),
-  "iconUrl": z.string(),
-  "materialIcon": z.string(),
-  "iframeUrl": z.string(),
-  "dashboardId": z.string(),
-  "hideDashboardToolbar": z.boolean(),
-  "setAccessToken": z.boolean(),
-  "childMenuItems": z.array(CustomMenuItemSchema)
+  "iconUrl": z.string().optional(),
+  "materialIcon": z.string().optional(),
+  "iframeUrl": z.string().optional(),
+  "dashboardId": z.string().optional(),
+  "hideDashboardToolbar": z.boolean().optional(),
+  "setAccessToken": z.boolean().optional(),
+  "childMenuItems": z.array(CustomMenuItemSchema).optional()
 });
 export type CustomMenuItem = z.infer<typeof CustomMenuItemSchema>;
 
-export const CustomTimeScheduleSchemaSchema = z.object({
-  "dynamicValue": DynamicValue_Of_stringSchema,
-  "items": z.array(CustomTimeScheduleItemSchema),
-  "timezone": z.string(),
-  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const CustomTimeScheduleSchemaImpl = z.object({
+  "dynamicValue": DynamicValue_Of_stringSchema.optional(),
+  "items": z.array(CustomTimeScheduleItemSchema).optional(),
+  "timezone": z.string().optional(),
+  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
 export type CustomTimeSchedule = z.infer<typeof CustomTimeScheduleSchema>;
 
-export const CustomTimeScheduleItemSchemaSchema = z.object({
-  "dayOfWeek": z.number(),
-  "enabled": z.boolean(),
-  "endsOn": z.number(),
-  "startsOn": z.number()
+const CustomTimeScheduleItemSchemaImpl = z.object({
+  "dayOfWeek": z.number().optional(),
+  "enabled": z.boolean().optional(),
+  "endsOn": z.number().optional(),
+  "startsOn": z.number().optional()
 });
 export type CustomTimeScheduleItem = z.infer<typeof CustomTimeScheduleItemSchema>;
 
-export const CustomTranslationSchemaSchema = z.object({
-  "translationMap": z.record(z.string(), z.string())
+const CustomTranslationSchemaImpl = z.object({
+  "translationMap": z.object({
+
+})
 });
 export type CustomTranslation = z.infer<typeof CustomTranslationSchema>;
 
-export const CustomerSchemaSchema = z.object({
-  "id": CustomerIdSchema,
-  "createdTime": z.number(),
+const CustomerSchemaImpl = z.object({
+  "id": CustomerIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "title": z.string(),
-  "name": z.string(),
-  "tenantId": TenantIdSchema,
-  "parentCustomerId": CustomerIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "country": z.string(),
-  "state": z.string(),
-  "city": z.string(),
-  "address": z.string(),
-  "address2": z.string(),
-  "zip": z.string(),
-  "phone": z.string(),
+  "name": z.string().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "parentCustomerId": CustomerIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "country": z.string().optional(),
+  "state": z.string().optional(),
+  "city": z.string().optional(),
+  "address": z.string().optional(),
+  "address2": z.string().optional(),
+  "zip": z.string().optional(),
+  "phone": z.string().optional(),
   "email": z.string(),
-  "additionalInfo": JsonNodeSchema
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type Customer = z.infer<typeof CustomerSchema>;
 
-export const CustomerIdSchemaSchema = z.object({
+const CustomerIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["CUSTOMER"])
 });
 export type CustomerId = z.infer<typeof CustomerIdSchema>;
 
-export const CustomerInfoSchemaSchema = z.object({
-  "id": CustomerIdSchema,
-  "createdTime": z.number(),
+const CustomerInfoSchemaImpl = z.object({
+  "id": CustomerIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "title": z.string(),
-  "name": z.string(),
-  "tenantId": TenantIdSchema,
-  "parentCustomerId": CustomerIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "country": z.string(),
-  "state": z.string(),
-  "city": z.string(),
-  "address": z.string(),
-  "address2": z.string(),
-  "zip": z.string(),
-  "phone": z.string(),
+  "name": z.string().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "parentCustomerId": CustomerIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "country": z.string().optional(),
+  "state": z.string().optional(),
+  "city": z.string().optional(),
+  "address": z.string().optional(),
+  "address2": z.string().optional(),
+  "zip": z.string().optional(),
+  "phone": z.string().optional(),
   "email": z.string(),
-  "additionalInfo": JsonNodeSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema)
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional()
 });
 export type CustomerInfo = z.infer<typeof CustomerInfoSchema>;
 
-export const CustomerUsersFilterSchemaSchema = z.lazy(() => z.object({}));
+const CustomerUsersFilterSchemaImpl = z.object({
+  "customerId": z.string().optional()
+});
 export type CustomerUsersFilter = z.infer<typeof CustomerUsersFilterSchema>;
 
-export const DashboardSchemaSchema = z.object({
-  "id": DashboardIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "title": z.string(),
-  "image": z.string(),
-  "assignedCustomers": z.array(ShortCustomerInfoSchema),
-  "mobileHide": z.boolean(),
-  "mobileOrder": z.number(),
-  "name": z.string(),
-  "configuration": JsonNodeSchema
+const DashboardSchemaImpl = z.object({
+  "id": DashboardIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "title": z.string().optional(),
+  "image": z.string().optional(),
+  "assignedCustomers": z.array(ShortCustomerInfoSchema).optional(),
+  "mobileHide": z.boolean().optional(),
+  "mobileOrder": z.number().optional(),
+  "name": z.string().optional(),
+  "configuration": JsonNodeSchema.optional()
 });
 export type Dashboard = z.infer<typeof DashboardSchema>;
 
-export const DashboardIdSchemaSchema = z.object({
+const DashboardIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["DASHBOARD"])
 });
 export type DashboardId = z.infer<typeof DashboardIdSchema>;
 
-export const DashboardInfoSchemaSchema = z.object({
-  "id": DashboardIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "title": z.string(),
-  "image": z.string(),
-  "assignedCustomers": z.array(ShortCustomerInfoSchema),
-  "mobileHide": z.boolean(),
-  "mobileOrder": z.number(),
-  "name": z.string(),
-  "configuration": JsonNodeSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema)
+const DashboardInfoSchemaImpl = z.object({
+  "id": DashboardIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "title": z.string().optional(),
+  "image": z.string().optional(),
+  "assignedCustomers": z.array(ShortCustomerInfoSchema).optional(),
+  "mobileHide": z.boolean().optional(),
+  "mobileOrder": z.number().optional(),
+  "name": z.string().optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional()
 });
 export type DashboardInfo = z.infer<typeof DashboardInfoSchema>;
 
-export const DebugConverterEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const DebugConverterEventFilterSchemaImpl = z.object({
+  "error": z.boolean().optional(),
+  "in": z.string().optional(),
+  "metadata": z.string().optional(),
+  "notEmpty": z.boolean().optional(),
+  "out": z.string().optional(),
+  "type": z.string().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "errorStr": z.string().optional()
+});
 export type DebugConverterEventFilter = z.infer<typeof DebugConverterEventFilterSchema>;
 
-export const DebugIntegrationEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const DebugIntegrationEventFilterSchemaImpl = z.object({
+  "error": z.boolean().optional(),
+  "message": z.string().optional(),
+  "notEmpty": z.boolean().optional(),
+  "statusIntegration": z.string().optional(),
+  "type": z.string().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "errorStr": z.string().optional()
+});
 export type DebugIntegrationEventFilter = z.infer<typeof DebugIntegrationEventFilterSchema>;
 
-export const DefaultCoapDeviceTypeConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const DefaultCoapDeviceTypeConfigurationSchemaImpl = z.object({
+  "transportPayloadTypeConfiguration": TransportPayloadTypeConfigurationSchema.optional()
+});
 export type DefaultCoapDeviceTypeConfiguration = z.infer<typeof DefaultCoapDeviceTypeConfigurationSchema>;
 
-export const DefaultDeviceConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const DefaultDeviceConfigurationSchemaImpl = z.any();
 export type DefaultDeviceConfiguration = z.infer<typeof DefaultDeviceConfigurationSchema>;
 
-export const DefaultDeviceProfileConfigurationSchemaSchema = z.object({});
+const DefaultDeviceProfileConfigurationSchemaImpl = z.object({
+
+});
 export type DefaultDeviceProfileConfiguration = z.infer<typeof DefaultDeviceProfileConfigurationSchema>;
 
-export const DefaultDeviceProfileTransportConfigurationSchemaSchema = z.object({});
+const DefaultDeviceProfileTransportConfigurationSchemaImpl = z.object({
+
+});
 export type DefaultDeviceProfileTransportConfiguration = z.infer<typeof DefaultDeviceProfileTransportConfigurationSchema>;
 
-export const DefaultDeviceTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const DefaultDeviceTransportConfigurationSchemaImpl = z.any();
 export type DefaultDeviceTransportConfiguration = z.infer<typeof DefaultDeviceTransportConfigurationSchema>;
 
-export const DefaultRuleChainCreateRequestSchemaSchema = z.object({
+const DefaultRuleChainCreateRequestSchemaImpl = z.object({
   "name": z.string()
 });
 export type DefaultRuleChainCreateRequest = z.infer<typeof DefaultRuleChainCreateRequestSchema>;
 
-export const DefaultTenantProfileConfigurationSchemaSchema = z.object({
-  "alarmsTtlDays": z.number(),
-  "cassandraQueryTenantRateLimitsConfiguration": z.string(),
-  "customerServerRestLimitsConfiguration": z.string(),
-  "defaultStorageTtlDays": z.number(),
-  "integrationMsgsPerDeviceRateLimit": z.string(),
-  "integrationMsgsPerTenantRateLimit": z.string(),
-  "maxAssets": z.number(),
-  "maxConverters": z.number(),
-  "maxCreatedAlarms": z.number(),
-  "maxCustomers": z.number(),
-  "maxDPStorageDays": z.number(),
-  "maxDashboards": z.number(),
-  "maxDevices": z.number(),
-  "maxEmails": z.number(),
-  "maxIntegrations": z.number(),
-  "maxJSExecutions": z.number(),
-  "maxOtaPackagesInBytes": z.number(),
-  "maxREExecutions": z.number(),
-  "maxResourceSize": z.number(),
-  "maxResourcesInBytes": z.number(),
-  "maxRuleChains": z.number(),
-  "maxRuleNodeExecutionsPerMessage": z.number(),
-  "maxSchedulerEvents": z.number(),
-  "maxSms": z.number(),
-  "maxTbelExecutions": z.number(),
-  "maxTransportDataPoints": z.number(),
-  "maxTransportMessages": z.number(),
-  "maxUsers": z.number(),
-  "maxWsSessionsPerCustomer": z.number(),
-  "maxWsSessionsPerPublicUser": z.number(),
-  "maxWsSessionsPerRegularUser": z.number(),
-  "maxWsSessionsPerTenant": z.number(),
-  "maxWsSubscriptionsPerCustomer": z.number(),
-  "maxWsSubscriptionsPerPublicUser": z.number(),
-  "maxWsSubscriptionsPerRegularUser": z.number(),
-  "maxWsSubscriptionsPerTenant": z.number(),
-  "queueStatsTtlDays": z.number(),
-  "rpcTtlDays": z.number(),
-  "ruleEngineExceptionsTtlDays": z.number(),
-  "smsEnabled": z.boolean(),
-  "tenantEntityExportRateLimit": z.string(),
-  "tenantEntityImportRateLimit": z.string(),
-  "tenantNotificationRequestsPerRuleRateLimit": z.string(),
-  "tenantNotificationRequestsRateLimit": z.string(),
-  "tenantServerRestLimitsConfiguration": z.string(),
-  "transportDeviceMsgRateLimit": z.string(),
-  "transportDeviceTelemetryDataPointsRateLimit": z.string(),
-  "transportDeviceTelemetryMsgRateLimit": z.string(),
-  "transportTenantMsgRateLimit": z.string(),
-  "transportTenantTelemetryDataPointsRateLimit": z.string(),
-  "transportTenantTelemetryMsgRateLimit": z.string(),
-  "warnThreshold": z.number(),
-  "wsMsgQueueLimitPerSession": z.number(),
-  "wsUpdatesPerSessionRateLimit": z.string()
+const DefaultTenantProfileConfigurationSchemaImpl = z.object({
+  "alarmsTtlDays": z.number().optional(),
+  "cassandraQueryTenantRateLimitsConfiguration": z.string().optional(),
+  "customerServerRestLimitsConfiguration": z.string().optional(),
+  "defaultStorageTtlDays": z.number().optional(),
+  "integrationMsgsPerDeviceRateLimit": z.string().optional(),
+  "integrationMsgsPerTenantRateLimit": z.string().optional(),
+  "maxAssets": z.number().optional(),
+  "maxConverters": z.number().optional(),
+  "maxCreatedAlarms": z.number().optional(),
+  "maxCustomers": z.number().optional(),
+  "maxDPStorageDays": z.number().optional(),
+  "maxDashboards": z.number().optional(),
+  "maxDevices": z.number().optional(),
+  "maxEmails": z.number().optional(),
+  "maxIntegrations": z.number().optional(),
+  "maxJSExecutions": z.number().optional(),
+  "maxOtaPackagesInBytes": z.number().optional(),
+  "maxREExecutions": z.number().optional(),
+  "maxResourceSize": z.number().optional(),
+  "maxResourcesInBytes": z.number().optional(),
+  "maxRuleChains": z.number().optional(),
+  "maxRuleNodeExecutionsPerMessage": z.number().optional(),
+  "maxSchedulerEvents": z.number().optional(),
+  "maxSms": z.number().optional(),
+  "maxTbelExecutions": z.number().optional(),
+  "maxTransportDataPoints": z.number().optional(),
+  "maxTransportMessages": z.number().optional(),
+  "maxUsers": z.number().optional(),
+  "maxWsSessionsPerCustomer": z.number().optional(),
+  "maxWsSessionsPerPublicUser": z.number().optional(),
+  "maxWsSessionsPerRegularUser": z.number().optional(),
+  "maxWsSessionsPerTenant": z.number().optional(),
+  "maxWsSubscriptionsPerCustomer": z.number().optional(),
+  "maxWsSubscriptionsPerPublicUser": z.number().optional(),
+  "maxWsSubscriptionsPerRegularUser": z.number().optional(),
+  "maxWsSubscriptionsPerTenant": z.number().optional(),
+  "queueStatsTtlDays": z.number().optional(),
+  "rpcTtlDays": z.number().optional(),
+  "ruleEngineExceptionsTtlDays": z.number().optional(),
+  "smsEnabled": z.boolean().optional(),
+  "tenantEntityExportRateLimit": z.string().optional(),
+  "tenantEntityImportRateLimit": z.string().optional(),
+  "tenantNotificationRequestsPerRuleRateLimit": z.string().optional(),
+  "tenantNotificationRequestsRateLimit": z.string().optional(),
+  "tenantServerRestLimitsConfiguration": z.string().optional(),
+  "transportDeviceMsgRateLimit": z.string().optional(),
+  "transportDeviceTelemetryDataPointsRateLimit": z.string().optional(),
+  "transportDeviceTelemetryMsgRateLimit": z.string().optional(),
+  "transportTenantMsgRateLimit": z.string().optional(),
+  "transportTenantTelemetryDataPointsRateLimit": z.string().optional(),
+  "transportTenantTelemetryMsgRateLimit": z.string().optional(),
+  "warnThreshold": z.number().optional(),
+  "wsMsgQueueLimitPerSession": z.number().optional(),
+  "wsUpdatesPerSessionRateLimit": z.string().optional()
 });
 export type DefaultTenantProfileConfiguration = z.infer<typeof DefaultTenantProfileConfigurationSchema>;
 
-export const DeferredResult_Of_EntityDataDiffSchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_EntityDataDiffSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_EntityDataDiff = z.infer<typeof DeferredResult_Of_EntityDataDiffSchema>;
 
-export const DeferredResult_Of_EntityDataInfoSchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_EntityDataInfoSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_EntityDataInfo = z.infer<typeof DeferredResult_Of_EntityDataInfoSchema>;
 
-export const DeferredResult_Of_List_BranchInfo_SchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
-});
-export type DeferredResult_Of_List_BranchInfo_ = z.infer<typeof DeferredResult_Of_List_BranchInfo_Schema>;
+const DeferredResult_Of_List_Of_BranchInfoSchemaImpl = z.object({
+  "result": z.object({
 
-export const DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
-export type DeferredResult_Of_List_VersionedEntityInfo_ = z.infer<typeof DeferredResult_Of_List_VersionedEntityInfo_Schema>;
+export type DeferredResult_Of_List_Of_BranchInfo = z.infer<typeof DeferredResult_Of_List_Of_BranchInfoSchema>;
 
-export const DeferredResult_Of_PageData_EntityVersion_SchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_List_Of_VersionedEntityInfoSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
-export type DeferredResult_Of_PageData_EntityVersion_ = z.infer<typeof DeferredResult_Of_PageData_EntityVersion_Schema>;
+export type DeferredResult_Of_List_Of_VersionedEntityInfo = z.infer<typeof DeferredResult_Of_List_Of_VersionedEntityInfoSchema>;
 
-export const DeferredResult_Of_RepositorySettingsSchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_PageData_Of_EntityVersionSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
+});
+export type DeferredResult_Of_PageData_Of_EntityVersion = z.infer<typeof DeferredResult_Of_PageData_Of_EntityVersionSchema>;
+
+const DeferredResult_Of_RepositorySettingsSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_RepositorySettings = z.infer<typeof DeferredResult_Of_RepositorySettingsSchema>;
 
-export const DeferredResult_Of_ResponseEntitySchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_ResponseEntitySchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_ResponseEntity = z.infer<typeof DeferredResult_Of_ResponseEntitySchema>;
 
-export const DeferredResult_Of_VoidSchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_VoidSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_Void = z.infer<typeof DeferredResult_Of_VoidSchema>;
 
-export const DeferredResult_Of_uuidSchemaSchema = z.object({
-  "result": z.object({}),
-  "setOrExpired": z.boolean()
+const DeferredResult_Of_uuidSchemaImpl = z.object({
+  "result": z.object({
+
+}).optional(),
+  "setOrExpired": z.boolean().optional()
 });
 export type DeferredResult_Of_uuid = z.infer<typeof DeferredResult_Of_uuidSchema>;
 
-export const DeliveryMethodNotificationTemplateSchemaSchema = z.object({
-  "body": z.string(),
-  "enabled": z.boolean()
+const DeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "body": z.string().optional(),
+  "enabled": z.boolean().optional()
 });
 export type DeliveryMethodNotificationTemplate = z.infer<typeof DeliveryMethodNotificationTemplateSchema>;
 
-export const DeviceSchemaSchema = z.object({
-  "id": DeviceIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
+const DeviceSchemaImpl = z.object({
+  "id": DeviceIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
   "name": z.string(),
-  "type": z.string(),
-  "label": z.string(),
+  "type": z.string().optional(),
+  "label": z.string().optional(),
   "deviceProfileId": DeviceProfileIdSchema,
-  "deviceData": DeviceDataSchema,
-  "firmwareId": OtaPackageIdSchema,
-  "softwareId": OtaPackageIdSchema,
-  "additionalInfo": JsonNodeSchema
+  "deviceData": DeviceDataSchema.optional(),
+  "firmwareId": OtaPackageIdSchema.optional(),
+  "softwareId": OtaPackageIdSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type Device = z.infer<typeof DeviceSchema>;
 
-export const DeviceActivityNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const DeviceActivityNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "deviceProfiles": z.array(z.string()).optional(),
+  "devices": z.array(z.string()).optional(),
+  "notifyOn": z.array(z.enum(["ACTIVE", "INACTIVE"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type DeviceActivityNotificationRuleTriggerConfig = z.infer<typeof DeviceActivityNotificationRuleTriggerConfigSchema>;
 
-export const DeviceConfigurationSchemaSchema = z.object({});
+const DeviceConfigurationSchemaImpl = z.object({
+
+});
 export type DeviceConfiguration = z.infer<typeof DeviceConfigurationSchema>;
 
-export const DeviceCredentialsSchemaSchema = z.object({
+const DeviceCredentialsSchemaImpl = z.object({
   "id": DeviceCredentialsIdSchema,
-  "createdTime": z.number(),
+  "createdTime": z.number().optional(),
   "deviceId": DeviceIdSchema,
-  "credentialsType": z.enum(["ACCESS_TOKEN", "LWM2M_CREDENTIALS", "MQTT_BASIC", "X509_CERTIFICATE"]),
+  "credentialsType": z.enum(["ACCESS_TOKEN", "LWM2M_CREDENTIALS", "MQTT_BASIC", "X509_CERTIFICATE"]).optional(),
   "credentialsId": z.string(),
-  "credentialsValue": z.string()
+  "credentialsValue": z.string().optional()
 });
 export type DeviceCredentials = z.infer<typeof DeviceCredentialsSchema>;
 
-export const DeviceCredentialsIdSchemaSchema = z.object({
+const DeviceCredentialsIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type DeviceCredentialsId = z.infer<typeof DeviceCredentialsIdSchema>;
 
-export const DeviceDataSchemaSchema = z.object({
-  "configuration": DeviceConfigurationSchema,
-  "transportConfiguration": DeviceTransportConfigurationSchema
+const DeviceDataSchemaImpl = z.object({
+  "configuration": DeviceConfigurationSchema.optional(),
+  "transportConfiguration": DeviceTransportConfigurationSchema.optional()
 });
 export type DeviceData = z.infer<typeof DeviceDataSchema>;
 
-export const DeviceExportDataSchemaSchema = z.lazy(() => z.object({}));
+const DeviceExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "credentials": DeviceCredentialsSchema.optional(),
+  "entity": DeviceSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "relations": z.array(EntityRelationSchema).optional()
+});
 export type DeviceExportData = z.infer<typeof DeviceExportDataSchema>;
 
-export const DeviceGroupOtaPackageSchemaSchema = z.object({
-  "groupId": EntityGroupIdSchema,
-  "id": z.string(),
-  "otaPackageId": OtaPackageIdSchema,
-  "otaPackageType": z.enum(["FIRMWARE", "SOFTWARE"]),
-  "otaPackageUpdateTime": z.number()
+const DeviceGroupOtaPackageSchemaImpl = z.object({
+  "groupId": EntityGroupIdSchema.optional(),
+  "id": z.string().optional(),
+  "otaPackageId": OtaPackageIdSchema.optional(),
+  "otaPackageType": z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+  "otaPackageUpdateTime": z.number().optional()
 });
 export type DeviceGroupOtaPackage = z.infer<typeof DeviceGroupOtaPackageSchema>;
 
-export const DeviceIdSchemaSchema = z.object({
+const DeviceIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["DEVICE"])
 });
 export type DeviceId = z.infer<typeof DeviceIdSchema>;
 
-export const DeviceInfoSchemaSchema = z.object({
-  "id": DeviceIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
+const DeviceInfoSchemaImpl = z.object({
+  "id": DeviceIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
   "name": z.string(),
-  "type": z.string(),
-  "label": z.string(),
+  "type": z.string().optional(),
+  "label": z.string().optional(),
   "deviceProfileId": DeviceProfileIdSchema,
-  "deviceData": DeviceDataSchema,
-  "firmwareId": OtaPackageIdSchema,
-  "softwareId": OtaPackageIdSchema,
-  "additionalInfo": JsonNodeSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema),
-  "active": z.boolean()
+  "deviceData": DeviceDataSchema.optional(),
+  "firmwareId": OtaPackageIdSchema.optional(),
+  "softwareId": OtaPackageIdSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional(),
+  "active": z.boolean().optional()
 });
 export type DeviceInfo = z.infer<typeof DeviceInfoSchema>;
 
-export const DeviceProfileSchemaSchema = z.object({
-  "id": DeviceProfileIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "name": z.string(),
-  "default": z.boolean(),
-  "defaultDashboardId": DashboardIdSchema,
-  "defaultRuleChainId": RuleChainIdSchema,
-  "defaultQueueName": z.string(),
-  "firmwareId": OtaPackageIdSchema,
-  "softwareId": OtaPackageIdSchema,
-  "description": z.string(),
-  "image": z.string(),
-  "provisionDeviceKey": z.string(),
-  "transportType": z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]),
-  "provisionType": z.enum(["ALLOW_CREATE_NEW_DEVICES", "CHECK_PRE_PROVISIONED_DEVICES", "DISABLED", "X509_CERTIFICATE_CHAIN"]),
-  "profileData": DeviceProfileDataSchema,
-  "type": z.enum(["DEFAULT"]),
-  "defaultEdgeRuleChainId": RuleChainIdSchema
+const DeviceProfileSchemaImpl = z.object({
+  "id": DeviceProfileIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "name": z.string().optional(),
+  "default": z.boolean().optional(),
+  "defaultDashboardId": DashboardIdSchema.optional(),
+  "defaultRuleChainId": RuleChainIdSchema.optional(),
+  "defaultQueueName": z.string().optional(),
+  "firmwareId": OtaPackageIdSchema.optional(),
+  "softwareId": OtaPackageIdSchema.optional(),
+  "description": z.string().optional(),
+  "image": z.string().optional(),
+  "provisionDeviceKey": z.string().optional(),
+  "transportType": z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]).optional(),
+  "provisionType": z.enum(["ALLOW_CREATE_NEW_DEVICES", "CHECK_PRE_PROVISIONED_DEVICES", "DISABLED", "X509_CERTIFICATE_CHAIN"]).optional(),
+  "profileData": DeviceProfileDataSchema.optional(),
+  "type": z.enum(["DEFAULT"]).optional(),
+  "defaultEdgeRuleChainId": RuleChainIdSchema.optional()
 });
 export type DeviceProfile = z.infer<typeof DeviceProfileSchema>;
 
-export const DeviceProfileAlarmSchemaSchema = z.object({
-  "id": z.string(),
-  "alarmType": z.string(),
-  "createRules": z.record(z.string(), AlarmRuleSchema),
-  "clearRule": AlarmRuleSchema,
-  "propagate": z.boolean(),
-  "propagateToOwner": z.boolean(),
-  "propagateToOwnerHierarchy": z.boolean(),
-  "propagateToTenant": z.boolean(),
-  "propagateRelationTypes": z.array(z.string())
+const DeviceProfileAlarmSchemaImpl = z.object({
+  "id": z.string().optional(),
+  "alarmType": z.string().optional(),
+  "createRules": z.object({
+
+}).optional(),
+  "clearRule": AlarmRuleSchema.optional(),
+  "propagate": z.boolean().optional(),
+  "propagateToOwner": z.boolean().optional(),
+  "propagateToOwnerHierarchy": z.boolean().optional(),
+  "propagateToTenant": z.boolean().optional(),
+  "propagateRelationTypes": z.array(z.string()).optional()
 });
 export type DeviceProfileAlarm = z.infer<typeof DeviceProfileAlarmSchema>;
 
-export const DeviceProfileConfigurationSchemaSchema = z.object({});
+const DeviceProfileConfigurationSchemaImpl = z.object({
+
+});
 export type DeviceProfileConfiguration = z.infer<typeof DeviceProfileConfigurationSchema>;
 
-export const DeviceProfileDataSchemaSchema = z.object({
-  "configuration": DeviceProfileConfigurationSchema,
-  "transportConfiguration": DeviceProfileTransportConfigurationSchema,
-  "provisionConfiguration": DeviceProfileProvisionConfigurationSchema,
-  "alarms": z.array(DeviceProfileAlarmSchema)
+const DeviceProfileDataSchemaImpl = z.object({
+  "configuration": DeviceProfileConfigurationSchema.optional(),
+  "transportConfiguration": DeviceProfileTransportConfigurationSchema.optional(),
+  "provisionConfiguration": DeviceProfileProvisionConfigurationSchema.optional(),
+  "alarms": z.array(DeviceProfileAlarmSchema).optional()
 });
 export type DeviceProfileData = z.infer<typeof DeviceProfileDataSchema>;
 
-export const DeviceProfileIdSchemaSchema = z.object({
+const DeviceProfileIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["DEVICE_PROFILE"])
 });
 export type DeviceProfileId = z.infer<typeof DeviceProfileIdSchema>;
 
-export const DeviceProfileInfoSchemaSchema = z.object({
-  "id": EntityIdSchema,
-  "name": z.string(),
-  "image": z.string(),
-  "defaultDashboardId": DashboardIdSchema,
-  "type": z.enum(["DEFAULT"]),
-  "transportType": z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]),
-  "tenantId": TenantIdSchema
+const DeviceProfileInfoSchemaImpl = z.object({
+  "id": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "image": z.string().optional(),
+  "defaultDashboardId": DashboardIdSchema.optional(),
+  "type": z.enum(["DEFAULT"]).optional(),
+  "transportType": z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]).optional(),
+  "tenantId": TenantIdSchema.optional()
 });
 export type DeviceProfileInfo = z.infer<typeof DeviceProfileInfoSchema>;
 
-export const DeviceProfileProvisionConfigurationSchemaSchema = z.object({
-  "provisionDeviceSecret": z.string()
+const DeviceProfileProvisionConfigurationSchemaImpl = z.object({
+  "provisionDeviceSecret": z.string().optional()
 });
 export type DeviceProfileProvisionConfiguration = z.infer<typeof DeviceProfileProvisionConfigurationSchema>;
 
-export const DeviceProfileTransportConfigurationSchemaSchema = z.object({});
+const DeviceProfileTransportConfigurationSchemaImpl = z.object({
+
+});
 export type DeviceProfileTransportConfiguration = z.infer<typeof DeviceProfileTransportConfigurationSchema>;
 
-export const DeviceSearchQuerySchemaSchema = z.object({
-  "relationType": z.string(),
-  "deviceTypes": z.array(z.string()),
-  "parameters": RelationsSearchParametersSchema
+const DeviceSearchQuerySchemaImpl = z.object({
+  "relationType": z.string().optional(),
+  "deviceTypes": z.array(z.string()).optional(),
+  "parameters": RelationsSearchParametersSchema.optional()
 });
 export type DeviceSearchQuery = z.infer<typeof DeviceSearchQuerySchema>;
 
-export const DeviceSearchQueryFilterSchemaSchema = z.lazy(() => z.object({}));
+const DeviceSearchQueryFilterSchemaImpl = z.object({
+  "deviceTypes": z.array(z.string()).optional(),
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "fetchLastLevelOnly": z.boolean().optional(),
+  "maxLevel": z.number().optional(),
+  "relationType": z.string().optional(),
+  "rootEntity": EntityIdSchema.optional()
+});
 export type DeviceSearchQueryFilter = z.infer<typeof DeviceSearchQueryFilterSchema>;
 
-export const DeviceTransportConfigurationSchemaSchema = z.object({});
+const DeviceTransportConfigurationSchemaImpl = z.object({
+
+});
 export type DeviceTransportConfiguration = z.infer<typeof DeviceTransportConfigurationSchema>;
 
-export const DeviceTypeFilterSchemaSchema = z.lazy(() => z.object({}));
+const DeviceTypeFilterSchemaImpl = z.object({
+  "deviceNameFilter": z.string().optional(),
+  "deviceTypes": z.array(z.string()).optional()
+});
 export type DeviceTypeFilter = z.infer<typeof DeviceTypeFilterSchema>;
 
-export const DisabledDeviceProfileProvisionConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const DisabledDeviceProfileProvisionConfigurationSchemaImpl = z.object({
+  "provisionDeviceSecret": z.string().optional()
+});
 export type DisabledDeviceProfileProvisionConfiguration = z.infer<typeof DisabledDeviceProfileProvisionConfigurationSchema>;
 
-export const DurationAlarmConditionSpecSchemaSchema = z.lazy(() => z.object({}));
+const DurationAlarmConditionSpecSchemaImpl = z.object({
+  "predicate": FilterPredicateValue_Of_longSchema.optional(),
+  "unit": z.enum(["DAYS", "HOURS", "MICROSECONDS", "MILLISECONDS", "MINUTES", "NANOSECONDS", "SECONDS"]).optional()
+});
 export type DurationAlarmConditionSpec = z.infer<typeof DurationAlarmConditionSpecSchema>;
 
-export const DynamicValue_Of_booleanSchemaSchema = z.object({
-  "inherit": z.boolean(),
-  "sourceAttribute": z.string(),
-  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_booleanSchemaImpl = z.object({
+  "inherit": z.boolean().optional(),
+  "sourceAttribute": z.string().optional(),
+  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
 export type DynamicValue_Of_boolean = z.infer<typeof DynamicValue_Of_booleanSchema>;
 
-export const DynamicValue_Of_doubleSchemaSchema = z.object({
-  "inherit": z.boolean(),
-  "sourceAttribute": z.string(),
-  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_doubleSchemaImpl = z.object({
+  "inherit": z.boolean().optional(),
+  "sourceAttribute": z.string().optional(),
+  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
 export type DynamicValue_Of_double = z.infer<typeof DynamicValue_Of_doubleSchema>;
 
-export const DynamicValue_Of_intSchemaSchema = z.object({
-  "inherit": z.boolean(),
-  "sourceAttribute": z.string(),
-  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_intSchemaImpl = z.object({
+  "inherit": z.boolean().optional(),
+  "sourceAttribute": z.string().optional(),
+  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
 export type DynamicValue_Of_int = z.infer<typeof DynamicValue_Of_intSchema>;
 
-export const DynamicValue_Of_longSchemaSchema = z.object({
-  "inherit": z.boolean(),
-  "sourceAttribute": z.string(),
-  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_longSchemaImpl = z.object({
+  "inherit": z.boolean().optional(),
+  "sourceAttribute": z.string().optional(),
+  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
 export type DynamicValue_Of_long = z.infer<typeof DynamicValue_Of_longSchema>;
 
-export const DynamicValue_Of_stringSchemaSchema = z.object({
-  "inherit": z.boolean(),
-  "sourceAttribute": z.string(),
-  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_stringSchemaImpl = z.object({
+  "inherit": z.boolean().optional(),
+  "sourceAttribute": z.string().optional(),
+  "sourceType": z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
 export type DynamicValue_Of_string = z.infer<typeof DynamicValue_Of_stringSchema>;
 
-export const EdgeSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema,
-  "id": EdgeIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "rootRuleChainId": RuleChainIdSchema,
+const EdgeSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "id": EdgeIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "rootRuleChainId": RuleChainIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
-  "label": z.string(),
+  "label": z.string().optional(),
   "routingKey": z.string(),
   "secret": z.string(),
   "edgeLicenseKey": z.string(),
@@ -1660,1817 +1823,2036 @@ export const EdgeSchemaSchema = z.object({
 });
 export type Edge = z.infer<typeof EdgeSchema>;
 
-export const EdgeEventSchemaSchema = z.object({
-  "action": z.enum(["ADDED", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_UNASSIGNED", "ASSIGNED_TO_EDGE", "ATTRIBUTES_DELETED", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_REQUEST", "CREDENTIALS_UPDATED", "DELETED", "ENTITY_MERGE_REQUEST", "POST_ATTRIBUTES", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "RPC_CALL", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_EDGE", "UPDATED"]),
-  "body": JsonNodeSchema,
-  "createdTime": z.number(),
-  "edgeId": EdgeIdSchema,
-  "entityGroupId": z.string(),
-  "entityId": z.string(),
-  "id": EdgeEventIdSchema,
-  "seqId": z.number(),
-  "tenantId": TenantIdSchema,
-  "type": z.enum(["ADMIN_SETTINGS", "ALARM", "ASSET", "ASSET_PROFILE", "CONVERTER", "CUSTOMER", "CUSTOM_TRANSLATION", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "LOGIN_WHITE_LABELING", "MAIL_TEMPLATES", "OTA_PACKAGE", "QUEUE", "RELATION", "ROLE", "RULE_CHAIN", "RULE_CHAIN_METADATA", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "uid": z.string()
+const EdgeEventSchemaImpl = z.object({
+  "action": z.enum(["ADDED", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_UNASSIGNED", "ASSIGNED_TO_EDGE", "ATTRIBUTES_DELETED", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_REQUEST", "CREDENTIALS_UPDATED", "DELETED", "ENTITY_MERGE_REQUEST", "POST_ATTRIBUTES", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "RPC_CALL", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_EDGE", "UPDATED"]).optional(),
+  "body": JsonNodeSchema.optional(),
+  "createdTime": z.number().optional(),
+  "edgeId": EdgeIdSchema.optional(),
+  "entityGroupId": z.string().optional(),
+  "entityId": z.string().optional(),
+  "id": EdgeEventIdSchema.optional(),
+  "seqId": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "type": z.enum(["ADMIN_SETTINGS", "ALARM", "ASSET", "ASSET_PROFILE", "CONVERTER", "CUSTOMER", "CUSTOM_TRANSLATION", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "LOGIN_WHITE_LABELING", "MAIL_TEMPLATES", "OTA_PACKAGE", "QUEUE", "RELATION", "ROLE", "RULE_CHAIN", "RULE_CHAIN_METADATA", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "uid": z.string().optional()
 });
 export type EdgeEvent = z.infer<typeof EdgeEventSchema>;
 
-export const EdgeEventIdSchemaSchema = z.object({
+const EdgeEventIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type EdgeEventId = z.infer<typeof EdgeEventIdSchema>;
 
-export const EdgeIdSchemaSchema = z.object({
+const EdgeIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["EDGE"])
 });
 export type EdgeId = z.infer<typeof EdgeIdSchema>;
 
-export const EdgeInfoSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema,
-  "id": EdgeIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "rootRuleChainId": RuleChainIdSchema,
+const EdgeInfoSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "id": EdgeIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "rootRuleChainId": RuleChainIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
-  "label": z.string(),
+  "label": z.string().optional(),
   "routingKey": z.string(),
   "secret": z.string(),
   "edgeLicenseKey": z.string(),
   "cloudEndpoint": z.string(),
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema)
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional()
 });
 export type EdgeInfo = z.infer<typeof EdgeInfoSchema>;
 
-export const EdgeInstructionsSchemaSchema = z.object({
-  "instructions": z.string()
+const EdgeInstructionsSchemaImpl = z.object({
+  "instructions": z.string().optional()
 });
 export type EdgeInstructions = z.infer<typeof EdgeInstructionsSchema>;
 
-export const EdgeSearchQuerySchemaSchema = z.object({
-  "relationType": z.string(),
-  "edgeTypes": z.array(z.string()),
-  "parameters": RelationsSearchParametersSchema
+const EdgeSearchQuerySchemaImpl = z.object({
+  "relationType": z.string().optional(),
+  "edgeTypes": z.array(z.string()).optional(),
+  "parameters": RelationsSearchParametersSchema.optional()
 });
 export type EdgeSearchQuery = z.infer<typeof EdgeSearchQuerySchema>;
 
-export const EdgeSearchQueryFilterSchemaSchema = z.lazy(() => z.object({}));
+const EdgeSearchQueryFilterSchemaImpl = z.object({
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "edgeTypes": z.array(z.string()).optional(),
+  "fetchLastLevelOnly": z.boolean().optional(),
+  "maxLevel": z.number().optional(),
+  "relationType": z.string().optional(),
+  "rootEntity": EntityIdSchema.optional()
+});
 export type EdgeSearchQueryFilter = z.infer<typeof EdgeSearchQueryFilterSchema>;
 
-export const EdgeTypeFilterSchemaSchema = z.lazy(() => z.object({}));
+const EdgeTypeFilterSchemaImpl = z.object({
+  "edgeNameFilter": z.string().optional(),
+  "edgeTypes": z.array(z.string()).optional()
+});
 export type EdgeTypeFilter = z.infer<typeof EdgeTypeFilterSchema>;
 
-export const EfentoCoapDeviceTypeConfigurationSchemaSchema = z.object({});
+const EfentoCoapDeviceTypeConfigurationSchemaImpl = z.object({
+
+});
 export type EfentoCoapDeviceTypeConfiguration = z.infer<typeof EfentoCoapDeviceTypeConfigurationSchema>;
 
-export const EmailDeliveryMethodNotificationTemplateSchemaSchema = z.lazy(() => z.object({}));
+const EmailDeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "body": z.string().optional(),
+  "enabled": z.boolean().optional(),
+  "subject": z.string().optional()
+});
 export type EmailDeliveryMethodNotificationTemplate = z.infer<typeof EmailDeliveryMethodNotificationTemplateSchema>;
 
-export const EmailTwoFaAccountConfigSchemaSchema = z.object({
+const EmailTwoFaAccountConfigSchemaImpl = z.object({
   "email": z.string(),
-  "useByDefault": z.boolean()
+  "useByDefault": z.boolean().optional()
 });
 export type EmailTwoFaAccountConfig = z.infer<typeof EmailTwoFaAccountConfigSchema>;
 
-export const EmailTwoFaProviderConfigSchemaSchema = z.lazy(() => z.object({}));
+const EmailTwoFaProviderConfigSchemaImpl = z.object({
+  "verificationCodeLifetime": z.number().optional()
+});
 export type EmailTwoFaProviderConfig = z.infer<typeof EmailTwoFaProviderConfigSchema>;
 
-export const EntitiesByGroupNameFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntitiesByGroupNameFilterSchemaImpl = z.object({
+  "entityGroupNameFilter": z.string().optional(),
+  "groupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "ownerId": EntityIdSchema.optional()
+});
 export type EntitiesByGroupNameFilter = z.infer<typeof EntitiesByGroupNameFilterSchema>;
 
-export const EntitiesLimitNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const EntitiesLimitNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "entityTypes": z.array(z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+  "threshold": z.number().optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type EntitiesLimitNotificationRuleTriggerConfig = z.infer<typeof EntitiesLimitNotificationRuleTriggerConfigSchema>;
 
-export const EntityActionNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const EntityActionNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "created": z.boolean().optional(),
+  "deleted": z.boolean().optional(),
+  "entityTypes": z.array(z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional(),
+  "updated": z.boolean().optional()
+});
 export type EntityActionNotificationRuleTriggerConfig = z.infer<typeof EntityActionNotificationRuleTriggerConfigSchema>;
 
-export const EntityCountQuerySchemaSchema = z.object({
-  "entityFilter": EntityFilterSchema,
-  "keyFilters": z.array(KeyFilterSchema)
+const EntityCountQuerySchemaImpl = z.object({
+  "entityFilter": EntityFilterSchema.optional(),
+  "keyFilters": z.array(KeyFilterSchema).optional()
 });
 export type EntityCountQuery = z.infer<typeof EntityCountQuerySchema>;
 
-export const EntityDataSchemaSchema = z.object({
-  "aggLatest": z.record(z.string(), ComparisonTsValueSchema),
-  "entityId": EntityIdSchema,
-  "latest": z.record(z.string(), z.object({})),
-  "readAttrs": z.boolean(),
-  "readTs": z.boolean(),
-  "timeseries": z.record(z.string(), z.array(TsValueSchema))
+const EntityDataSchemaImpl = z.object({
+  "aggLatest": z.object({
+
+}).optional(),
+  "entityId": EntityIdSchema.optional(),
+  "latest": z.object({
+
+}).optional(),
+  "readAttrs": z.boolean().optional(),
+  "readTs": z.boolean().optional(),
+  "timeseries": z.object({
+
+}).optional()
 });
 export type EntityData = z.infer<typeof EntityDataSchema>;
 
-export const EntityDataDiffSchemaSchema = z.object({
-  "currentVersion": EntityExportData_Of_objectSchema,
-  "otherVersion": EntityExportData_Of_objectSchema
+const EntityDataDiffSchemaImpl = z.object({
+  "currentVersion": EntityExportData_Of_objectSchema.optional(),
+  "otherVersion": EntityExportData_Of_objectSchema.optional()
 });
 export type EntityDataDiff = z.infer<typeof EntityDataDiffSchema>;
 
-export const EntityDataInfoSchemaSchema = z.object({
-  "hasAttributes": z.boolean(),
-  "hasCredentials": z.boolean(),
-  "hasGroupEntities": z.boolean(),
-  "hasPermissions": z.boolean(),
-  "hasRelations": z.boolean()
+const EntityDataInfoSchemaImpl = z.object({
+  "hasAttributes": z.boolean().optional(),
+  "hasCredentials": z.boolean().optional(),
+  "hasGroupEntities": z.boolean().optional(),
+  "hasPermissions": z.boolean().optional(),
+  "hasRelations": z.boolean().optional()
 });
 export type EntityDataInfo = z.infer<typeof EntityDataInfoSchema>;
 
-export const EntityDataPageLinkSchemaSchema = z.object({
-  "dynamic": z.boolean(),
-  "page": z.number(),
-  "pageSize": z.number(),
-  "sortOrder": EntityDataSortOrderSchema,
-  "textSearch": z.string()
+const EntityDataPageLinkSchemaImpl = z.object({
+  "dynamic": z.boolean().optional(),
+  "page": z.number().optional(),
+  "pageSize": z.number().optional(),
+  "sortOrder": EntityDataSortOrderSchema.optional(),
+  "textSearch": z.string().optional()
 });
 export type EntityDataPageLink = z.infer<typeof EntityDataPageLinkSchema>;
 
-export const EntityDataQuerySchemaSchema = z.object({
-  "entityFields": z.array(EntityKeySchema),
-  "entityFilter": EntityFilterSchema,
-  "keyFilters": z.array(KeyFilterSchema),
-  "latestValues": z.array(EntityKeySchema),
-  "pageLink": EntityDataPageLinkSchema
+const EntityDataQuerySchemaImpl = z.object({
+  "entityFields": z.array(EntityKeySchema).optional(),
+  "entityFilter": EntityFilterSchema.optional(),
+  "keyFilters": z.array(KeyFilterSchema).optional(),
+  "latestValues": z.array(EntityKeySchema).optional(),
+  "pageLink": EntityDataPageLinkSchema.optional()
 });
 export type EntityDataQuery = z.infer<typeof EntityDataQuerySchema>;
 
-export const EntityDataSortOrderSchemaSchema = z.object({
-  "direction": z.enum(["ASC", "DESC"]),
-  "key": EntityKeySchema
+const EntityDataSortOrderSchemaImpl = z.object({
+  "direction": z.enum(["ASC", "DESC"]).optional(),
+  "key": EntityKeySchema.optional()
 });
 export type EntityDataSortOrder = z.infer<typeof EntityDataSortOrderSchema>;
 
-export const EntityExportData_Of_objectSchemaSchema = z.object({
-  "attributes": z.record(z.string(), z.array(AttributeExportDataSchema)),
-  "entity": z.object({}),
-  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "relations": z.array(EntityRelationSchema)
+const EntityExportData_Of_objectSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": z.object({
+
+}).optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "relations": z.array(EntityRelationSchema).optional()
 });
 export type EntityExportData_Of_object = z.infer<typeof EntityExportData_Of_objectSchema>;
 
-export const EntityFilterSchemaSchema = z.object({});
+const EntityFilterSchemaImpl = z.object({
+
+});
 export type EntityFilter = z.infer<typeof EntityFilterSchema>;
 
-export const EntityGroupSchemaSchema = z.object({
-  "id": EntityGroupIdSchema,
-  "createdTime": z.number(),
-  "ownerId": EntityIdSchema,
+const EntityGroupSchemaImpl = z.object({
+  "id": EntityGroupIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "ownerId": EntityIdSchema.optional(),
   "name": z.string(),
   "type": z.enum(["ASSET", "CUSTOMER", "DASHBOARD", "DEVICE", "EDGE", "ENTITY_VIEW", "USER"]),
-  "additionalInfo": JsonNodeSchema,
-  "configuration": JsonNodeSchema,
-  "groupAll": z.boolean(),
-  "edgeGroupAll": z.boolean()
+  "additionalInfo": JsonNodeSchema.optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "groupAll": z.boolean().optional(),
+  "edgeGroupAll": z.boolean().optional()
 });
 export type EntityGroup = z.infer<typeof EntityGroupSchema>;
 
-export const EntityGroupExportDataSchemaSchema = z.lazy(() => z.object({}));
+const EntityGroupExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": EntityGroupSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "groupEntities": z.boolean().optional(),
+  "permissions": z.array(GroupPermissionSchema).optional(),
+  "relations": z.array(EntityRelationSchema).optional()
+});
 export type EntityGroupExportData = z.infer<typeof EntityGroupExportDataSchema>;
 
-export const EntityGroupFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityGroupFilterSchemaImpl = z.object({
+  "entityGroup": z.string().optional(),
+  "groupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityGroupFilter = z.infer<typeof EntityGroupFilterSchema>;
 
-export const EntityGroupIdSchemaSchema = z.object({
+const EntityGroupIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ENTITY_GROUP"])
 });
 export type EntityGroupId = z.infer<typeof EntityGroupIdSchema>;
 
-export const EntityGroupInfoSchemaSchema = z.object({
-  "id": EntityGroupIdSchema,
-  "createdTime": z.number(),
-  "ownerId": EntityIdSchema,
+const EntityGroupInfoSchemaImpl = z.object({
+  "id": EntityGroupIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "ownerId": EntityIdSchema.optional(),
   "name": z.string(),
   "type": z.enum(["ASSET", "CUSTOMER", "DASHBOARD", "DEVICE", "EDGE", "ENTITY_VIEW", "USER"]),
-  "additionalInfo": JsonNodeSchema,
-  "configuration": JsonNodeSchema,
-  "groupAll": z.boolean(),
-  "edgeGroupAll": z.boolean(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "groupAll": z.boolean().optional(),
+  "edgeGroupAll": z.boolean().optional(),
   "ownerIds": z.array(EntityIdSchema)
 });
 export type EntityGroupInfo = z.infer<typeof EntityGroupInfoSchema>;
 
-export const EntityGroupListFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityGroupListFilterSchemaImpl = z.object({
+  "entityGroupList": z.array(z.string()).optional(),
+  "groupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityGroupListFilter = z.infer<typeof EntityGroupListFilterSchema>;
 
-export const EntityGroupNameFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityGroupNameFilterSchemaImpl = z.object({
+  "entityGroupNameFilter": z.string().optional(),
+  "groupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityGroupNameFilter = z.infer<typeof EntityGroupNameFilterSchema>;
 
-export const EntityIdSchemaSchema = z.object({
+const EntityIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])
 });
 export type EntityId = z.infer<typeof EntityIdSchema>;
 
-export const EntityInfoSchemaSchema = z.object({
-  "id": EntityIdSchema,
-  "name": z.string()
+const EntityInfoSchemaImpl = z.object({
+  "id": EntityIdSchema.optional(),
+  "name": z.string().optional()
 });
 export type EntityInfo = z.infer<typeof EntityInfoSchema>;
 
-export const EntityKeySchemaSchema = z.object({
-  "key": z.string(),
-  "type": z.enum(["ALARM_FIELD", "ATTRIBUTE", "CLIENT_ATTRIBUTE", "ENTITY_FIELD", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "TIME_SERIES"])
+const EntityKeySchemaImpl = z.object({
+  "key": z.string().optional(),
+  "type": z.enum(["ALARM_FIELD", "ATTRIBUTE", "CLIENT_ATTRIBUTE", "ENTITY_FIELD", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "TIME_SERIES"]).optional()
 });
 export type EntityKey = z.infer<typeof EntityKeySchema>;
 
-export const EntityListFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityListFilterSchemaImpl = z.object({
+  "entityList": z.array(z.string()).optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityListFilter = z.infer<typeof EntityListFilterSchema>;
 
-export const EntityLoadErrorSchemaSchema = z.object({
-  "message": z.string(),
-  "source": EntityIdSchema,
-  "target": EntityIdSchema,
-  "type": z.string()
+const EntityLoadErrorSchemaImpl = z.object({
+  "message": z.string().optional(),
+  "source": EntityIdSchema.optional(),
+  "target": EntityIdSchema.optional(),
+  "type": z.string().optional()
 });
 export type EntityLoadError = z.infer<typeof EntityLoadErrorSchema>;
 
-export const EntityNameFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityNameFilterSchemaImpl = z.object({
+  "entityNameFilter": z.string().optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityNameFilter = z.infer<typeof EntityNameFilterSchema>;
 
-export const EntityRelationSchemaSchema = z.object({
-  "from": EntityIdSchema,
-  "to": EntityIdSchema,
-  "type": z.string(),
-  "typeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-  "additionalInfo": JsonNodeSchema
+const EntityRelationSchemaImpl = z.object({
+  "from": EntityIdSchema.optional(),
+  "to": EntityIdSchema.optional(),
+  "type": z.string().optional(),
+  "typeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type EntityRelation = z.infer<typeof EntityRelationSchema>;
 
-export const EntityRelationInfoSchemaSchema = z.object({
-  "from": EntityIdSchema,
-  "to": EntityIdSchema,
-  "type": z.string(),
-  "typeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-  "additionalInfo": JsonNodeSchema,
-  "fromName": z.string(),
-  "toName": z.string()
+const EntityRelationInfoSchemaImpl = z.object({
+  "from": EntityIdSchema.optional(),
+  "to": EntityIdSchema.optional(),
+  "type": z.string().optional(),
+  "typeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "fromName": z.string().optional(),
+  "toName": z.string().optional()
 });
 export type EntityRelationInfo = z.infer<typeof EntityRelationInfoSchema>;
 
-export const EntityRelationsQuerySchemaSchema = z.object({
-  "filters": z.array(RelationEntityTypeFilterSchema),
-  "parameters": RelationsSearchParametersSchema
+const EntityRelationsQuerySchemaImpl = z.object({
+  "filters": z.array(RelationEntityTypeFilterSchema).optional(),
+  "parameters": RelationsSearchParametersSchema.optional()
 });
 export type EntityRelationsQuery = z.infer<typeof EntityRelationsQuerySchema>;
 
-export const EntitySubtypeSchemaSchema = z.object({
-  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "tenantId": TenantIdSchema,
-  "type": z.string()
+const EntitySubtypeSchemaImpl = z.object({
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "type": z.string().optional()
 });
 export type EntitySubtype = z.infer<typeof EntitySubtypeSchema>;
 
-export const EntityTypeFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityTypeFilterSchemaImpl = z.object({
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
 export type EntityTypeFilter = z.infer<typeof EntityTypeFilterSchema>;
 
-export const EntityTypeLoadResultSchemaSchema = z.object({
-  "created": z.number(),
-  "deleted": z.number(),
-  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "groupsCreated": z.number(),
-  "groupsDeleted": z.number(),
-  "groupsUpdated": z.number(),
-  "updated": z.number()
+const EntityTypeLoadResultSchemaImpl = z.object({
+  "created": z.number().optional(),
+  "deleted": z.number().optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "groupsCreated": z.number().optional(),
+  "groupsDeleted": z.number().optional(),
+  "groupsUpdated": z.number().optional(),
+  "updated": z.number().optional()
 });
 export type EntityTypeLoadResult = z.infer<typeof EntityTypeLoadResultSchema>;
 
-export const EntityTypeVersionCreateConfigSchemaSchema = z.object({
-  "allEntities": z.boolean(),
-  "entityIds": z.array(z.string()),
-  "saveAttributes": z.boolean(),
-  "saveCredentials": z.boolean(),
-  "saveGroupEntities": z.boolean(),
-  "savePermissions": z.boolean(),
-  "saveRelations": z.boolean(),
-  "syncStrategy": z.enum(["MERGE", "OVERWRITE"])
+const EntityTypeVersionCreateConfigSchemaImpl = z.object({
+  "allEntities": z.boolean().optional(),
+  "entityIds": z.array(z.string()).optional(),
+  "saveAttributes": z.boolean().optional(),
+  "saveCredentials": z.boolean().optional(),
+  "saveGroupEntities": z.boolean().optional(),
+  "savePermissions": z.boolean().optional(),
+  "saveRelations": z.boolean().optional(),
+  "syncStrategy": z.enum(["MERGE", "OVERWRITE"]).optional()
 });
 export type EntityTypeVersionCreateConfig = z.infer<typeof EntityTypeVersionCreateConfigSchema>;
 
-export const EntityTypeVersionLoadConfigSchemaSchema = z.object({
-  "autoGenerateIntegrationKey": z.boolean(),
-  "findExistingEntityByName": z.boolean(),
-  "loadAttributes": z.boolean(),
-  "loadCredentials": z.boolean(),
-  "loadGroupEntities": z.boolean(),
-  "loadPermissions": z.boolean(),
-  "loadRelations": z.boolean(),
-  "removeOtherEntities": z.boolean()
+const EntityTypeVersionLoadConfigSchemaImpl = z.object({
+  "autoGenerateIntegrationKey": z.boolean().optional(),
+  "findExistingEntityByName": z.boolean().optional(),
+  "loadAttributes": z.boolean().optional(),
+  "loadCredentials": z.boolean().optional(),
+  "loadGroupEntities": z.boolean().optional(),
+  "loadPermissions": z.boolean().optional(),
+  "loadRelations": z.boolean().optional(),
+  "removeOtherEntities": z.boolean().optional()
 });
 export type EntityTypeVersionLoadConfig = z.infer<typeof EntityTypeVersionLoadConfigSchema>;
 
-export const EntityTypeVersionLoadRequestSchemaSchema = z.lazy(() => z.object({}));
+const EntityTypeVersionLoadRequestSchemaImpl = z.object({
+  "entityTypes": z.object({
+
+}).optional(),
+  "type": z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+  "versionId": z.string().optional()
+});
 export type EntityTypeVersionLoadRequest = z.infer<typeof EntityTypeVersionLoadRequestSchema>;
 
-export const EntityVersionSchemaSchema = z.object({
-  "author": z.string(),
-  "id": z.string(),
-  "name": z.string(),
-  "timestamp": z.number()
+const EntityVersionSchemaImpl = z.object({
+  "author": z.string().optional(),
+  "id": z.string().optional(),
+  "name": z.string().optional(),
+  "timestamp": z.number().optional()
 });
 export type EntityVersion = z.infer<typeof EntityVersionSchema>;
 
-export const EntityViewSchemaSchema = z.object({
-  "id": EntityViewIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const EntityViewSchemaImpl = z.object({
+  "id": EntityViewIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
-  "entityId": EntityIdSchema,
-  "keys": TelemetryEntityViewSchema,
-  "startTimeMs": z.number(),
-  "endTimeMs": z.number(),
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema
+  "entityId": EntityIdSchema.optional(),
+  "keys": TelemetryEntityViewSchema.optional(),
+  "startTimeMs": z.number().optional(),
+  "endTimeMs": z.number().optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional()
 });
 export type EntityView = z.infer<typeof EntityViewSchema>;
 
-export const EntityViewIdSchemaSchema = z.object({
+const EntityViewIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ENTITY_VIEW"])
 });
 export type EntityViewId = z.infer<typeof EntityViewIdSchema>;
 
-export const EntityViewInfoSchemaSchema = z.object({
-  "id": EntityViewIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const EntityViewInfoSchemaImpl = z.object({
+  "id": EntityViewIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "name": z.string(),
   "type": z.string(),
-  "entityId": EntityIdSchema,
-  "keys": TelemetryEntityViewSchema,
-  "startTimeMs": z.number(),
-  "endTimeMs": z.number(),
-  "additionalInfo": JsonNodeSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema),
-  "ownerId": EntityIdSchema
+  "entityId": EntityIdSchema.optional(),
+  "keys": TelemetryEntityViewSchema.optional(),
+  "startTimeMs": z.number().optional(),
+  "endTimeMs": z.number().optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional(),
+  "ownerId": EntityIdSchema.optional()
 });
 export type EntityViewInfo = z.infer<typeof EntityViewInfoSchema>;
 
-export const EntityViewSearchQuerySchemaSchema = z.object({
-  "relationType": z.string(),
-  "entityViewTypes": z.array(z.string()),
-  "parameters": RelationsSearchParametersSchema
+const EntityViewSearchQuerySchemaImpl = z.object({
+  "relationType": z.string().optional(),
+  "entityViewTypes": z.array(z.string()).optional(),
+  "parameters": RelationsSearchParametersSchema.optional()
 });
 export type EntityViewSearchQuery = z.infer<typeof EntityViewSearchQuerySchema>;
 
-export const EntityViewSearchQueryFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityViewSearchQueryFilterSchemaImpl = z.object({
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "entityViewTypes": z.array(z.string()).optional(),
+  "fetchLastLevelOnly": z.boolean().optional(),
+  "maxLevel": z.number().optional(),
+  "relationType": z.string().optional(),
+  "rootEntity": EntityIdSchema.optional()
+});
 export type EntityViewSearchQueryFilter = z.infer<typeof EntityViewSearchQueryFilterSchema>;
 
-export const EntityViewTypeFilterSchemaSchema = z.lazy(() => z.object({}));
+const EntityViewTypeFilterSchemaImpl = z.object({
+  "entityViewNameFilter": z.string().optional(),
+  "entityViewTypes": z.array(z.string()).optional()
+});
 export type EntityViewTypeFilter = z.infer<typeof EntityViewTypeFilterSchema>;
 
-export const ErrorEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const ErrorEventFilterSchemaImpl = z.object({
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "method": z.string().optional(),
+  "errorStr": z.string().optional()
+});
 export type ErrorEventFilter = z.infer<typeof ErrorEventFilterSchema>;
 
-export const EscalatedNotificationRuleRecipientsConfigSchemaSchema = z.object({
-  "escalationTable": z.record(z.string(), z.array(z.string())),
+const EscalatedNotificationRuleRecipientsConfigSchemaImpl = z.object({
+  "escalationTable": z.object({
+
+}).optional(),
   "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
 export type EscalatedNotificationRuleRecipientsConfig = z.infer<typeof EscalatedNotificationRuleRecipientsConfigSchema>;
 
-export const EventFilterSchemaSchema = z.object({
-  "notEmpty": z.boolean(),
+const EventFilterSchemaImpl = z.object({
+  "notEmpty": z.boolean().optional(),
   "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"])
 });
 export type EventFilter = z.infer<typeof EventFilterSchema>;
 
-export const EventIdSchemaSchema = z.object({
+const EventIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type EventId = z.infer<typeof EventIdSchema>;
 
-export const EventInfoSchemaSchema = z.object({
-  "id": EventIdSchema,
-  "tenantId": TenantIdSchema,
-  "type": z.string(),
-  "uid": z.string(),
-  "entityId": EntityIdSchema,
-  "body": JsonNodeSchema,
-  "createdTime": z.number()
+const EventInfoSchemaImpl = z.object({
+  "id": EventIdSchema.optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "type": z.string().optional(),
+  "uid": z.string().optional(),
+  "entityId": EntityIdSchema.optional(),
+  "body": JsonNodeSchema.optional(),
+  "createdTime": z.number().optional()
 });
 export type EventInfo = z.infer<typeof EventInfoSchema>;
 
-export const ExportableEntity_Of_EntityIdSchemaSchema = z.object({
-  "createdTime": z.number(),
-  "id": EntityIdSchema,
-  "name": z.string()
+const ExportableEntity_Of_EntityIdSchemaImpl = z.object({
+  "createdTime": z.number().optional(),
+  "id": EntityIdSchema.optional(),
+  "name": z.string().optional()
 });
 export type ExportableEntity_Of_EntityId = z.infer<typeof ExportableEntity_Of_EntityIdSchema>;
 
-export const FaviconSchemaSchema = z.object({
-  "url": z.string()
+const FaviconSchemaImpl = z.object({
+  "url": z.string().optional()
 });
 export type Favicon = z.infer<typeof FaviconSchema>;
 
-export const FeaturesInfoSchemaSchema = z.object({
-  "emailEnabled": z.boolean(),
-  "notificationEnabled": z.boolean(),
-  "oauthEnabled": z.boolean(),
-  "smsEnabled": z.boolean(),
-  "twoFaEnabled": z.boolean(),
-  "whiteLabelingEnabled": z.boolean()
+const FeaturesInfoSchemaImpl = z.object({
+  "emailEnabled": z.boolean().optional(),
+  "notificationEnabled": z.boolean().optional(),
+  "oauthEnabled": z.boolean().optional(),
+  "smsEnabled": z.boolean().optional(),
+  "twoFaEnabled": z.boolean().optional(),
+  "whiteLabelingEnabled": z.boolean().optional()
 });
 export type FeaturesInfo = z.infer<typeof FeaturesInfoSchema>;
 
-export const FilterPredicateValue_Of_booleanSchemaSchema = z.object({
-  "defaultValue": z.boolean(),
-  "dynamicValue": DynamicValue_Of_booleanSchema,
-  "userValue": z.boolean()
+const FilterPredicateValue_Of_booleanSchemaImpl = z.object({
+  "defaultValue": z.boolean().optional(),
+  "dynamicValue": DynamicValue_Of_booleanSchema.optional(),
+  "userValue": z.boolean().optional()
 });
 export type FilterPredicateValue_Of_boolean = z.infer<typeof FilterPredicateValue_Of_booleanSchema>;
 
-export const FilterPredicateValue_Of_doubleSchemaSchema = z.object({
-  "defaultValue": z.number(),
-  "dynamicValue": DynamicValue_Of_doubleSchema,
-  "userValue": z.number()
+const FilterPredicateValue_Of_doubleSchemaImpl = z.object({
+  "defaultValue": z.number().optional(),
+  "dynamicValue": DynamicValue_Of_doubleSchema.optional(),
+  "userValue": z.number().optional()
 });
 export type FilterPredicateValue_Of_double = z.infer<typeof FilterPredicateValue_Of_doubleSchema>;
 
-export const FilterPredicateValue_Of_intSchemaSchema = z.object({
-  "defaultValue": z.number(),
-  "dynamicValue": DynamicValue_Of_intSchema,
-  "userValue": z.number()
+const FilterPredicateValue_Of_intSchemaImpl = z.object({
+  "defaultValue": z.number().optional(),
+  "dynamicValue": DynamicValue_Of_intSchema.optional(),
+  "userValue": z.number().optional()
 });
 export type FilterPredicateValue_Of_int = z.infer<typeof FilterPredicateValue_Of_intSchema>;
 
-export const FilterPredicateValue_Of_longSchemaSchema = z.object({
-  "defaultValue": z.number(),
-  "dynamicValue": DynamicValue_Of_longSchema,
-  "userValue": z.number()
+const FilterPredicateValue_Of_longSchemaImpl = z.object({
+  "defaultValue": z.number().optional(),
+  "dynamicValue": DynamicValue_Of_longSchema.optional(),
+  "userValue": z.number().optional()
 });
 export type FilterPredicateValue_Of_long = z.infer<typeof FilterPredicateValue_Of_longSchema>;
 
-export const FilterPredicateValue_Of_stringSchemaSchema = z.object({
-  "defaultValue": z.string(),
-  "dynamicValue": DynamicValue_Of_stringSchema,
-  "userValue": z.string()
+const FilterPredicateValue_Of_stringSchemaImpl = z.object({
+  "defaultValue": z.string().optional(),
+  "dynamicValue": DynamicValue_Of_stringSchema.optional(),
+  "userValue": z.string().optional()
 });
 export type FilterPredicateValue_Of_string = z.infer<typeof FilterPredicateValue_Of_stringSchema>;
 
-export const GroupEntityExportDataSchemaSchema = z.lazy(() => z.object({}));
+const GroupEntityExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": ExportableEntity_Of_EntityIdSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "relations": z.array(EntityRelationSchema).optional()
+});
 export type GroupEntityExportData = z.infer<typeof GroupEntityExportDataSchema>;
 
-export const GroupPermissionSchemaSchema = z.object({
-  "public": z.boolean(),
-  "id": GroupPermissionIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "userGroupId": EntityGroupIdSchema,
-  "roleId": RoleIdSchema,
-  "entityGroupId": EntityGroupIdSchema,
-  "entityGroupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "name": z.string()
+const GroupPermissionSchemaImpl = z.object({
+  "public": z.boolean().optional(),
+  "id": GroupPermissionIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "userGroupId": EntityGroupIdSchema.optional(),
+  "roleId": RoleIdSchema.optional(),
+  "entityGroupId": EntityGroupIdSchema.optional(),
+  "entityGroupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "name": z.string().optional()
 });
 export type GroupPermission = z.infer<typeof GroupPermissionSchema>;
 
-export const GroupPermissionIdSchemaSchema = z.object({
+const GroupPermissionIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["GROUP_PERMISSION"])
 });
 export type GroupPermissionId = z.infer<typeof GroupPermissionIdSchema>;
 
-export const GroupPermissionInfoSchemaSchema = z.object({
-  "public": z.boolean(),
-  "readOnly": z.boolean(),
-  "id": GroupPermissionIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "userGroupId": EntityGroupIdSchema,
-  "roleId": RoleIdSchema,
-  "entityGroupId": EntityGroupIdSchema,
-  "entityGroupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "name": z.string(),
-  "role": RoleSchema,
-  "entityGroupName": z.string(),
-  "entityGroupOwnerId": EntityIdSchema,
-  "entityGroupOwnerName": z.string(),
-  "userGroupName": z.string(),
-  "userGroupOwnerId": EntityIdSchema,
-  "userGroupOwnerName": z.string()
+const GroupPermissionInfoSchemaImpl = z.object({
+  "public": z.boolean().optional(),
+  "readOnly": z.boolean().optional(),
+  "id": GroupPermissionIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "userGroupId": EntityGroupIdSchema.optional(),
+  "roleId": RoleIdSchema.optional(),
+  "entityGroupId": EntityGroupIdSchema.optional(),
+  "entityGroupType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "name": z.string().optional(),
+  "role": RoleSchema.optional(),
+  "entityGroupName": z.string().optional(),
+  "entityGroupOwnerId": EntityIdSchema.optional(),
+  "entityGroupOwnerName": z.string().optional(),
+  "userGroupName": z.string().optional(),
+  "userGroupOwnerId": EntityIdSchema.optional(),
+  "userGroupOwnerName": z.string().optional()
 });
 export type GroupPermissionInfo = z.infer<typeof GroupPermissionInfoSchema>;
 
-export const HasId_Of_objectSchemaSchema = z.object({
-  "id": z.object({})
+const HasId_Of_objectSchemaImpl = z.object({
+  "id": z.object({
+
+}).optional()
 });
 export type HasId_Of_object = z.infer<typeof HasId_Of_objectSchema>;
 
-export const HomeDashboardSchemaSchema = z.object({
-  "id": DashboardIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
-  "title": z.string(),
-  "image": z.string(),
-  "assignedCustomers": z.array(ShortCustomerInfoSchema),
-  "mobileHide": z.boolean(),
-  "mobileOrder": z.number(),
-  "name": z.string(),
-  "configuration": JsonNodeSchema,
-  "hideDashboardToolbar": z.boolean()
+const HomeDashboardSchemaImpl = z.object({
+  "id": DashboardIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "title": z.string().optional(),
+  "image": z.string().optional(),
+  "assignedCustomers": z.array(ShortCustomerInfoSchema).optional(),
+  "mobileHide": z.boolean().optional(),
+  "mobileOrder": z.number().optional(),
+  "name": z.string().optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "hideDashboardToolbar": z.boolean().optional()
 });
 export type HomeDashboard = z.infer<typeof HomeDashboardSchema>;
 
-export const HomeDashboardInfoSchemaSchema = z.object({
-  "dashboardId": DashboardIdSchema,
-  "hideDashboardToolbar": z.boolean()
+const HomeDashboardInfoSchemaImpl = z.object({
+  "dashboardId": DashboardIdSchema.optional(),
+  "hideDashboardToolbar": z.boolean().optional()
 });
 export type HomeDashboardInfo = z.infer<typeof HomeDashboardInfoSchema>;
 
-export const ImageExportDataSchemaSchema = z.object({
-  "data": z.string(),
-  "fileName": z.string(),
-  "mediaType": z.string(),
-  "public": z.boolean(),
-  "publicResourceKey": z.string(),
-  "resourceKey": z.string(),
-  "title": z.string()
+const ImageExportDataSchemaImpl = z.object({
+  "data": z.string().optional(),
+  "fileName": z.string().optional(),
+  "mediaType": z.string().optional(),
+  "public": z.boolean().optional(),
+  "publicResourceKey": z.string().optional(),
+  "resourceKey": z.string().optional(),
+  "title": z.string().optional()
 });
 export type ImageExportData = z.infer<typeof ImageExportDataSchema>;
 
-export const InputStreamSchemaSchema = z.object({});
+const InputStreamSchemaImpl = z.object({
+
+});
 export type InputStream = z.infer<typeof InputStreamSchema>;
 
-export const IntegrationSchemaSchema = z.object({
-  "id": IntegrationIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
+const IntegrationSchemaImpl = z.object({
+  "id": IntegrationIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
   "defaultConverterId": ConverterIdSchema,
-  "downlinkConverterId": ConverterIdSchema,
+  "downlinkConverterId": ConverterIdSchema.optional(),
   "routingKey": z.string(),
   "type": z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"]),
-  "debugMode": z.boolean(),
-  "enabled": z.boolean(),
-  "remote": z.boolean(),
-  "allowCreateDevicesOrAssets": z.boolean(),
-  "secret": z.string(),
+  "debugMode": z.boolean().optional(),
+  "enabled": z.boolean().optional(),
+  "remote": z.boolean().optional(),
+  "allowCreateDevicesOrAssets": z.boolean().optional(),
+  "secret": z.string().optional(),
   "configuration": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema,
+  "additionalInfo": JsonNodeSchema.optional(),
   "name": z.string(),
-  "edgeTemplate": z.boolean()
+  "edgeTemplate": z.boolean().optional()
 });
 export type Integration = z.infer<typeof IntegrationSchema>;
 
-export const IntegrationIdSchemaSchema = z.object({
+const IntegrationIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["INTEGRATION"])
 });
 export type IntegrationId = z.infer<typeof IntegrationIdSchema>;
 
-export const IntegrationInfoSchemaSchema = z.object({
-  "stats": ArrayNodeSchema,
-  "status": ObjectNodeSchema,
-  "id": IntegrationIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
+const IntegrationInfoSchemaImpl = z.object({
+  "stats": ArrayNodeSchema.optional(),
+  "status": ObjectNodeSchema.optional(),
+  "id": IntegrationIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
   "type": z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"]),
-  "debugMode": z.boolean(),
-  "enabled": z.boolean(),
-  "remote": z.boolean(),
-  "allowCreateDevicesOrAssets": z.boolean(),
+  "debugMode": z.boolean().optional(),
+  "enabled": z.boolean().optional(),
+  "remote": z.boolean().optional(),
+  "allowCreateDevicesOrAssets": z.boolean().optional(),
   "name": z.string(),
-  "edgeTemplate": z.boolean()
+  "edgeTemplate": z.boolean().optional()
 });
 export type IntegrationInfo = z.infer<typeof IntegrationInfoSchema>;
 
-export const IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaSchema = z.object({
-  "integrationTypes": z.array(z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"])),
-  "integrations": z.array(z.string()),
-  "notifyOn": z.array(z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])),
-  "onlyOnError": z.boolean(),
-  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "integrationTypes": z.array(z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"])).optional(),
+  "integrations": z.array(z.string()).optional(),
+  "notifyOn": z.array(z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+  "onlyOnError": z.boolean().optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
 export type IntegrationLifecycleEventNotificationRuleTriggerConfig = z.infer<typeof IntegrationLifecycleEventNotificationRuleTriggerConfigSchema>;
 
-export const JWT_PairSchemaSchema = z.object({
-  "scope": z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-  "refreshToken": z.string(),
-  "token": z.string()
+const JWT_PairSchemaImpl = z.object({
+  "scope": z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]).optional(),
+  "refreshToken": z.string().optional(),
+  "token": z.string().optional()
 });
 export type JWT_Pair = z.infer<typeof JWT_PairSchema>;
 
-export const JWT_SettingsSchemaSchema = z.object({
-  "tokenExpirationTime": z.number(),
-  "refreshTokenExpTime": z.number(),
-  "tokenIssuer": z.string(),
-  "tokenSigningKey": z.string()
+const JWT_SettingsSchemaImpl = z.object({
+  "tokenExpirationTime": z.number().optional(),
+  "refreshTokenExpTime": z.number().optional(),
+  "tokenIssuer": z.string().optional(),
+  "tokenSigningKey": z.string().optional()
 });
 export type JWT_Settings = z.infer<typeof JWT_SettingsSchema>;
 
-export const JsonNodeSchemaSchema = z.object({});
+const JsonNodeSchemaImpl = z.object({
+
+});
 export type JsonNode = z.infer<typeof JsonNodeSchema>;
 
-export const JsonTransportPayloadConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const JsonTransportPayloadConfigurationSchemaImpl = z.any();
 export type JsonTransportPayloadConfiguration = z.infer<typeof JsonTransportPayloadConfigurationSchema>;
 
-export const KeyFilterSchemaSchema = z.object({
-  "key": EntityKeySchema,
-  "predicate": KeyFilterPredicateSchema,
-  "valueType": z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"])
+const KeyFilterSchemaImpl = z.object({
+  "key": EntityKeySchema.optional(),
+  "predicate": KeyFilterPredicateSchema.optional(),
+  "valueType": z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]).optional()
 });
 export type KeyFilter = z.infer<typeof KeyFilterSchema>;
 
-export const KeyFilterPredicateSchemaSchema = z.object({});
+const KeyFilterPredicateSchemaImpl = z.object({
+
+});
 export type KeyFilterPredicate = z.infer<typeof KeyFilterPredicateSchema>;
 
-export const LastVisitedDashboardInfoSchemaSchema = z.object({
-  "id": z.string(),
-  "title": z.string(),
-  "starred": z.boolean(),
-  "lastVisited": z.number()
+const LastVisitedDashboardInfoSchemaImpl = z.object({
+  "id": z.string().optional(),
+  "title": z.string().optional(),
+  "starred": z.boolean().optional(),
+  "lastVisited": z.number().optional()
 });
 export type LastVisitedDashboardInfo = z.infer<typeof LastVisitedDashboardInfoSchema>;
 
-export const LicenseUsageInfoSchemaSchema = z.object({
-  "assetsCount": z.number(),
-  "dashboardsCount": z.number(),
-  "development": z.boolean(),
-  "devicesCount": z.number(),
-  "integrationsCount": z.number(),
-  "maxAssets": z.number(),
-  "maxDevices": z.number(),
-  "plan": z.string(),
-  "whiteLabelingEnabled": z.boolean()
+const LicenseUsageInfoSchemaImpl = z.object({
+  "assetsCount": z.number().optional(),
+  "dashboardsCount": z.number().optional(),
+  "development": z.boolean().optional(),
+  "devicesCount": z.number().optional(),
+  "integrationsCount": z.number().optional(),
+  "maxAssets": z.number().optional(),
+  "maxDevices": z.number().optional(),
+  "plan": z.string().optional(),
+  "whiteLabelingEnabled": z.boolean().optional()
 });
 export type LicenseUsageInfo = z.infer<typeof LicenseUsageInfoSchema>;
 
-export const LifeCycleEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const LifeCycleEventFilterSchemaImpl = z.object({
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "event": z.string().optional(),
+  "status": z.enum(["Failure", "Success"]).optional(),
+  "errorStr": z.string().optional()
+});
 export type LifeCycleEventFilter = z.infer<typeof LifeCycleEventFilterSchema>;
 
-export const LoginRequestSchemaSchema = z.object({
+const LoginRequestSchemaImpl = z.object({
   "username": z.string(),
   "password": z.string()
 });
 export type LoginRequest = z.infer<typeof LoginRequestSchema>;
 
-export const LoginResponseSchemaSchema = z.object({
+const LoginResponseSchemaImpl = z.object({
   "token": z.string(),
   "refreshToken": z.string()
 });
 export type LoginResponse = z.infer<typeof LoginResponseSchema>;
 
-export const LoginWhiteLabelingParamsSchemaSchema = z.object({
-  "logoImageUrl": z.string(),
-  "logoImageHeight": z.number(),
-  "appTitle": z.string(),
-  "favicon": FaviconSchema,
-  "paletteSettings": PaletteSettingsSchema,
-  "helpLinkBaseUrl": z.string(),
-  "uiHelpBaseUrl": z.string(),
-  "enableHelpLinks": z.boolean(),
-  "whiteLabelingEnabled": z.boolean(),
-  "showNameVersion": z.boolean(),
-  "platformName": z.string(),
-  "platformVersion": z.string(),
-  "customCss": z.string(),
-  "pageBackgroundColor": z.string(),
-  "darkForeground": z.boolean(),
-  "domainName": z.string(),
-  "baseUrl": z.string(),
-  "prohibitDifferentUrl": z.boolean(),
-  "adminSettingsId": z.string(),
-  "showNameBottom": z.boolean()
+const LoginWhiteLabelingParamsSchemaImpl = z.object({
+  "logoImageUrl": z.string().optional(),
+  "logoImageHeight": z.number().optional(),
+  "appTitle": z.string().optional(),
+  "favicon": FaviconSchema.optional(),
+  "paletteSettings": PaletteSettingsSchema.optional(),
+  "helpLinkBaseUrl": z.string().optional(),
+  "uiHelpBaseUrl": z.string().optional(),
+  "enableHelpLinks": z.boolean().optional(),
+  "whiteLabelingEnabled": z.boolean().optional(),
+  "showNameVersion": z.boolean().optional(),
+  "platformName": z.string().optional(),
+  "platformVersion": z.string().optional(),
+  "customCss": z.string().optional(),
+  "pageBackgroundColor": z.string().optional(),
+  "darkForeground": z.boolean().optional(),
+  "domainName": z.string().optional(),
+  "baseUrl": z.string().optional(),
+  "prohibitDifferentUrl": z.boolean().optional(),
+  "adminSettingsId": z.string().optional(),
+  "showNameBottom": z.boolean().optional()
 });
 export type LoginWhiteLabelingParams = z.infer<typeof LoginWhiteLabelingParamsSchema>;
 
-export const LwM2MBootstrapServerCredentialSchemaSchema = z.object({});
+const LwM2MBootstrapServerCredentialSchemaImpl = z.object({
+
+});
 export type LwM2MBootstrapServerCredential = z.infer<typeof LwM2MBootstrapServerCredentialSchema>;
 
-export const LwM2mInstanceSchemaSchema = z.object({
-  "id": z.number(),
-  "resources": z.array(LwM2mResourceObserveSchema)
+const LwM2mInstanceSchemaImpl = z.object({
+  "id": z.number().optional(),
+  "resources": z.array(LwM2mResourceObserveSchema).optional()
 });
 export type LwM2mInstance = z.infer<typeof LwM2mInstanceSchema>;
 
-export const LwM2mObjectSchemaSchema = z.object({
-  "id": z.number(),
-  "keyId": z.string(),
-  "name": z.string(),
-  "multiple": z.boolean(),
-  "mandatory": z.boolean(),
-  "instances": z.array(LwM2mInstanceSchema)
+const LwM2mObjectSchemaImpl = z.object({
+  "id": z.number().optional(),
+  "keyId": z.string().optional(),
+  "name": z.string().optional(),
+  "multiple": z.boolean().optional(),
+  "mandatory": z.boolean().optional(),
+  "instances": z.array(LwM2mInstanceSchema).optional()
 });
 export type LwM2mObject = z.infer<typeof LwM2mObjectSchema>;
 
-export const LwM2mResourceObserveSchemaSchema = z.object({
-  "id": z.number(),
-  "name": z.string(),
-  "observe": z.boolean(),
-  "attribute": z.boolean(),
-  "telemetry": z.boolean(),
-  "keyName": z.string()
+const LwM2mResourceObserveSchemaImpl = z.object({
+  "id": z.number().optional(),
+  "name": z.string().optional(),
+  "observe": z.boolean().optional(),
+  "attribute": z.boolean().optional(),
+  "telemetry": z.boolean().optional(),
+  "keyName": z.string().optional()
 });
 export type LwM2mResourceObserve = z.infer<typeof LwM2mResourceObserveSchema>;
 
-export const Lwm2mDeviceProfileTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const Lwm2mDeviceProfileTransportConfigurationSchemaImpl = z.object({
+  "bootstrap": z.array(LwM2MBootstrapServerCredentialSchema).optional(),
+  "bootstrapServerUpdateEnable": z.boolean().optional(),
+  "clientLwM2mSettings": OtherConfigurationSchema.optional(),
+  "observeAttr": TelemetryMappingConfigurationSchema.optional()
+});
 export type Lwm2mDeviceProfileTransportConfiguration = z.infer<typeof Lwm2mDeviceProfileTransportConfigurationSchema>;
 
-export const Lwm2mDeviceTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const Lwm2mDeviceTransportConfigurationSchemaImpl = z.object({
+  "edrxCycle": z.number().optional(),
+  "pagingTransmissionWindow": z.number().optional(),
+  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+  "psmActivityTimer": z.number().optional()
+});
 export type Lwm2mDeviceTransportConfiguration = z.infer<typeof Lwm2mDeviceTransportConfigurationSchema>;
 
-export const MappingSchemaSchema = z.object({
-  "columns": z.array(ColumnMappingSchema),
-  "delimiter": z.string(),
-  "header": z.boolean(),
-  "update": z.boolean()
+const MappingSchemaImpl = z.object({
+  "columns": z.array(ColumnMappingSchema).optional(),
+  "delimiter": z.string().optional(),
+  "header": z.boolean().optional(),
+  "update": z.boolean().optional()
 });
 export type Mapping = z.infer<typeof MappingSchema>;
 
-export const MergedGroupPermissionInfoSchemaSchema = z.object({
-  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "operations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"]))
+const MergedGroupPermissionInfoSchemaImpl = z.object({
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "operations": z.array(z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional()
 });
 export type MergedGroupPermissionInfo = z.infer<typeof MergedGroupPermissionInfoSchema>;
 
-export const MergedGroupTypePermissionInfoSchemaSchema = z.object({
-  "hasGenericRead": z.boolean(),
-  "entityGroupIds": z.array(EntityGroupIdSchema)
+const MergedGroupTypePermissionInfoSchemaImpl = z.object({
+  "hasGenericRead": z.boolean().optional(),
+  "entityGroupIds": z.array(EntityGroupIdSchema).optional()
 });
 export type MergedGroupTypePermissionInfo = z.infer<typeof MergedGroupTypePermissionInfoSchema>;
 
-export const MergedUserPermissionsSchemaSchema = z.object({
-  "genericPermissions": z.record(z.string(), z.array(z.string())),
-  "groupPermissions": z.record(z.string(), MergedGroupPermissionInfoSchema),
-  "readGroupPermissions": z.record(z.string(), MergedGroupTypePermissionInfoSchema),
-  "readEntityPermissions": z.record(z.string(), MergedGroupTypePermissionInfoSchema),
-  "readAttrPermissions": z.record(z.string(), MergedGroupTypePermissionInfoSchema),
-  "readTsPermissions": z.record(z.string(), MergedGroupTypePermissionInfoSchema)
+const MergedUserPermissionsSchemaImpl = z.object({
+  "genericPermissions": z.object({
+
+}).optional(),
+  "groupPermissions": z.object({
+
+}).optional(),
+  "readGroupPermissions": z.object({
+
+}).optional(),
+  "readEntityPermissions": z.object({
+
+}).optional(),
+  "readAttrPermissions": z.object({
+
+}).optional(),
+  "readTsPermissions": z.object({
+
+}).optional()
 });
 export type MergedUserPermissions = z.infer<typeof MergedUserPermissionsSchema>;
 
-export const MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaSchema = z.object({
-  "body": z.string(),
-  "button": ButtonSchema,
-  "enabled": z.boolean(),
-  "subject": z.string(),
-  "themeColor": z.string()
+const MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "body": z.string().optional(),
+  "button": ButtonSchema.optional(),
+  "enabled": z.boolean().optional(),
+  "subject": z.string().optional(),
+  "themeColor": z.string().optional()
 });
 export type MicrosoftTeamsDeliveryMethodNotificationTemplate = z.infer<typeof MicrosoftTeamsDeliveryMethodNotificationTemplateSchema>;
 
-export const MicrosoftTeamsNotificationTargetConfigSchemaSchema = z.lazy(() => z.object({}));
+const MicrosoftTeamsNotificationTargetConfigSchemaImpl = z.object({
+  "channelName": z.string().optional(),
+  "description": z.string().optional(),
+  "email": z.string().optional(),
+  "firstName": z.string().optional(),
+  "id": z.object({
+
+}).optional(),
+  "lastName": z.string().optional(),
+  "title": z.string().optional(),
+  "webhookUrl": z.string().optional()
+});
 export type MicrosoftTeamsNotificationTargetConfig = z.infer<typeof MicrosoftTeamsNotificationTargetConfigSchema>;
 
-export const MqttDeviceProfileTransportConfigurationSchemaSchema = z.object({
-  "deviceAttributesSubscribeTopic": z.string(),
-  "deviceAttributesTopic": z.string(),
-  "deviceTelemetryTopic": z.string(),
-  "sendAckOnValidationException": z.boolean(),
-  "sparkplug": z.boolean(),
-  "sparkplugAttributesMetricNames": z.array(z.string()),
-  "transportPayloadTypeConfiguration": TransportPayloadTypeConfigurationSchema
+const MqttDeviceProfileTransportConfigurationSchemaImpl = z.object({
+  "deviceAttributesSubscribeTopic": z.string().optional(),
+  "deviceAttributesTopic": z.string().optional(),
+  "deviceTelemetryTopic": z.string().optional(),
+  "sendAckOnValidationException": z.boolean().optional(),
+  "sparkplug": z.boolean().optional(),
+  "sparkplugAttributesMetricNames": z.array(z.string()).optional(),
+  "transportPayloadTypeConfiguration": TransportPayloadTypeConfigurationSchema.optional()
 });
 export type MqttDeviceProfileTransportConfiguration = z.infer<typeof MqttDeviceProfileTransportConfigurationSchema>;
 
-export const MqttDeviceTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const MqttDeviceTransportConfigurationSchemaImpl = z.any();
 export type MqttDeviceTransportConfiguration = z.infer<typeof MqttDeviceTransportConfigurationSchema>;
 
-export const NewPlatformVersionNotificationRuleTriggerConfigSchemaSchema = z.object({
-  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const NewPlatformVersionNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
 export type NewPlatformVersionNotificationRuleTriggerConfig = z.infer<typeof NewPlatformVersionNotificationRuleTriggerConfigSchema>;
 
-export const NoSecLwM2MBootstrapServerCredentialSchemaSchema = z.object({
-  "shortServerId": z.number(),
-  "bootstrapServerIs": z.boolean(),
-  "host": z.string(),
-  "port": z.number(),
-  "clientHoldOffTime": z.number(),
-  "serverPublicKey": z.string(),
-  "serverCertificate": z.string(),
-  "bootstrapServerAccountTimeout": z.number(),
-  "lifetime": z.number(),
-  "defaultMinPeriod": z.number(),
-  "notifIfDisabled": z.boolean(),
-  "binding": z.string()
+const NoSecLwM2MBootstrapServerCredentialSchemaImpl = z.object({
+  "shortServerId": z.number().optional(),
+  "bootstrapServerIs": z.boolean().optional(),
+  "host": z.string().optional(),
+  "port": z.number().optional(),
+  "clientHoldOffTime": z.number().optional(),
+  "serverPublicKey": z.string().optional(),
+  "serverCertificate": z.string().optional(),
+  "bootstrapServerAccountTimeout": z.number().optional(),
+  "lifetime": z.number().optional(),
+  "defaultMinPeriod": z.number().optional(),
+  "notifIfDisabled": z.boolean().optional(),
+  "binding": z.string().optional()
 });
 export type NoSecLwM2MBootstrapServerCredential = z.infer<typeof NoSecLwM2MBootstrapServerCredentialSchema>;
 
-export const NodeConnectionInfoSchemaSchema = z.object({
+const NodeConnectionInfoSchemaImpl = z.object({
   "fromIndex": z.number(),
   "toIndex": z.number(),
   "type": z.string()
 });
 export type NodeConnectionInfo = z.infer<typeof NodeConnectionInfoSchema>;
 
-export const NotificationSchemaSchema = z.object({
-  "additionalConfig": JsonNodeSchema,
-  "createdTime": z.number(),
-  "id": NotificationIdSchema,
-  "info": NotificationInfoSchema,
-  "recipientId": UserIdSchema,
-  "requestId": NotificationRequestIdSchema,
-  "status": z.enum(["READ", "SENT"]),
-  "subject": z.string(),
-  "text": z.string(),
-  "type": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"])
+const NotificationSchemaImpl = z.object({
+  "additionalConfig": JsonNodeSchema.optional(),
+  "createdTime": z.number().optional(),
+  "id": NotificationIdSchema.optional(),
+  "info": NotificationInfoSchema.optional(),
+  "recipientId": UserIdSchema.optional(),
+  "requestId": NotificationRequestIdSchema.optional(),
+  "status": z.enum(["READ", "SENT"]).optional(),
+  "subject": z.string().optional(),
+  "text": z.string().optional(),
+  "type": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"]).optional()
 });
 export type Notification = z.infer<typeof NotificationSchema>;
 
-export const NotificationDeliveryMethodConfigSchemaSchema = z.object({});
+const NotificationDeliveryMethodConfigSchemaImpl = z.object({
+
+});
 export type NotificationDeliveryMethodConfig = z.infer<typeof NotificationDeliveryMethodConfigSchema>;
 
-export const NotificationIdSchemaSchema = z.object({
+const NotificationIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["NOTIFICATION"])
 });
 export type NotificationId = z.infer<typeof NotificationIdSchema>;
 
-export const NotificationInfoSchemaSchema = z.object({
-  "stateEntityId": EntityIdSchema
+const NotificationInfoSchemaImpl = z.object({
+  "stateEntityId": EntityIdSchema.optional()
 });
 export type NotificationInfo = z.infer<typeof NotificationInfoSchema>;
 
-export const NotificationPrefSchemaSchema = z.object({
-  "enabled": z.boolean(),
-  "enabledDeliveryMethods": z.record(z.string(), z.boolean())
+const NotificationPrefSchemaImpl = z.object({
+  "enabled": z.boolean().optional(),
+  "enabledDeliveryMethods": z.object({
+
+})
 });
 export type NotificationPref = z.infer<typeof NotificationPrefSchema>;
 
-export const NotificationRequestSchemaSchema = z.object({
-  "additionalConfig": NotificationRequestConfigSchema,
-  "createdTime": z.number(),
-  "id": NotificationRequestIdSchema,
-  "info": NotificationInfoSchema,
-  "originatorEntityId": EntityIdSchema,
-  "ruleId": NotificationRuleIdSchema,
-  "stats": NotificationRequestStatsSchema,
-  "status": z.enum(["PROCESSING", "SCHEDULED", "SENT"]),
-  "targets": z.array(z.string()),
-  "template": NotificationTemplateSchema,
-  "templateId": NotificationTemplateIdSchema,
-  "tenantId": TenantIdSchema
+const NotificationRequestSchemaImpl = z.object({
+  "additionalConfig": NotificationRequestConfigSchema.optional(),
+  "createdTime": z.number().optional(),
+  "id": NotificationRequestIdSchema.optional(),
+  "info": NotificationInfoSchema.optional(),
+  "originatorEntityId": EntityIdSchema.optional(),
+  "ruleId": NotificationRuleIdSchema.optional(),
+  "stats": NotificationRequestStatsSchema.optional(),
+  "status": z.enum(["PROCESSING", "SCHEDULED", "SENT"]).optional(),
+  "targets": z.array(z.string()).optional(),
+  "template": NotificationTemplateSchema.optional(),
+  "templateId": NotificationTemplateIdSchema.optional(),
+  "tenantId": TenantIdSchema.optional()
 });
 export type NotificationRequest = z.infer<typeof NotificationRequestSchema>;
 
-export const NotificationRequestConfigSchemaSchema = z.object({
-  "sendingDelayInSec": z.number()
+const NotificationRequestConfigSchemaImpl = z.object({
+  "sendingDelayInSec": z.number().optional()
 });
 export type NotificationRequestConfig = z.infer<typeof NotificationRequestConfigSchema>;
 
-export const NotificationRequestIdSchemaSchema = z.object({
+const NotificationRequestIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["NOTIFICATION_REQUEST"])
 });
 export type NotificationRequestId = z.infer<typeof NotificationRequestIdSchema>;
 
-export const NotificationRequestInfoSchemaSchema = z.object({
-  "additionalConfig": NotificationRequestConfigSchema,
-  "createdTime": z.number(),
-  "deliveryMethods": z.array(z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])),
-  "id": NotificationRequestIdSchema,
-  "info": NotificationInfoSchema,
-  "originatorEntityId": EntityIdSchema,
-  "ruleId": NotificationRuleIdSchema,
-  "stats": NotificationRequestStatsSchema,
-  "status": z.enum(["PROCESSING", "SCHEDULED", "SENT"]),
-  "targets": z.array(z.string()),
-  "template": NotificationTemplateSchema,
-  "templateId": NotificationTemplateIdSchema,
-  "templateName": z.string(),
-  "tenantId": TenantIdSchema
+const NotificationRequestInfoSchemaImpl = z.object({
+  "additionalConfig": NotificationRequestConfigSchema.optional(),
+  "createdTime": z.number().optional(),
+  "deliveryMethods": z.array(z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])).optional(),
+  "id": NotificationRequestIdSchema.optional(),
+  "info": NotificationInfoSchema.optional(),
+  "originatorEntityId": EntityIdSchema.optional(),
+  "ruleId": NotificationRuleIdSchema.optional(),
+  "stats": NotificationRequestStatsSchema.optional(),
+  "status": z.enum(["PROCESSING", "SCHEDULED", "SENT"]).optional(),
+  "targets": z.array(z.string()).optional(),
+  "template": NotificationTemplateSchema.optional(),
+  "templateId": NotificationTemplateIdSchema.optional(),
+  "templateName": z.string().optional(),
+  "tenantId": TenantIdSchema.optional()
 });
 export type NotificationRequestInfo = z.infer<typeof NotificationRequestInfoSchema>;
 
-export const NotificationRequestPreviewSchemaSchema = z.object({
-  "processedTemplates": z.record(z.string(), DeliveryMethodNotificationTemplateSchema),
-  "recipientsCountByTarget": z.record(z.string(), z.number()),
-  "recipientsPreview": z.array(z.string()),
-  "totalRecipientsCount": z.number()
+const NotificationRequestPreviewSchemaImpl = z.object({
+  "processedTemplates": z.object({
+
+}).optional(),
+  "recipientsCountByTarget": z.object({
+
+}).optional(),
+  "recipientsPreview": z.array(z.string()).optional(),
+  "totalRecipientsCount": z.number().optional()
 });
 export type NotificationRequestPreview = z.infer<typeof NotificationRequestPreviewSchema>;
 
-export const NotificationRequestStatsSchemaSchema = z.object({
-  "error": z.string(),
-  "errors": z.record(z.string(), z.object({})),
-  "sent": z.record(z.string(), AtomicIntegerSchema)
+const NotificationRequestStatsSchemaImpl = z.object({
+  "error": z.string().optional(),
+  "errors": z.object({
+
+}).optional(),
+  "sent": z.object({
+
+}).optional()
 });
 export type NotificationRequestStats = z.infer<typeof NotificationRequestStatsSchema>;
 
-export const NotificationRuleSchemaSchema = z.object({
-  "additionalConfig": NotificationRuleConfigSchema,
-  "createdTime": z.number(),
-  "enabled": z.boolean(),
+const NotificationRuleSchemaImpl = z.object({
+  "additionalConfig": NotificationRuleConfigSchema.optional(),
+  "createdTime": z.number().optional(),
+  "enabled": z.boolean().optional(),
   "name": z.string(),
   "recipientsConfig": NotificationRuleRecipientsConfigSchema,
   "templateId": NotificationTemplateIdSchema,
-  "tenantId": TenantIdSchema,
+  "tenantId": TenantIdSchema.optional(),
   "triggerConfig": NotificationRuleTriggerConfigSchema,
   "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
 export type NotificationRule = z.infer<typeof NotificationRuleSchema>;
 
-export const NotificationRuleConfigSchemaSchema = z.object({
-  "description": z.string()
+const NotificationRuleConfigSchemaImpl = z.object({
+  "description": z.string().optional()
 });
 export type NotificationRuleConfig = z.infer<typeof NotificationRuleConfigSchema>;
 
-export const NotificationRuleIdSchemaSchema = z.object({
+const NotificationRuleIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["NOTIFICATION_RULE"])
 });
 export type NotificationRuleId = z.infer<typeof NotificationRuleIdSchema>;
 
-export const NotificationRuleInfoSchemaSchema = z.object({
-  "additionalConfig": NotificationRuleConfigSchema,
-  "createdTime": z.number(),
-  "deliveryMethods": z.array(z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])),
-  "enabled": z.boolean(),
+const NotificationRuleInfoSchemaImpl = z.object({
+  "additionalConfig": NotificationRuleConfigSchema.optional(),
+  "createdTime": z.number().optional(),
+  "deliveryMethods": z.array(z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])).optional(),
+  "enabled": z.boolean().optional(),
   "name": z.string(),
   "recipientsConfig": NotificationRuleRecipientsConfigSchema,
   "templateId": NotificationTemplateIdSchema,
-  "templateName": z.string(),
-  "tenantId": TenantIdSchema,
+  "templateName": z.string().optional(),
+  "tenantId": TenantIdSchema.optional(),
   "triggerConfig": NotificationRuleTriggerConfigSchema,
   "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
 export type NotificationRuleInfo = z.infer<typeof NotificationRuleInfoSchema>;
 
-export const NotificationRuleRecipientsConfigSchemaSchema = z.object({
+const NotificationRuleRecipientsConfigSchemaImpl = z.object({
   "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
 export type NotificationRuleRecipientsConfig = z.infer<typeof NotificationRuleRecipientsConfigSchema>;
 
-export const NotificationRuleTriggerConfigSchemaSchema = z.object({
-  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const NotificationRuleTriggerConfigSchemaImpl = z.object({
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
 export type NotificationRuleTriggerConfig = z.infer<typeof NotificationRuleTriggerConfigSchema>;
 
-export const NotificationSettingsSchemaSchema = z.object({
-  "deliveryMethodsConfigs": z.record(z.string(), NotificationDeliveryMethodConfigSchema)
+const NotificationSettingsSchemaImpl = z.object({
+  "deliveryMethodsConfigs": z.object({
+
+})
 });
 export type NotificationSettings = z.infer<typeof NotificationSettingsSchema>;
 
-export const NotificationTargetSchemaSchema = z.object({
+const NotificationTargetSchemaImpl = z.object({
   "configuration": NotificationTargetConfigSchema,
-  "createdTime": z.number(),
+  "createdTime": z.number().optional(),
   "name": z.string(),
-  "tenantId": TenantIdSchema
+  "tenantId": TenantIdSchema.optional()
 });
 export type NotificationTarget = z.infer<typeof NotificationTargetSchema>;
 
-export const NotificationTargetConfigSchemaSchema = z.object({
-  "description": z.string()
+const NotificationTargetConfigSchemaImpl = z.object({
+  "description": z.string().optional()
 });
 export type NotificationTargetConfig = z.infer<typeof NotificationTargetConfigSchema>;
 
-export const NotificationTemplateSchemaSchema = z.object({
+const NotificationTemplateSchemaImpl = z.object({
   "configuration": NotificationTemplateConfigSchema,
-  "createdTime": z.number(),
-  "name": z.string(),
+  "createdTime": z.number().optional(),
+  "name": z.string().optional(),
   "notificationType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"]),
-  "tenantId": TenantIdSchema
+  "tenantId": TenantIdSchema.optional()
 });
 export type NotificationTemplate = z.infer<typeof NotificationTemplateSchema>;
 
-export const NotificationTemplateConfigSchemaSchema = z.object({
-  "deliveryMethodsTemplates": z.record(z.string(), DeliveryMethodNotificationTemplateSchema)
+const NotificationTemplateConfigSchemaImpl = z.object({
+  "deliveryMethodsTemplates": z.object({
+
+}).optional()
 });
 export type NotificationTemplateConfig = z.infer<typeof NotificationTemplateConfigSchema>;
 
-export const NotificationTemplateIdSchemaSchema = z.object({
+const NotificationTemplateIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["NOTIFICATION_TEMPLATE"])
 });
 export type NotificationTemplateId = z.infer<typeof NotificationTemplateIdSchema>;
 
-export const NumericFilterPredicateSchemaSchema = z.lazy(() => z.object({}));
+const NumericFilterPredicateSchemaImpl = z.object({
+  "operation": z.enum(["EQUAL", "GREATER", "GREATER_OR_EQUAL", "LESS", "LESS_OR_EQUAL", "NOT_EQUAL"]).optional(),
+  "value": FilterPredicateValue_Of_doubleSchema.optional()
+});
 export type NumericFilterPredicate = z.infer<typeof NumericFilterPredicateSchema>;
 
-export const OAuth2BasicMapperConfigSchemaSchema = z.object({
-  "alwaysFullScreen": z.boolean(),
-  "customerNamePattern": z.string(),
-  "defaultDashboardName": z.string(),
-  "emailAttributeKey": z.string(),
-  "firstNameAttributeKey": z.string(),
-  "lastNameAttributeKey": z.string(),
-  "parentCustomerNamePattern": z.string(),
-  "tenantNamePattern": z.string(),
+const OAuth2BasicMapperConfigSchemaImpl = z.object({
+  "alwaysFullScreen": z.boolean().optional(),
+  "customerNamePattern": z.string().optional(),
+  "defaultDashboardName": z.string().optional(),
+  "emailAttributeKey": z.string().optional(),
+  "firstNameAttributeKey": z.string().optional(),
+  "lastNameAttributeKey": z.string().optional(),
+  "parentCustomerNamePattern": z.string().optional(),
+  "tenantNamePattern": z.string().optional(),
   "tenantNameStrategy": z.enum(["CUSTOM", "DOMAIN", "EMAIL"]),
-  "userGroupsNamePattern": z.array(z.string())
+  "userGroupsNamePattern": z.array(z.string()).optional()
 });
 export type OAuth2BasicMapperConfig = z.infer<typeof OAuth2BasicMapperConfigSchema>;
 
-export const OAuth2ClientInfoSchemaSchema = z.object({
-  "icon": z.string(),
-  "name": z.string(),
-  "url": z.string()
+const OAuth2ClientInfoSchemaImpl = z.object({
+  "icon": z.string().optional(),
+  "name": z.string().optional(),
+  "url": z.string().optional()
 });
 export type OAuth2ClientInfo = z.infer<typeof OAuth2ClientInfoSchema>;
 
-export const OAuth2ClientRegistrationTemplateSchemaSchema = z.object({
-  "accessTokenUri": z.string(),
-  "additionalInfo": JsonNodeSchema,
-  "authorizationUri": z.string(),
-  "clientAuthenticationMethod": z.string(),
-  "comment": z.string(),
-  "createdTime": z.number(),
-  "helpLink": z.string(),
-  "id": OAuth2ClientRegistrationTemplateIdSchema,
-  "jwkSetUri": z.string(),
-  "loginButtonIcon": z.string(),
-  "loginButtonLabel": z.string(),
-  "mapperConfig": OAuth2MapperConfigSchema,
-  "name": z.string(),
+const OAuth2ClientRegistrationTemplateSchemaImpl = z.object({
+  "accessTokenUri": z.string().optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "authorizationUri": z.string().optional(),
+  "clientAuthenticationMethod": z.string().optional(),
+  "comment": z.string().optional(),
+  "createdTime": z.number().optional(),
+  "helpLink": z.string().optional(),
+  "id": OAuth2ClientRegistrationTemplateIdSchema.optional(),
+  "jwkSetUri": z.string().optional(),
+  "loginButtonIcon": z.string().optional(),
+  "loginButtonLabel": z.string().optional(),
+  "mapperConfig": OAuth2MapperConfigSchema.optional(),
+  "name": z.string().optional(),
   "providerId": z.string(),
-  "scope": z.array(z.string()),
-  "userInfoUri": z.string(),
-  "userNameAttributeName": z.string()
+  "scope": z.array(z.string()).optional(),
+  "userInfoUri": z.string().optional(),
+  "userNameAttributeName": z.string().optional()
 });
 export type OAuth2ClientRegistrationTemplate = z.infer<typeof OAuth2ClientRegistrationTemplateSchema>;
 
-export const OAuth2ClientRegistrationTemplateIdSchemaSchema = z.object({
+const OAuth2ClientRegistrationTemplateIdSchemaImpl = z.object({
   "id": z.string()
 });
 export type OAuth2ClientRegistrationTemplateId = z.infer<typeof OAuth2ClientRegistrationTemplateIdSchema>;
 
-export const OAuth2CustomMapperConfigSchemaSchema = z.object({
-  "password": z.string(),
-  "sendToken": z.boolean(),
-  "url": z.string(),
-  "username": z.string()
+const OAuth2CustomMapperConfigSchemaImpl = z.object({
+  "password": z.string().optional(),
+  "sendToken": z.boolean().optional(),
+  "url": z.string().optional(),
+  "username": z.string().optional()
 });
 export type OAuth2CustomMapperConfig = z.infer<typeof OAuth2CustomMapperConfigSchema>;
 
-export const OAuth2DomainInfoSchemaSchema = z.object({
+const OAuth2DomainInfoSchemaImpl = z.object({
   "name": z.string(),
   "scheme": z.enum(["HTTP", "HTTPS", "MIXED"])
 });
 export type OAuth2DomainInfo = z.infer<typeof OAuth2DomainInfoSchema>;
 
-export const OAuth2InfoSchemaSchema = z.object({
-  "enabled": z.boolean(),
+const OAuth2InfoSchemaImpl = z.object({
+  "enabled": z.boolean().optional(),
   "oauth2ParamsInfos": z.array(OAuth2ParamsInfoSchema)
 });
 export type OAuth2Info = z.infer<typeof OAuth2InfoSchema>;
 
-export const OAuth2MapperConfigSchemaSchema = z.object({
-  "activateUser": z.boolean(),
-  "allowUserCreation": z.boolean(),
-  "basic": OAuth2BasicMapperConfigSchema,
-  "custom": OAuth2CustomMapperConfigSchema,
+const OAuth2MapperConfigSchemaImpl = z.object({
+  "activateUser": z.boolean().optional(),
+  "allowUserCreation": z.boolean().optional(),
+  "basic": OAuth2BasicMapperConfigSchema.optional(),
+  "custom": OAuth2CustomMapperConfigSchema.optional(),
   "type": z.enum(["APPLE", "BASIC", "CUSTOM", "GITHUB"])
 });
 export type OAuth2MapperConfig = z.infer<typeof OAuth2MapperConfigSchema>;
 
-export const OAuth2MobileInfoSchemaSchema = z.object({
+const OAuth2MobileInfoSchemaImpl = z.object({
   "appSecret": z.string(),
   "pkgName": z.string()
 });
 export type OAuth2MobileInfo = z.infer<typeof OAuth2MobileInfoSchema>;
 
-export const OAuth2ParamsInfoSchemaSchema = z.object({
+const OAuth2ParamsInfoSchemaImpl = z.object({
   "clientRegistrations": z.array(OAuth2RegistrationInfoSchema),
   "domainInfos": z.array(OAuth2DomainInfoSchema),
   "mobileInfos": z.array(OAuth2MobileInfoSchema)
 });
 export type OAuth2ParamsInfo = z.infer<typeof OAuth2ParamsInfoSchema>;
 
-export const OAuth2RegistrationInfoSchemaSchema = z.object({
+const OAuth2RegistrationInfoSchemaImpl = z.object({
   "accessTokenUri": z.string(),
   "additionalInfo": JsonNodeSchema,
   "authorizationUri": z.string(),
   "clientAuthenticationMethod": z.string(),
   "clientId": z.string(),
   "clientSecret": z.string(),
-  "jwkSetUri": z.string(),
-  "loginButtonIcon": z.string(),
+  "jwkSetUri": z.string().optional(),
+  "loginButtonIcon": z.string().optional(),
   "loginButtonLabel": z.string(),
   "mapperConfig": OAuth2MapperConfigSchema,
-  "platforms": z.array(z.enum(["ANDROID", "IOS", "WEB"])),
+  "platforms": z.array(z.enum(["ANDROID", "IOS", "WEB"])).optional(),
   "scope": z.array(z.string()),
-  "userInfoUri": z.string(),
-  "userNameAttributeName": z.string()
+  "userInfoUri": z.string().optional(),
+  "userNameAttributeName": z.string().optional()
 });
 export type OAuth2RegistrationInfo = z.infer<typeof OAuth2RegistrationInfoSchema>;
 
-export const ObjectAttributesSchemaSchema = z.object({
-  "dim": z.number(),
-  "gt": z.number(),
-  "lt": z.number(),
-  "pmax": z.number(),
-  "pmin": z.number(),
-  "st": z.number(),
-  "ver": z.string()
+const ObjectAttributesSchemaImpl = z.object({
+  "dim": z.number().optional(),
+  "gt": z.number().optional(),
+  "lt": z.number().optional(),
+  "pmax": z.number().optional(),
+  "pmin": z.number().optional(),
+  "st": z.number().optional(),
+  "ver": z.string().optional()
 });
 export type ObjectAttributes = z.infer<typeof ObjectAttributesSchema>;
 
-export const ObjectNodeSchemaSchema = z.object({});
+const ObjectNodeSchemaImpl = z.object({
+
+});
 export type ObjectNode = z.infer<typeof ObjectNodeSchema>;
 
-export const OriginatorEntityOwnerUsersFilterSchemaSchema = z.object({});
+const OriginatorEntityOwnerUsersFilterSchemaImpl = z.object({
+
+});
 export type OriginatorEntityOwnerUsersFilter = z.infer<typeof OriginatorEntityOwnerUsersFilterSchema>;
 
-export const OtaPackageSchemaSchema = z.object({
-  "id": OtaPackageIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "deviceProfileId": DeviceProfileIdSchema,
-  "type": z.enum(["FIRMWARE", "SOFTWARE"]),
-  "title": z.string(),
-  "version": z.string(),
-  "tag": z.string(),
-  "url": z.string(),
-  "hasData": z.boolean(),
-  "fileName": z.string(),
-  "contentType": z.string(),
-  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-  "checksum": z.string(),
-  "dataSize": z.number(),
-  "data": ByteBufferSchema,
-  "additionalInfo": JsonNodeSchema
+const OtaPackageSchemaImpl = z.object({
+  "id": OtaPackageIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "deviceProfileId": DeviceProfileIdSchema.optional(),
+  "type": z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+  "title": z.string().optional(),
+  "version": z.string().optional(),
+  "tag": z.string().optional(),
+  "url": z.string().optional(),
+  "hasData": z.boolean().optional(),
+  "fileName": z.string().optional(),
+  "contentType": z.string().optional(),
+  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+  "checksum": z.string().optional(),
+  "dataSize": z.number().optional(),
+  "data": ByteBufferSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type OtaPackage = z.infer<typeof OtaPackageSchema>;
 
-export const OtaPackageIdSchemaSchema = z.object({
+const OtaPackageIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["OTA_PACKAGE"])
 });
 export type OtaPackageId = z.infer<typeof OtaPackageIdSchema>;
 
-export const OtaPackageInfoSchemaSchema = z.object({
-  "id": OtaPackageIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "deviceProfileId": DeviceProfileIdSchema,
-  "type": z.enum(["FIRMWARE", "SOFTWARE"]),
-  "title": z.string(),
-  "version": z.string(),
-  "tag": z.string(),
-  "url": z.string(),
-  "hasData": z.boolean(),
-  "fileName": z.string(),
-  "contentType": z.string(),
-  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-  "checksum": z.string(),
-  "dataSize": z.number(),
-  "additionalInfo": JsonNodeSchema
+const OtaPackageInfoSchemaImpl = z.object({
+  "id": OtaPackageIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "deviceProfileId": DeviceProfileIdSchema.optional(),
+  "type": z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+  "title": z.string().optional(),
+  "version": z.string().optional(),
+  "tag": z.string().optional(),
+  "url": z.string().optional(),
+  "hasData": z.boolean().optional(),
+  "fileName": z.string().optional(),
+  "contentType": z.string().optional(),
+  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+  "checksum": z.string().optional(),
+  "dataSize": z.number().optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type OtaPackageInfo = z.infer<typeof OtaPackageInfoSchema>;
 
-export const OtherConfigurationSchemaSchema = z.object({
-  "clientOnlyObserveAfterConnect": z.number(),
-  "edrxCycle": z.number(),
-  "fwUpdateResource": z.string(),
-  "fwUpdateStrategy": z.number(),
-  "pagingTransmissionWindow": z.number(),
-  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]),
-  "psmActivityTimer": z.number(),
-  "swUpdateResource": z.string(),
-  "swUpdateStrategy": z.number()
+const OtherConfigurationSchemaImpl = z.object({
+  "clientOnlyObserveAfterConnect": z.number().optional(),
+  "edrxCycle": z.number().optional(),
+  "fwUpdateResource": z.string().optional(),
+  "fwUpdateStrategy": z.number().optional(),
+  "pagingTransmissionWindow": z.number().optional(),
+  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+  "psmActivityTimer": z.number().optional(),
+  "swUpdateResource": z.string().optional(),
+  "swUpdateStrategy": z.number().optional()
 });
 export type OtherConfiguration = z.infer<typeof OtherConfigurationSchema>;
 
-export const PSKLwM2MBootstrapServerCredentialSchemaSchema = z.lazy(() => z.object({}));
+const PSKLwM2MBootstrapServerCredentialSchemaImpl = z.object({
+  "shortServerId": z.number().optional(),
+  "bootstrapServerIs": z.boolean().optional(),
+  "host": z.string().optional(),
+  "port": z.number().optional(),
+  "clientHoldOffTime": z.number().optional(),
+  "serverPublicKey": z.string().optional(),
+  "serverCertificate": z.string().optional(),
+  "bootstrapServerAccountTimeout": z.number().optional(),
+  "lifetime": z.number().optional(),
+  "defaultMinPeriod": z.number().optional(),
+  "notifIfDisabled": z.boolean().optional(),
+  "binding": z.string().optional()
+});
 export type PSKLwM2MBootstrapServerCredential = z.infer<typeof PSKLwM2MBootstrapServerCredentialSchema>;
 
-export const PageData_Of_AlarmCommentInfoSchemaSchema = z.object({
-  "data": z.array(AlarmCommentInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AlarmCommentInfoSchemaImpl = z.object({
+  "data": z.array(AlarmCommentInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AlarmCommentInfo = z.infer<typeof PageData_Of_AlarmCommentInfoSchema>;
 
-export const PageData_Of_AlarmDataSchemaSchema = z.object({
-  "data": z.array(AlarmDataSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AlarmDataSchemaImpl = z.object({
+  "data": z.array(AlarmDataSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AlarmData = z.infer<typeof PageData_Of_AlarmDataSchema>;
 
-export const PageData_Of_AlarmInfoSchemaSchema = z.object({
-  "data": z.array(AlarmInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AlarmInfoSchemaImpl = z.object({
+  "data": z.array(AlarmInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AlarmInfo = z.infer<typeof PageData_Of_AlarmInfoSchema>;
 
-export const PageData_Of_AssetInfoSchemaSchema = z.object({
-  "data": z.array(AssetInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AssetInfoSchemaImpl = z.object({
+  "data": z.array(AssetInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AssetInfo = z.infer<typeof PageData_Of_AssetInfoSchema>;
 
-export const PageData_Of_AssetProfileInfoSchemaSchema = z.object({
-  "data": z.array(AssetProfileInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AssetProfileInfoSchemaImpl = z.object({
+  "data": z.array(AssetProfileInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AssetProfileInfo = z.infer<typeof PageData_Of_AssetProfileInfoSchema>;
 
-export const PageData_Of_AssetProfileSchemaSchema = z.object({
-  "data": z.array(AssetProfileSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AssetProfileSchemaImpl = z.object({
+  "data": z.array(AssetProfileSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AssetProfile = z.infer<typeof PageData_Of_AssetProfileSchema>;
 
-export const PageData_Of_AssetSchemaSchema = z.object({
-  "data": z.array(AssetSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AssetSchemaImpl = z.object({
+  "data": z.array(AssetSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Asset = z.infer<typeof PageData_Of_AssetSchema>;
 
-export const PageData_Of_AuditLogSchemaSchema = z.object({
-  "data": z.array(AuditLogSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_AuditLogSchemaImpl = z.object({
+  "data": z.array(AuditLogSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_AuditLog = z.infer<typeof PageData_Of_AuditLogSchema>;
 
-export const PageData_Of_BlobEntityWithCustomerInfoSchemaSchema = z.object({
-  "data": z.array(BlobEntityWithCustomerInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_BlobEntityWithCustomerInfoSchemaImpl = z.object({
+  "data": z.array(BlobEntityWithCustomerInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_BlobEntityWithCustomerInfo = z.infer<typeof PageData_Of_BlobEntityWithCustomerInfoSchema>;
 
-export const PageData_Of_ContactBased_object_SchemaSchema = z.object({
-  "data": z.array(ContactBased_Of_objectSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_ContactBased_Of_objectSchemaImpl = z.object({
+  "data": z.array(ContactBased_Of_objectSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
-export type PageData_Of_ContactBased_object_ = z.infer<typeof PageData_Of_ContactBased_object_Schema>;
+export type PageData_Of_ContactBased_Of_object = z.infer<typeof PageData_Of_ContactBased_Of_objectSchema>;
 
-export const PageData_Of_ConverterSchemaSchema = z.object({
-  "data": z.array(ConverterSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_ConverterSchemaImpl = z.object({
+  "data": z.array(ConverterSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Converter = z.infer<typeof PageData_Of_ConverterSchema>;
 
-export const PageData_Of_CustomerInfoSchemaSchema = z.object({
-  "data": z.array(CustomerInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_CustomerInfoSchemaImpl = z.object({
+  "data": z.array(CustomerInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_CustomerInfo = z.infer<typeof PageData_Of_CustomerInfoSchema>;
 
-export const PageData_Of_CustomerSchemaSchema = z.object({
-  "data": z.array(CustomerSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_CustomerSchemaImpl = z.object({
+  "data": z.array(CustomerSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Customer = z.infer<typeof PageData_Of_CustomerSchema>;
 
-export const PageData_Of_DashboardInfoSchemaSchema = z.object({
-  "data": z.array(DashboardInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_DashboardInfoSchemaImpl = z.object({
+  "data": z.array(DashboardInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_DashboardInfo = z.infer<typeof PageData_Of_DashboardInfoSchema>;
 
-export const PageData_Of_DeviceInfoSchemaSchema = z.object({
-  "data": z.array(DeviceInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_DeviceInfoSchemaImpl = z.object({
+  "data": z.array(DeviceInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_DeviceInfo = z.infer<typeof PageData_Of_DeviceInfoSchema>;
 
-export const PageData_Of_DeviceProfileInfoSchemaSchema = z.object({
-  "data": z.array(DeviceProfileInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_DeviceProfileInfoSchemaImpl = z.object({
+  "data": z.array(DeviceProfileInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_DeviceProfileInfo = z.infer<typeof PageData_Of_DeviceProfileInfoSchema>;
 
-export const PageData_Of_DeviceProfileSchemaSchema = z.object({
-  "data": z.array(DeviceProfileSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_DeviceProfileSchemaImpl = z.object({
+  "data": z.array(DeviceProfileSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_DeviceProfile = z.infer<typeof PageData_Of_DeviceProfileSchema>;
 
-export const PageData_Of_DeviceSchemaSchema = z.object({
-  "data": z.array(DeviceSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_DeviceSchemaImpl = z.object({
+  "data": z.array(DeviceSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Device = z.infer<typeof PageData_Of_DeviceSchema>;
 
-export const PageData_Of_EdgeEventSchemaSchema = z.object({
-  "data": z.array(EdgeEventSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EdgeEventSchemaImpl = z.object({
+  "data": z.array(EdgeEventSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EdgeEvent = z.infer<typeof PageData_Of_EdgeEventSchema>;
 
-export const PageData_Of_EdgeInfoSchemaSchema = z.object({
-  "data": z.array(EdgeInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EdgeInfoSchemaImpl = z.object({
+  "data": z.array(EdgeInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EdgeInfo = z.infer<typeof PageData_Of_EdgeInfoSchema>;
 
-export const PageData_Of_EdgeSchemaSchema = z.object({
-  "data": z.array(EdgeSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EdgeSchemaImpl = z.object({
+  "data": z.array(EdgeSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Edge = z.infer<typeof PageData_Of_EdgeSchema>;
 
-export const PageData_Of_EntityDataSchemaSchema = z.object({
-  "data": z.array(EntityDataSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityDataSchemaImpl = z.object({
+  "data": z.array(EntityDataSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityData = z.infer<typeof PageData_Of_EntityDataSchema>;
 
-export const PageData_Of_EntityGroupInfoSchemaSchema = z.object({
-  "data": z.array(EntityGroupInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityGroupInfoSchemaImpl = z.object({
+  "data": z.array(EntityGroupInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityGroupInfo = z.infer<typeof PageData_Of_EntityGroupInfoSchema>;
 
-export const PageData_Of_EntityInfoSchemaSchema = z.object({
-  "data": z.array(EntityInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityInfoSchemaImpl = z.object({
+  "data": z.array(EntityInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityInfo = z.infer<typeof PageData_Of_EntityInfoSchema>;
 
-export const PageData_Of_EntitySubtypeSchemaSchema = z.object({
-  "data": z.array(EntitySubtypeSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntitySubtypeSchemaImpl = z.object({
+  "data": z.array(EntitySubtypeSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntitySubtype = z.infer<typeof PageData_Of_EntitySubtypeSchema>;
 
-export const PageData_Of_EntityVersionSchemaSchema = z.object({
-  "data": z.array(EntityVersionSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityVersionSchemaImpl = z.object({
+  "data": z.array(EntityVersionSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityVersion = z.infer<typeof PageData_Of_EntityVersionSchema>;
 
-export const PageData_Of_EntityViewInfoSchemaSchema = z.object({
-  "data": z.array(EntityViewInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityViewInfoSchemaImpl = z.object({
+  "data": z.array(EntityViewInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityViewInfo = z.infer<typeof PageData_Of_EntityViewInfoSchema>;
 
-export const PageData_Of_EntityViewSchemaSchema = z.object({
-  "data": z.array(EntityViewSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EntityViewSchemaImpl = z.object({
+  "data": z.array(EntityViewSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EntityView = z.infer<typeof PageData_Of_EntityViewSchema>;
 
-export const PageData_Of_EventInfoSchemaSchema = z.object({
-  "data": z.array(EventInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_EventInfoSchemaImpl = z.object({
+  "data": z.array(EventInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_EventInfo = z.infer<typeof PageData_Of_EventInfoSchema>;
 
-export const PageData_Of_IntegrationInfoSchemaSchema = z.object({
-  "data": z.array(IntegrationInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_IntegrationInfoSchemaImpl = z.object({
+  "data": z.array(IntegrationInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_IntegrationInfo = z.infer<typeof PageData_Of_IntegrationInfoSchema>;
 
-export const PageData_Of_IntegrationSchemaSchema = z.object({
-  "data": z.array(IntegrationSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_IntegrationSchemaImpl = z.object({
+  "data": z.array(IntegrationSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Integration = z.infer<typeof PageData_Of_IntegrationSchema>;
 
-export const PageData_Of_NotificationRequestInfoSchemaSchema = z.object({
-  "data": z.array(NotificationRequestInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_NotificationRequestInfoSchemaImpl = z.object({
+  "data": z.array(NotificationRequestInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_NotificationRequestInfo = z.infer<typeof PageData_Of_NotificationRequestInfoSchema>;
 
-export const PageData_Of_NotificationRuleInfoSchemaSchema = z.object({
-  "data": z.array(NotificationRuleInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_NotificationRuleInfoSchemaImpl = z.object({
+  "data": z.array(NotificationRuleInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_NotificationRuleInfo = z.infer<typeof PageData_Of_NotificationRuleInfoSchema>;
 
-export const PageData_Of_NotificationTargetSchemaSchema = z.object({
-  "data": z.array(NotificationTargetSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_NotificationTargetSchemaImpl = z.object({
+  "data": z.array(NotificationTargetSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_NotificationTarget = z.infer<typeof PageData_Of_NotificationTargetSchema>;
 
-export const PageData_Of_NotificationTemplateSchemaSchema = z.object({
-  "data": z.array(NotificationTemplateSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_NotificationTemplateSchemaImpl = z.object({
+  "data": z.array(NotificationTemplateSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_NotificationTemplate = z.infer<typeof PageData_Of_NotificationTemplateSchema>;
 
-export const PageData_Of_NotificationSchemaSchema = z.object({
-  "data": z.array(NotificationSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_NotificationSchemaImpl = z.object({
+  "data": z.array(NotificationSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Notification = z.infer<typeof PageData_Of_NotificationSchema>;
 
-export const PageData_Of_OtaPackageInfoSchemaSchema = z.object({
-  "data": z.array(OtaPackageInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_OtaPackageInfoSchemaImpl = z.object({
+  "data": z.array(OtaPackageInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_OtaPackageInfo = z.infer<typeof PageData_Of_OtaPackageInfoSchema>;
 
-export const PageData_Of_QueueSchemaSchema = z.object({
-  "data": z.array(QueueSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_QueueSchemaImpl = z.object({
+  "data": z.array(QueueSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Queue = z.infer<typeof PageData_Of_QueueSchema>;
 
-export const PageData_Of_RoleSchemaSchema = z.object({
-  "data": z.array(RoleSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_RoleSchemaImpl = z.object({
+  "data": z.array(RoleSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Role = z.infer<typeof PageData_Of_RoleSchema>;
 
-export const PageData_Of_RuleChainSchemaSchema = z.object({
-  "data": z.array(RuleChainSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_RuleChainSchemaImpl = z.object({
+  "data": z.array(RuleChainSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_RuleChain = z.infer<typeof PageData_Of_RuleChainSchema>;
 
-export const PageData_Of_SchedulerEventInfoSchemaSchema = z.object({
-  "data": z.array(SchedulerEventInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_SchedulerEventInfoSchemaImpl = z.object({
+  "data": z.array(SchedulerEventInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_SchedulerEventInfo = z.infer<typeof PageData_Of_SchedulerEventInfoSchema>;
 
-export const PageData_Of_ShortEntityViewSchemaSchema = z.object({
-  "data": z.array(ShortEntityViewSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_ShortEntityViewSchemaImpl = z.object({
+  "data": z.array(ShortEntityViewSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_ShortEntityView = z.infer<typeof PageData_Of_ShortEntityViewSchema>;
 
-export const PageData_Of_TbResourceInfoSchemaSchema = z.object({
-  "data": z.array(TbResourceInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_TbResourceInfoSchemaImpl = z.object({
+  "data": z.array(TbResourceInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_TbResourceInfo = z.infer<typeof PageData_Of_TbResourceInfoSchema>;
 
-export const PageData_Of_TenantInfoSchemaSchema = z.object({
-  "data": z.array(TenantInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_TenantInfoSchemaImpl = z.object({
+  "data": z.array(TenantInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_TenantInfo = z.infer<typeof PageData_Of_TenantInfoSchema>;
 
-export const PageData_Of_TenantProfileSchemaSchema = z.object({
-  "data": z.array(TenantProfileSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_TenantProfileSchemaImpl = z.object({
+  "data": z.array(TenantProfileSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_TenantProfile = z.infer<typeof PageData_Of_TenantProfileSchema>;
 
-export const PageData_Of_TenantSchemaSchema = z.object({
-  "data": z.array(TenantSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_TenantSchemaImpl = z.object({
+  "data": z.array(TenantSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_Tenant = z.infer<typeof PageData_Of_TenantSchema>;
 
-export const PageData_Of_UserEmailInfoSchemaSchema = z.object({
-  "data": z.array(UserEmailInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_UserEmailInfoSchemaImpl = z.object({
+  "data": z.array(UserEmailInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_UserEmailInfo = z.infer<typeof PageData_Of_UserEmailInfoSchema>;
 
-export const PageData_Of_UserInfoSchemaSchema = z.object({
-  "data": z.array(UserInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_UserInfoSchemaImpl = z.object({
+  "data": z.array(UserInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_UserInfo = z.infer<typeof PageData_Of_UserInfoSchema>;
 
-export const PageData_Of_UserSchemaSchema = z.object({
-  "data": z.array(UserSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_UserSchemaImpl = z.object({
+  "data": z.array(UserSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_User = z.infer<typeof PageData_Of_UserSchema>;
 
-export const PageData_Of_WidgetTypeInfoSchemaSchema = z.object({
-  "data": z.array(WidgetTypeInfoSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_WidgetTypeInfoSchemaImpl = z.object({
+  "data": z.array(WidgetTypeInfoSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_WidgetTypeInfo = z.infer<typeof PageData_Of_WidgetTypeInfoSchema>;
 
-export const PageData_Of_WidgetsBundleSchemaSchema = z.object({
-  "data": z.array(WidgetsBundleSchema),
-  "totalPages": z.number(),
-  "totalElements": z.number(),
-  "hasNext": z.boolean()
+const PageData_Of_WidgetsBundleSchemaImpl = z.object({
+  "data": z.array(WidgetsBundleSchema).optional(),
+  "totalPages": z.number().optional(),
+  "totalElements": z.number().optional(),
+  "hasNext": z.boolean().optional()
 });
 export type PageData_Of_WidgetsBundle = z.infer<typeof PageData_Of_WidgetsBundleSchema>;
 
-export const PaletteSchemaSchema = z.object({
+const PaletteSchemaImpl = z.object({
   "type": z.string(),
-  "extends": z.string(),
-  "colors": z.record(z.string(), z.string())
+  "extends": z.string().optional(),
+  "colors": z.object({
+
+}).optional()
 });
 export type Palette = z.infer<typeof PaletteSchema>;
 
-export const PaletteSettingsSchemaSchema = z.object({
+const PaletteSettingsSchemaImpl = z.object({
   "primaryPalette": PaletteSchema,
   "accentPalette": PaletteSchema
 });
 export type PaletteSettings = z.infer<typeof PaletteSettingsSchema>;
 
-export const PlatformTwoFaSettingsSchemaSchema = z.object({
-  "maxVerificationFailuresBeforeUserLockout": z.number(),
+const PlatformTwoFaSettingsSchemaImpl = z.object({
+  "maxVerificationFailuresBeforeUserLockout": z.number().optional(),
   "minVerificationCodeSendPeriod": z.number(),
   "providers": z.array(TwoFaProviderConfigSchema),
   "totalAllowedTimeForVerification": z.number(),
-  "useSystemTwoFactorAuthSettings": z.boolean(),
-  "verificationCodeCheckRateLimit": z.string()
+  "useSystemTwoFactorAuthSettings": z.boolean().optional(),
+  "verificationCodeCheckRateLimit": z.string().optional()
 });
 export type PlatformTwoFaSettings = z.infer<typeof PlatformTwoFaSettingsSchema>;
 
-export const PlatformUsersNotificationTargetConfigSchemaSchema = z.lazy(() => z.object({}));
+const PlatformUsersNotificationTargetConfigSchemaImpl = z.object({
+  "description": z.string().optional(),
+  "usersFilter": UsersFilterSchema.optional()
+});
 export type PlatformUsersNotificationTargetConfig = z.infer<typeof PlatformUsersNotificationTargetConfigSchema>;
 
-export const PowerSavingConfigurationSchemaSchema = z.object({
-  "edrxCycle": z.number(),
-  "pagingTransmissionWindow": z.number(),
-  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]),
-  "psmActivityTimer": z.number()
+const PowerSavingConfigurationSchemaImpl = z.object({
+  "edrxCycle": z.number().optional(),
+  "pagingTransmissionWindow": z.number().optional(),
+  "powerMode": z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+  "psmActivityTimer": z.number().optional()
 });
 export type PowerSavingConfiguration = z.infer<typeof PowerSavingConfigurationSchema>;
 
-export const ProcessingStrategySchemaSchema = z.object({
-  "failurePercentage": z.number(),
-  "maxPauseBetweenRetries": z.number(),
-  "pauseBetweenRetries": z.number(),
-  "retries": z.number(),
-  "type": z.enum(["RETRY_ALL", "RETRY_FAILED", "RETRY_FAILED_AND_TIMED_OUT", "RETRY_TIMED_OUT", "SKIP_ALL_FAILURES", "SKIP_ALL_FAILURES_AND_TIMED_OUT"])
+const ProcessingStrategySchemaImpl = z.object({
+  "failurePercentage": z.number().optional(),
+  "maxPauseBetweenRetries": z.number().optional(),
+  "pauseBetweenRetries": z.number().optional(),
+  "retries": z.number().optional(),
+  "type": z.enum(["RETRY_ALL", "RETRY_FAILED", "RETRY_FAILED_AND_TIMED_OUT", "RETRY_TIMED_OUT", "SKIP_ALL_FAILURES", "SKIP_ALL_FAILURES_AND_TIMED_OUT"]).optional()
 });
 export type ProcessingStrategy = z.infer<typeof ProcessingStrategySchema>;
 
-export const ProtoTransportPayloadConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const ProtoTransportPayloadConfigurationSchemaImpl = z.object({
+  "deviceAttributesProtoSchema": z.string().optional(),
+  "deviceRpcRequestProtoSchema": z.string().optional(),
+  "deviceRpcResponseProtoSchema": z.string().optional(),
+  "deviceTelemetryProtoSchema": z.string().optional(),
+  "enableCompatibilityWithJsonPayloadFormat": z.boolean().optional(),
+  "useJsonPayloadFormatForDefaultDownlinkTopics": z.boolean().optional()
+});
 export type ProtoTransportPayloadConfiguration = z.infer<typeof ProtoTransportPayloadConfigurationSchema>;
 
-export const QueueSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "consumerPerPartition": z.boolean(),
-  "createdTime": z.number(),
-  "id": QueueIdSchema,
-  "name": z.string(),
-  "packProcessingTimeout": z.number(),
-  "partitions": z.number(),
-  "pollInterval": z.number(),
-  "processingStrategy": ProcessingStrategySchema,
-  "submitStrategy": SubmitStrategySchema,
-  "tenantId": TenantIdSchema,
-  "topic": z.string()
+const QueueSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "consumerPerPartition": z.boolean().optional(),
+  "createdTime": z.number().optional(),
+  "id": QueueIdSchema.optional(),
+  "name": z.string().optional(),
+  "packProcessingTimeout": z.number().optional(),
+  "partitions": z.number().optional(),
+  "pollInterval": z.number().optional(),
+  "processingStrategy": ProcessingStrategySchema.optional(),
+  "submitStrategy": SubmitStrategySchema.optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "topic": z.string().optional()
 });
 export type Queue = z.infer<typeof QueueSchema>;
 
-export const QueueIdSchemaSchema = z.object({
+const QueueIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["QUEUE"])
 });
 export type QueueId = z.infer<typeof QueueIdSchema>;
 
-export const RPKLwM2MBootstrapServerCredentialSchemaSchema = z.object({
-  "shortServerId": z.number(),
-  "bootstrapServerIs": z.boolean(),
-  "host": z.string(),
-  "port": z.number(),
-  "clientHoldOffTime": z.number(),
-  "serverPublicKey": z.string(),
-  "serverCertificate": z.string(),
-  "bootstrapServerAccountTimeout": z.number(),
-  "lifetime": z.number(),
-  "defaultMinPeriod": z.number(),
-  "notifIfDisabled": z.boolean(),
-  "binding": z.string()
+const RPKLwM2MBootstrapServerCredentialSchemaImpl = z.object({
+  "shortServerId": z.number().optional(),
+  "bootstrapServerIs": z.boolean().optional(),
+  "host": z.string().optional(),
+  "port": z.number().optional(),
+  "clientHoldOffTime": z.number().optional(),
+  "serverPublicKey": z.string().optional(),
+  "serverCertificate": z.string().optional(),
+  "bootstrapServerAccountTimeout": z.number().optional(),
+  "lifetime": z.number().optional(),
+  "defaultMinPeriod": z.number().optional(),
+  "notifIfDisabled": z.boolean().optional(),
+  "binding": z.string().optional()
 });
 export type RPKLwM2MBootstrapServerCredential = z.infer<typeof RPKLwM2MBootstrapServerCredentialSchema>;
 
-export const RateLimitsNotificationRuleTriggerConfigSchemaSchema = z.object({
-  "apis": z.array(z.enum(["CASSANDRA_QUERIES", "ENTITY_EXPORT", "ENTITY_IMPORT", "INTEGRATION_MSGS_PER_DEVICE", "INTEGRATION_MSGS_PER_TENANT", "NOTIFICATION_REQUESTS", "NOTIFICATION_REQUESTS_PER_RULE", "PASSWORD_RESET", "REPORTS", "REST_REQUESTS_PER_CUSTOMER", "REST_REQUESTS_PER_TENANT", "TRANSPORT_MESSAGES_PER_DEVICE", "TRANSPORT_MESSAGES_PER_TENANT", "TWO_FA_VERIFICATION_CODE_CHECK", "TWO_FA_VERIFICATION_CODE_SEND", "WS_UPDATES_PER_SESSION"])),
-  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const RateLimitsNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "apis": z.array(z.enum(["CASSANDRA_QUERIES", "ENTITY_EXPORT", "ENTITY_IMPORT", "INTEGRATION_MSGS_PER_DEVICE", "INTEGRATION_MSGS_PER_TENANT", "NOTIFICATION_REQUESTS", "NOTIFICATION_REQUESTS_PER_RULE", "PASSWORD_RESET", "REPORTS", "REST_REQUESTS_PER_CUSTOMER", "REST_REQUESTS_PER_TENANT", "TRANSPORT_MESSAGES_PER_DEVICE", "TRANSPORT_MESSAGES_PER_TENANT", "TWO_FA_VERIFICATION_CODE_CHECK", "TWO_FA_VERIFICATION_CODE_SEND", "WS_UPDATES_PER_SESSION"])).optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
 export type RateLimitsNotificationRuleTriggerConfig = z.infer<typeof RateLimitsNotificationRuleTriggerConfigSchema>;
 
-export const RawDataEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const RawDataEventFilterSchemaImpl = z.object({
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "uuid": z.string().optional(),
+  "messageType": z.string().optional(),
+  "message": z.string().optional()
+});
 export type RawDataEventFilter = z.infer<typeof RawDataEventFilterSchema>;
 
-export const RelationEntityTypeFilterSchemaSchema = z.object({
-  "relationType": z.string(),
-  "entityTypes": z.array(z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]))
+const RelationEntityTypeFilterSchemaImpl = z.object({
+  "relationType": z.string().optional(),
+  "entityTypes": z.array(z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional()
 });
 export type RelationEntityTypeFilter = z.infer<typeof RelationEntityTypeFilterSchema>;
 
-export const RelationsQueryFilterSchemaSchema = z.lazy(() => z.object({}));
+const RelationsQueryFilterSchemaImpl = z.object({
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "fetchLastLevelOnly": z.boolean().optional(),
+  "filters": z.array(RelationEntityTypeFilterSchema).optional(),
+  "maxLevel": z.number().optional(),
+  "multiRoot": z.boolean().optional(),
+  "multiRootEntitiesType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "multiRootEntityIds": z.array(z.string()).optional(),
+  "rootEntity": EntityIdSchema.optional()
+});
 export type RelationsQueryFilter = z.infer<typeof RelationsQueryFilterSchema>;
 
-export const RelationsSearchParametersSchemaSchema = z.object({
-  "rootId": z.string(),
-  "rootType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-  "direction": z.enum(["FROM", "TO"]),
-  "relationTypeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-  "maxLevel": z.number(),
-  "fetchLastLevelOnly": z.boolean()
+const RelationsSearchParametersSchemaImpl = z.object({
+  "rootId": z.string().optional(),
+  "rootType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "direction": z.enum(["FROM", "TO"]).optional(),
+  "relationTypeGroup": z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+  "maxLevel": z.number().optional(),
+  "fetchLastLevelOnly": z.boolean().optional()
 });
 export type RelationsSearchParameters = z.infer<typeof RelationsSearchParametersSchema>;
 
-export const RepeatingAlarmConditionSpecSchemaSchema = z.lazy(() => z.object({}));
+const RepeatingAlarmConditionSpecSchemaImpl = z.object({
+  "predicate": FilterPredicateValue_Of_intSchema.optional()
+});
 export type RepeatingAlarmConditionSpec = z.infer<typeof RepeatingAlarmConditionSpecSchema>;
 
-export const ReportConfigSchemaSchema = z.object({
-  "baseUrl": z.string(),
-  "dashboardId": z.string(),
-  "namePattern": z.string(),
-  "state": z.string(),
-  "timewindow": JsonNodeSchema,
-  "timezone": z.string(),
-  "type": z.string(),
-  "useCurrentUserCredentials": z.boolean(),
-  "useDashboardTimewindow": z.boolean(),
-  "userId": z.string()
+const ReportConfigSchemaImpl = z.object({
+  "baseUrl": z.string().optional(),
+  "dashboardId": z.string().optional(),
+  "namePattern": z.string().optional(),
+  "state": z.string().optional(),
+  "timewindow": JsonNodeSchema.optional(),
+  "timezone": z.string().optional(),
+  "type": z.string().optional(),
+  "useCurrentUserCredentials": z.boolean().optional(),
+  "useDashboardTimewindow": z.boolean().optional(),
+  "userId": z.string().optional()
 });
 export type ReportConfig = z.infer<typeof ReportConfigSchema>;
 
-export const RepositorySettingsSchemaSchema = z.object({
-  "authMethod": z.enum(["PRIVATE_KEY", "USERNAME_PASSWORD"]),
-  "defaultBranch": z.string(),
-  "password": z.string(),
-  "privateKey": z.string(),
-  "privateKeyFileName": z.string(),
-  "privateKeyPassword": z.string(),
-  "readOnly": z.boolean(),
-  "repositoryUri": z.string(),
-  "showMergeCommits": z.boolean(),
-  "username": z.string()
+const RepositorySettingsSchemaImpl = z.object({
+  "authMethod": z.enum(["PRIVATE_KEY", "USERNAME_PASSWORD"]).optional(),
+  "defaultBranch": z.string().optional(),
+  "password": z.string().optional(),
+  "privateKey": z.string().optional(),
+  "privateKeyFileName": z.string().optional(),
+  "privateKeyPassword": z.string().optional(),
+  "readOnly": z.boolean().optional(),
+  "repositoryUri": z.string().optional(),
+  "showMergeCommits": z.boolean().optional(),
+  "username": z.string().optional()
 });
 export type RepositorySettings = z.infer<typeof RepositorySettingsSchema>;
 
-export const RepositorySettingsInfoSchemaSchema = z.object({
-  "configured": z.boolean(),
-  "readOnly": z.boolean()
+const RepositorySettingsInfoSchemaImpl = z.object({
+  "configured": z.boolean().optional(),
+  "readOnly": z.boolean().optional()
 });
 export type RepositorySettingsInfo = z.infer<typeof RepositorySettingsInfoSchema>;
 
-export const ResetPasswordEmailRequestSchemaSchema = z.object({
-  "email": z.string()
+const ResetPasswordEmailRequestSchemaImpl = z.object({
+  "email": z.string().optional()
 });
 export type ResetPasswordEmailRequest = z.infer<typeof ResetPasswordEmailRequestSchema>;
 
-export const ResetPasswordRequestSchemaSchema = z.object({
-  "resetToken": z.string(),
-  "password": z.string()
+const ResetPasswordRequestSchemaImpl = z.object({
+  "resetToken": z.string().optional(),
+  "password": z.string().optional()
 });
 export type ResetPasswordRequest = z.infer<typeof ResetPasswordRequestSchema>;
 
-export const ResourceSchemaSchema = z.object({
-  "description": z.string(),
-  "file": z.string(),
-  "filename": z.string(),
-  "inputStream": InputStreamSchema,
-  "open": z.boolean(),
-  "readable": z.boolean(),
-  "uri": z.string(),
-  "url": z.string()
+const ResourceSchemaImpl = z.object({
+  "description": z.string().optional(),
+  "file": z.string().optional(),
+  "filename": z.string().optional(),
+  "inputStream": InputStreamSchema.optional(),
+  "open": z.boolean().optional(),
+  "readable": z.boolean().optional(),
+  "uri": z.string().optional(),
+  "url": z.string().optional()
 });
 export type Resource = z.infer<typeof ResourceSchema>;
 
-export const ResponseEntitySchemaSchema = z.object({
-  "body": z.object({}),
-  "statusCode": z.enum(["ACCEPTED", "ALREADY_REPORTED", "BAD_GATEWAY", "BAD_REQUEST", "BANDWIDTH_LIMIT_EXCEEDED", "CHECKPOINT", "CONFLICT", "CONTINUE", "CREATED", "DESTINATION_LOCKED", "EXPECTATION_FAILED", "FAILED_DEPENDENCY", "FORBIDDEN", "FOUND", "GATEWAY_TIMEOUT", "GONE", "HTTP_VERSION_NOT_SUPPORTED", "IM_USED", "INSUFFICIENT_SPACE_ON_RESOURCE", "INSUFFICIENT_STORAGE", "INTERNAL_SERVER_ERROR", "I_AM_A_TEAPOT", "LENGTH_REQUIRED", "LOCKED", "LOOP_DETECTED", "METHOD_FAILURE", "METHOD_NOT_ALLOWED", "MOVED_PERMANENTLY", "MOVED_TEMPORARILY", "MULTIPLE_CHOICES", "MULTI_STATUS", "NETWORK_AUTHENTICATION_REQUIRED", "NON_AUTHORITATIVE_INFORMATION", "NOT_ACCEPTABLE", "NOT_EXTENDED", "NOT_FOUND", "NOT_IMPLEMENTED", "NOT_MODIFIED", "NO_CONTENT", "OK", "PARTIAL_CONTENT", "PAYLOAD_TOO_LARGE", "PAYMENT_REQUIRED", "PERMANENT_REDIRECT", "PRECONDITION_FAILED", "PRECONDITION_REQUIRED", "PROCESSING", "PROXY_AUTHENTICATION_REQUIRED", "REQUESTED_RANGE_NOT_SATISFIABLE", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_HEADER_FIELDS_TOO_LARGE", "REQUEST_TIMEOUT", "REQUEST_URI_TOO_LONG", "RESET_CONTENT", "SEE_OTHER", "SERVICE_UNAVAILABLE", "SWITCHING_PROTOCOLS", "TEMPORARY_REDIRECT", "TOO_EARLY", "TOO_MANY_REQUESTS", "UNAUTHORIZED", "UNAVAILABLE_FOR_LEGAL_REASONS", "UNPROCESSABLE_ENTITY", "UNSUPPORTED_MEDIA_TYPE", "UPGRADE_REQUIRED", "URI_TOO_LONG", "USE_PROXY", "VARIANT_ALSO_NEGOTIATES"]),
-  "statusCodeValue": z.number()
+const ResponseEntitySchemaImpl = z.object({
+  "body": z.object({
+
+}).optional(),
+  "statusCode": z.enum(["ACCEPTED", "ALREADY_REPORTED", "BAD_GATEWAY", "BAD_REQUEST", "BANDWIDTH_LIMIT_EXCEEDED", "CHECKPOINT", "CONFLICT", "CONTINUE", "CREATED", "DESTINATION_LOCKED", "EXPECTATION_FAILED", "FAILED_DEPENDENCY", "FORBIDDEN", "FOUND", "GATEWAY_TIMEOUT", "GONE", "HTTP_VERSION_NOT_SUPPORTED", "IM_USED", "INSUFFICIENT_SPACE_ON_RESOURCE", "INSUFFICIENT_STORAGE", "INTERNAL_SERVER_ERROR", "I_AM_A_TEAPOT", "LENGTH_REQUIRED", "LOCKED", "LOOP_DETECTED", "METHOD_FAILURE", "METHOD_NOT_ALLOWED", "MOVED_PERMANENTLY", "MOVED_TEMPORARILY", "MULTIPLE_CHOICES", "MULTI_STATUS", "NETWORK_AUTHENTICATION_REQUIRED", "NON_AUTHORITATIVE_INFORMATION", "NOT_ACCEPTABLE", "NOT_EXTENDED", "NOT_FOUND", "NOT_IMPLEMENTED", "NOT_MODIFIED", "NO_CONTENT", "OK", "PARTIAL_CONTENT", "PAYLOAD_TOO_LARGE", "PAYMENT_REQUIRED", "PERMANENT_REDIRECT", "PRECONDITION_FAILED", "PRECONDITION_REQUIRED", "PROCESSING", "PROXY_AUTHENTICATION_REQUIRED", "REQUESTED_RANGE_NOT_SATISFIABLE", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_HEADER_FIELDS_TOO_LARGE", "REQUEST_TIMEOUT", "REQUEST_URI_TOO_LONG", "RESET_CONTENT", "SEE_OTHER", "SERVICE_UNAVAILABLE", "SWITCHING_PROTOCOLS", "TEMPORARY_REDIRECT", "TOO_EARLY", "TOO_MANY_REQUESTS", "UNAUTHORIZED", "UNAVAILABLE_FOR_LEGAL_REASONS", "UNPROCESSABLE_ENTITY", "UNSUPPORTED_MEDIA_TYPE", "UPGRADE_REQUIRED", "URI_TOO_LONG", "USE_PROXY", "VARIANT_ALSO_NEGOTIATES"]).optional(),
+  "statusCodeValue": z.number().optional()
 });
 export type ResponseEntity = z.infer<typeof ResponseEntitySchema>;
 
-export const RoleSchemaSchema = z.object({
-  "id": RoleIdSchema,
-  "createdTime": z.number(),
+const RoleSchemaImpl = z.object({
+  "id": RoleIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "ownerId": EntityIdSchema,
+  "customerId": CustomerIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
   "name": z.string(),
   "type": z.enum(["GENERIC", "GROUP"]),
-  "permissions": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema
+  "permissions": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type Role = z.infer<typeof RoleSchema>;
 
-export const RoleIdSchemaSchema = z.object({
+const RoleIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["ROLE"])
 });
 export type RoleId = z.infer<typeof RoleIdSchema>;
 
-export const RpcSchemaSchema = z.object({
-  "id": RpcIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "deviceId": DeviceIdSchema,
-  "expirationTime": z.number(),
-  "request": JsonNodeSchema,
-  "response": JsonNodeSchema,
-  "status": z.enum(["DELETED", "DELIVERED", "EXPIRED", "FAILED", "QUEUED", "SENT", "SUCCESSFUL", "TIMEOUT"]),
-  "additionalInfo": JsonNodeSchema
+const RpcSchemaImpl = z.object({
+  "id": RpcIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "deviceId": DeviceIdSchema.optional(),
+  "expirationTime": z.number().optional(),
+  "request": JsonNodeSchema.optional(),
+  "response": JsonNodeSchema.optional(),
+  "status": z.enum(["DELETED", "DELIVERED", "EXPIRED", "FAILED", "QUEUED", "SENT", "SUCCESSFUL", "TIMEOUT"]).optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type Rpc = z.infer<typeof RpcSchema>;
 
-export const RpcIdSchemaSchema = z.object({
+const RpcIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["RPC"])
 });
 export type RpcId = z.infer<typeof RpcIdSchema>;
 
-export const RuleChainSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "id": RuleChainIdSchema,
-  "createdTime": z.number(),
+const RuleChainSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "id": RuleChainIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "tenantId": TenantIdSchema,
   "name": z.string(),
-  "type": z.enum(["CORE", "EDGE"]),
-  "firstRuleNodeId": RuleNodeIdSchema,
-  "root": z.boolean(),
-  "debugMode": z.boolean(),
-  "configuration": JsonNodeSchema
+  "type": z.enum(["CORE", "EDGE"]).optional(),
+  "firstRuleNodeId": RuleNodeIdSchema.optional(),
+  "root": z.boolean().optional(),
+  "debugMode": z.boolean().optional(),
+  "configuration": JsonNodeSchema.optional()
 });
 export type RuleChain = z.infer<typeof RuleChainSchema>;
 
-export const RuleChainConnectionInfoSchemaSchema = z.object({
+const RuleChainConnectionInfoSchemaImpl = z.object({
   "fromIndex": z.number(),
   "targetRuleChainId": RuleChainIdSchema,
   "additionalInfo": JsonNodeSchema,
@@ -3478,33 +3860,48 @@ export const RuleChainConnectionInfoSchemaSchema = z.object({
 });
 export type RuleChainConnectionInfo = z.infer<typeof RuleChainConnectionInfoSchema>;
 
-export const RuleChainDataSchemaSchema = z.object({
+const RuleChainDataSchemaImpl = z.object({
   "ruleChains": z.array(RuleChainSchema),
   "metadata": z.array(RuleChainMetaDataSchema)
 });
 export type RuleChainData = z.infer<typeof RuleChainDataSchema>;
 
-export const RuleChainDebugEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const RuleChainDebugEventFilterSchemaImpl = z.object({
+  "error": z.boolean().optional(),
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "message": z.string().optional(),
+  "errorStr": z.string().optional()
+});
 export type RuleChainDebugEventFilter = z.infer<typeof RuleChainDebugEventFilterSchema>;
 
-export const RuleChainExportDataSchemaSchema = z.lazy(() => z.object({}));
+const RuleChainExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": RuleChainSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "metaData": RuleChainMetaDataSchema.optional(),
+  "relations": z.array(EntityRelationSchema).optional()
+});
 export type RuleChainExportData = z.infer<typeof RuleChainExportDataSchema>;
 
-export const RuleChainIdSchemaSchema = z.object({
+const RuleChainIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["RULE_CHAIN"])
 });
 export type RuleChainId = z.infer<typeof RuleChainIdSchema>;
 
-export const RuleChainImportResultSchemaSchema = z.object({
-  "error": z.string(),
-  "ruleChainId": RuleChainIdSchema,
-  "ruleChainName": z.string(),
-  "updated": z.boolean()
+const RuleChainImportResultSchemaImpl = z.object({
+  "error": z.string().optional(),
+  "ruleChainId": RuleChainIdSchema.optional(),
+  "ruleChainName": z.string().optional(),
+  "updated": z.boolean().optional()
 });
 export type RuleChainImportResult = z.infer<typeof RuleChainImportResultSchema>;
 
-export const RuleChainMetaDataSchemaSchema = z.object({
+const RuleChainMetaDataSchemaImpl = z.object({
   "ruleChainId": RuleChainIdSchema,
   "firstNodeIndex": z.number(),
   "nodes": z.array(RuleNodeSchema),
@@ -3513,7 +3910,7 @@ export const RuleChainMetaDataSchemaSchema = z.object({
 });
 export type RuleChainMetaData = z.infer<typeof RuleChainMetaDataSchema>;
 
-export const RuleChainOutputLabelsUsageSchemaSchema = z.object({
+const RuleChainOutputLabelsUsageSchemaImpl = z.object({
   "ruleChainId": RuleChainIdSchema,
   "ruleNodeId": RuleNodeIdSchema,
   "ruleChainName": z.string(),
@@ -3522,909 +3919,1066 @@ export const RuleChainOutputLabelsUsageSchemaSchema = z.object({
 });
 export type RuleChainOutputLabelsUsage = z.infer<typeof RuleChainOutputLabelsUsageSchema>;
 
-export const RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaSchema = z.lazy(() => z.object({}));
+const RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaImpl = z.object({
+  "onlyRuleChainLifecycleFailures": z.boolean().optional(),
+  "onlyRuleNodeLifecycleFailures": z.boolean().optional(),
+  "ruleChainEvents": z.array(z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+  "ruleChains": z.array(z.string()).optional(),
+  "ruleNodeEvents": z.array(z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+  "trackRuleNodeEvents": z.boolean().optional(),
+  "triggerType": z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
 export type RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig = z.infer<typeof RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema>;
 
-export const RuleNodeSchemaSchema = z.object({
-  "externalId": RuleNodeIdSchema,
-  "id": RuleNodeIdSchema,
-  "createdTime": z.number(),
-  "ruleChainId": RuleChainIdSchema,
-  "type": z.string(),
-  "name": z.string(),
-  "debugMode": z.boolean(),
-  "singletonMode": z.boolean(),
-  "configurationVersion": z.number(),
-  "configuration": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema
+const RuleNodeSchemaImpl = z.object({
+  "externalId": RuleNodeIdSchema.optional(),
+  "id": RuleNodeIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "ruleChainId": RuleChainIdSchema.optional(),
+  "type": z.string().optional(),
+  "name": z.string().optional(),
+  "debugMode": z.boolean().optional(),
+  "singletonMode": z.boolean().optional(),
+  "configurationVersion": z.number().optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type RuleNode = z.infer<typeof RuleNodeSchema>;
 
-export const RuleNodeDebugEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const RuleNodeDebugEventFilterSchemaImpl = z.object({
+  "error": z.boolean().optional(),
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "msgDirectionType": z.enum(["IN", "OUT"]).optional(),
+  "entityId": z.string().optional(),
+  "errorStr": z.string().optional(),
+  "entityType": z.enum(["DEVICE"]).optional(),
+  "msgId": z.string().optional(),
+  "msgType": z.string().optional(),
+  "relationType": z.string().optional(),
+  "dataSearch": z.string().optional(),
+  "metadataSearch": z.string().optional()
+});
 export type RuleNodeDebugEventFilter = z.infer<typeof RuleNodeDebugEventFilterSchema>;
 
-export const RuleNodeIdSchemaSchema = z.object({
+const RuleNodeIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["RULE_NODE"])
 });
 export type RuleNodeId = z.infer<typeof RuleNodeIdSchema>;
 
-export const SaveDeviceWithCredentialsRequestSchemaSchema = z.object({
+const SaveDeviceWithCredentialsRequestSchemaImpl = z.object({
   "device": DeviceSchema,
   "credentials": DeviceCredentialsSchema
 });
 export type SaveDeviceWithCredentialsRequest = z.infer<typeof SaveDeviceWithCredentialsRequestSchema>;
 
-export const SaveOtaPackageInfoRequestSchemaSchema = z.object({
-  "id": OtaPackageIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "deviceProfileId": DeviceProfileIdSchema,
-  "type": z.enum(["FIRMWARE", "SOFTWARE"]),
-  "title": z.string(),
-  "version": z.string(),
-  "tag": z.string(),
-  "url": z.string(),
-  "hasData": z.boolean(),
-  "fileName": z.string(),
-  "contentType": z.string(),
-  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-  "checksum": z.string(),
-  "dataSize": z.number(),
-  "usesUrl": z.boolean(),
-  "additionalInfo": JsonNodeSchema
+const SaveOtaPackageInfoRequestSchemaImpl = z.object({
+  "id": OtaPackageIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "deviceProfileId": DeviceProfileIdSchema.optional(),
+  "type": z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+  "title": z.string().optional(),
+  "version": z.string().optional(),
+  "tag": z.string().optional(),
+  "url": z.string().optional(),
+  "hasData": z.boolean().optional(),
+  "fileName": z.string().optional(),
+  "contentType": z.string().optional(),
+  "checksumAlgorithm": z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+  "checksum": z.string().optional(),
+  "dataSize": z.number().optional(),
+  "usesUrl": z.boolean().optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type SaveOtaPackageInfoRequest = z.infer<typeof SaveOtaPackageInfoRequestSchema>;
 
-export const SchedulerEventSchemaSchema = z.object({
-  "id": SchedulerEventIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "originatorId": EntityIdSchema,
-  "ownerId": EntityIdSchema,
-  "name": z.string(),
-  "type": z.string(),
-  "schedule": JsonNodeSchema,
-  "configuration": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema
+const SchedulerEventSchemaImpl = z.object({
+  "id": SchedulerEventIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "originatorId": EntityIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "type": z.string().optional(),
+  "schedule": JsonNodeSchema.optional(),
+  "configuration": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type SchedulerEvent = z.infer<typeof SchedulerEventSchema>;
 
-export const SchedulerEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const SchedulerEventFilterSchemaImpl = z.object({
+  "eventType": z.string().optional(),
+  "originator": EntityIdSchema.optional()
+});
 export type SchedulerEventFilter = z.infer<typeof SchedulerEventFilterSchema>;
 
-export const SchedulerEventIdSchemaSchema = z.object({
+const SchedulerEventIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["SCHEDULER_EVENT"])
 });
 export type SchedulerEventId = z.infer<typeof SchedulerEventIdSchema>;
 
-export const SchedulerEventInfoSchemaSchema = z.object({
-  "id": SchedulerEventIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "originatorId": EntityIdSchema,
-  "ownerId": EntityIdSchema,
-  "name": z.string(),
-  "type": z.string(),
-  "schedule": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema
+const SchedulerEventInfoSchemaImpl = z.object({
+  "id": SchedulerEventIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "originatorId": EntityIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "type": z.string().optional(),
+  "schedule": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type SchedulerEventInfo = z.infer<typeof SchedulerEventInfoSchema>;
 
-export const SchedulerEventWithCustomerInfoSchemaSchema = z.object({
-  "id": SchedulerEventIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "originatorId": EntityIdSchema,
-  "ownerId": EntityIdSchema,
-  "name": z.string(),
-  "type": z.string(),
-  "schedule": JsonNodeSchema,
-  "additionalInfo": JsonNodeSchema,
-  "customerTitle": z.string(),
-  "customerIsPublic": z.object({})
+const SchedulerEventWithCustomerInfoSchemaImpl = z.object({
+  "id": SchedulerEventIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "originatorId": EntityIdSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "name": z.string().optional(),
+  "type": z.string().optional(),
+  "schedule": JsonNodeSchema.optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "customerTitle": z.string().optional(),
+  "customerIsPublic": z.object({
+
+}).optional()
 });
 export type SchedulerEventWithCustomerInfo = z.infer<typeof SchedulerEventWithCustomerInfoSchema>;
 
-export const SecuritySettingsSchemaSchema = z.object({
-  "passwordPolicy": UserPasswordPolicySchema,
-  "maxFailedLoginAttempts": z.number(),
-  "userLockoutNotificationEmail": z.string()
+const SecuritySettingsSchemaImpl = z.object({
+  "passwordPolicy": UserPasswordPolicySchema.optional(),
+  "maxFailedLoginAttempts": z.number().optional(),
+  "userLockoutNotificationEmail": z.string().optional()
 });
 export type SecuritySettings = z.infer<typeof SecuritySettingsSchema>;
 
-export const SelfRegistrationParamsSchemaSchema = z.object({
-  "adminSettingsId": z.string(),
-  "signUpTextMessage": z.string(),
-  "captchaSiteKey": z.string(),
-  "captchaVersion": z.string(),
-  "captchaAction": z.string(),
-  "showPrivacyPolicy": z.boolean(),
-  "showTermsOfUse": z.boolean(),
-  "domainName": z.string(),
-  "captchaSecretKey": z.string(),
-  "privacyPolicy": z.string(),
-  "termsOfUse": z.string(),
-  "notificationEmail": z.string(),
-  "defaultDashboardId": z.string(),
-  "defaultDashboardFullscreen": z.boolean(),
-  "permissions": z.array(GroupPermissionSchema),
-  "pkgName": z.string(),
-  "appSecret": z.string(),
-  "appScheme": z.string(),
-  "appHost": z.string()
+const SelfRegistrationParamsSchemaImpl = z.object({
+  "adminSettingsId": z.string().optional(),
+  "signUpTextMessage": z.string().optional(),
+  "captchaSiteKey": z.string().optional(),
+  "captchaVersion": z.string().optional(),
+  "captchaAction": z.string().optional(),
+  "showPrivacyPolicy": z.boolean().optional(),
+  "showTermsOfUse": z.boolean().optional(),
+  "domainName": z.string().optional(),
+  "captchaSecretKey": z.string().optional(),
+  "privacyPolicy": z.string().optional(),
+  "termsOfUse": z.string().optional(),
+  "notificationEmail": z.string().optional(),
+  "defaultDashboardId": z.string().optional(),
+  "defaultDashboardFullscreen": z.boolean().optional(),
+  "permissions": z.array(GroupPermissionSchema).optional(),
+  "pkgName": z.string().optional(),
+  "appSecret": z.string().optional(),
+  "appScheme": z.string().optional(),
+  "appHost": z.string().optional()
 });
 export type SelfRegistrationParams = z.infer<typeof SelfRegistrationParamsSchema>;
 
-export const ShareGroupRequestSchemaSchema = z.object({
+const ShareGroupRequestSchemaImpl = z.object({
   "allUserGroup": z.boolean(),
-  "ownerId": EntityIdSchema,
-  "userGroupId": EntityGroupIdSchema,
-  "readElseWrite": z.boolean(),
-  "roleIds": z.array(RoleIdSchema)
+  "ownerId": EntityIdSchema.optional(),
+  "userGroupId": EntityGroupIdSchema.optional(),
+  "readElseWrite": z.boolean().optional(),
+  "roleIds": z.array(RoleIdSchema).optional()
 });
 export type ShareGroupRequest = z.infer<typeof ShareGroupRequestSchema>;
 
-export const SharedAttributesSettingSnmpCommunicationConfigSchemaSchema = z.lazy(() => z.object({}));
+const SharedAttributesSettingSnmpCommunicationConfigSchemaImpl = z.object({
+  "mappings": z.array(SnmpMappingSchema).optional(),
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
+});
 export type SharedAttributesSettingSnmpCommunicationConfig = z.infer<typeof SharedAttributesSettingSnmpCommunicationConfigSchema>;
 
-export const ShortCustomerInfoSchemaSchema = z.object({
-  "public": z.boolean(),
-  "customerId": CustomerIdSchema,
-  "title": z.string()
+const ShortCustomerInfoSchemaImpl = z.object({
+  "public": z.boolean().optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "title": z.string().optional()
 });
 export type ShortCustomerInfo = z.infer<typeof ShortCustomerInfoSchema>;
 
-export const ShortEntityViewSchemaSchema = z.object({
+const ShortEntityViewSchemaImpl = z.object({
   "id": EntityIdSchema,
   "name": z.string()
 });
 export type ShortEntityView = z.infer<typeof ShortEntityViewSchema>;
 
-export const SignUpRequestSchemaSchema = z.object({
-  "firstName": z.string(),
-  "lastName": z.string(),
-  "email": z.string(),
-  "password": z.string(),
-  "recaptchaResponse": z.string(),
-  "pkgName": z.string(),
-  "appSecret": z.string()
+const SignUpRequestSchemaImpl = z.object({
+  "firstName": z.string().optional(),
+  "lastName": z.string().optional(),
+  "email": z.string().optional(),
+  "password": z.string().optional(),
+  "recaptchaResponse": z.string().optional(),
+  "pkgName": z.string().optional(),
+  "appSecret": z.string().optional()
 });
 export type SignUpRequest = z.infer<typeof SignUpRequestSchema>;
 
-export const SignUpSelfRegistrationParamsSchemaSchema = z.object({
-  "signUpTextMessage": z.string(),
-  "captchaSiteKey": z.string(),
-  "captchaVersion": z.string(),
-  "captchaAction": z.string(),
-  "showPrivacyPolicy": z.boolean(),
-  "showTermsOfUse": z.boolean()
+const SignUpSelfRegistrationParamsSchemaImpl = z.object({
+  "signUpTextMessage": z.string().optional(),
+  "captchaSiteKey": z.string().optional(),
+  "captchaVersion": z.string().optional(),
+  "captchaAction": z.string().optional(),
+  "showPrivacyPolicy": z.boolean().optional(),
+  "showTermsOfUse": z.boolean().optional()
 });
 export type SignUpSelfRegistrationParams = z.infer<typeof SignUpSelfRegistrationParamsSchema>;
 
-export const SimpleAlarmConditionSpecSchemaSchema = z.lazy(() => z.object({}));
+const SimpleAlarmConditionSpecSchemaImpl = z.any();
 export type SimpleAlarmConditionSpec = z.infer<typeof SimpleAlarmConditionSpecSchema>;
 
-export const SingleEntityFilterSchemaSchema = z.lazy(() => z.object({}));
+const SingleEntityFilterSchemaImpl = z.object({
+  "singleEntity": EntityIdSchema.optional()
+});
 export type SingleEntityFilter = z.infer<typeof SingleEntityFilterSchema>;
 
-export const SingleEntityVersionCreateRequestSchemaSchema = z.lazy(() => z.object({}));
+const SingleEntityVersionCreateRequestSchemaImpl = z.object({
+  "branch": z.string().optional(),
+  "config": VersionCreateConfigSchema.optional(),
+  "entityId": EntityIdSchema.optional(),
+  "type": z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+  "versionName": z.string().optional()
+});
 export type SingleEntityVersionCreateRequest = z.infer<typeof SingleEntityVersionCreateRequestSchema>;
 
-export const SingleEntityVersionLoadRequestSchemaSchema = z.lazy(() => z.object({}));
+const SingleEntityVersionLoadRequestSchemaImpl = z.object({
+  "config": VersionLoadConfigSchema.optional(),
+  "externalEntityId": EntityIdSchema.optional(),
+  "internalEntityId": EntityIdSchema.optional(),
+  "type": z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+  "versionId": z.string().optional()
+});
 export type SingleEntityVersionLoadRequest = z.infer<typeof SingleEntityVersionLoadRequestSchema>;
 
-export const SlackConversationSchemaSchema = z.object({
-  "email": z.string(),
-  "id": z.string(),
-  "name": z.string(),
-  "title": z.string(),
+const SlackConversationSchemaImpl = z.object({
+  "email": z.string().optional(),
+  "id": z.string().optional(),
+  "name": z.string().optional(),
+  "title": z.string().optional(),
   "type": z.enum(["DIRECT", "PRIVATE_CHANNEL", "PUBLIC_CHANNEL"]),
-  "wholeName": z.string()
+  "wholeName": z.string().optional()
 });
 export type SlackConversation = z.infer<typeof SlackConversationSchema>;
 
-export const SlackDeliveryMethodNotificationTemplateSchemaSchema = z.object({
-  "body": z.string(),
-  "enabled": z.boolean()
+const SlackDeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "body": z.string().optional(),
+  "enabled": z.boolean().optional()
 });
 export type SlackDeliveryMethodNotificationTemplate = z.infer<typeof SlackDeliveryMethodNotificationTemplateSchema>;
 
-export const SlackNotificationDeliveryMethodConfigSchemaSchema = z.object({
-  "botToken": z.string()
+const SlackNotificationDeliveryMethodConfigSchemaImpl = z.object({
+  "botToken": z.string().optional()
 });
 export type SlackNotificationDeliveryMethodConfig = z.infer<typeof SlackNotificationDeliveryMethodConfigSchema>;
 
-export const SlackNotificationTargetConfigSchemaSchema = z.lazy(() => z.object({}));
+const SlackNotificationTargetConfigSchemaImpl = z.object({
+  "conversation": SlackConversationSchema.optional(),
+  "conversationType": z.enum(["DIRECT", "PRIVATE_CHANNEL", "PUBLIC_CHANNEL"]).optional(),
+  "description": z.string().optional()
+});
 export type SlackNotificationTargetConfig = z.infer<typeof SlackNotificationTargetConfigSchema>;
 
-export const SmppSmsProviderConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const SmppSmsProviderConfigurationSchemaImpl = z.object({
+  "addressRange": z.string().optional(),
+  "bindType": z.enum(["RX", "TRX", "TX"]).optional(),
+  "codingScheme": z.string().optional(),
+  "destinationNpi": z.string().optional(),
+  "destinationTon": z.string().optional(),
+  "host": z.string().optional(),
+  "password": z.string().optional(),
+  "port": z.number().optional(),
+  "protocolVersion": z.enum(["3.3", "3.4"]).optional(),
+  "serviceType": z.string().optional(),
+  "sourceAddress": z.string().optional(),
+  "sourceNpi": z.string().optional(),
+  "sourceTon": z.string().optional(),
+  "systemId": z.string().optional(),
+  "systemType": z.string().optional()
+});
 export type SmppSmsProviderConfiguration = z.infer<typeof SmppSmsProviderConfigurationSchema>;
 
-export const SmsDeliveryMethodNotificationTemplateSchemaSchema = z.object({
-  "body": z.string(),
-  "enabled": z.boolean()
+const SmsDeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "body": z.string().optional(),
+  "enabled": z.boolean().optional()
 });
 export type SmsDeliveryMethodNotificationTemplate = z.infer<typeof SmsDeliveryMethodNotificationTemplateSchema>;
 
-export const SmsProviderConfigurationSchemaSchema = z.object({});
+const SmsProviderConfigurationSchemaImpl = z.object({
+
+});
 export type SmsProviderConfiguration = z.infer<typeof SmsProviderConfigurationSchema>;
 
-export const SmsTwoFaAccountConfigSchemaSchema = z.lazy(() => z.object({}));
+const SmsTwoFaAccountConfigSchemaImpl = z.object({
+  "phoneNumber": z.string().optional(),
+  "useByDefault": z.boolean().optional()
+});
 export type SmsTwoFaAccountConfig = z.infer<typeof SmsTwoFaAccountConfigSchema>;
 
-export const SmsTwoFaProviderConfigSchemaSchema = z.object({
+const SmsTwoFaProviderConfigSchemaImpl = z.object({
   "smsVerificationMessageTemplate": z.string(),
-  "verificationCodeLifetime": z.number()
+  "verificationCodeLifetime": z.number().optional()
 });
 export type SmsTwoFaProviderConfig = z.infer<typeof SmsTwoFaProviderConfigSchema>;
 
-export const SnmpCommunicationConfigSchemaSchema = z.object({
-  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const SnmpCommunicationConfigSchemaImpl = z.object({
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
 export type SnmpCommunicationConfig = z.infer<typeof SnmpCommunicationConfigSchema>;
 
-export const SnmpDeviceProfileTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const SnmpDeviceProfileTransportConfigurationSchemaImpl = z.object({
+  "communicationConfigs": z.array(SnmpCommunicationConfigSchema).optional(),
+  "retries": z.number().optional(),
+  "timeoutMs": z.number().optional()
+});
 export type SnmpDeviceProfileTransportConfiguration = z.infer<typeof SnmpDeviceProfileTransportConfigurationSchema>;
 
-export const SnmpDeviceTransportConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const SnmpDeviceTransportConfigurationSchemaImpl = z.object({
+  "authenticationPassphrase": z.string().optional(),
+  "authenticationProtocol": z.enum(["MD5", "SHA_1", "SHA_224", "SHA_256", "SHA_384", "SHA_512"]).optional(),
+  "community": z.string().optional(),
+  "contextName": z.string().optional(),
+  "engineId": z.string().optional(),
+  "host": z.string().optional(),
+  "port": z.number().optional(),
+  "privacyPassphrase": z.string().optional(),
+  "privacyProtocol": z.enum(["AES_128", "AES_192", "AES_256", "DES"]).optional(),
+  "protocolVersion": z.enum(["V1", "V2C", "V3"]).optional(),
+  "securityName": z.string().optional(),
+  "username": z.string().optional()
+});
 export type SnmpDeviceTransportConfiguration = z.infer<typeof SnmpDeviceTransportConfigurationSchema>;
 
-export const SnmpMappingSchemaSchema = z.object({
-  "dataType": z.enum(["BOOLEAN", "DOUBLE", "JSON", "LONG", "STRING"]),
-  "key": z.string(),
-  "oid": z.string()
+const SnmpMappingSchemaImpl = z.object({
+  "dataType": z.enum(["BOOLEAN", "DOUBLE", "JSON", "LONG", "STRING"]).optional(),
+  "key": z.string().optional(),
+  "oid": z.string().optional()
 });
 export type SnmpMapping = z.infer<typeof SnmpMappingSchema>;
 
-export const SolutionInstallResponseSchemaSchema = z.object({
-  "dashboardGroupId": EntityGroupIdSchema,
-  "dashboardId": DashboardIdSchema,
-  "publicId": CustomerIdSchema,
-  "mainDashboardPublic": z.boolean(),
-  "success": z.boolean(),
-  "details": z.string()
+const SolutionInstallResponseSchemaImpl = z.object({
+  "dashboardGroupId": EntityGroupIdSchema.optional(),
+  "dashboardId": DashboardIdSchema.optional(),
+  "publicId": CustomerIdSchema.optional(),
+  "mainDashboardPublic": z.boolean().optional(),
+  "success": z.boolean().optional(),
+  "details": z.string().optional()
 });
 export type SolutionInstallResponse = z.infer<typeof SolutionInstallResponseSchema>;
 
-export const SpecificTimeScheduleSchemaSchema = z.object({
-  "daysOfWeek": z.array(z.number()),
-  "dynamicValue": DynamicValue_Of_stringSchema,
-  "endsOn": z.number(),
-  "startsOn": z.number(),
-  "timezone": z.string(),
-  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const SpecificTimeScheduleSchemaImpl = z.object({
+  "daysOfWeek": z.array(z.number()).optional(),
+  "dynamicValue": DynamicValue_Of_stringSchema.optional(),
+  "endsOn": z.number().optional(),
+  "startsOn": z.number().optional(),
+  "timezone": z.string().optional(),
+  "type": z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
 export type SpecificTimeSchedule = z.infer<typeof SpecificTimeScheduleSchema>;
 
-export const StarredDashboardInfoSchemaSchema = z.object({
-  "id": z.string(),
-  "title": z.string(),
-  "starredAt": z.number()
+const StarredDashboardInfoSchemaImpl = z.object({
+  "id": z.string().optional(),
+  "title": z.string().optional(),
+  "starredAt": z.number().optional()
 });
 export type StarredDashboardInfo = z.infer<typeof StarredDashboardInfoSchema>;
 
-export const StateEntityOwnerFilterSchemaSchema = z.lazy(() => z.object({}));
+const StateEntityOwnerFilterSchemaImpl = z.object({
+  "singleEntity": EntityIdSchema.optional()
+});
 export type StateEntityOwnerFilter = z.infer<typeof StateEntityOwnerFilterSchema>;
 
-export const StatisticsEventFilterSchemaSchema = z.lazy(() => z.object({}));
+const StatisticsEventFilterSchemaImpl = z.object({
+  "notEmpty": z.boolean().optional(),
+  "eventType": z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+  "server": z.string().optional(),
+  "minMessagesProcessed": z.number().optional(),
+  "maxMessagesProcessed": z.number().optional(),
+  "minErrorsOccurred": z.number().optional(),
+  "maxErrorsOccurred": z.number().optional()
+});
 export type StatisticsEventFilter = z.infer<typeof StatisticsEventFilterSchema>;
 
-export const StringFilterPredicateSchemaSchema = z.lazy(() => z.object({}));
+const StringFilterPredicateSchemaImpl = z.object({
+  "ignoreCase": z.boolean().optional(),
+  "operation": z.enum(["CONTAINS", "ENDS_WITH", "EQUAL", "IN", "NOT_CONTAINS", "NOT_EQUAL", "NOT_IN", "STARTS_WITH"]).optional(),
+  "value": FilterPredicateValue_Of_stringSchema.optional()
+});
 export type StringFilterPredicate = z.infer<typeof StringFilterPredicateSchema>;
 
-export const SubmitStrategySchemaSchema = z.object({
-  "batchSize": z.number(),
-  "type": z.enum(["BATCH", "BURST", "SEQUENTIAL", "SEQUENTIAL_BY_ORIGINATOR", "SEQUENTIAL_BY_TENANT"])
+const SubmitStrategySchemaImpl = z.object({
+  "batchSize": z.number().optional(),
+  "type": z.enum(["BATCH", "BURST", "SEQUENTIAL", "SEQUENTIAL_BY_ORIGINATOR", "SEQUENTIAL_BY_TENANT"]).optional()
 });
 export type SubmitStrategy = z.infer<typeof SubmitStrategySchema>;
 
-export const SystemAdministratorsFilterSchemaSchema = z.object({});
+const SystemAdministratorsFilterSchemaImpl = z.object({
+
+});
 export type SystemAdministratorsFilter = z.infer<typeof SystemAdministratorsFilterSchema>;
 
-export const SystemInfoSchemaSchema = z.object({
-  "monolith": z.boolean(),
-  "systemData": z.array(SystemInfoDataSchema)
+const SystemInfoSchemaImpl = z.object({
+  "monolith": z.boolean().optional(),
+  "systemData": z.array(SystemInfoDataSchema).optional()
 });
 export type SystemInfo = z.infer<typeof SystemInfoSchema>;
 
-export const SystemInfoDataSchemaSchema = z.object({
-  "serviceId": z.string(),
-  "serviceType": z.string(),
-  "cpuUsage": z.number(),
-  "cpuCount": z.number(),
-  "memoryUsage": z.number(),
-  "totalMemory": z.number(),
-  "discUsage": z.number(),
-  "totalDiscSpace": z.number()
+const SystemInfoDataSchemaImpl = z.object({
+  "serviceId": z.string().optional(),
+  "serviceType": z.string().optional(),
+  "cpuUsage": z.number().optional(),
+  "cpuCount": z.number().optional(),
+  "memoryUsage": z.number().optional(),
+  "totalMemory": z.number().optional(),
+  "discUsage": z.number().optional(),
+  "totalDiscSpace": z.number().optional()
 });
 export type SystemInfoData = z.infer<typeof SystemInfoDataSchema>;
 
-export const TbImageDeleteResultSchemaSchema = z.object({
-  "references": z.record(z.string(), z.array(HasId_Of_objectSchema)),
-  "success": z.boolean(),
-  "whiteLabelingList": z.array(WhiteLabelingSchema)
+const TbImageDeleteResultSchemaImpl = z.object({
+  "references": z.object({
+
+}).optional(),
+  "success": z.boolean().optional(),
+  "whiteLabelingList": z.array(WhiteLabelingSchema).optional()
 });
 export type TbImageDeleteResult = z.infer<typeof TbImageDeleteResultSchema>;
 
-export const TbResourceSchemaSchema = z.object({
-  "descriptor": JsonNodeSchema,
-  "link": z.string(),
-  "name": z.string(),
-  "preview": z.string(),
-  "public": z.boolean(),
-  "publicLink": z.string(),
-  "publicResourceKey": z.string(),
-  "id": TbResourceIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "title": z.string(),
-  "resourceType": z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]),
-  "resourceKey": z.string(),
-  "etag": z.string(),
-  "fileName": z.string(),
-  "data": z.string()
+const TbResourceSchemaImpl = z.object({
+  "descriptor": JsonNodeSchema.optional(),
+  "link": z.string().optional(),
+  "name": z.string().optional(),
+  "preview": z.string().optional(),
+  "public": z.boolean().optional(),
+  "publicLink": z.string().optional(),
+  "publicResourceKey": z.string().optional(),
+  "id": TbResourceIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "title": z.string().optional(),
+  "resourceType": z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]).optional(),
+  "resourceKey": z.string().optional(),
+  "etag": z.string().optional(),
+  "fileName": z.string().optional(),
+  "data": z.string().optional()
 });
 export type TbResource = z.infer<typeof TbResourceSchema>;
 
-export const TbResourceIdSchemaSchema = z.object({
+const TbResourceIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["TB_RESOURCE"])
 });
 export type TbResourceId = z.infer<typeof TbResourceIdSchema>;
 
-export const TbResourceInfoSchemaSchema = z.object({
-  "descriptor": JsonNodeSchema,
-  "link": z.string(),
-  "name": z.string(),
-  "public": z.boolean(),
-  "publicLink": z.string(),
-  "publicResourceKey": z.string(),
-  "id": TbResourceIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
-  "title": z.string(),
-  "resourceType": z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]),
-  "resourceKey": z.string(),
-  "etag": z.string(),
-  "fileName": z.string()
+const TbResourceInfoSchemaImpl = z.object({
+  "descriptor": JsonNodeSchema.optional(),
+  "link": z.string().optional(),
+  "name": z.string().optional(),
+  "public": z.boolean().optional(),
+  "publicLink": z.string().optional(),
+  "publicResourceKey": z.string().optional(),
+  "id": TbResourceIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
+  "title": z.string().optional(),
+  "resourceType": z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]).optional(),
+  "resourceKey": z.string().optional(),
+  "etag": z.string().optional(),
+  "fileName": z.string().optional()
 });
 export type TbResourceInfo = z.infer<typeof TbResourceInfoSchema>;
 
-export const TelemetryEntityViewSchemaSchema = z.object({
+const TelemetryEntityViewSchemaImpl = z.object({
   "timeseries": z.array(z.string()),
   "attributes": AttributesEntityViewSchema
 });
 export type TelemetryEntityView = z.infer<typeof TelemetryEntityViewSchema>;
 
-export const TelemetryMappingConfigurationSchemaSchema = z.object({
-  "attribute": z.array(z.string()),
-  "attributeLwm2m": z.record(z.string(), ObjectAttributesSchema),
-  "keyName": z.record(z.string(), z.string()),
-  "observe": z.array(z.string()),
-  "telemetry": z.array(z.string())
+const TelemetryMappingConfigurationSchemaImpl = z.object({
+  "attribute": z.array(z.string()).optional(),
+  "attributeLwm2m": z.object({
+
+}).optional(),
+  "keyName": z.object({
+
+}).optional(),
+  "observe": z.array(z.string()).optional(),
+  "telemetry": z.array(z.string()).optional()
 });
 export type TelemetryMappingConfiguration = z.infer<typeof TelemetryMappingConfigurationSchema>;
 
-export const TelemetryQueryingSnmpCommunicationConfigSchemaSchema = z.lazy(() => z.object({}));
+const TelemetryQueryingSnmpCommunicationConfigSchemaImpl = z.object({
+  "mappings": z.array(SnmpMappingSchema).optional(),
+  "queryingFrequencyMs": z.number().optional(),
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
+});
 export type TelemetryQueryingSnmpCommunicationConfig = z.infer<typeof TelemetryQueryingSnmpCommunicationConfigSchema>;
 
-export const TenantSchemaSchema = z.object({
-  "id": TenantIdSchema,
-  "createdTime": z.number(),
+const TenantSchemaImpl = z.object({
+  "id": TenantIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "title": z.string(),
-  "name": z.string(),
-  "region": z.string(),
-  "tenantProfileId": TenantProfileIdSchema,
-  "country": z.string(),
-  "state": z.string(),
-  "city": z.string(),
-  "address": z.string(),
-  "address2": z.string(),
-  "zip": z.string(),
-  "phone": z.string(),
+  "name": z.string().optional(),
+  "region": z.string().optional(),
+  "tenantProfileId": TenantProfileIdSchema.optional(),
+  "country": z.string().optional(),
+  "state": z.string().optional(),
+  "city": z.string().optional(),
+  "address": z.string().optional(),
+  "address2": z.string().optional(),
+  "zip": z.string().optional(),
+  "phone": z.string().optional(),
   "email": z.string(),
-  "additionalInfo": JsonNodeSchema
+  "additionalInfo": JsonNodeSchema.optional()
 });
 export type Tenant = z.infer<typeof TenantSchema>;
 
-export const TenantAdministratorsFilterSchemaSchema = z.lazy(() => z.object({}));
+const TenantAdministratorsFilterSchemaImpl = z.object({
+  "tenantProfilesIds": z.array(z.string()).optional(),
+  "tenantsIds": z.array(z.string()).optional()
+});
 export type TenantAdministratorsFilter = z.infer<typeof TenantAdministratorsFilterSchema>;
 
-export const TenantIdSchemaSchema = z.object({
+const TenantIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["TENANT"])
 });
 export type TenantId = z.infer<typeof TenantIdSchema>;
 
-export const TenantInfoSchemaSchema = z.object({
-  "id": TenantIdSchema,
-  "createdTime": z.number(),
+const TenantInfoSchemaImpl = z.object({
+  "id": TenantIdSchema.optional(),
+  "createdTime": z.number().optional(),
   "title": z.string(),
-  "name": z.string(),
-  "region": z.string(),
-  "tenantProfileId": TenantProfileIdSchema,
-  "country": z.string(),
-  "state": z.string(),
-  "city": z.string(),
-  "address": z.string(),
-  "address2": z.string(),
-  "zip": z.string(),
-  "phone": z.string(),
+  "name": z.string().optional(),
+  "region": z.string().optional(),
+  "tenantProfileId": TenantProfileIdSchema.optional(),
+  "country": z.string().optional(),
+  "state": z.string().optional(),
+  "city": z.string().optional(),
+  "address": z.string().optional(),
+  "address2": z.string().optional(),
+  "zip": z.string().optional(),
+  "phone": z.string().optional(),
   "email": z.string(),
-  "additionalInfo": JsonNodeSchema,
-  "tenantProfileName": z.string()
+  "additionalInfo": JsonNodeSchema.optional(),
+  "tenantProfileName": z.string().optional()
 });
 export type TenantInfo = z.infer<typeof TenantInfoSchema>;
 
-export const TenantProfileSchemaSchema = z.object({
-  "default": z.boolean(),
-  "id": TenantProfileIdSchema,
-  "createdTime": z.number(),
-  "name": z.string(),
-  "description": z.string(),
-  "isolatedTbRuleEngine": z.boolean(),
-  "profileData": TenantProfileDataSchema
+const TenantProfileSchemaImpl = z.object({
+  "default": z.boolean().optional(),
+  "id": TenantProfileIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "name": z.string().optional(),
+  "description": z.string().optional(),
+  "isolatedTbRuleEngine": z.boolean().optional(),
+  "profileData": TenantProfileDataSchema.optional()
 });
 export type TenantProfile = z.infer<typeof TenantProfileSchema>;
 
-export const TenantProfileConfigurationSchemaSchema = z.object({});
+const TenantProfileConfigurationSchemaImpl = z.object({
+
+});
 export type TenantProfileConfiguration = z.infer<typeof TenantProfileConfigurationSchema>;
 
-export const TenantProfileDataSchemaSchema = z.object({
-  "configuration": TenantProfileConfigurationSchema,
-  "queueConfiguration": z.array(TenantProfileQueueConfigurationSchema)
+const TenantProfileDataSchemaImpl = z.object({
+  "configuration": TenantProfileConfigurationSchema.optional(),
+  "queueConfiguration": z.array(TenantProfileQueueConfigurationSchema).optional()
 });
 export type TenantProfileData = z.infer<typeof TenantProfileDataSchema>;
 
-export const TenantProfileIdSchemaSchema = z.object({
+const TenantProfileIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["TENANT_PROFILE"])
 });
 export type TenantProfileId = z.infer<typeof TenantProfileIdSchema>;
 
-export const TenantProfileQueueConfigurationSchemaSchema = z.object({
-  "additionalInfo": JsonNodeSchema,
-  "consumerPerPartition": z.boolean(),
-  "name": z.string(),
-  "packProcessingTimeout": z.number(),
-  "partitions": z.number(),
-  "pollInterval": z.number(),
-  "processingStrategy": ProcessingStrategySchema,
-  "submitStrategy": SubmitStrategySchema,
-  "topic": z.string()
+const TenantProfileQueueConfigurationSchemaImpl = z.object({
+  "additionalInfo": JsonNodeSchema.optional(),
+  "consumerPerPartition": z.boolean().optional(),
+  "name": z.string().optional(),
+  "packProcessingTimeout": z.number().optional(),
+  "partitions": z.number().optional(),
+  "pollInterval": z.number().optional(),
+  "processingStrategy": ProcessingStrategySchema.optional(),
+  "submitStrategy": SubmitStrategySchema.optional(),
+  "topic": z.string().optional()
 });
 export type TenantProfileQueueConfiguration = z.infer<typeof TenantProfileQueueConfigurationSchema>;
 
-export const TenantSolutionTemplateDetailsSchemaSchema = z.object({
-  "description": z.string(),
-  "highlights": z.string(),
-  "imageUrls": z.array(z.string()),
-  "installed": z.boolean(),
-  "id": z.string(),
-  "title": z.string(),
-  "level": z.enum(["MAKER", "PROTOTYPE", "STARTUP"]),
-  "installTimeoutMs": z.number(),
-  "tenantTelemetryKeys": z.array(z.string()),
-  "tenantAttributeKeys": z.array(z.string())
+const TenantSolutionTemplateDetailsSchemaImpl = z.object({
+  "description": z.string().optional(),
+  "highlights": z.string().optional(),
+  "imageUrls": z.array(z.string()).optional(),
+  "installed": z.boolean().optional(),
+  "id": z.string().optional(),
+  "title": z.string().optional(),
+  "level": z.enum(["MAKER", "PROTOTYPE", "STARTUP"]).optional(),
+  "installTimeoutMs": z.number().optional(),
+  "tenantTelemetryKeys": z.array(z.string()).optional(),
+  "tenantAttributeKeys": z.array(z.string()).optional()
 });
 export type TenantSolutionTemplateDetails = z.infer<typeof TenantSolutionTemplateDetailsSchema>;
 
-export const TenantSolutionTemplateInfoSchemaSchema = z.object({
-  "id": z.string(),
-  "title": z.string(),
-  "level": z.enum(["MAKER", "PROTOTYPE", "STARTUP"]),
-  "installTimeoutMs": z.number(),
-  "tenantTelemetryKeys": z.array(z.string()),
-  "tenantAttributeKeys": z.array(z.string()),
-  "previewImageUrl": z.string(),
-  "shortDescription": z.string(),
-  "installed": z.boolean(),
-  "videoPreviewImageUrl": z.string(),
-  "previewMp4Url": z.string(),
-  "previewWebmUrl": z.string()
+const TenantSolutionTemplateInfoSchemaImpl = z.object({
+  "id": z.string().optional(),
+  "title": z.string().optional(),
+  "level": z.enum(["MAKER", "PROTOTYPE", "STARTUP"]).optional(),
+  "installTimeoutMs": z.number().optional(),
+  "tenantTelemetryKeys": z.array(z.string()).optional(),
+  "tenantAttributeKeys": z.array(z.string()).optional(),
+  "previewImageUrl": z.string().optional(),
+  "shortDescription": z.string().optional(),
+  "installed": z.boolean().optional(),
+  "videoPreviewImageUrl": z.string().optional(),
+  "previewMp4Url": z.string().optional(),
+  "previewWebmUrl": z.string().optional()
 });
 export type TenantSolutionTemplateInfo = z.infer<typeof TenantSolutionTemplateInfoSchema>;
 
-export const TenantSolutionTemplateInstructionsSchemaSchema = z.object({
-  "dashboardGroupId": EntityGroupIdSchema,
-  "dashboardId": DashboardIdSchema,
-  "publicId": CustomerIdSchema,
-  "mainDashboardPublic": z.boolean(),
-  "details": z.string()
+const TenantSolutionTemplateInstructionsSchemaImpl = z.object({
+  "dashboardGroupId": EntityGroupIdSchema.optional(),
+  "dashboardId": DashboardIdSchema.optional(),
+  "publicId": CustomerIdSchema.optional(),
+  "mainDashboardPublic": z.boolean().optional(),
+  "details": z.string().optional()
 });
 export type TenantSolutionTemplateInstructions = z.infer<typeof TenantSolutionTemplateInstructionsSchema>;
 
-export const TestSmsRequestSchemaSchema = z.object({
-  "providerConfiguration": SmsProviderConfigurationSchema,
-  "numberTo": z.string(),
-  "message": z.string()
+const TestSmsRequestSchemaImpl = z.object({
+  "providerConfiguration": SmsProviderConfigurationSchema.optional(),
+  "numberTo": z.string().optional(),
+  "message": z.string().optional()
 });
 export type TestSmsRequest = z.infer<typeof TestSmsRequestSchema>;
 
-export const ThingsboardCredentialsExpiredResponseSchemaSchema = z.object({
-  "subscriptionEntry": z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]),
-  "subscriptionErrorCode": z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]),
-  "subscriptionValue": JsonNodeSchema,
-  "status": z.number(),
-  "message": z.string(),
-  "errorCode": z.object({}),
-  "timestamp": z.string(),
-  "resetToken": z.string()
+const ThingsboardCredentialsExpiredResponseSchemaImpl = z.object({
+  "subscriptionEntry": z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]).optional(),
+  "subscriptionErrorCode": z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]).optional(),
+  "subscriptionValue": JsonNodeSchema.optional(),
+  "status": z.number().optional(),
+  "message": z.string().optional(),
+  "errorCode": z.object({
+
+}).optional(),
+  "timestamp": z.string().optional(),
+  "resetToken": z.string().optional()
 });
 export type ThingsboardCredentialsExpiredResponse = z.infer<typeof ThingsboardCredentialsExpiredResponseSchema>;
 
-export const ThingsboardErrorResponseSchemaSchema = z.object({
-  "subscriptionEntry": z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]),
-  "subscriptionErrorCode": z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]),
-  "subscriptionValue": JsonNodeSchema,
-  "status": z.number(),
-  "message": z.string(),
-  "errorCode": z.object({}),
-  "timestamp": z.string()
+const ThingsboardErrorResponseSchemaImpl = z.object({
+  "subscriptionEntry": z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]).optional(),
+  "subscriptionErrorCode": z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]).optional(),
+  "subscriptionValue": JsonNodeSchema.optional(),
+  "status": z.number().optional(),
+  "message": z.string().optional(),
+  "errorCode": z.object({
+
+}).optional(),
+  "timestamp": z.string().optional()
 });
 export type ThingsboardErrorResponse = z.infer<typeof ThingsboardErrorResponseSchema>;
 
-export const ToDeviceRpcRequestSnmpCommunicationConfigSchemaSchema = z.object({
-  "mappings": z.array(SnmpMappingSchema),
-  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ToDeviceRpcRequestSnmpCommunicationConfigSchemaImpl = z.object({
+  "mappings": z.array(SnmpMappingSchema).optional(),
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
 export type ToDeviceRpcRequestSnmpCommunicationConfig = z.infer<typeof ToDeviceRpcRequestSnmpCommunicationConfigSchema>;
 
-export const ToServerRpcRequestSnmpCommunicationConfigSchemaSchema = z.object({
-  "mappings": z.array(SnmpMappingSchema),
-  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ToServerRpcRequestSnmpCommunicationConfigSchemaImpl = z.object({
+  "mappings": z.array(SnmpMappingSchema).optional(),
+  "spec": z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
 export type ToServerRpcRequestSnmpCommunicationConfig = z.infer<typeof ToServerRpcRequestSnmpCommunicationConfigSchema>;
 
-export const TotpTwoFaAccountConfigSchemaSchema = z.object({
+const TotpTwoFaAccountConfigSchemaImpl = z.object({
   "authUrl": z.string(),
-  "useByDefault": z.boolean()
+  "useByDefault": z.boolean().optional()
 });
 export type TotpTwoFaAccountConfig = z.infer<typeof TotpTwoFaAccountConfigSchema>;
 
-export const TotpTwoFaProviderConfigSchemaSchema = z.object({
+const TotpTwoFaProviderConfigSchemaImpl = z.object({
   "issuerName": z.string()
 });
 export type TotpTwoFaProviderConfig = z.infer<typeof TotpTwoFaProviderConfigSchema>;
 
-export const TransportPayloadTypeConfigurationSchemaSchema = z.object({});
+const TransportPayloadTypeConfigurationSchemaImpl = z.object({
+
+});
 export type TransportPayloadTypeConfiguration = z.infer<typeof TransportPayloadTypeConfigurationSchema>;
 
-export const TsValueSchemaSchema = z.object({
-  "count": z.number(),
-  "ts": z.number(),
-  "value": z.string()
+const TsValueSchemaImpl = z.object({
+  "count": z.number().optional(),
+  "ts": z.number().optional(),
+  "value": z.string().optional()
 });
 export type TsValue = z.infer<typeof TsValueSchema>;
 
-export const TwilioSmsProviderConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const TwilioSmsProviderConfigurationSchemaImpl = z.object({
+  "accountSid": z.string().optional(),
+  "accountToken": z.string().optional(),
+  "numberFrom": z.string().optional()
+});
 export type TwilioSmsProviderConfiguration = z.infer<typeof TwilioSmsProviderConfigurationSchema>;
 
-export const TwoFaAccountConfigSchemaSchema = z.object({
-  "useByDefault": z.boolean()
+const TwoFaAccountConfigSchemaImpl = z.object({
+  "useByDefault": z.boolean().optional()
 });
 export type TwoFaAccountConfig = z.infer<typeof TwoFaAccountConfigSchema>;
 
-export const TwoFaAccountConfigUpdateRequestSchemaSchema = z.object({
-  "useByDefault": z.boolean()
+const TwoFaAccountConfigUpdateRequestSchemaImpl = z.object({
+  "useByDefault": z.boolean().optional()
 });
 export type TwoFaAccountConfigUpdateRequest = z.infer<typeof TwoFaAccountConfigUpdateRequestSchema>;
 
-export const TwoFaProviderConfigSchemaSchema = z.object({});
+const TwoFaProviderConfigSchemaImpl = z.object({
+
+});
 export type TwoFaProviderConfig = z.infer<typeof TwoFaProviderConfigSchema>;
 
-export const TwoFaProviderInfoSchemaSchema = z.object({
-  "contact": z.string(),
-  "default": z.boolean(),
-  "minVerificationCodeSendPeriod": z.number(),
-  "type": z.enum(["BACKUP_CODE", "EMAIL", "SMS", "TOTP"])
+const TwoFaProviderInfoSchemaImpl = z.object({
+  "contact": z.string().optional(),
+  "default": z.boolean().optional(),
+  "minVerificationCodeSendPeriod": z.number().optional(),
+  "type": z.enum(["BACKUP_CODE", "EMAIL", "SMS", "TOTP"]).optional()
 });
 export type TwoFaProviderInfo = z.infer<typeof TwoFaProviderInfoSchema>;
 
-export const UpdateMessageSchemaSchema = z.object({
-  "updateAvailable": z.boolean(),
-  "currentVersion": z.string(),
-  "latestVersion": z.string(),
-  "upgradeInstructionsUrl": z.string(),
-  "currentVersionReleaseNotesUrl": z.string(),
-  "latestVersionReleaseNotesUrl": z.string()
+const UpdateMessageSchemaImpl = z.object({
+  "updateAvailable": z.boolean().optional(),
+  "currentVersion": z.string().optional(),
+  "latestVersion": z.string().optional(),
+  "upgradeInstructionsUrl": z.string().optional(),
+  "currentVersionReleaseNotesUrl": z.string().optional(),
+  "latestVersionReleaseNotesUrl": z.string().optional()
 });
 export type UpdateMessage = z.infer<typeof UpdateMessageSchema>;
 
-export const UsageInfoSchemaSchema = z.object({
-  "alarms": z.number(),
-  "assets": z.number(),
-  "customers": z.number(),
-  "dashboards": z.number(),
-  "devices": z.number(),
-  "emails": z.number(),
-  "jsExecutions": z.number(),
-  "maxAlarms": z.number(),
-  "maxAssets": z.number(),
-  "maxCustomers": z.number(),
-  "maxDashboards": z.number(),
-  "maxDevices": z.number(),
-  "maxEmails": z.number(),
-  "maxJsExecutions": z.number(),
-  "maxSms": z.number(),
-  "maxTbelExecutions": z.number(),
-  "maxTransportMessages": z.number(),
-  "maxUsers": z.number(),
-  "sms": z.number(),
-  "smsEnabled": z.boolean(),
-  "tbelExecutions": z.number(),
-  "transportMessages": z.number(),
-  "users": z.number()
+const UsageInfoSchemaImpl = z.object({
+  "alarms": z.number().optional(),
+  "assets": z.number().optional(),
+  "customers": z.number().optional(),
+  "dashboards": z.number().optional(),
+  "devices": z.number().optional(),
+  "emails": z.number().optional(),
+  "jsExecutions": z.number().optional(),
+  "maxAlarms": z.number().optional(),
+  "maxAssets": z.number().optional(),
+  "maxCustomers": z.number().optional(),
+  "maxDashboards": z.number().optional(),
+  "maxDevices": z.number().optional(),
+  "maxEmails": z.number().optional(),
+  "maxJsExecutions": z.number().optional(),
+  "maxSms": z.number().optional(),
+  "maxTbelExecutions": z.number().optional(),
+  "maxTransportMessages": z.number().optional(),
+  "maxUsers": z.number().optional(),
+  "sms": z.number().optional(),
+  "smsEnabled": z.boolean().optional(),
+  "tbelExecutions": z.number().optional(),
+  "transportMessages": z.number().optional(),
+  "users": z.number().optional()
 });
 export type UsageInfo = z.infer<typeof UsageInfoSchema>;
 
-export const UserSchemaSchema = z.object({
-  "id": UserIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const UserSchemaImpl = z.object({
+  "id": UserIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "email": z.string(),
-  "name": z.string(),
+  "name": z.string().optional(),
   "authority": z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-  "firstName": z.string(),
-  "lastName": z.string(),
-  "phone": z.string(),
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema
+  "firstName": z.string().optional(),
+  "lastName": z.string().optional(),
+  "phone": z.string().optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional()
 });
 export type User = z.infer<typeof UserSchema>;
 
-export const UserDashboardsInfoSchemaSchema = z.object({
-  "last": z.array(LastVisitedDashboardInfoSchema),
-  "starred": z.array(StarredDashboardInfoSchema)
+const UserDashboardsInfoSchemaImpl = z.object({
+  "last": z.array(LastVisitedDashboardInfoSchema).optional(),
+  "starred": z.array(StarredDashboardInfoSchema).optional()
 });
 export type UserDashboardsInfo = z.infer<typeof UserDashboardsInfoSchema>;
 
-export const UserEmailInfoSchemaSchema = z.object({
-  "id": UserIdSchema,
-  "email": z.string(),
-  "firstName": z.string(),
-  "lastName": z.string()
+const UserEmailInfoSchemaImpl = z.object({
+  "id": UserIdSchema.optional(),
+  "email": z.string().optional(),
+  "firstName": z.string().optional(),
+  "lastName": z.string().optional()
 });
 export type UserEmailInfo = z.infer<typeof UserEmailInfoSchema>;
 
-export const UserGroupListFilterSchemaSchema = z.lazy(() => z.object({}));
+const UserGroupListFilterSchemaImpl = z.object({
+  "groupsIds": z.array(z.string()).optional()
+});
 export type UserGroupListFilter = z.infer<typeof UserGroupListFilterSchema>;
 
-export const UserIdSchemaSchema = z.object({
+const UserIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["USER"])
 });
 export type UserId = z.infer<typeof UserIdSchema>;
 
-export const UserInfoSchemaSchema = z.object({
-  "id": UserIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "customerId": CustomerIdSchema,
+const UserInfoSchemaImpl = z.object({
+  "id": UserIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "customerId": CustomerIdSchema.optional(),
   "email": z.string(),
-  "name": z.string(),
+  "name": z.string().optional(),
   "authority": z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-  "firstName": z.string(),
-  "lastName": z.string(),
-  "phone": z.string(),
-  "additionalInfo": JsonNodeSchema,
-  "ownerId": EntityIdSchema,
-  "ownerName": z.string(),
-  "groups": z.array(EntityInfoSchema)
+  "firstName": z.string().optional(),
+  "lastName": z.string().optional(),
+  "phone": z.string().optional(),
+  "additionalInfo": JsonNodeSchema.optional(),
+  "ownerId": EntityIdSchema.optional(),
+  "ownerName": z.string().optional(),
+  "groups": z.array(EntityInfoSchema).optional()
 });
 export type UserInfo = z.infer<typeof UserInfoSchema>;
 
-export const UserListFilterSchemaSchema = z.object({
-  "usersIds": z.array(z.string())
+const UserListFilterSchemaImpl = z.object({
+  "usersIds": z.array(z.string()).optional()
 });
 export type UserListFilter = z.infer<typeof UserListFilterSchema>;
 
-export const UserNotificationSettingsSchemaSchema = z.object({
-  "prefs": z.record(z.string(), NotificationPrefSchema)
+const UserNotificationSettingsSchemaImpl = z.object({
+  "prefs": z.object({
+
+})
 });
 export type UserNotificationSettings = z.infer<typeof UserNotificationSettingsSchema>;
 
-export const UserPasswordPolicySchemaSchema = z.object({
-  "allowWhitespaces": z.boolean(),
-  "forceUserToResetPasswordIfNotValid": z.boolean(),
-  "maximumLength": z.number(),
-  "minimumDigits": z.number(),
-  "minimumLength": z.number(),
-  "minimumLowercaseLetters": z.number(),
-  "minimumSpecialCharacters": z.number(),
-  "minimumUppercaseLetters": z.number(),
-  "passwordExpirationPeriodDays": z.number(),
-  "passwordReuseFrequencyDays": z.number()
+const UserPasswordPolicySchemaImpl = z.object({
+  "allowWhitespaces": z.boolean().optional(),
+  "forceUserToResetPasswordIfNotValid": z.boolean().optional(),
+  "maximumLength": z.number().optional(),
+  "minimumDigits": z.number().optional(),
+  "minimumLength": z.number().optional(),
+  "minimumLowercaseLetters": z.number().optional(),
+  "minimumSpecialCharacters": z.number().optional(),
+  "minimumUppercaseLetters": z.number().optional(),
+  "passwordExpirationPeriodDays": z.number().optional(),
+  "passwordReuseFrequencyDays": z.number().optional()
 });
 export type UserPasswordPolicy = z.infer<typeof UserPasswordPolicySchema>;
 
-export const UserRoleFilterSchemaSchema = z.lazy(() => z.object({}));
+const UserRoleFilterSchemaImpl = z.object({
+  "rolesIds": z.array(z.string()).optional()
+});
 export type UserRoleFilter = z.infer<typeof UserRoleFilterSchema>;
 
-export const UsersFilterSchemaSchema = z.object({});
+const UsersFilterSchemaImpl = z.object({
+
+});
 export type UsersFilter = z.infer<typeof UsersFilterSchema>;
 
-export const VersionCreateConfigSchemaSchema = z.object({
-  "saveAttributes": z.boolean(),
-  "saveCredentials": z.boolean(),
-  "saveGroupEntities": z.boolean(),
-  "savePermissions": z.boolean(),
-  "saveRelations": z.boolean()
+const VersionCreateConfigSchemaImpl = z.object({
+  "saveAttributes": z.boolean().optional(),
+  "saveCredentials": z.boolean().optional(),
+  "saveGroupEntities": z.boolean().optional(),
+  "savePermissions": z.boolean().optional(),
+  "saveRelations": z.boolean().optional()
 });
 export type VersionCreateConfig = z.infer<typeof VersionCreateConfigSchema>;
 
-export const VersionCreateRequestSchemaSchema = z.object({
-  "branch": z.string(),
-  "type": z.enum(["COMPLEX", "SINGLE_ENTITY"]),
-  "versionName": z.string()
+const VersionCreateRequestSchemaImpl = z.object({
+  "branch": z.string().optional(),
+  "type": z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+  "versionName": z.string().optional()
 });
 export type VersionCreateRequest = z.infer<typeof VersionCreateRequestSchema>;
 
-export const VersionCreationResultSchemaSchema = z.object({
-  "added": z.number(),
-  "done": z.boolean(),
-  "error": z.string(),
-  "modified": z.number(),
-  "removed": z.number(),
-  "version": EntityVersionSchema
+const VersionCreationResultSchemaImpl = z.object({
+  "added": z.number().optional(),
+  "done": z.boolean().optional(),
+  "error": z.string().optional(),
+  "modified": z.number().optional(),
+  "removed": z.number().optional(),
+  "version": EntityVersionSchema.optional()
 });
 export type VersionCreationResult = z.infer<typeof VersionCreationResultSchema>;
 
-export const VersionLoadConfigSchemaSchema = z.object({
-  "autoGenerateIntegrationKey": z.boolean(),
-  "loadAttributes": z.boolean(),
-  "loadCredentials": z.boolean(),
-  "loadGroupEntities": z.boolean(),
-  "loadPermissions": z.boolean(),
-  "loadRelations": z.boolean()
+const VersionLoadConfigSchemaImpl = z.object({
+  "autoGenerateIntegrationKey": z.boolean().optional(),
+  "loadAttributes": z.boolean().optional(),
+  "loadCredentials": z.boolean().optional(),
+  "loadGroupEntities": z.boolean().optional(),
+  "loadPermissions": z.boolean().optional(),
+  "loadRelations": z.boolean().optional()
 });
 export type VersionLoadConfig = z.infer<typeof VersionLoadConfigSchema>;
 
-export const VersionLoadRequestSchemaSchema = z.object({
-  "type": z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]),
-  "versionId": z.string()
+const VersionLoadRequestSchemaImpl = z.object({
+  "type": z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+  "versionId": z.string().optional()
 });
 export type VersionLoadRequest = z.infer<typeof VersionLoadRequestSchema>;
 
-export const VersionLoadResultSchemaSchema = z.object({
-  "done": z.boolean(),
-  "error": EntityLoadErrorSchema,
-  "result": z.array(EntityTypeLoadResultSchema)
+const VersionLoadResultSchemaImpl = z.object({
+  "done": z.boolean().optional(),
+  "error": EntityLoadErrorSchema.optional(),
+  "result": z.array(EntityTypeLoadResultSchema).optional()
 });
 export type VersionLoadResult = z.infer<typeof VersionLoadResultSchema>;
 
-export const VersionedEntityInfoSchemaSchema = z.object({
-  "externalId": EntityIdSchema,
-  "path": z.string()
+const VersionedEntityInfoSchemaImpl = z.object({
+  "externalId": EntityIdSchema.optional(),
+  "path": z.string().optional()
 });
 export type VersionedEntityInfo = z.infer<typeof VersionedEntityInfoSchema>;
 
-export const WebDeliveryMethodNotificationTemplateSchemaSchema = z.object({
-  "additionalConfig": JsonNodeSchema,
-  "body": z.string(),
-  "enabled": z.boolean(),
-  "subject": z.string()
+const WebDeliveryMethodNotificationTemplateSchemaImpl = z.object({
+  "additionalConfig": JsonNodeSchema.optional(),
+  "body": z.string().optional(),
+  "enabled": z.boolean().optional(),
+  "subject": z.string().optional()
 });
 export type WebDeliveryMethodNotificationTemplate = z.infer<typeof WebDeliveryMethodNotificationTemplateSchema>;
 
-export const WhiteLabelingSchemaSchema = z.object({
-  "customerId": CustomerIdSchema,
-  "domain": z.string(),
-  "settings": JsonNodeSchema,
-  "tenantId": TenantIdSchema,
-  "type": z.enum(["GENERAL", "LOGIN", "MAIL_TEMPLATES"])
+const WhiteLabelingSchemaImpl = z.object({
+  "customerId": CustomerIdSchema.optional(),
+  "domain": z.string().optional(),
+  "settings": JsonNodeSchema.optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "type": z.enum(["GENERAL", "LOGIN", "MAIL_TEMPLATES"]).optional()
 });
 export type WhiteLabeling = z.infer<typeof WhiteLabelingSchema>;
 
-export const WhiteLabelingParamsSchemaSchema = z.object({
-  "logoImageUrl": z.string(),
-  "logoImageHeight": z.number(),
-  "appTitle": z.string(),
-  "favicon": FaviconSchema,
-  "paletteSettings": PaletteSettingsSchema,
-  "helpLinkBaseUrl": z.string(),
-  "uiHelpBaseUrl": z.string(),
-  "enableHelpLinks": z.boolean(),
-  "whiteLabelingEnabled": z.boolean(),
-  "showNameVersion": z.boolean(),
-  "platformName": z.string(),
-  "platformVersion": z.string(),
-  "customCss": z.string()
+const WhiteLabelingParamsSchemaImpl = z.object({
+  "logoImageUrl": z.string().optional(),
+  "logoImageHeight": z.number().optional(),
+  "appTitle": z.string().optional(),
+  "favicon": FaviconSchema.optional(),
+  "paletteSettings": PaletteSettingsSchema.optional(),
+  "helpLinkBaseUrl": z.string().optional(),
+  "uiHelpBaseUrl": z.string().optional(),
+  "enableHelpLinks": z.boolean().optional(),
+  "whiteLabelingEnabled": z.boolean().optional(),
+  "showNameVersion": z.boolean().optional(),
+  "platformName": z.string().optional(),
+  "platformVersion": z.string().optional(),
+  "customCss": z.string().optional()
 });
 export type WhiteLabelingParams = z.infer<typeof WhiteLabelingParamsSchema>;
 
-export const WidgetTypeSchemaSchema = z.object({
-  "id": WidgetTypeIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "fqn": z.string(),
-  "name": z.string(),
-  "deprecated": z.boolean(),
-  "descriptor": JsonNodeSchema
+const WidgetTypeSchemaImpl = z.object({
+  "id": WidgetTypeIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "fqn": z.string().optional(),
+  "name": z.string().optional(),
+  "deprecated": z.boolean().optional(),
+  "descriptor": JsonNodeSchema.optional()
 });
 export type WidgetType = z.infer<typeof WidgetTypeSchema>;
 
-export const WidgetTypeDetailsSchemaSchema = z.object({
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "fqn": z.string(),
-  "name": z.string(),
-  "deprecated": z.boolean(),
-  "descriptor": JsonNodeSchema,
-  "image": z.string(),
-  "description": z.string(),
-  "tags": z.array(z.string())
+const WidgetTypeDetailsSchemaImpl = z.object({
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "fqn": z.string().optional(),
+  "name": z.string().optional(),
+  "deprecated": z.boolean().optional(),
+  "descriptor": JsonNodeSchema.optional(),
+  "image": z.string().optional(),
+  "description": z.string().optional(),
+  "tags": z.array(z.string()).optional()
 });
 export type WidgetTypeDetails = z.infer<typeof WidgetTypeDetailsSchema>;
 
-export const WidgetTypeExportDataSchemaSchema = z.lazy(() => z.object({}));
+const WidgetTypeExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": WidgetTypeDetailsSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "relations": z.array(EntityRelationSchema).optional()
+});
 export type WidgetTypeExportData = z.infer<typeof WidgetTypeExportDataSchema>;
 
-export const WidgetTypeIdSchemaSchema = z.object({
+const WidgetTypeIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["WIDGET_TYPE"])
 });
 export type WidgetTypeId = z.infer<typeof WidgetTypeIdSchema>;
 
-export const WidgetTypeInfoSchemaSchema = z.object({
-  "id": WidgetTypeIdSchema,
-  "createdTime": z.number(),
-  "tenantId": TenantIdSchema,
-  "fqn": z.string(),
-  "name": z.string(),
-  "deprecated": z.boolean(),
-  "image": z.string(),
-  "description": z.string(),
-  "tags": z.array(z.string()),
-  "widgetType": z.string()
+const WidgetTypeInfoSchemaImpl = z.object({
+  "id": WidgetTypeIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "fqn": z.string().optional(),
+  "name": z.string().optional(),
+  "deprecated": z.boolean().optional(),
+  "image": z.string().optional(),
+  "description": z.string().optional(),
+  "tags": z.array(z.string()).optional(),
+  "widgetType": z.string().optional()
 });
 export type WidgetTypeInfo = z.infer<typeof WidgetTypeInfoSchema>;
 
-export const WidgetsBundleSchemaSchema = z.object({
-  "id": WidgetsBundleIdSchema,
-  "createdTime": z.number(),
-  "name": z.string(),
-  "tenantId": TenantIdSchema,
-  "alias": z.string(),
-  "title": z.string(),
-  "image": z.string(),
-  "description": z.string(),
-  "order": z.number()
+const WidgetsBundleSchemaImpl = z.object({
+  "id": WidgetsBundleIdSchema.optional(),
+  "createdTime": z.number().optional(),
+  "name": z.string().optional(),
+  "tenantId": TenantIdSchema.optional(),
+  "alias": z.string().optional(),
+  "title": z.string().optional(),
+  "image": z.string().optional(),
+  "description": z.string().optional(),
+  "order": z.number().optional()
 });
 export type WidgetsBundle = z.infer<typeof WidgetsBundleSchema>;
 
-export const WidgetsBundleExportDataSchemaSchema = z.lazy(() => z.object({}));
+const WidgetsBundleExportDataSchemaImpl = z.object({
+  "attributes": z.object({
+
+}).optional(),
+  "entity": WidgetsBundleSchema.optional(),
+  "entityType": z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+  "fqns": z.array(z.string()).optional(),
+  "relations": z.array(EntityRelationSchema).optional(),
+  "widgets": z.array(ObjectNodeSchema).optional()
+});
 export type WidgetsBundleExportData = z.infer<typeof WidgetsBundleExportDataSchema>;
 
-export const WidgetsBundleIdSchemaSchema = z.object({
+const WidgetsBundleIdSchemaImpl = z.object({
   "id": z.string(),
   "entityType": z.enum(["WIDGETS_BUNDLE"])
 });
 export type WidgetsBundleId = z.infer<typeof WidgetsBundleIdSchema>;
 
-export const X509CertificateChainProvisionConfigurationSchemaSchema = z.lazy(() => z.object({}));
+const X509CertificateChainProvisionConfigurationSchemaImpl = z.object({
+  "allowCreateNewDevicesByX509Certificate": z.boolean().optional(),
+  "certificateRegExPattern": z.string().optional(),
+  "provisionDeviceSecret": z.string().optional()
+});
 export type X509CertificateChainProvisionConfiguration = z.infer<typeof X509CertificateChainProvisionConfigurationSchema>;
 
-export const X509LwM2MBootstrapServerCredentialSchemaSchema = z.object({
-  "shortServerId": z.number(),
-  "bootstrapServerIs": z.boolean(),
-  "host": z.string(),
-  "port": z.number(),
-  "clientHoldOffTime": z.number(),
-  "serverPublicKey": z.string(),
-  "serverCertificate": z.string(),
-  "bootstrapServerAccountTimeout": z.number(),
-  "lifetime": z.number(),
-  "defaultMinPeriod": z.number(),
-  "notifIfDisabled": z.boolean(),
-  "binding": z.string()
+const X509LwM2MBootstrapServerCredentialSchemaImpl = z.object({
+  "shortServerId": z.number().optional(),
+  "bootstrapServerIs": z.boolean().optional(),
+  "host": z.string().optional(),
+  "port": z.number().optional(),
+  "clientHoldOffTime": z.number().optional(),
+  "serverPublicKey": z.string().optional(),
+  "serverCertificate": z.string().optional(),
+  "bootstrapServerAccountTimeout": z.number().optional(),
+  "lifetime": z.number().optional(),
+  "defaultMinPeriod": z.number().optional(),
+  "notifIfDisabled": z.boolean().optional(),
+  "binding": z.string().optional()
 });
 export type X509LwM2MBootstrapServerCredential = z.infer<typeof X509LwM2MBootstrapServerCredentialSchema>;

@@ -1,30 +1,40 @@
 import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
-export class CustomMenuControllerClient extends BaseVXOlympusClient {
-  async getCurrentCustomMenuUsingGET(options: RequestInit = {}) {
+export class CustomMenuControllerClient extends BaseVXOlympusClient {  /**
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.CustomMenu>}
+   */
+  async getCurrentCustomMenu(options: RequestInit = {}): Promise<schemas.CustomMenu> {
     const url = `${this.baseUrl}/api/customMenu/currentCustomMenu`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<schemas.CustomMenu>(url, {
       method: 'GET',
       
       ...options,
     });
     return response;
   }
-
-  async getCustomMenuUsingGET(options: RequestInit = {}) {
+  /**
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.CustomMenu>}
+   */
+  async getCustomMenu(options: RequestInit = {}): Promise<schemas.CustomMenu> {
     const url = `${this.baseUrl}/api/customMenu/customMenu`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<schemas.CustomMenu>(url, {
       method: 'GET',
       
       ...options,
     });
     return response;
   }
-
-  async saveCustomMenuUsingPOST(data: any, options: RequestInit = {}) {
+  /**
+   * @param {object} data - Request body
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.CustomMenu>}
+   */
+  async saveCustomMenuWithData(data: schemas.CustomMenu, options: RequestInit = {}): Promise<schemas.CustomMenu> {
     const url = `${this.baseUrl}/api/customMenu/customMenu`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<schemas.CustomMenu>(url, {
       method: 'POST',
       body: JSON.stringify(data),
       ...options,

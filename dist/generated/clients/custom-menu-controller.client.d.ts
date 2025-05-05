@@ -1,6 +1,16 @@
 import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
 export declare class CustomMenuControllerClient extends BaseVXOlympusClient {
-    getCurrentCustomMenuUsingGET(options?: RequestInit): Promise<unknown>;
-    getCustomMenuUsingGET(options?: RequestInit): Promise<unknown>;
-    saveCustomMenuUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    getCurrentCustomMenu(options?: RequestInit): Promise<schemas.CustomMenu>;
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomMenu>}
+     */
+    getCustomMenu(options?: RequestInit): Promise<schemas.CustomMenu>;
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomMenu>}
+     */
+    saveCustomMenuWithData(data: schemas.CustomMenu, options?: RequestInit): Promise<schemas.CustomMenu>;
 }

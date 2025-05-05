@@ -1,4 +1,5 @@
 import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
 export declare class UserPermissionsControllerClient extends BaseVXOlympusClient {
-    getAllowedPermissionsUsingGET(options?: RequestInit): Promise<unknown>;
+    getAllowedPermissions(options?: RequestInit): Promise<schemas.AllowedPermissionsInfo>;
 }

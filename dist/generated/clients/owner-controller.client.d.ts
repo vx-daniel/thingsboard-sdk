@@ -1,5 +1,13 @@
 import { BaseVXOlympusClient } from '../../base-client';
 export declare class OwnerControllerClient extends BaseVXOlympusClient {
-    changeOwnerToCustomerUsingPOST(ownerId: string, entityType: string, entityId: string, data: any, options?: RequestInit): Promise<unknown>;
-    changeOwnerToTenantUsingPOST(ownerId: string, entityType: string, entityId: string, data: any, options?: RequestInit): Promise<unknown>;
+    changeOwnerToCustomerWithData(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit): Promise<void>;
+    /**
+     * @param {string} ownerId - Path parameter
+     * @param {string} entityType - Path parameter
+     * @param {string} entityId - Path parameter
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    changeOwnerToTenantWithData(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit): Promise<void>;
 }

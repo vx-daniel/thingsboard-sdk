@@ -11,7 +11,12 @@ class OAuth2ConfigTemplateControllerClient extends base_client_1.BaseVXOlympusCl
         });
         return response;
     }
-    async saveClientRegistrationTemplateUsingPOST(data, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.OAuth2ClientRegistrationTemplate>}
+     */
+    async saveClientRegistrationTemplateWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/oauth2/config/template`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -20,7 +25,12 @@ class OAuth2ConfigTemplateControllerClient extends base_client_1.BaseVXOlympusCl
         });
         return response;
     }
-    async deleteClientRegistrationTemplateUsingDELETE(clientRegistrationTemplateId, options = {}) {
+    /**
+     * @param {string} clientRegistrationTemplateId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    async deleteClientRegistrationTemplate(clientRegistrationTemplateId, options = {}) {
         const url = `${this.baseUrl}/api/oauth2/config/template/${encodeURIComponent(clientRegistrationTemplateId)}`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',

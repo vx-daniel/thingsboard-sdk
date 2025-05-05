@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TenantProfileControllerClient = void 0;
 const base_client_1 = require("../../base-client");
 class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
-    async saveTenantProfileUsingPOST(data, options = {}) {
+    async saveTenantProfileWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfile`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -12,7 +12,12 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getTenantProfileByIdUsingGET(tenantProfileId, options = {}) {
+    /**
+     * @param {string} tenantProfileId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.TenantProfile>}
+     */
+    async getTenantProfileById(tenantProfileId, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfile/${encodeURIComponent(tenantProfileId)}`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -20,7 +25,12 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async deleteTenantProfileUsingDELETE(tenantProfileId, options = {}) {
+    /**
+     * @param {string} tenantProfileId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    async deleteTenantProfile(tenantProfileId, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfile/${encodeURIComponent(tenantProfileId)}`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',
@@ -28,7 +38,12 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async setDefaultTenantProfileUsingPOST(tenantProfileId, options = {}) {
+    /**
+     * @param {string} tenantProfileId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.TenantProfile>}
+     */
+    async setDefaultTenantProfile(tenantProfileId, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfile/${encodeURIComponent(tenantProfileId)}/default`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -36,7 +51,11 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getDefaultTenantProfileInfoUsingGET(options = {}) {
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.EntityInfo>}
+     */
+    async getDefaultTenantProfileInfo(options = {}) {
         const url = `${this.baseUrl}/api/tenantProfileInfo/default`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -44,7 +63,12 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getTenantProfileInfoByIdUsingGET(tenantProfileId, options = {}) {
+    /**
+     * @param {string} tenantProfileId - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.EntityInfo>}
+     */
+    async getTenantProfileInfoById(tenantProfileId, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfileInfo/${encodeURIComponent(tenantProfileId)}`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -52,25 +76,85 @@ class TenantProfileControllerClient extends base_client_1.BaseVXOlympusClient {
         });
         return response;
     }
-    async getTenantProfileInfosUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_EntityInfo>}
+     */
+    async getTenantProfileInfos(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async getTenantProfilesByIdsUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {string} queryParams.ids - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.TenantProfile>>}
+     */
+    async getTenantProfilesByIds(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfiles{?ids}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.ids !== undefined)
+                params.set('ids', String(queryParams.ids));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async getTenantProfilesUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_TenantProfile>}
+     */
+    async getTenantProfiles(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/tenantProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
