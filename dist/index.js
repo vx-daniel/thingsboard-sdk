@@ -15,8 +15,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseVXOlympusClient = void 0;
-const generated_1 = require("./generated");
 __exportStar(require("./generated"), exports);
 var base_client_1 = require("./base-client");
 Object.defineProperty(exports, "BaseVXOlympusClient", { enumerable: true, get: function () { return base_client_1.BaseVXOlympusClient; } });
-exports.default = generated_1.VXOlympusClient;

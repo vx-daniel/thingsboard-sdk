@@ -5,11 +5,8 @@ import { z } from 'zod';
 
 interface OpenAPIOperation {
   operationId?: string;
-  parameters?: Array<{
-    name: string;
-    in: string;
-    schema: any;
-  }>;
+  tags?: string[];
+  parameters?: any[];
   requestBody?: {
     content?: {
       'application/json'?: {
@@ -18,10 +15,12 @@ interface OpenAPIOperation {
     };
   };
   responses?: {
-    [key: string]: {
+    '200'?: {
       content?: {
         'application/json'?: {
-          schema?: any;
+          schema?: {
+            $ref?: string;
+          };
         };
       };
     };
@@ -30,6 +29,15 @@ interface OpenAPIOperation {
 
 interface OpenAPIPathItem {
   [method: string]: OpenAPIOperation;
+}
+
+interface OpenAPISpec {
+  paths: {
+    [path: string]: OpenAPIPathItem;
+  };
+  components?: {
+    schemas?: any;
+  };
 }
 
 interface OpenAPIPaths {
@@ -82,12 +90,19 @@ function sanitizeSchemaName(name: string): string {
   return sanitized;
 }
 
+function sanitizeClassName(tag: string): string {
+  return tag
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
 async function generate() {
   // Extend Zod with OpenAPI functionality
   extendZodWithOpenApi(z);
 
   // Read the OpenAPI spec
-  const apiSpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
+  const apiSpec: OpenAPISpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
 
   const registry = new OpenAPIRegistry();
 
@@ -103,26 +118,23 @@ async function generate() {
     schemaTypes
   );
 
-  // Generate the API client
-  const apiClient = `
-import { z } from 'zod';
-import { BaseVXOlympusClient } from '../base-client';
-import * as schemas from './schemas';
+  const { index, clientFiles } = generateApi(apiSpec);
 
-export class VXOlympusClient extends BaseVXOlympusClient {
-  constructor(baseURL: string, token?: string) {
-    super(baseURL, token);
+  // Create necessary directories
+  mkdirSync(join(__dirname, '../src/generated/clients'), { recursive: true });
+
+  // Write client files
+  for (const [fileName, content] of Object.entries(clientFiles)) {
+    writeFileSync(
+      join(__dirname, '../src/generated/clients', `${fileName}.ts`),
+      content
+    );
   }
 
-  ${generateApiMethods(apiSpec.paths)}
-}
-
-export * from './schemas';
-`;
-
+  // Write index file
   writeFileSync(
     join(__dirname, '../src/generated/index.ts'),
-    apiClient
+    index
   );
 }
 
@@ -155,7 +167,54 @@ export type ${sanitized.replace(/Schema$/, '')} = z.infer<typeof ${sanitized}>;`
   return imports + schemaReferences + '\n\n' + schemaImplementations;
 }
 
-function generateApiMethod(operation: any, path: string, method: string): string {
+function generateApi(spec: OpenAPISpec): { index: string; clientFiles: { [key: string]: string } } {
+  const imports = `import { BaseVXOlympusClient } from '../base-client';
+import * as schemas from './schemas';\n\n`;
+
+  // Group methods by tag
+  const methodsByTag: { [key: string]: string[] } = {};
+  
+  for (const [path, pathObj] of Object.entries(spec.paths)) {
+    for (const [method, operation] of Object.entries(pathObj)) {
+      if (!operation.operationId) {
+        throw new Error(`Operation at ${path} ${method} is missing operationId`);
+      }
+      
+      const tag = operation.tags?.[0] || 'default';
+      if (!methodsByTag[tag]) {
+        methodsByTag[tag] = [];
+      }
+      methodsByTag[tag].push(generateApiMethod(operation, path, method));
+    }
+  }
+
+  // Generate client files for each tag
+  const clientFiles: { [key: string]: string } = {};
+  for (const [tag, methods] of Object.entries(methodsByTag)) {
+    const className = `${sanitizeClassName(tag)}Client`;
+    const fileName = `${tag.toLowerCase()}.client`;
+    
+    clientFiles[fileName] = `import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
+
+export class ${className} extends BaseVXOlympusClient {${methods.join('\n')}}`;
+  }
+
+  // Generate index file that exports all clients
+  const indexContent = imports + Object.entries(methodsByTag).map(([tag]) => {
+    const className = `${sanitizeClassName(tag)}Client`;
+    const fileName = `${tag.toLowerCase()}.client`;
+    return `export { ${className} } from './clients/${fileName}';`;
+  }).join('\n') + '\n\n';
+
+  return { index: indexContent, clientFiles };
+}
+
+function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
+  if (!operation.operationId) {
+    throw new Error(`Operation at ${path} ${method} is missing operationId`);
+  }
+
   const parameters = operation.parameters || [];
   const requestBody = operation.requestBody?.content?.['application/json']?.schema;
   const responseSchema = operation.responses?.['200']?.content?.['application/json']?.schema?.$ref?.split('/').pop();
@@ -215,18 +274,6 @@ function generateApiMethod(operation: any, path: string, method: string): string
       ? `return schemas.${schemaName}Schema.parse(responseData);`
       : 'return responseData;'}
   }`;
-}
-
-function generateApiMethods(paths: any): string {
-  let methods: string[] = [];
-
-  Object.entries(paths).forEach(([path, pathObj]) => {
-    Object.entries(pathObj as any).forEach(([method, operation]) => {
-      methods.push(generateApiMethod(operation, path, method));
-    });
-  });
-
-  return methods.join('\n\n');
 }
 
 function collectDependencies(schema: any, deps: Set<string>) {
