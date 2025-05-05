@@ -1,0 +1,31 @@
+import { BaseVXOlympusClient } from '../../base-client';
+export declare class UserControllerClient extends BaseVXOlympusClient {
+    getAllCustomerUsersUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getCustomerUserInfosUsingGET(customerId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getCustomerUsersUsingGET(customerId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUsersByEntityGroupIdUsingGET(entityGroupId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getTenantAdminsUsingGET(tenantId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUserDashboardsInfoUsingGET(options?: RequestInit): Promise<unknown>;
+    reportUserDashboardActionUsingGET(dashboardId: string, action: string, options?: RequestInit): Promise<unknown>;
+    getUserInfoByIdUsingGET(userId: string, options?: RequestInit): Promise<unknown>;
+    sendActivationEmailUsingPOST(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUserSettingsUsingGET(options?: RequestInit): Promise<unknown>;
+    putUserSettingsUsingPUT(data: any, options?: RequestInit): Promise<unknown>;
+    saveUserSettingsUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    deleteUserSettingsUsingDELETE_1(paths: string, options?: RequestInit): Promise<unknown>;
+    getUserSettingsUsingGET_1(type: string, options?: RequestInit): Promise<unknown>;
+    putUserSettingsUsingPUT_1(type: string, data: any, options?: RequestInit): Promise<unknown>;
+    deleteUserSettingsUsingDELETE(paths: string, type: string, options?: RequestInit): Promise<unknown>;
+    isUserTokenAccessEnabledUsingGET(options?: RequestInit): Promise<unknown>;
+    getUserUsersUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUserByIdUsingGET(userId: string, options?: RequestInit): Promise<unknown>;
+    deleteUserUsingDELETE(userId: string, options?: RequestInit): Promise<unknown>;
+    getActivationLinkUsingGET(userId: string, options?: RequestInit): Promise<unknown>;
+    getUserTokenUsingGET(userId: string, options?: RequestInit): Promise<unknown>;
+    setUserCredentialsEnabledUsingPOST(userId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getAllUserInfosUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUsersForAssignUsingGET(alarmId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    findUsersByQueryUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getUsersByIdsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    saveUserUsingPOST(data: any, queryParams: any, options?: RequestInit): Promise<unknown>;
+}

@@ -1,15 +1,14 @@
-# VX Olympus TypeScript SDK
+# ThingsBoard TypeScript SDK
 
-A TypeScript SDK for interacting with the VX Olympus REST API. This SDK provides type-safe access to all API endpoints with built-in authentication handling and request/response validation using Zod.
+A strongly-typed TypeScript SDK for interacting with the ThingsBoard REST API.
 
 ## Features
 
-- 🔒 Built-in authentication handling (token-based and username/password)
-- 🔄 Automatic token refresh
-- ✨ Type-safe API methods
-- 📝 Request/response validation using Zod schemas
-- 📚 Comprehensive TypeScript definitions
-- 🚀 Modern ES6+ syntax
+- 🔒 Type-safe API calls with TypeScript
+- 🔄 Automatic request/response serialization
+- ✨ Modern Fetch API for making requests
+- 📦 Modular client structure based on API domains
+- 🔍 Zod schema validation for responses
 
 ## Installation
 
@@ -17,76 +16,107 @@ A TypeScript SDK for interacting with the VX Olympus REST API. This SDK provides
 npm install thingsboard-sdk
 ```
 
-## Quick Start
+## Usage
 
-### Using with a Token
+The SDK is organized into domain-specific clients, each handling a specific area of the ThingsBoard API. Here's how to use them:
 
 ```typescript
-import VXOlympusClient from 'thingsboard-sdk';
+import { 
+  UserControllerClient, 
+  DeviceControllerClient,
+  DashboardControllerClient 
+} from 'thingsboard-sdk';
 
-const client = new VXOlympusClient('http://your-api-url', 'your-token');
+// Initialize clients for different API domains
+const userClient = new UserControllerClient('http://localhost:8080');
+const deviceClient = new DeviceControllerClient('http://localhost:8080');
+const dashboardClient = new DashboardControllerClient('http://localhost:8080');
 
-// Make API calls
-const response = await client.someEndpoint({
-  // Type-safe parameters
+// Set authentication token (after login)
+userClient.setAuthToken('YOUR_JWT_TOKEN');
+deviceClient.setAuthToken('YOUR_JWT_TOKEN');
+dashboardClient.setAuthToken('YOUR_JWT_TOKEN');
+
+// Example: Login
+const loginResult = await userClient.loginPost({
+  username: 'admin@thingsboard.org',
+  password: 'admin'
+});
+
+// Example: Get devices
+const devices = await deviceClient.getTenantDevicesUsingGET({
+  pageSize: 10,
+  page: 0
+});
+
+// Example: Get dashboards
+const dashboards = await dashboardClient.getTenantDashboardsUsingGET({
+  pageSize: 10,
+  page: 0
 });
 ```
 
-### Using with Username/Password
+## Available Clients
+
+The SDK provides the following client classes, each corresponding to a specific API domain:
+
+- `AdminControllerClient` - System administration operations
+- `AlarmControllerClient` - Alarm management
+- `AssetControllerClient` - Asset management
+- `AuthControllerClient` - Authentication and authorization
+- `CustomerControllerClient` - Customer management
+- `DashboardControllerClient` - Dashboard operations
+- `DeviceControllerClient` - Device management
+- `EntityGroupControllerClient` - Entity group operations
+- `TenantControllerClient` - Tenant management
+- `UserControllerClient` - User management
+- And many more...
+
+Each client extends the `BaseVXOlympusClient` class and inherits common functionality like:
+- Authentication token management
+- HTTP request handling
+- Error handling
+- Response validation
+
+## Error Handling
+
+The SDK uses standard error handling mechanisms:
 
 ```typescript
-import VXOlympusClient from 'thingsboard-sdk';
-
-const client = new VXOlympusClient('http://your-api-url');
-
-// Login
-await client.login('username', 'password');
-
-// Make API calls
-const response = await client.someEndpoint({
-  // Type-safe parameters
-});
-
-// Check authentication status
-if (client.isAuthenticated()) {
-  // Do something
+try {
+  const result = await userClient.loginPost({
+    username: 'admin@thingsboard.org',
+    password: 'wrong-password'
+  });
+} catch (error) {
+  if (error instanceof Error) {
+    console.error('API Error:', error.message);
+  }
 }
-
-// Logout when done
-client.logout();
 ```
 
-## API Documentation
+## Type Safety
 
-For detailed API documentation, visit our [online documentation](https://vx-daniel.github.io/thingsboard-sdk/).
+All request and response types are fully typed:
 
-## Development
+```typescript
+// TypeScript will show all available properties and their types
+const deviceInfo = await deviceClient.getDeviceInfoByIdUsingGET({
+  deviceId: 'your-device-id'
+});
 
-1. Clone the repository:
-```bash
-git clone https://github.com/vx-daniel/thingsboard-sdk.git
-cd thingsboard-sdk
+// deviceInfo will be fully typed with all properties
+console.log(deviceInfo.name);
+console.log(deviceInfo.type);
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## Contributing
 
-3. Generate the SDK from the OpenAPI spec:
-```bash
-npm run generate
-```
-
-4. Build the SDK:
-```bash
-npm run build
-```
-
-5. Generate documentation:
-```bash
-npm run docs
-```
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Make your changes
+4. Build the SDK: `npm run build`
+5. Run tests: `npm test`
 
 ## License
 

@@ -1,15 +1,12 @@
 import { OpenAPIRegistry, extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 
 interface OpenAPIOperation {
   operationId?: string;
-  parameters?: Array<{
-    name: string;
-    in: string;
-    schema: any;
-  }>;
+  tags?: string[];
+  parameters?: any[];
   requestBody?: {
     content?: {
       'application/json'?: {
@@ -18,10 +15,12 @@ interface OpenAPIOperation {
     };
   };
   responses?: {
-    [key: string]: {
+    '200'?: {
       content?: {
         'application/json'?: {
-          schema?: any;
+          schema?: {
+            $ref?: string;
+          };
         };
       };
     };
@@ -30,6 +29,15 @@ interface OpenAPIOperation {
 
 interface OpenAPIPathItem {
   [method: string]: OpenAPIOperation;
+}
+
+interface OpenAPISpec {
+  paths: {
+    [path: string]: OpenAPIPathItem;
+  };
+  components?: {
+    schemas?: any;
+  };
 }
 
 interface OpenAPIPaths {
@@ -52,51 +60,54 @@ function sanitizeTypeName(name: string): string {
     .replace(/[^a-zA-Z0-9_]/g, '_');
 }
 
+function sanitizeSchemaName(name: string): string {
+  // First, replace special characters with underscores
+  let sanitized = name.replace(/[^a-zA-Z0-9«»]/g, '_');
+
+  // Then handle generic types in a specific order
+  sanitized = sanitized
+    .replace(/«List»([^»]+)»/g, '_Of_List_Of_$1')
+    .replace(/«PageData»([^»]+)»/g, '_Of_PageData_Of_$1')
+    .replace(/«DeferredResult»([^»]+)»/g, '_Of_DeferredResult_Of_$1')
+    .replace(/«([^»]+)»([^»]+)»/g, '_Of_$1_Of_$2')
+    .replace(/«([^»]+)»/g, '_Of_$1');
+
+  // Clean up any remaining special characters
+  sanitized = sanitized.replace(/[^a-zA-Z0-9_]/g, '_');
+
+  // Fix common patterns
+  sanitized = sanitized
+    .replace(/_Of_List_([^_]+)(?:_Schema)?$/, '_Of_List_Of_$1')
+    .replace(/_Of_PageData_([^_]+)(?:_Schema)?$/, '_Of_PageData_Of_$1')
+    .replace(/_Of_DeferredResult_([^_]+)(?:_Schema)?$/, '_Of_DeferredResult_Of_$1')
+    .replace(/_Of_([^_]+)_([^_]+)(?:_Schema)?$/, '_Of_$1_Of_$2');
+
+  // Add Schema suffix if not already present
+  if (!sanitized.endsWith('Schema')) {
+    sanitized += 'Schema';
+  }
+
+  return sanitized;
+}
+
+function sanitizeClassName(tag: string): string {
+  return tag
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
 async function generate() {
   // Extend Zod with OpenAPI functionality
   extendZodWithOpenApi(z);
 
   // Read the OpenAPI spec
-  const apiSpec = require('../api-docs.json');
-  
+  const apiSpec: OpenAPISpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
+
   const registry = new OpenAPIRegistry();
 
-  // First pass: collect all schema names and their dependencies
-  const schemaDeps: Record<string, Set<string>> = {};
-  const schemas = apiSpec.components?.schemas || {};
-
-  Object.entries(schemas).forEach(([name, schema]: [string, any]) => {
-    const sanitizedName = sanitizeTypeName(name);
-    schemaDeps[sanitizedName] = new Set();
-    collectDependencies(schema, schemaDeps[sanitizedName]);
-  });
-
-  // Sort schemas topologically
-  const sortedSchemas = topologicalSort(schemaDeps);
-
-  // Generate TypeScript types
-  const schemaTypes = `
-import { z } from 'zod';
-
-// Initialize all schemas with empty objects to handle circular dependencies
-${Object.keys(schemaDeps).map(name => {
-    const schema = Object.entries(schemas).find(([n]) => sanitizeTypeName(n) === name)?.[1] as any;
-    const isObject = schema?.type === 'object';
-    return `let ${name}Schema = ${isObject ? 'z.object({})' : 'z.lazy(() => z.object({}))'};`;
-  }).join('\n')}
-
-// Now define the actual schema contents
-${sortedSchemas.map(name => {
-    const schema = Object.entries(schemas).find(([n]) => sanitizeTypeName(n) === name)?.[1];
-    if (!schema) return '';
-    const zodSchema = generateZodSchema(schema);
-    return `
-${name}Schema = ${zodSchema};
-export type ${name} = z.infer<typeof ${name}Schema>;
-export { ${name}Schema };
-  `;
-  }).join('\n')}
-`;
+  // Generate the schemas
+  const schemaTypes = generateSchemaTypes(apiSpec.components?.schemas);
 
   // Ensure the generated directory exists
   mkdirSync(join(__dirname, '../src/generated'), { recursive: true });
@@ -107,28 +118,144 @@ export { ${name}Schema };
     schemaTypes
   );
 
-  // Generate the API client
-  const apiClient = `
-import { z } from 'zod';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { BaseVXOlympusClient } from '../base-client';
-import * as schemas from './schemas';
+  const { index, clientFiles } = generateApi(apiSpec);
 
-export class VXOlympusClient extends BaseVXOlympusClient {
-  constructor(baseURL: string, token?: string) {
-    super(baseURL, token);
+  // Create necessary directories
+  mkdirSync(join(__dirname, '../src/generated/clients'), { recursive: true });
+
+  // Write client files
+  for (const [fileName, content] of Object.entries(clientFiles)) {
+    writeFileSync(
+      join(__dirname, '../src/generated/clients', `${fileName}.ts`),
+      content
+    );
   }
 
-  ${generateApiMethods(apiSpec.paths)}
-}
-
-export * from './schemas';
-`;
-
+  // Write index file
   writeFileSync(
     join(__dirname, '../src/generated/index.ts'),
-    apiClient
+    index
   );
+}
+
+function generateSchemaTypes(schemas: any): string {
+  if (!schemas) return '';
+
+  // First pass: collect all schema names and their sanitized versions
+  const schemaMap = new Map<string, string>();
+  Object.keys(schemas).forEach(name => {
+    const sanitized = sanitizeSchemaName(name);
+    schemaMap.set(name, sanitized);
+  });
+
+  const imports = `import { z } from 'zod';\n\n`;
+  
+  // First, declare all schema references to handle circular dependencies
+  const schemaReferences = Object.entries(schemas).map(([name]) => {
+    const sanitized = schemaMap.get(name)!;
+    return `export const ${sanitized}: z.ZodType<any> = z.lazy(() => ${sanitized}Schema);`;
+  }).join('\n');
+
+  // Then declare all schema implementations
+  const schemaImplementations = Object.entries(schemas).map(([name, schema]) => {
+    const sanitized = schemaMap.get(name)!;
+    const zodSchema = generateZodSchema(schema);
+    return `export const ${sanitized}Schema = ${zodSchema};
+export type ${sanitized.replace(/Schema$/, '')} = z.infer<typeof ${sanitized}>;`;
+  }).join('\n\n');
+
+  return imports + schemaReferences + '\n\n' + schemaImplementations;
+}
+
+function generateApi(spec: OpenAPISpec): { index: string; clientFiles: { [key: string]: string } } {
+  const imports = `import { BaseVXOlympusClient } from '../base-client';
+import * as schemas from './schemas';\n\n`;
+
+  // Group methods by tag
+  const methodsByTag: { [key: string]: string[] } = {};
+  
+  for (const [path, pathObj] of Object.entries(spec.paths)) {
+    for (const [method, operation] of Object.entries(pathObj)) {
+      if (!operation.operationId) {
+        throw new Error(`Operation at ${path} ${method} is missing operationId`);
+      }
+      
+      const tag = operation.tags?.[0] || 'default';
+      if (!methodsByTag[tag]) {
+        methodsByTag[tag] = [];
+      }
+      methodsByTag[tag].push(generateApiMethod(operation, path, method));
+    }
+  }
+
+  // Generate client files for each tag
+  const clientFiles: { [key: string]: string } = {};
+  for (const [tag, methods] of Object.entries(methodsByTag)) {
+    const className = `${sanitizeClassName(tag)}Client`;
+    const fileName = `${tag.toLowerCase()}.client`;
+    
+    clientFiles[fileName] = `import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
+
+export class ${className} extends BaseVXOlympusClient {${methods.join('\n')}}`;
+  }
+
+  // Generate index file that exports all clients
+  const indexContent = imports + Object.entries(methodsByTag).map(([tag]) => {
+    const className = `${sanitizeClassName(tag)}Client`;
+    const fileName = `${tag.toLowerCase()}.client`;
+    return `export { ${className} } from './clients/${fileName}';`;
+  }).join('\n') + '\n\n';
+
+  return { index: indexContent, clientFiles };
+}
+
+function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
+  const operationId = operation.operationId;
+  if (!operationId) {
+    throw new Error(`Operation at ${path} ${method} is missing operationId`);
+  }
+
+  const pathParams = operation.parameters?.filter(p => p.in === 'path') || [];
+  const queryParams = operation.parameters?.filter(p => p.in === 'query') || [];
+  const hasRequestBody = operation.requestBody != null;
+
+  // Build method parameters
+  const methodParams = [];
+  
+  // Add path parameters
+  methodParams.push(...pathParams.map(p => `${p.name}: string`));
+  
+  // Add request body if needed
+  if (hasRequestBody) {
+    methodParams.push('data: any');
+  }
+  
+  // Add query parameters if needed
+  if (queryParams.length > 0) {
+    methodParams.push('queryParams: any');
+  }
+  
+  // Add options parameter
+  methodParams.push('options: RequestInit = {}');
+
+  // Build the URL with path parameters
+  let urlPath = path;
+  for (const param of pathParams) {
+    urlPath = urlPath.replace(`{${param.name}}`, `\${encodeURIComponent(${param.name})}`);
+  }
+
+  // Generate the method
+  return `
+  async ${operationId}(${methodParams.join(', ')}) {
+    const url = \`\${this.baseUrl}${urlPath}\`;
+    const response = await this.makeRequest(url, {
+      method: '${method.toUpperCase()}',
+      ${hasRequestBody ? 'body: JSON.stringify(data),' : ''}
+      ...options,
+    });
+    return response;
+  }`;
 }
 
 function collectDependencies(schema: any, deps: Set<string>) {
@@ -185,24 +312,6 @@ function topologicalSort(deps: Record<string, Set<string>>): string[] {
   return result;
 }
 
-function generateZodSchema(schema: any): string {
-  if (!schema) return 'z.lazy(() => z.object({}))';
-
-  if (schema.type === 'object') {
-    const properties = Object.entries(schema.properties || {}).map(
-      ([key, value]: [string, any]) => `"${key}": ${generateZodType(value)}`
-    );
-    
-    if (properties.length === 0) {
-      return 'z.object({})';
-    }
-
-    return `z.object({\n  ${properties.join(',\n  ')}\n})`;
-  }
-
-  return generateZodType(schema);
-}
-
 function generateZodType(schema: any): string {
   if (!schema) return 'z.lazy(() => z.object({}))';
 
@@ -227,73 +336,28 @@ function generateZodType(schema: any): string {
     default:
       if (schema.$ref) {
         const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
-        return `${refName}Schema`;
+        return sanitizeSchemaName(refName);
       }
       return 'z.lazy(() => z.object({}))';
   }
 }
 
-function generateApiMethods(paths: OpenAPIPaths): string {
-  if (!paths) return '';
+function generateZodSchema(schema: any): string {
+  if (!schema) return 'z.lazy(() => z.object({}))';
 
-  const methods: string[] = [];
+  if (schema.type === 'object') {
+    const properties = Object.entries(schema.properties || {}).map(
+      ([key, value]: [string, any]) => `"${key}": ${generateZodType(value)}`
+    );
+    
+    if (properties.length === 0) {
+      return 'z.object({})';
+    }
 
-  Object.entries(paths).forEach(([path, pathItem]) => {
-    Object.entries(pathItem || {}).forEach(([method, operation]) => {
-      if (!operation?.operationId) return;
+    return `z.object({\n  ${properties.join(',\n  ')}\n})`;
+  }
 
-      const parameters = operation.parameters || [];
-      const requestBody = operation.requestBody?.content?.['application/json']?.schema;
-      const successResponse = Object.entries(operation.responses || {})
-        .find(([code]) => code.startsWith('2'));
-      
-      const responseSchema = successResponse?.[1]?.content?.['application/json']?.schema;
-
-      const methodParams = [
-        ...parameters.map((p) => `${sanitizeIdentifier(p.name)}: ${generateTypeForSchema(p.schema)}`),
-        requestBody ? `data: ${generateTypeForSchema(requestBody)}` : '',
-        'options?: AxiosRequestConfig'
-      ].filter(Boolean);
-
-      const queryParams = parameters
-        .filter((p) => p.in === 'query')
-        .map((p) => p.name);
-
-      const pathParams = parameters
-        .filter((p) => p.in === 'path')
-        .map((p) => p.name);
-
-      const methodConfig = {
-        method: method.toUpperCase(),
-        url: pathParams.reduce(
-          (url: string, param: string) => url.replace(`{${param}}`, `\${${sanitizeIdentifier(param)}}`),
-          path
-        ),
-        queryParams,
-        hasBody: !!requestBody,
-        responseSchema: responseSchema?.$ref ? sanitizeTypeName(responseSchema.$ref.split('/').pop() || '') : null
-      };
-
-      methods.push(`
-  async ${sanitizeIdentifier(operation.operationId)}(${methodParams.join(', ')}) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: '${methodConfig.method}',
-      url: \`${methodConfig.url}\`${methodConfig.queryParams.length ? `,
-      params: {
-        ${queryParams.map((param) => `${sanitizeIdentifier(param)}: ${sanitizeIdentifier(param)}`).join(',\n        ')}
-      }` : ''}${methodConfig.hasBody ? ',\n      data' : ''}
-    };
-
-    const response = await this.client.request(config);
-    ${methodConfig.responseSchema 
-      ? `return schemas.${methodConfig.responseSchema}Schema.parse(response.data);`
-      : 'return response.data;'}
-  }`);
-    });
-  });
-
-  return methods.join('\n\n');
+  return generateZodType(schema);
 }
 
 function generateTypeForSchema(schema: any): string {
@@ -301,7 +365,7 @@ function generateTypeForSchema(schema: any): string {
 
   if (schema.$ref) {
     const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
-    return `schemas.${refName}`;
+    return `schemas.${sanitizeSchemaName(refName).replace(/Schema$/, '')}`;
   }
 
   switch (schema.type) {
@@ -313,13 +377,15 @@ function generateTypeForSchema(schema: any): string {
     case 'boolean':
       return 'boolean';
     case 'array':
-      return `${generateTypeForSchema(schema.items)}[]`;
+      return `Array<${generateTypeForSchema(schema.items)}>`;
     case 'object':
       if (schema.additionalProperties) {
-        const valueType = generateTypeForSchema(schema.additionalProperties);
-        return `Record<string, ${valueType}>`;
+        return `Record<string, ${generateTypeForSchema(schema.additionalProperties)}>`;
       }
-      return 'Record<string, any>';
+      const properties = Object.entries(schema.properties || {}).map(
+        ([key, value]: [string, any]) => `${key}: ${generateTypeForSchema(value)}`
+      );
+      return `{ ${properties.join('; ')} }`;
     default:
       return 'any';
   }

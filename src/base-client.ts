@@ -1,9 +1,8 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { z } from 'zod';
 
 const LoginResponseSchema = z.object({
   token: z.string(),
-  refreshToken: z.string().optional(),
+  refreshToken: z.string(),
 });
 
 type LoginResponse = z.infer<typeof LoginResponseSchema>;
@@ -14,52 +13,71 @@ type LoginResponse = z.infer<typeof LoginResponseSchema>;
  * 
  * @example
  * ```typescript
- * // Initialize with token
- * const client = new BaseVXOlympusClient('https://api.example.com', 'your-token');
- * 
- * // Initialize and login with username/password
- * const client = new BaseVXOlympusClient('https://api.example.com');
- * await client.login('username', 'password');
+ * const client = new BaseVXOlympusClient('http://localhost:8080');
+ * await client.login('admin', 'password');
  * ```
  */
 export class BaseVXOlympusClient {
-  protected client: AxiosInstance;
+  protected baseUrl: string;
   protected token?: string;
   protected refreshToken?: string;
 
-  /**
-   * Creates a new instance of the BaseVXOlympusClient.
-   * 
-   * @param baseURL - The base URL of the VX Olympus API
-   * @param token - Optional JWT token for authentication
-   */
-  constructor(protected baseURL: string, token?: string) {
+  constructor(baseUrl: string, token?: string) {
+    this.baseUrl = baseUrl;
     this.token = token;
-    this.client = axios.create({
-      baseURL,
-      headers: token ? { 'X-Authorization': `Bearer ${token}` } : {}
+  }
+
+  /**
+   * Makes an HTTP request to the API with authentication and error handling.
+   * 
+   * @param url - The full URL to make the request to
+   * @param options - Request configuration
+   * @returns The response data
+   * @internal
+   */
+  protected async makeRequest<T>(url: string, options: RequestInit = {}): Promise<T> {
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(this.token ? { 'X-Authorization': `Bearer ${this.token}` } : {}),
+      ...options.headers,
+    };
+
+    const response = await fetch(url, {
+      ...options,
+      headers,
     });
 
-    // Add response interceptor to handle token expiration
-    this.client.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        if (error.response?.status === 401 && this.refreshToken) {
-          try {
-            // Try to refresh the token
-            const newToken = await this.refreshAuthToken();
-            // Retry the original request with the new token
-            const config = error.config;
-            config.headers['X-Authorization'] = `Bearer ${newToken}`;
-            return this.client.request(config);
-          } catch (refreshError) {
-            // If refresh fails, throw the original error
-            throw error;
-          }
+    // Handle 401 with token refresh
+    if (response.status === 401 && this.refreshToken) {
+      try {
+        await this.refreshAuthToken();
+        // Retry the request with the new token
+        const retryResponse = await fetch(url, {
+          ...options,
+          headers: {
+            ...headers,
+            'X-Authorization': `Bearer ${this.token}`,
+          },
+        });
+        if (!retryResponse.ok) {
+          throw new Error(`HTTP error! status: ${retryResponse.status}`);
         }
-        throw error;
+        return retryResponse.json();
+      } catch (refreshError) {
+        throw new Error('Token refresh failed');
       }
-    );
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // For 204 No Content responses, return null
+    if (response.status === 204) {
+      return null as T;
+    }
+
+    return response.json();
   }
 
   /**
@@ -71,23 +89,20 @@ export class BaseVXOlympusClient {
    */
   async login(username: string, password: string): Promise<void> {
     try {
-      const response = await this.client.post('/api/auth/login', {
-        username,
-        password,
+      const response = await this.makeRequest<LoginResponse>(`${this.baseUrl}/api/auth/login`, {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
       });
 
-      const loginResponse = LoginResponseSchema.parse(response.data);
+      const loginResponse = LoginResponseSchema.parse(response);
       this.token = loginResponse.token;
       this.refreshToken = loginResponse.refreshToken;
-
-      // Update client headers with the new token
-      this.client.defaults.headers['X-Authorization'] = `Bearer ${this.token}`;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 401) {
+      if (error instanceof Error) {
+        if (error.message.includes('401')) {
           throw new Error('Invalid username or password');
         }
-        throw new Error(`Login failed: ${error.response?.data?.message || error.message}`);
+        throw new Error(`Login failed: ${error.message}`);
       }
       throw error;
     }
@@ -97,31 +112,29 @@ export class BaseVXOlympusClient {
    * Attempts to refresh the authentication token using the refresh token.
    * This is called automatically when a request fails with a 401 status.
    * 
-   * @returns A new JWT token
+   * @returns The new token if successful
    * @throws {Error} If token refresh fails
    * @internal
    */
-  private async refreshAuthToken(): Promise<string> {
+  protected async refreshAuthToken(): Promise<string> {
     if (!this.refreshToken) {
       throw new Error('No refresh token available');
     }
 
     try {
-      const response = await this.client.post('/api/auth/token', {
-        refreshToken: this.refreshToken,
+      const response = await this.makeRequest<LoginResponse>(`${this.baseUrl}/api/auth/token`, {
+        method: 'POST',
+        body: JSON.stringify({ refreshToken: this.refreshToken }),
       });
 
-      const loginResponse = LoginResponseSchema.parse(response.data);
+      const loginResponse = LoginResponseSchema.parse(response);
       this.token = loginResponse.token;
       this.refreshToken = loginResponse.refreshToken;
 
-      // Update client headers with the new token
-      this.client.defaults.headers['X-Authorization'] = `Bearer ${this.token}`;
-
       return this.token;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        throw new Error(`Token refresh failed: ${error.response?.data?.message || error.message}`);
+      if (error instanceof Error) {
+        throw new Error(`Token refresh failed: ${error.message}`);
       }
       throw error;
     }
@@ -130,7 +143,7 @@ export class BaseVXOlympusClient {
   /**
    * Gets the current authentication token.
    * 
-   * @returns The current JWT token or undefined if not authenticated
+   * @returns The current token or undefined if not authenticated
    */
   getToken(): string | undefined {
     return this.token;
@@ -146,11 +159,10 @@ export class BaseVXOlympusClient {
   }
 
   /**
-   * Logs out the current user by clearing all authentication tokens.
+   * Logs out the current user by clearing the authentication tokens.
    */
   logout(): void {
     this.token = undefined;
     this.refreshToken = undefined;
-    delete this.client.defaults.headers['X-Authorization'];
   }
 }

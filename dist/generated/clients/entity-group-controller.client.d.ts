@@ -1,0 +1,38 @@
+import { BaseVXOlympusClient } from '../../base-client';
+export declare class EntityGroupControllerClient extends BaseVXOlympusClient {
+    getAllEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    assignEntityGroupToEdgeUsingPOST(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    unassignEntityGroupFromEdgeUsingDELETE(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    saveEntityGroupUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupAllByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    deleteEntityGroupUsingDELETE(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    addEntitiesToEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    removeEntitiesFromEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    getEntitiesUsingGET(entityGroupId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    makeEntityGroupPrivateUsingPOST(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    makeEntityGroupPublicUsingPOST(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    shareEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    getGroupEntityUsingGET(entityGroupId: string, entityId: string, options?: RequestInit): Promise<unknown>;
+    shareEntityGroupToChildOwnerUserGroupUsingPOST(entityGroupId: string, userGroupId: string, roleId: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupByOwnerAndNameAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, groupName: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfoByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByIdsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsForEntityUsingGET(entityType: string, entityId: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupsByTypeUsingGET(groupType: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByTypeUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByIdsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getOwnerInfoUsingGET(ownerType: string, ownerId: string, options?: RequestInit): Promise<unknown>;
+    getOwnerInfosUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getOwnersUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+}
