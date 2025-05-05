@@ -58,7 +58,7 @@ client.logout();
 
 ## API Documentation
 
-For detailed API documentation, see the [generated documentation](./docs/index.html).
+For detailed API documentation, visit our [online documentation](https://vx-daniel.github.io/thingsboard-sdk/).
 
 ## Development
 
