@@ -2,449 +2,152 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class AssetControllerClient extends BaseVXOlympusClient {
-  async processAssetBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async processAssetBulkImportUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset/bulk_import`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/asset/bulk_import`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.BulkImportResult_Of_AssetSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAssetInfoByIdUsingGET(assetId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAssetInfoByIdUsingGET(assetId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset/info/${encodeURIComponent(assetId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/asset/info/${encodeURIComponent(assetId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AssetInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAssetTypesUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAssetTypesUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset/types`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/asset/types`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAssetByIdUsingGET(assetId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAssetByIdUsingGET(assetId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset/${encodeURIComponent(assetId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/asset/${encodeURIComponent(assetId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteAssetUsingDELETE(assetId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteAssetUsingDELETE(assetId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset/${encodeURIComponent(assetId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/asset/${encodeURIComponent(assetId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAllAssetInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAllAssetInfosUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/assetInfos/all{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/assetInfos/all{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async findByQueryUsingPOST(data: schemas.AssetSearchQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findByQueryUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/assets`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/assets`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAssetsByIdsUsingGET(assetIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAssetsByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/assets{?assetIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/assets{?assetIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (assetIds !== undefined) searchParams.append('assetIds', String(assetIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveAssetUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Asset, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveAssetUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/asset{?entityGroupId,entityGroupIds}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/asset{?entityGroupId,entityGroupIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
-    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AssetSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomerAssetInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerAssetInfosUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/assetInfos{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/assetInfos{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomerAssetsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerAssetsUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAssetsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAssetsByEntityGroupIdUsingGET(entityGroupId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantAssetUsingGET(assetName: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantAssetUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/assets{?assetName}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/assets{?assetName}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (assetName !== undefined) searchParams.append('assetName', String(assetName));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantAssetsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantAssetsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserAssetsUsingGET(pageSize: number, page: number, type: string, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserAssetsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/user/assets{?assetProfileId,page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/user/assets{?assetProfileId,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

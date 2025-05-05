@@ -2,424 +2,142 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class EntityViewControllerClient extends BaseVXOlympusClient {
-  async getCustomerEntityViewInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerEntityViewInfosUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/entityViewInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/entityViewInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomerEntityViewsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerEntityViewsUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEntityViewsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEntityViewsByEntityGroupIdUsingGET(entityGroupId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEntityViewInfoByIdUsingGET(entityViewId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEntityViewInfoByIdUsingGET(entityViewId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityView/info/${encodeURIComponent(entityViewId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityView/info/${encodeURIComponent(entityViewId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EntityViewInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEntityViewTypesUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEntityViewTypesUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityView/types`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityView/types`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEntityViewByIdUsingGET(entityViewId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEntityViewByIdUsingGET(entityViewId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityView/${encodeURIComponent(entityViewId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityView/${encodeURIComponent(entityViewId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteEntityViewUsingDELETE(entityViewId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteEntityViewUsingDELETE(entityViewId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityView/${encodeURIComponent(entityViewId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityView/${encodeURIComponent(entityViewId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAllEntityViewInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAllEntityViewInfosUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityViewInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityViewInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async findByQueryUsingPOST_4(data: schemas.EntityViewSearchQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findByQueryUsingPOST_4(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityViews`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entityViews`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getEntityViewsByIdsUsingGET(entityViewIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEntityViewsByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityViews{?entityViewIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityViews{?entityViewIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityViewIds !== undefined) searchParams.append('entityViewIds', String(entityViewIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveEntityViewUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.EntityView, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEntityViewUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityView{?entityGroupId,entityGroupIds}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entityView{?entityGroupId,entityGroupIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
-    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EntityViewSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantEntityViewUsingGET(entityViewName: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantEntityViewUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/entityViews{?entityViewName}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/entityViews{?entityViewName}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityViewName !== undefined) searchParams.append('entityViewName', String(entityViewName));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantEntityViewsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserEntityViewsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/user/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/user/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

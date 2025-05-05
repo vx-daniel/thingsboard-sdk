@@ -1,221 +1,74 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WidgetsBundleControllerClient = void 0;
 const base_client_1 = require("../../base-client");
-const schemas = __importStar(require("../schemas"));
 class WidgetsBundleControllerClient extends base_client_1.BaseVXOlympusClient {
-    async saveWidgetsBundleUsingPOST(data, options) {
-        const config = {
-            ...options,
+    async saveWidgetsBundleUsingPOST(data, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundle`;
+        const response = await this.makeRequest(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        config.body = JSON.stringify(data);
-        const url = new URL(`/api/widgetsBundle`, this.baseURL);
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return schemas.WidgetsBundleSchemaSchema.parse(responseData);
-    }
-    async deleteWidgetsBundleUsingDELETE(widgetsBundleId, options) {
-        const config = {
+            body: JSON.stringify(data),
             ...options,
+        });
+        return response;
+    }
+    async deleteWidgetsBundleUsingDELETE(widgetsBundleId, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}`;
+        const response = await this.makeRequest(url, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}`, this.baseURL);
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return responseData;
-    }
-    async updateWidgetsBundleWidgetFqnsUsingPOST(widgetsBundleId, data, options) {
-        const config = {
             ...options,
+        });
+        return response;
+    }
+    async updateWidgetsBundleWidgetFqnsUsingPOST(widgetsBundleId, data, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypeFqns`;
+        const response = await this.makeRequest(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        config.body = JSON.stringify(data);
-        const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypeFqns`, this.baseURL);
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return responseData;
-    }
-    async updateWidgetsBundleWidgetTypesUsingPOST(widgetsBundleId, data, options) {
-        const config = {
+            body: JSON.stringify(data),
             ...options,
+        });
+        return response;
+    }
+    async updateWidgetsBundleWidgetTypesUsingPOST(widgetsBundleId, data, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypes`;
+        const response = await this.makeRequest(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        config.body = JSON.stringify(data);
-        const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypes`, this.baseURL);
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return responseData;
-    }
-    async getWidgetsBundleByIdUsingGET(widgetsBundleId, inlineImages, options) {
-        const config = {
+            body: JSON.stringify(data),
             ...options,
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}{?inlineImages}`, this.baseURL);
-        const searchParams = new URLSearchParams();
-        if (inlineImages !== undefined)
-            searchParams.append('inlineImages', String(inlineImages));
-        const queryString = searchParams.toString();
-        if (queryString) {
-            url.search = queryString;
-        }
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return schemas.WidgetsBundleSchemaSchema.parse(responseData);
+        });
+        return response;
     }
-    async getWidgetsBundlesUsingGET(options) {
-        const config = {
-            ...options,
+    async getWidgetsBundleByIdUsingGET(widgetsBundleId, queryParams, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}{?inlineImages}`;
+        const response = await this.makeRequest(url, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        const url = new URL(`/api/widgetsBundles`, this.baseURL);
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return responseData;
+            ...options,
+        });
+        return response;
     }
-    async getWidgetsBundlesUsingGET_1(pageSize, page, textSearch, sortProperty, sortOrder, tenantOnly, fullSearch, options) {
-        const config = {
-            ...options,
+    async getWidgetsBundlesUsingGET(options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundles`;
+        const response = await this.makeRequest(url, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        const url = new URL(`/api/widgetsBundles{?fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch}`, this.baseURL);
-        const searchParams = new URLSearchParams();
-        if (pageSize !== undefined)
-            searchParams.append('pageSize', String(pageSize));
-        if (page !== undefined)
-            searchParams.append('page', String(page));
-        if (textSearch !== undefined)
-            searchParams.append('textSearch', String(textSearch));
-        if (sortProperty !== undefined)
-            searchParams.append('sortProperty', String(sortProperty));
-        if (sortOrder !== undefined)
-            searchParams.append('sortOrder', String(sortOrder));
-        if (tenantOnly !== undefined)
-            searchParams.append('tenantOnly', String(tenantOnly));
-        if (fullSearch !== undefined)
-            searchParams.append('fullSearch', String(fullSearch));
-        const queryString = searchParams.toString();
-        if (queryString) {
-            url.search = queryString;
-        }
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return schemas.PageData_Of_WidgetsBundleSchemaSchema.parse(responseData);
+            ...options,
+        });
+        return response;
     }
-    async getWidgetsBundlesByIdsUsingGET(widgetsBundleIds, options) {
-        const config = {
-            ...options,
+    async getWidgetsBundlesUsingGET_1(queryParams, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundles{?fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch}`;
+        const response = await this.makeRequest(url, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                ...this.headers,
-                ...options?.headers
-            }
-        };
-        const url = new URL(`/api/widgetsBundles{?widgetsBundleIds}`, this.baseURL);
-        const searchParams = new URLSearchParams();
-        if (widgetsBundleIds !== undefined)
-            searchParams.append('widgetsBundleIds', String(widgetsBundleIds));
-        const queryString = searchParams.toString();
-        if (queryString) {
-            url.search = queryString;
-        }
-        const response = await fetch(url.toString(), config);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        return responseData;
+            ...options,
+        });
+        return response;
+    }
+    async getWidgetsBundlesByIdsUsingGET(queryParams, options = {}) {
+        const url = `${this.baseUrl}/api/widgetsBundles{?widgetsBundleIds}`;
+        const response = await this.makeRequest(url, {
+            method: 'GET',
+            ...options,
+        });
+        return response;
     }
 }
 exports.WidgetsBundleControllerClient = WidgetsBundleControllerClient;

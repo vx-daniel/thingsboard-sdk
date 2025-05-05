@@ -211,68 +211,50 @@ export class ${className} extends BaseVXOlympusClient {${methods.join('\n')}}`;
 }
 
 function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
-  if (!operation.operationId) {
+  const operationId = operation.operationId;
+  if (!operationId) {
     throw new Error(`Operation at ${path} ${method} is missing operationId`);
   }
 
-  const parameters = operation.parameters || [];
-  const requestBody = operation.requestBody?.content?.['application/json']?.schema;
-  const responseSchema = operation.responses?.['200']?.content?.['application/json']?.schema?.$ref?.split('/').pop();
+  const pathParams = operation.parameters?.filter(p => p.in === 'path') || [];
+  const queryParams = operation.parameters?.filter(p => p.in === 'query') || [];
+  const hasRequestBody = operation.requestBody != null;
 
-  const methodParams = [
-    ...parameters.map((p: any) => `${sanitizeIdentifier(p.name)}: ${generateTypeForSchema(p.schema)}`),
-    requestBody ? `data: ${generateTypeForSchema(requestBody)}` : '',
-    'options?: RequestInit'
-  ].filter(Boolean);
+  // Build method parameters
+  const methodParams = [];
+  
+  // Add path parameters
+  methodParams.push(...pathParams.map(p => `${p.name}: string`));
+  
+  // Add request body if needed
+  if (hasRequestBody) {
+    methodParams.push('data: any');
+  }
+  
+  // Add query parameters if needed
+  if (queryParams.length > 0) {
+    methodParams.push('queryParams: any');
+  }
+  
+  // Add options parameter
+  methodParams.push('options: RequestInit = {}');
 
-  const queryParams = parameters
-    .filter((p: any) => p.in === 'query')
-    .map((p: any) => sanitizeIdentifier(p.name));
+  // Build the URL with path parameters
+  let urlPath = path;
+  for (const param of pathParams) {
+    urlPath = urlPath.replace(`{${param.name}}`, `\${encodeURIComponent(${param.name})}`);
+  }
 
-  const pathParams = parameters
-    .filter((p: any) => p.in === 'path')
-    .map((p: any) => sanitizeIdentifier(p.name));
-
-  // Replace path parameters with their values
-  const urlPath = pathParams.reduce((currentPath: string, param: string) => {
-    return currentPath.replace(`{${param}}`, `\${encodeURIComponent(${param})}`);
-  }, path);
-
-  const schemaName = responseSchema ? sanitizeSchemaName(responseSchema) : null;
-
+  // Generate the method
   return `
-  async ${sanitizeIdentifier(operation.operationId)}(${methodParams.join(', ')}) {
-    const config: RequestInit = {
-      ...options,
+  async ${operationId}(${methodParams.join(', ')}) {
+    const url = \`\${this.baseUrl}${urlPath}\`;
+    const response = await this.makeRequest(url, {
       method: '${method.toUpperCase()}',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    ${requestBody ? `config.body = JSON.stringify(data);` : ''}
-
-    const url = new URL(\`${urlPath}\`, this.baseURL);
-    ${queryParams.length ? `
-    const searchParams = new URLSearchParams();
-    ${queryParams.map((param: string) => 
-      `if (${param} !== undefined) searchParams.append('${param}', String(${param}));`
-    ).join('\n    ')}
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }` : ''}
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(\`HTTP error! status: \${response.status}\`);
-    }
-    const responseData = await response.json();
-    ${schemaName 
-      ? `return schemas.${schemaName}Schema.parse(responseData);`
-      : 'return responseData;'}
+      ${hasRequestBody ? 'body: JSON.stringify(data),' : ''}
+      ...options,
+    });
+    return response;
   }`;
 }
 

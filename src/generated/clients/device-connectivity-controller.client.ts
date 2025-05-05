@@ -2,74 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class DeviceConnectivityControllerClient extends BaseVXOlympusClient {
-  async downloadGatewayDockerComposeUsingGET(deviceId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async downloadGatewayDockerComposeUsingGET(deviceId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/device-connectivity/gateway-launch/${encodeURIComponent(deviceId)}/docker-compose/download`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/device-connectivity/gateway-launch/${encodeURIComponent(deviceId)}/docker-compose/download`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.ResourceSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDevicePublishTelemetryCommandsUsingGET(deviceId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDevicePublishTelemetryCommandsUsingGET(deviceId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/device-connectivity/${encodeURIComponent(deviceId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/device-connectivity/${encodeURIComponent(deviceId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JsonNodeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async downloadServerCertificateUsingGET(protocol: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async downloadServerCertificateUsingGET(protocol: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/device-connectivity/${encodeURIComponent(protocol)}/certificate/download`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/device-connectivity/${encodeURIComponent(protocol)}/certificate/download`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.ResourceSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

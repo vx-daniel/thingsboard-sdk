@@ -2,615 +2,252 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class AdminControllerClient extends BaseVXOlympusClient {
-  async getAutoCommitSettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAutoCommitSettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/autoCommitSettings`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveAutoCommitSettingsUsingPOST(data: Record<string, schemas.AutoVersionCreateConfig>, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveAutoCommitSettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/autoCommitSettings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteAutoCommitSettingsUsingDELETE(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteAutoCommitSettingsUsingDELETE(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/autoCommitSettings`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async autoCommitSettingsExistsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async autoCommitSettingsExistsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/autoCommitSettings/exists`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/autoCommitSettings/exists`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getFeaturesInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getFeaturesInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/featuresInfo`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/featuresInfo`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.FeaturesInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getJwtSettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getJwtSettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/jwtSettings`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/jwtSettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JWT_SettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveJwtSettingsUsingPOST(data: schemas.JWT_Settings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveJwtSettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/jwtSettings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/jwtSettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JWT_PairSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getLicenseUsageInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getLicenseUsageInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/licenseUsageInfo`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/licenseUsageInfo`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.LicenseUsageInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAuthorizationUrlUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAuthorizationUrlUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/mail/oauth2/authorize`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/mail/oauth2/authorize`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async codeProcessingUrlUsingGET(code: string, state: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async codeProcessingUrlUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/mail/oauth2/code{?code,state}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/mail/oauth2/code{?code,state}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (code !== undefined) searchParams.append('code', String(code));
-    if (state !== undefined) searchParams.append('state', String(state));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getMailProcessingUrlUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getMailProcessingUrlUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/mail/oauth2/loginProcessingUrl`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/mail/oauth2/loginProcessingUrl`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getRepositorySettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getRepositorySettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.RepositorySettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveRepositorySettingsUsingPOST(data: schemas.RepositorySettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveRepositorySettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_RepositorySettingsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteRepositorySettingsUsingDELETE(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteRepositorySettingsUsingDELETE(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_VoidSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async checkRepositoryAccessUsingPOST(data: schemas.RepositorySettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkRepositoryAccessUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings/checkAccess`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/repositorySettings/checkAccess`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_VoidSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async repositorySettingsExistsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async repositorySettingsExistsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings/exists`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/repositorySettings/exists`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getRepositorySettingsInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getRepositorySettingsInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/repositorySettings/info`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/repositorySettings/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.RepositorySettingsInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSecuritySettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSecuritySettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/securitySettings`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/securitySettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SecuritySettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveSecuritySettingsUsingPOST(data: schemas.SecuritySettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveSecuritySettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/securitySettings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/securitySettings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SecuritySettingsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async saveAdminSettingsUsingPOST(data: schemas.AdminSettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveAdminSettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/settings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/settings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AdminSettingsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async sendTestMailUsingPOST(data: schemas.AdminSettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async sendTestMailUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/settings/testMail`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/settings/testMail`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async sendTestSmsUsingPOST(data: schemas.TestSmsRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async sendTestSmsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/settings/testSms`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/admin/settings/testSms`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAdminSettingsUsingGET(key: string, systemByDefault: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAdminSettingsUsingGET(key: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/settings/${encodeURIComponent(key)}{?systemByDefault}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/settings/${encodeURIComponent(key)}{?systemByDefault}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (systemByDefault !== undefined) searchParams.append('systemByDefault', String(systemByDefault));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.AdminSettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSystemInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSystemInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/systemInfo`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/systemInfo`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SystemInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async checkUpdatesUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkUpdatesUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/admin/updates`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/admin/updates`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.UpdateMessageSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

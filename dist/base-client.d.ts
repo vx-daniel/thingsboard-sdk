@@ -1,43 +1,27 @@
-type RequestConfig = {
-    method?: string;
-    headers?: Record<string, string>;
-    body?: any;
-};
 /**
  * Base client class for VX Olympus API interactions.
  * Handles authentication, token refresh, and basic HTTP client setup.
  *
  * @example
  * ```typescript
- * // Initialize with token
- * const client = new BaseVXOlympusClient('https://api.example.com', 'your-token');
- *
- * // Initialize and login with username/password
- * const client = new BaseVXOlympusClient('https://api.example.com');
- * await client.login('username', 'password');
+ * const client = new BaseVXOlympusClient('http://localhost:8080');
+ * await client.login('admin', 'password');
  * ```
  */
 export declare class BaseVXOlympusClient {
-    protected baseURL: string;
+    protected baseUrl: string;
     protected token?: string;
     protected refreshToken?: string;
-    protected headers: Record<string, string>;
+    constructor(baseUrl: string, token?: string);
     /**
-     * Creates a new instance of the BaseVXOlympusClient.
+     * Makes an HTTP request to the API with authentication and error handling.
      *
-     * @param baseURL - The base URL of the VX Olympus API
-     * @param token - Optional JWT token for authentication
-     */
-    constructor(baseURL: string, token?: string);
-    /**
-     * Makes an HTTP request to the API with automatic token refresh on 401 errors.
-     *
-     * @param path - The API endpoint path
-     * @param config - Request configuration
+     * @param url - The full URL to make the request to
+     * @param options - Request configuration
      * @returns The response data
      * @internal
      */
-    protected request<T>(path: string, config?: RequestConfig): Promise<T>;
+    protected makeRequest<T>(url: string, options?: RequestInit): Promise<T>;
     /**
      * Authenticates with the VX Olympus API using username and password.
      *
@@ -50,15 +34,15 @@ export declare class BaseVXOlympusClient {
      * Attempts to refresh the authentication token using the refresh token.
      * This is called automatically when a request fails with a 401 status.
      *
-     * @returns A new JWT token
+     * @returns The new token if successful
      * @throws {Error} If token refresh fails
      * @internal
      */
-    private refreshAuthToken;
+    protected refreshAuthToken(): Promise<string>;
     /**
      * Gets the current authentication token.
      *
-     * @returns The current JWT token or undefined if not authenticated
+     * @returns The current token or undefined if not authenticated
      */
     getToken(): string | undefined;
     /**
@@ -68,8 +52,7 @@ export declare class BaseVXOlympusClient {
      */
     isAuthenticated(): boolean;
     /**
-     * Logs out the current user by clearing all authentication tokens.
+     * Logs out the current user by clearing the authentication tokens.
      */
     logout(): void;
 }
-export {};

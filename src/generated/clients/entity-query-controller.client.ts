@@ -2,129 +2,52 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class EntityQueryControllerClient extends BaseVXOlympusClient {
-  async countAlarmsByQueryUsingPOST(data: schemas.AlarmCountQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async countAlarmsByQueryUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/alarmsQuery/count`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/alarmsQuery/count`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async findAlarmDataByQueryUsingPOST(data: schemas.AlarmDataQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findAlarmDataByQueryUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/alarmsQuery/find`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/alarmsQuery/find`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_AlarmDataSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async countEntitiesByQueryUsingPOST(data: schemas.EntityCountQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async countEntitiesByQueryUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entitiesQuery/count`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entitiesQuery/count`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async findEntityDataByQueryUsingPOST(data: schemas.EntityDataQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findEntityDataByQueryUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entitiesQuery/find`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entitiesQuery/find`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EntityDataSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async findEntityTimeseriesAndAttributesKeysByQueryUsingPOST(timeseries: boolean, attributes: boolean, data: schemas.EntityDataQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findEntityTimeseriesAndAttributesKeysByQueryUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entitiesQuery/find/keys{?attributes,timeseries}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entitiesQuery/find/keys{?attributes,timeseries}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (timeseries !== undefined) searchParams.append('timeseries', String(timeseries));
-    if (attributes !== undefined) searchParams.append('attributes', String(attributes));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }}

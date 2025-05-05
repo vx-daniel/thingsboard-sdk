@@ -2,152 +2,62 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class SelfRegistrationControllerClient extends BaseVXOlympusClient {
-  async getPrivacyPolicyUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getPrivacyPolicyUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/selfRegistration/privacyPolicy`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/selfRegistration/privacyPolicy`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSignUpSelfRegistrationParamsUsingGET(pkgName: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSignUpSelfRegistrationParamsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/selfRegistration/signUpSelfRegistrationParams{?pkgName}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/selfRegistration/signUpSelfRegistrationParams{?pkgName}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SignUpSelfRegistrationParamsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTermsOfUseUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTermsOfUseUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/selfRegistration/termsOfUse`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/selfRegistration/termsOfUse`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSelfRegistrationParamsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSelfRegistrationParamsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/selfRegistration/selfRegistrationParams`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/selfRegistration/selfRegistrationParams`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SelfRegistrationParamsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveSelfRegistrationParamsUsingPOST(data: schemas.SelfRegistrationParams, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveSelfRegistrationParamsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/selfRegistration/selfRegistrationParams`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/selfRegistration/selfRegistrationParams`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SelfRegistrationParamsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteSelfRegistrationParamsUsingDELETE(domainName: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteSelfRegistrationParamsUsingDELETE(domainName: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/selfRegistration/selfRegistrationParams/${encodeURIComponent(domainName)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/selfRegistration/selfRegistrationParams/${encodeURIComponent(domainName)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

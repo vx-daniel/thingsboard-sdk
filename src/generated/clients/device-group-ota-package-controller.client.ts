@@ -2,74 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class DeviceGroupOtaPackageControllerClient extends BaseVXOlympusClient {
-  async saveDeviceGroupOtaPackageUsingPOST(data: schemas.DeviceGroupOtaPackage, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveDeviceGroupOtaPackageUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceGroupOtaPackage`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/deviceGroupOtaPackage`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceGroupOtaPackageSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getFirmwareByIdUsingGET(groupId: string, firmwareType: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getFirmwareByIdUsingGET(groupId: string, firmwareType: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceGroupOtaPackage/${encodeURIComponent(groupId)}/${encodeURIComponent(firmwareType)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceGroupOtaPackage/${encodeURIComponent(groupId)}/${encodeURIComponent(firmwareType)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceGroupOtaPackageSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteDeviceGroupOtaPackageUsingDELETE(id: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteDeviceGroupOtaPackageUsingDELETE(id: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceGroupOtaPackage/${encodeURIComponent(id)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceGroupOtaPackage/${encodeURIComponent(id)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }}

@@ -2,87 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class ComponentDescriptorControllerClient extends BaseVXOlympusClient {
-  async getComponentDescriptorByClazzUsingGET(componentDescriptorClazz: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getComponentDescriptorByClazzUsingGET(componentDescriptorClazz: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/component/${encodeURIComponent(componentDescriptorClazz)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/component/${encodeURIComponent(componentDescriptorClazz)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.ComponentDescriptorSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getComponentDescriptorsByTypeUsingGET(componentType: string, ruleChainType: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getComponentDescriptorsByTypeUsingGET(componentType: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/components/${encodeURIComponent(componentType)}{?ruleChainType}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/components/${encodeURIComponent(componentType)}{?ruleChainType}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (ruleChainType !== undefined) searchParams.append('ruleChainType', String(ruleChainType));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getComponentDescriptorsByTypesUsingGET(componentTypes: string, ruleChainType: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getComponentDescriptorsByTypesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/components{?componentTypes,ruleChainType}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/components{?componentTypes,ruleChainType}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (componentTypes !== undefined) searchParams.append('componentTypes', String(componentTypes));
-    if (ruleChainType !== undefined) searchParams.append('ruleChainType', String(ruleChainType));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }}

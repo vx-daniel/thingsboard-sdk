@@ -2,236 +2,92 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class AuthControllerClient extends BaseVXOlympusClient {
-  async changePasswordUsingPOST(data: schemas.ChangePasswordRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async changePasswordUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/changePassword`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/auth/changePassword`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.ObjectNodeSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async logoutUsingPOST(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async logoutUsingPOST(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/logout`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/auth/logout`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/user`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/auth/user`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.UserSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async checkActivateTokenUsingGET(activateToken: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkActivateTokenUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/activate{?activateToken}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/activate{?activateToken}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (activateToken !== undefined) searchParams.append('activateToken', String(activateToken));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async activateUserUsingPOST(sendActivationMail: boolean, data: schemas.ActivateUserRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async activateUserUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/activate{?sendActivationMail}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/noauth/activate{?sendActivationMail}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (sendActivationMail !== undefined) searchParams.append('sendActivationMail', String(sendActivationMail));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JWT_PairSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async resetPasswordUsingPOST(data: schemas.ResetPasswordRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async resetPasswordUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/resetPassword`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/noauth/resetPassword`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JWT_PairSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async requestResetPasswordByEmailUsingPOST(data: schemas.ResetPasswordEmailRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async requestResetPasswordByEmailUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/resetPasswordByEmail`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/noauth/resetPasswordByEmail`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async checkResetTokenUsingGET(resetToken: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkResetTokenUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/resetPassword{?resetToken}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/resetPassword{?resetToken}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (resetToken !== undefined) searchParams.append('resetToken', String(resetToken));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserPasswordPolicyUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserPasswordPolicyUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/noauth/userPasswordPolicy`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/noauth/userPasswordPolicy`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.UserPasswordPolicySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

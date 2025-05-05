@@ -1,172 +1,38 @@
 import { BaseVXOlympusClient } from '../../base-client';
-import * as schemas from '../schemas';
 export declare class EntityGroupControllerClient extends BaseVXOlympusClient {
-    getAllEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, options?: RequestInit): Promise<any>;
-    assignEntityGroupToEdgeUsingPOST(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    unassignEntityGroupFromEdgeUsingDELETE(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    saveEntityGroupUsingPOST(data: schemas.EntityGroup, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        ownerIds: any[];
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    getEntityGroupAllByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        ownerIds: any[];
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    getEntityGroupByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        ownerIds: any[];
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    deleteEntityGroupUsingDELETE(entityGroupId: string, options?: RequestInit): Promise<any>;
-    addEntitiesToEntityGroupUsingPOST(entityGroupId: string, data: Array<string>, options?: RequestInit): Promise<any>;
-    removeEntitiesFromEntityGroupUsingPOST(entityGroupId: string, data: Array<string>, options?: RequestInit): Promise<any>;
-    getEntitiesUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    makeEntityGroupPrivateUsingPOST(entityGroupId: string, options?: RequestInit): Promise<any>;
-    makeEntityGroupPublicUsingPOST(entityGroupId: string, options?: RequestInit): Promise<any>;
-    shareEntityGroupUsingPOST(entityGroupId: string, data: schemas.ShareGroupRequest, options?: RequestInit): Promise<any>;
-    getGroupEntityUsingGET(entityGroupId: string, entityId: string, options?: RequestInit): Promise<{
-        name: string;
-        id?: any;
-    }>;
-    shareEntityGroupToChildOwnerUserGroupUsingPOST(entityGroupId: string, userGroupId: string, roleId: string, options?: RequestInit): Promise<any>;
-    getEntityGroupByOwnerAndNameAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, groupName: string, options?: RequestInit): Promise<{
-        type: "ASSET" | "CUSTOMER" | "DASHBOARD" | "DEVICE" | "EDGE" | "ENTITY_VIEW" | "USER";
-        createdTime: number;
-        name: string;
-        groupAll: boolean;
-        edgeGroupAll: boolean;
-        ownerIds: any[];
-        id?: any;
-        additionalInfo?: any;
-        ownerId?: any;
-        configuration?: any;
-    }>;
-    getEntityGroupEntityInfoByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<{
-        name: string;
-        id?: any;
-    }>;
-    getSharedEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupEntityInfosByIdsUsingGET(entityGroupIds: string, options?: RequestInit): Promise<any>;
-    getEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupsForEntityUsingGET(entityType: string, entityId: string, options?: RequestInit): Promise<any>;
-    getSharedEntityGroupsByTypeUsingGET(groupType: string, options?: RequestInit): Promise<any>;
-    getSharedEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupsByTypeUsingGET(groupType: string, includeShared: boolean, options?: RequestInit): Promise<any>;
-    getEntityGroupsByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<any>;
-    getEntityGroupsByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getEntityGroupsByIdsUsingGET(entityGroupIds: string, options?: RequestInit): Promise<any>;
-    getOwnerInfoUsingGET(ownerType: string, ownerId: string, options?: RequestInit): Promise<{
-        name: string;
-        id?: any;
-    }>;
-    getOwnerInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
-    getOwnersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        data: any[];
-        totalPages: number;
-        totalElements: number;
-        hasNext: boolean;
-    }>;
+    getAllEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    assignEntityGroupToEdgeUsingPOST(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    unassignEntityGroupFromEdgeUsingDELETE(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    saveEntityGroupUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupAllByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    deleteEntityGroupUsingDELETE(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    addEntitiesToEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    removeEntitiesFromEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    getEntitiesUsingGET(entityGroupId: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    makeEntityGroupPrivateUsingPOST(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    makeEntityGroupPublicUsingPOST(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    shareEntityGroupUsingPOST(entityGroupId: string, data: any, options?: RequestInit): Promise<unknown>;
+    getGroupEntityUsingGET(entityGroupId: string, entityId: string, options?: RequestInit): Promise<unknown>;
+    shareEntityGroupToChildOwnerUserGroupUsingPOST(entityGroupId: string, userGroupId: string, roleId: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupByOwnerAndNameAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, groupName: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfoByIdUsingGET(entityGroupId: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupEntityInfosByIdsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsForEntityUsingGET(entityType: string, entityId: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupsByTypeUsingGET(groupType: string, options?: RequestInit): Promise<unknown>;
+    getSharedEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByTypeUsingGET(groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getEntityGroupsByIdsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getOwnerInfoUsingGET(ownerType: string, ownerId: string, options?: RequestInit): Promise<unknown>;
+    getOwnerInfosUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
+    getOwnersUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
 }

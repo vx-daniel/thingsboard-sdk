@@ -2,365 +2,142 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class NotificationControllerClient extends BaseVXOlympusClient {
-  async getAvailableDeliveryMethodsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAvailableDeliveryMethodsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/deliveryMethods`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/deliveryMethods`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async createNotificationRequestUsingPOST(data: schemas.NotificationRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async createNotificationRequestUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/request`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/notification/request`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.NotificationRequestSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getNotificationRequestPreviewUsingPOST(recipientsPreviewSize: number, data: schemas.NotificationRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getNotificationRequestPreviewUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/request/preview{?recipientsPreviewSize}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/notification/request/preview{?recipientsPreviewSize}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (recipientsPreviewSize !== undefined) searchParams.append('recipientsPreviewSize', String(recipientsPreviewSize));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.NotificationRequestPreviewSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getNotificationRequestByIdUsingGET(id: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getNotificationRequestByIdUsingGET(id: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/request/${encodeURIComponent(id)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/request/${encodeURIComponent(id)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.NotificationRequestInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteNotificationRequestUsingDELETE(id: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteNotificationRequestUsingDELETE(id: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/request/${encodeURIComponent(id)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/request/${encodeURIComponent(id)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getNotificationRequestsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getNotificationRequestsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/requests{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/requests{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_NotificationRequestInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getNotificationSettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getNotificationSettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/settings`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/settings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.NotificationSettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveNotificationSettingsUsingPOST(data: schemas.NotificationSettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveNotificationSettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/settings`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/notification/settings`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.NotificationSettingsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getUserNotificationSettingsUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserNotificationSettingsUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/settings/user`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/settings/user`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.UserNotificationSettingsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveUserNotificationSettingsUsingPOST(data: schemas.UserNotificationSettings, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveUserNotificationSettingsUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/settings/user`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/notification/settings/user`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.UserNotificationSettingsSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteNotificationUsingDELETE(id: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteNotificationUsingDELETE(id: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/${encodeURIComponent(id)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/${encodeURIComponent(id)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async markNotificationAsReadUsingPUT(id: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async markNotificationAsReadUsingPUT(id: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notification/${encodeURIComponent(id)}/read`;
+    const response = await this.makeRequest(url, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notification/${encodeURIComponent(id)}/read`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async markAllNotificationsAsReadUsingPUT(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async markAllNotificationsAsReadUsingPUT(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notifications/read`;
+    const response = await this.makeRequest(url, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notifications/read`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getNotificationsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, unreadOnly: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getNotificationsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/notifications{?page,pageSize,sortOrder,sortProperty,textSearch,unreadOnly}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/notifications{?page,pageSize,sortOrder,sortProperty,textSearch,unreadOnly}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    if (unreadOnly !== undefined) searchParams.append('unreadOnly', String(unreadOnly));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_NotificationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

@@ -2,392 +2,142 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class IntegrationControllerClient extends BaseVXOlympusClient {
-  async findEdgeMissingAttributesUsingGET(edgeId: string, integrationIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findEdgeMissingAttributesUsingGET(edgeId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/integration/${encodeURIComponent(edgeId)}/missingAttributes{?integrationIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/integration/${encodeURIComponent(edgeId)}/missingAttributes{?integrationIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (integrationIds !== undefined) searchParams.append('integrationIds', String(integrationIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async findAllRelatedEdgesMissingAttributesUsingGET(integrationId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findAllRelatedEdgesMissingAttributesUsingGET(integrationId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/integration/${encodeURIComponent(integrationId)}/allMissingAttributes`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/integration/${encodeURIComponent(integrationId)}/allMissingAttributes`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async assignIntegrationToEdgeUsingPOST(edgeId: string, integrationId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async assignIntegrationToEdgeUsingPOST(edgeId: string, integrationId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async unassignIntegrationFromEdgeUsingDELETE(edgeId: string, integrationId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async unassignIntegrationFromEdgeUsingDELETE(edgeId: string, integrationId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeIntegrationInfosUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeIntegrationInfosUsingGET(edgeId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/integrationInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integrationInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_IntegrationInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeIntegrationsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeIntegrationsUsingGET(edgeId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/integrations{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integrations{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveIntegrationUsingPOST(data: schemas.Integration, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveIntegrationUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integration`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/integration`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.IntegrationSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async checkIntegrationConnectionUsingPOST(data: schemas.Integration, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkIntegrationConnectionUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integration/check`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/integration/check`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getIntegrationByRoutingKeyUsingGET(routingKey: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getIntegrationByRoutingKeyUsingGET(routingKey: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integration/routingKey/${encodeURIComponent(routingKey)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integration/routingKey/${encodeURIComponent(routingKey)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getIntegrationByIdUsingGET(integrationId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getIntegrationByIdUsingGET(integrationId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integration/${encodeURIComponent(integrationId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteIntegrationUsingDELETE(integrationId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteIntegrationUsingDELETE(integrationId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integration/${encodeURIComponent(integrationId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getIntegrationInfosUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getIntegrationInfosUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integrationInfos{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integrationInfos{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (isEdgeTemplate !== undefined) searchParams.append('isEdgeTemplate', String(isEdgeTemplate));
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_IntegrationInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getIntegrationsByIdsUsingGET(integrationIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getIntegrationsByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integrations{?integrationIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integrations{?integrationIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (integrationIds !== undefined) searchParams.append('integrationIds', String(integrationIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getIntegrationsUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getIntegrationsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/integrations{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/integrations{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (isEdgeTemplate !== undefined) searchParams.append('isEdgeTemplate', String(isEdgeTemplate));
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_IntegrationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

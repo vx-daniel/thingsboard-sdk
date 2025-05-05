@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const LoginResponseSchema = z.object({
   token: z.string(),
-  refreshToken: z.string().optional(),
+  refreshToken: z.string(),
 });
 
 type LoginResponse = z.infer<typeof LoginResponseSchema>;
@@ -13,12 +13,8 @@ type LoginResponse = z.infer<typeof LoginResponseSchema>;
  * 
  * @example
  * ```typescript
- * // Initialize with token
- * const client = new BaseVXOlympusClient('https://api.example.com', 'your-token');
- * 
- * // Initialize and login with username/password
- * const client = new BaseVXOlympusClient('https://api.example.com');
- * await client.login('username', 'password');
+ * const client = new BaseVXOlympusClient('http://localhost:8080');
+ * await client.login('admin', 'password');
  * ```
  */
 export class BaseVXOlympusClient {
@@ -32,15 +28,14 @@ export class BaseVXOlympusClient {
   }
 
   /**
-   * Makes an HTTP request to the API with automatic token refresh on 401 errors.
+   * Makes an HTTP request to the API with authentication and error handling.
    * 
-   * @param path - The API endpoint path
+   * @param url - The full URL to make the request to
    * @param options - Request configuration
    * @returns The response data
    * @internal
    */
-  protected async request<T>(path: string, options: RequestInit = {}): Promise<T> {
-    const url = `${this.baseUrl}${path}`;
+  protected async makeRequest<T>(url: string, options: RequestInit = {}): Promise<T> {
     const headers = {
       'Content-Type': 'application/json',
       ...(this.token ? { 'X-Authorization': `Bearer ${this.token}` } : {}),
@@ -94,12 +89,9 @@ export class BaseVXOlympusClient {
    */
   async login(username: string, password: string): Promise<void> {
     try {
-      const response = await this.request<LoginResponse>('/api/auth/login', {
+      const response = await this.makeRequest<LoginResponse>(`${this.baseUrl}/api/auth/login`, {
         method: 'POST',
         body: JSON.stringify({ username, password }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       const loginResponse = LoginResponseSchema.parse(response);
@@ -120,22 +112,19 @@ export class BaseVXOlympusClient {
    * Attempts to refresh the authentication token using the refresh token.
    * This is called automatically when a request fails with a 401 status.
    * 
-   * @returns A new JWT token
+   * @returns The new token if successful
    * @throws {Error} If token refresh fails
    * @internal
    */
-  private async refreshAuthToken(): Promise<string> {
+  protected async refreshAuthToken(): Promise<string> {
     if (!this.refreshToken) {
       throw new Error('No refresh token available');
     }
 
     try {
-      const response = await this.request<LoginResponse>('/api/auth/token', {
+      const response = await this.makeRequest<LoginResponse>(`${this.baseUrl}/api/auth/token`, {
         method: 'POST',
         body: JSON.stringify({ refreshToken: this.refreshToken }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       const loginResponse = LoginResponseSchema.parse(response);
@@ -154,7 +143,7 @@ export class BaseVXOlympusClient {
   /**
    * Gets the current authentication token.
    * 
-   * @returns The current JWT token or undefined if not authenticated
+   * @returns The current token or undefined if not authenticated
    */
   getToken(): string | undefined {
     return this.token;
@@ -170,7 +159,7 @@ export class BaseVXOlympusClient {
   }
 
   /**
-   * Logs out the current user by clearing all authentication tokens.
+   * Logs out the current user by clearing the authentication tokens.
    */
   logout(): void {
     this.token = undefined;

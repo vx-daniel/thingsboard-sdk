@@ -2,122 +2,52 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class SolutionControllerClient extends BaseVXOlympusClient {
-  async getSolutionTemplateDetailsUsingGET(solutionTemplateId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSolutionTemplateDetailsUsingGET(solutionTemplateId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/solutions/templates/details/${encodeURIComponent(solutionTemplateId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/solutions/templates/details/${encodeURIComponent(solutionTemplateId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.TenantSolutionTemplateDetailsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSolutionTemplateInfosUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSolutionTemplateInfosUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/solutions/templates/infos`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/solutions/templates/infos`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSolutionTemplateInstructionsUsingGET(solutionTemplateId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSolutionTemplateInstructionsUsingGET(solutionTemplateId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/solutions/templates/instructions/${encodeURIComponent(solutionTemplateId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/solutions/templates/instructions/${encodeURIComponent(solutionTemplateId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.TenantSolutionTemplateInstructionsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async uninstallSolutionTemplateUsingDELETE(solutionTemplateId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async uninstallSolutionTemplateUsingDELETE(solutionTemplateId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/delete`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/delete`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async installSolutionTemplateUsingPOST(solutionTemplateId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async installSolutionTemplateUsingPOST(solutionTemplateId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/install`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/install`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SolutionInstallResponseSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

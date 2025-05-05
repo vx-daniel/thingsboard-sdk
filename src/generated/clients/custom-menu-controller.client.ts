@@ -2,74 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class CustomMenuControllerClient extends BaseVXOlympusClient {
-  async getCurrentCustomMenuUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCurrentCustomMenuUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customMenu/currentCustomMenu`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customMenu/currentCustomMenu`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomMenuSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomMenuUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomMenuUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customMenu/customMenu`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customMenu/customMenu`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomMenuSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveCustomMenuUsingPOST(data: schemas.CustomMenu, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveCustomMenuUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customMenu/customMenu`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/customMenu/customMenu`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomMenuSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }}

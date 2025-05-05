@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "generate": "ts-node scripts/generate.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "typedoc src/index.ts src/base-client.ts src/generated/index.ts --out docs"
   },
   "keywords": [
     "thingsboard",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
+    "typedoc": "^0.25.3",
     "typescript": "^5.3.3"
   }
 }

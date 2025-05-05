@@ -2,87 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class TwoFactorAuthControllerClient extends BaseVXOlympusClient {
-  async getAvailableTwoFaProvidersUsingGET_1(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAvailableTwoFaProvidersUsingGET_1(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/2fa/providers`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/auth/2fa/providers`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async checkTwoFaVerificationCodeUsingPOST(providerType: string, verificationCode: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkTwoFaVerificationCodeUsingPOST(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/2fa/verification/check{?providerType,verificationCode}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/auth/2fa/verification/check{?providerType,verificationCode}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
-    if (verificationCode !== undefined) searchParams.append('verificationCode', String(verificationCode));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JWT_PairSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async requestTwoFaVerificationCodeUsingPOST(providerType: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async requestTwoFaVerificationCodeUsingPOST(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/auth/2fa/verification/send{?providerType}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/auth/2fa/verification/send{?providerType}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }}

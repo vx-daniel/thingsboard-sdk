@@ -2,603 +2,212 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class DashboardControllerClient extends BaseVXOlympusClient {
-  async getCustomerHomeDashboardInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerHomeDashboardInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/dashboard/home/info`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/dashboard/home/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async setCustomerHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async setCustomerHomeDashboardInfoUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/dashboard/home/info`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/customer/dashboard/home/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomerDashboardsUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerDashboardsUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/dashboards{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/dashboards{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getHomeDashboardUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getHomeDashboardUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/home`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/home`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.HomeDashboardSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getHomeDashboardInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getHomeDashboardInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/home/info`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/home/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDashboardInfoByIdUsingGET(dashboardId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDashboardInfoByIdUsingGET(dashboardId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/info/${encodeURIComponent(dashboardId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/info/${encodeURIComponent(dashboardId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getMaxDatapointsLimitUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getMaxDatapointsLimitUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/maxDatapointsLimit`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/maxDatapointsLimit`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getServerTimeUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getServerTimeUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/serverTime`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/serverTime`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteDashboardUsingDELETE(dashboardId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteDashboardUsingDELETE(dashboardId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/${encodeURIComponent(dashboardId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/${encodeURIComponent(dashboardId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDashboardByIdUsingGET(dashboardId: string, inlineImages: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDashboardByIdUsingGET(dashboardId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard/${encodeURIComponent(dashboardId)}{?inlineImages}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboard/${encodeURIComponent(dashboardId)}{?inlineImages}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DashboardSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAllDashboardsUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAllDashboardsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboards/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboards/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDashboardsByIdsUsingGET(dashboardIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDashboardsByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboards{?dashboardIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/dashboards{?dashboardIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (dashboardIds !== undefined) searchParams.append('dashboardIds', String(dashboardIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveDashboardUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Dashboard, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveDashboardUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/dashboard{?entityGroupId,entityGroupIds}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/dashboard{?entityGroupId,entityGroupIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
-    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DashboardSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async exportGroupDashboardsUsingGET(entityGroupId: string, limit: number, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async exportGroupDashboardsUsingGET(entityGroupId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/export{?limit}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/export{?limit}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (limit !== undefined) searchParams.append('limit', String(limit));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async importGroupDashboardsUsingPOST(entityGroupId: string, overwrite: boolean, data: Array<schemas.Dashboard>, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async importGroupDashboardsUsingPOST(entityGroupId: string, data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/import{?overwrite}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/import{?overwrite}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (overwrite !== undefined) searchParams.append('overwrite', String(overwrite));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getDashboardsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDashboardsByEntityGroupIdUsingGET(entityGroupId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantHomeDashboardInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantHomeDashboardInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/dashboard/home/info`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/dashboard/home/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async setTenantHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async setTenantHomeDashboardInfoUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/dashboard/home/info`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/tenant/dashboard/home/info`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantDashboardsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (mobile !== undefined) searchParams.append('mobile', String(mobile));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantDashboardsUsingGET_1(tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantDashboardsUsingGET_1(tenantId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/${encodeURIComponent(tenantId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, operation: string, userId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserDashboardsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/user/dashboards{?mobile,operation,page,pageSize,sortOrder,sortProperty,textSearch,userId}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/user/dashboards{?mobile,operation,page,pageSize,sortOrder,sortProperty,textSearch,userId}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (mobile !== undefined) searchParams.append('mobile', String(mobile));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    if (operation !== undefined) searchParams.append('operation', String(operation));
-    if (userId !== undefined) searchParams.append('userId', String(userId));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

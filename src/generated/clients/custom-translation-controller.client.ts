@@ -2,74 +2,32 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class CustomTranslationControllerClient extends BaseVXOlympusClient {
-  async getCurrentCustomTranslationUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCurrentCustomTranslationUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customTranslation/currentCustomTranslation`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customTranslation/currentCustomTranslation`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomTranslationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomTranslationUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomTranslationUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customTranslation/customTranslation`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customTranslation/customTranslation`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomTranslationSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveCustomTranslationUsingPOST(data: schemas.CustomTranslation, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveCustomTranslationUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customTranslation/customTranslation`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/customTranslation/customTranslation`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.CustomTranslationSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }}

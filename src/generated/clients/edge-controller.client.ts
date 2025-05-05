@@ -2,705 +2,252 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class EdgeControllerClient extends BaseVXOlympusClient {
-  async getCustomerEdgeInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerEdgeInfosUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/edgeInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/edgeInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getCustomerEdgesUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getCustomerEdgesUsingGET(customerId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/customer/${encodeURIComponent(customerId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async processEdgesBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async processEdgesBulkImportUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/bulk_import`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/edge/bulk_import`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.BulkImportResult_Of_EdgeSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeInfoByIdUsingGET(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeInfoByIdUsingGET(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/info/${encodeURIComponent(edgeId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/info/${encodeURIComponent(edgeId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeInstallInstructionsUsingGET(edgeId: string, method: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeInstallInstructionsUsingGET(edgeId: string, method: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/instructions/install/${encodeURIComponent(edgeId)}/${encodeURIComponent(method)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/instructions/install/${encodeURIComponent(edgeId)}/${encodeURIComponent(method)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeInstructionsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeUpgradeInstructionsUsingGET(edgeVersion: string, method: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeUpgradeInstructionsUsingGET(edgeVersion: string, method: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/instructions/upgrade/${encodeURIComponent(edgeVersion)}/${encodeURIComponent(method)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/instructions/upgrade/${encodeURIComponent(edgeVersion)}/${encodeURIComponent(method)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeInstructionsSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async findMissingToRelatedRuleChainsUsingGET(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findMissingToRelatedRuleChainsUsingGET(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/missingToRelatedRuleChains/${encodeURIComponent(edgeId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/missingToRelatedRuleChains/${encodeURIComponent(edgeId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async syncEdgeUsingPOST(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async syncEdgeUsingPOST(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/sync/${encodeURIComponent(edgeId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/sync/${encodeURIComponent(edgeId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeTypesUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeTypesUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/types`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/types`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeByIdUsingGET(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeByIdUsingGET(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteEdgeUsingDELETE(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteEdgeUsingDELETE(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async isEdgeUpgradeAvailableUsingGET(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async isEdgeUpgradeAvailableUsingGET(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/upgrade/available`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/upgrade/available`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async setEdgeRootRuleChainUsingPOST(edgeId: string, ruleChainId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async setEdgeRootRuleChainUsingPOST(edgeId: string, ruleChainId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/${encodeURIComponent(ruleChainId)}/root`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/${encodeURIComponent(ruleChainId)}/root`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAllEdgeInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAllEdgeInfosUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edgeInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edgeInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async findByQueryUsingPOST_2(data: schemas.EdgeSearchQuery, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async findByQueryUsingPOST_2(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edges`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/edges`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async isEdgesSupportEnabledUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async isEdgesSupportEnabledUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edges/enabled`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edges/enabled`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgesByIdsUsingGET(edgeIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgesByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edges{?edgeIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edges{?edgeIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (edgeIds !== undefined) searchParams.append('edgeIds', String(edgeIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveEdgeUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Edge, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEdgeUsingPOST(data: any, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge{?entityGroupId,entityGroupIds}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/edge{?entityGroupId,entityGroupIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
-    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgesByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgesByEntityGroupIdUsingGET(entityGroupId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async activateInstanceUsingPOST(licenseSecret: string, releaseDate: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async activateInstanceUsingPOST(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/license/activateInstance{?licenseSecret,releaseDate}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/license/activateInstance{?licenseSecret,releaseDate}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (licenseSecret !== undefined) searchParams.append('licenseSecret', String(licenseSecret));
-    if (releaseDate !== undefined) searchParams.append('releaseDate', String(releaseDate));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JsonNodeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async checkInstanceUsingPOST(data: schemas.JsonNode, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async checkInstanceUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/license/checkInstance`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/license/checkInstance`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.JsonNodeSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantEdgeUsingGET(edgeName: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantEdgeUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/edges{?edgeName}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/edges{?edgeName}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (edgeName !== undefined) searchParams.append('edgeName', String(edgeName));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTenantEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTenantEdgesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/tenant/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/tenant/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getUserEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getUserEdgesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/user/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/user/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (type !== undefined) searchParams.append('type', String(type));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

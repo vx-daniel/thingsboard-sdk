@@ -1,54 +1,15 @@
 import { BaseVXOlympusClient } from '../../base-client';
-import * as schemas from '../schemas';
 export declare class EntitiesVersionControlControllerClient extends BaseVXOlympusClient {
-    listBranchesUsingGET(options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    compareEntityDataToVersionUsingGET(entityType: string, internalEntityUuid: string, versionId: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    loadEntitiesVersionUsingPOST(data: schemas.VersionLoadRequest, options?: RequestInit): Promise<any>;
-    listEntitiesAtVersionUsingGET(entityType: string, versionId: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    getVersionLoadRequestStatusUsingGET(requestId: string, options?: RequestInit): Promise<{
-        result: any[];
-        done: boolean;
-        error?: any;
-    }>;
-    listAllEntitiesAtVersionUsingGET(versionId: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    getEntityDataInfoUsingGET(versionId: string, entityType: string, externalEntityUuid: string, internalEntityId: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    saveEntitiesVersionUsingPOST(data: schemas.VersionCreateRequest, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    listEntityVersionsUsingGET(entityType: string, externalEntityUuid: string, branch: string, internalEntityId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    listEntityTypeVersionsUsingGET(entityType: string, branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    getVersionCreateRequestStatusUsingGET(requestId: string, options?: RequestInit): Promise<{
-        error: string;
-        added: number;
-        done: boolean;
-        modified: number;
-        removed: number;
-        version?: any;
-    }>;
-    listVersionsUsingGET(branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
+    listBranchesUsingGET(options?: RequestInit): Promise<unknown>;
+    compareEntityDataToVersionUsingGET(entityType: string, internalEntityUuid: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    loadEntitiesVersionUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    listEntitiesAtVersionUsingGET(entityType: string, versionId: string, options?: RequestInit): Promise<unknown>;
+    getVersionLoadRequestStatusUsingGET(requestId: string, options?: RequestInit): Promise<unknown>;
+    listAllEntitiesAtVersionUsingGET(versionId: string, options?: RequestInit): Promise<unknown>;
+    getEntityDataInfoUsingGET(versionId: string, entityType: string, externalEntityUuid: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    saveEntitiesVersionUsingPOST(data: any, options?: RequestInit): Promise<unknown>;
+    listEntityVersionsUsingGET(entityType: string, externalEntityUuid: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    listEntityTypeVersionsUsingGET(entityType: string, queryParams: any, options?: RequestInit): Promise<unknown>;
+    getVersionCreateRequestStatusUsingGET(requestId: string, options?: RequestInit): Promise<unknown>;
+    listVersionsUsingGET(queryParams: any, options?: RequestInit): Promise<unknown>;
 }

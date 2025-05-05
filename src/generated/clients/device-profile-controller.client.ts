@@ -2,341 +2,122 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class DeviceProfileControllerClient extends BaseVXOlympusClient {
-  async saveDeviceProfileUsingPOST(data: schemas.DeviceProfile, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveDeviceProfileUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/deviceProfile`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceProfileSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAttributesKeysUsingGET(deviceProfileId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAttributesKeysUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/devices/keys/attributes{?deviceProfileId}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/devices/keys/attributes{?deviceProfileId}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTimeseriesKeysUsingGET(deviceProfileId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTimeseriesKeysUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/devices/keys/timeseries{?deviceProfileId}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/devices/keys/timeseries{?deviceProfileId}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfileNamesUsingGET(activeOnly: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfileNamesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/names{?activeOnly}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/names{?activeOnly}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (activeOnly !== undefined) searchParams.append('activeOnly', String(activeOnly));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteDeviceProfileUsingDELETE(deviceProfileId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteDeviceProfileUsingDELETE(deviceProfileId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/${encodeURIComponent(deviceProfileId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async setDefaultDeviceProfileUsingPOST(deviceProfileId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async setDefaultDeviceProfileUsingPOST(deviceProfileId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/${encodeURIComponent(deviceProfileId)}/default`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}/default`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceProfileSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfileByIdUsingGET(deviceProfileId: string, inlineImages: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfileByIdUsingGET(deviceProfileId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfile/${encodeURIComponent(deviceProfileId)}{?inlineImages}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}{?inlineImages}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceProfileSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDefaultDeviceProfileInfoUsingGET(options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDefaultDeviceProfileInfoUsingGET(options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfileInfo/default`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfileInfo/default`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceProfileInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfileInfoByIdUsingGET(deviceProfileId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfileInfoByIdUsingGET(deviceProfileId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfileInfo/${encodeURIComponent(deviceProfileId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfileInfo/${encodeURIComponent(deviceProfileId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeviceProfileInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfilesByIdsUsingGET(deviceProfileIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfilesByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfileInfos{?deviceProfileIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfileInfos{?deviceProfileIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (deviceProfileIds !== undefined) searchParams.append('deviceProfileIds', String(deviceProfileIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, transportType: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfileInfosUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch,transportType}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch,transportType}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    if (transportType !== undefined) searchParams.append('transportType', String(transportType));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DeviceProfileInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getDeviceProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getDeviceProfilesUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/deviceProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/deviceProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_DeviceProfileSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

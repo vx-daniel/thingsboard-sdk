@@ -2,417 +2,152 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class TelemetryControllerClient extends BaseVXOlympusClient {
-  async saveDeviceAttributesUsingPOST(deviceId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveDeviceAttributesUsingPOST(deviceId: string, scope: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteDeviceAttributesUsingDELETE(deviceId: string, scope: string, keys: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteDeviceAttributesUsingDELETE(deviceId: string, scope: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}{?keys}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveEntityAttributesV2UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEntityAttributesV2UsingPOST(entityType: string, entityId: string, scope: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/attributes/${encodeURIComponent(scope)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/attributes/${encodeURIComponent(scope)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAttributeKeysUsingGET(entityType: string, entityId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAttributeKeysUsingGET(entityType: string, entityId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAttributeKeysByScopeUsingGET(entityType: string, entityId: string, scope: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAttributeKeysByScopeUsingGET(entityType: string, entityId: string, scope: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes/${encodeURIComponent(scope)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes/${encodeURIComponent(scope)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTimeseriesKeysUsingGET_1(entityType: string, entityId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTimeseriesKeysUsingGET_1(entityType: string, entityId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/timeseries`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/timeseries`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteEntityTimeseriesUsingDELETE(entityType: string, entityId: string, keys: string, deleteAllDataForKeys: boolean, startTs: number, endTs: number, deleteLatest: boolean, rewriteLatestIfDeleted: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteEntityTimeseriesUsingDELETE(entityType: string, entityId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/delete{?deleteAllDataForKeys,deleteLatest,endTs,keys,rewriteLatestIfDeleted,startTs}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/delete{?deleteAllDataForKeys,deleteLatest,endTs,keys,rewriteLatestIfDeleted,startTs}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    if (deleteAllDataForKeys !== undefined) searchParams.append('deleteAllDataForKeys', String(deleteAllDataForKeys));
-    if (startTs !== undefined) searchParams.append('startTs', String(startTs));
-    if (endTs !== undefined) searchParams.append('endTs', String(endTs));
-    if (deleteLatest !== undefined) searchParams.append('deleteLatest', String(deleteLatest));
-    if (rewriteLatestIfDeleted !== undefined) searchParams.append('rewriteLatestIfDeleted', String(rewriteLatestIfDeleted));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveEntityTelemetryWithTTLUsingPOST(entityType: string, entityId: string, scope: string, ttl: number, data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEntityTelemetryWithTTLUsingPOST(entityType: string, entityId: string, scope: string, ttl: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}/${encodeURIComponent(ttl)}?scope=ANY`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}/${encodeURIComponent(ttl)}?scope=ANY`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async saveEntityTelemetryUsingPOST(entityType: string, entityId: string, scope: string, data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEntityTelemetryUsingPOST(entityType: string, entityId: string, scope: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}?scope=ANY`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}?scope=ANY`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getAttributesByScopeUsingGET(entityType: string, entityId: string, scope: string, keys: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAttributesByScopeUsingGET(entityType: string, entityId: string, scope: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes/${encodeURIComponent(scope)}{?keys}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getAttributesUsingGET(entityType: string, entityId: string, keys: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAttributesUsingGET(entityType: string, entityId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes{?keys}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes{?keys}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getTimeseriesUsingGET(entityType: string, entityId: string, keys: string, startTs: number, endTs: number, interval: number, limit: number, agg: string, orderBy: string, useStrictDataTypes: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getTimeseriesUsingGET(entityType: string, entityId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?agg,endTs,interval,keys,limit,orderBy,startTs,useStrictDataTypes}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?agg,endTs,interval,keys,limit,orderBy,startTs,useStrictDataTypes}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    if (startTs !== undefined) searchParams.append('startTs', String(startTs));
-    if (endTs !== undefined) searchParams.append('endTs', String(endTs));
-    if (interval !== undefined) searchParams.append('interval', String(interval));
-    if (limit !== undefined) searchParams.append('limit', String(limit));
-    if (agg !== undefined) searchParams.append('agg', String(agg));
-    if (orderBy !== undefined) searchParams.append('orderBy', String(orderBy));
-    if (useStrictDataTypes !== undefined) searchParams.append('useStrictDataTypes', String(useStrictDataTypes));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getLatestTimeseriesUsingGET(entityType: string, entityId: string, keys: string, useStrictDataTypes: boolean, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getLatestTimeseriesUsingGET(entityType: string, entityId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?keys,useStrictDataTypes}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?keys,useStrictDataTypes}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    if (useStrictDataTypes !== undefined) searchParams.append('useStrictDataTypes', String(useStrictDataTypes));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveEntityAttributesV1UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveEntityAttributesV1UsingPOST(entityType: string, entityId: string, scope: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async deleteEntityAttributesUsingDELETE(entityType: string, entityId: string, scope: string, keys: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteEntityAttributesUsingDELETE(entityType: string, entityId: string, scope: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}{?keys}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (keys !== undefined) searchParams.append('keys', String(keys));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }}

@@ -2,50 +2,22 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class OwnerControllerClient extends BaseVXOlympusClient {
-  async changeOwnerToCustomerUsingPOST(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async changeOwnerToCustomerUsingPOST(ownerId: string, entityType: string, entityId: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/owner/CUSTOMER/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/owner/CUSTOMER/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async changeOwnerToTenantUsingPOST(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async changeOwnerToTenantUsingPOST(ownerId: string, entityType: string, entityId: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/owner/TENANT/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/owner/TENANT/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }}

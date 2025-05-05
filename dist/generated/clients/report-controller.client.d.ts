@@ -1,12 +1,5 @@
 import { BaseVXOlympusClient } from '../../base-client';
-import * as schemas from '../schemas';
 export declare class ReportControllerClient extends BaseVXOlympusClient {
-    downloadTestReportUsingPOST(reportsServerEndpointUrl: string, data: schemas.ReportConfig, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
-    downloadDashboardReportUsingPOST(dashboardId: string, data: schemas.JsonNode, options?: RequestInit): Promise<{
-        result: {};
-        setOrExpired: boolean;
-    }>;
+    downloadTestReportUsingPOST(data: any, queryParams: any, options?: RequestInit): Promise<unknown>;
+    downloadDashboardReportUsingPOST(dashboardId: string, data: any, options?: RequestInit): Promise<unknown>;
 }

@@ -2,264 +2,102 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class SchedulerEventControllerClient extends BaseVXOlympusClient {
-  async getAllSchedulerEventsUsingGET(edgeId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getAllSchedulerEventsUsingGET(edgeId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/allSchedulerEvents`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/allSchedulerEvents`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async assignSchedulerEventToEdgeUsingPOST(edgeId: string, schedulerEventId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async assignSchedulerEventToEdgeUsingPOST(edgeId: string, schedulerEventId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SchedulerEventInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async unassignSchedulerEventFromEdgeUsingDELETE(edgeId: string, schedulerEventId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async unassignSchedulerEventFromEdgeUsingDELETE(edgeId: string, schedulerEventId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SchedulerEventInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getEdgeSchedulerEventsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getEdgeSchedulerEventsUsingGET(edgeId: string, queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/edge/${encodeURIComponent(edgeId)}/schedulerEvents{?page,pageSize,sortOrder,sortProperty,textSearch}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvents{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
-    if (page !== undefined) searchParams.append('page', String(page));
-    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
-    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
-    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.PageData_Of_SchedulerEventInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async saveSchedulerEventUsingPOST(data: schemas.SchedulerEvent, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async saveSchedulerEventUsingPOST(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvent`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/schedulerEvent`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SchedulerEventSchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async getSchedulerEventInfoByIdUsingGET(schedulerEventId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSchedulerEventInfoByIdUsingGET(schedulerEventId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvent/info/${encodeURIComponent(schedulerEventId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/schedulerEvent/info/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SchedulerEventWithCustomerInfoSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSchedulerEventByIdUsingGET(schedulerEventId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSchedulerEventByIdUsingGET(schedulerEventId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.SchedulerEventSchemaSchema.parse(responseData);
+      
+      ...options,
+    });
+    return response;
   }
 
-  async deleteSchedulerEventUsingDELETE(schedulerEventId: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async deleteSchedulerEventUsingDELETE(schedulerEventId: string, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`;
+    const response = await this.makeRequest(url, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSchedulerEventsByIdsUsingGET(schedulerEventIds: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSchedulerEventsByIdsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvents{?schedulerEventIds}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/schedulerEvents{?schedulerEventIds}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (schedulerEventIds !== undefined) searchParams.append('schedulerEventIds', String(schedulerEventIds));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }
 
-  async getSchedulerEventsUsingGET(type: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async getSchedulerEventsUsingGET(queryParams: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/schedulerEvents{?type}`;
+    const response = await this.makeRequest(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    
-
-    const url = new URL(`/api/schedulerEvents{?type}`, this.baseURL);
-    
-    const searchParams = new URLSearchParams();
-    if (type !== undefined) searchParams.append('type', String(type));
-    const queryString = searchParams.toString();
-    if (queryString) {
-      url.search = queryString;
-    }
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return responseData;
+      
+      ...options,
+    });
+    return response;
   }}

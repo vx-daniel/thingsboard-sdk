@@ -2,98 +2,42 @@ import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
 export class RuleEngineControllerClient extends BaseVXOlympusClient {
-  async handleRuleEngineRequestUsingPOST_3(data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async handleRuleEngineRequestUsingPOST_3(data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/rule-engine/`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/rule-engine/`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async handleRuleEngineRequestUsingPOST_2(entityType: string, entityId: string, data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async handleRuleEngineRequestUsingPOST_2(entityType: string, entityId: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async handleRuleEngineRequestUsingPOST_1(entityType: string, entityId: string, queueName: string, timeout: number, data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async handleRuleEngineRequestUsingPOST_1(entityType: string, entityId: string, queueName: string, timeout: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(queueName)}/${encodeURIComponent(timeout)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(queueName)}/${encodeURIComponent(timeout)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }
 
-  async handleRuleEngineRequestUsingPOST(entityType: string, entityId: string, timeout: number, data: string, options?: RequestInit) {
-    const config: RequestInit = {
-      ...options,
+  async handleRuleEngineRequestUsingPOST(entityType: string, entityId: string, timeout: string, data: any, options: RequestInit = {}) {
+    const url = `${this.baseUrl}/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(timeout)}`;
+    const response = await this.makeRequest(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...this.headers,
-        ...options?.headers
-      }
-    };
-
-    config.body = JSON.stringify(data);
-
-    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(timeout)}`, this.baseURL);
-    
-
-    const response = await fetch(url.toString(), config);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const responseData = await response.json();
-    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+      body: JSON.stringify(data),
+      ...options,
+    });
+    return response;
   }}
