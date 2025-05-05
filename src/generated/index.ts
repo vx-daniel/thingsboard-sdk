@@ -1,6 +1,5 @@
 
 import { z } from 'zod';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { BaseVXOlympusClient } from '../base-client';
 import * as schemas from './schemas';
 
@@ -10,8213 +9,16113 @@ export class VXOlympusClient extends BaseVXOlympusClient {
   }
 
   
-  async getAutoCommitSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAutoCommitSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/admin/autoCommitSettings`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveAutoCommitSettingsUsingPOST(data: Record<string, schemas.AutoVersionCreateConfig>, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/autoCommitSettings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async deleteAutoCommitSettingsUsingDELETE(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/admin/autoCommitSettings`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async autoCommitSettingsExistsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/autoCommitSettings/exists`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getFeaturesInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/featuresInfo`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.FeaturesInfoSchema.parse(response.data);
-  }
-
-
-  async getJwtSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/jwtSettings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_SettingsSchema.parse(response.data);
-  }
-
-
-  async saveJwtSettingsUsingPOST(data: schemas.JWT_Settings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/jwtSettings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async getLicenseUsageInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/licenseUsageInfo`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.LicenseUsageInfoSchema.parse(response.data);
-  }
-
-
-  async getAuthorizationUrlUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/mail/oauth2/authorize`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async codeProcessingUrlUsingGET(code: string, state: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/mail/oauth2/code{?code,state}`,
-      params: {
-        code: code,
-        state: state
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getMailProcessingUrlUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/mail/oauth2/loginProcessingUrl`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getRepositorySettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/repositorySettings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RepositorySettingsSchema.parse(response.data);
-  }
-
-
-  async saveRepositorySettingsUsingPOST(data: schemas.RepositorySettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveAutoCommitSettingsUsingPOST(data: Record<string, schemas.AutoVersionCreateConfig>, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/admin/repositorySettings`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_RepositorySettingsSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async deleteRepositorySettingsUsingDELETE(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteAutoCommitSettingsUsingDELETE(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/admin/repositorySettings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_VoidSchema.parse(response.data);
-  }
-
-
-  async checkRepositoryAccessUsingPOST(data: schemas.RepositorySettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/repositorySettings/checkAccess`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_VoidSchema.parse(response.data);
-  }
-
-
-  async repositorySettingsExistsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/repositorySettings/exists`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getRepositorySettingsInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/repositorySettings/info`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RepositorySettingsInfoSchema.parse(response.data);
-  }
-
-
-  async getSecuritySettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/securitySettings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SecuritySettingsSchema.parse(response.data);
-  }
-
-
-  async saveSecuritySettingsUsingPOST(data: schemas.SecuritySettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/securitySettings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SecuritySettingsSchema.parse(response.data);
-  }
-
-
-  async saveAdminSettingsUsingPOST(data: schemas.AdminSettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/settings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AdminSettingsSchema.parse(response.data);
-  }
-
-
-  async sendTestMailUsingPOST(data: schemas.AdminSettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/settings/testMail`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async sendTestSmsUsingPOST(data: schemas.TestSmsRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/admin/settings/testSms`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAdminSettingsUsingGET(key: string, systemByDefault: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/settings/${key}{?systemByDefault}`,
-      params: {
-        systemByDefault: systemByDefault
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AdminSettingsSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/autoCommitSettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getSystemInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async autoCommitSettingsExistsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/admin/systemInfo`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SystemInfoSchema.parse(response.data);
-  }
-
-
-  async checkUpdatesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/admin/updates`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UpdateMessageSchema.parse(response.data);
-  }
-
-
-  async loginPost(data: schemas.LoginRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/auth/login`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.LoginResponseSchema.parse(response.data);
-  }
-
-
-  async saveAlarmCommentUsingPOST(alarmId: string, data: schemas.AlarmComment, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/alarm/${alarmId}/comment`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AlarmCommentSchema.parse(response.data);
-  }
-
-
-  async deleteAlarmCommentUsingDELETE(alarmId: string, commentId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/alarm/${alarmId}/comment/${commentId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAlarmCommentsUsingGET(alarmId: string, pageSize: number, page: number, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/alarm/${alarmId}/comment{?page,pageSize,sortOrder,sortProperty}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmCommentInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/autoCommitSettings/exists`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async saveAlarmUsingPOST(data: schemas.Alarm, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/alarm`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AlarmSchema.parse(response.data);
-  }
-
-
-  async getHighestAlarmSeverityUsingGET(entityType: string, entityId: string, searchStatus: string, status: string, assigneeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getFeaturesInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/alarm/highestSeverity/${entityType}/${entityId}{?assigneeId,searchStatus,status}`,
-      params: {
-        searchStatus: searchStatus,
-        status: status,
-        assigneeId: assigneeId
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/admin/featuresInfo`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.FeaturesInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getAlarmInfoByIdUsingGET(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getJwtSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/alarm/info/${alarmId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AlarmInfoSchema.parse(response.data);
-  }
-
-
-  async getAlarmTypesUsingGET(pageSize: number, page: number, textSearch: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/alarm/types{?page,pageSize,sortOrder,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntitySubtypeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/jwtSettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_SettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getAlarmByIdUsingGET(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/alarm/${alarmId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AlarmSchema.parse(response.data);
-  }
-
-
-  async deleteAlarmUsingDELETE(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/alarm/${alarmId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async ackAlarmUsingPOST(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveJwtSettingsUsingPOST(data: schemas.JWT_Settings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/alarm/${alarmId}/ack`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AlarmInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/jwtSettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
   }
 
 
-  async unassignAlarmUsingDELETE(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getLicenseUsageInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/licenseUsageInfo`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.LicenseUsageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAuthorizationUrlUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/mail/oauth2/authorize`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async codeProcessingUrlUsingGET(code: string, state: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/mail/oauth2/code{?code,state}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (code !== undefined) searchParams.append('code', String(code));
+    if (state !== undefined) searchParams.append('state', String(state));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getMailProcessingUrlUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/mail/oauth2/loginProcessingUrl`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRepositorySettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RepositorySettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveRepositorySettingsUsingPOST(data: schemas.RepositorySettings, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_RepositorySettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteRepositorySettingsUsingDELETE(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/alarm/${alarmId}/assign`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AlarmSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/repositorySettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_VoidSchemaSchema.parse(responseData);
   }
 
 
-  async assignAlarmUsingPOST(alarmId: string, assigneeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async checkRepositoryAccessUsingPOST(data: schemas.RepositorySettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/alarm/${alarmId}/assign/${assigneeId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AlarmSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/repositorySettings/checkAccess`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_VoidSchemaSchema.parse(responseData);
   }
 
 
-  async clearAlarmUsingPOST(alarmId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async repositorySettingsExistsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/repositorySettings/exists`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRepositorySettingsInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/repositorySettings/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RepositorySettingsInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getSecuritySettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/admin/securitySettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SecuritySettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveSecuritySettingsUsingPOST(data: schemas.SecuritySettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/alarm/${alarmId}/clear`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AlarmInfoSchema.parse(response.data);
-  }
-
-
-  async getAlarmsUsingGET(entityType: string, entityId: string, searchStatus: string, status: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, fetchOriginator: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/alarm/${entityType}/${entityId}{?assigneeId,endTime,fetchOriginator,page,pageSize,searchStatus,sortOrder,sortProperty,startTime,status,textSearch}`,
-      params: {
-        searchStatus: searchStatus,
-        status: status,
-        assigneeId: assigneeId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        fetchOriginator: fetchOriginator
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/securitySettings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SecuritySettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getAllAlarmsUsingGET(searchStatus: string, status: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, fetchOriginator: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/alarms{?assigneeId,endTime,fetchOriginator,page,pageSize,searchStatus,sortOrder,sortProperty,startTime,status,textSearch}`,
-      params: {
-        searchStatus: searchStatus,
-        status: status,
-        assigneeId: assigneeId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        fetchOriginator: fetchOriginator
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmInfoSchema.parse(response.data);
-  }
-
-
-  async getAlarmsV2UsingGET(entityType: string, entityId: string, statusList: string, severityList: string, typeList: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/v2/alarm/${entityType}/${entityId}{?assigneeId,endTime,page,pageSize,severityList,sortOrder,sortProperty,startTime,statusList,textSearch,typeList}`,
-      params: {
-        statusList: statusList,
-        severityList: severityList,
-        typeList: typeList,
-        assigneeId: assigneeId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmInfoSchema.parse(response.data);
-  }
-
-
-  async getAllAlarmsV2UsingGET(statusList: string, severityList: string, typeList: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/v2/alarms{?assigneeId,endTime,page,pageSize,severityList,sortOrder,sortProperty,startTime,statusList,textSearch,typeList}`,
-      params: {
-        statusList: statusList,
-        severityList: severityList,
-        typeList: typeList,
-        assigneeId: assigneeId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmInfoSchema.parse(response.data);
-  }
-
-
-  async processAssetBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveAdminSettingsUsingPOST(data: schemas.AdminSettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/asset/bulk_import`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.BulkImportResult_Of_AssetSchema.parse(response.data);
-  }
-
-
-  async getAssetInfoByIdUsingGET(assetId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/asset/info/${assetId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetInfoSchema.parse(response.data);
-  }
-
-
-  async getAssetTypesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/asset/types`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAssetByIdUsingGET(assetId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/asset/${assetId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetSchema.parse(response.data);
-  }
-
-
-  async deleteAssetUsingDELETE(assetId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/asset/${assetId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAllAssetInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assetInfos/all{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        assetProfileId: assetProfileId,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AdminSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async findByQueryUsingPOST(data: schemas.AssetSearchQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async sendTestMailUsingPOST(data: schemas.AdminSettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/assets`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAssetsByIdsUsingGET(assetIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assets{?assetIds}`,
-      params: {
-        assetIds: assetIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/settings/testMail`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async saveAssetUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Asset, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async sendTestSmsUsingPOST(data: schemas.TestSmsRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/asset{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetSchema.parse(response.data);
-  }
-
-
-  async getCustomerAssetInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/assetInfos{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        assetProfileId: assetProfileId,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/admin/settings/testSms`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getCustomerAssetsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAdminSettingsUsingGET(key: string, systemByDefault: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/${customerId}/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/settings/${encodeURIComponent(key)}{?systemByDefault}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (systemByDefault !== undefined) searchParams.append('systemByDefault', String(systemByDefault));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AdminSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getAssetsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getSystemInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/assets{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/systemInfo`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SystemInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantAssetUsingGET(assetName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async checkUpdatesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/assets{?assetName}`,
-      params: {
-        assetName: assetName
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AssetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/admin/updates`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UpdateMessageSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantAssetsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetSchema.parse(response.data);
-  }
-
-
-  async getUserAssetsUsingGET(pageSize: number, page: number, type: string, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/assets{?assetProfileId,page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        assetProfileId: assetProfileId,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetSchema.parse(response.data);
-  }
-
-
-  async saveAssetProfileUsingPOST(data: schemas.AssetProfile, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async loginPost(data: schemas.LoginRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/assetProfile`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetProfileSchema.parse(response.data);
-  }
-
-
-  async getAssetProfileNamesUsingGET(activeOnly: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assetProfile/names{?activeOnly}`,
-      params: {
-        activeOnly: activeOnly
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/auth/login`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.LoginResponseSchemaSchema.parse(responseData);
   }
 
 
-  async deleteAssetProfileUsingDELETE(assetProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveAlarmCommentUsingPOST(alarmId: string, data: schemas.AlarmComment, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/comment`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmCommentSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteAlarmCommentUsingDELETE(alarmId: string, commentId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/assetProfile/${assetProfileId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/comment/${encodeURIComponent(commentId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async setDefaultAssetProfileUsingPOST(assetProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmCommentsUsingGET(alarmId: string, pageSize: number, page: number, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/comment{?page,pageSize,sortOrder,sortProperty}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmCommentInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveAlarmUsingPOST(data: schemas.Alarm, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/assetProfile/${assetProfileId}/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetProfileSchema.parse(response.data);
-  }
-
-
-  async getAssetProfileByIdUsingGET(assetProfileId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assetProfile/${assetProfileId}{?inlineImages}`,
-      params: {
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AssetProfileSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/alarm`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmSchemaSchema.parse(responseData);
   }
 
 
-  async getDefaultAssetProfileInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getHighestAlarmSeverityUsingGET(entityType: string, entityId: string, searchStatus: string, status: string, assigneeId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/assetProfileInfo/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetProfileInfoSchema.parse(response.data);
-  }
-
-
-  async getAssetProfileInfoByIdUsingGET(assetProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assetProfileInfo/${assetProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AssetProfileInfoSchema.parse(response.data);
-  }
-
-
-  async getAssetProfilesByIdsUsingGET(assetProfileIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/assetProfileInfos{?assetProfileIds}`,
-      params: {
-        assetProfileIds: assetProfileIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/alarm/highestSeverity/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?assigneeId,searchStatus,status}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (searchStatus !== undefined) searchParams.append('searchStatus', String(searchStatus));
+    if (status !== undefined) searchParams.append('status', String(status));
+    if (assigneeId !== undefined) searchParams.append('assigneeId', String(assigneeId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getAssetProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmInfoByIdUsingGET(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/assetProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetProfileInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/info/${encodeURIComponent(alarmId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getAssetProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmTypesUsingGET(pageSize: number, page: number, textSearch: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/assetProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AssetProfileSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/types{?page,pageSize,sortOrder,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntitySubtypeSchemaSchema.parse(responseData);
   }
 
 
-  async getAuditLogsByCustomerIdUsingGET(customerId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmByIdUsingGET(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/audit/logs/customer/${customerId}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        actionTypes: actionTypes
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AuditLogSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmSchemaSchema.parse(responseData);
   }
 
 
-  async getAuditLogsByEntityIdUsingGET(entityType: string, entityId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/audit/logs/entity/${entityType}/${entityId}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        actionTypes: actionTypes
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AuditLogSchema.parse(response.data);
-  }
-
-
-  async getAuditLogsByUserIdUsingGET(userId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/audit/logs/user/${userId}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        actionTypes: actionTypes
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AuditLogSchema.parse(response.data);
-  }
-
-
-  async getAuditLogsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/audit/logs{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime,
-        actionTypes: actionTypes
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AuditLogSchema.parse(response.data);
-  }
-
-
-  async changePasswordUsingPOST(data: schemas.ChangePasswordRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/auth/changePassword`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ObjectNodeSchema.parse(response.data);
-  }
-
-
-  async logoutUsingPOST(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/auth/logout`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/auth/user`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserSchema.parse(response.data);
-  }
-
-
-  async checkActivateTokenUsingGET(activateToken: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/activate{?activateToken}`,
-      params: {
-        activateToken: activateToken
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async activateUserUsingPOST(sendActivationMail: boolean, data: schemas.ActivateUserRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/activate{?sendActivationMail}`,
-      params: {
-        sendActivationMail: sendActivationMail
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async resetPasswordUsingPOST(data: schemas.ResetPasswordRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/resetPassword`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async requestResetPasswordByEmailUsingPOST(data: schemas.ResetPasswordEmailRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/resetPasswordByEmail`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async checkResetTokenUsingGET(resetToken: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/resetPassword{?resetToken}`,
-      params: {
-        resetToken: resetToken
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserPasswordPolicyUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/userPasswordPolicy`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserPasswordPolicySchema.parse(response.data);
-  }
-
-
-  async getBlobEntitiesByIdsUsingGET(blobEntityIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/blobEntities{?blobEntityIds}`,
-      params: {
-        blobEntityIds: blobEntityIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getBlobEntitiesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/blobEntities{?endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_BlobEntityWithCustomerInfoSchema.parse(response.data);
-  }
-
-
-  async getBlobEntityInfoByIdUsingGET(blobEntityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/blobEntity/info/${blobEntityId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.BlobEntityWithCustomerInfoSchema.parse(response.data);
-  }
-
-
-  async deleteBlobEntityUsingDELETE(blobEntityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteAlarmUsingDELETE(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/blobEntity/${blobEntityId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadBlobEntityUsingGET(blobEntityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/blobEntity/${blobEntityId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ResourceSchema.parse(response.data);
-  }
-
-
-  async getComponentDescriptorByClazzUsingGET(componentDescriptorClazz: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/component/${componentDescriptorClazz}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ComponentDescriptorSchema.parse(response.data);
-  }
-
-
-  async getComponentDescriptorsByTypeUsingGET(componentType: string, ruleChainType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/components/${componentType}{?ruleChainType}`,
-      params: {
-        ruleChainType: ruleChainType
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getComponentDescriptorsByTypesUsingGET(componentTypes: string, ruleChainType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async ackAlarmUsingPOST(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/components{?componentTypes,ruleChainType}`,
-      params: {
-        componentTypes: componentTypes,
-        ruleChainType: ruleChainType
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/ack`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmInfoSchemaSchema.parse(responseData);
   }
 
 
-  async saveConverterUsingPOST(data: schemas.Converter, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/converter`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ConverterSchema.parse(response.data);
-  }
-
-
-  async testDownLinkConverterUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/converter/testDownLink{?scriptLang}`,
-      params: {
-        scriptLang: scriptLang
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async testUpLinkConverterUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/converter/testUpLink{?scriptLang}`,
-      params: {
-        scriptLang: scriptLang
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getConverterByIdUsingGET(converterId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/converter/${converterId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ConverterSchema.parse(response.data);
-  }
-
-
-  async deleteConverterUsingDELETE(converterId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async unassignAlarmUsingDELETE(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/converter/${converterId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getLatestConverterDebugInputUsingGET(converterId: string, converterType: string, integrationType: string, integrationName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/converter/${converterId}/debugIn{?converterType,integrationName,integrationType}`,
-      params: {
-        converterType: converterType,
-        integrationType: integrationType,
-        integrationName: integrationName
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/assign`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmSchemaSchema.parse(responseData);
   }
 
 
-  async getConvertersByIdsUsingGET(converterIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/converters{?converterIds}`,
-      params: {
-        converterIds: converterIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getConvertersUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/converters{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        isEdgeTemplate: isEdgeTemplate,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_ConverterSchema.parse(response.data);
-  }
-
-
-  async getCurrentCustomMenuUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customMenu/currentCustomMenu`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.CustomMenuSchema.parse(response.data);
-  }
-
-
-  async getCustomMenuUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customMenu/customMenu`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.CustomMenuSchema.parse(response.data);
-  }
-
-
-  async saveCustomMenuUsingPOST(data: schemas.CustomMenu, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async assignAlarmUsingPOST(alarmId: string, assigneeId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/customMenu/customMenu`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.CustomMenuSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/assign/${encodeURIComponent(assigneeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmSchemaSchema.parse(responseData);
   }
 
 
-  async getCurrentCustomTranslationUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customTranslation/currentCustomTranslation`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.CustomTranslationSchema.parse(response.data);
-  }
-
-
-  async getCustomTranslationUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customTranslation/customTranslation`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.CustomTranslationSchema.parse(response.data);
-  }
-
-
-  async saveCustomTranslationUsingPOST(data: schemas.CustomTranslation, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async clearAlarmUsingPOST(alarmId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/customTranslation/customTranslation`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.CustomTranslationSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(alarmId)}/clear`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AlarmInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getCustomerInfoByIdUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmsUsingGET(entityType: string, entityId: string, searchStatus: string, status: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, fetchOriginator: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/info/${customerId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.CustomerInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarm/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?assigneeId,endTime,fetchOriginator,page,pageSize,searchStatus,sortOrder,sortProperty,startTime,status,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (searchStatus !== undefined) searchParams.append('searchStatus', String(searchStatus));
+    if (status !== undefined) searchParams.append('status', String(status));
+    if (assigneeId !== undefined) searchParams.append('assigneeId', String(assigneeId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (fetchOriginator !== undefined) searchParams.append('fetchOriginator', String(fetchOriginator));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getCustomerByIdUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAllAlarmsUsingGET(searchStatus: string, status: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, fetchOriginator: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/${customerId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.CustomerSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/alarms{?assigneeId,endTime,fetchOriginator,page,pageSize,searchStatus,sortOrder,sortProperty,startTime,status,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (searchStatus !== undefined) searchParams.append('searchStatus', String(searchStatus));
+    if (status !== undefined) searchParams.append('status', String(status));
+    if (assigneeId !== undefined) searchParams.append('assigneeId', String(assigneeId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (fetchOriginator !== undefined) searchParams.append('fetchOriginator', String(fetchOriginator));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmInfoSchemaSchema.parse(responseData);
   }
 
 
-  async deleteCustomerUsingDELETE(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAlarmsV2UsingGET(entityType: string, entityId: string, statusList: string, severityList: string, typeList: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/v2/alarm/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?assigneeId,endTime,page,pageSize,severityList,sortOrder,sortProperty,startTime,statusList,textSearch,typeList}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (statusList !== undefined) searchParams.append('statusList', String(statusList));
+    if (severityList !== undefined) searchParams.append('severityList', String(severityList));
+    if (typeList !== undefined) searchParams.append('typeList', String(typeList));
+    if (assigneeId !== undefined) searchParams.append('assigneeId', String(assigneeId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAllAlarmsV2UsingGET(statusList: string, severityList: string, typeList: string, assigneeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/v2/alarms{?assigneeId,endTime,page,pageSize,severityList,sortOrder,sortProperty,startTime,statusList,textSearch,typeList}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (statusList !== undefined) searchParams.append('statusList', String(statusList));
+    if (severityList !== undefined) searchParams.append('severityList', String(severityList));
+    if (typeList !== undefined) searchParams.append('typeList', String(typeList));
+    if (assigneeId !== undefined) searchParams.append('assigneeId', String(assigneeId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async processAssetBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/asset/bulk_import`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.BulkImportResult_Of_AssetSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetInfoByIdUsingGET(assetId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/asset/info/${encodeURIComponent(assetId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetTypesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/asset/types`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getAssetByIdUsingGET(assetId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/asset/${encodeURIComponent(assetId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteAssetUsingDELETE(assetId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/customer/${customerId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getCustomerCustomerInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/customerInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_CustomerInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/asset/${encodeURIComponent(assetId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getShortCustomerInfoByIdUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAllAssetInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/${customerId}/shortInfo`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getCustomerTitleByIdUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/title`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAllCustomerInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customerInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_CustomerInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/assetInfos/all{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getCustomersByIdsUsingGET(customerIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customers{?customerIds}`,
-      params: {
-        customerIds: customerIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getCustomersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_CustomerSchema.parse(response.data);
-  }
-
-
-  async saveCustomerUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Customer, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async findByQueryUsingPOST(data: schemas.AssetSearchQuery, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/customer{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.CustomerSchema.parse(response.data);
-  }
-
-
-  async getCustomersByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_CustomerSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/assets`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getTenantCustomerUsingGET(customerTitle: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAssetsByIdsUsingGET(assetIds: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/customers{?customerTitle}`,
-      params: {
-        customerTitle: customerTitle
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.CustomerSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/assets{?assetIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (assetIds !== undefined) searchParams.append('assetIds', String(assetIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getUserCustomersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_CustomerSchema.parse(response.data);
-  }
-
-
-  async getCustomerHomeDashboardInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/dashboard/home/info`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.HomeDashboardInfoSchema.parse(response.data);
-  }
-
-
-  async setCustomerHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveAssetUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Asset, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/customer/dashboard/home/info`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getCustomerDashboardsUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/dashboards{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/asset{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetSchemaSchema.parse(responseData);
   }
 
 
-  async getHomeDashboardUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerAssetInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/dashboard/home`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.HomeDashboardSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/assetInfos{?assetProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getHomeDashboardInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerAssetsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/dashboard/home/info`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.HomeDashboardInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
   }
 
 
-  async getDashboardInfoByIdUsingGET(dashboardId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAssetsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/dashboard/info/${dashboardId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DashboardInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/assets{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
   }
 
 
-  async getMaxDatapointsLimitUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantAssetUsingGET(assetName: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/dashboard/maxDatapointsLimit`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/tenant/assets{?assetName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (assetName !== undefined) searchParams.append('assetName', String(assetName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetSchemaSchema.parse(responseData);
   }
 
 
-  async getServerTimeUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantAssetsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/dashboard/serverTime`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/tenant/assets{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
   }
 
 
-  async deleteDashboardUsingDELETE(dashboardId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserAssetsUsingGET(pageSize: number, page: number, type: string, assetProfileId: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/assets{?assetProfileId,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (assetProfileId !== undefined) searchParams.append('assetProfileId', String(assetProfileId));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetSchemaSchema.parse(responseData);
+  }
+
+
+  async saveAssetProfileUsingPOST(data: schemas.AssetProfile, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/assetProfile`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetProfileNamesUsingGET(activeOnly: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfile/names{?activeOnly}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (activeOnly !== undefined) searchParams.append('activeOnly', String(activeOnly));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async deleteAssetProfileUsingDELETE(assetProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/dashboard/${dashboardId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getDashboardByIdUsingGET(dashboardId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/dashboard/${dashboardId}{?inlineImages}`,
-      params: {
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DashboardSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/assetProfile/${encodeURIComponent(assetProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getAllDashboardsUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/dashboards/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
-  }
-
-
-  async getDashboardsByIdsUsingGET(dashboardIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/dashboards{?dashboardIds}`,
-      params: {
-        dashboardIds: dashboardIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveDashboardUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Dashboard, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async setDefaultAssetProfileUsingPOST(assetProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/dashboard{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DashboardSchema.parse(response.data);
-  }
-
-
-  async exportGroupDashboardsUsingGET(entityGroupId: string, limit: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/dashboards/export{?limit}`,
-      params: {
-        limit: limit
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/assetProfile/${encodeURIComponent(assetProfileId)}/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetProfileSchemaSchema.parse(responseData);
   }
 
 
-  async importGroupDashboardsUsingPOST(entityGroupId: string, overwrite: boolean, data: schemas.Dashboard[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAssetProfileByIdUsingGET(assetProfileId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfile/${encodeURIComponent(assetProfileId)}{?inlineImages}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getDefaultAssetProfileInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfileInfo/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetProfileInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetProfileInfoByIdUsingGET(assetProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfileInfo/${encodeURIComponent(assetProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AssetProfileInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetProfilesByIdsUsingGET(assetProfileIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfileInfos{?assetProfileIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (assetProfileIds !== undefined) searchParams.append('assetProfileIds', String(assetProfileIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getAssetProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetProfileInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAssetProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/assetProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AssetProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getAuditLogsByCustomerIdUsingGET(customerId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/audit/logs/customer/${encodeURIComponent(customerId)}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (actionTypes !== undefined) searchParams.append('actionTypes', String(actionTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AuditLogSchemaSchema.parse(responseData);
+  }
+
+
+  async getAuditLogsByEntityIdUsingGET(entityType: string, entityId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/audit/logs/entity/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (actionTypes !== undefined) searchParams.append('actionTypes', String(actionTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AuditLogSchemaSchema.parse(responseData);
+  }
+
+
+  async getAuditLogsByUserIdUsingGET(userId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/audit/logs/user/${encodeURIComponent(userId)}{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (actionTypes !== undefined) searchParams.append('actionTypes', String(actionTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AuditLogSchemaSchema.parse(responseData);
+  }
+
+
+  async getAuditLogsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, actionTypes: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/audit/logs{?actionTypes,endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    if (actionTypes !== undefined) searchParams.append('actionTypes', String(actionTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AuditLogSchemaSchema.parse(responseData);
+  }
+
+
+  async changePasswordUsingPOST(data: schemas.ChangePasswordRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/dashboards/import{?overwrite}`,
-      params: {
-        overwrite: overwrite
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getDashboardsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/auth/changePassword`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ObjectNodeSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantHomeDashboardInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/dashboard/home/info`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.HomeDashboardInfoSchema.parse(response.data);
-  }
-
-
-  async setTenantHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async logoutUsingPOST(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/tenant/dashboard/home/info`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        mobile: mobile,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/auth/logout`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getTenantDashboardsUsingGET_1(tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/${tenantId}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/auth/user`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserSchemaSchema.parse(responseData);
   }
 
 
-  async getUserDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, operation: string, userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async checkActivateTokenUsingGET(activateToken: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/user/dashboards{?mobile,operation,page,pageSize,sortOrder,sortProperty,textSearch,userId}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        mobile: mobile,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        operation: operation,
-        userId: userId
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DashboardInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/noauth/activate{?activateToken}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (activateToken !== undefined) searchParams.append('activateToken', String(activateToken));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async downloadGatewayDockerComposeUsingGET(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async activateUserUsingPOST(sendActivationMail: boolean, data: schemas.ActivateUserRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/device-connectivity/gateway-launch/${deviceId}/docker-compose/download`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.ResourceSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/noauth/activate{?sendActivationMail}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (sendActivationMail !== undefined) searchParams.append('sendActivationMail', String(sendActivationMail));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
   }
 
 
-  async getDevicePublishTelemetryCommandsUsingGET(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async resetPasswordUsingPOST(data: schemas.ResetPasswordRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/device-connectivity/${deviceId}`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/noauth/resetPassword`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
   }
 
 
-  async downloadServerCertificateUsingGET(protocol: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async requestResetPasswordByEmailUsingPOST(data: schemas.ResetPasswordEmailRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/device-connectivity/${protocol}/certificate/download`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.ResourceSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/noauth/resetPasswordByEmail`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async reClaimDeviceUsingDELETE(deviceName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async checkResetTokenUsingGET(resetToken: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/resetPassword{?resetToken}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (resetToken !== undefined) searchParams.append('resetToken', String(resetToken));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getUserPasswordPolicyUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/userPasswordPolicy`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserPasswordPolicySchemaSchema.parse(responseData);
+  }
+
+
+  async getBlobEntitiesByIdsUsingGET(blobEntityIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/blobEntities{?blobEntityIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (blobEntityIds !== undefined) searchParams.append('blobEntityIds', String(blobEntityIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getBlobEntitiesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/blobEntities{?endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_BlobEntityWithCustomerInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getBlobEntityInfoByIdUsingGET(blobEntityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/blobEntity/info/${encodeURIComponent(blobEntityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.BlobEntityWithCustomerInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteBlobEntityUsingDELETE(blobEntityId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/customer/device/${deviceName}/claim`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async claimDeviceUsingPOST(deviceName: string, subCustomerId: string, data: schemas.ClaimRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/customer/device/${deviceName}/claim{?subCustomerId}`,
-      params: {
-        subCustomerId: subCustomerId
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getCustomerDeviceInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, deviceProfileId: string, active: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/deviceInfos{?active,deviceProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        deviceProfileId: deviceProfileId,
-        active: active,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/blobEntity/${encodeURIComponent(blobEntityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getCustomerDevicesUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async downloadBlobEntityUsingGET(blobEntityId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/${customerId}/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/blobEntity/${encodeURIComponent(blobEntityId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ResourceSchemaSchema.parse(responseData);
   }
 
 
-  async saveDeviceWithCredentialsUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.SaveDeviceWithCredentialsRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/device-with-credentials{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceSchema.parse(response.data);
-  }
-
-
-  async processDevicesBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/device/bulk_import`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.BulkImportResult_Of_DeviceSchema.parse(response.data);
-  }
-
-
-  async updateDeviceCredentialsUsingPOST(data: schemas.DeviceCredentials, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/device/credentials`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceCredentialsSchema.parse(response.data);
-  }
-
-
-  async getDeviceInfoByIdUsingGET(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getComponentDescriptorByClazzUsingGET(componentDescriptorClazz: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/device/info/${deviceId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeviceInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/component/${encodeURIComponent(componentDescriptorClazz)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ComponentDescriptorSchemaSchema.parse(responseData);
   }
 
 
-  async getDeviceTypesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getComponentDescriptorsByTypeUsingGET(componentType: string, ruleChainType: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/device/types`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/components/${encodeURIComponent(componentType)}{?ruleChainType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (ruleChainType !== undefined) searchParams.append('ruleChainType', String(ruleChainType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getDeviceByIdUsingGET(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getComponentDescriptorsByTypesUsingGET(componentTypes: string, ruleChainType: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/device/${deviceId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeviceSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/components{?componentTypes,ruleChainType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (componentTypes !== undefined) searchParams.append('componentTypes', String(componentTypes));
+    if (ruleChainType !== undefined) searchParams.append('ruleChainType', String(ruleChainType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async deleteDeviceUsingDELETE(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveConverterUsingPOST(data: schemas.Converter, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/converter`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ConverterSchemaSchema.parse(responseData);
+  }
+
+
+  async testDownLinkConverterUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/converter/testDownLink{?scriptLang}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (scriptLang !== undefined) searchParams.append('scriptLang', String(scriptLang));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async testUpLinkConverterUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/converter/testUpLink{?scriptLang}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (scriptLang !== undefined) searchParams.append('scriptLang', String(scriptLang));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getConverterByIdUsingGET(converterId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/converter/${encodeURIComponent(converterId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ConverterSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteConverterUsingDELETE(converterId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/device/${deviceId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getDeviceCredentialsByDeviceIdUsingGET(deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/device/${deviceId}/credentials`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceCredentialsSchema.parse(response.data);
-  }
-
-
-  async getAllDeviceInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, deviceProfileId: string, active: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceInfos/all{?active,deviceProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        deviceProfileId: deviceProfileId,
-        active: active,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/converter/${encodeURIComponent(converterId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async findByQueryUsingPOST_1(data: schemas.DeviceSearchQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getLatestConverterDebugInputUsingGET(converterId: string, converterType: string, integrationType: string, integrationName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/converter/${encodeURIComponent(converterId)}/debugIn{?converterType,integrationName,integrationType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (converterType !== undefined) searchParams.append('converterType', String(converterType));
+    if (integrationType !== undefined) searchParams.append('integrationType', String(integrationType));
+    if (integrationName !== undefined) searchParams.append('integrationName', String(integrationName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getConvertersByIdsUsingGET(converterIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/converters{?converterIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (converterIds !== undefined) searchParams.append('converterIds', String(converterIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getConvertersUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/converters{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isEdgeTemplate !== undefined) searchParams.append('isEdgeTemplate', String(isEdgeTemplate));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_ConverterSchemaSchema.parse(responseData);
+  }
+
+
+  async getCurrentCustomMenuUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customMenu/currentCustomMenu`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomMenuSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomMenuUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customMenu/customMenu`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomMenuSchemaSchema.parse(responseData);
+  }
+
+
+  async saveCustomMenuUsingPOST(data: schemas.CustomMenu, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/devices`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async countByDeviceProfileAndEmptyOtaPackageUsingGET(otaPackageType: string, deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/devices/count/${otaPackageType}/${deviceProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async countByDeviceGroupAndEmptyOtaPackageUsingGET(otaPackageType: string, otaPackageId: string, entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/devices/count/${otaPackageType}/${otaPackageId}/${entityGroupId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getDevicesByIdsUsingGET(deviceIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/devices{?deviceIds}`,
-      params: {
-        deviceIds: deviceIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/customMenu/customMenu`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomMenuSchemaSchema.parse(responseData);
   }
 
 
-  async saveDeviceUsingPOST(accessToken: string, entityGroupId: string, entityGroupIds: string, data: schemas.Device, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCurrentCustomTranslationUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customTranslation/currentCustomTranslation`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomTranslationSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomTranslationUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customTranslation/customTranslation`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomTranslationSchemaSchema.parse(responseData);
+  }
+
+
+  async saveCustomTranslationUsingPOST(data: schemas.CustomTranslation, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/device{?accessToken,entityGroupId,entityGroupIds}`,
-      params: {
-        accessToken: accessToken,
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceSchema.parse(response.data);
-  }
-
-
-  async getDevicesByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/devices{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/customTranslation/customTranslation`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomTranslationSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantDeviceUsingGET(deviceName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerInfoByIdUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/devices{?deviceName}`,
-      params: {
-        deviceName: deviceName
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeviceSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/customer/info/${encodeURIComponent(customerId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomerInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantDevicesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerByIdUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomerSchemaSchema.parse(responseData);
   }
 
 
-  async assignDeviceToTenantUsingPOST(tenantId: string, deviceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/tenant/${tenantId}/device/${deviceId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceSchema.parse(response.data);
-  }
-
-
-  async getUserDevicesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceSchema.parse(response.data);
-  }
-
-
-  async saveDeviceGroupOtaPackageUsingPOST(data: schemas.DeviceGroupOtaPackage, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/deviceGroupOtaPackage`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceGroupOtaPackageSchema.parse(response.data);
-  }
-
-
-  async getFirmwareByIdUsingGET(groupId: string, firmwareType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceGroupOtaPackage/${groupId}/${firmwareType}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceGroupOtaPackageSchema.parse(response.data);
-  }
-
-
-  async deleteDeviceGroupOtaPackageUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteCustomerUsingDELETE(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/deviceGroupOtaPackage/${id}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async saveDeviceProfileUsingPOST(data: schemas.DeviceProfile, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerCustomerInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/customerInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_CustomerInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getShortCustomerInfoByIdUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/shortInfo`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerTitleByIdUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/title`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getAllCustomerInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customerInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_CustomerInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomersByIdsUsingGET(customerIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customers{?customerIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerIds !== undefined) searchParams.append('customerIds', String(customerIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getCustomersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_CustomerSchemaSchema.parse(responseData);
+  }
+
+
+  async saveCustomerUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Customer, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/deviceProfile`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceProfileSchema.parse(response.data);
-  }
-
-
-  async getAttributesKeysUsingGET(deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfile/devices/keys/attributes{?deviceProfileId}`,
-      params: {
-        deviceProfileId: deviceProfileId
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/customer{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomerSchemaSchema.parse(responseData);
   }
 
 
-  async getTimeseriesKeysUsingGET(deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomersByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/deviceProfile/devices/keys/timeseries{?deviceProfileId}`,
-      params: {
-        deviceProfileId: deviceProfileId
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_CustomerSchemaSchema.parse(responseData);
   }
 
 
-  async getDeviceProfileNamesUsingGET(activeOnly: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantCustomerUsingGET(customerTitle: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/deviceProfile/names{?activeOnly}`,
-      params: {
-        activeOnly: activeOnly
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/tenant/customers{?customerTitle}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerTitle !== undefined) searchParams.append('customerTitle', String(customerTitle));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.CustomerSchemaSchema.parse(responseData);
   }
 
 
-  async deleteDeviceProfileUsingDELETE(deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserCustomersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/customers{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_CustomerSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerHomeDashboardInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/dashboard/home/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async setCustomerHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/customer/dashboard/home/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getCustomerDashboardsUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/dashboards{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getHomeDashboardUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/home`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.HomeDashboardSchemaSchema.parse(responseData);
+  }
+
+
+  async getHomeDashboardInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/home/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getDashboardInfoByIdUsingGET(dashboardId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/info/${encodeURIComponent(dashboardId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getMaxDatapointsLimitUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/maxDatapointsLimit`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getServerTimeUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/serverTime`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async deleteDashboardUsingDELETE(dashboardId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/deviceProfile/${deviceProfileId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/dashboard/${encodeURIComponent(dashboardId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async setDefaultDeviceProfileUsingPOST(deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDashboardByIdUsingGET(dashboardId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboard/${encodeURIComponent(dashboardId)}{?inlineImages}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DashboardSchemaSchema.parse(responseData);
+  }
+
+
+  async getAllDashboardsUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboards/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getDashboardsByIdsUsingGET(dashboardIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/dashboards{?dashboardIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (dashboardIds !== undefined) searchParams.append('dashboardIds', String(dashboardIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveDashboardUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Dashboard, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/deviceProfile/${deviceProfileId}/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceProfileSchema.parse(response.data);
-  }
-
-
-  async getDeviceProfileByIdUsingGET(deviceProfileId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfile/${deviceProfileId}{?inlineImages}`,
-      params: {
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeviceProfileSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/dashboard{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DashboardSchemaSchema.parse(responseData);
   }
 
 
-  async getDefaultDeviceProfileInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async exportGroupDashboardsUsingGET(entityGroupId: string, limit: number, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/deviceProfileInfo/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceProfileInfoSchema.parse(response.data);
-  }
-
-
-  async getDeviceProfileInfoByIdUsingGET(deviceProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfileInfo/${deviceProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeviceProfileInfoSchema.parse(response.data);
-  }
-
-
-  async getDeviceProfilesByIdsUsingGET(deviceProfileIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfileInfos{?deviceProfileIds}`,
-      params: {
-        deviceProfileIds: deviceProfileIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/export{?limit}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (limit !== undefined) searchParams.append('limit', String(limit));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getDeviceProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, transportType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch,transportType}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        transportType: transportType
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceProfileInfoSchema.parse(response.data);
-  }
-
-
-  async getDeviceProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/deviceProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_DeviceProfileSchema.parse(response.data);
-  }
-
-
-  async getCustomerEdgeInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/edgeInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeInfoSchema.parse(response.data);
-  }
-
-
-  async getCustomerEdgesUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeSchema.parse(response.data);
-  }
-
-
-  async processEdgesBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async importGroupDashboardsUsingPOST(entityGroupId: string, overwrite: boolean, data: Array<schemas.Dashboard>, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/edge/bulk_import`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.BulkImportResult_Of_EdgeSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards/import{?overwrite}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (overwrite !== undefined) searchParams.append('overwrite', String(overwrite));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEdgeInfoByIdUsingGET(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDashboardsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/edge/info/${edgeId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EdgeInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getEdgeInstallInstructionsUsingGET(edgeId: string, method: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantHomeDashboardInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/edge/instructions/install/${edgeId}/${method}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EdgeInstructionsSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/tenant/dashboard/home/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.HomeDashboardInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getEdgeUpgradeInstructionsUsingGET(edgeVersion: string, method: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/instructions/upgrade/${edgeVersion}/${method}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EdgeInstructionsSchema.parse(response.data);
-  }
-
-
-  async findMissingToRelatedRuleChainsUsingGET(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/missingToRelatedRuleChains/${edgeId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async syncEdgeUsingPOST(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async setTenantHomeDashboardInfoUsingPOST(data: schemas.HomeDashboardInfo, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/edge/sync/${edgeId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/tenant/dashboard/home/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEdgeTypesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/edge/types`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/tenant/dashboards{?mobile,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (mobile !== undefined) searchParams.append('mobile', String(mobile));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getEdgeByIdUsingGET(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTenantDashboardsUsingGET_1(tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/edge/${edgeId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EdgeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}/dashboards{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
   }
 
 
-  async deleteEdgeUsingDELETE(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserDashboardsUsingGET(pageSize: number, page: number, mobile: boolean, textSearch: string, sortProperty: string, sortOrder: string, operation: string, userId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/dashboards{?mobile,operation,page,pageSize,sortOrder,sortProperty,textSearch,userId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (mobile !== undefined) searchParams.append('mobile', String(mobile));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (operation !== undefined) searchParams.append('operation', String(operation));
+    if (userId !== undefined) searchParams.append('userId', String(userId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DashboardInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async downloadGatewayDockerComposeUsingGET(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/device-connectivity/gateway-launch/${encodeURIComponent(deviceId)}/docker-compose/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ResourceSchemaSchema.parse(responseData);
+  }
+
+
+  async getDevicePublishTelemetryCommandsUsingGET(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/device-connectivity/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async downloadServerCertificateUsingGET(protocol: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/device-connectivity/${encodeURIComponent(protocol)}/certificate/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ResourceSchemaSchema.parse(responseData);
+  }
+
+
+  async reClaimDeviceUsingDELETE(deviceName: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/edge/${edgeId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/customer/device/${encodeURIComponent(deviceName)}/claim`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
   }
 
 
-  async isEdgeUpgradeAvailableUsingGET(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/upgrade/available`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async setEdgeRootRuleChainUsingPOST(edgeId: string, ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async claimDeviceUsingPOST(deviceName: string, subCustomerId: string, data: schemas.ClaimRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/edge/${edgeId}/${ruleChainId}/root`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EdgeSchema.parse(response.data);
-  }
-
-
-  async getAllEdgeInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edgeInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/customer/device/${encodeURIComponent(deviceName)}/claim{?subCustomerId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (subCustomerId !== undefined) searchParams.append('subCustomerId', String(subCustomerId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
   }
 
 
-  async findByQueryUsingPOST_2(data: schemas.EdgeSearchQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getCustomerDeviceInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, deviceProfileId: string, active: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/deviceInfos{?active,deviceProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
+    if (active !== undefined) searchParams.append('active', String(active));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerDevicesUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async saveDeviceWithCredentialsUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.SaveDeviceWithCredentialsRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/edges`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async isEdgesSupportEnabledUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edges/enabled`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEdgesByIdsUsingGET(edgeIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edges{?edgeIds}`,
-      params: {
-        edgeIds: edgeIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/device-with-credentials{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceSchemaSchema.parse(responseData);
   }
 
 
-  async getEdgesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeSchema.parse(response.data);
-  }
-
-
-  async saveEdgeUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Edge, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async processDevicesBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/edge{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EdgeSchema.parse(response.data);
-  }
-
-
-  async getEdgesByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/device/bulk_import`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.BulkImportResult_Of_DeviceSchemaSchema.parse(responseData);
   }
 
 
-  async activateInstanceUsingPOST(licenseSecret: string, releaseDate: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async updateDeviceCredentialsUsingPOST(data: schemas.DeviceCredentials, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/license/activateInstance{?licenseSecret,releaseDate}`,
-      params: {
-        licenseSecret: licenseSecret,
-        releaseDate: releaseDate
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/device/credentials`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceCredentialsSchemaSchema.parse(responseData);
   }
 
 
-  async checkInstanceUsingPOST(data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/license/checkInstance`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getTenantEdgeUsingGET(edgeName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceInfoByIdUsingGET(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/edges{?edgeName}`,
-      params: {
-        edgeName: edgeName
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EdgeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/device/info/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceTypesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/device/types`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getUserEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceByIdUsingGET(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/user/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/device/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceSchemaSchema.parse(responseData);
   }
 
 
-  async getEdgeEventsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/events{?endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EdgeEventSchema.parse(response.data);
-  }
-
-
-  async listBranchesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/branches`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_List_Of_BranchInfoSchema.parse(response.data);
-  }
-
-
-  async compareEntityDataToVersionUsingGET(entityType: string, internalEntityUuid: string, versionId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/diff/${entityType}/${internalEntityUuid}{?versionId}`,
-      params: {
-        versionId: versionId
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_EntityDataDiffSchema.parse(response.data);
-  }
-
-
-  async loadEntitiesVersionUsingPOST(data: schemas.VersionLoadRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entities/vc/entity`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async listEntitiesAtVersionUsingGET(entityType: string, versionId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/entity/${entityType}/${versionId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_List_Of_VersionedEntityInfoSchema.parse(response.data);
-  }
-
-
-  async getVersionLoadRequestStatusUsingGET(requestId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/entity/${requestId}/status`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.VersionLoadResultSchema.parse(response.data);
-  }
-
-
-  async listAllEntitiesAtVersionUsingGET(versionId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/entity/${versionId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_List_Of_VersionedEntityInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityDataInfoUsingGET(versionId: string, entityType: string, externalEntityUuid: string, internalEntityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/info/${versionId}/${entityType}/${externalEntityUuid}{?internalEntityId}`,
-      params: {
-        internalEntityId: internalEntityId
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_EntityDataInfoSchema.parse(response.data);
-  }
-
-
-  async saveEntitiesVersionUsingPOST(data: schemas.VersionCreateRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entities/vc/version`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_uuidSchema.parse(response.data);
-  }
-
-
-  async listEntityVersionsUsingGET(entityType: string, externalEntityUuid: string, branch: string, internalEntityId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/version/${entityType}/${externalEntityUuid}?sortProperty=timestamp{&branch,internalEntityId,page,pageSize,sortOrder,textSearch}`,
-      params: {
-        branch: branch,
-        internalEntityId: internalEntityId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_PageData_Of_EntityVersionSchema.parse(response.data);
-  }
-
-
-  async listEntityTypeVersionsUsingGET(entityType: string, branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/version/${entityType}?sortProperty=timestamp{&branch,page,pageSize,sortOrder,textSearch}`,
-      params: {
-        branch: branch,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_PageData_Of_EntityVersionSchema.parse(response.data);
-  }
-
-
-  async getVersionCreateRequestStatusUsingGET(requestId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/version/${requestId}/status`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.VersionCreationResultSchema.parse(response.data);
-  }
-
-
-  async listVersionsUsingGET(branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entities/vc/version?sortProperty=timestamp{&branch,page,pageSize,sortOrder,textSearch}`,
-      params: {
-        branch: branch,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_PageData_Of_EntityVersionSchema.parse(response.data);
-  }
-
-
-  async getAllEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/allEntityGroups/edge/${edgeId}/${groupType}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async assignEntityGroupToEdgeUsingPOST(edgeId: string, groupType: string, entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/edge/${edgeId}/entityGroup/${entityGroupId}/${groupType}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityGroupSchema.parse(response.data);
-  }
-
-
-  async unassignEntityGroupFromEdgeUsingDELETE(edgeId: string, groupType: string, entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteDeviceUsingDELETE(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/edge/${edgeId}/entityGroup/${entityGroupId}/${groupType}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityGroupSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/device/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async saveEntityGroupUsingPOST(data: schemas.EntityGroup, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceCredentialsByDeviceIdUsingGET(deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/device/${encodeURIComponent(deviceId)}/credentials`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceCredentialsSchemaSchema.parse(responseData);
+  }
+
+
+  async getAllDeviceInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, deviceProfileId: string, active: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/deviceInfos/all{?active,deviceProfileId,includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
+    if (active !== undefined) searchParams.append('active', String(active));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async findByQueryUsingPOST_1(data: schemas.DeviceSearchQuery, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/entityGroup`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityGroupInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/devices`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityGroupAllByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async countByDeviceProfileAndEmptyOtaPackageUsingGET(otaPackageType: string, deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroup/all/${ownerType}/${ownerId}/${groupType}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityGroupInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/devices/count/${encodeURIComponent(otaPackageType)}/${encodeURIComponent(deviceProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityGroupByIdUsingGET(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async countByDeviceGroupAndEmptyOtaPackageUsingGET(otaPackageType: string, otaPackageId: string, entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityGroupInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/devices/count/${encodeURIComponent(otaPackageType)}/${encodeURIComponent(otaPackageId)}/${encodeURIComponent(entityGroupId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async deleteEntityGroupUsingDELETE(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDevicesByIdsUsingGET(deviceIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/devices{?deviceIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (deviceIds !== undefined) searchParams.append('deviceIds', String(deviceIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveDeviceUsingPOST(accessToken: string, entityGroupId: string, entityGroupIds: string, data: schemas.Device, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/device{?accessToken,entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (accessToken !== undefined) searchParams.append('accessToken', String(accessToken));
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async getDevicesByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/devices{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantDeviceUsingGET(deviceName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/devices{?deviceName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (deviceName !== undefined) searchParams.append('deviceName', String(deviceName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantDevicesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async assignDeviceToTenantUsingPOST(tenantId: string, deviceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}/device/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async getUserDevicesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/devices{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceSchemaSchema.parse(responseData);
+  }
+
+
+  async saveDeviceGroupOtaPackageUsingPOST(data: schemas.DeviceGroupOtaPackage, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/deviceGroupOtaPackage`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceGroupOtaPackageSchemaSchema.parse(responseData);
+  }
+
+
+  async getFirmwareByIdUsingGET(groupId: string, firmwareType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/deviceGroupOtaPackage/${encodeURIComponent(groupId)}/${encodeURIComponent(firmwareType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceGroupOtaPackageSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteDeviceGroupOtaPackageUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/entityGroup/${entityGroupId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceGroupOtaPackage/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async addEntitiesToEntityGroupUsingPOST(entityGroupId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveDeviceProfileUsingPOST(data: schemas.DeviceProfile, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/addEntities`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async removeEntitiesFromEntityGroupUsingPOST(entityGroupId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/deleteEntities`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEntitiesUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/entities{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_ShortEntityViewSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/deviceProfile`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceProfileSchemaSchema.parse(responseData);
   }
 
 
-  async makeEntityGroupPrivateUsingPOST(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/makePrivate`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async makeEntityGroupPublicUsingPOST(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/makePublic`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async shareEntityGroupUsingPOST(entityGroupId: string, data: schemas.ShareGroupRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/share`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getGroupEntityUsingGET(entityGroupId: string, entityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAttributesKeysUsingGET(deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/${entityId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ShortEntityViewSchema.parse(response.data);
-  }
-
-
-  async shareEntityGroupToChildOwnerUserGroupUsingPOST(entityGroupId: string, userGroupId: string, roleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityGroup/${entityGroupId}/${userGroupId}/${roleId}/share`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEntityGroupByOwnerAndNameAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, groupName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${ownerType}/${ownerId}/${groupType}/${groupName}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupEntityInfoByIdUsingGET(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroupInfo/${entityGroupId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getSharedEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroupInfos/${groupType}/shared{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/deviceProfile/devices/keys/attributes{?deviceProfileId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getTimeseriesKeysUsingGET(deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroupInfos/${groupType}{?includeShared,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        includeShared: includeShared,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/deviceProfile/devices/keys/timeseries{?deviceProfileId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (deviceProfileId !== undefined) searchParams.append('deviceProfileId', String(deviceProfileId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceProfileNamesUsingGET(activeOnly: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroupInfos/${ownerType}/${ownerId}/${groupType}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/deviceProfile/names{?activeOnly}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (activeOnly !== undefined) searchParams.append('activeOnly', String(activeOnly));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroupInfosHierarchy/${ownerType}/${ownerId}/${groupType}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupEntityInfosByIdsUsingGET(entityGroupIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroupInfos{?entityGroupIds}`,
-      params: {
-        entityGroupIds: entityGroupIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/edge/${edgeId}/${groupType}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupsForEntityUsingGET(entityType: string, entityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${entityType}/${entityId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSharedEntityGroupsByTypeUsingGET(groupType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${groupType}/shared`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSharedEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${groupType}/shared{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${groupType}{?includeShared,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        includeShared: includeShared,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupsByTypeUsingGET(groupType: string, includeShared: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${groupType}{?includeShared}`,
-      params: {
-        includeShared: includeShared
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEntityGroupsByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${ownerType}/${ownerId}/${groupType}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEntityGroupsByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups/${ownerType}/${ownerId}/${groupType}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroupsHierarchy/${ownerType}/${ownerId}/${groupType}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityGroupInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupsByIdsUsingGET(entityGroupIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroups{?entityGroupIds}`,
-      params: {
-        entityGroupIds: entityGroupIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getOwnerInfoUsingGET(ownerType: string, ownerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ownerInfo/${ownerType}/${ownerId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getOwnerInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ownerInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getOwnersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/owners{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_ContactBased_Of_objectSchema.parse(response.data);
-  }
-
-
-  async countAlarmsByQueryUsingPOST(data: schemas.AlarmCountQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/alarmsQuery/count`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findAlarmDataByQueryUsingPOST(data: schemas.AlarmDataQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/alarmsQuery/find`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_AlarmDataSchema.parse(response.data);
-  }
-
-
-  async countEntitiesByQueryUsingPOST(data: schemas.EntityCountQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entitiesQuery/count`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findEntityDataByQueryUsingPOST(data: schemas.EntityDataQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entitiesQuery/find`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityDataSchema.parse(response.data);
-  }
-
-
-  async findEntityTimeseriesAndAttributesKeysByQueryUsingPOST(timeseries: boolean, attributes: boolean, data: schemas.EntityDataQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entitiesQuery/find/keys{?attributes,timeseries}`,
-      params: {
-        timeseries: timeseries,
-        attributes: attributes
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveRelationUsingPOST(data: schemas.EntityRelation, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/relation`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findByQueryUsingPOST_3(data: schemas.EntityRelationsQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/relations`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findInfoByQueryUsingPOST(data: schemas.EntityRelationsQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/relations/info`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findInfoByFromUsingGET(fromId: string, fromType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/relations/info{?fromId,fromType,relationTypeGroup}`,
-      params: {
-        fromId: fromId,
-        fromType: fromType,
-        relationTypeGroup: relationTypeGroup
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findInfoByToUsingGET(toId: string, toType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/relations/info{?relationTypeGroup,toId,toType}`,
-      params: {
-        toId: toId,
-        toType: toType,
-        relationTypeGroup: relationTypeGroup
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async deleteRelationsUsingDELETE(entityId: string, entityType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteDeviceProfileUsingDELETE(deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/relations{?entityId,entityType}`,
-      params: {
-        entityId: entityId,
-        entityType: entityType
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async findByFromUsingGET(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async setDefaultDeviceProfileUsingPOST(deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getDeviceProfileByIdUsingGET(deviceProfileId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/relations{?fromId,fromType,relationType,relationTypeGroup}`,
-      params: {
-        fromId: fromId,
-        fromType: fromType,
-        relationType: relationType,
-        relationTypeGroup: relationTypeGroup
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceProfile/${encodeURIComponent(deviceProfileId)}{?inlineImages}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceProfileSchemaSchema.parse(responseData);
   }
 
 
-  async findByFromUsingGET_1(fromId: string, fromType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDefaultDeviceProfileInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/relations{?fromId,fromType,relationTypeGroup}`,
-      params: {
-        fromId: fromId,
-        fromType: fromType,
-        relationTypeGroup: relationTypeGroup
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceProfileInfo/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceProfileInfoSchemaSchema.parse(responseData);
   }
 
 
-  async findByToUsingGET(toId: string, toType: string, relationType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceProfileInfoByIdUsingGET(deviceProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/relations{?relationType,relationTypeGroup,toId,toType}`,
-      params: {
-        toId: toId,
-        toType: toType,
-        relationType: relationType,
-        relationTypeGroup: relationTypeGroup
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceProfileInfo/${encodeURIComponent(deviceProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeviceProfileInfoSchemaSchema.parse(responseData);
   }
 
 
-  async findByToUsingGET_1(toId: string, toType: string, relationTypeGroup: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceProfilesByIdsUsingGET(deviceProfileIds: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/relations{?relationTypeGroup,toId,toType}`,
-      params: {
-        toId: toId,
-        toType: toType,
-        relationTypeGroup: relationTypeGroup
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/deviceProfileInfos{?deviceProfileIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (deviceProfileIds !== undefined) searchParams.append('deviceProfileIds', String(deviceProfileIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getRelationUsingGET(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, toId: string, toType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, transportType: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/relation{?fromId,fromType,relationType,relationTypeGroup,toId,toType}`,
-      params: {
-        fromId: fromId,
-        fromType: fromType,
-        relationType: relationType,
-        relationTypeGroup: relationTypeGroup,
-        toId: toId,
-        toType: toType
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityRelationSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/deviceProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch,transportType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (transportType !== undefined) searchParams.append('transportType', String(transportType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceProfileInfoSchemaSchema.parse(responseData);
   }
 
 
-  async deleteRelationUsingDELETE(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, toId: string, toType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getDeviceProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/deviceProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_DeviceProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerEdgeInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/edgeInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerEdgesUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async processEdgesBulkImportUsingPOST(data: schemas.BulkImportRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/edge/bulk_import`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.BulkImportResult_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeInfoByIdUsingGET(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/info/${encodeURIComponent(edgeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeInstallInstructionsUsingGET(edgeId: string, method: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/instructions/install/${encodeURIComponent(edgeId)}/${encodeURIComponent(method)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeInstructionsSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeUpgradeInstructionsUsingGET(edgeVersion: string, method: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/instructions/upgrade/${encodeURIComponent(edgeVersion)}/${encodeURIComponent(method)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeInstructionsSchemaSchema.parse(responseData);
+  }
+
+
+  async findMissingToRelatedRuleChainsUsingGET(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/missingToRelatedRuleChains/${encodeURIComponent(edgeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async syncEdgeUsingPOST(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/sync/${encodeURIComponent(edgeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeTypesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/types`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEdgeByIdUsingGET(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteEdgeUsingDELETE(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/relation{?fromId,fromType,relationType,relationTypeGroup,toId,toType}`,
-      params: {
-        fromId: fromId,
-        fromType: fromType,
-        relationType: relationType,
-        relationTypeGroup: relationTypeGroup,
-        toId: toId,
-        toType: toType
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getCustomerEntityViewInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async isEdgeUpgradeAvailableUsingGET(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/customer/${customerId}/entityViewInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/upgrade/available`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getCustomerEntityViewsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async setEdgeRootRuleChainUsingPOST(edgeId: string, ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/${encodeURIComponent(ruleChainId)}/root`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeSchemaSchema.parse(responseData);
   }
 
 
-  async getEntityViewsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAllEdgeInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edgeInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getEntityViewInfoByIdUsingGET(entityViewId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async findByQueryUsingPOST_2(data: schemas.EdgeSearchQuery, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/entityView/info/${entityViewId}`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityViewInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/edges`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityViewTypesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async isEdgesSupportEnabledUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityView/types`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/edges/enabled`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getEntityViewByIdUsingGET(entityViewId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEdgesByIdsUsingGET(edgeIds: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/entityView/${entityViewId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityViewSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edges{?edgeIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (edgeIds !== undefined) searchParams.append('edgeIds', String(edgeIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async deleteEntityViewUsingDELETE(entityViewId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEdgesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async saveEdgeUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.Edge, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/edge{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgesByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/edges{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async activateInstanceUsingPOST(licenseSecret: string, releaseDate: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/license/activateInstance{?licenseSecret,releaseDate}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (licenseSecret !== undefined) searchParams.append('licenseSecret', String(licenseSecret));
+    if (releaseDate !== undefined) searchParams.append('releaseDate', String(releaseDate));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async checkInstanceUsingPOST(data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/license/checkInstance`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantEdgeUsingGET(edgeName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/edges{?edgeName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (edgeName !== undefined) searchParams.append('edgeName', String(edgeName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async getUserEdgesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/edges{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeEventsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/events{?endTime,page,pageSize,sortOrder,sortProperty,startTime,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EdgeEventSchemaSchema.parse(responseData);
+  }
+
+
+  async listBranchesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/branches`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_List_BranchInfo_SchemaSchema.parse(responseData);
+  }
+
+
+  async compareEntityDataToVersionUsingGET(entityType: string, internalEntityUuid: string, versionId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/diff/${encodeURIComponent(entityType)}/${encodeURIComponent(internalEntityUuid)}{?versionId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (versionId !== undefined) searchParams.append('versionId', String(versionId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_EntityDataDiffSchemaSchema.parse(responseData);
+  }
+
+
+  async loadEntitiesVersionUsingPOST(data: schemas.VersionLoadRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entities/vc/entity`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async listEntitiesAtVersionUsingGET(entityType: string, versionId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/entity/${encodeURIComponent(entityType)}/${encodeURIComponent(versionId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema.parse(responseData);
+  }
+
+
+  async getVersionLoadRequestStatusUsingGET(requestId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/entity/${encodeURIComponent(requestId)}/status`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.VersionLoadResultSchemaSchema.parse(responseData);
+  }
+
+
+  async listAllEntitiesAtVersionUsingGET(versionId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/entity/${encodeURIComponent(versionId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityDataInfoUsingGET(versionId: string, entityType: string, externalEntityUuid: string, internalEntityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/info/${encodeURIComponent(versionId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(externalEntityUuid)}{?internalEntityId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (internalEntityId !== undefined) searchParams.append('internalEntityId', String(internalEntityId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_EntityDataInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveEntitiesVersionUsingPOST(data: schemas.VersionCreateRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entities/vc/version`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_uuidSchemaSchema.parse(responseData);
+  }
+
+
+  async listEntityVersionsUsingGET(entityType: string, externalEntityUuid: string, branch: string, internalEntityId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/version/${encodeURIComponent(entityType)}/${encodeURIComponent(externalEntityUuid)}?sortProperty=timestamp{&branch,internalEntityId,page,pageSize,sortOrder,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (branch !== undefined) searchParams.append('branch', String(branch));
+    if (internalEntityId !== undefined) searchParams.append('internalEntityId', String(internalEntityId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_PageData_EntityVersion_SchemaSchema.parse(responseData);
+  }
+
+
+  async listEntityTypeVersionsUsingGET(entityType: string, branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/version/${encodeURIComponent(entityType)}?sortProperty=timestamp{&branch,page,pageSize,sortOrder,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (branch !== undefined) searchParams.append('branch', String(branch));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_PageData_EntityVersion_SchemaSchema.parse(responseData);
+  }
+
+
+  async getVersionCreateRequestStatusUsingGET(requestId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/version/${encodeURIComponent(requestId)}/status`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.VersionCreationResultSchemaSchema.parse(responseData);
+  }
+
+
+  async listVersionsUsingGET(branch: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entities/vc/version?sortProperty=timestamp{&branch,page,pageSize,sortOrder,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (branch !== undefined) searchParams.append('branch', String(branch));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_PageData_EntityVersion_SchemaSchema.parse(responseData);
+  }
+
+
+  async getAllEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/allEntityGroups/edge/${encodeURIComponent(edgeId)}/${encodeURIComponent(groupType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async assignEntityGroupToEdgeUsingPOST(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/entityGroup/${encodeURIComponent(entityGroupId)}/${encodeURIComponent(groupType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupSchemaSchema.parse(responseData);
+  }
+
+
+  async unassignEntityGroupFromEdgeUsingDELETE(edgeId: string, groupType: string, entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/entityView/${entityViewId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getAllEntityViewInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityViewInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/entityGroup/${encodeURIComponent(entityGroupId)}/${encodeURIComponent(groupType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupSchemaSchema.parse(responseData);
   }
 
 
-  async findByQueryUsingPOST_4(data: schemas.EntityViewSearchQuery, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveEntityGroupUsingPOST(data: schemas.EntityGroup, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/entityViews`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEntityViewsByIdsUsingGET(entityViewIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityViews{?entityViewIds}`,
-      params: {
-        entityViewIds: entityViewIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityGroup`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupInfoSchemaSchema.parse(responseData);
   }
 
 
-  async saveEntityViewUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.EntityView, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/entityView{?entityGroupId,entityGroupIds}`,
-      params: {
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityViewSchema.parse(response.data);
-  }
-
-
-  async getTenantEntityViewUsingGET(entityViewName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEntityGroupAllByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/entityViews{?entityViewName}`,
-      params: {
-        entityViewName: entityViewName
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.EntityViewSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/entityGroup/all/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getTenantEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEntityGroupByIdUsingGET(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/tenant/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getUserEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityViewSchema.parse(response.data);
-  }
-
-
-  async clearEventsUsingPOST(entityType: string, entityId: string, startTime: number, endTime: number, data: schemas.EventFilter, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/events/${entityType}/${entityId}/clear{?endTime,startTime}`,
-      params: {
-        startTime: startTime,
-        endTime: endTime
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getEventsUsingGET_1(entityType: string, entityId: string, eventType: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/events/${entityType}/${entityId}/${eventType}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`,
-      params: {
-        tenantId: tenantId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EventInfoSchema.parse(response.data);
-  }
-
-
-  async getEventsUsingGET(entityType: string, entityId: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/events/${entityType}/${entityId}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`,
-      params: {
-        tenantId: tenantId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EventInfoSchema.parse(response.data);
-  }
-
-
-  async getEventsUsingPOST(entityType: string, entityId: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, data: schemas.EventFilter, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/events/${entityType}/${entityId}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`,
-      params: {
-        tenantId: tenantId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        startTime: startTime,
-        endTime: endTime
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EventInfoSchema.parse(response.data);
-  }
-
-
-  async getEntityGroupPermissionsUsingGET(entityGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/groupPermissions`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveGroupPermissionUsingPOST(data: schemas.GroupPermission, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/groupPermission`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.GroupPermissionSchema.parse(response.data);
-  }
-
-
-  async getGroupPermissionInfoByIdUsingGET(groupPermissionId: string, isUserGroup: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/groupPermission/info/${groupPermissionId}{?isUserGroup}`,
-      params: {
-        isUserGroup: isUserGroup
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.GroupPermissionInfoSchema.parse(response.data);
-  }
-
-
-  async getGroupPermissionByIdUsingGET(groupPermissionId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/groupPermission/${groupPermissionId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.GroupPermissionSchema.parse(response.data);
-  }
-
-
-  async deleteGroupPermissionUsingDELETE(groupPermissionId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteEntityGroupUsingDELETE(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/groupPermission/${groupPermissionId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async loadUserGroupPermissionInfosUsingPOST(data: schemas.GroupPermission[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async addEntitiesToEntityGroupUsingPOST(entityGroupId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/userGroup/groupPermissions/info`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/addEntities`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getUserGroupPermissionsUsingGET(userGroupId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async removeEntitiesFromEntityGroupUsingPOST(entityGroupId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/deleteEntities`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntitiesUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/userGroup/${userGroupId}/groupPermissions`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/entities{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_ShortEntityViewSchemaSchema.parse(responseData);
   }
 
 
-  async uploadImageUsingPOST(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async makeEntityGroupPrivateUsingPOST(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/image`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/makePrivate`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async importImageUsingPUT(data: schemas.ImageExportData, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async makeEntityGroupPublicUsingPOST(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/makePublic`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async shareEntityGroupUsingPOST(entityGroupId: string, data: schemas.ShareGroupRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/share`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getGroupEntityUsingGET(entityGroupId: string, entityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/${encodeURIComponent(entityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ShortEntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async shareEntityGroupToChildOwnerUserGroupUsingPOST(entityGroupId: string, userGroupId: string, roleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/${encodeURIComponent(userGroupId)}/${encodeURIComponent(roleId)}/share`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntityGroupByOwnerAndNameAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, groupName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}/${encodeURIComponent(groupName)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupEntityInfoByIdUsingGET(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfo/${encodeURIComponent(entityGroupId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getSharedEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfos/${encodeURIComponent(groupType)}/shared{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupEntityInfosByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfos/${encodeURIComponent(groupType)}{?includeShared,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (includeShared !== undefined) searchParams.append('includeShared', String(includeShared));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupEntityInfosByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfos/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfosHierarchy/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupEntityInfosByIdsUsingGET(entityGroupIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupInfos{?entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEdgeEntityGroupsUsingGET(edgeId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/edge/${encodeURIComponent(edgeId)}/${encodeURIComponent(groupType)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupsForEntityUsingGET(entityType: string, entityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSharedEntityGroupsByTypeUsingGET(groupType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(groupType)}/shared`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSharedEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(groupType)}/shared{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupsByTypeAndPageLinkUsingGET(groupType: string, includeShared: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(groupType)}{?includeShared,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (includeShared !== undefined) searchParams.append('includeShared', String(includeShared));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupsByTypeUsingGET(groupType: string, includeShared: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(groupType)}{?includeShared}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (includeShared !== undefined) searchParams.append('includeShared', String(includeShared));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntityGroupsByOwnerAndTypeUsingGET(ownerType: string, ownerId: string, groupType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntityGroupsByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupsHierarchyByOwnerAndTypeAndPageLinkUsingGET(ownerType: string, ownerId: string, groupType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroupsHierarchy/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}/${encodeURIComponent(groupType)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityGroupInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupsByIdsUsingGET(entityGroupIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroups{?entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getOwnerInfoUsingGET(ownerType: string, ownerId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ownerInfo/${encodeURIComponent(ownerType)}/${encodeURIComponent(ownerId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOwnerInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ownerInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOwnersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/owners{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_ContactBased_object_SchemaSchema.parse(responseData);
+  }
+
+
+  async countAlarmsByQueryUsingPOST(data: schemas.AlarmCountQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/alarmsQuery/count`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findAlarmDataByQueryUsingPOST(data: schemas.AlarmDataQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/alarmsQuery/find`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_AlarmDataSchemaSchema.parse(responseData);
+  }
+
+
+  async countEntitiesByQueryUsingPOST(data: schemas.EntityCountQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entitiesQuery/count`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findEntityDataByQueryUsingPOST(data: schemas.EntityDataQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entitiesQuery/find`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityDataSchemaSchema.parse(responseData);
+  }
+
+
+  async findEntityTimeseriesAndAttributesKeysByQueryUsingPOST(timeseries: boolean, attributes: boolean, data: schemas.EntityDataQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entitiesQuery/find/keys{?attributes,timeseries}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (timeseries !== undefined) searchParams.append('timeseries', String(timeseries));
+    if (attributes !== undefined) searchParams.append('attributes', String(attributes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveRelationUsingPOST(data: schemas.EntityRelation, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/relation`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findByQueryUsingPOST_3(data: schemas.EntityRelationsQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/relations`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findInfoByQueryUsingPOST(data: schemas.EntityRelationsQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/relations/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findInfoByFromUsingGET(fromId: string, fromType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations/info{?fromId,fromType,relationTypeGroup}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fromId !== undefined) searchParams.append('fromId', String(fromId));
+    if (fromType !== undefined) searchParams.append('fromType', String(fromType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findInfoByToUsingGET(toId: string, toType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations/info{?relationTypeGroup,toId,toType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (toId !== undefined) searchParams.append('toId', String(toId));
+    if (toType !== undefined) searchParams.append('toType', String(toType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async deleteRelationsUsingDELETE(entityId: string, entityType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations{?entityId,entityType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityId !== undefined) searchParams.append('entityId', String(entityId));
+    if (entityType !== undefined) searchParams.append('entityType', String(entityType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findByFromUsingGET(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations{?fromId,fromType,relationType,relationTypeGroup}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fromId !== undefined) searchParams.append('fromId', String(fromId));
+    if (fromType !== undefined) searchParams.append('fromType', String(fromType));
+    if (relationType !== undefined) searchParams.append('relationType', String(relationType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findByFromUsingGET_1(fromId: string, fromType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations{?fromId,fromType,relationTypeGroup}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fromId !== undefined) searchParams.append('fromId', String(fromId));
+    if (fromType !== undefined) searchParams.append('fromType', String(fromType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findByToUsingGET(toId: string, toType: string, relationType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations{?relationType,relationTypeGroup,toId,toType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (toId !== undefined) searchParams.append('toId', String(toId));
+    if (toType !== undefined) searchParams.append('toType', String(toType));
+    if (relationType !== undefined) searchParams.append('relationType', String(relationType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findByToUsingGET_1(toId: string, toType: string, relationTypeGroup: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relations{?relationTypeGroup,toId,toType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (toId !== undefined) searchParams.append('toId', String(toId));
+    if (toType !== undefined) searchParams.append('toType', String(toType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRelationUsingGET(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, toId: string, toType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relation{?fromId,fromType,relationType,relationTypeGroup,toId,toType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fromId !== undefined) searchParams.append('fromId', String(fromId));
+    if (fromType !== undefined) searchParams.append('fromType', String(fromType));
+    if (relationType !== undefined) searchParams.append('relationType', String(relationType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    if (toId !== undefined) searchParams.append('toId', String(toId));
+    if (toType !== undefined) searchParams.append('toType', String(toType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityRelationSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteRelationUsingDELETE(fromId: string, fromType: string, relationType: string, relationTypeGroup: string, toId: string, toType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/relation{?fromId,fromType,relationType,relationTypeGroup,toId,toType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fromId !== undefined) searchParams.append('fromId', String(fromId));
+    if (fromType !== undefined) searchParams.append('fromType', String(fromType));
+    if (relationType !== undefined) searchParams.append('relationType', String(relationType));
+    if (relationTypeGroup !== undefined) searchParams.append('relationTypeGroup', String(relationTypeGroup));
+    if (toId !== undefined) searchParams.append('toId', String(toId));
+    if (toType !== undefined) searchParams.append('toType', String(toType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getCustomerEntityViewInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/entityViewInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerEntityViewsUsingGET(customerId: string, pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityViewsByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityViewInfoByIdUsingGET(entityViewId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityView/info/${encodeURIComponent(entityViewId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityViewInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityViewTypesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityView/types`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntityViewByIdUsingGET(entityViewId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityView/${encodeURIComponent(entityViewId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteEntityViewUsingDELETE(entityViewId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityView/${encodeURIComponent(entityViewId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getAllEntityViewInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityViewInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async findByQueryUsingPOST_4(data: schemas.EntityViewSearchQuery, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityViews`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEntityViewsByIdsUsingGET(entityViewIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityViews{?entityViewIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityViewIds !== undefined) searchParams.append('entityViewIds', String(entityViewIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveEntityViewUsingPOST(entityGroupId: string, entityGroupIds: string, data: schemas.EntityView, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/entityView{?entityGroupId,entityGroupIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantEntityViewUsingGET(entityViewName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/entityViews{?entityViewName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (entityViewName !== undefined) searchParams.append('entityViewName', String(entityViewName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async getUserEntityViewsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/entityViews{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityViewSchemaSchema.parse(responseData);
+  }
+
+
+  async clearEventsUsingPOST(entityType: string, entityId: string, startTime: number, endTime: number, data: schemas.EventFilter, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/events/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/clear{?endTime,startTime}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getEventsUsingGET_1(entityType: string, entityId: string, eventType: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/events/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(eventType)}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (tenantId !== undefined) searchParams.append('tenantId', String(tenantId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEventsUsingGET(entityType: string, entityId: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/events/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (tenantId !== undefined) searchParams.append('tenantId', String(tenantId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEventsUsingPOST(entityType: string, entityId: string, tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, startTime: number, endTime: number, data: schemas.EventFilter, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/events/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}{?endTime,page,pageSize,sortOrder,sortProperty,startTime,tenantId,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (tenantId !== undefined) searchParams.append('tenantId', String(tenantId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (startTime !== undefined) searchParams.append('startTime', String(startTime));
+    if (endTime !== undefined) searchParams.append('endTime', String(endTime));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEntityGroupPermissionsUsingGET(entityGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/groupPermissions`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveGroupPermissionUsingPOST(data: schemas.GroupPermission, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/groupPermission`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.GroupPermissionSchemaSchema.parse(responseData);
+  }
+
+
+  async getGroupPermissionInfoByIdUsingGET(groupPermissionId: string, isUserGroup: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/groupPermission/info/${encodeURIComponent(groupPermissionId)}{?isUserGroup}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isUserGroup !== undefined) searchParams.append('isUserGroup', String(isUserGroup));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.GroupPermissionInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getGroupPermissionByIdUsingGET(groupPermissionId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/groupPermission/${encodeURIComponent(groupPermissionId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.GroupPermissionSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteGroupPermissionUsingDELETE(groupPermissionId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/groupPermission/${encodeURIComponent(groupPermissionId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async loadUserGroupPermissionInfosUsingPOST(data: Array<schemas.GroupPermission>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/userGroup/groupPermissions/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getUserGroupPermissionsUsingGET(userGroupId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/userGroup/${encodeURIComponent(userGroupId)}/groupPermissions`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async uploadImageUsingPOST(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/image`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async importImageUsingPUT(data: schemas.ImageExportData, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/image/import`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/image/import`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async downloadPublicImageUsingGET(publicResourceKey: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async downloadPublicImageUsingGET(publicResourceKey: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/images/public/${publicResourceKey}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/images/public/${encodeURIComponent(publicResourceKey)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async downloadImageUsingGET(type: string, key: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async downloadImageUsingGET(type: string, key: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/images/${type}/${key}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async updateImageUsingPUT(type: string, key: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'PUT',
-      url: `/api/images/${type}/${key}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async exportImageUsingGET(type: string, key: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/images/${type}/${key}/export`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ImageExportDataSchema.parse(response.data);
-  }
-
-
-  async getImageInfoUsingGET(type: string, key: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/images/${type}/${key}/info`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async updateImageInfoUsingPUT(type: string, key: string, data: schemas.TbResourceInfo, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'PUT',
-      url: `/api/images/${type}/${key}/info`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async downloadImagePreviewUsingGET(type: string, key: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/images/${type}/${key}/preview`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async updateImagePublicStatusUsingPUT(type: string, key: string, isPublic: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async updateImageUsingPUT(type: string, key: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/images/${type}/${key}/public/${isPublic}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async deleteImageUsingDELETE(type: string, key: string, force: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/images/${type}/${key}{?force}`,
-      params: {
-        force: force
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.TbImageDeleteResultSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getImagesUsingGET(pageSize: number, page: number, includeSystemImages: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async exportImageUsingGET(type: string, key: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/images{?includeSystemImages,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeSystemImages: includeSystemImages,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TbResourceInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}/export`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ImageExportDataSchemaSchema.parse(responseData);
   }
 
 
-  async downloadLoginFaviconUsingGET(type: string, key: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getImageInfoUsingGET(type: string, key: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/noauth/whiteLabel/loginFavicon/${type}/${key}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadLoginLogoUsingGET(type: string, key: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/whiteLabel/loginLogo/${type}/${key}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async findEdgeMissingAttributesUsingGET(edgeId: string, integrationIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/integration/${edgeId}/missingAttributes{?integrationIds}`,
-      params: {
-        integrationIds: integrationIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async findAllRelatedEdgesMissingAttributesUsingGET(integrationId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/integration/${integrationId}/allMissingAttributes`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async assignIntegrationToEdgeUsingPOST(edgeId: string, integrationId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/edge/${edgeId}/integration/${integrationId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.IntegrationSchema.parse(response.data);
-  }
-
-
-  async unassignIntegrationFromEdgeUsingDELETE(edgeId: string, integrationId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/edge/${edgeId}/integration/${integrationId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.IntegrationSchema.parse(response.data);
-  }
-
-
-  async getEdgeIntegrationInfosUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/integrationInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_IntegrationInfoSchema.parse(response.data);
-  }
-
-
-  async getEdgeIntegrationsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/integrations{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_IntegrationSchema.parse(response.data);
-  }
-
-
-  async saveIntegrationUsingPOST(data: schemas.Integration, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/integration`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.IntegrationSchema.parse(response.data);
-  }
-
-
-  async checkIntegrationConnectionUsingPOST(data: schemas.Integration, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/integration/check`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getIntegrationByRoutingKeyUsingGET(routingKey: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/integration/routingKey/${routingKey}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.IntegrationSchema.parse(response.data);
-  }
-
-
-  async getIntegrationByIdUsingGET(integrationId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/integration/${integrationId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.IntegrationSchema.parse(response.data);
-  }
-
-
-  async deleteIntegrationUsingDELETE(integrationId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/integration/${integrationId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getIntegrationInfosUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/integrationInfos{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        isEdgeTemplate: isEdgeTemplate,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_IntegrationInfoSchema.parse(response.data);
-  }
-
-
-  async getIntegrationsByIdsUsingGET(integrationIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/integrations{?integrationIds}`,
-      params: {
-        integrationIds: integrationIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getIntegrationsUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/integrations{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        isEdgeTemplate: isEdgeTemplate,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_IntegrationSchema.parse(response.data);
-  }
-
-
-  async getClientRegistrationTemplatesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/mail/config/template`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getAvailableDeliveryMethodsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/deliveryMethods`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async createNotificationRequestUsingPOST(data: schemas.NotificationRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/request`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationRequestSchema.parse(response.data);
-  }
-
-
-  async getNotificationRequestPreviewUsingPOST(recipientsPreviewSize: number, data: schemas.NotificationRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/request/preview{?recipientsPreviewSize}`,
-      params: {
-        recipientsPreviewSize: recipientsPreviewSize
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationRequestPreviewSchema.parse(response.data);
-  }
-
-
-  async getNotificationRequestByIdUsingGET(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/request/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationRequestInfoSchema.parse(response.data);
-  }
-
-
-  async deleteNotificationRequestUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/notification/request/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getNotificationRequestsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/requests{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationRequestInfoSchema.parse(response.data);
-  }
-
-
-  async getNotificationSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/settings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationSettingsSchema.parse(response.data);
-  }
-
-
-  async saveNotificationSettingsUsingPOST(data: schemas.NotificationSettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/settings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationSettingsSchema.parse(response.data);
-  }
-
-
-  async getUserNotificationSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/settings/user`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserNotificationSettingsSchema.parse(response.data);
-  }
-
-
-  async saveUserNotificationSettingsUsingPOST(data: schemas.UserNotificationSettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/settings/user`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserNotificationSettingsSchema.parse(response.data);
-  }
-
-
-  async deleteNotificationUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/notification/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async markNotificationAsReadUsingPUT(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async updateImageInfoUsingPUT(type: string, key: string, data: schemas.TbResourceInfo, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/notification/${id}/read`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}/info`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async markAllNotificationsAsReadUsingPUT(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async downloadImagePreviewUsingGET(type: string, key: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}/preview`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async updateImagePublicStatusUsingPUT(type: string, key: string, isPublic: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/notifications/read`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getNotificationsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, unreadOnly: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notifications{?page,pageSize,sortOrder,sortProperty,textSearch,unreadOnly}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        unreadOnly: unreadOnly
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}/public/${encodeURIComponent(isPublic)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async saveNotificationRuleUsingPOST(data: schemas.NotificationRule, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/rule`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationRuleSchema.parse(response.data);
-  }
-
-
-  async getNotificationRuleByIdUsingGET(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/rule/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationRuleInfoSchema.parse(response.data);
-  }
-
-
-  async deleteNotificationRuleUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteImageUsingDELETE(type: string, key: string, force: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/notification/rule/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getNotificationRulesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/rules{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationRuleInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/images/${encodeURIComponent(type)}/${encodeURIComponent(key)}{?force}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (force !== undefined) searchParams.append('force', String(force));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbImageDeleteResultSchemaSchema.parse(responseData);
   }
 
 
-  async saveNotificationTargetUsingPOST(data: schemas.NotificationTarget, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/target`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.NotificationTargetSchema.parse(response.data);
-  }
-
-
-  async getRecipientsForNotificationTargetConfigUsingPOST(pageSize: number, page: number, data: schemas.NotificationTarget, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/notification/target/recipients{?page,pageSize}`,
-      params: {
-        pageSize: pageSize,
-        page: page
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
-  }
-
-
-  async getNotificationTargetByIdUsingGET(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getImagesUsingGET(pageSize: number, page: number, includeSystemImages: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/notification/target/${id}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.NotificationTargetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/images{?includeSystemImages,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeSystemImages !== undefined) searchParams.append('includeSystemImages', String(includeSystemImages));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TbResourceInfoSchemaSchema.parse(responseData);
   }
 
 
-  async deleteNotificationTargetByIdUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async downloadLoginFaviconUsingGET(type: string, key: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/whiteLabel/loginFavicon/${encodeURIComponent(type)}/${encodeURIComponent(key)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadLoginLogoUsingGET(type: string, key: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/whiteLabel/loginLogo/${encodeURIComponent(type)}/${encodeURIComponent(key)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findEdgeMissingAttributesUsingGET(edgeId: string, integrationIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/integration/${encodeURIComponent(edgeId)}/missingAttributes{?integrationIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (integrationIds !== undefined) searchParams.append('integrationIds', String(integrationIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async findAllRelatedEdgesMissingAttributesUsingGET(integrationId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/integration/${encodeURIComponent(integrationId)}/allMissingAttributes`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async assignIntegrationToEdgeUsingPOST(edgeId: string, integrationId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.IntegrationSchemaSchema.parse(responseData);
+  }
+
+
+  async unassignIntegrationFromEdgeUsingDELETE(edgeId: string, integrationId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/notification/target/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getNotificationTargetsByIdsUsingGET(ids: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/targets{?ids}`,
-      params: {
-        ids: ids
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.IntegrationSchemaSchema.parse(responseData);
   }
 
 
-  async getNotificationTargetsBySupportedNotificationTypeUsingGET(notificationType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEdgeIntegrationInfosUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/notification/targets{?notificationType,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        notificationType: notificationType,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationTargetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integrationInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_IntegrationInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getNotificationTargetsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getEdgeIntegrationsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/notification/targets{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationTargetSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/integrations{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_IntegrationSchemaSchema.parse(responseData);
   }
 
 
-  async listSlackConversationsUsingGET(type: string, token: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/slack/conversations{?token,type}`,
-      params: {
-        type: type,
-        token: token
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveNotificationTemplateUsingPOST(data: schemas.NotificationTemplate, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveIntegrationUsingPOST(data: schemas.Integration, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/notification/template`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.NotificationTemplateSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/integration`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.IntegrationSchemaSchema.parse(responseData);
   }
 
 
-  async getNotificationTemplateByIdUsingGET(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async checkIntegrationConnectionUsingPOST(data: schemas.Integration, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/integration/check`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getIntegrationByRoutingKeyUsingGET(routingKey: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/notification/template/${id}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.NotificationTemplateSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/integration/routingKey/${encodeURIComponent(routingKey)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.IntegrationSchemaSchema.parse(responseData);
   }
 
 
-  async deleteNotificationTemplateByIdUsingDELETE(id: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getIntegrationByIdUsingGET(integrationId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.IntegrationSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteIntegrationUsingDELETE(integrationId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/notification/template/${id}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getNotificationTemplatesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, notificationTypes: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/notification/templates{?notificationTypes,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        notificationTypes: notificationTypes
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_NotificationTemplateSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/integration/${encodeURIComponent(integrationId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getClientRegistrationTemplatesUsingGET_1(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getIntegrationInfosUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/oauth2/config/template`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/integrationInfos{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isEdgeTemplate !== undefined) searchParams.append('isEdgeTemplate', String(isEdgeTemplate));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_IntegrationInfoSchemaSchema.parse(responseData);
   }
 
 
-  async saveClientRegistrationTemplateUsingPOST(data: schemas.OAuth2ClientRegistrationTemplate, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getIntegrationsByIdsUsingGET(integrationIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/integrations{?integrationIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (integrationIds !== undefined) searchParams.append('integrationIds', String(integrationIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getIntegrationsUsingGET(isEdgeTemplate: boolean, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/integrations{?isEdgeTemplate,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isEdgeTemplate !== undefined) searchParams.append('isEdgeTemplate', String(isEdgeTemplate));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_IntegrationSchemaSchema.parse(responseData);
+  }
+
+
+  async getClientRegistrationTemplatesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/mail/config/template`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getAvailableDeliveryMethodsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/deliveryMethods`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async createNotificationRequestUsingPOST(data: schemas.NotificationRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/oauth2/config/template`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.OAuth2ClientRegistrationTemplateSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/request`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationRequestSchemaSchema.parse(responseData);
   }
 
 
-  async deleteClientRegistrationTemplateUsingDELETE(clientRegistrationTemplateId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getNotificationRequestPreviewUsingPOST(recipientsPreviewSize: number, data: schemas.NotificationRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/request/preview{?recipientsPreviewSize}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (recipientsPreviewSize !== undefined) searchParams.append('recipientsPreviewSize', String(recipientsPreviewSize));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationRequestPreviewSchemaSchema.parse(responseData);
+  }
+
+
+  async getNotificationRequestByIdUsingGET(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/request/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationRequestInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteNotificationRequestUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/oauth2/config/template/${clientRegistrationTemplateId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getOAuth2ClientsUsingPOST(pkgName: string, platform: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/oauth2Clients{?pkgName,platform}`,
-      params: {
-        pkgName: pkgName,
-        platform: platform
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/notification/request/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getCurrentOAuth2InfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getNotificationRequestsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/oauth2/config`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.OAuth2InfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/notification/requests{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationRequestInfoSchemaSchema.parse(responseData);
   }
 
 
-  async saveOAuth2InfoUsingPOST(data: schemas.OAuth2Info, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getNotificationSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationSettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveNotificationSettingsUsingPOST(data: schemas.NotificationSettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/oauth2/config`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.OAuth2InfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getLoginProcessingUrlUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserNotificationSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/oauth2/loginProcessingUrl`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/notification/settings/user`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserNotificationSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async saveOtaPackageInfoUsingPOST(data: schemas.SaveOtaPackageInfoRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveUserNotificationSettingsUsingPOST(data: schemas.UserNotificationSettings, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/otaPackage`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.OtaPackageInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/settings/user`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserNotificationSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getOtaPackageInfoByIdUsingGET(otaPackageId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackage/info/${otaPackageId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.OtaPackageInfoSchema.parse(response.data);
-  }
-
-
-  async getOtaPackageByIdUsingGET(otaPackageId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackage/${otaPackageId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.OtaPackageSchema.parse(response.data);
-  }
-
-
-  async saveOtaPackageDataUsingPOST(otaPackageId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/otaPackage/${otaPackageId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.OtaPackageInfoSchema.parse(response.data);
-  }
-
-
-  async deleteOtaPackageUsingDELETE(otaPackageId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteNotificationUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/otaPackage/${otaPackageId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadOtaPackageUsingGET(otaPackageId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackage/${otaPackageId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ResourceSchema.parse(response.data);
-  }
-
-
-  async getGroupOtaPackagesUsingGET(groupId: string, type: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackages/group/${groupId}/${type}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_OtaPackageInfoSchema.parse(response.data);
-  }
-
-
-  async getOtaPackagesUsingGET_1(deviceProfileId: string, type: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackages/${deviceProfileId}/${type}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_OtaPackageInfoSchema.parse(response.data);
-  }
-
-
-  async getOtaPackagesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/otaPackages{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_OtaPackageInfoSchema.parse(response.data);
-  }
-
-
-  async changeOwnerToCustomerUsingPOST(ownerId: string, entityType: string, entityId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/owner/CUSTOMER/${ownerId}/${entityType}/${entityId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async changeOwnerToTenantUsingPOST(ownerId: string, entityType: string, entityId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/owner/TENANT/${ownerId}/${entityType}/${entityId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getQueueByNameUsingGET(queueName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/queues/name/${queueName}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.QueueSchema.parse(response.data);
-  }
-
-
-  async getQueueByIdUsingGET(queueId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/queues/${queueId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.QueueSchema.parse(response.data);
-  }
-
-
-  async deleteQueueUsingDELETE(queueId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/queues/${queueId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantQueuesByServiceTypeUsingGET(serviceType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/queues{?page,pageSize,serviceType,sortOrder,sortProperty,textSearch}`,
-      params: {
-        serviceType: serviceType,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_QueueSchema.parse(response.data);
-  }
-
-
-  async saveQueueUsingPOST(serviceType: string, data: schemas.Queue, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/queues{?serviceType}`,
-      params: {
-        serviceType: serviceType
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.QueueSchema.parse(response.data);
-  }
-
-
-  async downloadTestReportUsingPOST(reportsServerEndpointUrl: string, data: schemas.ReportConfig, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/report/test{?reportsServerEndpointUrl}`,
-      params: {
-        reportsServerEndpointUrl: reportsServerEndpointUrl
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async downloadDashboardReportUsingPOST(dashboardId: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/report/${dashboardId}/download`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveRoleUsingPOST(data: schemas.Role, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/role`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RoleSchema.parse(response.data);
-  }
-
-
-  async getRoleByIdUsingGET(roleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/role/${roleId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RoleSchema.parse(response.data);
-  }
-
-
-  async deleteRoleUsingDELETE(roleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/role/${roleId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getRolesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/roles{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_RoleSchema.parse(response.data);
-  }
-
-
-  async getRolesByIdsUsingGET(roleIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/roles{?roleIds}`,
-      params: {
-        roleIds: roleIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async handleOneWayDeviceRPCRequestUsingPOST(deviceId: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/rpc/oneway/${deviceId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async handleTwoWayDeviceRPCRequestUsingPOST(deviceId: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/rpc/twoway/${deviceId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async handleOneWayDeviceRPCRequestUsingPOST_1(deviceId: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rpc/oneway/${deviceId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getPersistedRpcByDeviceUsingGET(deviceId: string, pageSize: number, page: number, rpcStatus: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/rpc/persistent/device/${deviceId}{?page,pageSize,rpcStatus,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        rpcStatus: rpcStatus,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getPersistedRpcUsingGET(rpcId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/rpc/persistent/${rpcId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RpcSchema.parse(response.data);
-  }
-
-
-  async deleteRpcUsingDELETE(rpcId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/rpc/persistent/${rpcId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async handleTwoWayDeviceRPCRequestUsingPOST_1(deviceId: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rpc/twoway/${deviceId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async assignRuleChainToEdgeUsingPOST(edgeId: string, ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/edge/${edgeId}/ruleChain/${ruleChainId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async unassignRuleChainFromEdgeUsingDELETE(edgeId: string, ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/edge/${edgeId}/ruleChain/${ruleChainId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async getEdgeRuleChainsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_RuleChainSchema.parse(response.data);
-  }
-
-
-  async saveRuleChainUsingPOST_1(data: schemas.RuleChain, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async getAutoAssignToEdgeRuleChainsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/autoAssignToEdgeRuleChains`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveRuleChainUsingPOST(data: schemas.DefaultRuleChainCreateRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/device/default`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async saveRuleChainMetaDataUsingPOST(updateRelated: boolean, data: schemas.RuleChainMetaData, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/metadata{?updateRelated}`,
-      params: {
-        updateRelated: updateRelated
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainMetaDataSchema.parse(response.data);
-  }
-
-
-  async isTbelEnabledUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/tbelEnabled`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async testScriptUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/testScript{?scriptLang}`,
-      params: {
-        scriptLang: scriptLang
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getRuleChainByIdUsingGET(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/${ruleChainId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async deleteRuleChainUsingDELETE(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/ruleChain/${ruleChainId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async setAutoAssignToEdgeRuleChainUsingPOST(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/${ruleChainId}/autoAssignToEdge`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async unsetAutoAssignToEdgeRuleChainUsingDELETE(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/ruleChain/${ruleChainId}/autoAssignToEdge`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async setEdgeTemplateRootRuleChainUsingPOST(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/${ruleChainId}/edgeTemplateRoot`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async getRuleChainMetaDataUsingGET(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/${ruleChainId}/metadata`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainMetaDataSchema.parse(response.data);
-  }
-
-
-  async getRuleChainOutputLabelsUsingGET(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/${ruleChainId}/output/labels`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getRuleChainOutputLabelsUsageUsingGET(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChain/${ruleChainId}/output/labels/usage`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async setRootRuleChainUsingPOST(ruleChainId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChain/${ruleChainId}/root`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainSchema.parse(response.data);
-  }
-
-
-  async exportRuleChainsUsingGET(limit: number, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChains/export{?limit}`,
-      params: {
-        limit: limit
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.RuleChainDataSchema.parse(response.data);
-  }
-
-
-  async importRuleChainsUsingPOST(overwrite: boolean, data: schemas.RuleChainData, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/ruleChains/import{?overwrite}`,
-      params: {
-        overwrite: overwrite
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getRuleChainsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch,type}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        type: type,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_RuleChainSchema.parse(response.data);
-  }
-
-
-  async getLatestRuleNodeDebugInputUsingGET(ruleNodeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/ruleNode/${ruleNodeId}/debugIn`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async handleRuleEngineRequestUsingPOST_3(data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rule-engine/`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async handleRuleEngineRequestUsingPOST_2(entityType: string, entityId: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rule-engine/${entityType}/${entityId}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async handleRuleEngineRequestUsingPOST_1(entityType: string, entityId: string, queueName: string, timeout: number, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rule-engine/${entityType}/${entityId}/${queueName}/${timeout}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async handleRuleEngineRequestUsingPOST(entityType: string, entityId: string, timeout: number, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/rule-engine/${entityType}/${entityId}/${timeout}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getAllSchedulerEventsUsingGET(edgeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/allSchedulerEvents`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async assignSchedulerEventToEdgeUsingPOST(edgeId: string, schedulerEventId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/edge/${edgeId}/schedulerEvent/${schedulerEventId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SchedulerEventInfoSchema.parse(response.data);
-  }
-
-
-  async unassignSchedulerEventFromEdgeUsingDELETE(edgeId: string, schedulerEventId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/edge/${edgeId}/schedulerEvent/${schedulerEventId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SchedulerEventInfoSchema.parse(response.data);
-  }
-
-
-  async getEdgeSchedulerEventsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/edge/${edgeId}/schedulerEvents{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_SchedulerEventInfoSchema.parse(response.data);
-  }
-
-
-  async saveSchedulerEventUsingPOST(data: schemas.SchedulerEvent, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/schedulerEvent`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SchedulerEventSchema.parse(response.data);
-  }
-
-
-  async getSchedulerEventInfoByIdUsingGET(schedulerEventId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/schedulerEvent/info/${schedulerEventId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SchedulerEventWithCustomerInfoSchema.parse(response.data);
-  }
-
-
-  async getSchedulerEventByIdUsingGET(schedulerEventId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/schedulerEvent/${schedulerEventId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SchedulerEventSchema.parse(response.data);
-  }
-
-
-  async deleteSchedulerEventUsingDELETE(schedulerEventId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/schedulerEvent/${schedulerEventId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSchedulerEventsByIdsUsingGET(schedulerEventIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/schedulerEvents{?schedulerEventIds}`,
-      params: {
-        schedulerEventIds: schedulerEventIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSchedulerEventsUsingGET(type: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/schedulerEvents{?type}`,
-      params: {
-        type: type
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getPrivacyPolicyUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/selfRegistration/privacyPolicy`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSignUpSelfRegistrationParamsUsingGET(pkgName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/selfRegistration/signUpSelfRegistrationParams{?pkgName}`,
-      params: {
-        pkgName: pkgName
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SignUpSelfRegistrationParamsSchema.parse(response.data);
-  }
-
-
-  async getTermsOfUseUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/selfRegistration/termsOfUse`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSelfRegistrationParamsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/selfRegistration/selfRegistrationParams`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SelfRegistrationParamsSchema.parse(response.data);
-  }
-
-
-  async saveSelfRegistrationParamsUsingPOST(data: schemas.SelfRegistrationParams, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/selfRegistration/selfRegistrationParams`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SelfRegistrationParamsSchema.parse(response.data);
-  }
-
-
-  async deleteSelfRegistrationParamsUsingDELETE(domainName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/selfRegistration/selfRegistrationParams/${domainName}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async activateUserByEmailCodeUsingPOST(emailCode: string, pkgName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/activateByEmailCode{?emailCode,pkgName}`,
-      params: {
-        emailCode: emailCode,
-        pkgName: pkgName
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async activateEmailUsingGET(emailCode: string, pkgName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/activateEmail{?emailCode,pkgName}`,
-      params: {
-        emailCode: emailCode,
-        pkgName: pkgName
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async mobileLoginUsingGET(pkgName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/login{?pkgName}`,
-      params: {
-        pkgName: pkgName
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async resendEmailActivationUsingPOST(email: string, pkgName: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/resendEmailActivation{?email,pkgName}`,
-      params: {
-        email: email,
-        pkgName: pkgName
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async signUpUsingPOST(data: schemas.SignUpRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/noauth/signup`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async acceptPrivacyPolicyUsingPOST(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/signup/acceptPrivacyPolicy`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async acceptTermsOfUseUsingPOST(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/signup/acceptTermsOfUse`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async privacyPolicyAcceptedUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/signup/privacyPolicyAccepted`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async termsOfUseAcceptedUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/signup/termsOfUseAccepted`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSolutionTemplateDetailsUsingGET(solutionTemplateId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/solutions/templates/details/${solutionTemplateId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantSolutionTemplateDetailsSchema.parse(response.data);
-  }
-
-
-  async getSolutionTemplateInfosUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/solutions/templates/infos`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getSolutionTemplateInstructionsUsingGET(solutionTemplateId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/solutions/templates/instructions/${solutionTemplateId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantSolutionTemplateInstructionsSchema.parse(response.data);
-  }
-
-
-  async uninstallSolutionTemplateUsingDELETE(solutionTemplateId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/solutions/templates/${solutionTemplateId}/delete`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async installSolutionTemplateUsingPOST(solutionTemplateId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/solutions/templates/${solutionTemplateId}/install`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.SolutionInstallResponseSchema.parse(response.data);
-  }
-
-
-  async saveResourceUsingPOST(data: schemas.TbResource, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/resource`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async getResourceInfoByIdUsingGET(resourceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/info/${resourceId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async downloadJksResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/jks/${resourceId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadJsResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/js/${resourceId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getLwm2mListObjectsPageUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/lwm2m/page{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadLwm2mResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/lwm2m/${resourceId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getLwm2mListObjectsUsingGET(sortOrder: string, sortProperty: string, objectIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/lwm2m{?objectIds,sortOrder,sortProperty}`,
-      params: {
-        sortOrder: sortOrder,
-        sortProperty: sortProperty,
-        objectIds: objectIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadPkcs12ResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/pkcs12/${resourceId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantResourcesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/tenant{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async deleteResourceUsingDELETE(resourceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/resource/${resourceId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async downloadResourceUsingGET(resourceId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource/${resourceId}/download`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.ByteArrayResourceSchema.parse(response.data);
-  }
-
-
-  async getResourcesUsingGET(pageSize: number, page: number, resourceType: string, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/resource{?page,pageSize,resourceType,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        resourceType: resourceType,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TbResourceInfoSchema.parse(response.data);
-  }
-
-
-  async saveDeviceAttributesUsingPOST(deviceId: string, scope: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/telemetry/${deviceId}/${scope}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async deleteDeviceAttributesUsingDELETE(deviceId: string, scope: string, keys: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/plugins/telemetry/${deviceId}/${scope}{?keys}`,
-      params: {
-        keys: keys
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveEntityAttributesV2UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/attributes/${scope}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getAttributeKeysUsingGET(entityType: string, entityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/keys/attributes`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getAttributeKeysByScopeUsingGET(entityType: string, entityId: string, scope: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/keys/attributes/${scope}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getTimeseriesKeysUsingGET_1(entityType: string, entityId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/keys/timeseries`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async deleteEntityTimeseriesUsingDELETE(entityType: string, entityId: string, keys: string, deleteAllDataForKeys: boolean, startTs: number, endTs: number, deleteLatest: boolean, rewriteLatestIfDeleted: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/timeseries/delete{?deleteAllDataForKeys,deleteLatest,endTs,keys,rewriteLatestIfDeleted,startTs}`,
-      params: {
-        keys: keys,
-        deleteAllDataForKeys: deleteAllDataForKeys,
-        startTs: startTs,
-        endTs: endTs,
-        deleteLatest: deleteLatest,
-        rewriteLatestIfDeleted: rewriteLatestIfDeleted
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveEntityTelemetryWithTTLUsingPOST(entityType: string, entityId: string, scope: string, ttl: number, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/timeseries/${scope}/${ttl}?scope=ANY`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveEntityTelemetryUsingPOST(entityType: string, entityId: string, scope: string, data: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/timeseries/${scope}?scope=ANY`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getAttributesByScopeUsingGET(entityType: string, entityId: string, scope: string, keys: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/values/attributes/${scope}{?keys}`,
-      params: {
-        keys: keys
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getAttributesUsingGET(entityType: string, entityId: string, keys: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/values/attributes{?keys}`,
-      params: {
-        keys: keys
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getTimeseriesUsingGET(entityType: string, entityId: string, keys: string, startTs: number, endTs: number, interval: number, limit: number, agg: string, orderBy: string, useStrictDataTypes: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/values/timeseries{?agg,endTs,interval,keys,limit,orderBy,startTs,useStrictDataTypes}`,
-      params: {
-        keys: keys,
-        startTs: startTs,
-        endTs: endTs,
-        interval: interval,
-        limit: limit,
-        agg: agg,
-        orderBy: orderBy,
-        useStrictDataTypes: useStrictDataTypes
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async getLatestTimeseriesUsingGET(entityType: string, entityId: string, keys: string, useStrictDataTypes: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/values/timeseries{?keys,useStrictDataTypes}`,
-      params: {
-        keys: keys,
-        useStrictDataTypes: useStrictDataTypes
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveEntityAttributesV1UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/${scope}`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async deleteEntityAttributesUsingDELETE(entityType: string, entityId: string, scope: string, keys: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/plugins/telemetry/${entityType}/${entityId}/${scope}{?keys}`,
-      params: {
-        keys: keys
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.DeferredResult_Of_ResponseEntitySchema.parse(response.data);
-  }
-
-
-  async saveTenantUsingPOST(data: schemas.Tenant, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/tenant`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantSchema.parse(response.data);
-  }
-
-
-  async getTenantInfoByIdUsingGET(tenantId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/info/${tenantId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantInfoSchema.parse(response.data);
-  }
-
-
-  async getTenantByIdUsingGET(tenantId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/${tenantId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantSchema.parse(response.data);
-  }
-
-
-  async deleteTenantUsingDELETE(tenantId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/tenant/${tenantId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TenantInfoSchema.parse(response.data);
-  }
-
-
-  async getTenantsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenants{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TenantSchema.parse(response.data);
-  }
-
-
-  async getTenantsByIdsUsingGET(tenantIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenants{?tenantIds}`,
-      params: {
-        tenantIds: tenantIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveTenantProfileUsingPOST(data: schemas.TenantProfile, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/tenantProfile`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantProfileSchema.parse(response.data);
-  }
-
-
-  async getTenantProfileByIdUsingGET(tenantProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfile/${tenantProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantProfileSchema.parse(response.data);
-  }
-
-
-  async deleteTenantProfileUsingDELETE(tenantProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/tenantProfile/${tenantProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async setDefaultTenantProfileUsingPOST(tenantProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/tenantProfile/${tenantProfileId}/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TenantProfileSchema.parse(response.data);
-  }
-
-
-  async getDefaultTenantProfileInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfileInfo/default`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getTenantProfileInfoByIdUsingGET(tenantProfileId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfileInfo/${tenantProfileId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getTenantProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_EntityInfoSchema.parse(response.data);
-  }
-
-
-  async getTenantProfilesByIdsUsingGET(ids: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfiles{?ids}`,
-      params: {
-        ids: ids
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenantProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_TenantProfileSchema.parse(response.data);
-  }
-
-
-  async generateTwoFaAccountConfigUsingPOST(providerType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/2fa/account/config/generate{?providerType}`,
-      params: {
-        providerType: providerType
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.TwoFaAccountConfigSchema.parse(response.data);
-  }
-
+    
 
-  async submitTwoFaAccountConfigUsingPOST(data: schemas.TwoFaAccountConfig, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/2fa/account/config/submit`,
-      data
-    };
+    const url = new URL(`/api/notification/${encodeURIComponent(id)}`, this.baseURL);
+    
 
-    const response = await this.client.request(config);
-    return response.data;
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async updateTwoFaAccountConfigUsingPUT(providerType: string, data: schemas.TwoFaAccountConfigUpdateRequest, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async markNotificationAsReadUsingPUT(id: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/2fa/account/config{?providerType}`,
-      params: {
-        providerType: providerType
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AccountTwoFaSettingsSchema.parse(response.data);
-  }
-
-
-  async deleteTwoFaAccountConfigUsingDELETE(providerType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/2fa/account/config{?providerType}`,
-      params: {
-        providerType: providerType
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.AccountTwoFaSettingsSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/notification/${encodeURIComponent(id)}/read`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async verifyAndSaveTwoFaAccountConfigUsingPOST(verificationCode: string, data: schemas.TwoFaAccountConfig, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/2fa/account/config{?verificationCode}`,
-      params: {
-        verificationCode: verificationCode
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AccountTwoFaSettingsSchema.parse(response.data);
-  }
-
-
-  async getAccountTwoFaSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/2fa/account/settings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AccountTwoFaSettingsSchema.parse(response.data);
-  }
-
-
-  async getAvailableTwoFaProvidersUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/2fa/providers`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getPlatformTwoFaSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/2fa/settings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PlatformTwoFaSettingsSchema.parse(response.data);
-  }
-
-
-  async savePlatformTwoFaSettingsUsingPOST(data: schemas.PlatformTwoFaSettings, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/2fa/settings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PlatformTwoFaSettingsSchema.parse(response.data);
-  }
-
-
-  async getAvailableTwoFaProvidersUsingGET_1(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/auth/2fa/providers`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async checkTwoFaVerificationCodeUsingPOST(providerType: string, verificationCode: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/auth/2fa/verification/check{?providerType,verificationCode}`,
-      params: {
-        providerType: providerType,
-        verificationCode: verificationCode
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async requestTwoFaVerificationCodeUsingPOST(providerType: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/auth/2fa/verification/send{?providerType}`,
-      params: {
-        providerType: providerType
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getHelpBaseUrlUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/uiSettings/helpBaseUrl`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getTenantUsageInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/usage`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UsageInfoSchema.parse(response.data);
-  }
-
-
-  async getAllCustomerUsersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/users{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
-  }
-
-
-  async getCustomerUserInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/userInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserInfoSchema.parse(response.data);
-  }
-
-
-  async getCustomerUsersUsingGET(customerId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/customer/${customerId}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
-  }
-
-
-  async getUsersByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/entityGroup/${entityGroupId}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
-  }
-
-
-  async getTenantAdminsUsingGET(tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/tenant/${tenantId}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
-  }
-
-
-  async getUserDashboardsInfoUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/dashboards`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserDashboardsInfoSchema.parse(response.data);
-  }
-
-
-  async reportUserDashboardActionUsingGET(dashboardId: string, action: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/dashboards/${dashboardId}/${action}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserDashboardsInfoSchema.parse(response.data);
-  }
-
-
-  async getUserInfoByIdUsingGET(userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/info/${userId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserInfoSchema.parse(response.data);
-  }
-
-
-  async sendActivationEmailUsingPOST(email: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/user/sendActivationMail{?email}`,
-      params: {
-        email: email
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserSettingsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/settings`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async putUserSettingsUsingPUT(data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async markAllNotificationsAsReadUsingPUT(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/user/settings`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/notifications/read`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async saveUserSettingsUsingPOST(data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/user/settings`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async deleteUserSettingsUsingDELETE_1(paths: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'DELETE',
-      url: `/api/user/settings/${paths}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserSettingsUsingGET_1(type: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getNotificationsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, unreadOnly: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/user/settings/${type}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/notifications{?page,pageSize,sortOrder,sortProperty,textSearch,unreadOnly}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (unreadOnly !== undefined) searchParams.append('unreadOnly', String(unreadOnly));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationSchemaSchema.parse(responseData);
   }
 
 
-  async putUserSettingsUsingPUT_1(type: string, data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async saveNotificationRuleUsingPOST(data: schemas.NotificationRule, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/rule`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationRuleSchemaSchema.parse(responseData);
+  }
+
+
+  async getNotificationRuleByIdUsingGET(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/rule/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationRuleInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteNotificationRuleUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/rule/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getNotificationRulesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/rules{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationRuleInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveNotificationTargetUsingPOST(data: schemas.NotificationTarget, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/target`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationTargetSchemaSchema.parse(responseData);
+  }
+
+
+  async getRecipientsForNotificationTargetConfigUsingPOST(pageSize: number, page: number, data: schemas.NotificationTarget, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/target/recipients{?page,pageSize}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
+  }
+
+
+  async getNotificationTargetByIdUsingGET(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/target/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationTargetSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteNotificationTargetByIdUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/target/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getNotificationTargetsByIdsUsingGET(ids: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/targets{?ids}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (ids !== undefined) searchParams.append('ids', String(ids));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getNotificationTargetsBySupportedNotificationTypeUsingGET(notificationType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/targets{?notificationType,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (notificationType !== undefined) searchParams.append('notificationType', String(notificationType));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationTargetSchemaSchema.parse(responseData);
+  }
+
+
+  async getNotificationTargetsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/targets{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationTargetSchemaSchema.parse(responseData);
+  }
+
+
+  async listSlackConversationsUsingGET(type: string, token: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/slack/conversations{?token,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (token !== undefined) searchParams.append('token', String(token));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveNotificationTemplateUsingPOST(data: schemas.NotificationTemplate, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/notification/template`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationTemplateSchemaSchema.parse(responseData);
+  }
+
+
+  async getNotificationTemplateByIdUsingGET(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/template/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.NotificationTemplateSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteNotificationTemplateByIdUsingDELETE(id: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/template/${encodeURIComponent(id)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getNotificationTemplatesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, notificationTypes: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/notification/templates{?notificationTypes,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (notificationTypes !== undefined) searchParams.append('notificationTypes', String(notificationTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_NotificationTemplateSchemaSchema.parse(responseData);
+  }
+
+
+  async getClientRegistrationTemplatesUsingGET_1(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/oauth2/config/template`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveClientRegistrationTemplateUsingPOST(data: schemas.OAuth2ClientRegistrationTemplate, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/oauth2/config/template`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OAuth2ClientRegistrationTemplateSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteClientRegistrationTemplateUsingDELETE(clientRegistrationTemplateId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/oauth2/config/template/${encodeURIComponent(clientRegistrationTemplateId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getOAuth2ClientsUsingPOST(pkgName: string, platform: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/oauth2Clients{?pkgName,platform}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    if (platform !== undefined) searchParams.append('platform', String(platform));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getCurrentOAuth2InfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/oauth2/config`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OAuth2InfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveOAuth2InfoUsingPOST(data: schemas.OAuth2Info, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/oauth2/config`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OAuth2InfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getLoginProcessingUrlUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/oauth2/loginProcessingUrl`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveOtaPackageInfoUsingPOST(data: schemas.SaveOtaPackageInfoRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/otaPackage`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOtaPackageInfoByIdUsingGET(otaPackageId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackage/info/${encodeURIComponent(otaPackageId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOtaPackageByIdUsingGET(otaPackageId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackage/${encodeURIComponent(otaPackageId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OtaPackageSchemaSchema.parse(responseData);
+  }
+
+
+  async saveOtaPackageDataUsingPOST(otaPackageId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackage/${encodeURIComponent(otaPackageId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteOtaPackageUsingDELETE(otaPackageId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackage/${encodeURIComponent(otaPackageId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadOtaPackageUsingGET(otaPackageId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackage/${encodeURIComponent(otaPackageId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ResourceSchemaSchema.parse(responseData);
+  }
+
+
+  async getGroupOtaPackagesUsingGET(groupId: string, type: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackages/group/${encodeURIComponent(groupId)}/${encodeURIComponent(type)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOtaPackagesUsingGET_1(deviceProfileId: string, type: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackages/${encodeURIComponent(deviceProfileId)}/${encodeURIComponent(type)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getOtaPackagesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/otaPackages{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_OtaPackageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async changeOwnerToCustomerUsingPOST(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/owner/CUSTOMER/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async changeOwnerToTenantUsingPOST(ownerId: string, entityType: string, entityId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/owner/TENANT/${encodeURIComponent(ownerId)}/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getQueueByNameUsingGET(queueName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/queues/name/${encodeURIComponent(queueName)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.QueueSchemaSchema.parse(responseData);
+  }
+
+
+  async getQueueByIdUsingGET(queueId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/queues/${encodeURIComponent(queueId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.QueueSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteQueueUsingDELETE(queueId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/queues/${encodeURIComponent(queueId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getTenantQueuesByServiceTypeUsingGET(serviceType: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/queues{?page,pageSize,serviceType,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (serviceType !== undefined) searchParams.append('serviceType', String(serviceType));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_QueueSchemaSchema.parse(responseData);
+  }
+
+
+  async saveQueueUsingPOST(serviceType: string, data: schemas.Queue, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/queues{?serviceType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (serviceType !== undefined) searchParams.append('serviceType', String(serviceType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.QueueSchemaSchema.parse(responseData);
+  }
+
+
+  async downloadTestReportUsingPOST(reportsServerEndpointUrl: string, data: schemas.ReportConfig, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/report/test{?reportsServerEndpointUrl}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (reportsServerEndpointUrl !== undefined) searchParams.append('reportsServerEndpointUrl', String(reportsServerEndpointUrl));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async downloadDashboardReportUsingPOST(dashboardId: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/report/${encodeURIComponent(dashboardId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveRoleUsingPOST(data: schemas.Role, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/role`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RoleSchemaSchema.parse(responseData);
+  }
+
+
+  async getRoleByIdUsingGET(roleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/role/${encodeURIComponent(roleId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RoleSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteRoleUsingDELETE(roleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/role/${encodeURIComponent(roleId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRolesUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/roles{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_RoleSchemaSchema.parse(responseData);
+  }
+
+
+  async getRolesByIdsUsingGET(roleIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/roles{?roleIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (roleIds !== undefined) searchParams.append('roleIds', String(roleIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async handleOneWayDeviceRPCRequestUsingPOST(deviceId: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/rpc/oneway/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async handleTwoWayDeviceRPCRequestUsingPOST(deviceId: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/rpc/twoway/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async handleOneWayDeviceRPCRequestUsingPOST_1(deviceId: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rpc/oneway/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getPersistedRpcByDeviceUsingGET(deviceId: string, pageSize: number, page: number, rpcStatus: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/rpc/persistent/device/${encodeURIComponent(deviceId)}{?page,pageSize,rpcStatus,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (rpcStatus !== undefined) searchParams.append('rpcStatus', String(rpcStatus));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getPersistedRpcUsingGET(rpcId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/rpc/persistent/${encodeURIComponent(rpcId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RpcSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteRpcUsingDELETE(rpcId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/rpc/persistent/${encodeURIComponent(rpcId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async handleTwoWayDeviceRPCRequestUsingPOST_1(deviceId: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rpc/twoway/${encodeURIComponent(deviceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async assignRuleChainToEdgeUsingPOST(edgeId: string, ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/ruleChain/${encodeURIComponent(ruleChainId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async unassignRuleChainFromEdgeUsingDELETE(edgeId: string, ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/ruleChain/${encodeURIComponent(ruleChainId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeRuleChainsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async saveRuleChainUsingPOST_1(data: schemas.RuleChain, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/ruleChain`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async getAutoAssignToEdgeRuleChainsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/autoAssignToEdgeRuleChains`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveRuleChainUsingPOST(data: schemas.DefaultRuleChainCreateRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/ruleChain/device/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async saveRuleChainMetaDataUsingPOST(updateRelated: boolean, data: schemas.RuleChainMetaData, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/ruleChain/metadata{?updateRelated}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (updateRelated !== undefined) searchParams.append('updateRelated', String(updateRelated));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainMetaDataSchemaSchema.parse(responseData);
+  }
+
+
+  async isTbelEnabledUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/tbelEnabled`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async testScriptUsingPOST(scriptLang: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/ruleChain/testScript{?scriptLang}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (scriptLang !== undefined) searchParams.append('scriptLang', String(scriptLang));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getRuleChainByIdUsingGET(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteRuleChainUsingDELETE(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async setAutoAssignToEdgeRuleChainUsingPOST(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/autoAssignToEdge`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async unsetAutoAssignToEdgeRuleChainUsingDELETE(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/autoAssignToEdge`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async setEdgeTemplateRootRuleChainUsingPOST(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/edgeTemplateRoot`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async getRuleChainMetaDataUsingGET(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/metadata`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainMetaDataSchemaSchema.parse(responseData);
+  }
+
+
+  async getRuleChainOutputLabelsUsingGET(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/output/labels`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRuleChainOutputLabelsUsageUsingGET(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/output/labels/usage`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async setRootRuleChainUsingPOST(ruleChainId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChain/${encodeURIComponent(ruleChainId)}/root`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async exportRuleChainsUsingGET(limit: number, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChains/export{?limit}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (limit !== undefined) searchParams.append('limit', String(limit));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.RuleChainDataSchemaSchema.parse(responseData);
+  }
+
+
+  async importRuleChainsUsingPOST(overwrite: boolean, data: schemas.RuleChainData, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/ruleChains/import{?overwrite}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (overwrite !== undefined) searchParams.append('overwrite', String(overwrite));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getRuleChainsUsingGET(pageSize: number, page: number, type: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleChains{?page,pageSize,sortOrder,sortProperty,textSearch,type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (type !== undefined) searchParams.append('type', String(type));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_RuleChainSchemaSchema.parse(responseData);
+  }
+
+
+  async getLatestRuleNodeDebugInputUsingGET(ruleNodeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/ruleNode/${encodeURIComponent(ruleNodeId)}/debugIn`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async handleRuleEngineRequestUsingPOST_3(data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rule-engine/`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async handleRuleEngineRequestUsingPOST_2(entityType: string, entityId: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async handleRuleEngineRequestUsingPOST_1(entityType: string, entityId: string, queueName: string, timeout: number, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(queueName)}/${encodeURIComponent(timeout)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async handleRuleEngineRequestUsingPOST(entityType: string, entityId: string, timeout: number, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/rule-engine/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(timeout)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getAllSchedulerEventsUsingGET(edgeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/allSchedulerEvents`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async assignSchedulerEventToEdgeUsingPOST(edgeId: string, schedulerEventId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SchedulerEventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async unassignSchedulerEventFromEdgeUsingDELETE(edgeId: string, schedulerEventId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SchedulerEventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getEdgeSchedulerEventsUsingGET(edgeId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/edge/${encodeURIComponent(edgeId)}/schedulerEvents{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_SchedulerEventInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveSchedulerEventUsingPOST(data: schemas.SchedulerEvent, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/schedulerEvent`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SchedulerEventSchemaSchema.parse(responseData);
+  }
+
+
+  async getSchedulerEventInfoByIdUsingGET(schedulerEventId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/schedulerEvent/info/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SchedulerEventWithCustomerInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getSchedulerEventByIdUsingGET(schedulerEventId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SchedulerEventSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteSchedulerEventUsingDELETE(schedulerEventId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/schedulerEvent/${encodeURIComponent(schedulerEventId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSchedulerEventsByIdsUsingGET(schedulerEventIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/schedulerEvents{?schedulerEventIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (schedulerEventIds !== undefined) searchParams.append('schedulerEventIds', String(schedulerEventIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSchedulerEventsUsingGET(type: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/schedulerEvents{?type}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (type !== undefined) searchParams.append('type', String(type));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getPrivacyPolicyUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/selfRegistration/privacyPolicy`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSignUpSelfRegistrationParamsUsingGET(pkgName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/selfRegistration/signUpSelfRegistrationParams{?pkgName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SignUpSelfRegistrationParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async getTermsOfUseUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/selfRegistration/termsOfUse`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSelfRegistrationParamsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/selfRegistration/selfRegistrationParams`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SelfRegistrationParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveSelfRegistrationParamsUsingPOST(data: schemas.SelfRegistrationParams, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/selfRegistration/selfRegistrationParams`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SelfRegistrationParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteSelfRegistrationParamsUsingDELETE(domainName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/selfRegistration/selfRegistrationParams/${encodeURIComponent(domainName)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async activateUserByEmailCodeUsingPOST(emailCode: string, pkgName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/activateByEmailCode{?emailCode,pkgName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (emailCode !== undefined) searchParams.append('emailCode', String(emailCode));
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
+  }
+
+
+  async activateEmailUsingGET(emailCode: string, pkgName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/activateEmail{?emailCode,pkgName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (emailCode !== undefined) searchParams.append('emailCode', String(emailCode));
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async mobileLoginUsingGET(pkgName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/login{?pkgName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async resendEmailActivationUsingPOST(email: string, pkgName: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/noauth/resendEmailActivation{?email,pkgName}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (email !== undefined) searchParams.append('email', String(email));
+    if (pkgName !== undefined) searchParams.append('pkgName', String(pkgName));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async signUpUsingPOST(data: schemas.SignUpRequest, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/noauth/signup`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async acceptPrivacyPolicyUsingPOST(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/signup/acceptPrivacyPolicy`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async acceptTermsOfUseUsingPOST(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/signup/acceptTermsOfUse`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async privacyPolicyAcceptedUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/signup/privacyPolicyAccepted`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async termsOfUseAcceptedUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/signup/termsOfUseAccepted`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSolutionTemplateDetailsUsingGET(solutionTemplateId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/solutions/templates/details/${encodeURIComponent(solutionTemplateId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantSolutionTemplateDetailsSchemaSchema.parse(responseData);
+  }
+
+
+  async getSolutionTemplateInfosUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/solutions/templates/infos`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getSolutionTemplateInstructionsUsingGET(solutionTemplateId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/solutions/templates/instructions/${encodeURIComponent(solutionTemplateId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantSolutionTemplateInstructionsSchemaSchema.parse(responseData);
+  }
+
+
+  async uninstallSolutionTemplateUsingDELETE(solutionTemplateId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/delete`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async installSolutionTemplateUsingPOST(solutionTemplateId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/solutions/templates/${encodeURIComponent(solutionTemplateId)}/install`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.SolutionInstallResponseSchemaSchema.parse(responseData);
+  }
+
+
+  async saveResourceUsingPOST(data: schemas.TbResource, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/resource`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getResourceInfoByIdUsingGET(resourceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/info/${encodeURIComponent(resourceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TbResourceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async downloadJksResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/jks/${encodeURIComponent(resourceId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadJsResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/js/${encodeURIComponent(resourceId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getLwm2mListObjectsPageUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/lwm2m/page{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadLwm2mResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/lwm2m/${encodeURIComponent(resourceId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getLwm2mListObjectsUsingGET(sortOrder: string, sortProperty: string, objectIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/lwm2m{?objectIds,sortOrder,sortProperty}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (objectIds !== undefined) searchParams.append('objectIds', String(objectIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadPkcs12ResourceIfChangedUsingGET(resourceId: string, If_None_Match: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/pkcs12/${encodeURIComponent(resourceId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getTenantResourcesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/tenant{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TbResourceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteResourceUsingDELETE(resourceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/${encodeURIComponent(resourceId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async downloadResourceUsingGET(resourceId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource/${encodeURIComponent(resourceId)}/download`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.ByteArrayResourceSchemaSchema.parse(responseData);
+  }
+
+
+  async getResourcesUsingGET(pageSize: number, page: number, resourceType: string, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/resource{?page,pageSize,resourceType,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (resourceType !== undefined) searchParams.append('resourceType', String(resourceType));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TbResourceInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async saveDeviceAttributesUsingPOST(deviceId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async deleteDeviceAttributesUsingDELETE(deviceId: string, scope: string, keys: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(deviceId)}/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveEntityAttributesV2UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/attributes/${encodeURIComponent(scope)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getAttributeKeysUsingGET(entityType: string, entityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getAttributeKeysByScopeUsingGET(entityType: string, entityId: string, scope: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/attributes/${encodeURIComponent(scope)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getTimeseriesKeysUsingGET_1(entityType: string, entityId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/keys/timeseries`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async deleteEntityTimeseriesUsingDELETE(entityType: string, entityId: string, keys: string, deleteAllDataForKeys: boolean, startTs: number, endTs: number, deleteLatest: boolean, rewriteLatestIfDeleted: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/delete{?deleteAllDataForKeys,deleteLatest,endTs,keys,rewriteLatestIfDeleted,startTs}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    if (deleteAllDataForKeys !== undefined) searchParams.append('deleteAllDataForKeys', String(deleteAllDataForKeys));
+    if (startTs !== undefined) searchParams.append('startTs', String(startTs));
+    if (endTs !== undefined) searchParams.append('endTs', String(endTs));
+    if (deleteLatest !== undefined) searchParams.append('deleteLatest', String(deleteLatest));
+    if (rewriteLatestIfDeleted !== undefined) searchParams.append('rewriteLatestIfDeleted', String(rewriteLatestIfDeleted));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveEntityTelemetryWithTTLUsingPOST(entityType: string, entityId: string, scope: string, ttl: number, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}/${encodeURIComponent(ttl)}?scope=ANY`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveEntityTelemetryUsingPOST(entityType: string, entityId: string, scope: string, data: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/timeseries/${encodeURIComponent(scope)}?scope=ANY`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getAttributesByScopeUsingGET(entityType: string, entityId: string, scope: string, keys: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getAttributesUsingGET(entityType: string, entityId: string, keys: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/attributes{?keys}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getTimeseriesUsingGET(entityType: string, entityId: string, keys: string, startTs: number, endTs: number, interval: number, limit: number, agg: string, orderBy: string, useStrictDataTypes: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?agg,endTs,interval,keys,limit,orderBy,startTs,useStrictDataTypes}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    if (startTs !== undefined) searchParams.append('startTs', String(startTs));
+    if (endTs !== undefined) searchParams.append('endTs', String(endTs));
+    if (interval !== undefined) searchParams.append('interval', String(interval));
+    if (limit !== undefined) searchParams.append('limit', String(limit));
+    if (agg !== undefined) searchParams.append('agg', String(agg));
+    if (orderBy !== undefined) searchParams.append('orderBy', String(orderBy));
+    if (useStrictDataTypes !== undefined) searchParams.append('useStrictDataTypes', String(useStrictDataTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async getLatestTimeseriesUsingGET(entityType: string, entityId: string, keys: string, useStrictDataTypes: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/values/timeseries{?keys,useStrictDataTypes}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    if (useStrictDataTypes !== undefined) searchParams.append('useStrictDataTypes', String(useStrictDataTypes));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveEntityAttributesV1UsingPOST(entityType: string, entityId: string, scope: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async deleteEntityAttributesUsingDELETE(entityType: string, entityId: string, scope: string, keys: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/plugins/telemetry/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}/${encodeURIComponent(scope)}{?keys}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (keys !== undefined) searchParams.append('keys', String(keys));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.DeferredResult_Of_ResponseEntitySchemaSchema.parse(responseData);
+  }
+
+
+  async saveTenantUsingPOST(data: schemas.Tenant, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/tenant`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantInfoByIdUsingGET(tenantId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/info/${encodeURIComponent(tenantId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantByIdUsingGET(tenantId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteTenantUsingDELETE(tenantId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getTenantInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TenantInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantsUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenants{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TenantSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantsByIdsUsingGET(tenantIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenants{?tenantIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (tenantIds !== undefined) searchParams.append('tenantIds', String(tenantIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveTenantProfileUsingPOST(data: schemas.TenantProfile, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/tenantProfile`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantProfileByIdUsingGET(tenantProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfile/${encodeURIComponent(tenantProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteTenantProfileUsingDELETE(tenantProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfile/${encodeURIComponent(tenantProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async setDefaultTenantProfileUsingPOST(tenantProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfile/${encodeURIComponent(tenantProfileId)}/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TenantProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async getDefaultTenantProfileInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfileInfo/default`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantProfileInfoByIdUsingGET(tenantProfileId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfileInfo/${encodeURIComponent(tenantProfileId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantProfileInfosUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfileInfos{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_EntityInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantProfilesByIdsUsingGET(ids: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfiles{?ids}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (ids !== undefined) searchParams.append('ids', String(ids));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getTenantProfilesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenantProfiles{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_TenantProfileSchemaSchema.parse(responseData);
+  }
+
+
+  async generateTwoFaAccountConfigUsingPOST(providerType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/2fa/account/config/generate{?providerType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.TwoFaAccountConfigSchemaSchema.parse(responseData);
+  }
+
+
+  async submitTwoFaAccountConfigUsingPOST(data: schemas.TwoFaAccountConfig, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/2fa/account/config/submit`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async updateTwoFaAccountConfigUsingPUT(providerType: string, data: schemas.TwoFaAccountConfigUpdateRequest, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'PUT',
-      url: `/api/user/settings/${type}`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/2fa/account/config{?providerType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AccountTwoFaSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async deleteUserSettingsUsingDELETE(paths: string, type: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteTwoFaAccountConfigUsingDELETE(providerType: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/user/settings/${type}/${paths}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async isUserTokenAccessEnabledUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/tokenAccessEnabled`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserUsersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/users{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/2fa/account/config{?providerType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AccountTwoFaSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async getUserByIdUsingGET(userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async verifyAndSaveTwoFaAccountConfigUsingPOST(verificationCode: string, data: schemas.TwoFaAccountConfig, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/user/${userId}`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return schemas.UserSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/2fa/account/config{?verificationCode}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (verificationCode !== undefined) searchParams.append('verificationCode', String(verificationCode));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AccountTwoFaSettingsSchemaSchema.parse(responseData);
   }
 
 
-  async deleteUserUsingDELETE(userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAccountTwoFaSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/2fa/account/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AccountTwoFaSettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async getAvailableTwoFaProvidersUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/2fa/providers`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getPlatformTwoFaSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/2fa/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PlatformTwoFaSettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async savePlatformTwoFaSettingsUsingPOST(data: schemas.PlatformTwoFaSettings, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/2fa/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PlatformTwoFaSettingsSchemaSchema.parse(responseData);
+  }
+
+
+  async getAvailableTwoFaProvidersUsingGET_1(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/auth/2fa/providers`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async checkTwoFaVerificationCodeUsingPOST(providerType: string, verificationCode: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/auth/2fa/verification/check{?providerType,verificationCode}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
+    if (verificationCode !== undefined) searchParams.append('verificationCode', String(verificationCode));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
+  }
+
+
+  async requestTwoFaVerificationCodeUsingPOST(providerType: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/auth/2fa/verification/send{?providerType}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (providerType !== undefined) searchParams.append('providerType', String(providerType));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getHelpBaseUrlUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/uiSettings/helpBaseUrl`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getTenantUsageInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/usage`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UsageInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getAllCustomerUsersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/users{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerUserInfosUsingGET(customerId: string, pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/userInfos{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getCustomerUsersUsingGET(customerId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/customer/${encodeURIComponent(customerId)}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
+  }
+
+
+  async getUsersByEntityGroupIdUsingGET(entityGroupId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/entityGroup/${encodeURIComponent(entityGroupId)}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
+  }
+
+
+  async getTenantAdminsUsingGET(tenantId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/tenant/${encodeURIComponent(tenantId)}/users{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
+  }
+
+
+  async getUserDashboardsInfoUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/dashboards`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserDashboardsInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async reportUserDashboardActionUsingGET(dashboardId: string, action: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/dashboards/${encodeURIComponent(dashboardId)}/${encodeURIComponent(action)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserDashboardsInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getUserInfoByIdUsingGET(userId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/info/${encodeURIComponent(userId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async sendActivationEmailUsingPOST(email: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/sendActivationMail{?email}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (email !== undefined) searchParams.append('email', String(email));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getUserSettingsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async putUserSettingsUsingPUT(data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/user/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveUserSettingsUsingPOST(data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/user/settings`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteUserSettingsUsingDELETE_1(paths: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/user/${userId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getActivationLinkUsingGET(userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/${userId}/activationLink`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getUserTokenUsingGET(userId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/user/${userId}/token`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JWT_PairSchema.parse(response.data);
-  }
-
-
-  async setUserCredentialsEnabledUsingPOST(userId: string, userCredentialsEnabled: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/user/${userId}/userCredentialsEnabled{?userCredentialsEnabled}`,
-      params: {
-        userCredentialsEnabled: userCredentialsEnabled
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/settings/${encodeURIComponent(paths)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getAllUserInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserSettingsUsingGET_1(type: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/userInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        includeCustomers: includeCustomers,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserInfoSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/user/settings/${encodeURIComponent(type)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
   }
 
 
-  async getUsersForAssignUsingGET(alarmId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async putUserSettingsUsingPUT_1(type: string, data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
-      method: 'GET',
-      url: `/api/users/assign/${alarmId}{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserEmailInfoSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/user/settings/${encodeURIComponent(type)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async findUsersByQueryUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/users/info{?page,pageSize,sortOrder,sortProperty,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_UserEmailInfoSchema.parse(response.data);
-  }
-
-
-  async getUsersByIdsUsingGET(userIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/users{?userIds}`,
-      params: {
-        userIds: userIds
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveUserUsingPOST(sendActivationMail: boolean, entityGroupId: string, entityGroupIds: string, data: schemas.User, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/user{?entityGroupId,entityGroupIds,sendActivationMail}`,
-      params: {
-        sendActivationMail: sendActivationMail,
-        entityGroupId: entityGroupId,
-        entityGroupIds: entityGroupIds
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.UserSchema.parse(response.data);
-  }
-
-
-  async getAllowedPermissionsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/permissions/allowedPermissions`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.AllowedPermissionsInfoSchema.parse(response.data);
-  }
-
-
-  async getLoginWhiteLabelParamsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/noauth/whiteLabel/loginWhiteLabelParams`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.LoginWhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async getCurrentLoginWhiteLabelParamsUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/currentLoginWhiteLabelParams{?customerId}`,
-      params: {
-        customerId: customerId
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.LoginWhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async getCurrentWhiteLabelParamsUsingGET(customerId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/currentWhiteLabelParams{?customerId}`,
-      params: {
-        customerId: customerId
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async isCustomerWhiteLabelingAllowedUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/isCustomerWhiteLabelingAllowed`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async isWhiteLabelingAllowedUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/isWhiteLabelingAllowed`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async saveLoginWhiteLabelParamsUsingPOST(customerId: string, data: schemas.LoginWhiteLabelingParams, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/whiteLabel/loginWhiteLabelParams{?customerId}`,
-      params: {
-        customerId: customerId
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.LoginWhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async saveMailTemplatesUsingPOST(data: schemas.JsonNode, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/whiteLabel/mailTemplates`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async getMailTemplatesUsingGET(systemByDefault: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/mailTemplates{?systemByDefault}`,
-      params: {
-        systemByDefault: systemByDefault
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.JsonNodeSchema.parse(response.data);
-  }
-
-
-  async previewWhiteLabelParamsUsingPOST(data: schemas.WhiteLabelingParams, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/whiteLabel/previewWhiteLabelParams`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async getWhiteLabelParamsUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/whiteLabel/whiteLabelParams`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async saveWhiteLabelParamsUsingPOST(customerId: string, data: schemas.WhiteLabelingParams, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/whiteLabel/whiteLabelParams{?customerId}`,
-      params: {
-        customerId: customerId
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WhiteLabelingParamsSchema.parse(response.data);
-  }
-
-
-  async deleteWidgetTypeUsingDELETE(widgetTypeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteUserSettingsUsingDELETE(paths: string, type: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/widgetType/${widgetTypeId}`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getWidgetTypeByIdUsingGET(widgetTypeId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetType/${widgetTypeId}{?inlineImages}`,
-      params: {
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.WidgetTypeDetailsSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/user/settings/${encodeURIComponent(type)}/${encodeURIComponent(paths)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getBundleWidgetTypeFqnsUsingGET(widgetsBundleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async isUserTokenAccessEnabledUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/widgetTypeFqns{?widgetsBundleId}`,
-      params: {
-        widgetsBundleId: widgetsBundleId
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/tokenAccessEnabled`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async getWidgetTypeInfoByIdUsingGET(widgetTypeId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserUsersUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/widgetTypeInfo/${widgetTypeId}`
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WidgetTypeInfoSchema.parse(response.data);
-  }
-
-
-  async getBundleWidgetTypesDetailsByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypesDetails{?bundleAlias,isSystem}`,
-      params: {
-        isSystem: isSystem,
-        bundleAlias: bundleAlias
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/users{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserSchemaSchema.parse(responseData);
   }
 
 
-  async getBundleWidgetTypesDetailsUsingGET(widgetsBundleId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getUserByIdUsingGET(userId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/widgetTypesDetails{?inlineImages,widgetsBundleId}`,
-      params: {
-        widgetsBundleId: widgetsBundleId,
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/${encodeURIComponent(userId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserSchemaSchema.parse(responseData);
   }
 
 
-  async getBundleWidgetTypesInfosByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypesInfos{?bundleAlias,isSystem}`,
-      params: {
-        isSystem: isSystem,
-        bundleAlias: bundleAlias
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getBundleWidgetTypesInfosUsingGET(widgetsBundleId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, fullSearch: boolean, deprecatedFilter: string, widgetTypeList: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypesInfos{?deprecatedFilter,fullSearch,page,pageSize,sortOrder,sortProperty,textSearch,widgetTypeList,widgetsBundleId}`,
-      params: {
-        widgetsBundleId: widgetsBundleId,
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        fullSearch: fullSearch,
-        deprecatedFilter: deprecatedFilter,
-        widgetTypeList: widgetTypeList
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_WidgetTypeInfoSchema.parse(response.data);
-  }
-
-
-  async getBundleWidgetTypesByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypes{?bundleAlias,isSystem}`,
-      params: {
-        isSystem: isSystem,
-        bundleAlias: bundleAlias
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getWidgetTypesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, tenantOnly: boolean, fullSearch: boolean, deprecatedFilter: string, widgetTypeList: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypes{?deprecatedFilter,fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch,widgetTypeList}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        tenantOnly: tenantOnly,
-        fullSearch: fullSearch,
-        deprecatedFilter: deprecatedFilter,
-        widgetTypeList: widgetTypeList
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_WidgetTypeInfoSchema.parse(response.data);
-  }
-
-
-  async getBundleWidgetTypesUsingGET(widgetsBundleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetTypes{?widgetsBundleId}`,
-      params: {
-        widgetsBundleId: widgetsBundleId
-      }
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getWidgetTypeByBundleAliasAndTypeAliasUsingGET(isSystem: boolean, bundleAlias: string, alias: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetType{?alias,bundleAlias,isSystem}`,
-      params: {
-        isSystem: isSystem,
-        bundleAlias: bundleAlias,
-        alias: alias
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WidgetTypeSchema.parse(response.data);
-  }
-
-
-  async getWidgetTypeUsingGET(fqn: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetType{?fqn}`,
-      params: {
-        fqn: fqn
-      }
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WidgetTypeSchema.parse(response.data);
-  }
-
-
-  async saveWidgetTypeUsingPOST(updateExistingByFqn: boolean, data: schemas.WidgetTypeDetails, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/widgetType{?updateExistingByFqn}`,
-      params: {
-        updateExistingByFqn: updateExistingByFqn
-      },
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WidgetTypeDetailsSchema.parse(response.data);
-  }
-
-
-  async saveWidgetsBundleUsingPOST(data: schemas.WidgetsBundle, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'POST',
-      url: `/api/widgetsBundle`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return schemas.WidgetsBundleSchema.parse(response.data);
-  }
-
-
-  async deleteWidgetsBundleUsingDELETE(widgetsBundleId: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async deleteUserUsingDELETE(userId: string, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'DELETE',
-      url: `/api/widgetsBundle/${widgetsBundleId}`
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/${encodeURIComponent(userId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async updateWidgetsBundleWidgetFqnsUsingPOST(widgetsBundleId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getActivationLinkUsingGET(userId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/${encodeURIComponent(userId)}/activationLink`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getUserTokenUsingGET(userId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/user/${encodeURIComponent(userId)}/token`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JWT_PairSchemaSchema.parse(responseData);
+  }
+
+
+  async setUserCredentialsEnabledUsingPOST(userId: string, userCredentialsEnabled: boolean, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/widgetsBundle/${widgetsBundleId}/widgetTypeFqns`,
-      data
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/user/${encodeURIComponent(userId)}/userCredentialsEnabled{?userCredentialsEnabled}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (userCredentialsEnabled !== undefined) searchParams.append('userCredentialsEnabled', String(userCredentialsEnabled));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 
 
-  async updateWidgetsBundleWidgetTypesUsingPOST(widgetsBundleId: string, data: string[], options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAllUserInfosUsingGET(pageSize: number, page: number, includeCustomers: boolean, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/userInfos/all{?includeCustomers,page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (includeCustomers !== undefined) searchParams.append('includeCustomers', String(includeCustomers));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getUsersForAssignUsingGET(alarmId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/users/assign/${encodeURIComponent(alarmId)}{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserEmailInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async findUsersByQueryUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/users/info{?page,pageSize,sortOrder,sortProperty,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_UserEmailInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getUsersByIdsUsingGET(userIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/users{?userIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (userIds !== undefined) searchParams.append('userIds', String(userIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveUserUsingPOST(sendActivationMail: boolean, entityGroupId: string, entityGroupIds: string, data: schemas.User, options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'POST',
-      url: `/api/widgetsBundle/${widgetsBundleId}/widgetTypes`,
-      data
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getWidgetsBundleByIdUsingGET(widgetsBundleId: string, inlineImages: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetsBundle/${widgetsBundleId}{?inlineImages}`,
-      params: {
-        inlineImages: inlineImages
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.WidgetsBundleSchema.parse(response.data);
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/user{?entityGroupId,entityGroupIds,sendActivationMail}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (sendActivationMail !== undefined) searchParams.append('sendActivationMail', String(sendActivationMail));
+    if (entityGroupId !== undefined) searchParams.append('entityGroupId', String(entityGroupId));
+    if (entityGroupIds !== undefined) searchParams.append('entityGroupIds', String(entityGroupIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.UserSchemaSchema.parse(responseData);
   }
 
 
-  async getWidgetsBundlesUsingGET(options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getAllowedPermissionsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/widgetsBundles`
-    };
-
-    const response = await this.client.request(config);
-    return response.data;
-  }
-
-
-  async getWidgetsBundlesUsingGET_1(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, tenantOnly: boolean, fullSearch: boolean, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
-      ...options,
-      method: 'GET',
-      url: `/api/widgetsBundles{?fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch}`,
-      params: {
-        pageSize: pageSize,
-        page: page,
-        textSearch: textSearch,
-        sortProperty: sortProperty,
-        sortOrder: sortOrder,
-        tenantOnly: tenantOnly,
-        fullSearch: fullSearch
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return schemas.PageData_Of_WidgetsBundleSchema.parse(response.data);
+    
+
+    const url = new URL(`/api/permissions/allowedPermissions`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.AllowedPermissionsInfoSchemaSchema.parse(responseData);
   }
 
 
-  async getWidgetsBundlesByIdsUsingGET(widgetsBundleIds: string, options?: AxiosRequestConfig) {
-    const config: AxiosRequestConfig = {
+  async getLoginWhiteLabelParamsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
       ...options,
       method: 'GET',
-      url: `/api/widgetsBundles{?widgetsBundleIds}`,
-      params: {
-        widgetsBundleIds: widgetsBundleIds
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
       }
     };
 
-    const response = await this.client.request(config);
-    return response.data;
+    
+
+    const url = new URL(`/api/noauth/whiteLabel/loginWhiteLabelParams`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.LoginWhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async getCurrentLoginWhiteLabelParamsUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/currentLoginWhiteLabelParams{?customerId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerId !== undefined) searchParams.append('customerId', String(customerId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.LoginWhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async getCurrentWhiteLabelParamsUsingGET(customerId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/currentWhiteLabelParams{?customerId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerId !== undefined) searchParams.append('customerId', String(customerId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async isCustomerWhiteLabelingAllowedUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/isCustomerWhiteLabelingAllowed`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async isWhiteLabelingAllowedUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/isWhiteLabelingAllowed`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async saveLoginWhiteLabelParamsUsingPOST(customerId: string, data: schemas.LoginWhiteLabelingParams, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/whiteLabel/loginWhiteLabelParams{?customerId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerId !== undefined) searchParams.append('customerId', String(customerId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.LoginWhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveMailTemplatesUsingPOST(data: schemas.JsonNode, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/whiteLabel/mailTemplates`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async getMailTemplatesUsingGET(systemByDefault: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/mailTemplates{?systemByDefault}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (systemByDefault !== undefined) searchParams.append('systemByDefault', String(systemByDefault));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.JsonNodeSchemaSchema.parse(responseData);
+  }
+
+
+  async previewWhiteLabelParamsUsingPOST(data: schemas.WhiteLabelingParams, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/whiteLabel/previewWhiteLabelParams`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async getWhiteLabelParamsUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/whiteLabel/whiteLabelParams`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveWhiteLabelParamsUsingPOST(customerId: string, data: schemas.WhiteLabelingParams, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/whiteLabel/whiteLabelParams{?customerId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (customerId !== undefined) searchParams.append('customerId', String(customerId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WhiteLabelingParamsSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteWidgetTypeUsingDELETE(widgetTypeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetType/${encodeURIComponent(widgetTypeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetTypeByIdUsingGET(widgetTypeId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetType/${encodeURIComponent(widgetTypeId)}{?inlineImages}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetTypeDetailsSchemaSchema.parse(responseData);
+  }
+
+
+  async getBundleWidgetTypeFqnsUsingGET(widgetsBundleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypeFqns{?widgetsBundleId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (widgetsBundleId !== undefined) searchParams.append('widgetsBundleId', String(widgetsBundleId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetTypeInfoByIdUsingGET(widgetTypeId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypeInfo/${encodeURIComponent(widgetTypeId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetTypeInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getBundleWidgetTypesDetailsByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypesDetails{?bundleAlias,isSystem}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isSystem !== undefined) searchParams.append('isSystem', String(isSystem));
+    if (bundleAlias !== undefined) searchParams.append('bundleAlias', String(bundleAlias));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getBundleWidgetTypesDetailsUsingGET(widgetsBundleId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypesDetails{?inlineImages,widgetsBundleId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (widgetsBundleId !== undefined) searchParams.append('widgetsBundleId', String(widgetsBundleId));
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getBundleWidgetTypesInfosByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypesInfos{?bundleAlias,isSystem}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isSystem !== undefined) searchParams.append('isSystem', String(isSystem));
+    if (bundleAlias !== undefined) searchParams.append('bundleAlias', String(bundleAlias));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getBundleWidgetTypesInfosUsingGET(widgetsBundleId: string, pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, fullSearch: boolean, deprecatedFilter: string, widgetTypeList: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypesInfos{?deprecatedFilter,fullSearch,page,pageSize,sortOrder,sortProperty,textSearch,widgetTypeList,widgetsBundleId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (widgetsBundleId !== undefined) searchParams.append('widgetsBundleId', String(widgetsBundleId));
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (fullSearch !== undefined) searchParams.append('fullSearch', String(fullSearch));
+    if (deprecatedFilter !== undefined) searchParams.append('deprecatedFilter', String(deprecatedFilter));
+    if (widgetTypeList !== undefined) searchParams.append('widgetTypeList', String(widgetTypeList));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_WidgetTypeInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getBundleWidgetTypesByBundleAliasUsingGET(isSystem: boolean, bundleAlias: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypes{?bundleAlias,isSystem}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isSystem !== undefined) searchParams.append('isSystem', String(isSystem));
+    if (bundleAlias !== undefined) searchParams.append('bundleAlias', String(bundleAlias));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetTypesUsingGET(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, tenantOnly: boolean, fullSearch: boolean, deprecatedFilter: string, widgetTypeList: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypes{?deprecatedFilter,fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch,widgetTypeList}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (tenantOnly !== undefined) searchParams.append('tenantOnly', String(tenantOnly));
+    if (fullSearch !== undefined) searchParams.append('fullSearch', String(fullSearch));
+    if (deprecatedFilter !== undefined) searchParams.append('deprecatedFilter', String(deprecatedFilter));
+    if (widgetTypeList !== undefined) searchParams.append('widgetTypeList', String(widgetTypeList));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_WidgetTypeInfoSchemaSchema.parse(responseData);
+  }
+
+
+  async getBundleWidgetTypesUsingGET(widgetsBundleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetTypes{?widgetsBundleId}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (widgetsBundleId !== undefined) searchParams.append('widgetsBundleId', String(widgetsBundleId));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetTypeByBundleAliasAndTypeAliasUsingGET(isSystem: boolean, bundleAlias: string, alias: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetType{?alias,bundleAlias,isSystem}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (isSystem !== undefined) searchParams.append('isSystem', String(isSystem));
+    if (bundleAlias !== undefined) searchParams.append('bundleAlias', String(bundleAlias));
+    if (alias !== undefined) searchParams.append('alias', String(alias));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetTypeSchemaSchema.parse(responseData);
+  }
+
+
+  async getWidgetTypeUsingGET(fqn: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetType{?fqn}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (fqn !== undefined) searchParams.append('fqn', String(fqn));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetTypeSchemaSchema.parse(responseData);
+  }
+
+
+  async saveWidgetTypeUsingPOST(updateExistingByFqn: boolean, data: schemas.WidgetTypeDetails, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/widgetType{?updateExistingByFqn}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (updateExistingByFqn !== undefined) searchParams.append('updateExistingByFqn', String(updateExistingByFqn));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetTypeDetailsSchemaSchema.parse(responseData);
+  }
+
+
+  async saveWidgetsBundleUsingPOST(data: schemas.WidgetsBundle, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/widgetsBundle`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetsBundleSchemaSchema.parse(responseData);
+  }
+
+
+  async deleteWidgetsBundleUsingDELETE(widgetsBundleId: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async updateWidgetsBundleWidgetFqnsUsingPOST(widgetsBundleId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypeFqns`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async updateWidgetsBundleWidgetTypesUsingPOST(widgetsBundleId: string, data: Array<string>, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    config.body = JSON.stringify(data);
+
+    const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}/widgetTypes`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetsBundleByIdUsingGET(widgetsBundleId: string, inlineImages: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetsBundle/${encodeURIComponent(widgetsBundleId)}{?inlineImages}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (inlineImages !== undefined) searchParams.append('inlineImages', String(inlineImages));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.WidgetsBundleSchemaSchema.parse(responseData);
+  }
+
+
+  async getWidgetsBundlesUsingGET(options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetsBundles`, this.baseURL);
+    
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
+  }
+
+
+  async getWidgetsBundlesUsingGET_1(pageSize: number, page: number, textSearch: string, sortProperty: string, sortOrder: string, tenantOnly: boolean, fullSearch: boolean, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetsBundles{?fullSearch,page,pageSize,sortOrder,sortProperty,tenantOnly,textSearch}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (pageSize !== undefined) searchParams.append('pageSize', String(pageSize));
+    if (page !== undefined) searchParams.append('page', String(page));
+    if (textSearch !== undefined) searchParams.append('textSearch', String(textSearch));
+    if (sortProperty !== undefined) searchParams.append('sortProperty', String(sortProperty));
+    if (sortOrder !== undefined) searchParams.append('sortOrder', String(sortOrder));
+    if (tenantOnly !== undefined) searchParams.append('tenantOnly', String(tenantOnly));
+    if (fullSearch !== undefined) searchParams.append('fullSearch', String(fullSearch));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return schemas.PageData_Of_WidgetsBundleSchemaSchema.parse(responseData);
+  }
+
+
+  async getWidgetsBundlesByIdsUsingGET(widgetsBundleIds: string, options?: RequestInit) {
+    const config: RequestInit = {
+      ...options,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.headers,
+        ...options?.headers
+      }
+    };
+
+    
+
+    const url = new URL(`/api/widgetsBundles{?widgetsBundleIds}`, this.baseURL);
+    
+    const searchParams = new URLSearchParams();
+    if (widgetsBundleIds !== undefined) searchParams.append('widgetsBundleIds', String(widgetsBundleIds));
+    const queryString = searchParams.toString();
+    if (queryString) {
+      url.search = queryString;
+    }
+
+    const response = await fetch(url.toString(), config);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    return responseData;
   }
 }
 
