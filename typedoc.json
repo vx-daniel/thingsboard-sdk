@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/index.ts", "src/base-client.ts", "src/generated/index.ts"],
+  "out": "docs",
+  "name": "VX Olympus TypeScript SDK",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "readme": "README.md",
+  "navigationLinks": {
+    "GitHub": "https://github.com/vx-daniel/thingsboard-sdk"
+  }
+}
