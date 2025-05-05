@@ -3,56 +3,99 @@ import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { z } from 'zod';
 
-interface OpenAPIOperation {
-  operationId?: string;
-  tags?: string[];
-  parameters?: any[];
-  requestBody?: {
-    content?: {
-      'application/json'?: {
-        schema?: any;
-      };
-    };
-  };
-  responses?: {
-    '200'?: {
-      content?: {
-        'application/json'?: {
-          schema?: {
-            $ref?: string;
-          };
-        };
-      };
-    };
-  };
-}
+/**
+ * OpenAPI operation schema representing a single API endpoint.
+ */
+const OpenAPIOperationSchema = z.object({
+  /** Unique identifier for the operation */
+  operationId: z.string().optional(),
+  /** Array of operation parameters */
+  parameters: z.array(z.object({
+    /** Parameter location (path, query, etc.) */
+    in: z.string(),
+    /** Parameter name */
+    name: z.string(),
+    /** Parameter description */
+    description: z.string().optional(),
+    /** Parameter schema */
+    schema: z.object({
+      /** Data type */
+      type: z.string().optional(),
+      /** Possible enum values */
+      enum: z.array(z.string()).optional(),
+    }).optional(),
+  })).optional(),
+  /** Request body definition */
+  requestBody: z.object({
+    content: z.object({
+      'application/json': z.object({
+        schema: z.any(),
+      }).optional(),
+    }).optional(),
+  }).optional(),
+  /** Response definitions */
+  responses: z.record(z.object({
+    content: z.object({
+      'application/json': z.object({
+        schema: z.any(),
+      }).optional(),
+    }).optional(),
+  })).optional(),
+  /** Operation tags */
+  tags: z.array(z.string()).optional(),
+  /** Operation summary */
+  summary: z.string().optional(),
+  /** Operation description */
+  description: z.string().optional(),
+});
 
-interface OpenAPIPathItem {
-  [method: string]: OpenAPIOperation;
-}
+type OpenAPIOperation = z.infer<typeof OpenAPIOperationSchema>;
 
-interface OpenAPISpec {
-  paths: {
-    [path: string]: OpenAPIPathItem;
-  };
-  components?: {
-    schemas?: any;
-  };
-}
+/**
+ * OpenAPI path item schema representing a single API endpoint.
+ * Contains operations for different HTTP methods (GET, POST, etc.)
+ */
+const OpenAPIPathItemSchema = z.record(OpenAPIOperationSchema);
 
-interface OpenAPIPaths {
-  [path: string]: OpenAPIPathItem;
-}
+type OpenAPIPathItem = z.infer<typeof OpenAPIPathItemSchema>;
 
-function sanitizeIdentifier(name: string): string {
-  // Handle special characters and spaces in identifiers
+/**
+ * OpenAPI specification schema.
+ * Contains paths and components sections of the OpenAPI spec.
+ */
+const OpenAPISpecSchema = z.object({
+  paths: z.record(OpenAPIPathItemSchema),
+  components: z.object({
+    schemas: z.record(z.any()),
+  }).optional(),
+});
+
+type OpenAPISpec = z.infer<typeof OpenAPISpecSchema>;
+
+/**
+ * Sanitizes a class name by removing special characters and converting to PascalCase.
+ * 
+ * @param name - The raw class name to sanitize
+ * @returns The sanitized class name
+ * @example
+ * sanitizeClassName('user-controller') // returns 'UserController'
+ */
+function sanitizeClassName(name: string): string {
   return name
-    .replace(/[^a-zA-Z0-9_]/g, '_')
-    .replace(/^(\d)/, '_$1'); // Prefix with underscore if starts with a number
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 }
 
+/**
+ * Sanitizes a type name by removing special characters and converting to PascalCase.
+ * 
+ * @param name - The raw type name to sanitize
+ * @returns The sanitized type name
+ * @example
+ * sanitizeTypeName('user-id') // returns 'UserId'
+ */
 function sanitizeTypeName(name: string): string {
-  // Handle special characters and spaces in type names
   return name
     .replace(/«/g, '_Of_')
     .replace(/»/g, '')
@@ -60,6 +103,14 @@ function sanitizeTypeName(name: string): string {
     .replace(/[^a-zA-Z0-9_]/g, '_');
 }
 
+/**
+ * Sanitizes a schema name by removing special characters and converting to PascalCase.
+ * 
+ * @param name - The raw schema name to sanitize
+ * @returns The sanitized schema name
+ * @example
+ * sanitizeSchemaName('user-id-schema') // returns 'UserIdSchema'
+ */
 function sanitizeSchemaName(name: string): string {
   // First, replace special characters with underscores
   let sanitized = name.replace(/[^a-zA-Z0-9«»]/g, '_');
@@ -90,83 +141,362 @@ function sanitizeSchemaName(name: string): string {
   return sanitized;
 }
 
-function sanitizeClassName(tag: string): string {
-  return tag
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
-}
+/**
+ * Generates a TypeScript type definition from an OpenAPI schema.
+ * 
+ * @param schema - The OpenAPI schema to convert
+ * @returns The TypeScript type definition
+ * @example
+ * generateTypeForSchema({ type: 'string' }) // returns 'string'
+ */
+function generateTypeForSchema(schema: any): string {
+  if (!schema) return 'void';
 
-async function generate() {
-  // Extend Zod with OpenAPI functionality
-  extendZodWithOpenApi(z);
-
-  // Read the OpenAPI spec
-  const apiSpec: OpenAPISpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
-
-  const registry = new OpenAPIRegistry();
-
-  // Generate the schemas
-  const schemaTypes = generateSchemaTypes(apiSpec.components?.schemas);
-
-  // Ensure the generated directory exists
-  mkdirSync(join(__dirname, '../src/generated'), { recursive: true });
-  
-  // Write the generated schemas to a file
-  writeFileSync(
-    join(__dirname, '../src/generated/schemas.ts'),
-    schemaTypes
-  );
-
-  const { index, clientFiles } = generateApi(apiSpec);
-
-  // Create necessary directories
-  mkdirSync(join(__dirname, '../src/generated/clients'), { recursive: true });
-
-  // Write client files
-  for (const [fileName, content] of Object.entries(clientFiles)) {
-    writeFileSync(
-      join(__dirname, '../src/generated/clients', `${fileName}.ts`),
-      content
-    );
+  if (schema.$ref) {
+    const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
+    return `schemas.${sanitizeSchemaName(refName).replace(/Schema$/, '')}`;
   }
 
-  // Write index file
-  writeFileSync(
-    join(__dirname, '../src/generated/index.ts'),
-    index
-  );
+  switch (schema.type) {
+    case 'string':
+      return 'string';
+    case 'number':
+    case 'integer':
+      return 'number';
+    case 'boolean':
+      return 'boolean';
+    case 'array':
+      return `Array<${generateTypeForSchema(schema.items)}>`;
+    case 'object':
+      if (schema.additionalProperties) {
+        return `Record<string, ${generateTypeForSchema(schema.additionalProperties)}>`;
+      }
+      const properties = Object.entries(schema.properties || {}).map(
+        ([key, value]: [string, any]) => `${key}: ${generateTypeForSchema(value)}`
+      );
+      return `{ ${properties.join('; ')} }`;
+    default:
+      return 'any';
+  }
 }
 
-function generateSchemaTypes(schemas: any): string {
-  if (!schemas) return '';
-
-  // First pass: collect all schema names and their sanitized versions
-  const schemaMap = new Map<string, string>();
-  Object.keys(schemas).forEach(name => {
-    const sanitized = sanitizeSchemaName(name);
-    schemaMap.set(name, sanitized);
-  });
-
-  const imports = `import { z } from 'zod';\n\n`;
+/**
+ * Generates method name from an OpenAPI operation, removing HTTP method suffixes
+ * and adding appropriate suffixes for operations with request bodies.
+ * 
+ * @param operation - The OpenAPI operation
+ * @returns The generated method name
+ * @example
+ * generateMethodName({ operationId: 'getUserByIdUsingGET' }) // returns 'getUserById'
+ */
+function generateMethodName(operation: OpenAPIOperation): string {
+  if (!operation.operationId) {
+    throw new Error('Operation ID is required');
+  }
   
-  // First, declare all schema references to handle circular dependencies
-  const schemaReferences = Object.entries(schemas).map(([name]) => {
-    const sanitized = schemaMap.get(name)!;
-    return `export const ${sanitized}: z.ZodType<any> = z.lazy(() => ${sanitized}Schema);`;
-  }).join('\n');
-
-  // Then declare all schema implementations
-  const schemaImplementations = Object.entries(schemas).map(([name, schema]) => {
-    const sanitized = schemaMap.get(name)!;
-    const zodSchema = generateZodSchema(schema);
-    return `export const ${sanitized}Schema = ${zodSchema};
-export type ${sanitized.replace(/Schema$/, '')} = z.infer<typeof ${sanitized}>;`;
-  }).join('\n\n');
-
-  return imports + schemaReferences + '\n\n' + schemaImplementations;
+  // Remove HTTP method suffix (e.g., UsingGET, UsingPOST, etc.)
+  let methodName = operation.operationId.replace(/Using(GET|POST|PUT|DELETE|PATCH)$/, '');
+  
+  // If this is a POST/PUT with a request body, append 'WithData'
+  if (operation.requestBody) {
+    methodName += 'WithData';
+  }
+  
+  return methodName;
 }
 
+/**
+ * Generates a TypeScript method implementation for an OpenAPI operation.
+ * 
+ * @param operation - The OpenAPI operation to generate code for
+ * @param path - The API endpoint path
+ * @param method - The HTTP method (GET, POST, etc.)
+ * @returns The generated TypeScript method code
+ * @example
+ * generateApiMethod({ operationId: 'getUserByIdUsingGET' }, '/users/{id}', 'GET') // returns the generated method code
+ */
+function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
+  const methodName = generateMethodName(operation);
+  const pathParams = operation.parameters?.filter(p => p.in === 'path') || [];
+  const queryParams = operation.parameters?.filter(p => p.in === 'query') || [];
+  const hasRequestBody = operation.requestBody != null;
+  const responseSchema = operation.responses?.['200']?.content?.['application/json']?.schema;
+  const returnType = responseSchema ? generateTypeForSchema(responseSchema) : 'void';
+
+  // Build JSDoc comment
+  const jsdoc = ['  /**'];
+  
+  // Add param descriptions
+  pathParams.forEach(p => {
+    jsdoc.push(`   * @param {string} ${p.name} - Path parameter`);
+  });
+  if (hasRequestBody) {
+    jsdoc.push(`   * @param {object} data - Request body`);
+  }
+  if (queryParams.length > 0) {
+    jsdoc.push(`   * @param {object} queryParams - Query parameters`);
+    queryParams.forEach(p => {
+      const type = p.schema?.type || 'any';
+      jsdoc.push(`   * @param {${type}} queryParams.${p.name} - Query parameter`);
+    });
+  }
+  jsdoc.push(`   * @param {RequestInit} [options] - Fetch options`);
+  jsdoc.push(`   * @returns {Promise<${returnType}>}`);
+  jsdoc.push('   */');
+
+  // Build method parameters
+  const methodParams = [];
+  
+  // Add path parameters with proper types
+  methodParams.push(...pathParams.map(p => {
+    const schema = p.schema || {};
+    const type = schema.type === 'string' && schema.enum ? 
+      (schema.enum as string[]).map(e => `'${e}'`).join(' | ') : 
+      'string';
+    return `${p.name}: ${type}`;
+  }));
+  
+  // Add request body if needed with proper type
+  if (hasRequestBody) {
+    const schema = operation.requestBody?.content?.['application/json']?.schema;
+    const type = schema ? generateTypeForSchema(schema) : 'any';
+    methodParams.push(`data: ${type}`);
+  }
+  
+  // Add query parameters if needed with proper types
+  if (queryParams.length > 0) {
+    const queryType = queryParams.map(param => {
+      const schema = param.schema || {};
+      let type = generateTypeForSchema(schema);
+      if (schema.type === 'string' && schema.enum) {
+        type = (schema.enum as string[]).map(e => `'${e}'`).join(' | ');
+      }
+      return `${param.name}?: ${type}`;
+    }).join('; ');
+    methodParams.push(`queryParams?: { ${queryType} }`);
+  }
+  
+  // Add options parameter
+  methodParams.push('options: RequestInit = {}');
+
+  // Build the URL with path parameters
+  let urlPath = path;
+  for (const param of pathParams) {
+    urlPath = urlPath.replace(`{${param.name}}`, `\${encodeURIComponent(${param.name})}`);
+  }
+
+  // Build query string if needed
+  let queryString = '';
+  if (queryParams.length > 0) {
+    queryString = `
+    const params = new URLSearchParams();
+    if (queryParams) {
+      ${queryParams.map(p => `if (queryParams.${p.name} !== undefined) params.set('${p.name}', String(queryParams.${p.name}));`).join('\n      ')}
+    }
+    const queryString = params.toString();`;
+  }
+
+  // Generate the method
+  return `${jsdoc.join('\n')}
+  async ${methodName}(${methodParams.join(', ')}): Promise<${returnType}> {
+    const url = \`\${this.baseUrl}${urlPath}\`;${queryString}
+    const response = await this.makeRequest<${returnType}>(url${queryParams.length > 0 ? ' + (queryString ? `?\${queryString}` : \'\')' : ''}, {
+      method: '${method.toUpperCase()}',
+      ${hasRequestBody ? 'body: JSON.stringify(data),' : ''}
+      ...options,
+    });
+    return response;
+  }`;
+}
+
+/**
+ * Collects type dependencies from an OpenAPI schema.
+ * 
+ * @param schema - The schema to analyze
+ * @param deps - Set to store collected dependencies
+ */
+function collectDependencies(schema: any, deps: Set<string>) {
+  if (!schema) return;
+
+  if (schema.$ref) {
+    const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
+    deps.add(refName);
+  }
+
+  if (schema.type === 'object') {
+    Object.values(schema.properties || {}).forEach((prop: any) => {
+      collectDependencies(prop, deps);
+    });
+  }
+
+  if (schema.type === 'array') {
+    collectDependencies(schema.items, deps);
+  }
+
+  if (schema.additionalProperties) {
+    collectDependencies(schema.additionalProperties, deps);
+  }
+}
+
+/**
+ * Generates TypeScript code for all schemas in the OpenAPI specification.
+ * This function handles:
+ * 1. Schema declarations for handling circular dependencies
+ * 2. Schema implementations with proper type inference
+ * 3. Type exports for each schema
+ * 
+ * @param schemas - Record of schema definitions from OpenAPI spec
+ * @returns Generated TypeScript code for schemas as a string
+ * @example
+ * ```typescript
+ * // Input schema:
+ * {
+ *   "User": {
+ *     "type": "object",
+ *     "properties": {
+ *       "id": { "type": "string" },
+ *       "name": { "type": "string" }
+ *     }
+ *   }
+ * }
+ * 
+ * // Generated output:
+ * export const UserSchema = z.lazy(() => UserSchemaImpl);
+ * const UserSchemaImpl = z.object({
+ *   id: z.string(),
+ *   name: z.string()
+ * });
+ * export type User = z.infer<typeof UserSchema>;
+ * ```
+ */
+function generateSchemas(schemas: Record<string, any>): string {
+  const code: string[] = [];
+  const generatedSchemas = new Set<string>();
+
+  // Add imports
+  code.push('import { z } from "zod";');
+  code.push('');
+
+  // First pass: declare all schema variables to handle circular dependencies
+  for (const [name, _] of Object.entries(schemas)) {
+    const baseName = sanitizeTypeName(name);
+    const schemaName = `${baseName}Schema`;
+    code.push(`export const ${schemaName}: z.ZodType<any> = z.lazy(() => ${schemaName}Impl);`);
+  }
+  code.push('');
+
+  // Second pass: implement the schemas
+  for (const [name, schema] of Object.entries(schemas)) {
+    const baseName = sanitizeTypeName(name);
+    const schemaName = `${baseName}Schema`;
+    const implName = `${schemaName}Impl`;
+    const typeName = baseName;
+
+    if (generatedSchemas.has(schemaName)) {
+      continue;
+    }
+
+    const schemaDefinition = generateSchemaForType(schema);
+    code.push(`const ${implName} = ${schemaDefinition};`);
+    code.push(`export type ${typeName} = z.infer<typeof ${schemaName}>;`);
+    code.push('');
+    generatedSchemas.add(schemaName);
+  }
+
+  return code.join('\n');
+}
+
+/**
+ * Generates a Zod schema definition from an OpenAPI schema.
+ * Handles various schema types including:
+ * - Primitive types (string, number, boolean)
+ * - Arrays
+ * - Objects with properties
+ * - Enums
+ * - References to other schemas
+ * 
+ * @param schema - The OpenAPI schema to convert
+ * @returns A string containing the Zod schema definition
+ * @example
+ * ```typescript
+ * // Input schema:
+ * {
+ *   "type": "object",
+ *   "properties": {
+ *     "name": { "type": "string" },
+ *     "age": { "type": "number" },
+ *     "roles": {
+ *       "type": "array",
+ *       "items": { "type": "string" }
+ *     }
+ *   }
+ * }
+ * 
+ * // Generated output:
+ * z.object({
+ *   name: z.string(),
+ *   age: z.number(),
+ *   roles: z.array(z.string())
+ * })
+ * ```
+ */
+function generateSchemaForType(schema: any): string {
+  if (schema.$ref) {
+    const refType = schema.$ref.split('/').pop();
+    if (!refType) throw new Error(`Invalid $ref: ${schema.$ref}`);
+    return `${sanitizeTypeName(refType)}Schema`;
+  }
+
+  if (schema.type === 'array' && schema.items) {
+    return `z.array(${generateSchemaForType(schema.items)})`;
+  }
+
+  if (schema.type === 'object' || schema.properties) {
+    const properties = schema.properties || {};
+    const required = schema.required || [];
+    const propertyLines = Object.entries(properties).map(([propName, propSchema]) => {
+      const isRequired = required.includes(propName);
+      return `  "${propName}": ${generateSchemaForType(propSchema)}${isRequired ? '' : '.optional()'}`;
+    });
+    return `z.object({\n${propertyLines.join(',\n')}\n})`;
+  }
+
+  if (schema.enum) {
+    return `z.enum([${schema.enum.map((e: string) => `"${e}"`).join(', ')}])`;
+  }
+
+  switch (schema.type) {
+    case 'string':
+      return 'z.string()';
+    case 'number':
+    case 'integer':
+      return 'z.number()';
+    case 'boolean':
+      return 'z.boolean()';
+    default:
+      return 'z.any()';
+  }
+}
+
+/**
+ * Generates TypeScript client code for all paths in the OpenAPI specification.
+ * Creates separate client classes for each API tag, with methods for each operation.
+ * 
+ * @param spec - The complete OpenAPI specification
+ * @returns Object containing:
+ *   - index: Content for the index file that exports all clients
+ *   - clientFiles: Record of generated client files by filename
+ * @example
+ * ```typescript
+ * // Generated client class:
+ * export class UserClient extends BaseVXOlympusClient {
+ *   async getUser(id: string): Promise<User> {
+ *     const url = `${this.baseUrl}/users/${id}`;
+ *     return this.makeRequest<User>(url);
+ *   }
+ * }
+ * ```
+ */
 function generateApi(spec: OpenAPISpec): { index: string; clientFiles: { [key: string]: string } } {
   const imports = `import { BaseVXOlympusClient } from '../base-client';
 import * as schemas from './schemas';\n\n`;
@@ -210,185 +540,52 @@ export class ${className} extends BaseVXOlympusClient {${methods.join('\n')}}`;
   return { index: indexContent, clientFiles };
 }
 
-function generateApiMethod(operation: OpenAPIOperation, path: string, method: string): string {
-  const operationId = operation.operationId;
-  if (!operationId) {
-    throw new Error(`Operation at ${path} ${method} is missing operationId`);
-  }
+/**
+ * Main function to generate TypeScript SDK from OpenAPI specification.
+ * Reads the OpenAPI spec, generates types and clients, and writes them to files.
+ */
+async function generate() {
+  // Extend Zod with OpenAPI functionality
+  extendZodWithOpenApi(z);
 
-  const pathParams = operation.parameters?.filter(p => p.in === 'path') || [];
-  const queryParams = operation.parameters?.filter(p => p.in === 'query') || [];
-  const hasRequestBody = operation.requestBody != null;
-
-  // Build method parameters
-  const methodParams = [];
+  // Read the OpenAPI spec
+  const rawSpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
   
-  // Add path parameters
-  methodParams.push(...pathParams.map(p => `${p.name}: string`));
+  // Parse and validate the spec
+  const apiSpec = OpenAPISpecSchema.parse(rawSpec);
+
+  const registry = new OpenAPIRegistry();
+
+  // Generate the schemas
+  const schemaTypes = generateSchemas(apiSpec.components?.schemas || {});
+
+  // Ensure the generated directory exists
+  mkdirSync(join(__dirname, '../src/generated'), { recursive: true });
   
-  // Add request body if needed
-  if (hasRequestBody) {
-    methodParams.push('data: any');
-  }
-  
-  // Add query parameters if needed
-  if (queryParams.length > 0) {
-    methodParams.push('queryParams: any');
-  }
-  
-  // Add options parameter
-  methodParams.push('options: RequestInit = {}');
+  // Write the generated schemas to a file
+  writeFileSync(
+    join(__dirname, '../src/generated/schemas.ts'),
+    schemaTypes
+  );
 
-  // Build the URL with path parameters
-  let urlPath = path;
-  for (const param of pathParams) {
-    urlPath = urlPath.replace(`{${param.name}}`, `\${encodeURIComponent(${param.name})}`);
-  }
+  const { index, clientFiles } = generateApi(apiSpec);
 
-  // Generate the method
-  return `
-  async ${operationId}(${methodParams.join(', ')}) {
-    const url = \`\${this.baseUrl}${urlPath}\`;
-    const response = await this.makeRequest(url, {
-      method: '${method.toUpperCase()}',
-      ${hasRequestBody ? 'body: JSON.stringify(data),' : ''}
-      ...options,
-    });
-    return response;
-  }`;
-}
+  // Create necessary directories
+  mkdirSync(join(__dirname, '../src/generated/clients'), { recursive: true });
 
-function collectDependencies(schema: any, deps: Set<string>) {
-  if (!schema) return;
-
-  if (schema.$ref) {
-    const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
-    deps.add(refName);
-  }
-
-  if (schema.type === 'object') {
-    Object.values(schema.properties || {}).forEach((prop: any) => {
-      collectDependencies(prop, deps);
-    });
-  }
-
-  if (schema.type === 'array') {
-    collectDependencies(schema.items, deps);
-  }
-
-  if (schema.additionalProperties) {
-    collectDependencies(schema.additionalProperties, deps);
-  }
-}
-
-function topologicalSort(deps: Record<string, Set<string>>): string[] {
-  const visited = new Set<string>();
-  const temp = new Set<string>();
-  const result: string[] = [];
-
-  function visit(node: string) {
-    if (temp.has(node)) {
-      // Found a cycle, break it by removing the current node's dependencies
-      deps[node] = new Set();
-      return;
-    }
-    if (visited.has(node)) return;
-
-    temp.add(node);
-    for (const dep of deps[node]) {
-      visit(dep);
-    }
-    temp.delete(node);
-    visited.add(node);
-    result.unshift(node);
-  }
-
-  for (const node of Object.keys(deps)) {
-    if (!visited.has(node)) {
-      visit(node);
-    }
-  }
-
-  return result;
-}
-
-function generateZodType(schema: any): string {
-  if (!schema) return 'z.lazy(() => z.object({}))';
-
-  switch (schema.type) {
-    case 'string':
-      if (schema.enum) {
-        return `z.enum([${schema.enum.map((e: string) => `"${e}"`).join(', ')}])`;
-      }
-      return 'z.string()';
-    case 'number':
-    case 'integer':
-      return 'z.number()';
-    case 'boolean':
-      return 'z.boolean()';
-    case 'array':
-      return `z.array(${generateZodType(schema.items)})`;
-    case 'object':
-      if (schema.additionalProperties) {
-        return `z.record(z.string(), ${generateZodType(schema.additionalProperties)})`;
-      }
-      return generateZodSchema(schema);
-    default:
-      if (schema.$ref) {
-        const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
-        return sanitizeSchemaName(refName);
-      }
-      return 'z.lazy(() => z.object({}))';
-  }
-}
-
-function generateZodSchema(schema: any): string {
-  if (!schema) return 'z.lazy(() => z.object({}))';
-
-  if (schema.type === 'object') {
-    const properties = Object.entries(schema.properties || {}).map(
-      ([key, value]: [string, any]) => `"${key}": ${generateZodType(value)}`
+  // Write client files
+  for (const [fileName, content] of Object.entries(clientFiles)) {
+    writeFileSync(
+      join(__dirname, '../src/generated/clients', `${fileName}.ts`),
+      content
     );
-    
-    if (properties.length === 0) {
-      return 'z.object({})';
-    }
-
-    return `z.object({\n  ${properties.join(',\n  ')}\n})`;
   }
 
-  return generateZodType(schema);
-}
-
-function generateTypeForSchema(schema: any): string {
-  if (!schema) return 'void';
-
-  if (schema.$ref) {
-    const refName = sanitizeTypeName(schema.$ref.split('/').pop() || '');
-    return `schemas.${sanitizeSchemaName(refName).replace(/Schema$/, '')}`;
-  }
-
-  switch (schema.type) {
-    case 'string':
-      return 'string';
-    case 'number':
-    case 'integer':
-      return 'number';
-    case 'boolean':
-      return 'boolean';
-    case 'array':
-      return `Array<${generateTypeForSchema(schema.items)}>`;
-    case 'object':
-      if (schema.additionalProperties) {
-        return `Record<string, ${generateTypeForSchema(schema.additionalProperties)}>`;
-      }
-      const properties = Object.entries(schema.properties || {}).map(
-        ([key, value]: [string, any]) => `${key}: ${generateTypeForSchema(value)}`
-      );
-      return `{ ${properties.join('; ')} }`;
-    default:
-      return 'any';
-  }
+  // Write index file
+  writeFileSync(
+    join(__dirname, '../src/generated/index.ts'),
+    index
+  );
 }
 
 generate().catch(console.error);

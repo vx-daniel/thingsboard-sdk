@@ -1,4 +1,5 @@
 import { BaseVXOlympusClient } from '../../base-client';
+import * as schemas from '../schemas';
 export declare class LoginEndpointClient extends BaseVXOlympusClient {
-    loginPost(data: any, options?: RequestInit): Promise<unknown>;
+    loginPostWithData(data: schemas.LoginRequest, options?: RequestInit): Promise<schemas.LoginResponse>;
 }

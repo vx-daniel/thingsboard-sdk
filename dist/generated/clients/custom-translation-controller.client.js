@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomTranslationControllerClient = void 0;
 const base_client_1 = require("../../base-client");
 class CustomTranslationControllerClient extends base_client_1.BaseVXOlympusClient {
-    async getCurrentCustomTranslationUsingGET(options = {}) {
+    async getCurrentCustomTranslation(options = {}) {
         const url = `${this.baseUrl}/api/customTranslation/currentCustomTranslation`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -11,7 +11,11 @@ class CustomTranslationControllerClient extends base_client_1.BaseVXOlympusClien
         });
         return response;
     }
-    async getCustomTranslationUsingGET(options = {}) {
+    /**
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomTranslation>}
+     */
+    async getCustomTranslation(options = {}) {
         const url = `${this.baseUrl}/api/customTranslation/customTranslation`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -19,7 +23,12 @@ class CustomTranslationControllerClient extends base_client_1.BaseVXOlympusClien
         });
         return response;
     }
-    async saveCustomTranslationUsingPOST(data, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.CustomTranslation>}
+     */
+    async saveCustomTranslationWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/customTranslation/customTranslation`;
         const response = await this.makeRequest(url, {
             method: 'POST',

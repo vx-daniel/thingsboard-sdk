@@ -9,10 +9,10 @@
  * ```
  */
 export declare class BaseVXOlympusClient {
-    protected baseUrl: string;
+    protected readonly baseUrl: string;
     protected token?: string;
     protected refreshToken?: string;
-    constructor(baseUrl: string, token?: string);
+    constructor(baseUrl: string);
     /**
      * Makes an HTTP request to the API with authentication and error handling.
      *

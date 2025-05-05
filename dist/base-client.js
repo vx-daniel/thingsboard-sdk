@@ -17,9 +17,8 @@ const LoginResponseSchema = zod_1.z.object({
  * ```
  */
 class BaseVXOlympusClient {
-    constructor(baseUrl, token) {
+    constructor(baseUrl) {
         this.baseUrl = baseUrl;
-        this.token = token;
     }
     /**
      * Makes an HTTP request to the API with authentication and error handling.
@@ -39,35 +38,16 @@ class BaseVXOlympusClient {
             ...options,
             headers,
         });
-        // Handle 401 with token refresh
-        if (response.status === 401 && this.refreshToken) {
-            try {
-                await this.refreshAuthToken();
-                // Retry the request with the new token
-                const retryResponse = await fetch(url, {
-                    ...options,
-                    headers: {
-                        ...headers,
-                        'X-Authorization': `Bearer ${this.token}`,
-                    },
-                });
-                if (!retryResponse.ok) {
-                    throw new Error(`HTTP error! status: ${retryResponse.status}`);
-                }
-                return retryResponse.json();
-            }
-            catch (refreshError) {
-                throw new Error('Token refresh failed');
-            }
-        }
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        // For 204 No Content responses, return null
+        // Handle void return type
         if (response.status === 204) {
-            return null;
+            return undefined;
         }
-        return response.json();
+        // Parse JSON response
+        const data = await response.json();
+        return data;
     }
     /**
      * Authenticates with the VX Olympus API using username and password.

@@ -1,70 +1,105 @@
 import { BaseVXOlympusClient } from '../../base-client';
 import * as schemas from '../schemas';
 
-export class GroupPermissionControllerClient extends BaseVXOlympusClient {
-  async getEntityGroupPermissionsUsingGET(entityGroupId: string, options: RequestInit = {}) {
+export class GroupPermissionControllerClient extends BaseVXOlympusClient {  /**
+   * @param {string} entityGroupId - Path parameter
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<Array<schemas.GroupPermissionInfo>>}
+   */
+  async getEntityGroupPermissions(entityGroupId: string, options: RequestInit = {}): Promise<Array<schemas.GroupPermissionInfo>> {
     const url = `${this.baseUrl}/api/entityGroup/${encodeURIComponent(entityGroupId)}/groupPermissions`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<Array<schemas.GroupPermissionInfo>>(url, {
       method: 'GET',
       
       ...options,
     });
     return response;
   }
-
-  async saveGroupPermissionUsingPOST(data: any, options: RequestInit = {}) {
+  /**
+   * @param {object} data - Request body
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.GroupPermission>}
+   */
+  async saveGroupPermissionWithData(data: schemas.GroupPermission, options: RequestInit = {}): Promise<schemas.GroupPermission> {
     const url = `${this.baseUrl}/api/groupPermission`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<schemas.GroupPermission>(url, {
       method: 'POST',
       body: JSON.stringify(data),
       ...options,
     });
     return response;
   }
-
-  async getGroupPermissionInfoByIdUsingGET(groupPermissionId: string, queryParams: any, options: RequestInit = {}) {
+  /**
+   * @param {string} groupPermissionId - Path parameter
+   * @param {object} queryParams - Query parameters
+   * @param {boolean} queryParams.isUserGroup - Query parameter
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.GroupPermissionInfo>}
+   */
+  async getGroupPermissionInfoById(groupPermissionId: string, queryParams?: { isUserGroup?: boolean }, options: RequestInit = {}): Promise<schemas.GroupPermissionInfo> {
     const url = `${this.baseUrl}/api/groupPermission/info/${encodeURIComponent(groupPermissionId)}{?isUserGroup}`;
-    const response = await this.makeRequest(url, {
+    const params = new URLSearchParams();
+    if (queryParams) {
+      if (queryParams.isUserGroup !== undefined) params.set('isUserGroup', String(queryParams.isUserGroup));
+    }
+    const queryString = params.toString();
+    const response = await this.makeRequest<schemas.GroupPermissionInfo>(url + (queryString ? `?${queryString}` : ''), {
       method: 'GET',
       
       ...options,
     });
     return response;
   }
-
-  async getGroupPermissionByIdUsingGET(groupPermissionId: string, options: RequestInit = {}) {
+  /**
+   * @param {string} groupPermissionId - Path parameter
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<schemas.GroupPermission>}
+   */
+  async getGroupPermissionById(groupPermissionId: string, options: RequestInit = {}): Promise<schemas.GroupPermission> {
     const url = `${this.baseUrl}/api/groupPermission/${encodeURIComponent(groupPermissionId)}`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<schemas.GroupPermission>(url, {
       method: 'GET',
       
       ...options,
     });
     return response;
   }
-
-  async deleteGroupPermissionUsingDELETE(groupPermissionId: string, options: RequestInit = {}) {
+  /**
+   * @param {string} groupPermissionId - Path parameter
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<void>}
+   */
+  async deleteGroupPermission(groupPermissionId: string, options: RequestInit = {}): Promise<void> {
     const url = `${this.baseUrl}/api/groupPermission/${encodeURIComponent(groupPermissionId)}`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<void>(url, {
       method: 'DELETE',
       
       ...options,
     });
     return response;
   }
-
-  async loadUserGroupPermissionInfosUsingPOST(data: any, options: RequestInit = {}) {
+  /**
+   * @param {object} data - Request body
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<Array<schemas.GroupPermissionInfo>>}
+   */
+  async loadUserGroupPermissionInfosWithData(data: Array<schemas.GroupPermission>, options: RequestInit = {}): Promise<Array<schemas.GroupPermissionInfo>> {
     const url = `${this.baseUrl}/api/userGroup/groupPermissions/info`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<Array<schemas.GroupPermissionInfo>>(url, {
       method: 'POST',
       body: JSON.stringify(data),
       ...options,
     });
     return response;
   }
-
-  async getUserGroupPermissionsUsingGET(userGroupId: string, options: RequestInit = {}) {
+  /**
+   * @param {string} userGroupId - Path parameter
+   * @param {RequestInit} [options] - Fetch options
+   * @returns {Promise<Array<schemas.GroupPermissionInfo>>}
+   */
+  async getUserGroupPermissions(userGroupId: string, options: RequestInit = {}): Promise<Array<schemas.GroupPermissionInfo>> {
     const url = `${this.baseUrl}/api/userGroup/${encodeURIComponent(userGroupId)}/groupPermissions`;
-    const response = await this.makeRequest(url, {
+    const response = await this.makeRequest<Array<schemas.GroupPermissionInfo>>(url, {
       method: 'GET',
       
       ...options,

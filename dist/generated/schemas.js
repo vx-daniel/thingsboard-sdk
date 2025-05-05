@@ -2,3468 +2,3848 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BackupCodeTwoFaAccountConfigSchema = exports.AwsSnsSmsProviderConfigurationSchema = exports.AutoVersionCreateConfigSchema = exports.AuditLogIdSchema = exports.AuditLogSchema = exports.AttributesEntityViewSchema = exports.AttributeExportDataSchema = exports.AtomicIntegerSchema = exports.AssetTypeFilterSchema = exports.AssetSearchQueryFilterSchema = exports.AssetSearchQuerySchema = exports.AssetProfileInfoSchema = exports.AssetProfileIdSchema = exports.AssetProfileSchema = exports.AssetInfoSchema = exports.AssetIdSchema = exports.AssetSchema = exports.ArrayNodeSchema = exports.ApiUsageStateFilterSchema = exports.ApiUsageLimitNotificationRuleTriggerConfigSchema = exports.AnyTimeScheduleSchema = exports.AllowedPermissionsInfoSchema = exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema = exports.AllUsersFilterSchema = exports.AlarmScheduleSchema = exports.AlarmRuleSchema = exports.AlarmNotificationRuleTriggerConfigSchema = exports.AlarmInfoSchema = exports.AlarmIdSchema = exports.AlarmDataQuerySchema = exports.AlarmDataPageLinkSchema = exports.AlarmDataSchema = exports.AlarmCountQuerySchema = exports.AlarmConditionSpecSchema = exports.AlarmConditionFilterKeySchema = exports.AlarmConditionFilterSchema = exports.AlarmConditionSchema = exports.AlarmCommentNotificationRuleTriggerConfigSchema = exports.AlarmCommentInfoSchema = exports.AlarmCommentIdSchema = exports.AlarmCommentSchema = exports.AlarmAssignmentNotificationRuleTriggerConfigSchema = exports.AlarmAssigneeSchema = exports.AlarmSchema = exports.AffectedUserFilterSchema = exports.AffectedTenantAdministratorsFilterSchema = exports.AdminSettingsIdSchema = exports.AdminSettingsSchema = exports.ActivateUserRequestSchema = exports.AccountTwoFaSettingsSchema = void 0;
 exports.DefaultRuleChainCreateRequestSchema = exports.DefaultDeviceTransportConfigurationSchema = exports.DefaultDeviceProfileTransportConfigurationSchema = exports.DefaultDeviceProfileConfigurationSchema = exports.DefaultDeviceConfigurationSchema = exports.DefaultCoapDeviceTypeConfigurationSchema = exports.DebugIntegrationEventFilterSchema = exports.DebugConverterEventFilterSchema = exports.DashboardInfoSchema = exports.DashboardIdSchema = exports.DashboardSchema = exports.CustomerUsersFilterSchema = exports.CustomerInfoSchema = exports.CustomerIdSchema = exports.CustomerSchema = exports.CustomTranslationSchema = exports.CustomTimeScheduleItemSchema = exports.CustomTimeScheduleSchema = exports.CustomMenuItemSchema = exports.CustomMenuSchema = exports.ConverterIdSchema = exports.ConverterSchema = exports.ContactBased_Of_objectSchema = exports.ComponentDescriptorIdSchema = exports.ComponentDescriptorSchema = exports.ComplexVersionCreateRequestSchema = exports.ComplexFilterPredicateSchema = exports.ComparisonTsValueSchema = exports.ColumnMappingSchema = exports.CoapDeviceTypeConfigurationSchema = exports.CoapDeviceTransportConfigurationSchema = exports.CoapDeviceProfileTransportConfigurationSchema = exports.ClientAttributesQueryingSnmpCommunicationConfigSchema = exports.ClearRuleSchema = exports.ClaimRequestSchema = exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema = exports.ChangePasswordRequestSchema = exports.ByteBufferSchema = exports.ByteArrayResourceSchema = exports.ButtonSchema = exports.BulkImportResult_Of_EdgeSchema = exports.BulkImportResult_Of_DeviceSchema = exports.BulkImportResult_Of_AssetSchema = exports.BulkImportRequestSchema = exports.BranchInfoSchema = exports.BooleanFilterPredicateSchema = exports.BlobEntityWithCustomerInfoSchema = exports.BlobEntityInfoSchema = exports.BlobEntityIdSchema = exports.BackupCodeTwoFaProviderConfigSchema = void 0;
-exports.EfentoCoapDeviceTypeConfigurationSchema = exports.EdgeTypeFilterSchema = exports.EdgeSearchQueryFilterSchema = exports.EdgeSearchQuerySchema = exports.EdgeInstructionsSchema = exports.EdgeInfoSchema = exports.EdgeIdSchema = exports.EdgeEventIdSchema = exports.EdgeEventSchema = exports.EdgeSchema = exports.DynamicValue_Of_stringSchema = exports.DynamicValue_Of_longSchema = exports.DynamicValue_Of_intSchema = exports.DynamicValue_Of_doubleSchema = exports.DynamicValue_Of_booleanSchema = exports.DurationAlarmConditionSpecSchema = exports.DisabledDeviceProfileProvisionConfigurationSchema = exports.DeviceTypeFilterSchema = exports.DeviceTransportConfigurationSchema = exports.DeviceSearchQueryFilterSchema = exports.DeviceSearchQuerySchema = exports.DeviceProfileTransportConfigurationSchema = exports.DeviceProfileProvisionConfigurationSchema = exports.DeviceProfileInfoSchema = exports.DeviceProfileIdSchema = exports.DeviceProfileDataSchema = exports.DeviceProfileConfigurationSchema = exports.DeviceProfileAlarmSchema = exports.DeviceProfileSchema = exports.DeviceInfoSchema = exports.DeviceIdSchema = exports.DeviceGroupOtaPackageSchema = exports.DeviceExportDataSchema = exports.DeviceDataSchema = exports.DeviceCredentialsIdSchema = exports.DeviceCredentialsSchema = exports.DeviceConfigurationSchema = exports.DeviceActivityNotificationRuleTriggerConfigSchema = exports.DeviceSchema = exports.DeliveryMethodNotificationTemplateSchema = exports.DeferredResult_Of_uuidSchema = exports.DeferredResult_Of_VoidSchema = exports.DeferredResult_Of_ResponseEntitySchema = exports.DeferredResult_Of_RepositorySettingsSchema = exports.DeferredResult_Of_PageData_EntityVersion_Schema = exports.DeferredResult_Of_List_VersionedEntityInfo_Schema = exports.DeferredResult_Of_List_BranchInfo_Schema = exports.DeferredResult_Of_EntityDataInfoSchema = exports.DeferredResult_Of_EntityDataDiffSchema = exports.DefaultTenantProfileConfigurationSchema = void 0;
+exports.EfentoCoapDeviceTypeConfigurationSchema = exports.EdgeTypeFilterSchema = exports.EdgeSearchQueryFilterSchema = exports.EdgeSearchQuerySchema = exports.EdgeInstructionsSchema = exports.EdgeInfoSchema = exports.EdgeIdSchema = exports.EdgeEventIdSchema = exports.EdgeEventSchema = exports.EdgeSchema = exports.DynamicValue_Of_stringSchema = exports.DynamicValue_Of_longSchema = exports.DynamicValue_Of_intSchema = exports.DynamicValue_Of_doubleSchema = exports.DynamicValue_Of_booleanSchema = exports.DurationAlarmConditionSpecSchema = exports.DisabledDeviceProfileProvisionConfigurationSchema = exports.DeviceTypeFilterSchema = exports.DeviceTransportConfigurationSchema = exports.DeviceSearchQueryFilterSchema = exports.DeviceSearchQuerySchema = exports.DeviceProfileTransportConfigurationSchema = exports.DeviceProfileProvisionConfigurationSchema = exports.DeviceProfileInfoSchema = exports.DeviceProfileIdSchema = exports.DeviceProfileDataSchema = exports.DeviceProfileConfigurationSchema = exports.DeviceProfileAlarmSchema = exports.DeviceProfileSchema = exports.DeviceInfoSchema = exports.DeviceIdSchema = exports.DeviceGroupOtaPackageSchema = exports.DeviceExportDataSchema = exports.DeviceDataSchema = exports.DeviceCredentialsIdSchema = exports.DeviceCredentialsSchema = exports.DeviceConfigurationSchema = exports.DeviceActivityNotificationRuleTriggerConfigSchema = exports.DeviceSchema = exports.DeliveryMethodNotificationTemplateSchema = exports.DeferredResult_Of_uuidSchema = exports.DeferredResult_Of_VoidSchema = exports.DeferredResult_Of_ResponseEntitySchema = exports.DeferredResult_Of_RepositorySettingsSchema = exports.DeferredResult_Of_PageData_Of_EntityVersionSchema = exports.DeferredResult_Of_List_Of_VersionedEntityInfoSchema = exports.DeferredResult_Of_List_Of_BranchInfoSchema = exports.DeferredResult_Of_EntityDataInfoSchema = exports.DeferredResult_Of_EntityDataDiffSchema = exports.DefaultTenantProfileConfigurationSchema = void 0;
 exports.ExportableEntity_Of_EntityIdSchema = exports.EventInfoSchema = exports.EventIdSchema = exports.EventFilterSchema = exports.EscalatedNotificationRuleRecipientsConfigSchema = exports.ErrorEventFilterSchema = exports.EntityViewTypeFilterSchema = exports.EntityViewSearchQueryFilterSchema = exports.EntityViewSearchQuerySchema = exports.EntityViewInfoSchema = exports.EntityViewIdSchema = exports.EntityViewSchema = exports.EntityVersionSchema = exports.EntityTypeVersionLoadRequestSchema = exports.EntityTypeVersionLoadConfigSchema = exports.EntityTypeVersionCreateConfigSchema = exports.EntityTypeLoadResultSchema = exports.EntityTypeFilterSchema = exports.EntitySubtypeSchema = exports.EntityRelationsQuerySchema = exports.EntityRelationInfoSchema = exports.EntityRelationSchema = exports.EntityNameFilterSchema = exports.EntityLoadErrorSchema = exports.EntityListFilterSchema = exports.EntityKeySchema = exports.EntityInfoSchema = exports.EntityIdSchema = exports.EntityGroupNameFilterSchema = exports.EntityGroupListFilterSchema = exports.EntityGroupInfoSchema = exports.EntityGroupIdSchema = exports.EntityGroupFilterSchema = exports.EntityGroupExportDataSchema = exports.EntityGroupSchema = exports.EntityFilterSchema = exports.EntityExportData_Of_objectSchema = exports.EntityDataSortOrderSchema = exports.EntityDataQuerySchema = exports.EntityDataPageLinkSchema = exports.EntityDataInfoSchema = exports.EntityDataDiffSchema = exports.EntityDataSchema = exports.EntityCountQuerySchema = exports.EntityActionNotificationRuleTriggerConfigSchema = exports.EntitiesLimitNotificationRuleTriggerConfigSchema = exports.EntitiesByGroupNameFilterSchema = exports.EmailTwoFaProviderConfigSchema = exports.EmailTwoFaAccountConfigSchema = exports.EmailDeliveryMethodNotificationTemplateSchema = void 0;
 exports.NotificationSchema = exports.NodeConnectionInfoSchema = exports.NoSecLwM2MBootstrapServerCredentialSchema = exports.NewPlatformVersionNotificationRuleTriggerConfigSchema = exports.MqttDeviceTransportConfigurationSchema = exports.MqttDeviceProfileTransportConfigurationSchema = exports.MicrosoftTeamsNotificationTargetConfigSchema = exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchema = exports.MergedUserPermissionsSchema = exports.MergedGroupTypePermissionInfoSchema = exports.MergedGroupPermissionInfoSchema = exports.MappingSchema = exports.Lwm2mDeviceTransportConfigurationSchema = exports.Lwm2mDeviceProfileTransportConfigurationSchema = exports.LwM2mResourceObserveSchema = exports.LwM2mObjectSchema = exports.LwM2mInstanceSchema = exports.LwM2MBootstrapServerCredentialSchema = exports.LoginWhiteLabelingParamsSchema = exports.LoginResponseSchema = exports.LoginRequestSchema = exports.LifeCycleEventFilterSchema = exports.LicenseUsageInfoSchema = exports.LastVisitedDashboardInfoSchema = exports.KeyFilterPredicateSchema = exports.KeyFilterSchema = exports.JsonTransportPayloadConfigurationSchema = exports.JsonNodeSchema = exports.JWT_SettingsSchema = exports.JWT_PairSchema = exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchema = exports.IntegrationInfoSchema = exports.IntegrationIdSchema = exports.IntegrationSchema = exports.InputStreamSchema = exports.ImageExportDataSchema = exports.HomeDashboardInfoSchema = exports.HomeDashboardSchema = exports.HasId_Of_objectSchema = exports.GroupPermissionInfoSchema = exports.GroupPermissionIdSchema = exports.GroupPermissionSchema = exports.GroupEntityExportDataSchema = exports.FilterPredicateValue_Of_stringSchema = exports.FilterPredicateValue_Of_longSchema = exports.FilterPredicateValue_Of_intSchema = exports.FilterPredicateValue_Of_doubleSchema = exports.FilterPredicateValue_Of_booleanSchema = exports.FeaturesInfoSchema = exports.FaviconSchema = void 0;
 exports.PageData_Of_AuditLogSchema = exports.PageData_Of_AssetSchema = exports.PageData_Of_AssetProfileSchema = exports.PageData_Of_AssetProfileInfoSchema = exports.PageData_Of_AssetInfoSchema = exports.PageData_Of_AlarmInfoSchema = exports.PageData_Of_AlarmDataSchema = exports.PageData_Of_AlarmCommentInfoSchema = exports.PSKLwM2MBootstrapServerCredentialSchema = exports.OtherConfigurationSchema = exports.OtaPackageInfoSchema = exports.OtaPackageIdSchema = exports.OtaPackageSchema = exports.OriginatorEntityOwnerUsersFilterSchema = exports.ObjectNodeSchema = exports.ObjectAttributesSchema = exports.OAuth2RegistrationInfoSchema = exports.OAuth2ParamsInfoSchema = exports.OAuth2MobileInfoSchema = exports.OAuth2MapperConfigSchema = exports.OAuth2InfoSchema = exports.OAuth2DomainInfoSchema = exports.OAuth2CustomMapperConfigSchema = exports.OAuth2ClientRegistrationTemplateIdSchema = exports.OAuth2ClientRegistrationTemplateSchema = exports.OAuth2ClientInfoSchema = exports.OAuth2BasicMapperConfigSchema = exports.NumericFilterPredicateSchema = exports.NotificationTemplateIdSchema = exports.NotificationTemplateConfigSchema = exports.NotificationTemplateSchema = exports.NotificationTargetConfigSchema = exports.NotificationTargetSchema = exports.NotificationSettingsSchema = exports.NotificationRuleTriggerConfigSchema = exports.NotificationRuleRecipientsConfigSchema = exports.NotificationRuleInfoSchema = exports.NotificationRuleIdSchema = exports.NotificationRuleConfigSchema = exports.NotificationRuleSchema = exports.NotificationRequestStatsSchema = exports.NotificationRequestPreviewSchema = exports.NotificationRequestInfoSchema = exports.NotificationRequestIdSchema = exports.NotificationRequestConfigSchema = exports.NotificationRequestSchema = exports.NotificationPrefSchema = exports.NotificationInfoSchema = exports.NotificationIdSchema = exports.NotificationDeliveryMethodConfigSchema = void 0;
-exports.ProtoTransportPayloadConfigurationSchema = exports.ProcessingStrategySchema = exports.PowerSavingConfigurationSchema = exports.PlatformUsersNotificationTargetConfigSchema = exports.PlatformTwoFaSettingsSchema = exports.PaletteSettingsSchema = exports.PaletteSchema = exports.PageData_Of_WidgetsBundleSchema = exports.PageData_Of_WidgetTypeInfoSchema = exports.PageData_Of_UserSchema = exports.PageData_Of_UserInfoSchema = exports.PageData_Of_UserEmailInfoSchema = exports.PageData_Of_TenantSchema = exports.PageData_Of_TenantProfileSchema = exports.PageData_Of_TenantInfoSchema = exports.PageData_Of_TbResourceInfoSchema = exports.PageData_Of_ShortEntityViewSchema = exports.PageData_Of_SchedulerEventInfoSchema = exports.PageData_Of_RuleChainSchema = exports.PageData_Of_RoleSchema = exports.PageData_Of_QueueSchema = exports.PageData_Of_OtaPackageInfoSchema = exports.PageData_Of_NotificationSchema = exports.PageData_Of_NotificationTemplateSchema = exports.PageData_Of_NotificationTargetSchema = exports.PageData_Of_NotificationRuleInfoSchema = exports.PageData_Of_NotificationRequestInfoSchema = exports.PageData_Of_IntegrationSchema = exports.PageData_Of_IntegrationInfoSchema = exports.PageData_Of_EventInfoSchema = exports.PageData_Of_EntityViewSchema = exports.PageData_Of_EntityViewInfoSchema = exports.PageData_Of_EntityVersionSchema = exports.PageData_Of_EntitySubtypeSchema = exports.PageData_Of_EntityInfoSchema = exports.PageData_Of_EntityGroupInfoSchema = exports.PageData_Of_EntityDataSchema = exports.PageData_Of_EdgeSchema = exports.PageData_Of_EdgeInfoSchema = exports.PageData_Of_EdgeEventSchema = exports.PageData_Of_DeviceSchema = exports.PageData_Of_DeviceProfileSchema = exports.PageData_Of_DeviceProfileInfoSchema = exports.PageData_Of_DeviceInfoSchema = exports.PageData_Of_DashboardInfoSchema = exports.PageData_Of_CustomerSchema = exports.PageData_Of_CustomerInfoSchema = exports.PageData_Of_ConverterSchema = exports.PageData_Of_ContactBased_object_Schema = exports.PageData_Of_BlobEntityWithCustomerInfoSchema = void 0;
+exports.ProtoTransportPayloadConfigurationSchema = exports.ProcessingStrategySchema = exports.PowerSavingConfigurationSchema = exports.PlatformUsersNotificationTargetConfigSchema = exports.PlatformTwoFaSettingsSchema = exports.PaletteSettingsSchema = exports.PaletteSchema = exports.PageData_Of_WidgetsBundleSchema = exports.PageData_Of_WidgetTypeInfoSchema = exports.PageData_Of_UserSchema = exports.PageData_Of_UserInfoSchema = exports.PageData_Of_UserEmailInfoSchema = exports.PageData_Of_TenantSchema = exports.PageData_Of_TenantProfileSchema = exports.PageData_Of_TenantInfoSchema = exports.PageData_Of_TbResourceInfoSchema = exports.PageData_Of_ShortEntityViewSchema = exports.PageData_Of_SchedulerEventInfoSchema = exports.PageData_Of_RuleChainSchema = exports.PageData_Of_RoleSchema = exports.PageData_Of_QueueSchema = exports.PageData_Of_OtaPackageInfoSchema = exports.PageData_Of_NotificationSchema = exports.PageData_Of_NotificationTemplateSchema = exports.PageData_Of_NotificationTargetSchema = exports.PageData_Of_NotificationRuleInfoSchema = exports.PageData_Of_NotificationRequestInfoSchema = exports.PageData_Of_IntegrationSchema = exports.PageData_Of_IntegrationInfoSchema = exports.PageData_Of_EventInfoSchema = exports.PageData_Of_EntityViewSchema = exports.PageData_Of_EntityViewInfoSchema = exports.PageData_Of_EntityVersionSchema = exports.PageData_Of_EntitySubtypeSchema = exports.PageData_Of_EntityInfoSchema = exports.PageData_Of_EntityGroupInfoSchema = exports.PageData_Of_EntityDataSchema = exports.PageData_Of_EdgeSchema = exports.PageData_Of_EdgeInfoSchema = exports.PageData_Of_EdgeEventSchema = exports.PageData_Of_DeviceSchema = exports.PageData_Of_DeviceProfileSchema = exports.PageData_Of_DeviceProfileInfoSchema = exports.PageData_Of_DeviceInfoSchema = exports.PageData_Of_DashboardInfoSchema = exports.PageData_Of_CustomerSchema = exports.PageData_Of_CustomerInfoSchema = exports.PageData_Of_ConverterSchema = exports.PageData_Of_ContactBased_Of_objectSchema = exports.PageData_Of_BlobEntityWithCustomerInfoSchema = void 0;
 exports.SingleEntityFilterSchema = exports.SimpleAlarmConditionSpecSchema = exports.SignUpSelfRegistrationParamsSchema = exports.SignUpRequestSchema = exports.ShortEntityViewSchema = exports.ShortCustomerInfoSchema = exports.SharedAttributesSettingSnmpCommunicationConfigSchema = exports.ShareGroupRequestSchema = exports.SelfRegistrationParamsSchema = exports.SecuritySettingsSchema = exports.SchedulerEventWithCustomerInfoSchema = exports.SchedulerEventInfoSchema = exports.SchedulerEventIdSchema = exports.SchedulerEventFilterSchema = exports.SchedulerEventSchema = exports.SaveOtaPackageInfoRequestSchema = exports.SaveDeviceWithCredentialsRequestSchema = exports.RuleNodeIdSchema = exports.RuleNodeDebugEventFilterSchema = exports.RuleNodeSchema = exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema = exports.RuleChainOutputLabelsUsageSchema = exports.RuleChainMetaDataSchema = exports.RuleChainImportResultSchema = exports.RuleChainIdSchema = exports.RuleChainExportDataSchema = exports.RuleChainDebugEventFilterSchema = exports.RuleChainDataSchema = exports.RuleChainConnectionInfoSchema = exports.RuleChainSchema = exports.RpcIdSchema = exports.RpcSchema = exports.RoleIdSchema = exports.RoleSchema = exports.ResponseEntitySchema = exports.ResourceSchema = exports.ResetPasswordRequestSchema = exports.ResetPasswordEmailRequestSchema = exports.RepositorySettingsInfoSchema = exports.RepositorySettingsSchema = exports.ReportConfigSchema = exports.RepeatingAlarmConditionSpecSchema = exports.RelationsSearchParametersSchema = exports.RelationsQueryFilterSchema = exports.RelationEntityTypeFilterSchema = exports.RawDataEventFilterSchema = exports.RateLimitsNotificationRuleTriggerConfigSchema = exports.RPKLwM2MBootstrapServerCredentialSchema = exports.QueueIdSchema = exports.QueueSchema = void 0;
 exports.TotpTwoFaAccountConfigSchema = exports.ToServerRpcRequestSnmpCommunicationConfigSchema = exports.ToDeviceRpcRequestSnmpCommunicationConfigSchema = exports.ThingsboardErrorResponseSchema = exports.ThingsboardCredentialsExpiredResponseSchema = exports.TestSmsRequestSchema = exports.TenantSolutionTemplateInstructionsSchema = exports.TenantSolutionTemplateInfoSchema = exports.TenantSolutionTemplateDetailsSchema = exports.TenantProfileQueueConfigurationSchema = exports.TenantProfileIdSchema = exports.TenantProfileDataSchema = exports.TenantProfileConfigurationSchema = exports.TenantProfileSchema = exports.TenantInfoSchema = exports.TenantIdSchema = exports.TenantAdministratorsFilterSchema = exports.TenantSchema = exports.TelemetryQueryingSnmpCommunicationConfigSchema = exports.TelemetryMappingConfigurationSchema = exports.TelemetryEntityViewSchema = exports.TbResourceInfoSchema = exports.TbResourceIdSchema = exports.TbResourceSchema = exports.TbImageDeleteResultSchema = exports.SystemInfoDataSchema = exports.SystemInfoSchema = exports.SystemAdministratorsFilterSchema = exports.SubmitStrategySchema = exports.StringFilterPredicateSchema = exports.StatisticsEventFilterSchema = exports.StateEntityOwnerFilterSchema = exports.StarredDashboardInfoSchema = exports.SpecificTimeScheduleSchema = exports.SolutionInstallResponseSchema = exports.SnmpMappingSchema = exports.SnmpDeviceTransportConfigurationSchema = exports.SnmpDeviceProfileTransportConfigurationSchema = exports.SnmpCommunicationConfigSchema = exports.SmsTwoFaProviderConfigSchema = exports.SmsTwoFaAccountConfigSchema = exports.SmsProviderConfigurationSchema = exports.SmsDeliveryMethodNotificationTemplateSchema = exports.SmppSmsProviderConfigurationSchema = exports.SlackNotificationTargetConfigSchema = exports.SlackNotificationDeliveryMethodConfigSchema = exports.SlackDeliveryMethodNotificationTemplateSchema = exports.SlackConversationSchema = exports.SingleEntityVersionLoadRequestSchema = exports.SingleEntityVersionCreateRequestSchema = void 0;
-exports.AlarmAssignmentNotificationRuleTriggerConfigSchemaSchema = exports.AlarmAssigneeSchemaSchema = exports.AlarmSchemaSchema = exports.AffectedUserFilterSchemaSchema = exports.AffectedTenantAdministratorsFilterSchemaSchema = exports.AdminSettingsIdSchemaSchema = exports.AdminSettingsSchemaSchema = exports.ActivateUserRequestSchemaSchema = exports.AccountTwoFaSettingsSchemaSchema = exports.X509LwM2MBootstrapServerCredentialSchema = exports.X509CertificateChainProvisionConfigurationSchema = exports.WidgetsBundleIdSchema = exports.WidgetsBundleExportDataSchema = exports.WidgetsBundleSchema = exports.WidgetTypeInfoSchema = exports.WidgetTypeIdSchema = exports.WidgetTypeExportDataSchema = exports.WidgetTypeDetailsSchema = exports.WidgetTypeSchema = exports.WhiteLabelingParamsSchema = exports.WhiteLabelingSchema = exports.WebDeliveryMethodNotificationTemplateSchema = exports.VersionedEntityInfoSchema = exports.VersionLoadResultSchema = exports.VersionLoadRequestSchema = exports.VersionLoadConfigSchema = exports.VersionCreationResultSchema = exports.VersionCreateRequestSchema = exports.VersionCreateConfigSchema = exports.UsersFilterSchema = exports.UserRoleFilterSchema = exports.UserPasswordPolicySchema = exports.UserNotificationSettingsSchema = exports.UserListFilterSchema = exports.UserInfoSchema = exports.UserIdSchema = exports.UserGroupListFilterSchema = exports.UserEmailInfoSchema = exports.UserDashboardsInfoSchema = exports.UserSchema = exports.UsageInfoSchema = exports.UpdateMessageSchema = exports.TwoFaProviderInfoSchema = exports.TwoFaProviderConfigSchema = exports.TwoFaAccountConfigUpdateRequestSchema = exports.TwoFaAccountConfigSchema = exports.TwilioSmsProviderConfigurationSchema = exports.TsValueSchema = exports.TransportPayloadTypeConfigurationSchema = exports.TotpTwoFaProviderConfigSchema = void 0;
-exports.BulkImportResult_Of_DeviceSchemaSchema = exports.BulkImportResult_Of_AssetSchemaSchema = exports.BulkImportRequestSchemaSchema = exports.BranchInfoSchemaSchema = exports.BooleanFilterPredicateSchemaSchema = exports.BlobEntityWithCustomerInfoSchemaSchema = exports.BlobEntityInfoSchemaSchema = exports.BlobEntityIdSchemaSchema = exports.BackupCodeTwoFaProviderConfigSchemaSchema = exports.BackupCodeTwoFaAccountConfigSchemaSchema = exports.AwsSnsSmsProviderConfigurationSchemaSchema = exports.AutoVersionCreateConfigSchemaSchema = exports.AuditLogIdSchemaSchema = exports.AuditLogSchemaSchema = exports.AttributesEntityViewSchemaSchema = exports.AttributeExportDataSchemaSchema = exports.AtomicIntegerSchemaSchema = exports.AssetTypeFilterSchemaSchema = exports.AssetSearchQueryFilterSchemaSchema = exports.AssetSearchQuerySchemaSchema = exports.AssetProfileInfoSchemaSchema = exports.AssetProfileIdSchemaSchema = exports.AssetProfileSchemaSchema = exports.AssetInfoSchemaSchema = exports.AssetIdSchemaSchema = exports.AssetSchemaSchema = exports.ArrayNodeSchemaSchema = exports.ApiUsageStateFilterSchemaSchema = exports.ApiUsageLimitNotificationRuleTriggerConfigSchemaSchema = exports.AnyTimeScheduleSchemaSchema = exports.AllowedPermissionsInfoSchemaSchema = exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaSchema = exports.AllUsersFilterSchemaSchema = exports.AlarmScheduleSchemaSchema = exports.AlarmRuleSchemaSchema = exports.AlarmNotificationRuleTriggerConfigSchemaSchema = exports.AlarmInfoSchemaSchema = exports.AlarmIdSchemaSchema = exports.AlarmDataQuerySchemaSchema = exports.AlarmDataPageLinkSchemaSchema = exports.AlarmDataSchemaSchema = exports.AlarmCountQuerySchemaSchema = exports.AlarmConditionSpecSchemaSchema = exports.AlarmConditionFilterKeySchemaSchema = exports.AlarmConditionFilterSchemaSchema = exports.AlarmConditionSchemaSchema = exports.AlarmCommentNotificationRuleTriggerConfigSchemaSchema = exports.AlarmCommentInfoSchemaSchema = exports.AlarmCommentIdSchemaSchema = exports.AlarmCommentSchemaSchema = void 0;
-exports.DeferredResult_Of_VoidSchemaSchema = exports.DeferredResult_Of_ResponseEntitySchemaSchema = exports.DeferredResult_Of_RepositorySettingsSchemaSchema = exports.DeferredResult_Of_PageData_EntityVersion_SchemaSchema = exports.DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema = exports.DeferredResult_Of_List_BranchInfo_SchemaSchema = exports.DeferredResult_Of_EntityDataInfoSchemaSchema = exports.DeferredResult_Of_EntityDataDiffSchemaSchema = exports.DefaultTenantProfileConfigurationSchemaSchema = exports.DefaultRuleChainCreateRequestSchemaSchema = exports.DefaultDeviceTransportConfigurationSchemaSchema = exports.DefaultDeviceProfileTransportConfigurationSchemaSchema = exports.DefaultDeviceProfileConfigurationSchemaSchema = exports.DefaultDeviceConfigurationSchemaSchema = exports.DefaultCoapDeviceTypeConfigurationSchemaSchema = exports.DebugIntegrationEventFilterSchemaSchema = exports.DebugConverterEventFilterSchemaSchema = exports.DashboardInfoSchemaSchema = exports.DashboardIdSchemaSchema = exports.DashboardSchemaSchema = exports.CustomerUsersFilterSchemaSchema = exports.CustomerInfoSchemaSchema = exports.CustomerIdSchemaSchema = exports.CustomerSchemaSchema = exports.CustomTranslationSchemaSchema = exports.CustomTimeScheduleItemSchemaSchema = exports.CustomTimeScheduleSchemaSchema = exports.CustomMenuItemSchemaSchema = exports.CustomMenuSchemaSchema = exports.ConverterIdSchemaSchema = exports.ConverterSchemaSchema = exports.ContactBased_Of_objectSchemaSchema = exports.ComponentDescriptorIdSchemaSchema = exports.ComponentDescriptorSchemaSchema = exports.ComplexVersionCreateRequestSchemaSchema = exports.ComplexFilterPredicateSchemaSchema = exports.ComparisonTsValueSchemaSchema = exports.ColumnMappingSchemaSchema = exports.CoapDeviceTypeConfigurationSchemaSchema = exports.CoapDeviceTransportConfigurationSchemaSchema = exports.CoapDeviceProfileTransportConfigurationSchemaSchema = exports.ClientAttributesQueryingSnmpCommunicationConfigSchemaSchema = exports.ClearRuleSchemaSchema = exports.ClaimRequestSchemaSchema = exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaSchema = exports.ChangePasswordRequestSchemaSchema = exports.ByteBufferSchemaSchema = exports.ByteArrayResourceSchemaSchema = exports.ButtonSchemaSchema = exports.BulkImportResult_Of_EdgeSchemaSchema = void 0;
-exports.EntityDataDiffSchemaSchema = exports.EntityDataSchemaSchema = exports.EntityCountQuerySchemaSchema = exports.EntityActionNotificationRuleTriggerConfigSchemaSchema = exports.EntitiesLimitNotificationRuleTriggerConfigSchemaSchema = exports.EntitiesByGroupNameFilterSchemaSchema = exports.EmailTwoFaProviderConfigSchemaSchema = exports.EmailTwoFaAccountConfigSchemaSchema = exports.EmailDeliveryMethodNotificationTemplateSchemaSchema = exports.EfentoCoapDeviceTypeConfigurationSchemaSchema = exports.EdgeTypeFilterSchemaSchema = exports.EdgeSearchQueryFilterSchemaSchema = exports.EdgeSearchQuerySchemaSchema = exports.EdgeInstructionsSchemaSchema = exports.EdgeInfoSchemaSchema = exports.EdgeIdSchemaSchema = exports.EdgeEventIdSchemaSchema = exports.EdgeEventSchemaSchema = exports.EdgeSchemaSchema = exports.DynamicValue_Of_stringSchemaSchema = exports.DynamicValue_Of_longSchemaSchema = exports.DynamicValue_Of_intSchemaSchema = exports.DynamicValue_Of_doubleSchemaSchema = exports.DynamicValue_Of_booleanSchemaSchema = exports.DurationAlarmConditionSpecSchemaSchema = exports.DisabledDeviceProfileProvisionConfigurationSchemaSchema = exports.DeviceTypeFilterSchemaSchema = exports.DeviceTransportConfigurationSchemaSchema = exports.DeviceSearchQueryFilterSchemaSchema = exports.DeviceSearchQuerySchemaSchema = exports.DeviceProfileTransportConfigurationSchemaSchema = exports.DeviceProfileProvisionConfigurationSchemaSchema = exports.DeviceProfileInfoSchemaSchema = exports.DeviceProfileIdSchemaSchema = exports.DeviceProfileDataSchemaSchema = exports.DeviceProfileConfigurationSchemaSchema = exports.DeviceProfileAlarmSchemaSchema = exports.DeviceProfileSchemaSchema = exports.DeviceInfoSchemaSchema = exports.DeviceIdSchemaSchema = exports.DeviceGroupOtaPackageSchemaSchema = exports.DeviceExportDataSchemaSchema = exports.DeviceDataSchemaSchema = exports.DeviceCredentialsIdSchemaSchema = exports.DeviceCredentialsSchemaSchema = exports.DeviceConfigurationSchemaSchema = exports.DeviceActivityNotificationRuleTriggerConfigSchemaSchema = exports.DeviceSchemaSchema = exports.DeliveryMethodNotificationTemplateSchemaSchema = exports.DeferredResult_Of_uuidSchemaSchema = void 0;
-exports.GroupPermissionSchemaSchema = exports.GroupEntityExportDataSchemaSchema = exports.FilterPredicateValue_Of_stringSchemaSchema = exports.FilterPredicateValue_Of_longSchemaSchema = exports.FilterPredicateValue_Of_intSchemaSchema = exports.FilterPredicateValue_Of_doubleSchemaSchema = exports.FilterPredicateValue_Of_booleanSchemaSchema = exports.FeaturesInfoSchemaSchema = exports.FaviconSchemaSchema = exports.ExportableEntity_Of_EntityIdSchemaSchema = exports.EventInfoSchemaSchema = exports.EventIdSchemaSchema = exports.EventFilterSchemaSchema = exports.EscalatedNotificationRuleRecipientsConfigSchemaSchema = exports.ErrorEventFilterSchemaSchema = exports.EntityViewTypeFilterSchemaSchema = exports.EntityViewSearchQueryFilterSchemaSchema = exports.EntityViewSearchQuerySchemaSchema = exports.EntityViewInfoSchemaSchema = exports.EntityViewIdSchemaSchema = exports.EntityViewSchemaSchema = exports.EntityVersionSchemaSchema = exports.EntityTypeVersionLoadRequestSchemaSchema = exports.EntityTypeVersionLoadConfigSchemaSchema = exports.EntityTypeVersionCreateConfigSchemaSchema = exports.EntityTypeLoadResultSchemaSchema = exports.EntityTypeFilterSchemaSchema = exports.EntitySubtypeSchemaSchema = exports.EntityRelationsQuerySchemaSchema = exports.EntityRelationInfoSchemaSchema = exports.EntityRelationSchemaSchema = exports.EntityNameFilterSchemaSchema = exports.EntityLoadErrorSchemaSchema = exports.EntityListFilterSchemaSchema = exports.EntityKeySchemaSchema = exports.EntityInfoSchemaSchema = exports.EntityIdSchemaSchema = exports.EntityGroupNameFilterSchemaSchema = exports.EntityGroupListFilterSchemaSchema = exports.EntityGroupInfoSchemaSchema = exports.EntityGroupIdSchemaSchema = exports.EntityGroupFilterSchemaSchema = exports.EntityGroupExportDataSchemaSchema = exports.EntityGroupSchemaSchema = exports.EntityFilterSchemaSchema = exports.EntityExportData_Of_objectSchemaSchema = exports.EntityDataSortOrderSchemaSchema = exports.EntityDataQuerySchemaSchema = exports.EntityDataPageLinkSchemaSchema = exports.EntityDataInfoSchemaSchema = void 0;
-exports.NotificationRequestPreviewSchemaSchema = exports.NotificationRequestInfoSchemaSchema = exports.NotificationRequestIdSchemaSchema = exports.NotificationRequestConfigSchemaSchema = exports.NotificationRequestSchemaSchema = exports.NotificationPrefSchemaSchema = exports.NotificationInfoSchemaSchema = exports.NotificationIdSchemaSchema = exports.NotificationDeliveryMethodConfigSchemaSchema = exports.NotificationSchemaSchema = exports.NodeConnectionInfoSchemaSchema = exports.NoSecLwM2MBootstrapServerCredentialSchemaSchema = exports.NewPlatformVersionNotificationRuleTriggerConfigSchemaSchema = exports.MqttDeviceTransportConfigurationSchemaSchema = exports.MqttDeviceProfileTransportConfigurationSchemaSchema = exports.MicrosoftTeamsNotificationTargetConfigSchemaSchema = exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaSchema = exports.MergedUserPermissionsSchemaSchema = exports.MergedGroupTypePermissionInfoSchemaSchema = exports.MergedGroupPermissionInfoSchemaSchema = exports.MappingSchemaSchema = exports.Lwm2mDeviceTransportConfigurationSchemaSchema = exports.Lwm2mDeviceProfileTransportConfigurationSchemaSchema = exports.LwM2mResourceObserveSchemaSchema = exports.LwM2mObjectSchemaSchema = exports.LwM2mInstanceSchemaSchema = exports.LwM2MBootstrapServerCredentialSchemaSchema = exports.LoginWhiteLabelingParamsSchemaSchema = exports.LoginResponseSchemaSchema = exports.LoginRequestSchemaSchema = exports.LifeCycleEventFilterSchemaSchema = exports.LicenseUsageInfoSchemaSchema = exports.LastVisitedDashboardInfoSchemaSchema = exports.KeyFilterPredicateSchemaSchema = exports.KeyFilterSchemaSchema = exports.JsonTransportPayloadConfigurationSchemaSchema = exports.JsonNodeSchemaSchema = exports.JWT_SettingsSchemaSchema = exports.JWT_PairSchemaSchema = exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaSchema = exports.IntegrationInfoSchemaSchema = exports.IntegrationIdSchemaSchema = exports.IntegrationSchemaSchema = exports.InputStreamSchemaSchema = exports.ImageExportDataSchemaSchema = exports.HomeDashboardInfoSchemaSchema = exports.HomeDashboardSchemaSchema = exports.HasId_Of_objectSchemaSchema = exports.GroupPermissionInfoSchemaSchema = exports.GroupPermissionIdSchemaSchema = void 0;
-exports.PageData_Of_DeviceProfileSchemaSchema = exports.PageData_Of_DeviceProfileInfoSchemaSchema = exports.PageData_Of_DeviceInfoSchemaSchema = exports.PageData_Of_DashboardInfoSchemaSchema = exports.PageData_Of_CustomerSchemaSchema = exports.PageData_Of_CustomerInfoSchemaSchema = exports.PageData_Of_ConverterSchemaSchema = exports.PageData_Of_ContactBased_object_SchemaSchema = exports.PageData_Of_BlobEntityWithCustomerInfoSchemaSchema = exports.PageData_Of_AuditLogSchemaSchema = exports.PageData_Of_AssetSchemaSchema = exports.PageData_Of_AssetProfileSchemaSchema = exports.PageData_Of_AssetProfileInfoSchemaSchema = exports.PageData_Of_AssetInfoSchemaSchema = exports.PageData_Of_AlarmInfoSchemaSchema = exports.PageData_Of_AlarmDataSchemaSchema = exports.PageData_Of_AlarmCommentInfoSchemaSchema = exports.PSKLwM2MBootstrapServerCredentialSchemaSchema = exports.OtherConfigurationSchemaSchema = exports.OtaPackageInfoSchemaSchema = exports.OtaPackageIdSchemaSchema = exports.OtaPackageSchemaSchema = exports.OriginatorEntityOwnerUsersFilterSchemaSchema = exports.ObjectNodeSchemaSchema = exports.ObjectAttributesSchemaSchema = exports.OAuth2RegistrationInfoSchemaSchema = exports.OAuth2ParamsInfoSchemaSchema = exports.OAuth2MobileInfoSchemaSchema = exports.OAuth2MapperConfigSchemaSchema = exports.OAuth2InfoSchemaSchema = exports.OAuth2DomainInfoSchemaSchema = exports.OAuth2CustomMapperConfigSchemaSchema = exports.OAuth2ClientRegistrationTemplateIdSchemaSchema = exports.OAuth2ClientRegistrationTemplateSchemaSchema = exports.OAuth2ClientInfoSchemaSchema = exports.OAuth2BasicMapperConfigSchemaSchema = exports.NumericFilterPredicateSchemaSchema = exports.NotificationTemplateIdSchemaSchema = exports.NotificationTemplateConfigSchemaSchema = exports.NotificationTemplateSchemaSchema = exports.NotificationTargetConfigSchemaSchema = exports.NotificationTargetSchemaSchema = exports.NotificationSettingsSchemaSchema = exports.NotificationRuleTriggerConfigSchemaSchema = exports.NotificationRuleRecipientsConfigSchemaSchema = exports.NotificationRuleInfoSchemaSchema = exports.NotificationRuleIdSchemaSchema = exports.NotificationRuleConfigSchemaSchema = exports.NotificationRuleSchemaSchema = exports.NotificationRequestStatsSchemaSchema = void 0;
-exports.RepeatingAlarmConditionSpecSchemaSchema = exports.RelationsSearchParametersSchemaSchema = exports.RelationsQueryFilterSchemaSchema = exports.RelationEntityTypeFilterSchemaSchema = exports.RawDataEventFilterSchemaSchema = exports.RateLimitsNotificationRuleTriggerConfigSchemaSchema = exports.RPKLwM2MBootstrapServerCredentialSchemaSchema = exports.QueueIdSchemaSchema = exports.QueueSchemaSchema = exports.ProtoTransportPayloadConfigurationSchemaSchema = exports.ProcessingStrategySchemaSchema = exports.PowerSavingConfigurationSchemaSchema = exports.PlatformUsersNotificationTargetConfigSchemaSchema = exports.PlatformTwoFaSettingsSchemaSchema = exports.PaletteSettingsSchemaSchema = exports.PaletteSchemaSchema = exports.PageData_Of_WidgetsBundleSchemaSchema = exports.PageData_Of_WidgetTypeInfoSchemaSchema = exports.PageData_Of_UserSchemaSchema = exports.PageData_Of_UserInfoSchemaSchema = exports.PageData_Of_UserEmailInfoSchemaSchema = exports.PageData_Of_TenantSchemaSchema = exports.PageData_Of_TenantProfileSchemaSchema = exports.PageData_Of_TenantInfoSchemaSchema = exports.PageData_Of_TbResourceInfoSchemaSchema = exports.PageData_Of_ShortEntityViewSchemaSchema = exports.PageData_Of_SchedulerEventInfoSchemaSchema = exports.PageData_Of_RuleChainSchemaSchema = exports.PageData_Of_RoleSchemaSchema = exports.PageData_Of_QueueSchemaSchema = exports.PageData_Of_OtaPackageInfoSchemaSchema = exports.PageData_Of_NotificationSchemaSchema = exports.PageData_Of_NotificationTemplateSchemaSchema = exports.PageData_Of_NotificationTargetSchemaSchema = exports.PageData_Of_NotificationRuleInfoSchemaSchema = exports.PageData_Of_NotificationRequestInfoSchemaSchema = exports.PageData_Of_IntegrationSchemaSchema = exports.PageData_Of_IntegrationInfoSchemaSchema = exports.PageData_Of_EventInfoSchemaSchema = exports.PageData_Of_EntityViewSchemaSchema = exports.PageData_Of_EntityViewInfoSchemaSchema = exports.PageData_Of_EntityVersionSchemaSchema = exports.PageData_Of_EntitySubtypeSchemaSchema = exports.PageData_Of_EntityInfoSchemaSchema = exports.PageData_Of_EntityGroupInfoSchemaSchema = exports.PageData_Of_EntityDataSchemaSchema = exports.PageData_Of_EdgeSchemaSchema = exports.PageData_Of_EdgeInfoSchemaSchema = exports.PageData_Of_EdgeEventSchemaSchema = exports.PageData_Of_DeviceSchemaSchema = void 0;
-exports.SmsProviderConfigurationSchemaSchema = exports.SmsDeliveryMethodNotificationTemplateSchemaSchema = exports.SmppSmsProviderConfigurationSchemaSchema = exports.SlackNotificationTargetConfigSchemaSchema = exports.SlackNotificationDeliveryMethodConfigSchemaSchema = exports.SlackDeliveryMethodNotificationTemplateSchemaSchema = exports.SlackConversationSchemaSchema = exports.SingleEntityVersionLoadRequestSchemaSchema = exports.SingleEntityVersionCreateRequestSchemaSchema = exports.SingleEntityFilterSchemaSchema = exports.SimpleAlarmConditionSpecSchemaSchema = exports.SignUpSelfRegistrationParamsSchemaSchema = exports.SignUpRequestSchemaSchema = exports.ShortEntityViewSchemaSchema = exports.ShortCustomerInfoSchemaSchema = exports.SharedAttributesSettingSnmpCommunicationConfigSchemaSchema = exports.ShareGroupRequestSchemaSchema = exports.SelfRegistrationParamsSchemaSchema = exports.SecuritySettingsSchemaSchema = exports.SchedulerEventWithCustomerInfoSchemaSchema = exports.SchedulerEventInfoSchemaSchema = exports.SchedulerEventIdSchemaSchema = exports.SchedulerEventFilterSchemaSchema = exports.SchedulerEventSchemaSchema = exports.SaveOtaPackageInfoRequestSchemaSchema = exports.SaveDeviceWithCredentialsRequestSchemaSchema = exports.RuleNodeIdSchemaSchema = exports.RuleNodeDebugEventFilterSchemaSchema = exports.RuleNodeSchemaSchema = exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaSchema = exports.RuleChainOutputLabelsUsageSchemaSchema = exports.RuleChainMetaDataSchemaSchema = exports.RuleChainImportResultSchemaSchema = exports.RuleChainIdSchemaSchema = exports.RuleChainExportDataSchemaSchema = exports.RuleChainDebugEventFilterSchemaSchema = exports.RuleChainDataSchemaSchema = exports.RuleChainConnectionInfoSchemaSchema = exports.RuleChainSchemaSchema = exports.RpcIdSchemaSchema = exports.RpcSchemaSchema = exports.RoleIdSchemaSchema = exports.RoleSchemaSchema = exports.ResponseEntitySchemaSchema = exports.ResourceSchemaSchema = exports.ResetPasswordRequestSchemaSchema = exports.ResetPasswordEmailRequestSchemaSchema = exports.RepositorySettingsInfoSchemaSchema = exports.RepositorySettingsSchemaSchema = exports.ReportConfigSchemaSchema = void 0;
-exports.UpdateMessageSchemaSchema = exports.TwoFaProviderInfoSchemaSchema = exports.TwoFaProviderConfigSchemaSchema = exports.TwoFaAccountConfigUpdateRequestSchemaSchema = exports.TwoFaAccountConfigSchemaSchema = exports.TwilioSmsProviderConfigurationSchemaSchema = exports.TsValueSchemaSchema = exports.TransportPayloadTypeConfigurationSchemaSchema = exports.TotpTwoFaProviderConfigSchemaSchema = exports.TotpTwoFaAccountConfigSchemaSchema = exports.ToServerRpcRequestSnmpCommunicationConfigSchemaSchema = exports.ToDeviceRpcRequestSnmpCommunicationConfigSchemaSchema = exports.ThingsboardErrorResponseSchemaSchema = exports.ThingsboardCredentialsExpiredResponseSchemaSchema = exports.TestSmsRequestSchemaSchema = exports.TenantSolutionTemplateInstructionsSchemaSchema = exports.TenantSolutionTemplateInfoSchemaSchema = exports.TenantSolutionTemplateDetailsSchemaSchema = exports.TenantProfileQueueConfigurationSchemaSchema = exports.TenantProfileIdSchemaSchema = exports.TenantProfileDataSchemaSchema = exports.TenantProfileConfigurationSchemaSchema = exports.TenantProfileSchemaSchema = exports.TenantInfoSchemaSchema = exports.TenantIdSchemaSchema = exports.TenantAdministratorsFilterSchemaSchema = exports.TenantSchemaSchema = exports.TelemetryQueryingSnmpCommunicationConfigSchemaSchema = exports.TelemetryMappingConfigurationSchemaSchema = exports.TelemetryEntityViewSchemaSchema = exports.TbResourceInfoSchemaSchema = exports.TbResourceIdSchemaSchema = exports.TbResourceSchemaSchema = exports.TbImageDeleteResultSchemaSchema = exports.SystemInfoDataSchemaSchema = exports.SystemInfoSchemaSchema = exports.SystemAdministratorsFilterSchemaSchema = exports.SubmitStrategySchemaSchema = exports.StringFilterPredicateSchemaSchema = exports.StatisticsEventFilterSchemaSchema = exports.StateEntityOwnerFilterSchemaSchema = exports.StarredDashboardInfoSchemaSchema = exports.SpecificTimeScheduleSchemaSchema = exports.SolutionInstallResponseSchemaSchema = exports.SnmpMappingSchemaSchema = exports.SnmpDeviceTransportConfigurationSchemaSchema = exports.SnmpDeviceProfileTransportConfigurationSchemaSchema = exports.SnmpCommunicationConfigSchemaSchema = exports.SmsTwoFaProviderConfigSchemaSchema = exports.SmsTwoFaAccountConfigSchemaSchema = void 0;
-exports.X509LwM2MBootstrapServerCredentialSchemaSchema = exports.X509CertificateChainProvisionConfigurationSchemaSchema = exports.WidgetsBundleIdSchemaSchema = exports.WidgetsBundleExportDataSchemaSchema = exports.WidgetsBundleSchemaSchema = exports.WidgetTypeInfoSchemaSchema = exports.WidgetTypeIdSchemaSchema = exports.WidgetTypeExportDataSchemaSchema = exports.WidgetTypeDetailsSchemaSchema = exports.WidgetTypeSchemaSchema = exports.WhiteLabelingParamsSchemaSchema = exports.WhiteLabelingSchemaSchema = exports.WebDeliveryMethodNotificationTemplateSchemaSchema = exports.VersionedEntityInfoSchemaSchema = exports.VersionLoadResultSchemaSchema = exports.VersionLoadRequestSchemaSchema = exports.VersionLoadConfigSchemaSchema = exports.VersionCreationResultSchemaSchema = exports.VersionCreateRequestSchemaSchema = exports.VersionCreateConfigSchemaSchema = exports.UsersFilterSchemaSchema = exports.UserRoleFilterSchemaSchema = exports.UserPasswordPolicySchemaSchema = exports.UserNotificationSettingsSchemaSchema = exports.UserListFilterSchemaSchema = exports.UserInfoSchemaSchema = exports.UserIdSchemaSchema = exports.UserGroupListFilterSchemaSchema = exports.UserEmailInfoSchemaSchema = exports.UserDashboardsInfoSchemaSchema = exports.UserSchemaSchema = exports.UsageInfoSchemaSchema = void 0;
+exports.X509LwM2MBootstrapServerCredentialSchema = exports.X509CertificateChainProvisionConfigurationSchema = exports.WidgetsBundleIdSchema = exports.WidgetsBundleExportDataSchema = exports.WidgetsBundleSchema = exports.WidgetTypeInfoSchema = exports.WidgetTypeIdSchema = exports.WidgetTypeExportDataSchema = exports.WidgetTypeDetailsSchema = exports.WidgetTypeSchema = exports.WhiteLabelingParamsSchema = exports.WhiteLabelingSchema = exports.WebDeliveryMethodNotificationTemplateSchema = exports.VersionedEntityInfoSchema = exports.VersionLoadResultSchema = exports.VersionLoadRequestSchema = exports.VersionLoadConfigSchema = exports.VersionCreationResultSchema = exports.VersionCreateRequestSchema = exports.VersionCreateConfigSchema = exports.UsersFilterSchema = exports.UserRoleFilterSchema = exports.UserPasswordPolicySchema = exports.UserNotificationSettingsSchema = exports.UserListFilterSchema = exports.UserInfoSchema = exports.UserIdSchema = exports.UserGroupListFilterSchema = exports.UserEmailInfoSchema = exports.UserDashboardsInfoSchema = exports.UserSchema = exports.UsageInfoSchema = exports.UpdateMessageSchema = exports.TwoFaProviderInfoSchema = exports.TwoFaProviderConfigSchema = exports.TwoFaAccountConfigUpdateRequestSchema = exports.TwoFaAccountConfigSchema = exports.TwilioSmsProviderConfigurationSchema = exports.TsValueSchema = exports.TransportPayloadTypeConfigurationSchema = exports.TotpTwoFaProviderConfigSchema = void 0;
 const zod_1 = require("zod");
-exports.AccountTwoFaSettingsSchema = zod_1.z.lazy(() => exports.AccountTwoFaSettingsSchemaSchema);
-exports.ActivateUserRequestSchema = zod_1.z.lazy(() => exports.ActivateUserRequestSchemaSchema);
-exports.AdminSettingsSchema = zod_1.z.lazy(() => exports.AdminSettingsSchemaSchema);
-exports.AdminSettingsIdSchema = zod_1.z.lazy(() => exports.AdminSettingsIdSchemaSchema);
-exports.AffectedTenantAdministratorsFilterSchema = zod_1.z.lazy(() => exports.AffectedTenantAdministratorsFilterSchemaSchema);
-exports.AffectedUserFilterSchema = zod_1.z.lazy(() => exports.AffectedUserFilterSchemaSchema);
-exports.AlarmSchema = zod_1.z.lazy(() => exports.AlarmSchemaSchema);
-exports.AlarmAssigneeSchema = zod_1.z.lazy(() => exports.AlarmAssigneeSchemaSchema);
-exports.AlarmAssignmentNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.AlarmAssignmentNotificationRuleTriggerConfigSchemaSchema);
-exports.AlarmCommentSchema = zod_1.z.lazy(() => exports.AlarmCommentSchemaSchema);
-exports.AlarmCommentIdSchema = zod_1.z.lazy(() => exports.AlarmCommentIdSchemaSchema);
-exports.AlarmCommentInfoSchema = zod_1.z.lazy(() => exports.AlarmCommentInfoSchemaSchema);
-exports.AlarmCommentNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.AlarmCommentNotificationRuleTriggerConfigSchemaSchema);
-exports.AlarmConditionSchema = zod_1.z.lazy(() => exports.AlarmConditionSchemaSchema);
-exports.AlarmConditionFilterSchema = zod_1.z.lazy(() => exports.AlarmConditionFilterSchemaSchema);
-exports.AlarmConditionFilterKeySchema = zod_1.z.lazy(() => exports.AlarmConditionFilterKeySchemaSchema);
-exports.AlarmConditionSpecSchema = zod_1.z.lazy(() => exports.AlarmConditionSpecSchemaSchema);
-exports.AlarmCountQuerySchema = zod_1.z.lazy(() => exports.AlarmCountQuerySchemaSchema);
-exports.AlarmDataSchema = zod_1.z.lazy(() => exports.AlarmDataSchemaSchema);
-exports.AlarmDataPageLinkSchema = zod_1.z.lazy(() => exports.AlarmDataPageLinkSchemaSchema);
-exports.AlarmDataQuerySchema = zod_1.z.lazy(() => exports.AlarmDataQuerySchemaSchema);
-exports.AlarmIdSchema = zod_1.z.lazy(() => exports.AlarmIdSchemaSchema);
-exports.AlarmInfoSchema = zod_1.z.lazy(() => exports.AlarmInfoSchemaSchema);
-exports.AlarmNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.AlarmNotificationRuleTriggerConfigSchemaSchema);
-exports.AlarmRuleSchema = zod_1.z.lazy(() => exports.AlarmRuleSchemaSchema);
-exports.AlarmScheduleSchema = zod_1.z.lazy(() => exports.AlarmScheduleSchemaSchema);
-exports.AllUsersFilterSchema = zod_1.z.lazy(() => exports.AllUsersFilterSchemaSchema);
-exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaSchema);
-exports.AllowedPermissionsInfoSchema = zod_1.z.lazy(() => exports.AllowedPermissionsInfoSchemaSchema);
-exports.AnyTimeScheduleSchema = zod_1.z.lazy(() => exports.AnyTimeScheduleSchemaSchema);
-exports.ApiUsageLimitNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.ApiUsageLimitNotificationRuleTriggerConfigSchemaSchema);
-exports.ApiUsageStateFilterSchema = zod_1.z.lazy(() => exports.ApiUsageStateFilterSchemaSchema);
-exports.ArrayNodeSchema = zod_1.z.lazy(() => exports.ArrayNodeSchemaSchema);
-exports.AssetSchema = zod_1.z.lazy(() => exports.AssetSchemaSchema);
-exports.AssetIdSchema = zod_1.z.lazy(() => exports.AssetIdSchemaSchema);
-exports.AssetInfoSchema = zod_1.z.lazy(() => exports.AssetInfoSchemaSchema);
-exports.AssetProfileSchema = zod_1.z.lazy(() => exports.AssetProfileSchemaSchema);
-exports.AssetProfileIdSchema = zod_1.z.lazy(() => exports.AssetProfileIdSchemaSchema);
-exports.AssetProfileInfoSchema = zod_1.z.lazy(() => exports.AssetProfileInfoSchemaSchema);
-exports.AssetSearchQuerySchema = zod_1.z.lazy(() => exports.AssetSearchQuerySchemaSchema);
-exports.AssetSearchQueryFilterSchema = zod_1.z.lazy(() => exports.AssetSearchQueryFilterSchemaSchema);
-exports.AssetTypeFilterSchema = zod_1.z.lazy(() => exports.AssetTypeFilterSchemaSchema);
-exports.AtomicIntegerSchema = zod_1.z.lazy(() => exports.AtomicIntegerSchemaSchema);
-exports.AttributeExportDataSchema = zod_1.z.lazy(() => exports.AttributeExportDataSchemaSchema);
-exports.AttributesEntityViewSchema = zod_1.z.lazy(() => exports.AttributesEntityViewSchemaSchema);
-exports.AuditLogSchema = zod_1.z.lazy(() => exports.AuditLogSchemaSchema);
-exports.AuditLogIdSchema = zod_1.z.lazy(() => exports.AuditLogIdSchemaSchema);
-exports.AutoVersionCreateConfigSchema = zod_1.z.lazy(() => exports.AutoVersionCreateConfigSchemaSchema);
-exports.AwsSnsSmsProviderConfigurationSchema = zod_1.z.lazy(() => exports.AwsSnsSmsProviderConfigurationSchemaSchema);
-exports.BackupCodeTwoFaAccountConfigSchema = zod_1.z.lazy(() => exports.BackupCodeTwoFaAccountConfigSchemaSchema);
-exports.BackupCodeTwoFaProviderConfigSchema = zod_1.z.lazy(() => exports.BackupCodeTwoFaProviderConfigSchemaSchema);
-exports.BlobEntityIdSchema = zod_1.z.lazy(() => exports.BlobEntityIdSchemaSchema);
-exports.BlobEntityInfoSchema = zod_1.z.lazy(() => exports.BlobEntityInfoSchemaSchema);
-exports.BlobEntityWithCustomerInfoSchema = zod_1.z.lazy(() => exports.BlobEntityWithCustomerInfoSchemaSchema);
-exports.BooleanFilterPredicateSchema = zod_1.z.lazy(() => exports.BooleanFilterPredicateSchemaSchema);
-exports.BranchInfoSchema = zod_1.z.lazy(() => exports.BranchInfoSchemaSchema);
-exports.BulkImportRequestSchema = zod_1.z.lazy(() => exports.BulkImportRequestSchemaSchema);
-exports.BulkImportResult_Of_AssetSchema = zod_1.z.lazy(() => exports.BulkImportResult_Of_AssetSchemaSchema);
-exports.BulkImportResult_Of_DeviceSchema = zod_1.z.lazy(() => exports.BulkImportResult_Of_DeviceSchemaSchema);
-exports.BulkImportResult_Of_EdgeSchema = zod_1.z.lazy(() => exports.BulkImportResult_Of_EdgeSchemaSchema);
-exports.ButtonSchema = zod_1.z.lazy(() => exports.ButtonSchemaSchema);
-exports.ByteArrayResourceSchema = zod_1.z.lazy(() => exports.ByteArrayResourceSchemaSchema);
-exports.ByteBufferSchema = zod_1.z.lazy(() => exports.ByteBufferSchemaSchema);
-exports.ChangePasswordRequestSchema = zod_1.z.lazy(() => exports.ChangePasswordRequestSchemaSchema);
-exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaSchema);
-exports.ClaimRequestSchema = zod_1.z.lazy(() => exports.ClaimRequestSchemaSchema);
-exports.ClearRuleSchema = zod_1.z.lazy(() => exports.ClearRuleSchemaSchema);
-exports.ClientAttributesQueryingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.ClientAttributesQueryingSnmpCommunicationConfigSchemaSchema);
-exports.CoapDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.CoapDeviceProfileTransportConfigurationSchemaSchema);
-exports.CoapDeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.CoapDeviceTransportConfigurationSchemaSchema);
-exports.CoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => exports.CoapDeviceTypeConfigurationSchemaSchema);
-exports.ColumnMappingSchema = zod_1.z.lazy(() => exports.ColumnMappingSchemaSchema);
-exports.ComparisonTsValueSchema = zod_1.z.lazy(() => exports.ComparisonTsValueSchemaSchema);
-exports.ComplexFilterPredicateSchema = zod_1.z.lazy(() => exports.ComplexFilterPredicateSchemaSchema);
-exports.ComplexVersionCreateRequestSchema = zod_1.z.lazy(() => exports.ComplexVersionCreateRequestSchemaSchema);
-exports.ComponentDescriptorSchema = zod_1.z.lazy(() => exports.ComponentDescriptorSchemaSchema);
-exports.ComponentDescriptorIdSchema = zod_1.z.lazy(() => exports.ComponentDescriptorIdSchemaSchema);
-exports.ContactBased_Of_objectSchema = zod_1.z.lazy(() => exports.ContactBased_Of_objectSchemaSchema);
-exports.ConverterSchema = zod_1.z.lazy(() => exports.ConverterSchemaSchema);
-exports.ConverterIdSchema = zod_1.z.lazy(() => exports.ConverterIdSchemaSchema);
-exports.CustomMenuSchema = zod_1.z.lazy(() => exports.CustomMenuSchemaSchema);
-exports.CustomMenuItemSchema = zod_1.z.lazy(() => exports.CustomMenuItemSchemaSchema);
-exports.CustomTimeScheduleSchema = zod_1.z.lazy(() => exports.CustomTimeScheduleSchemaSchema);
-exports.CustomTimeScheduleItemSchema = zod_1.z.lazy(() => exports.CustomTimeScheduleItemSchemaSchema);
-exports.CustomTranslationSchema = zod_1.z.lazy(() => exports.CustomTranslationSchemaSchema);
-exports.CustomerSchema = zod_1.z.lazy(() => exports.CustomerSchemaSchema);
-exports.CustomerIdSchema = zod_1.z.lazy(() => exports.CustomerIdSchemaSchema);
-exports.CustomerInfoSchema = zod_1.z.lazy(() => exports.CustomerInfoSchemaSchema);
-exports.CustomerUsersFilterSchema = zod_1.z.lazy(() => exports.CustomerUsersFilterSchemaSchema);
-exports.DashboardSchema = zod_1.z.lazy(() => exports.DashboardSchemaSchema);
-exports.DashboardIdSchema = zod_1.z.lazy(() => exports.DashboardIdSchemaSchema);
-exports.DashboardInfoSchema = zod_1.z.lazy(() => exports.DashboardInfoSchemaSchema);
-exports.DebugConverterEventFilterSchema = zod_1.z.lazy(() => exports.DebugConverterEventFilterSchemaSchema);
-exports.DebugIntegrationEventFilterSchema = zod_1.z.lazy(() => exports.DebugIntegrationEventFilterSchemaSchema);
-exports.DefaultCoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => exports.DefaultCoapDeviceTypeConfigurationSchemaSchema);
-exports.DefaultDeviceConfigurationSchema = zod_1.z.lazy(() => exports.DefaultDeviceConfigurationSchemaSchema);
-exports.DefaultDeviceProfileConfigurationSchema = zod_1.z.lazy(() => exports.DefaultDeviceProfileConfigurationSchemaSchema);
-exports.DefaultDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.DefaultDeviceProfileTransportConfigurationSchemaSchema);
-exports.DefaultDeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.DefaultDeviceTransportConfigurationSchemaSchema);
-exports.DefaultRuleChainCreateRequestSchema = zod_1.z.lazy(() => exports.DefaultRuleChainCreateRequestSchemaSchema);
-exports.DefaultTenantProfileConfigurationSchema = zod_1.z.lazy(() => exports.DefaultTenantProfileConfigurationSchemaSchema);
-exports.DeferredResult_Of_EntityDataDiffSchema = zod_1.z.lazy(() => exports.DeferredResult_Of_EntityDataDiffSchemaSchema);
-exports.DeferredResult_Of_EntityDataInfoSchema = zod_1.z.lazy(() => exports.DeferredResult_Of_EntityDataInfoSchemaSchema);
-exports.DeferredResult_Of_List_BranchInfo_Schema = zod_1.z.lazy(() => exports.DeferredResult_Of_List_BranchInfo_SchemaSchema);
-exports.DeferredResult_Of_List_VersionedEntityInfo_Schema = zod_1.z.lazy(() => exports.DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema);
-exports.DeferredResult_Of_PageData_EntityVersion_Schema = zod_1.z.lazy(() => exports.DeferredResult_Of_PageData_EntityVersion_SchemaSchema);
-exports.DeferredResult_Of_RepositorySettingsSchema = zod_1.z.lazy(() => exports.DeferredResult_Of_RepositorySettingsSchemaSchema);
-exports.DeferredResult_Of_ResponseEntitySchema = zod_1.z.lazy(() => exports.DeferredResult_Of_ResponseEntitySchemaSchema);
-exports.DeferredResult_Of_VoidSchema = zod_1.z.lazy(() => exports.DeferredResult_Of_VoidSchemaSchema);
-exports.DeferredResult_Of_uuidSchema = zod_1.z.lazy(() => exports.DeferredResult_Of_uuidSchemaSchema);
-exports.DeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.DeliveryMethodNotificationTemplateSchemaSchema);
-exports.DeviceSchema = zod_1.z.lazy(() => exports.DeviceSchemaSchema);
-exports.DeviceActivityNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.DeviceActivityNotificationRuleTriggerConfigSchemaSchema);
-exports.DeviceConfigurationSchema = zod_1.z.lazy(() => exports.DeviceConfigurationSchemaSchema);
-exports.DeviceCredentialsSchema = zod_1.z.lazy(() => exports.DeviceCredentialsSchemaSchema);
-exports.DeviceCredentialsIdSchema = zod_1.z.lazy(() => exports.DeviceCredentialsIdSchemaSchema);
-exports.DeviceDataSchema = zod_1.z.lazy(() => exports.DeviceDataSchemaSchema);
-exports.DeviceExportDataSchema = zod_1.z.lazy(() => exports.DeviceExportDataSchemaSchema);
-exports.DeviceGroupOtaPackageSchema = zod_1.z.lazy(() => exports.DeviceGroupOtaPackageSchemaSchema);
-exports.DeviceIdSchema = zod_1.z.lazy(() => exports.DeviceIdSchemaSchema);
-exports.DeviceInfoSchema = zod_1.z.lazy(() => exports.DeviceInfoSchemaSchema);
-exports.DeviceProfileSchema = zod_1.z.lazy(() => exports.DeviceProfileSchemaSchema);
-exports.DeviceProfileAlarmSchema = zod_1.z.lazy(() => exports.DeviceProfileAlarmSchemaSchema);
-exports.DeviceProfileConfigurationSchema = zod_1.z.lazy(() => exports.DeviceProfileConfigurationSchemaSchema);
-exports.DeviceProfileDataSchema = zod_1.z.lazy(() => exports.DeviceProfileDataSchemaSchema);
-exports.DeviceProfileIdSchema = zod_1.z.lazy(() => exports.DeviceProfileIdSchemaSchema);
-exports.DeviceProfileInfoSchema = zod_1.z.lazy(() => exports.DeviceProfileInfoSchemaSchema);
-exports.DeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => exports.DeviceProfileProvisionConfigurationSchemaSchema);
-exports.DeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.DeviceProfileTransportConfigurationSchemaSchema);
-exports.DeviceSearchQuerySchema = zod_1.z.lazy(() => exports.DeviceSearchQuerySchemaSchema);
-exports.DeviceSearchQueryFilterSchema = zod_1.z.lazy(() => exports.DeviceSearchQueryFilterSchemaSchema);
-exports.DeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.DeviceTransportConfigurationSchemaSchema);
-exports.DeviceTypeFilterSchema = zod_1.z.lazy(() => exports.DeviceTypeFilterSchemaSchema);
-exports.DisabledDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => exports.DisabledDeviceProfileProvisionConfigurationSchemaSchema);
-exports.DurationAlarmConditionSpecSchema = zod_1.z.lazy(() => exports.DurationAlarmConditionSpecSchemaSchema);
-exports.DynamicValue_Of_booleanSchema = zod_1.z.lazy(() => exports.DynamicValue_Of_booleanSchemaSchema);
-exports.DynamicValue_Of_doubleSchema = zod_1.z.lazy(() => exports.DynamicValue_Of_doubleSchemaSchema);
-exports.DynamicValue_Of_intSchema = zod_1.z.lazy(() => exports.DynamicValue_Of_intSchemaSchema);
-exports.DynamicValue_Of_longSchema = zod_1.z.lazy(() => exports.DynamicValue_Of_longSchemaSchema);
-exports.DynamicValue_Of_stringSchema = zod_1.z.lazy(() => exports.DynamicValue_Of_stringSchemaSchema);
-exports.EdgeSchema = zod_1.z.lazy(() => exports.EdgeSchemaSchema);
-exports.EdgeEventSchema = zod_1.z.lazy(() => exports.EdgeEventSchemaSchema);
-exports.EdgeEventIdSchema = zod_1.z.lazy(() => exports.EdgeEventIdSchemaSchema);
-exports.EdgeIdSchema = zod_1.z.lazy(() => exports.EdgeIdSchemaSchema);
-exports.EdgeInfoSchema = zod_1.z.lazy(() => exports.EdgeInfoSchemaSchema);
-exports.EdgeInstructionsSchema = zod_1.z.lazy(() => exports.EdgeInstructionsSchemaSchema);
-exports.EdgeSearchQuerySchema = zod_1.z.lazy(() => exports.EdgeSearchQuerySchemaSchema);
-exports.EdgeSearchQueryFilterSchema = zod_1.z.lazy(() => exports.EdgeSearchQueryFilterSchemaSchema);
-exports.EdgeTypeFilterSchema = zod_1.z.lazy(() => exports.EdgeTypeFilterSchemaSchema);
-exports.EfentoCoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => exports.EfentoCoapDeviceTypeConfigurationSchemaSchema);
-exports.EmailDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.EmailDeliveryMethodNotificationTemplateSchemaSchema);
-exports.EmailTwoFaAccountConfigSchema = zod_1.z.lazy(() => exports.EmailTwoFaAccountConfigSchemaSchema);
-exports.EmailTwoFaProviderConfigSchema = zod_1.z.lazy(() => exports.EmailTwoFaProviderConfigSchemaSchema);
-exports.EntitiesByGroupNameFilterSchema = zod_1.z.lazy(() => exports.EntitiesByGroupNameFilterSchemaSchema);
-exports.EntitiesLimitNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.EntitiesLimitNotificationRuleTriggerConfigSchemaSchema);
-exports.EntityActionNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.EntityActionNotificationRuleTriggerConfigSchemaSchema);
-exports.EntityCountQuerySchema = zod_1.z.lazy(() => exports.EntityCountQuerySchemaSchema);
-exports.EntityDataSchema = zod_1.z.lazy(() => exports.EntityDataSchemaSchema);
-exports.EntityDataDiffSchema = zod_1.z.lazy(() => exports.EntityDataDiffSchemaSchema);
-exports.EntityDataInfoSchema = zod_1.z.lazy(() => exports.EntityDataInfoSchemaSchema);
-exports.EntityDataPageLinkSchema = zod_1.z.lazy(() => exports.EntityDataPageLinkSchemaSchema);
-exports.EntityDataQuerySchema = zod_1.z.lazy(() => exports.EntityDataQuerySchemaSchema);
-exports.EntityDataSortOrderSchema = zod_1.z.lazy(() => exports.EntityDataSortOrderSchemaSchema);
-exports.EntityExportData_Of_objectSchema = zod_1.z.lazy(() => exports.EntityExportData_Of_objectSchemaSchema);
-exports.EntityFilterSchema = zod_1.z.lazy(() => exports.EntityFilterSchemaSchema);
-exports.EntityGroupSchema = zod_1.z.lazy(() => exports.EntityGroupSchemaSchema);
-exports.EntityGroupExportDataSchema = zod_1.z.lazy(() => exports.EntityGroupExportDataSchemaSchema);
-exports.EntityGroupFilterSchema = zod_1.z.lazy(() => exports.EntityGroupFilterSchemaSchema);
-exports.EntityGroupIdSchema = zod_1.z.lazy(() => exports.EntityGroupIdSchemaSchema);
-exports.EntityGroupInfoSchema = zod_1.z.lazy(() => exports.EntityGroupInfoSchemaSchema);
-exports.EntityGroupListFilterSchema = zod_1.z.lazy(() => exports.EntityGroupListFilterSchemaSchema);
-exports.EntityGroupNameFilterSchema = zod_1.z.lazy(() => exports.EntityGroupNameFilterSchemaSchema);
-exports.EntityIdSchema = zod_1.z.lazy(() => exports.EntityIdSchemaSchema);
-exports.EntityInfoSchema = zod_1.z.lazy(() => exports.EntityInfoSchemaSchema);
-exports.EntityKeySchema = zod_1.z.lazy(() => exports.EntityKeySchemaSchema);
-exports.EntityListFilterSchema = zod_1.z.lazy(() => exports.EntityListFilterSchemaSchema);
-exports.EntityLoadErrorSchema = zod_1.z.lazy(() => exports.EntityLoadErrorSchemaSchema);
-exports.EntityNameFilterSchema = zod_1.z.lazy(() => exports.EntityNameFilterSchemaSchema);
-exports.EntityRelationSchema = zod_1.z.lazy(() => exports.EntityRelationSchemaSchema);
-exports.EntityRelationInfoSchema = zod_1.z.lazy(() => exports.EntityRelationInfoSchemaSchema);
-exports.EntityRelationsQuerySchema = zod_1.z.lazy(() => exports.EntityRelationsQuerySchemaSchema);
-exports.EntitySubtypeSchema = zod_1.z.lazy(() => exports.EntitySubtypeSchemaSchema);
-exports.EntityTypeFilterSchema = zod_1.z.lazy(() => exports.EntityTypeFilterSchemaSchema);
-exports.EntityTypeLoadResultSchema = zod_1.z.lazy(() => exports.EntityTypeLoadResultSchemaSchema);
-exports.EntityTypeVersionCreateConfigSchema = zod_1.z.lazy(() => exports.EntityTypeVersionCreateConfigSchemaSchema);
-exports.EntityTypeVersionLoadConfigSchema = zod_1.z.lazy(() => exports.EntityTypeVersionLoadConfigSchemaSchema);
-exports.EntityTypeVersionLoadRequestSchema = zod_1.z.lazy(() => exports.EntityTypeVersionLoadRequestSchemaSchema);
-exports.EntityVersionSchema = zod_1.z.lazy(() => exports.EntityVersionSchemaSchema);
-exports.EntityViewSchema = zod_1.z.lazy(() => exports.EntityViewSchemaSchema);
-exports.EntityViewIdSchema = zod_1.z.lazy(() => exports.EntityViewIdSchemaSchema);
-exports.EntityViewInfoSchema = zod_1.z.lazy(() => exports.EntityViewInfoSchemaSchema);
-exports.EntityViewSearchQuerySchema = zod_1.z.lazy(() => exports.EntityViewSearchQuerySchemaSchema);
-exports.EntityViewSearchQueryFilterSchema = zod_1.z.lazy(() => exports.EntityViewSearchQueryFilterSchemaSchema);
-exports.EntityViewTypeFilterSchema = zod_1.z.lazy(() => exports.EntityViewTypeFilterSchemaSchema);
-exports.ErrorEventFilterSchema = zod_1.z.lazy(() => exports.ErrorEventFilterSchemaSchema);
-exports.EscalatedNotificationRuleRecipientsConfigSchema = zod_1.z.lazy(() => exports.EscalatedNotificationRuleRecipientsConfigSchemaSchema);
-exports.EventFilterSchema = zod_1.z.lazy(() => exports.EventFilterSchemaSchema);
-exports.EventIdSchema = zod_1.z.lazy(() => exports.EventIdSchemaSchema);
-exports.EventInfoSchema = zod_1.z.lazy(() => exports.EventInfoSchemaSchema);
-exports.ExportableEntity_Of_EntityIdSchema = zod_1.z.lazy(() => exports.ExportableEntity_Of_EntityIdSchemaSchema);
-exports.FaviconSchema = zod_1.z.lazy(() => exports.FaviconSchemaSchema);
-exports.FeaturesInfoSchema = zod_1.z.lazy(() => exports.FeaturesInfoSchemaSchema);
-exports.FilterPredicateValue_Of_booleanSchema = zod_1.z.lazy(() => exports.FilterPredicateValue_Of_booleanSchemaSchema);
-exports.FilterPredicateValue_Of_doubleSchema = zod_1.z.lazy(() => exports.FilterPredicateValue_Of_doubleSchemaSchema);
-exports.FilterPredicateValue_Of_intSchema = zod_1.z.lazy(() => exports.FilterPredicateValue_Of_intSchemaSchema);
-exports.FilterPredicateValue_Of_longSchema = zod_1.z.lazy(() => exports.FilterPredicateValue_Of_longSchemaSchema);
-exports.FilterPredicateValue_Of_stringSchema = zod_1.z.lazy(() => exports.FilterPredicateValue_Of_stringSchemaSchema);
-exports.GroupEntityExportDataSchema = zod_1.z.lazy(() => exports.GroupEntityExportDataSchemaSchema);
-exports.GroupPermissionSchema = zod_1.z.lazy(() => exports.GroupPermissionSchemaSchema);
-exports.GroupPermissionIdSchema = zod_1.z.lazy(() => exports.GroupPermissionIdSchemaSchema);
-exports.GroupPermissionInfoSchema = zod_1.z.lazy(() => exports.GroupPermissionInfoSchemaSchema);
-exports.HasId_Of_objectSchema = zod_1.z.lazy(() => exports.HasId_Of_objectSchemaSchema);
-exports.HomeDashboardSchema = zod_1.z.lazy(() => exports.HomeDashboardSchemaSchema);
-exports.HomeDashboardInfoSchema = zod_1.z.lazy(() => exports.HomeDashboardInfoSchemaSchema);
-exports.ImageExportDataSchema = zod_1.z.lazy(() => exports.ImageExportDataSchemaSchema);
-exports.InputStreamSchema = zod_1.z.lazy(() => exports.InputStreamSchemaSchema);
-exports.IntegrationSchema = zod_1.z.lazy(() => exports.IntegrationSchemaSchema);
-exports.IntegrationIdSchema = zod_1.z.lazy(() => exports.IntegrationIdSchemaSchema);
-exports.IntegrationInfoSchema = zod_1.z.lazy(() => exports.IntegrationInfoSchemaSchema);
-exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaSchema);
-exports.JWT_PairSchema = zod_1.z.lazy(() => exports.JWT_PairSchemaSchema);
-exports.JWT_SettingsSchema = zod_1.z.lazy(() => exports.JWT_SettingsSchemaSchema);
-exports.JsonNodeSchema = zod_1.z.lazy(() => exports.JsonNodeSchemaSchema);
-exports.JsonTransportPayloadConfigurationSchema = zod_1.z.lazy(() => exports.JsonTransportPayloadConfigurationSchemaSchema);
-exports.KeyFilterSchema = zod_1.z.lazy(() => exports.KeyFilterSchemaSchema);
-exports.KeyFilterPredicateSchema = zod_1.z.lazy(() => exports.KeyFilterPredicateSchemaSchema);
-exports.LastVisitedDashboardInfoSchema = zod_1.z.lazy(() => exports.LastVisitedDashboardInfoSchemaSchema);
-exports.LicenseUsageInfoSchema = zod_1.z.lazy(() => exports.LicenseUsageInfoSchemaSchema);
-exports.LifeCycleEventFilterSchema = zod_1.z.lazy(() => exports.LifeCycleEventFilterSchemaSchema);
-exports.LoginRequestSchema = zod_1.z.lazy(() => exports.LoginRequestSchemaSchema);
-exports.LoginResponseSchema = zod_1.z.lazy(() => exports.LoginResponseSchemaSchema);
-exports.LoginWhiteLabelingParamsSchema = zod_1.z.lazy(() => exports.LoginWhiteLabelingParamsSchemaSchema);
-exports.LwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => exports.LwM2MBootstrapServerCredentialSchemaSchema);
-exports.LwM2mInstanceSchema = zod_1.z.lazy(() => exports.LwM2mInstanceSchemaSchema);
-exports.LwM2mObjectSchema = zod_1.z.lazy(() => exports.LwM2mObjectSchemaSchema);
-exports.LwM2mResourceObserveSchema = zod_1.z.lazy(() => exports.LwM2mResourceObserveSchemaSchema);
-exports.Lwm2mDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.Lwm2mDeviceProfileTransportConfigurationSchemaSchema);
-exports.Lwm2mDeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.Lwm2mDeviceTransportConfigurationSchemaSchema);
-exports.MappingSchema = zod_1.z.lazy(() => exports.MappingSchemaSchema);
-exports.MergedGroupPermissionInfoSchema = zod_1.z.lazy(() => exports.MergedGroupPermissionInfoSchemaSchema);
-exports.MergedGroupTypePermissionInfoSchema = zod_1.z.lazy(() => exports.MergedGroupTypePermissionInfoSchemaSchema);
-exports.MergedUserPermissionsSchema = zod_1.z.lazy(() => exports.MergedUserPermissionsSchemaSchema);
-exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaSchema);
-exports.MicrosoftTeamsNotificationTargetConfigSchema = zod_1.z.lazy(() => exports.MicrosoftTeamsNotificationTargetConfigSchemaSchema);
-exports.MqttDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.MqttDeviceProfileTransportConfigurationSchemaSchema);
-exports.MqttDeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.MqttDeviceTransportConfigurationSchemaSchema);
-exports.NewPlatformVersionNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.NewPlatformVersionNotificationRuleTriggerConfigSchemaSchema);
-exports.NoSecLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => exports.NoSecLwM2MBootstrapServerCredentialSchemaSchema);
-exports.NodeConnectionInfoSchema = zod_1.z.lazy(() => exports.NodeConnectionInfoSchemaSchema);
-exports.NotificationSchema = zod_1.z.lazy(() => exports.NotificationSchemaSchema);
-exports.NotificationDeliveryMethodConfigSchema = zod_1.z.lazy(() => exports.NotificationDeliveryMethodConfigSchemaSchema);
-exports.NotificationIdSchema = zod_1.z.lazy(() => exports.NotificationIdSchemaSchema);
-exports.NotificationInfoSchema = zod_1.z.lazy(() => exports.NotificationInfoSchemaSchema);
-exports.NotificationPrefSchema = zod_1.z.lazy(() => exports.NotificationPrefSchemaSchema);
-exports.NotificationRequestSchema = zod_1.z.lazy(() => exports.NotificationRequestSchemaSchema);
-exports.NotificationRequestConfigSchema = zod_1.z.lazy(() => exports.NotificationRequestConfigSchemaSchema);
-exports.NotificationRequestIdSchema = zod_1.z.lazy(() => exports.NotificationRequestIdSchemaSchema);
-exports.NotificationRequestInfoSchema = zod_1.z.lazy(() => exports.NotificationRequestInfoSchemaSchema);
-exports.NotificationRequestPreviewSchema = zod_1.z.lazy(() => exports.NotificationRequestPreviewSchemaSchema);
-exports.NotificationRequestStatsSchema = zod_1.z.lazy(() => exports.NotificationRequestStatsSchemaSchema);
-exports.NotificationRuleSchema = zod_1.z.lazy(() => exports.NotificationRuleSchemaSchema);
-exports.NotificationRuleConfigSchema = zod_1.z.lazy(() => exports.NotificationRuleConfigSchemaSchema);
-exports.NotificationRuleIdSchema = zod_1.z.lazy(() => exports.NotificationRuleIdSchemaSchema);
-exports.NotificationRuleInfoSchema = zod_1.z.lazy(() => exports.NotificationRuleInfoSchemaSchema);
-exports.NotificationRuleRecipientsConfigSchema = zod_1.z.lazy(() => exports.NotificationRuleRecipientsConfigSchemaSchema);
-exports.NotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.NotificationRuleTriggerConfigSchemaSchema);
-exports.NotificationSettingsSchema = zod_1.z.lazy(() => exports.NotificationSettingsSchemaSchema);
-exports.NotificationTargetSchema = zod_1.z.lazy(() => exports.NotificationTargetSchemaSchema);
-exports.NotificationTargetConfigSchema = zod_1.z.lazy(() => exports.NotificationTargetConfigSchemaSchema);
-exports.NotificationTemplateSchema = zod_1.z.lazy(() => exports.NotificationTemplateSchemaSchema);
-exports.NotificationTemplateConfigSchema = zod_1.z.lazy(() => exports.NotificationTemplateConfigSchemaSchema);
-exports.NotificationTemplateIdSchema = zod_1.z.lazy(() => exports.NotificationTemplateIdSchemaSchema);
-exports.NumericFilterPredicateSchema = zod_1.z.lazy(() => exports.NumericFilterPredicateSchemaSchema);
-exports.OAuth2BasicMapperConfigSchema = zod_1.z.lazy(() => exports.OAuth2BasicMapperConfigSchemaSchema);
-exports.OAuth2ClientInfoSchema = zod_1.z.lazy(() => exports.OAuth2ClientInfoSchemaSchema);
-exports.OAuth2ClientRegistrationTemplateSchema = zod_1.z.lazy(() => exports.OAuth2ClientRegistrationTemplateSchemaSchema);
-exports.OAuth2ClientRegistrationTemplateIdSchema = zod_1.z.lazy(() => exports.OAuth2ClientRegistrationTemplateIdSchemaSchema);
-exports.OAuth2CustomMapperConfigSchema = zod_1.z.lazy(() => exports.OAuth2CustomMapperConfigSchemaSchema);
-exports.OAuth2DomainInfoSchema = zod_1.z.lazy(() => exports.OAuth2DomainInfoSchemaSchema);
-exports.OAuth2InfoSchema = zod_1.z.lazy(() => exports.OAuth2InfoSchemaSchema);
-exports.OAuth2MapperConfigSchema = zod_1.z.lazy(() => exports.OAuth2MapperConfigSchemaSchema);
-exports.OAuth2MobileInfoSchema = zod_1.z.lazy(() => exports.OAuth2MobileInfoSchemaSchema);
-exports.OAuth2ParamsInfoSchema = zod_1.z.lazy(() => exports.OAuth2ParamsInfoSchemaSchema);
-exports.OAuth2RegistrationInfoSchema = zod_1.z.lazy(() => exports.OAuth2RegistrationInfoSchemaSchema);
-exports.ObjectAttributesSchema = zod_1.z.lazy(() => exports.ObjectAttributesSchemaSchema);
-exports.ObjectNodeSchema = zod_1.z.lazy(() => exports.ObjectNodeSchemaSchema);
-exports.OriginatorEntityOwnerUsersFilterSchema = zod_1.z.lazy(() => exports.OriginatorEntityOwnerUsersFilterSchemaSchema);
-exports.OtaPackageSchema = zod_1.z.lazy(() => exports.OtaPackageSchemaSchema);
-exports.OtaPackageIdSchema = zod_1.z.lazy(() => exports.OtaPackageIdSchemaSchema);
-exports.OtaPackageInfoSchema = zod_1.z.lazy(() => exports.OtaPackageInfoSchemaSchema);
-exports.OtherConfigurationSchema = zod_1.z.lazy(() => exports.OtherConfigurationSchemaSchema);
-exports.PSKLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => exports.PSKLwM2MBootstrapServerCredentialSchemaSchema);
-exports.PageData_Of_AlarmCommentInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_AlarmCommentInfoSchemaSchema);
-exports.PageData_Of_AlarmDataSchema = zod_1.z.lazy(() => exports.PageData_Of_AlarmDataSchemaSchema);
-exports.PageData_Of_AlarmInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_AlarmInfoSchemaSchema);
-exports.PageData_Of_AssetInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_AssetInfoSchemaSchema);
-exports.PageData_Of_AssetProfileInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_AssetProfileInfoSchemaSchema);
-exports.PageData_Of_AssetProfileSchema = zod_1.z.lazy(() => exports.PageData_Of_AssetProfileSchemaSchema);
-exports.PageData_Of_AssetSchema = zod_1.z.lazy(() => exports.PageData_Of_AssetSchemaSchema);
-exports.PageData_Of_AuditLogSchema = zod_1.z.lazy(() => exports.PageData_Of_AuditLogSchemaSchema);
-exports.PageData_Of_BlobEntityWithCustomerInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_BlobEntityWithCustomerInfoSchemaSchema);
-exports.PageData_Of_ContactBased_object_Schema = zod_1.z.lazy(() => exports.PageData_Of_ContactBased_object_SchemaSchema);
-exports.PageData_Of_ConverterSchema = zod_1.z.lazy(() => exports.PageData_Of_ConverterSchemaSchema);
-exports.PageData_Of_CustomerInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_CustomerInfoSchemaSchema);
-exports.PageData_Of_CustomerSchema = zod_1.z.lazy(() => exports.PageData_Of_CustomerSchemaSchema);
-exports.PageData_Of_DashboardInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_DashboardInfoSchemaSchema);
-exports.PageData_Of_DeviceInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_DeviceInfoSchemaSchema);
-exports.PageData_Of_DeviceProfileInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_DeviceProfileInfoSchemaSchema);
-exports.PageData_Of_DeviceProfileSchema = zod_1.z.lazy(() => exports.PageData_Of_DeviceProfileSchemaSchema);
-exports.PageData_Of_DeviceSchema = zod_1.z.lazy(() => exports.PageData_Of_DeviceSchemaSchema);
-exports.PageData_Of_EdgeEventSchema = zod_1.z.lazy(() => exports.PageData_Of_EdgeEventSchemaSchema);
-exports.PageData_Of_EdgeInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_EdgeInfoSchemaSchema);
-exports.PageData_Of_EdgeSchema = zod_1.z.lazy(() => exports.PageData_Of_EdgeSchemaSchema);
-exports.PageData_Of_EntityDataSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityDataSchemaSchema);
-exports.PageData_Of_EntityGroupInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityGroupInfoSchemaSchema);
-exports.PageData_Of_EntityInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityInfoSchemaSchema);
-exports.PageData_Of_EntitySubtypeSchema = zod_1.z.lazy(() => exports.PageData_Of_EntitySubtypeSchemaSchema);
-exports.PageData_Of_EntityVersionSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityVersionSchemaSchema);
-exports.PageData_Of_EntityViewInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityViewInfoSchemaSchema);
-exports.PageData_Of_EntityViewSchema = zod_1.z.lazy(() => exports.PageData_Of_EntityViewSchemaSchema);
-exports.PageData_Of_EventInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_EventInfoSchemaSchema);
-exports.PageData_Of_IntegrationInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_IntegrationInfoSchemaSchema);
-exports.PageData_Of_IntegrationSchema = zod_1.z.lazy(() => exports.PageData_Of_IntegrationSchemaSchema);
-exports.PageData_Of_NotificationRequestInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_NotificationRequestInfoSchemaSchema);
-exports.PageData_Of_NotificationRuleInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_NotificationRuleInfoSchemaSchema);
-exports.PageData_Of_NotificationTargetSchema = zod_1.z.lazy(() => exports.PageData_Of_NotificationTargetSchemaSchema);
-exports.PageData_Of_NotificationTemplateSchema = zod_1.z.lazy(() => exports.PageData_Of_NotificationTemplateSchemaSchema);
-exports.PageData_Of_NotificationSchema = zod_1.z.lazy(() => exports.PageData_Of_NotificationSchemaSchema);
-exports.PageData_Of_OtaPackageInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_OtaPackageInfoSchemaSchema);
-exports.PageData_Of_QueueSchema = zod_1.z.lazy(() => exports.PageData_Of_QueueSchemaSchema);
-exports.PageData_Of_RoleSchema = zod_1.z.lazy(() => exports.PageData_Of_RoleSchemaSchema);
-exports.PageData_Of_RuleChainSchema = zod_1.z.lazy(() => exports.PageData_Of_RuleChainSchemaSchema);
-exports.PageData_Of_SchedulerEventInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_SchedulerEventInfoSchemaSchema);
-exports.PageData_Of_ShortEntityViewSchema = zod_1.z.lazy(() => exports.PageData_Of_ShortEntityViewSchemaSchema);
-exports.PageData_Of_TbResourceInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_TbResourceInfoSchemaSchema);
-exports.PageData_Of_TenantInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_TenantInfoSchemaSchema);
-exports.PageData_Of_TenantProfileSchema = zod_1.z.lazy(() => exports.PageData_Of_TenantProfileSchemaSchema);
-exports.PageData_Of_TenantSchema = zod_1.z.lazy(() => exports.PageData_Of_TenantSchemaSchema);
-exports.PageData_Of_UserEmailInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_UserEmailInfoSchemaSchema);
-exports.PageData_Of_UserInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_UserInfoSchemaSchema);
-exports.PageData_Of_UserSchema = zod_1.z.lazy(() => exports.PageData_Of_UserSchemaSchema);
-exports.PageData_Of_WidgetTypeInfoSchema = zod_1.z.lazy(() => exports.PageData_Of_WidgetTypeInfoSchemaSchema);
-exports.PageData_Of_WidgetsBundleSchema = zod_1.z.lazy(() => exports.PageData_Of_WidgetsBundleSchemaSchema);
-exports.PaletteSchema = zod_1.z.lazy(() => exports.PaletteSchemaSchema);
-exports.PaletteSettingsSchema = zod_1.z.lazy(() => exports.PaletteSettingsSchemaSchema);
-exports.PlatformTwoFaSettingsSchema = zod_1.z.lazy(() => exports.PlatformTwoFaSettingsSchemaSchema);
-exports.PlatformUsersNotificationTargetConfigSchema = zod_1.z.lazy(() => exports.PlatformUsersNotificationTargetConfigSchemaSchema);
-exports.PowerSavingConfigurationSchema = zod_1.z.lazy(() => exports.PowerSavingConfigurationSchemaSchema);
-exports.ProcessingStrategySchema = zod_1.z.lazy(() => exports.ProcessingStrategySchemaSchema);
-exports.ProtoTransportPayloadConfigurationSchema = zod_1.z.lazy(() => exports.ProtoTransportPayloadConfigurationSchemaSchema);
-exports.QueueSchema = zod_1.z.lazy(() => exports.QueueSchemaSchema);
-exports.QueueIdSchema = zod_1.z.lazy(() => exports.QueueIdSchemaSchema);
-exports.RPKLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => exports.RPKLwM2MBootstrapServerCredentialSchemaSchema);
-exports.RateLimitsNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.RateLimitsNotificationRuleTriggerConfigSchemaSchema);
-exports.RawDataEventFilterSchema = zod_1.z.lazy(() => exports.RawDataEventFilterSchemaSchema);
-exports.RelationEntityTypeFilterSchema = zod_1.z.lazy(() => exports.RelationEntityTypeFilterSchemaSchema);
-exports.RelationsQueryFilterSchema = zod_1.z.lazy(() => exports.RelationsQueryFilterSchemaSchema);
-exports.RelationsSearchParametersSchema = zod_1.z.lazy(() => exports.RelationsSearchParametersSchemaSchema);
-exports.RepeatingAlarmConditionSpecSchema = zod_1.z.lazy(() => exports.RepeatingAlarmConditionSpecSchemaSchema);
-exports.ReportConfigSchema = zod_1.z.lazy(() => exports.ReportConfigSchemaSchema);
-exports.RepositorySettingsSchema = zod_1.z.lazy(() => exports.RepositorySettingsSchemaSchema);
-exports.RepositorySettingsInfoSchema = zod_1.z.lazy(() => exports.RepositorySettingsInfoSchemaSchema);
-exports.ResetPasswordEmailRequestSchema = zod_1.z.lazy(() => exports.ResetPasswordEmailRequestSchemaSchema);
-exports.ResetPasswordRequestSchema = zod_1.z.lazy(() => exports.ResetPasswordRequestSchemaSchema);
-exports.ResourceSchema = zod_1.z.lazy(() => exports.ResourceSchemaSchema);
-exports.ResponseEntitySchema = zod_1.z.lazy(() => exports.ResponseEntitySchemaSchema);
-exports.RoleSchema = zod_1.z.lazy(() => exports.RoleSchemaSchema);
-exports.RoleIdSchema = zod_1.z.lazy(() => exports.RoleIdSchemaSchema);
-exports.RpcSchema = zod_1.z.lazy(() => exports.RpcSchemaSchema);
-exports.RpcIdSchema = zod_1.z.lazy(() => exports.RpcIdSchemaSchema);
-exports.RuleChainSchema = zod_1.z.lazy(() => exports.RuleChainSchemaSchema);
-exports.RuleChainConnectionInfoSchema = zod_1.z.lazy(() => exports.RuleChainConnectionInfoSchemaSchema);
-exports.RuleChainDataSchema = zod_1.z.lazy(() => exports.RuleChainDataSchemaSchema);
-exports.RuleChainDebugEventFilterSchema = zod_1.z.lazy(() => exports.RuleChainDebugEventFilterSchemaSchema);
-exports.RuleChainExportDataSchema = zod_1.z.lazy(() => exports.RuleChainExportDataSchemaSchema);
-exports.RuleChainIdSchema = zod_1.z.lazy(() => exports.RuleChainIdSchemaSchema);
-exports.RuleChainImportResultSchema = zod_1.z.lazy(() => exports.RuleChainImportResultSchemaSchema);
-exports.RuleChainMetaDataSchema = zod_1.z.lazy(() => exports.RuleChainMetaDataSchemaSchema);
-exports.RuleChainOutputLabelsUsageSchema = zod_1.z.lazy(() => exports.RuleChainOutputLabelsUsageSchemaSchema);
-exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaSchema);
-exports.RuleNodeSchema = zod_1.z.lazy(() => exports.RuleNodeSchemaSchema);
-exports.RuleNodeDebugEventFilterSchema = zod_1.z.lazy(() => exports.RuleNodeDebugEventFilterSchemaSchema);
-exports.RuleNodeIdSchema = zod_1.z.lazy(() => exports.RuleNodeIdSchemaSchema);
-exports.SaveDeviceWithCredentialsRequestSchema = zod_1.z.lazy(() => exports.SaveDeviceWithCredentialsRequestSchemaSchema);
-exports.SaveOtaPackageInfoRequestSchema = zod_1.z.lazy(() => exports.SaveOtaPackageInfoRequestSchemaSchema);
-exports.SchedulerEventSchema = zod_1.z.lazy(() => exports.SchedulerEventSchemaSchema);
-exports.SchedulerEventFilterSchema = zod_1.z.lazy(() => exports.SchedulerEventFilterSchemaSchema);
-exports.SchedulerEventIdSchema = zod_1.z.lazy(() => exports.SchedulerEventIdSchemaSchema);
-exports.SchedulerEventInfoSchema = zod_1.z.lazy(() => exports.SchedulerEventInfoSchemaSchema);
-exports.SchedulerEventWithCustomerInfoSchema = zod_1.z.lazy(() => exports.SchedulerEventWithCustomerInfoSchemaSchema);
-exports.SecuritySettingsSchema = zod_1.z.lazy(() => exports.SecuritySettingsSchemaSchema);
-exports.SelfRegistrationParamsSchema = zod_1.z.lazy(() => exports.SelfRegistrationParamsSchemaSchema);
-exports.ShareGroupRequestSchema = zod_1.z.lazy(() => exports.ShareGroupRequestSchemaSchema);
-exports.SharedAttributesSettingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.SharedAttributesSettingSnmpCommunicationConfigSchemaSchema);
-exports.ShortCustomerInfoSchema = zod_1.z.lazy(() => exports.ShortCustomerInfoSchemaSchema);
-exports.ShortEntityViewSchema = zod_1.z.lazy(() => exports.ShortEntityViewSchemaSchema);
-exports.SignUpRequestSchema = zod_1.z.lazy(() => exports.SignUpRequestSchemaSchema);
-exports.SignUpSelfRegistrationParamsSchema = zod_1.z.lazy(() => exports.SignUpSelfRegistrationParamsSchemaSchema);
-exports.SimpleAlarmConditionSpecSchema = zod_1.z.lazy(() => exports.SimpleAlarmConditionSpecSchemaSchema);
-exports.SingleEntityFilterSchema = zod_1.z.lazy(() => exports.SingleEntityFilterSchemaSchema);
-exports.SingleEntityVersionCreateRequestSchema = zod_1.z.lazy(() => exports.SingleEntityVersionCreateRequestSchemaSchema);
-exports.SingleEntityVersionLoadRequestSchema = zod_1.z.lazy(() => exports.SingleEntityVersionLoadRequestSchemaSchema);
-exports.SlackConversationSchema = zod_1.z.lazy(() => exports.SlackConversationSchemaSchema);
-exports.SlackDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.SlackDeliveryMethodNotificationTemplateSchemaSchema);
-exports.SlackNotificationDeliveryMethodConfigSchema = zod_1.z.lazy(() => exports.SlackNotificationDeliveryMethodConfigSchemaSchema);
-exports.SlackNotificationTargetConfigSchema = zod_1.z.lazy(() => exports.SlackNotificationTargetConfigSchemaSchema);
-exports.SmppSmsProviderConfigurationSchema = zod_1.z.lazy(() => exports.SmppSmsProviderConfigurationSchemaSchema);
-exports.SmsDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.SmsDeliveryMethodNotificationTemplateSchemaSchema);
-exports.SmsProviderConfigurationSchema = zod_1.z.lazy(() => exports.SmsProviderConfigurationSchemaSchema);
-exports.SmsTwoFaAccountConfigSchema = zod_1.z.lazy(() => exports.SmsTwoFaAccountConfigSchemaSchema);
-exports.SmsTwoFaProviderConfigSchema = zod_1.z.lazy(() => exports.SmsTwoFaProviderConfigSchemaSchema);
-exports.SnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.SnmpCommunicationConfigSchemaSchema);
-exports.SnmpDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => exports.SnmpDeviceProfileTransportConfigurationSchemaSchema);
-exports.SnmpDeviceTransportConfigurationSchema = zod_1.z.lazy(() => exports.SnmpDeviceTransportConfigurationSchemaSchema);
-exports.SnmpMappingSchema = zod_1.z.lazy(() => exports.SnmpMappingSchemaSchema);
-exports.SolutionInstallResponseSchema = zod_1.z.lazy(() => exports.SolutionInstallResponseSchemaSchema);
-exports.SpecificTimeScheduleSchema = zod_1.z.lazy(() => exports.SpecificTimeScheduleSchemaSchema);
-exports.StarredDashboardInfoSchema = zod_1.z.lazy(() => exports.StarredDashboardInfoSchemaSchema);
-exports.StateEntityOwnerFilterSchema = zod_1.z.lazy(() => exports.StateEntityOwnerFilterSchemaSchema);
-exports.StatisticsEventFilterSchema = zod_1.z.lazy(() => exports.StatisticsEventFilterSchemaSchema);
-exports.StringFilterPredicateSchema = zod_1.z.lazy(() => exports.StringFilterPredicateSchemaSchema);
-exports.SubmitStrategySchema = zod_1.z.lazy(() => exports.SubmitStrategySchemaSchema);
-exports.SystemAdministratorsFilterSchema = zod_1.z.lazy(() => exports.SystemAdministratorsFilterSchemaSchema);
-exports.SystemInfoSchema = zod_1.z.lazy(() => exports.SystemInfoSchemaSchema);
-exports.SystemInfoDataSchema = zod_1.z.lazy(() => exports.SystemInfoDataSchemaSchema);
-exports.TbImageDeleteResultSchema = zod_1.z.lazy(() => exports.TbImageDeleteResultSchemaSchema);
-exports.TbResourceSchema = zod_1.z.lazy(() => exports.TbResourceSchemaSchema);
-exports.TbResourceIdSchema = zod_1.z.lazy(() => exports.TbResourceIdSchemaSchema);
-exports.TbResourceInfoSchema = zod_1.z.lazy(() => exports.TbResourceInfoSchemaSchema);
-exports.TelemetryEntityViewSchema = zod_1.z.lazy(() => exports.TelemetryEntityViewSchemaSchema);
-exports.TelemetryMappingConfigurationSchema = zod_1.z.lazy(() => exports.TelemetryMappingConfigurationSchemaSchema);
-exports.TelemetryQueryingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.TelemetryQueryingSnmpCommunicationConfigSchemaSchema);
-exports.TenantSchema = zod_1.z.lazy(() => exports.TenantSchemaSchema);
-exports.TenantAdministratorsFilterSchema = zod_1.z.lazy(() => exports.TenantAdministratorsFilterSchemaSchema);
-exports.TenantIdSchema = zod_1.z.lazy(() => exports.TenantIdSchemaSchema);
-exports.TenantInfoSchema = zod_1.z.lazy(() => exports.TenantInfoSchemaSchema);
-exports.TenantProfileSchema = zod_1.z.lazy(() => exports.TenantProfileSchemaSchema);
-exports.TenantProfileConfigurationSchema = zod_1.z.lazy(() => exports.TenantProfileConfigurationSchemaSchema);
-exports.TenantProfileDataSchema = zod_1.z.lazy(() => exports.TenantProfileDataSchemaSchema);
-exports.TenantProfileIdSchema = zod_1.z.lazy(() => exports.TenantProfileIdSchemaSchema);
-exports.TenantProfileQueueConfigurationSchema = zod_1.z.lazy(() => exports.TenantProfileQueueConfigurationSchemaSchema);
-exports.TenantSolutionTemplateDetailsSchema = zod_1.z.lazy(() => exports.TenantSolutionTemplateDetailsSchemaSchema);
-exports.TenantSolutionTemplateInfoSchema = zod_1.z.lazy(() => exports.TenantSolutionTemplateInfoSchemaSchema);
-exports.TenantSolutionTemplateInstructionsSchema = zod_1.z.lazy(() => exports.TenantSolutionTemplateInstructionsSchemaSchema);
-exports.TestSmsRequestSchema = zod_1.z.lazy(() => exports.TestSmsRequestSchemaSchema);
-exports.ThingsboardCredentialsExpiredResponseSchema = zod_1.z.lazy(() => exports.ThingsboardCredentialsExpiredResponseSchemaSchema);
-exports.ThingsboardErrorResponseSchema = zod_1.z.lazy(() => exports.ThingsboardErrorResponseSchemaSchema);
-exports.ToDeviceRpcRequestSnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.ToDeviceRpcRequestSnmpCommunicationConfigSchemaSchema);
-exports.ToServerRpcRequestSnmpCommunicationConfigSchema = zod_1.z.lazy(() => exports.ToServerRpcRequestSnmpCommunicationConfigSchemaSchema);
-exports.TotpTwoFaAccountConfigSchema = zod_1.z.lazy(() => exports.TotpTwoFaAccountConfigSchemaSchema);
-exports.TotpTwoFaProviderConfigSchema = zod_1.z.lazy(() => exports.TotpTwoFaProviderConfigSchemaSchema);
-exports.TransportPayloadTypeConfigurationSchema = zod_1.z.lazy(() => exports.TransportPayloadTypeConfigurationSchemaSchema);
-exports.TsValueSchema = zod_1.z.lazy(() => exports.TsValueSchemaSchema);
-exports.TwilioSmsProviderConfigurationSchema = zod_1.z.lazy(() => exports.TwilioSmsProviderConfigurationSchemaSchema);
-exports.TwoFaAccountConfigSchema = zod_1.z.lazy(() => exports.TwoFaAccountConfigSchemaSchema);
-exports.TwoFaAccountConfigUpdateRequestSchema = zod_1.z.lazy(() => exports.TwoFaAccountConfigUpdateRequestSchemaSchema);
-exports.TwoFaProviderConfigSchema = zod_1.z.lazy(() => exports.TwoFaProviderConfigSchemaSchema);
-exports.TwoFaProviderInfoSchema = zod_1.z.lazy(() => exports.TwoFaProviderInfoSchemaSchema);
-exports.UpdateMessageSchema = zod_1.z.lazy(() => exports.UpdateMessageSchemaSchema);
-exports.UsageInfoSchema = zod_1.z.lazy(() => exports.UsageInfoSchemaSchema);
-exports.UserSchema = zod_1.z.lazy(() => exports.UserSchemaSchema);
-exports.UserDashboardsInfoSchema = zod_1.z.lazy(() => exports.UserDashboardsInfoSchemaSchema);
-exports.UserEmailInfoSchema = zod_1.z.lazy(() => exports.UserEmailInfoSchemaSchema);
-exports.UserGroupListFilterSchema = zod_1.z.lazy(() => exports.UserGroupListFilterSchemaSchema);
-exports.UserIdSchema = zod_1.z.lazy(() => exports.UserIdSchemaSchema);
-exports.UserInfoSchema = zod_1.z.lazy(() => exports.UserInfoSchemaSchema);
-exports.UserListFilterSchema = zod_1.z.lazy(() => exports.UserListFilterSchemaSchema);
-exports.UserNotificationSettingsSchema = zod_1.z.lazy(() => exports.UserNotificationSettingsSchemaSchema);
-exports.UserPasswordPolicySchema = zod_1.z.lazy(() => exports.UserPasswordPolicySchemaSchema);
-exports.UserRoleFilterSchema = zod_1.z.lazy(() => exports.UserRoleFilterSchemaSchema);
-exports.UsersFilterSchema = zod_1.z.lazy(() => exports.UsersFilterSchemaSchema);
-exports.VersionCreateConfigSchema = zod_1.z.lazy(() => exports.VersionCreateConfigSchemaSchema);
-exports.VersionCreateRequestSchema = zod_1.z.lazy(() => exports.VersionCreateRequestSchemaSchema);
-exports.VersionCreationResultSchema = zod_1.z.lazy(() => exports.VersionCreationResultSchemaSchema);
-exports.VersionLoadConfigSchema = zod_1.z.lazy(() => exports.VersionLoadConfigSchemaSchema);
-exports.VersionLoadRequestSchema = zod_1.z.lazy(() => exports.VersionLoadRequestSchemaSchema);
-exports.VersionLoadResultSchema = zod_1.z.lazy(() => exports.VersionLoadResultSchemaSchema);
-exports.VersionedEntityInfoSchema = zod_1.z.lazy(() => exports.VersionedEntityInfoSchemaSchema);
-exports.WebDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => exports.WebDeliveryMethodNotificationTemplateSchemaSchema);
-exports.WhiteLabelingSchema = zod_1.z.lazy(() => exports.WhiteLabelingSchemaSchema);
-exports.WhiteLabelingParamsSchema = zod_1.z.lazy(() => exports.WhiteLabelingParamsSchemaSchema);
-exports.WidgetTypeSchema = zod_1.z.lazy(() => exports.WidgetTypeSchemaSchema);
-exports.WidgetTypeDetailsSchema = zod_1.z.lazy(() => exports.WidgetTypeDetailsSchemaSchema);
-exports.WidgetTypeExportDataSchema = zod_1.z.lazy(() => exports.WidgetTypeExportDataSchemaSchema);
-exports.WidgetTypeIdSchema = zod_1.z.lazy(() => exports.WidgetTypeIdSchemaSchema);
-exports.WidgetTypeInfoSchema = zod_1.z.lazy(() => exports.WidgetTypeInfoSchemaSchema);
-exports.WidgetsBundleSchema = zod_1.z.lazy(() => exports.WidgetsBundleSchemaSchema);
-exports.WidgetsBundleExportDataSchema = zod_1.z.lazy(() => exports.WidgetsBundleExportDataSchemaSchema);
-exports.WidgetsBundleIdSchema = zod_1.z.lazy(() => exports.WidgetsBundleIdSchemaSchema);
-exports.X509CertificateChainProvisionConfigurationSchema = zod_1.z.lazy(() => exports.X509CertificateChainProvisionConfigurationSchemaSchema);
-exports.X509LwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => exports.X509LwM2MBootstrapServerCredentialSchemaSchema);
-exports.AccountTwoFaSettingsSchemaSchema = zod_1.z.object({
-    "configs": zod_1.z.record(zod_1.z.string(), exports.TwoFaAccountConfigSchema)
+exports.AccountTwoFaSettingsSchema = zod_1.z.lazy(() => AccountTwoFaSettingsSchemaImpl);
+exports.ActivateUserRequestSchema = zod_1.z.lazy(() => ActivateUserRequestSchemaImpl);
+exports.AdminSettingsSchema = zod_1.z.lazy(() => AdminSettingsSchemaImpl);
+exports.AdminSettingsIdSchema = zod_1.z.lazy(() => AdminSettingsIdSchemaImpl);
+exports.AffectedTenantAdministratorsFilterSchema = zod_1.z.lazy(() => AffectedTenantAdministratorsFilterSchemaImpl);
+exports.AffectedUserFilterSchema = zod_1.z.lazy(() => AffectedUserFilterSchemaImpl);
+exports.AlarmSchema = zod_1.z.lazy(() => AlarmSchemaImpl);
+exports.AlarmAssigneeSchema = zod_1.z.lazy(() => AlarmAssigneeSchemaImpl);
+exports.AlarmAssignmentNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => AlarmAssignmentNotificationRuleTriggerConfigSchemaImpl);
+exports.AlarmCommentSchema = zod_1.z.lazy(() => AlarmCommentSchemaImpl);
+exports.AlarmCommentIdSchema = zod_1.z.lazy(() => AlarmCommentIdSchemaImpl);
+exports.AlarmCommentInfoSchema = zod_1.z.lazy(() => AlarmCommentInfoSchemaImpl);
+exports.AlarmCommentNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => AlarmCommentNotificationRuleTriggerConfigSchemaImpl);
+exports.AlarmConditionSchema = zod_1.z.lazy(() => AlarmConditionSchemaImpl);
+exports.AlarmConditionFilterSchema = zod_1.z.lazy(() => AlarmConditionFilterSchemaImpl);
+exports.AlarmConditionFilterKeySchema = zod_1.z.lazy(() => AlarmConditionFilterKeySchemaImpl);
+exports.AlarmConditionSpecSchema = zod_1.z.lazy(() => AlarmConditionSpecSchemaImpl);
+exports.AlarmCountQuerySchema = zod_1.z.lazy(() => AlarmCountQuerySchemaImpl);
+exports.AlarmDataSchema = zod_1.z.lazy(() => AlarmDataSchemaImpl);
+exports.AlarmDataPageLinkSchema = zod_1.z.lazy(() => AlarmDataPageLinkSchemaImpl);
+exports.AlarmDataQuerySchema = zod_1.z.lazy(() => AlarmDataQuerySchemaImpl);
+exports.AlarmIdSchema = zod_1.z.lazy(() => AlarmIdSchemaImpl);
+exports.AlarmInfoSchema = zod_1.z.lazy(() => AlarmInfoSchemaImpl);
+exports.AlarmNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => AlarmNotificationRuleTriggerConfigSchemaImpl);
+exports.AlarmRuleSchema = zod_1.z.lazy(() => AlarmRuleSchemaImpl);
+exports.AlarmScheduleSchema = zod_1.z.lazy(() => AlarmScheduleSchemaImpl);
+exports.AllUsersFilterSchema = zod_1.z.lazy(() => AllUsersFilterSchemaImpl);
+exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaImpl);
+exports.AllowedPermissionsInfoSchema = zod_1.z.lazy(() => AllowedPermissionsInfoSchemaImpl);
+exports.AnyTimeScheduleSchema = zod_1.z.lazy(() => AnyTimeScheduleSchemaImpl);
+exports.ApiUsageLimitNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => ApiUsageLimitNotificationRuleTriggerConfigSchemaImpl);
+exports.ApiUsageStateFilterSchema = zod_1.z.lazy(() => ApiUsageStateFilterSchemaImpl);
+exports.ArrayNodeSchema = zod_1.z.lazy(() => ArrayNodeSchemaImpl);
+exports.AssetSchema = zod_1.z.lazy(() => AssetSchemaImpl);
+exports.AssetIdSchema = zod_1.z.lazy(() => AssetIdSchemaImpl);
+exports.AssetInfoSchema = zod_1.z.lazy(() => AssetInfoSchemaImpl);
+exports.AssetProfileSchema = zod_1.z.lazy(() => AssetProfileSchemaImpl);
+exports.AssetProfileIdSchema = zod_1.z.lazy(() => AssetProfileIdSchemaImpl);
+exports.AssetProfileInfoSchema = zod_1.z.lazy(() => AssetProfileInfoSchemaImpl);
+exports.AssetSearchQuerySchema = zod_1.z.lazy(() => AssetSearchQuerySchemaImpl);
+exports.AssetSearchQueryFilterSchema = zod_1.z.lazy(() => AssetSearchQueryFilterSchemaImpl);
+exports.AssetTypeFilterSchema = zod_1.z.lazy(() => AssetTypeFilterSchemaImpl);
+exports.AtomicIntegerSchema = zod_1.z.lazy(() => AtomicIntegerSchemaImpl);
+exports.AttributeExportDataSchema = zod_1.z.lazy(() => AttributeExportDataSchemaImpl);
+exports.AttributesEntityViewSchema = zod_1.z.lazy(() => AttributesEntityViewSchemaImpl);
+exports.AuditLogSchema = zod_1.z.lazy(() => AuditLogSchemaImpl);
+exports.AuditLogIdSchema = zod_1.z.lazy(() => AuditLogIdSchemaImpl);
+exports.AutoVersionCreateConfigSchema = zod_1.z.lazy(() => AutoVersionCreateConfigSchemaImpl);
+exports.AwsSnsSmsProviderConfigurationSchema = zod_1.z.lazy(() => AwsSnsSmsProviderConfigurationSchemaImpl);
+exports.BackupCodeTwoFaAccountConfigSchema = zod_1.z.lazy(() => BackupCodeTwoFaAccountConfigSchemaImpl);
+exports.BackupCodeTwoFaProviderConfigSchema = zod_1.z.lazy(() => BackupCodeTwoFaProviderConfigSchemaImpl);
+exports.BlobEntityIdSchema = zod_1.z.lazy(() => BlobEntityIdSchemaImpl);
+exports.BlobEntityInfoSchema = zod_1.z.lazy(() => BlobEntityInfoSchemaImpl);
+exports.BlobEntityWithCustomerInfoSchema = zod_1.z.lazy(() => BlobEntityWithCustomerInfoSchemaImpl);
+exports.BooleanFilterPredicateSchema = zod_1.z.lazy(() => BooleanFilterPredicateSchemaImpl);
+exports.BranchInfoSchema = zod_1.z.lazy(() => BranchInfoSchemaImpl);
+exports.BulkImportRequestSchema = zod_1.z.lazy(() => BulkImportRequestSchemaImpl);
+exports.BulkImportResult_Of_AssetSchema = zod_1.z.lazy(() => BulkImportResult_Of_AssetSchemaImpl);
+exports.BulkImportResult_Of_DeviceSchema = zod_1.z.lazy(() => BulkImportResult_Of_DeviceSchemaImpl);
+exports.BulkImportResult_Of_EdgeSchema = zod_1.z.lazy(() => BulkImportResult_Of_EdgeSchemaImpl);
+exports.ButtonSchema = zod_1.z.lazy(() => ButtonSchemaImpl);
+exports.ByteArrayResourceSchema = zod_1.z.lazy(() => ByteArrayResourceSchemaImpl);
+exports.ByteBufferSchema = zod_1.z.lazy(() => ByteBufferSchemaImpl);
+exports.ChangePasswordRequestSchema = zod_1.z.lazy(() => ChangePasswordRequestSchemaImpl);
+exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaImpl);
+exports.ClaimRequestSchema = zod_1.z.lazy(() => ClaimRequestSchemaImpl);
+exports.ClearRuleSchema = zod_1.z.lazy(() => ClearRuleSchemaImpl);
+exports.ClientAttributesQueryingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => ClientAttributesQueryingSnmpCommunicationConfigSchemaImpl);
+exports.CoapDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => CoapDeviceProfileTransportConfigurationSchemaImpl);
+exports.CoapDeviceTransportConfigurationSchema = zod_1.z.lazy(() => CoapDeviceTransportConfigurationSchemaImpl);
+exports.CoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => CoapDeviceTypeConfigurationSchemaImpl);
+exports.ColumnMappingSchema = zod_1.z.lazy(() => ColumnMappingSchemaImpl);
+exports.ComparisonTsValueSchema = zod_1.z.lazy(() => ComparisonTsValueSchemaImpl);
+exports.ComplexFilterPredicateSchema = zod_1.z.lazy(() => ComplexFilterPredicateSchemaImpl);
+exports.ComplexVersionCreateRequestSchema = zod_1.z.lazy(() => ComplexVersionCreateRequestSchemaImpl);
+exports.ComponentDescriptorSchema = zod_1.z.lazy(() => ComponentDescriptorSchemaImpl);
+exports.ComponentDescriptorIdSchema = zod_1.z.lazy(() => ComponentDescriptorIdSchemaImpl);
+exports.ContactBased_Of_objectSchema = zod_1.z.lazy(() => ContactBased_Of_objectSchemaImpl);
+exports.ConverterSchema = zod_1.z.lazy(() => ConverterSchemaImpl);
+exports.ConverterIdSchema = zod_1.z.lazy(() => ConverterIdSchemaImpl);
+exports.CustomMenuSchema = zod_1.z.lazy(() => CustomMenuSchemaImpl);
+exports.CustomMenuItemSchema = zod_1.z.lazy(() => CustomMenuItemSchemaImpl);
+exports.CustomTimeScheduleSchema = zod_1.z.lazy(() => CustomTimeScheduleSchemaImpl);
+exports.CustomTimeScheduleItemSchema = zod_1.z.lazy(() => CustomTimeScheduleItemSchemaImpl);
+exports.CustomTranslationSchema = zod_1.z.lazy(() => CustomTranslationSchemaImpl);
+exports.CustomerSchema = zod_1.z.lazy(() => CustomerSchemaImpl);
+exports.CustomerIdSchema = zod_1.z.lazy(() => CustomerIdSchemaImpl);
+exports.CustomerInfoSchema = zod_1.z.lazy(() => CustomerInfoSchemaImpl);
+exports.CustomerUsersFilterSchema = zod_1.z.lazy(() => CustomerUsersFilterSchemaImpl);
+exports.DashboardSchema = zod_1.z.lazy(() => DashboardSchemaImpl);
+exports.DashboardIdSchema = zod_1.z.lazy(() => DashboardIdSchemaImpl);
+exports.DashboardInfoSchema = zod_1.z.lazy(() => DashboardInfoSchemaImpl);
+exports.DebugConverterEventFilterSchema = zod_1.z.lazy(() => DebugConverterEventFilterSchemaImpl);
+exports.DebugIntegrationEventFilterSchema = zod_1.z.lazy(() => DebugIntegrationEventFilterSchemaImpl);
+exports.DefaultCoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => DefaultCoapDeviceTypeConfigurationSchemaImpl);
+exports.DefaultDeviceConfigurationSchema = zod_1.z.lazy(() => DefaultDeviceConfigurationSchemaImpl);
+exports.DefaultDeviceProfileConfigurationSchema = zod_1.z.lazy(() => DefaultDeviceProfileConfigurationSchemaImpl);
+exports.DefaultDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => DefaultDeviceProfileTransportConfigurationSchemaImpl);
+exports.DefaultDeviceTransportConfigurationSchema = zod_1.z.lazy(() => DefaultDeviceTransportConfigurationSchemaImpl);
+exports.DefaultRuleChainCreateRequestSchema = zod_1.z.lazy(() => DefaultRuleChainCreateRequestSchemaImpl);
+exports.DefaultTenantProfileConfigurationSchema = zod_1.z.lazy(() => DefaultTenantProfileConfigurationSchemaImpl);
+exports.DeferredResult_Of_EntityDataDiffSchema = zod_1.z.lazy(() => DeferredResult_Of_EntityDataDiffSchemaImpl);
+exports.DeferredResult_Of_EntityDataInfoSchema = zod_1.z.lazy(() => DeferredResult_Of_EntityDataInfoSchemaImpl);
+exports.DeferredResult_Of_List_Of_BranchInfoSchema = zod_1.z.lazy(() => DeferredResult_Of_List_Of_BranchInfoSchemaImpl);
+exports.DeferredResult_Of_List_Of_VersionedEntityInfoSchema = zod_1.z.lazy(() => DeferredResult_Of_List_Of_VersionedEntityInfoSchemaImpl);
+exports.DeferredResult_Of_PageData_Of_EntityVersionSchema = zod_1.z.lazy(() => DeferredResult_Of_PageData_Of_EntityVersionSchemaImpl);
+exports.DeferredResult_Of_RepositorySettingsSchema = zod_1.z.lazy(() => DeferredResult_Of_RepositorySettingsSchemaImpl);
+exports.DeferredResult_Of_ResponseEntitySchema = zod_1.z.lazy(() => DeferredResult_Of_ResponseEntitySchemaImpl);
+exports.DeferredResult_Of_VoidSchema = zod_1.z.lazy(() => DeferredResult_Of_VoidSchemaImpl);
+exports.DeferredResult_Of_uuidSchema = zod_1.z.lazy(() => DeferredResult_Of_uuidSchemaImpl);
+exports.DeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => DeliveryMethodNotificationTemplateSchemaImpl);
+exports.DeviceSchema = zod_1.z.lazy(() => DeviceSchemaImpl);
+exports.DeviceActivityNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => DeviceActivityNotificationRuleTriggerConfigSchemaImpl);
+exports.DeviceConfigurationSchema = zod_1.z.lazy(() => DeviceConfigurationSchemaImpl);
+exports.DeviceCredentialsSchema = zod_1.z.lazy(() => DeviceCredentialsSchemaImpl);
+exports.DeviceCredentialsIdSchema = zod_1.z.lazy(() => DeviceCredentialsIdSchemaImpl);
+exports.DeviceDataSchema = zod_1.z.lazy(() => DeviceDataSchemaImpl);
+exports.DeviceExportDataSchema = zod_1.z.lazy(() => DeviceExportDataSchemaImpl);
+exports.DeviceGroupOtaPackageSchema = zod_1.z.lazy(() => DeviceGroupOtaPackageSchemaImpl);
+exports.DeviceIdSchema = zod_1.z.lazy(() => DeviceIdSchemaImpl);
+exports.DeviceInfoSchema = zod_1.z.lazy(() => DeviceInfoSchemaImpl);
+exports.DeviceProfileSchema = zod_1.z.lazy(() => DeviceProfileSchemaImpl);
+exports.DeviceProfileAlarmSchema = zod_1.z.lazy(() => DeviceProfileAlarmSchemaImpl);
+exports.DeviceProfileConfigurationSchema = zod_1.z.lazy(() => DeviceProfileConfigurationSchemaImpl);
+exports.DeviceProfileDataSchema = zod_1.z.lazy(() => DeviceProfileDataSchemaImpl);
+exports.DeviceProfileIdSchema = zod_1.z.lazy(() => DeviceProfileIdSchemaImpl);
+exports.DeviceProfileInfoSchema = zod_1.z.lazy(() => DeviceProfileInfoSchemaImpl);
+exports.DeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => DeviceProfileProvisionConfigurationSchemaImpl);
+exports.DeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => DeviceProfileTransportConfigurationSchemaImpl);
+exports.DeviceSearchQuerySchema = zod_1.z.lazy(() => DeviceSearchQuerySchemaImpl);
+exports.DeviceSearchQueryFilterSchema = zod_1.z.lazy(() => DeviceSearchQueryFilterSchemaImpl);
+exports.DeviceTransportConfigurationSchema = zod_1.z.lazy(() => DeviceTransportConfigurationSchemaImpl);
+exports.DeviceTypeFilterSchema = zod_1.z.lazy(() => DeviceTypeFilterSchemaImpl);
+exports.DisabledDeviceProfileProvisionConfigurationSchema = zod_1.z.lazy(() => DisabledDeviceProfileProvisionConfigurationSchemaImpl);
+exports.DurationAlarmConditionSpecSchema = zod_1.z.lazy(() => DurationAlarmConditionSpecSchemaImpl);
+exports.DynamicValue_Of_booleanSchema = zod_1.z.lazy(() => DynamicValue_Of_booleanSchemaImpl);
+exports.DynamicValue_Of_doubleSchema = zod_1.z.lazy(() => DynamicValue_Of_doubleSchemaImpl);
+exports.DynamicValue_Of_intSchema = zod_1.z.lazy(() => DynamicValue_Of_intSchemaImpl);
+exports.DynamicValue_Of_longSchema = zod_1.z.lazy(() => DynamicValue_Of_longSchemaImpl);
+exports.DynamicValue_Of_stringSchema = zod_1.z.lazy(() => DynamicValue_Of_stringSchemaImpl);
+exports.EdgeSchema = zod_1.z.lazy(() => EdgeSchemaImpl);
+exports.EdgeEventSchema = zod_1.z.lazy(() => EdgeEventSchemaImpl);
+exports.EdgeEventIdSchema = zod_1.z.lazy(() => EdgeEventIdSchemaImpl);
+exports.EdgeIdSchema = zod_1.z.lazy(() => EdgeIdSchemaImpl);
+exports.EdgeInfoSchema = zod_1.z.lazy(() => EdgeInfoSchemaImpl);
+exports.EdgeInstructionsSchema = zod_1.z.lazy(() => EdgeInstructionsSchemaImpl);
+exports.EdgeSearchQuerySchema = zod_1.z.lazy(() => EdgeSearchQuerySchemaImpl);
+exports.EdgeSearchQueryFilterSchema = zod_1.z.lazy(() => EdgeSearchQueryFilterSchemaImpl);
+exports.EdgeTypeFilterSchema = zod_1.z.lazy(() => EdgeTypeFilterSchemaImpl);
+exports.EfentoCoapDeviceTypeConfigurationSchema = zod_1.z.lazy(() => EfentoCoapDeviceTypeConfigurationSchemaImpl);
+exports.EmailDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => EmailDeliveryMethodNotificationTemplateSchemaImpl);
+exports.EmailTwoFaAccountConfigSchema = zod_1.z.lazy(() => EmailTwoFaAccountConfigSchemaImpl);
+exports.EmailTwoFaProviderConfigSchema = zod_1.z.lazy(() => EmailTwoFaProviderConfigSchemaImpl);
+exports.EntitiesByGroupNameFilterSchema = zod_1.z.lazy(() => EntitiesByGroupNameFilterSchemaImpl);
+exports.EntitiesLimitNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => EntitiesLimitNotificationRuleTriggerConfigSchemaImpl);
+exports.EntityActionNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => EntityActionNotificationRuleTriggerConfigSchemaImpl);
+exports.EntityCountQuerySchema = zod_1.z.lazy(() => EntityCountQuerySchemaImpl);
+exports.EntityDataSchema = zod_1.z.lazy(() => EntityDataSchemaImpl);
+exports.EntityDataDiffSchema = zod_1.z.lazy(() => EntityDataDiffSchemaImpl);
+exports.EntityDataInfoSchema = zod_1.z.lazy(() => EntityDataInfoSchemaImpl);
+exports.EntityDataPageLinkSchema = zod_1.z.lazy(() => EntityDataPageLinkSchemaImpl);
+exports.EntityDataQuerySchema = zod_1.z.lazy(() => EntityDataQuerySchemaImpl);
+exports.EntityDataSortOrderSchema = zod_1.z.lazy(() => EntityDataSortOrderSchemaImpl);
+exports.EntityExportData_Of_objectSchema = zod_1.z.lazy(() => EntityExportData_Of_objectSchemaImpl);
+exports.EntityFilterSchema = zod_1.z.lazy(() => EntityFilterSchemaImpl);
+exports.EntityGroupSchema = zod_1.z.lazy(() => EntityGroupSchemaImpl);
+exports.EntityGroupExportDataSchema = zod_1.z.lazy(() => EntityGroupExportDataSchemaImpl);
+exports.EntityGroupFilterSchema = zod_1.z.lazy(() => EntityGroupFilterSchemaImpl);
+exports.EntityGroupIdSchema = zod_1.z.lazy(() => EntityGroupIdSchemaImpl);
+exports.EntityGroupInfoSchema = zod_1.z.lazy(() => EntityGroupInfoSchemaImpl);
+exports.EntityGroupListFilterSchema = zod_1.z.lazy(() => EntityGroupListFilterSchemaImpl);
+exports.EntityGroupNameFilterSchema = zod_1.z.lazy(() => EntityGroupNameFilterSchemaImpl);
+exports.EntityIdSchema = zod_1.z.lazy(() => EntityIdSchemaImpl);
+exports.EntityInfoSchema = zod_1.z.lazy(() => EntityInfoSchemaImpl);
+exports.EntityKeySchema = zod_1.z.lazy(() => EntityKeySchemaImpl);
+exports.EntityListFilterSchema = zod_1.z.lazy(() => EntityListFilterSchemaImpl);
+exports.EntityLoadErrorSchema = zod_1.z.lazy(() => EntityLoadErrorSchemaImpl);
+exports.EntityNameFilterSchema = zod_1.z.lazy(() => EntityNameFilterSchemaImpl);
+exports.EntityRelationSchema = zod_1.z.lazy(() => EntityRelationSchemaImpl);
+exports.EntityRelationInfoSchema = zod_1.z.lazy(() => EntityRelationInfoSchemaImpl);
+exports.EntityRelationsQuerySchema = zod_1.z.lazy(() => EntityRelationsQuerySchemaImpl);
+exports.EntitySubtypeSchema = zod_1.z.lazy(() => EntitySubtypeSchemaImpl);
+exports.EntityTypeFilterSchema = zod_1.z.lazy(() => EntityTypeFilterSchemaImpl);
+exports.EntityTypeLoadResultSchema = zod_1.z.lazy(() => EntityTypeLoadResultSchemaImpl);
+exports.EntityTypeVersionCreateConfigSchema = zod_1.z.lazy(() => EntityTypeVersionCreateConfigSchemaImpl);
+exports.EntityTypeVersionLoadConfigSchema = zod_1.z.lazy(() => EntityTypeVersionLoadConfigSchemaImpl);
+exports.EntityTypeVersionLoadRequestSchema = zod_1.z.lazy(() => EntityTypeVersionLoadRequestSchemaImpl);
+exports.EntityVersionSchema = zod_1.z.lazy(() => EntityVersionSchemaImpl);
+exports.EntityViewSchema = zod_1.z.lazy(() => EntityViewSchemaImpl);
+exports.EntityViewIdSchema = zod_1.z.lazy(() => EntityViewIdSchemaImpl);
+exports.EntityViewInfoSchema = zod_1.z.lazy(() => EntityViewInfoSchemaImpl);
+exports.EntityViewSearchQuerySchema = zod_1.z.lazy(() => EntityViewSearchQuerySchemaImpl);
+exports.EntityViewSearchQueryFilterSchema = zod_1.z.lazy(() => EntityViewSearchQueryFilterSchemaImpl);
+exports.EntityViewTypeFilterSchema = zod_1.z.lazy(() => EntityViewTypeFilterSchemaImpl);
+exports.ErrorEventFilterSchema = zod_1.z.lazy(() => ErrorEventFilterSchemaImpl);
+exports.EscalatedNotificationRuleRecipientsConfigSchema = zod_1.z.lazy(() => EscalatedNotificationRuleRecipientsConfigSchemaImpl);
+exports.EventFilterSchema = zod_1.z.lazy(() => EventFilterSchemaImpl);
+exports.EventIdSchema = zod_1.z.lazy(() => EventIdSchemaImpl);
+exports.EventInfoSchema = zod_1.z.lazy(() => EventInfoSchemaImpl);
+exports.ExportableEntity_Of_EntityIdSchema = zod_1.z.lazy(() => ExportableEntity_Of_EntityIdSchemaImpl);
+exports.FaviconSchema = zod_1.z.lazy(() => FaviconSchemaImpl);
+exports.FeaturesInfoSchema = zod_1.z.lazy(() => FeaturesInfoSchemaImpl);
+exports.FilterPredicateValue_Of_booleanSchema = zod_1.z.lazy(() => FilterPredicateValue_Of_booleanSchemaImpl);
+exports.FilterPredicateValue_Of_doubleSchema = zod_1.z.lazy(() => FilterPredicateValue_Of_doubleSchemaImpl);
+exports.FilterPredicateValue_Of_intSchema = zod_1.z.lazy(() => FilterPredicateValue_Of_intSchemaImpl);
+exports.FilterPredicateValue_Of_longSchema = zod_1.z.lazy(() => FilterPredicateValue_Of_longSchemaImpl);
+exports.FilterPredicateValue_Of_stringSchema = zod_1.z.lazy(() => FilterPredicateValue_Of_stringSchemaImpl);
+exports.GroupEntityExportDataSchema = zod_1.z.lazy(() => GroupEntityExportDataSchemaImpl);
+exports.GroupPermissionSchema = zod_1.z.lazy(() => GroupPermissionSchemaImpl);
+exports.GroupPermissionIdSchema = zod_1.z.lazy(() => GroupPermissionIdSchemaImpl);
+exports.GroupPermissionInfoSchema = zod_1.z.lazy(() => GroupPermissionInfoSchemaImpl);
+exports.HasId_Of_objectSchema = zod_1.z.lazy(() => HasId_Of_objectSchemaImpl);
+exports.HomeDashboardSchema = zod_1.z.lazy(() => HomeDashboardSchemaImpl);
+exports.HomeDashboardInfoSchema = zod_1.z.lazy(() => HomeDashboardInfoSchemaImpl);
+exports.ImageExportDataSchema = zod_1.z.lazy(() => ImageExportDataSchemaImpl);
+exports.InputStreamSchema = zod_1.z.lazy(() => InputStreamSchemaImpl);
+exports.IntegrationSchema = zod_1.z.lazy(() => IntegrationSchemaImpl);
+exports.IntegrationIdSchema = zod_1.z.lazy(() => IntegrationIdSchemaImpl);
+exports.IntegrationInfoSchema = zod_1.z.lazy(() => IntegrationInfoSchemaImpl);
+exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaImpl);
+exports.JWT_PairSchema = zod_1.z.lazy(() => JWT_PairSchemaImpl);
+exports.JWT_SettingsSchema = zod_1.z.lazy(() => JWT_SettingsSchemaImpl);
+exports.JsonNodeSchema = zod_1.z.lazy(() => JsonNodeSchemaImpl);
+exports.JsonTransportPayloadConfigurationSchema = zod_1.z.lazy(() => JsonTransportPayloadConfigurationSchemaImpl);
+exports.KeyFilterSchema = zod_1.z.lazy(() => KeyFilterSchemaImpl);
+exports.KeyFilterPredicateSchema = zod_1.z.lazy(() => KeyFilterPredicateSchemaImpl);
+exports.LastVisitedDashboardInfoSchema = zod_1.z.lazy(() => LastVisitedDashboardInfoSchemaImpl);
+exports.LicenseUsageInfoSchema = zod_1.z.lazy(() => LicenseUsageInfoSchemaImpl);
+exports.LifeCycleEventFilterSchema = zod_1.z.lazy(() => LifeCycleEventFilterSchemaImpl);
+exports.LoginRequestSchema = zod_1.z.lazy(() => LoginRequestSchemaImpl);
+exports.LoginResponseSchema = zod_1.z.lazy(() => LoginResponseSchemaImpl);
+exports.LoginWhiteLabelingParamsSchema = zod_1.z.lazy(() => LoginWhiteLabelingParamsSchemaImpl);
+exports.LwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => LwM2MBootstrapServerCredentialSchemaImpl);
+exports.LwM2mInstanceSchema = zod_1.z.lazy(() => LwM2mInstanceSchemaImpl);
+exports.LwM2mObjectSchema = zod_1.z.lazy(() => LwM2mObjectSchemaImpl);
+exports.LwM2mResourceObserveSchema = zod_1.z.lazy(() => LwM2mResourceObserveSchemaImpl);
+exports.Lwm2mDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => Lwm2mDeviceProfileTransportConfigurationSchemaImpl);
+exports.Lwm2mDeviceTransportConfigurationSchema = zod_1.z.lazy(() => Lwm2mDeviceTransportConfigurationSchemaImpl);
+exports.MappingSchema = zod_1.z.lazy(() => MappingSchemaImpl);
+exports.MergedGroupPermissionInfoSchema = zod_1.z.lazy(() => MergedGroupPermissionInfoSchemaImpl);
+exports.MergedGroupTypePermissionInfoSchema = zod_1.z.lazy(() => MergedGroupTypePermissionInfoSchemaImpl);
+exports.MergedUserPermissionsSchema = zod_1.z.lazy(() => MergedUserPermissionsSchemaImpl);
+exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaImpl);
+exports.MicrosoftTeamsNotificationTargetConfigSchema = zod_1.z.lazy(() => MicrosoftTeamsNotificationTargetConfigSchemaImpl);
+exports.MqttDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => MqttDeviceProfileTransportConfigurationSchemaImpl);
+exports.MqttDeviceTransportConfigurationSchema = zod_1.z.lazy(() => MqttDeviceTransportConfigurationSchemaImpl);
+exports.NewPlatformVersionNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => NewPlatformVersionNotificationRuleTriggerConfigSchemaImpl);
+exports.NoSecLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => NoSecLwM2MBootstrapServerCredentialSchemaImpl);
+exports.NodeConnectionInfoSchema = zod_1.z.lazy(() => NodeConnectionInfoSchemaImpl);
+exports.NotificationSchema = zod_1.z.lazy(() => NotificationSchemaImpl);
+exports.NotificationDeliveryMethodConfigSchema = zod_1.z.lazy(() => NotificationDeliveryMethodConfigSchemaImpl);
+exports.NotificationIdSchema = zod_1.z.lazy(() => NotificationIdSchemaImpl);
+exports.NotificationInfoSchema = zod_1.z.lazy(() => NotificationInfoSchemaImpl);
+exports.NotificationPrefSchema = zod_1.z.lazy(() => NotificationPrefSchemaImpl);
+exports.NotificationRequestSchema = zod_1.z.lazy(() => NotificationRequestSchemaImpl);
+exports.NotificationRequestConfigSchema = zod_1.z.lazy(() => NotificationRequestConfigSchemaImpl);
+exports.NotificationRequestIdSchema = zod_1.z.lazy(() => NotificationRequestIdSchemaImpl);
+exports.NotificationRequestInfoSchema = zod_1.z.lazy(() => NotificationRequestInfoSchemaImpl);
+exports.NotificationRequestPreviewSchema = zod_1.z.lazy(() => NotificationRequestPreviewSchemaImpl);
+exports.NotificationRequestStatsSchema = zod_1.z.lazy(() => NotificationRequestStatsSchemaImpl);
+exports.NotificationRuleSchema = zod_1.z.lazy(() => NotificationRuleSchemaImpl);
+exports.NotificationRuleConfigSchema = zod_1.z.lazy(() => NotificationRuleConfigSchemaImpl);
+exports.NotificationRuleIdSchema = zod_1.z.lazy(() => NotificationRuleIdSchemaImpl);
+exports.NotificationRuleInfoSchema = zod_1.z.lazy(() => NotificationRuleInfoSchemaImpl);
+exports.NotificationRuleRecipientsConfigSchema = zod_1.z.lazy(() => NotificationRuleRecipientsConfigSchemaImpl);
+exports.NotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => NotificationRuleTriggerConfigSchemaImpl);
+exports.NotificationSettingsSchema = zod_1.z.lazy(() => NotificationSettingsSchemaImpl);
+exports.NotificationTargetSchema = zod_1.z.lazy(() => NotificationTargetSchemaImpl);
+exports.NotificationTargetConfigSchema = zod_1.z.lazy(() => NotificationTargetConfigSchemaImpl);
+exports.NotificationTemplateSchema = zod_1.z.lazy(() => NotificationTemplateSchemaImpl);
+exports.NotificationTemplateConfigSchema = zod_1.z.lazy(() => NotificationTemplateConfigSchemaImpl);
+exports.NotificationTemplateIdSchema = zod_1.z.lazy(() => NotificationTemplateIdSchemaImpl);
+exports.NumericFilterPredicateSchema = zod_1.z.lazy(() => NumericFilterPredicateSchemaImpl);
+exports.OAuth2BasicMapperConfigSchema = zod_1.z.lazy(() => OAuth2BasicMapperConfigSchemaImpl);
+exports.OAuth2ClientInfoSchema = zod_1.z.lazy(() => OAuth2ClientInfoSchemaImpl);
+exports.OAuth2ClientRegistrationTemplateSchema = zod_1.z.lazy(() => OAuth2ClientRegistrationTemplateSchemaImpl);
+exports.OAuth2ClientRegistrationTemplateIdSchema = zod_1.z.lazy(() => OAuth2ClientRegistrationTemplateIdSchemaImpl);
+exports.OAuth2CustomMapperConfigSchema = zod_1.z.lazy(() => OAuth2CustomMapperConfigSchemaImpl);
+exports.OAuth2DomainInfoSchema = zod_1.z.lazy(() => OAuth2DomainInfoSchemaImpl);
+exports.OAuth2InfoSchema = zod_1.z.lazy(() => OAuth2InfoSchemaImpl);
+exports.OAuth2MapperConfigSchema = zod_1.z.lazy(() => OAuth2MapperConfigSchemaImpl);
+exports.OAuth2MobileInfoSchema = zod_1.z.lazy(() => OAuth2MobileInfoSchemaImpl);
+exports.OAuth2ParamsInfoSchema = zod_1.z.lazy(() => OAuth2ParamsInfoSchemaImpl);
+exports.OAuth2RegistrationInfoSchema = zod_1.z.lazy(() => OAuth2RegistrationInfoSchemaImpl);
+exports.ObjectAttributesSchema = zod_1.z.lazy(() => ObjectAttributesSchemaImpl);
+exports.ObjectNodeSchema = zod_1.z.lazy(() => ObjectNodeSchemaImpl);
+exports.OriginatorEntityOwnerUsersFilterSchema = zod_1.z.lazy(() => OriginatorEntityOwnerUsersFilterSchemaImpl);
+exports.OtaPackageSchema = zod_1.z.lazy(() => OtaPackageSchemaImpl);
+exports.OtaPackageIdSchema = zod_1.z.lazy(() => OtaPackageIdSchemaImpl);
+exports.OtaPackageInfoSchema = zod_1.z.lazy(() => OtaPackageInfoSchemaImpl);
+exports.OtherConfigurationSchema = zod_1.z.lazy(() => OtherConfigurationSchemaImpl);
+exports.PSKLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => PSKLwM2MBootstrapServerCredentialSchemaImpl);
+exports.PageData_Of_AlarmCommentInfoSchema = zod_1.z.lazy(() => PageData_Of_AlarmCommentInfoSchemaImpl);
+exports.PageData_Of_AlarmDataSchema = zod_1.z.lazy(() => PageData_Of_AlarmDataSchemaImpl);
+exports.PageData_Of_AlarmInfoSchema = zod_1.z.lazy(() => PageData_Of_AlarmInfoSchemaImpl);
+exports.PageData_Of_AssetInfoSchema = zod_1.z.lazy(() => PageData_Of_AssetInfoSchemaImpl);
+exports.PageData_Of_AssetProfileInfoSchema = zod_1.z.lazy(() => PageData_Of_AssetProfileInfoSchemaImpl);
+exports.PageData_Of_AssetProfileSchema = zod_1.z.lazy(() => PageData_Of_AssetProfileSchemaImpl);
+exports.PageData_Of_AssetSchema = zod_1.z.lazy(() => PageData_Of_AssetSchemaImpl);
+exports.PageData_Of_AuditLogSchema = zod_1.z.lazy(() => PageData_Of_AuditLogSchemaImpl);
+exports.PageData_Of_BlobEntityWithCustomerInfoSchema = zod_1.z.lazy(() => PageData_Of_BlobEntityWithCustomerInfoSchemaImpl);
+exports.PageData_Of_ContactBased_Of_objectSchema = zod_1.z.lazy(() => PageData_Of_ContactBased_Of_objectSchemaImpl);
+exports.PageData_Of_ConverterSchema = zod_1.z.lazy(() => PageData_Of_ConverterSchemaImpl);
+exports.PageData_Of_CustomerInfoSchema = zod_1.z.lazy(() => PageData_Of_CustomerInfoSchemaImpl);
+exports.PageData_Of_CustomerSchema = zod_1.z.lazy(() => PageData_Of_CustomerSchemaImpl);
+exports.PageData_Of_DashboardInfoSchema = zod_1.z.lazy(() => PageData_Of_DashboardInfoSchemaImpl);
+exports.PageData_Of_DeviceInfoSchema = zod_1.z.lazy(() => PageData_Of_DeviceInfoSchemaImpl);
+exports.PageData_Of_DeviceProfileInfoSchema = zod_1.z.lazy(() => PageData_Of_DeviceProfileInfoSchemaImpl);
+exports.PageData_Of_DeviceProfileSchema = zod_1.z.lazy(() => PageData_Of_DeviceProfileSchemaImpl);
+exports.PageData_Of_DeviceSchema = zod_1.z.lazy(() => PageData_Of_DeviceSchemaImpl);
+exports.PageData_Of_EdgeEventSchema = zod_1.z.lazy(() => PageData_Of_EdgeEventSchemaImpl);
+exports.PageData_Of_EdgeInfoSchema = zod_1.z.lazy(() => PageData_Of_EdgeInfoSchemaImpl);
+exports.PageData_Of_EdgeSchema = zod_1.z.lazy(() => PageData_Of_EdgeSchemaImpl);
+exports.PageData_Of_EntityDataSchema = zod_1.z.lazy(() => PageData_Of_EntityDataSchemaImpl);
+exports.PageData_Of_EntityGroupInfoSchema = zod_1.z.lazy(() => PageData_Of_EntityGroupInfoSchemaImpl);
+exports.PageData_Of_EntityInfoSchema = zod_1.z.lazy(() => PageData_Of_EntityInfoSchemaImpl);
+exports.PageData_Of_EntitySubtypeSchema = zod_1.z.lazy(() => PageData_Of_EntitySubtypeSchemaImpl);
+exports.PageData_Of_EntityVersionSchema = zod_1.z.lazy(() => PageData_Of_EntityVersionSchemaImpl);
+exports.PageData_Of_EntityViewInfoSchema = zod_1.z.lazy(() => PageData_Of_EntityViewInfoSchemaImpl);
+exports.PageData_Of_EntityViewSchema = zod_1.z.lazy(() => PageData_Of_EntityViewSchemaImpl);
+exports.PageData_Of_EventInfoSchema = zod_1.z.lazy(() => PageData_Of_EventInfoSchemaImpl);
+exports.PageData_Of_IntegrationInfoSchema = zod_1.z.lazy(() => PageData_Of_IntegrationInfoSchemaImpl);
+exports.PageData_Of_IntegrationSchema = zod_1.z.lazy(() => PageData_Of_IntegrationSchemaImpl);
+exports.PageData_Of_NotificationRequestInfoSchema = zod_1.z.lazy(() => PageData_Of_NotificationRequestInfoSchemaImpl);
+exports.PageData_Of_NotificationRuleInfoSchema = zod_1.z.lazy(() => PageData_Of_NotificationRuleInfoSchemaImpl);
+exports.PageData_Of_NotificationTargetSchema = zod_1.z.lazy(() => PageData_Of_NotificationTargetSchemaImpl);
+exports.PageData_Of_NotificationTemplateSchema = zod_1.z.lazy(() => PageData_Of_NotificationTemplateSchemaImpl);
+exports.PageData_Of_NotificationSchema = zod_1.z.lazy(() => PageData_Of_NotificationSchemaImpl);
+exports.PageData_Of_OtaPackageInfoSchema = zod_1.z.lazy(() => PageData_Of_OtaPackageInfoSchemaImpl);
+exports.PageData_Of_QueueSchema = zod_1.z.lazy(() => PageData_Of_QueueSchemaImpl);
+exports.PageData_Of_RoleSchema = zod_1.z.lazy(() => PageData_Of_RoleSchemaImpl);
+exports.PageData_Of_RuleChainSchema = zod_1.z.lazy(() => PageData_Of_RuleChainSchemaImpl);
+exports.PageData_Of_SchedulerEventInfoSchema = zod_1.z.lazy(() => PageData_Of_SchedulerEventInfoSchemaImpl);
+exports.PageData_Of_ShortEntityViewSchema = zod_1.z.lazy(() => PageData_Of_ShortEntityViewSchemaImpl);
+exports.PageData_Of_TbResourceInfoSchema = zod_1.z.lazy(() => PageData_Of_TbResourceInfoSchemaImpl);
+exports.PageData_Of_TenantInfoSchema = zod_1.z.lazy(() => PageData_Of_TenantInfoSchemaImpl);
+exports.PageData_Of_TenantProfileSchema = zod_1.z.lazy(() => PageData_Of_TenantProfileSchemaImpl);
+exports.PageData_Of_TenantSchema = zod_1.z.lazy(() => PageData_Of_TenantSchemaImpl);
+exports.PageData_Of_UserEmailInfoSchema = zod_1.z.lazy(() => PageData_Of_UserEmailInfoSchemaImpl);
+exports.PageData_Of_UserInfoSchema = zod_1.z.lazy(() => PageData_Of_UserInfoSchemaImpl);
+exports.PageData_Of_UserSchema = zod_1.z.lazy(() => PageData_Of_UserSchemaImpl);
+exports.PageData_Of_WidgetTypeInfoSchema = zod_1.z.lazy(() => PageData_Of_WidgetTypeInfoSchemaImpl);
+exports.PageData_Of_WidgetsBundleSchema = zod_1.z.lazy(() => PageData_Of_WidgetsBundleSchemaImpl);
+exports.PaletteSchema = zod_1.z.lazy(() => PaletteSchemaImpl);
+exports.PaletteSettingsSchema = zod_1.z.lazy(() => PaletteSettingsSchemaImpl);
+exports.PlatformTwoFaSettingsSchema = zod_1.z.lazy(() => PlatformTwoFaSettingsSchemaImpl);
+exports.PlatformUsersNotificationTargetConfigSchema = zod_1.z.lazy(() => PlatformUsersNotificationTargetConfigSchemaImpl);
+exports.PowerSavingConfigurationSchema = zod_1.z.lazy(() => PowerSavingConfigurationSchemaImpl);
+exports.ProcessingStrategySchema = zod_1.z.lazy(() => ProcessingStrategySchemaImpl);
+exports.ProtoTransportPayloadConfigurationSchema = zod_1.z.lazy(() => ProtoTransportPayloadConfigurationSchemaImpl);
+exports.QueueSchema = zod_1.z.lazy(() => QueueSchemaImpl);
+exports.QueueIdSchema = zod_1.z.lazy(() => QueueIdSchemaImpl);
+exports.RPKLwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => RPKLwM2MBootstrapServerCredentialSchemaImpl);
+exports.RateLimitsNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => RateLimitsNotificationRuleTriggerConfigSchemaImpl);
+exports.RawDataEventFilterSchema = zod_1.z.lazy(() => RawDataEventFilterSchemaImpl);
+exports.RelationEntityTypeFilterSchema = zod_1.z.lazy(() => RelationEntityTypeFilterSchemaImpl);
+exports.RelationsQueryFilterSchema = zod_1.z.lazy(() => RelationsQueryFilterSchemaImpl);
+exports.RelationsSearchParametersSchema = zod_1.z.lazy(() => RelationsSearchParametersSchemaImpl);
+exports.RepeatingAlarmConditionSpecSchema = zod_1.z.lazy(() => RepeatingAlarmConditionSpecSchemaImpl);
+exports.ReportConfigSchema = zod_1.z.lazy(() => ReportConfigSchemaImpl);
+exports.RepositorySettingsSchema = zod_1.z.lazy(() => RepositorySettingsSchemaImpl);
+exports.RepositorySettingsInfoSchema = zod_1.z.lazy(() => RepositorySettingsInfoSchemaImpl);
+exports.ResetPasswordEmailRequestSchema = zod_1.z.lazy(() => ResetPasswordEmailRequestSchemaImpl);
+exports.ResetPasswordRequestSchema = zod_1.z.lazy(() => ResetPasswordRequestSchemaImpl);
+exports.ResourceSchema = zod_1.z.lazy(() => ResourceSchemaImpl);
+exports.ResponseEntitySchema = zod_1.z.lazy(() => ResponseEntitySchemaImpl);
+exports.RoleSchema = zod_1.z.lazy(() => RoleSchemaImpl);
+exports.RoleIdSchema = zod_1.z.lazy(() => RoleIdSchemaImpl);
+exports.RpcSchema = zod_1.z.lazy(() => RpcSchemaImpl);
+exports.RpcIdSchema = zod_1.z.lazy(() => RpcIdSchemaImpl);
+exports.RuleChainSchema = zod_1.z.lazy(() => RuleChainSchemaImpl);
+exports.RuleChainConnectionInfoSchema = zod_1.z.lazy(() => RuleChainConnectionInfoSchemaImpl);
+exports.RuleChainDataSchema = zod_1.z.lazy(() => RuleChainDataSchemaImpl);
+exports.RuleChainDebugEventFilterSchema = zod_1.z.lazy(() => RuleChainDebugEventFilterSchemaImpl);
+exports.RuleChainExportDataSchema = zod_1.z.lazy(() => RuleChainExportDataSchemaImpl);
+exports.RuleChainIdSchema = zod_1.z.lazy(() => RuleChainIdSchemaImpl);
+exports.RuleChainImportResultSchema = zod_1.z.lazy(() => RuleChainImportResultSchemaImpl);
+exports.RuleChainMetaDataSchema = zod_1.z.lazy(() => RuleChainMetaDataSchemaImpl);
+exports.RuleChainOutputLabelsUsageSchema = zod_1.z.lazy(() => RuleChainOutputLabelsUsageSchemaImpl);
+exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchema = zod_1.z.lazy(() => RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaImpl);
+exports.RuleNodeSchema = zod_1.z.lazy(() => RuleNodeSchemaImpl);
+exports.RuleNodeDebugEventFilterSchema = zod_1.z.lazy(() => RuleNodeDebugEventFilterSchemaImpl);
+exports.RuleNodeIdSchema = zod_1.z.lazy(() => RuleNodeIdSchemaImpl);
+exports.SaveDeviceWithCredentialsRequestSchema = zod_1.z.lazy(() => SaveDeviceWithCredentialsRequestSchemaImpl);
+exports.SaveOtaPackageInfoRequestSchema = zod_1.z.lazy(() => SaveOtaPackageInfoRequestSchemaImpl);
+exports.SchedulerEventSchema = zod_1.z.lazy(() => SchedulerEventSchemaImpl);
+exports.SchedulerEventFilterSchema = zod_1.z.lazy(() => SchedulerEventFilterSchemaImpl);
+exports.SchedulerEventIdSchema = zod_1.z.lazy(() => SchedulerEventIdSchemaImpl);
+exports.SchedulerEventInfoSchema = zod_1.z.lazy(() => SchedulerEventInfoSchemaImpl);
+exports.SchedulerEventWithCustomerInfoSchema = zod_1.z.lazy(() => SchedulerEventWithCustomerInfoSchemaImpl);
+exports.SecuritySettingsSchema = zod_1.z.lazy(() => SecuritySettingsSchemaImpl);
+exports.SelfRegistrationParamsSchema = zod_1.z.lazy(() => SelfRegistrationParamsSchemaImpl);
+exports.ShareGroupRequestSchema = zod_1.z.lazy(() => ShareGroupRequestSchemaImpl);
+exports.SharedAttributesSettingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => SharedAttributesSettingSnmpCommunicationConfigSchemaImpl);
+exports.ShortCustomerInfoSchema = zod_1.z.lazy(() => ShortCustomerInfoSchemaImpl);
+exports.ShortEntityViewSchema = zod_1.z.lazy(() => ShortEntityViewSchemaImpl);
+exports.SignUpRequestSchema = zod_1.z.lazy(() => SignUpRequestSchemaImpl);
+exports.SignUpSelfRegistrationParamsSchema = zod_1.z.lazy(() => SignUpSelfRegistrationParamsSchemaImpl);
+exports.SimpleAlarmConditionSpecSchema = zod_1.z.lazy(() => SimpleAlarmConditionSpecSchemaImpl);
+exports.SingleEntityFilterSchema = zod_1.z.lazy(() => SingleEntityFilterSchemaImpl);
+exports.SingleEntityVersionCreateRequestSchema = zod_1.z.lazy(() => SingleEntityVersionCreateRequestSchemaImpl);
+exports.SingleEntityVersionLoadRequestSchema = zod_1.z.lazy(() => SingleEntityVersionLoadRequestSchemaImpl);
+exports.SlackConversationSchema = zod_1.z.lazy(() => SlackConversationSchemaImpl);
+exports.SlackDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => SlackDeliveryMethodNotificationTemplateSchemaImpl);
+exports.SlackNotificationDeliveryMethodConfigSchema = zod_1.z.lazy(() => SlackNotificationDeliveryMethodConfigSchemaImpl);
+exports.SlackNotificationTargetConfigSchema = zod_1.z.lazy(() => SlackNotificationTargetConfigSchemaImpl);
+exports.SmppSmsProviderConfigurationSchema = zod_1.z.lazy(() => SmppSmsProviderConfigurationSchemaImpl);
+exports.SmsDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => SmsDeliveryMethodNotificationTemplateSchemaImpl);
+exports.SmsProviderConfigurationSchema = zod_1.z.lazy(() => SmsProviderConfigurationSchemaImpl);
+exports.SmsTwoFaAccountConfigSchema = zod_1.z.lazy(() => SmsTwoFaAccountConfigSchemaImpl);
+exports.SmsTwoFaProviderConfigSchema = zod_1.z.lazy(() => SmsTwoFaProviderConfigSchemaImpl);
+exports.SnmpCommunicationConfigSchema = zod_1.z.lazy(() => SnmpCommunicationConfigSchemaImpl);
+exports.SnmpDeviceProfileTransportConfigurationSchema = zod_1.z.lazy(() => SnmpDeviceProfileTransportConfigurationSchemaImpl);
+exports.SnmpDeviceTransportConfigurationSchema = zod_1.z.lazy(() => SnmpDeviceTransportConfigurationSchemaImpl);
+exports.SnmpMappingSchema = zod_1.z.lazy(() => SnmpMappingSchemaImpl);
+exports.SolutionInstallResponseSchema = zod_1.z.lazy(() => SolutionInstallResponseSchemaImpl);
+exports.SpecificTimeScheduleSchema = zod_1.z.lazy(() => SpecificTimeScheduleSchemaImpl);
+exports.StarredDashboardInfoSchema = zod_1.z.lazy(() => StarredDashboardInfoSchemaImpl);
+exports.StateEntityOwnerFilterSchema = zod_1.z.lazy(() => StateEntityOwnerFilterSchemaImpl);
+exports.StatisticsEventFilterSchema = zod_1.z.lazy(() => StatisticsEventFilterSchemaImpl);
+exports.StringFilterPredicateSchema = zod_1.z.lazy(() => StringFilterPredicateSchemaImpl);
+exports.SubmitStrategySchema = zod_1.z.lazy(() => SubmitStrategySchemaImpl);
+exports.SystemAdministratorsFilterSchema = zod_1.z.lazy(() => SystemAdministratorsFilterSchemaImpl);
+exports.SystemInfoSchema = zod_1.z.lazy(() => SystemInfoSchemaImpl);
+exports.SystemInfoDataSchema = zod_1.z.lazy(() => SystemInfoDataSchemaImpl);
+exports.TbImageDeleteResultSchema = zod_1.z.lazy(() => TbImageDeleteResultSchemaImpl);
+exports.TbResourceSchema = zod_1.z.lazy(() => TbResourceSchemaImpl);
+exports.TbResourceIdSchema = zod_1.z.lazy(() => TbResourceIdSchemaImpl);
+exports.TbResourceInfoSchema = zod_1.z.lazy(() => TbResourceInfoSchemaImpl);
+exports.TelemetryEntityViewSchema = zod_1.z.lazy(() => TelemetryEntityViewSchemaImpl);
+exports.TelemetryMappingConfigurationSchema = zod_1.z.lazy(() => TelemetryMappingConfigurationSchemaImpl);
+exports.TelemetryQueryingSnmpCommunicationConfigSchema = zod_1.z.lazy(() => TelemetryQueryingSnmpCommunicationConfigSchemaImpl);
+exports.TenantSchema = zod_1.z.lazy(() => TenantSchemaImpl);
+exports.TenantAdministratorsFilterSchema = zod_1.z.lazy(() => TenantAdministratorsFilterSchemaImpl);
+exports.TenantIdSchema = zod_1.z.lazy(() => TenantIdSchemaImpl);
+exports.TenantInfoSchema = zod_1.z.lazy(() => TenantInfoSchemaImpl);
+exports.TenantProfileSchema = zod_1.z.lazy(() => TenantProfileSchemaImpl);
+exports.TenantProfileConfigurationSchema = zod_1.z.lazy(() => TenantProfileConfigurationSchemaImpl);
+exports.TenantProfileDataSchema = zod_1.z.lazy(() => TenantProfileDataSchemaImpl);
+exports.TenantProfileIdSchema = zod_1.z.lazy(() => TenantProfileIdSchemaImpl);
+exports.TenantProfileQueueConfigurationSchema = zod_1.z.lazy(() => TenantProfileQueueConfigurationSchemaImpl);
+exports.TenantSolutionTemplateDetailsSchema = zod_1.z.lazy(() => TenantSolutionTemplateDetailsSchemaImpl);
+exports.TenantSolutionTemplateInfoSchema = zod_1.z.lazy(() => TenantSolutionTemplateInfoSchemaImpl);
+exports.TenantSolutionTemplateInstructionsSchema = zod_1.z.lazy(() => TenantSolutionTemplateInstructionsSchemaImpl);
+exports.TestSmsRequestSchema = zod_1.z.lazy(() => TestSmsRequestSchemaImpl);
+exports.ThingsboardCredentialsExpiredResponseSchema = zod_1.z.lazy(() => ThingsboardCredentialsExpiredResponseSchemaImpl);
+exports.ThingsboardErrorResponseSchema = zod_1.z.lazy(() => ThingsboardErrorResponseSchemaImpl);
+exports.ToDeviceRpcRequestSnmpCommunicationConfigSchema = zod_1.z.lazy(() => ToDeviceRpcRequestSnmpCommunicationConfigSchemaImpl);
+exports.ToServerRpcRequestSnmpCommunicationConfigSchema = zod_1.z.lazy(() => ToServerRpcRequestSnmpCommunicationConfigSchemaImpl);
+exports.TotpTwoFaAccountConfigSchema = zod_1.z.lazy(() => TotpTwoFaAccountConfigSchemaImpl);
+exports.TotpTwoFaProviderConfigSchema = zod_1.z.lazy(() => TotpTwoFaProviderConfigSchemaImpl);
+exports.TransportPayloadTypeConfigurationSchema = zod_1.z.lazy(() => TransportPayloadTypeConfigurationSchemaImpl);
+exports.TsValueSchema = zod_1.z.lazy(() => TsValueSchemaImpl);
+exports.TwilioSmsProviderConfigurationSchema = zod_1.z.lazy(() => TwilioSmsProviderConfigurationSchemaImpl);
+exports.TwoFaAccountConfigSchema = zod_1.z.lazy(() => TwoFaAccountConfigSchemaImpl);
+exports.TwoFaAccountConfigUpdateRequestSchema = zod_1.z.lazy(() => TwoFaAccountConfigUpdateRequestSchemaImpl);
+exports.TwoFaProviderConfigSchema = zod_1.z.lazy(() => TwoFaProviderConfigSchemaImpl);
+exports.TwoFaProviderInfoSchema = zod_1.z.lazy(() => TwoFaProviderInfoSchemaImpl);
+exports.UpdateMessageSchema = zod_1.z.lazy(() => UpdateMessageSchemaImpl);
+exports.UsageInfoSchema = zod_1.z.lazy(() => UsageInfoSchemaImpl);
+exports.UserSchema = zod_1.z.lazy(() => UserSchemaImpl);
+exports.UserDashboardsInfoSchema = zod_1.z.lazy(() => UserDashboardsInfoSchemaImpl);
+exports.UserEmailInfoSchema = zod_1.z.lazy(() => UserEmailInfoSchemaImpl);
+exports.UserGroupListFilterSchema = zod_1.z.lazy(() => UserGroupListFilterSchemaImpl);
+exports.UserIdSchema = zod_1.z.lazy(() => UserIdSchemaImpl);
+exports.UserInfoSchema = zod_1.z.lazy(() => UserInfoSchemaImpl);
+exports.UserListFilterSchema = zod_1.z.lazy(() => UserListFilterSchemaImpl);
+exports.UserNotificationSettingsSchema = zod_1.z.lazy(() => UserNotificationSettingsSchemaImpl);
+exports.UserPasswordPolicySchema = zod_1.z.lazy(() => UserPasswordPolicySchemaImpl);
+exports.UserRoleFilterSchema = zod_1.z.lazy(() => UserRoleFilterSchemaImpl);
+exports.UsersFilterSchema = zod_1.z.lazy(() => UsersFilterSchemaImpl);
+exports.VersionCreateConfigSchema = zod_1.z.lazy(() => VersionCreateConfigSchemaImpl);
+exports.VersionCreateRequestSchema = zod_1.z.lazy(() => VersionCreateRequestSchemaImpl);
+exports.VersionCreationResultSchema = zod_1.z.lazy(() => VersionCreationResultSchemaImpl);
+exports.VersionLoadConfigSchema = zod_1.z.lazy(() => VersionLoadConfigSchemaImpl);
+exports.VersionLoadRequestSchema = zod_1.z.lazy(() => VersionLoadRequestSchemaImpl);
+exports.VersionLoadResultSchema = zod_1.z.lazy(() => VersionLoadResultSchemaImpl);
+exports.VersionedEntityInfoSchema = zod_1.z.lazy(() => VersionedEntityInfoSchemaImpl);
+exports.WebDeliveryMethodNotificationTemplateSchema = zod_1.z.lazy(() => WebDeliveryMethodNotificationTemplateSchemaImpl);
+exports.WhiteLabelingSchema = zod_1.z.lazy(() => WhiteLabelingSchemaImpl);
+exports.WhiteLabelingParamsSchema = zod_1.z.lazy(() => WhiteLabelingParamsSchemaImpl);
+exports.WidgetTypeSchema = zod_1.z.lazy(() => WidgetTypeSchemaImpl);
+exports.WidgetTypeDetailsSchema = zod_1.z.lazy(() => WidgetTypeDetailsSchemaImpl);
+exports.WidgetTypeExportDataSchema = zod_1.z.lazy(() => WidgetTypeExportDataSchemaImpl);
+exports.WidgetTypeIdSchema = zod_1.z.lazy(() => WidgetTypeIdSchemaImpl);
+exports.WidgetTypeInfoSchema = zod_1.z.lazy(() => WidgetTypeInfoSchemaImpl);
+exports.WidgetsBundleSchema = zod_1.z.lazy(() => WidgetsBundleSchemaImpl);
+exports.WidgetsBundleExportDataSchema = zod_1.z.lazy(() => WidgetsBundleExportDataSchemaImpl);
+exports.WidgetsBundleIdSchema = zod_1.z.lazy(() => WidgetsBundleIdSchemaImpl);
+exports.X509CertificateChainProvisionConfigurationSchema = zod_1.z.lazy(() => X509CertificateChainProvisionConfigurationSchemaImpl);
+exports.X509LwM2MBootstrapServerCredentialSchema = zod_1.z.lazy(() => X509LwM2MBootstrapServerCredentialSchemaImpl);
+const AccountTwoFaSettingsSchemaImpl = zod_1.z.object({
+    "configs": zod_1.z.object({}).optional()
 });
-exports.ActivateUserRequestSchemaSchema = zod_1.z.object({
-    "activateToken": zod_1.z.string(),
-    "password": zod_1.z.string()
+const ActivateUserRequestSchemaImpl = zod_1.z.object({
+    "activateToken": zod_1.z.string().optional(),
+    "password": zod_1.z.string().optional()
 });
-exports.AdminSettingsSchemaSchema = zod_1.z.object({
-    "id": exports.AdminSettingsIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "key": zod_1.z.string(),
-    "jsonValue": exports.JsonNodeSchema
+const AdminSettingsSchemaImpl = zod_1.z.object({
+    "id": exports.AdminSettingsIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "key": zod_1.z.string().optional(),
+    "jsonValue": exports.JsonNodeSchema.optional()
 });
-exports.AdminSettingsIdSchemaSchema = zod_1.z.object({
+const AdminSettingsIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.AffectedTenantAdministratorsFilterSchemaSchema = zod_1.z.object({});
-exports.AffectedUserFilterSchemaSchema = zod_1.z.object({});
-exports.AlarmSchemaSchema = zod_1.z.object({
-    "id": exports.AlarmIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const AffectedTenantAdministratorsFilterSchemaImpl = zod_1.z.object({});
+const AffectedUserFilterSchemaImpl = zod_1.z.object({});
+const AlarmSchemaImpl = zod_1.z.object({
+    "id": exports.AlarmIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
     "originator": exports.EntityIdSchema,
     "severity": zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
     "acknowledged": zod_1.z.boolean(),
     "cleared": zod_1.z.boolean(),
-    "assigneeId": exports.UserIdSchema,
-    "startTs": zod_1.z.number(),
-    "endTs": zod_1.z.number(),
-    "ackTs": zod_1.z.number(),
-    "clearTs": zod_1.z.number(),
-    "assignTs": zod_1.z.number(),
-    "details": exports.JsonNodeSchema,
-    "propagateToOwnerHierarchy": zod_1.z.boolean(),
-    "propagate": zod_1.z.boolean(),
-    "propagateToTenant": zod_1.z.boolean(),
-    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()),
-    "propagateToOwner": zod_1.z.boolean(),
+    "assigneeId": exports.UserIdSchema.optional(),
+    "startTs": zod_1.z.number().optional(),
+    "endTs": zod_1.z.number().optional(),
+    "ackTs": zod_1.z.number().optional(),
+    "clearTs": zod_1.z.number().optional(),
+    "assignTs": zod_1.z.number().optional(),
+    "details": exports.JsonNodeSchema.optional(),
+    "propagateToOwnerHierarchy": zod_1.z.boolean().optional(),
+    "propagate": zod_1.z.boolean().optional(),
+    "propagateToTenant": zod_1.z.boolean().optional(),
+    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "propagateToOwner": zod_1.z.boolean().optional(),
     "status": zod_1.z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
-exports.AlarmAssigneeSchemaSchema = zod_1.z.object({
-    "email": zod_1.z.string(),
-    "firstName": zod_1.z.string(),
-    "id": exports.UserIdSchema,
-    "lastName": zod_1.z.string()
+const AlarmAssigneeSchemaImpl = zod_1.z.object({
+    "email": zod_1.z.string().optional(),
+    "firstName": zod_1.z.string().optional(),
+    "id": exports.UserIdSchema.optional(),
+    "lastName": zod_1.z.string().optional()
 });
-exports.AlarmAssignmentNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.AlarmCommentSchemaSchema = zod_1.z.object({
-    "id": exports.AlarmCommentIdSchema,
-    "createdTime": zod_1.z.number(),
-    "alarmId": exports.EntityIdSchema,
-    "userId": exports.UserIdSchema,
+const AlarmAssignmentNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "alarmSeverities": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+    "alarmStatuses": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+    "alarmTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "notifyOn": zod_1.z.array(zod_1.z.enum(["ASSIGNED", "UNASSIGNED"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
+const AlarmCommentSchemaImpl = zod_1.z.object({
+    "id": exports.AlarmCommentIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "alarmId": exports.EntityIdSchema.optional(),
+    "userId": exports.UserIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.enum(["OTHER", "SYSTEM"]),
-    "comment": exports.JsonNodeSchema
+    "type": zod_1.z.enum(["OTHER", "SYSTEM"]).optional(),
+    "comment": exports.JsonNodeSchema.optional()
 });
-exports.AlarmCommentIdSchemaSchema = zod_1.z.object({
+const AlarmCommentIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.AlarmCommentInfoSchemaSchema = zod_1.z.object({
-    "id": exports.AlarmCommentIdSchema,
-    "createdTime": zod_1.z.number(),
-    "alarmId": exports.EntityIdSchema,
-    "userId": exports.UserIdSchema,
+const AlarmCommentInfoSchemaImpl = zod_1.z.object({
+    "id": exports.AlarmCommentIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "alarmId": exports.EntityIdSchema.optional(),
+    "userId": exports.UserIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.enum(["OTHER", "SYSTEM"]),
-    "comment": exports.JsonNodeSchema,
-    "email": zod_1.z.string(),
-    "firstName": zod_1.z.string(),
-    "lastName": zod_1.z.string()
+    "type": zod_1.z.enum(["OTHER", "SYSTEM"]).optional(),
+    "comment": exports.JsonNodeSchema.optional(),
+    "email": zod_1.z.string().optional(),
+    "firstName": zod_1.z.string().optional(),
+    "lastName": zod_1.z.string().optional()
 });
-exports.AlarmCommentNotificationRuleTriggerConfigSchemaSchema = zod_1.z.object({
-    "alarmSeverities": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-    "alarmStatuses": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-    "alarmTypes": zod_1.z.array(zod_1.z.string()),
-    "notifyOnCommentUpdate": zod_1.z.boolean(),
-    "onlyUserComments": zod_1.z.boolean(),
-    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const AlarmCommentNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "alarmSeverities": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+    "alarmStatuses": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+    "alarmTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "notifyOnCommentUpdate": zod_1.z.boolean().optional(),
+    "onlyUserComments": zod_1.z.boolean().optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.AlarmConditionSchemaSchema = zod_1.z.object({
-    "condition": zod_1.z.array(exports.AlarmConditionFilterSchema),
-    "spec": exports.AlarmConditionSpecSchema
+const AlarmConditionSchemaImpl = zod_1.z.object({
+    "condition": zod_1.z.array(exports.AlarmConditionFilterSchema).optional(),
+    "spec": exports.AlarmConditionSpecSchema.optional()
 });
-exports.AlarmConditionFilterSchemaSchema = zod_1.z.object({
-    "key": exports.AlarmConditionFilterKeySchema,
-    "valueType": zod_1.z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]),
-    "value": zod_1.z.object({}),
-    "predicate": exports.KeyFilterPredicateSchema
+const AlarmConditionFilterSchemaImpl = zod_1.z.object({
+    "key": exports.AlarmConditionFilterKeySchema.optional(),
+    "valueType": zod_1.z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]).optional(),
+    "value": zod_1.z.object({}).optional(),
+    "predicate": exports.KeyFilterPredicateSchema.optional()
 });
-exports.AlarmConditionFilterKeySchemaSchema = zod_1.z.object({
-    "type": zod_1.z.enum(["ATTRIBUTE", "CONSTANT", "ENTITY_FIELD", "TIME_SERIES"]),
-    "key": zod_1.z.string()
+const AlarmConditionFilterKeySchemaImpl = zod_1.z.object({
+    "type": zod_1.z.enum(["ATTRIBUTE", "CONSTANT", "ENTITY_FIELD", "TIME_SERIES"]).optional(),
+    "key": zod_1.z.string().optional()
 });
-exports.AlarmConditionSpecSchemaSchema = zod_1.z.object({});
-exports.AlarmCountQuerySchemaSchema = zod_1.z.object({
-    "assigneeId": exports.UserIdSchema,
-    "endTs": zod_1.z.number(),
-    "entityFilter": exports.EntityFilterSchema,
-    "keyFilters": zod_1.z.array(exports.KeyFilterSchema),
-    "searchPropagatedAlarms": zod_1.z.boolean(),
-    "severityList": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-    "startTs": zod_1.z.number(),
-    "statusList": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-    "timeWindow": zod_1.z.number(),
-    "typeList": zod_1.z.array(zod_1.z.string())
+const AlarmConditionSpecSchemaImpl = zod_1.z.object({});
+const AlarmCountQuerySchemaImpl = zod_1.z.object({
+    "assigneeId": exports.UserIdSchema.optional(),
+    "endTs": zod_1.z.number().optional(),
+    "entityFilter": exports.EntityFilterSchema.optional(),
+    "keyFilters": zod_1.z.array(exports.KeyFilterSchema).optional(),
+    "searchPropagatedAlarms": zod_1.z.boolean().optional(),
+    "severityList": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+    "startTs": zod_1.z.number().optional(),
+    "statusList": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+    "timeWindow": zod_1.z.number().optional(),
+    "typeList": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.AlarmDataSchemaSchema = zod_1.z.object({
-    "entityId": exports.EntityIdSchema,
-    "latest": zod_1.z.record(zod_1.z.string(), zod_1.z.object({})),
-    "id": exports.AlarmIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const AlarmDataSchemaImpl = zod_1.z.object({
+    "entityId": exports.EntityIdSchema.optional(),
+    "latest": zod_1.z.object({}).optional(),
+    "id": exports.AlarmIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
     "originator": exports.EntityIdSchema,
     "severity": zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
     "acknowledged": zod_1.z.boolean(),
     "cleared": zod_1.z.boolean(),
-    "assigneeId": exports.UserIdSchema,
-    "startTs": zod_1.z.number(),
-    "endTs": zod_1.z.number(),
-    "ackTs": zod_1.z.number(),
-    "clearTs": zod_1.z.number(),
-    "assignTs": zod_1.z.number(),
-    "details": exports.JsonNodeSchema,
-    "propagateToOwnerHierarchy": zod_1.z.boolean(),
-    "propagate": zod_1.z.boolean(),
-    "propagateToTenant": zod_1.z.boolean(),
-    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()),
-    "propagateToOwner": zod_1.z.boolean(),
-    "originatorName": zod_1.z.string(),
-    "originatorLabel": zod_1.z.string(),
-    "assignee": exports.AlarmAssigneeSchema,
+    "assigneeId": exports.UserIdSchema.optional(),
+    "startTs": zod_1.z.number().optional(),
+    "endTs": zod_1.z.number().optional(),
+    "ackTs": zod_1.z.number().optional(),
+    "clearTs": zod_1.z.number().optional(),
+    "assignTs": zod_1.z.number().optional(),
+    "details": exports.JsonNodeSchema.optional(),
+    "propagateToOwnerHierarchy": zod_1.z.boolean().optional(),
+    "propagate": zod_1.z.boolean().optional(),
+    "propagateToTenant": zod_1.z.boolean().optional(),
+    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "propagateToOwner": zod_1.z.boolean().optional(),
+    "originatorName": zod_1.z.string().optional(),
+    "originatorLabel": zod_1.z.string().optional(),
+    "assignee": exports.AlarmAssigneeSchema.optional(),
     "status": zod_1.z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
-exports.AlarmDataPageLinkSchemaSchema = zod_1.z.object({
-    "assigneeId": exports.UserIdSchema,
-    "dynamic": zod_1.z.boolean(),
-    "endTs": zod_1.z.number(),
-    "page": zod_1.z.number(),
-    "pageSize": zod_1.z.number(),
-    "searchPropagatedAlarms": zod_1.z.boolean(),
-    "severityList": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])),
-    "sortOrder": exports.EntityDataSortOrderSchema,
-    "startTs": zod_1.z.number(),
-    "statusList": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])),
-    "textSearch": zod_1.z.string(),
-    "timeWindow": zod_1.z.number(),
-    "typeList": zod_1.z.array(zod_1.z.string())
+const AlarmDataPageLinkSchemaImpl = zod_1.z.object({
+    "assigneeId": exports.UserIdSchema.optional(),
+    "dynamic": zod_1.z.boolean().optional(),
+    "endTs": zod_1.z.number().optional(),
+    "page": zod_1.z.number().optional(),
+    "pageSize": zod_1.z.number().optional(),
+    "searchPropagatedAlarms": zod_1.z.boolean().optional(),
+    "severityList": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+    "sortOrder": exports.EntityDataSortOrderSchema.optional(),
+    "startTs": zod_1.z.number().optional(),
+    "statusList": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional(),
+    "textSearch": zod_1.z.string().optional(),
+    "timeWindow": zod_1.z.number().optional(),
+    "typeList": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.AlarmDataQuerySchemaSchema = zod_1.z.object({
-    "alarmFields": zod_1.z.array(exports.EntityKeySchema),
-    "entityFields": zod_1.z.array(exports.EntityKeySchema),
-    "entityFilter": exports.EntityFilterSchema,
-    "keyFilters": zod_1.z.array(exports.KeyFilterSchema),
-    "latestValues": zod_1.z.array(exports.EntityKeySchema),
-    "pageLink": exports.AlarmDataPageLinkSchema
+const AlarmDataQuerySchemaImpl = zod_1.z.object({
+    "alarmFields": zod_1.z.array(exports.EntityKeySchema).optional(),
+    "entityFields": zod_1.z.array(exports.EntityKeySchema).optional(),
+    "entityFilter": exports.EntityFilterSchema.optional(),
+    "keyFilters": zod_1.z.array(exports.KeyFilterSchema).optional(),
+    "latestValues": zod_1.z.array(exports.EntityKeySchema).optional(),
+    "pageLink": exports.AlarmDataPageLinkSchema.optional()
 });
-exports.AlarmIdSchemaSchema = zod_1.z.object({
+const AlarmIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ALARM"])
 });
-exports.AlarmInfoSchemaSchema = zod_1.z.object({
-    "id": exports.AlarmIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const AlarmInfoSchemaImpl = zod_1.z.object({
+    "id": exports.AlarmIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
     "originator": exports.EntityIdSchema,
     "severity": zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"]),
     "acknowledged": zod_1.z.boolean(),
     "cleared": zod_1.z.boolean(),
-    "assigneeId": exports.UserIdSchema,
-    "startTs": zod_1.z.number(),
-    "endTs": zod_1.z.number(),
-    "ackTs": zod_1.z.number(),
-    "clearTs": zod_1.z.number(),
-    "assignTs": zod_1.z.number(),
-    "details": exports.JsonNodeSchema,
-    "propagateToOwnerHierarchy": zod_1.z.boolean(),
-    "propagate": zod_1.z.boolean(),
-    "propagateToTenant": zod_1.z.boolean(),
-    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()),
-    "propagateToOwner": zod_1.z.boolean(),
-    "originatorName": zod_1.z.string(),
-    "originatorLabel": zod_1.z.string(),
-    "assignee": exports.AlarmAssigneeSchema,
+    "assigneeId": exports.UserIdSchema.optional(),
+    "startTs": zod_1.z.number().optional(),
+    "endTs": zod_1.z.number().optional(),
+    "ackTs": zod_1.z.number().optional(),
+    "clearTs": zod_1.z.number().optional(),
+    "assignTs": zod_1.z.number().optional(),
+    "details": exports.JsonNodeSchema.optional(),
+    "propagateToOwnerHierarchy": zod_1.z.boolean().optional(),
+    "propagate": zod_1.z.boolean().optional(),
+    "propagateToTenant": zod_1.z.boolean().optional(),
+    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "propagateToOwner": zod_1.z.boolean().optional(),
+    "originatorName": zod_1.z.string().optional(),
+    "originatorLabel": zod_1.z.string().optional(),
+    "assignee": exports.AlarmAssigneeSchema.optional(),
     "status": zod_1.z.enum(["ACTIVE_ACK", "ACTIVE_UNACK", "CLEARED_ACK", "CLEARED_UNACK"])
 });
-exports.AlarmNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.AlarmRuleSchemaSchema = zod_1.z.object({
-    "condition": exports.AlarmConditionSchema,
-    "schedule": exports.AlarmScheduleSchema,
-    "alarmDetails": zod_1.z.string(),
-    "dashboardId": exports.DashboardIdSchema
+const AlarmNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "alarmSeverities": zod_1.z.array(zod_1.z.enum(["CRITICAL", "INDETERMINATE", "MAJOR", "MINOR", "WARNING"])).optional(),
+    "alarmTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "clearRule": exports.ClearRuleSchema.optional(),
+    "notifyOn": zod_1.z.array(zod_1.z.enum(["ACKNOWLEDGED", "CLEARED", "CREATED", "SEVERITY_CHANGED"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.AlarmScheduleSchemaSchema = zod_1.z.object({
-    "dynamicValue": exports.DynamicValue_Of_stringSchema,
-    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const AlarmRuleSchemaImpl = zod_1.z.object({
+    "condition": exports.AlarmConditionSchema.optional(),
+    "schedule": exports.AlarmScheduleSchema.optional(),
+    "alarmDetails": zod_1.z.string().optional(),
+    "dashboardId": exports.DashboardIdSchema.optional()
 });
-exports.AllUsersFilterSchemaSchema = zod_1.z.object({});
-exports.AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaSchema = zod_1.z.object({
-    "provisionDeviceSecret": zod_1.z.string()
+const AlarmScheduleSchemaImpl = zod_1.z.object({
+    "dynamicValue": exports.DynamicValue_Of_stringSchema.optional(),
+    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
-exports.AllowedPermissionsInfoSchemaSchema = zod_1.z.object({
-    "userOwnerId": exports.EntityIdSchema,
-    "userPermissions": exports.MergedUserPermissionsSchema,
-    "allowedResources": zod_1.z.array(zod_1.z.enum(["ADMIN_SETTINGS", "ALARM", "ALL", "API_USAGE_STATE", "ASSET", "ASSET_GROUP", "ASSET_PROFILE", "AUDIT_LOG", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "CUSTOMER_GROUP", "DASHBOARD", "DASHBOARD_GROUP", "DEVICE", "DEVICE_GROUP", "DEVICE_PROFILE", "EDGE", "EDGE_GROUP", "ENTITY_VIEW", "ENTITY_VIEW_GROUP", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "OAUTH2_CONFIGURATION_INFO", "OAUTH2_CONFIGURATION_TEMPLATE", "OTA_PACKAGE", "PROFILE", "QUEUE", "ROLE", "RULE_CHAIN", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "USER_GROUP", "VERSION_CONTROL", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"])),
-    "operationsByResource": zod_1.z.record(zod_1.z.string(), zod_1.z.array(zod_1.z.string())),
-    "allowedForGroupRoleOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])),
-    "allowedForGroupOwnerOnlyOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])),
-    "allowedForGroupOwnerOnlyGroupOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"]))
+const AllUsersFilterSchemaImpl = zod_1.z.object({});
+const AllowCreateNewDevicesDeviceProfileProvisionConfigurationSchemaImpl = zod_1.z.object({
+    "provisionDeviceSecret": zod_1.z.string().optional()
 });
-exports.AnyTimeScheduleSchemaSchema = zod_1.z.object({
-    "dynamicValue": exports.DynamicValue_Of_stringSchema,
-    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const AllowedPermissionsInfoSchemaImpl = zod_1.z.object({
+    "userOwnerId": exports.EntityIdSchema.optional(),
+    "userPermissions": exports.MergedUserPermissionsSchema.optional(),
+    "allowedResources": zod_1.z.array(zod_1.z.enum(["ADMIN_SETTINGS", "ALARM", "ALL", "API_USAGE_STATE", "ASSET", "ASSET_GROUP", "ASSET_PROFILE", "AUDIT_LOG", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "CUSTOMER_GROUP", "DASHBOARD", "DASHBOARD_GROUP", "DEVICE", "DEVICE_GROUP", "DEVICE_PROFILE", "EDGE", "EDGE_GROUP", "ENTITY_VIEW", "ENTITY_VIEW_GROUP", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "OAUTH2_CONFIGURATION_INFO", "OAUTH2_CONFIGURATION_TEMPLATE", "OTA_PACKAGE", "PROFILE", "QUEUE", "ROLE", "RULE_CHAIN", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "USER_GROUP", "VERSION_CONTROL", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+    "operationsByResource": zod_1.z.object({}).optional(),
+    "allowedForGroupRoleOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional(),
+    "allowedForGroupOwnerOnlyOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional(),
+    "allowedForGroupOwnerOnlyGroupOperations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional()
 });
-exports.ApiUsageLimitNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ApiUsageStateFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ArrayNodeSchemaSchema = zod_1.z.object({});
-exports.AssetSchemaSchema = zod_1.z.object({
-    "id": exports.AssetIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const AnyTimeScheduleSchemaImpl = zod_1.z.object({
+    "dynamicValue": exports.DynamicValue_Of_stringSchema.optional(),
+    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
+});
+const ApiUsageLimitNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "apiFeatures": zod_1.z.array(zod_1.z.enum(["ALARM", "DB", "EMAIL", "JS", "RE", "SMS", "TBEL", "TRANSPORT"])).optional(),
+    "notifyOn": zod_1.z.array(zod_1.z.enum(["DISABLED", "ENABLED", "WARNING"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
+const ApiUsageStateFilterSchemaImpl = zod_1.z.object({
+    "customerId": exports.CustomerIdSchema.optional()
+});
+const ArrayNodeSchemaImpl = zod_1.z.object({});
+const AssetSchemaImpl = zod_1.z.object({
+    "id": exports.AssetIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
-    "assetProfileId": exports.AssetProfileIdSchema,
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema
+    "type": zod_1.z.string().optional(),
+    "label": zod_1.z.string().optional(),
+    "assetProfileId": exports.AssetProfileIdSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional()
 });
-exports.AssetIdSchemaSchema = zod_1.z.object({
+const AssetIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ASSET"])
 });
-exports.AssetInfoSchemaSchema = zod_1.z.object({
-    "id": exports.AssetIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const AssetInfoSchemaImpl = zod_1.z.object({
+    "id": exports.AssetIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
-    "assetProfileId": exports.AssetProfileIdSchema,
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema)
+    "type": zod_1.z.string().optional(),
+    "label": zod_1.z.string().optional(),
+    "assetProfileId": exports.AssetProfileIdSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional()
 });
-exports.AssetProfileSchemaSchema = zod_1.z.object({
-    "id": exports.AssetProfileIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "name": zod_1.z.string(),
-    "default": zod_1.z.boolean(),
-    "defaultDashboardId": exports.DashboardIdSchema,
-    "defaultRuleChainId": exports.RuleChainIdSchema,
-    "defaultQueueName": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "defaultEdgeRuleChainId": exports.RuleChainIdSchema
+const AssetProfileSchemaImpl = zod_1.z.object({
+    "id": exports.AssetProfileIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "default": zod_1.z.boolean().optional(),
+    "defaultDashboardId": exports.DashboardIdSchema.optional(),
+    "defaultRuleChainId": exports.RuleChainIdSchema.optional(),
+    "defaultQueueName": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "defaultEdgeRuleChainId": exports.RuleChainIdSchema.optional()
 });
-exports.AssetProfileIdSchemaSchema = zod_1.z.object({
+const AssetProfileIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ASSET_PROFILE"])
 });
-exports.AssetProfileInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "defaultDashboardId": exports.DashboardIdSchema,
-    "tenantId": exports.TenantIdSchema
+const AssetProfileInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "defaultDashboardId": exports.DashboardIdSchema.optional(),
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.AssetSearchQuerySchemaSchema = zod_1.z.object({
-    "relationType": zod_1.z.string(),
-    "assetTypes": zod_1.z.array(zod_1.z.string()),
-    "parameters": exports.RelationsSearchParametersSchema
+const AssetSearchQuerySchemaImpl = zod_1.z.object({
+    "relationType": zod_1.z.string().optional(),
+    "assetTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "parameters": exports.RelationsSearchParametersSchema.optional()
 });
-exports.AssetSearchQueryFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.AssetTypeFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.AtomicIntegerSchemaSchema = zod_1.z.object({
-    "acquire": zod_1.z.number(),
-    "andDecrement": zod_1.z.number(),
-    "andIncrement": zod_1.z.number(),
-    "opaque": zod_1.z.number(),
-    "plain": zod_1.z.number()
+const AssetSearchQueryFilterSchemaImpl = zod_1.z.object({
+    "assetTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "relationType": zod_1.z.string().optional(),
+    "rootEntity": exports.EntityIdSchema.optional()
 });
-exports.AttributeExportDataSchemaSchema = zod_1.z.object({
-    "booleanValue": zod_1.z.boolean(),
-    "doubleValue": zod_1.z.number(),
-    "jsonValue": zod_1.z.string(),
-    "key": zod_1.z.string(),
-    "lastUpdateTs": zod_1.z.number(),
-    "longValue": zod_1.z.number(),
-    "strValue": zod_1.z.string()
+const AssetTypeFilterSchemaImpl = zod_1.z.object({
+    "assetNameFilter": zod_1.z.string().optional(),
+    "assetTypes": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.AttributesEntityViewSchemaSchema = zod_1.z.object({
+const AtomicIntegerSchemaImpl = zod_1.z.object({
+    "acquire": zod_1.z.number().optional(),
+    "andDecrement": zod_1.z.number().optional(),
+    "andIncrement": zod_1.z.number().optional(),
+    "opaque": zod_1.z.number().optional(),
+    "plain": zod_1.z.number().optional()
+});
+const AttributeExportDataSchemaImpl = zod_1.z.object({
+    "booleanValue": zod_1.z.boolean().optional(),
+    "doubleValue": zod_1.z.number().optional(),
+    "jsonValue": zod_1.z.string().optional(),
+    "key": zod_1.z.string().optional(),
+    "lastUpdateTs": zod_1.z.number().optional(),
+    "longValue": zod_1.z.number().optional(),
+    "strValue": zod_1.z.string().optional()
+});
+const AttributesEntityViewSchemaImpl = zod_1.z.object({
     "cs": zod_1.z.array(zod_1.z.string()),
     "sh": zod_1.z.array(zod_1.z.string()),
     "ss": zod_1.z.array(zod_1.z.string())
 });
-exports.AuditLogSchemaSchema = zod_1.z.object({
-    "id": exports.AuditLogIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "entityId": exports.EntityIdSchema,
-    "entityName": zod_1.z.string(),
-    "userId": exports.UserIdSchema,
-    "userName": zod_1.z.string(),
-    "actionType": zod_1.z.enum(["ACTIVATED", "ADDED", "ADDED_COMMENT", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_DELETE", "ALARM_UNASSIGNED", "ASSIGNED_FROM_TENANT", "ASSIGNED_TO_CUSTOMER", "ASSIGNED_TO_EDGE", "ASSIGNED_TO_TENANT", "ATTRIBUTES_DELETED", "ATTRIBUTES_READ", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_READ", "CREDENTIALS_UPDATED", "DELETED", "DELETED_COMMENT", "LOCKOUT", "LOGIN", "LOGOUT", "MADE_PRIVATE", "MADE_PUBLIC", "PROVISION_FAILURE", "PROVISION_SUCCESS", "RELATIONS_DELETED", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "REST_API_RULE_ENGINE_CALL", "RPC_CALL", "SMS_SENT", "SUSPENDED", "TIMESERIES_DELETED", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_CUSTOMER", "UNASSIGNED_FROM_EDGE", "UPDATED", "UPDATED_COMMENT"]),
-    "actionData": exports.JsonNodeSchema,
-    "actionStatus": zod_1.z.enum(["FAILURE", "SUCCESS"]),
-    "actionFailureDetails": zod_1.z.string()
+const AuditLogSchemaImpl = zod_1.z.object({
+    "id": exports.AuditLogIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "entityId": exports.EntityIdSchema.optional(),
+    "entityName": zod_1.z.string().optional(),
+    "userId": exports.UserIdSchema.optional(),
+    "userName": zod_1.z.string().optional(),
+    "actionType": zod_1.z.enum(["ACTIVATED", "ADDED", "ADDED_COMMENT", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_DELETE", "ALARM_UNASSIGNED", "ASSIGNED_FROM_TENANT", "ASSIGNED_TO_CUSTOMER", "ASSIGNED_TO_EDGE", "ASSIGNED_TO_TENANT", "ATTRIBUTES_DELETED", "ATTRIBUTES_READ", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_READ", "CREDENTIALS_UPDATED", "DELETED", "DELETED_COMMENT", "LOCKOUT", "LOGIN", "LOGOUT", "MADE_PRIVATE", "MADE_PUBLIC", "PROVISION_FAILURE", "PROVISION_SUCCESS", "RELATIONS_DELETED", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "REST_API_RULE_ENGINE_CALL", "RPC_CALL", "SMS_SENT", "SUSPENDED", "TIMESERIES_DELETED", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_CUSTOMER", "UNASSIGNED_FROM_EDGE", "UPDATED", "UPDATED_COMMENT"]).optional(),
+    "actionData": exports.JsonNodeSchema.optional(),
+    "actionStatus": zod_1.z.enum(["FAILURE", "SUCCESS"]).optional(),
+    "actionFailureDetails": zod_1.z.string().optional()
 });
-exports.AuditLogIdSchemaSchema = zod_1.z.object({
+const AuditLogIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.AutoVersionCreateConfigSchemaSchema = zod_1.z.object({
-    "branch": zod_1.z.string(),
-    "saveAttributes": zod_1.z.boolean(),
-    "saveCredentials": zod_1.z.boolean(),
-    "saveGroupEntities": zod_1.z.boolean(),
-    "savePermissions": zod_1.z.boolean(),
-    "saveRelations": zod_1.z.boolean()
+const AutoVersionCreateConfigSchemaImpl = zod_1.z.object({
+    "branch": zod_1.z.string().optional(),
+    "saveAttributes": zod_1.z.boolean().optional(),
+    "saveCredentials": zod_1.z.boolean().optional(),
+    "saveGroupEntities": zod_1.z.boolean().optional(),
+    "savePermissions": zod_1.z.boolean().optional(),
+    "saveRelations": zod_1.z.boolean().optional()
 });
-exports.AwsSnsSmsProviderConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.BackupCodeTwoFaAccountConfigSchemaSchema = zod_1.z.object({
-    "codes": zod_1.z.array(zod_1.z.string()),
-    "codesLeft": zod_1.z.number(),
-    "useByDefault": zod_1.z.boolean()
+const AwsSnsSmsProviderConfigurationSchemaImpl = zod_1.z.object({
+    "accessKeyId": zod_1.z.string().optional(),
+    "secretAccessKey": zod_1.z.string().optional(),
+    "region": zod_1.z.string().optional()
 });
-exports.BackupCodeTwoFaProviderConfigSchemaSchema = zod_1.z.object({
-    "codesQuantity": zod_1.z.number()
+const BackupCodeTwoFaAccountConfigSchemaImpl = zod_1.z.object({
+    "codes": zod_1.z.array(zod_1.z.string()).optional(),
+    "codesLeft": zod_1.z.number().optional(),
+    "useByDefault": zod_1.z.boolean().optional()
 });
-exports.BlobEntityIdSchemaSchema = zod_1.z.object({
+const BackupCodeTwoFaProviderConfigSchemaImpl = zod_1.z.object({
+    "codesQuantity": zod_1.z.number().optional()
+});
+const BlobEntityIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["BLOB_ENTITY"])
 });
-exports.BlobEntityInfoSchemaSchema = zod_1.z.object({
-    "id": exports.BlobEntityIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "contentType": zod_1.z.enum(["application/pdf", "image/jpeg", "image/png"]),
-    "additionalInfo": exports.JsonNodeSchema
+const BlobEntityInfoSchemaImpl = zod_1.z.object({
+    "id": exports.BlobEntityIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "contentType": zod_1.z.enum(["application/pdf", "image/jpeg", "image/png"]).optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.BlobEntityWithCustomerInfoSchemaSchema = zod_1.z.object({
-    "id": exports.BlobEntityIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "contentType": zod_1.z.enum(["application/pdf", "image/jpeg", "image/png"]),
-    "additionalInfo": exports.JsonNodeSchema,
-    "customerTitle": zod_1.z.string(),
-    "customerIsPublic": zod_1.z.object({})
+const BlobEntityWithCustomerInfoSchemaImpl = zod_1.z.object({
+    "id": exports.BlobEntityIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "contentType": zod_1.z.enum(["application/pdf", "image/jpeg", "image/png"]).optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "customerTitle": zod_1.z.string().optional(),
+    "customerIsPublic": zod_1.z.object({}).optional()
 });
-exports.BooleanFilterPredicateSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.BranchInfoSchemaSchema = zod_1.z.object({
-    "default": zod_1.z.boolean(),
-    "name": zod_1.z.string()
+const BooleanFilterPredicateSchemaImpl = zod_1.z.object({
+    "operation": zod_1.z.enum(["EQUAL", "NOT_EQUAL"]).optional(),
+    "value": exports.FilterPredicateValue_Of_booleanSchema.optional()
 });
-exports.BulkImportRequestSchemaSchema = zod_1.z.object({
-    "customerId": exports.CustomerIdSchema,
-    "entityGroupId": zod_1.z.string(),
-    "file": zod_1.z.string(),
-    "mapping": exports.MappingSchema
+const BranchInfoSchemaImpl = zod_1.z.object({
+    "default": zod_1.z.boolean().optional(),
+    "name": zod_1.z.string().optional()
 });
-exports.BulkImportResult_Of_AssetSchemaSchema = zod_1.z.object({
-    "created": exports.AtomicIntegerSchema,
-    "errors": exports.AtomicIntegerSchema,
-    "errorsList": zod_1.z.array(zod_1.z.string()),
-    "updated": exports.AtomicIntegerSchema
+const BulkImportRequestSchemaImpl = zod_1.z.object({
+    "customerId": exports.CustomerIdSchema.optional(),
+    "entityGroupId": zod_1.z.string().optional(),
+    "file": zod_1.z.string().optional(),
+    "mapping": exports.MappingSchema.optional()
 });
-exports.BulkImportResult_Of_DeviceSchemaSchema = zod_1.z.object({
-    "created": exports.AtomicIntegerSchema,
-    "errors": exports.AtomicIntegerSchema,
-    "errorsList": zod_1.z.array(zod_1.z.string()),
-    "updated": exports.AtomicIntegerSchema
+const BulkImportResult_Of_AssetSchemaImpl = zod_1.z.object({
+    "created": exports.AtomicIntegerSchema.optional(),
+    "errors": exports.AtomicIntegerSchema.optional(),
+    "errorsList": zod_1.z.array(zod_1.z.string()).optional(),
+    "updated": exports.AtomicIntegerSchema.optional()
 });
-exports.BulkImportResult_Of_EdgeSchemaSchema = zod_1.z.object({
-    "created": exports.AtomicIntegerSchema,
-    "errors": exports.AtomicIntegerSchema,
-    "errorsList": zod_1.z.array(zod_1.z.string()),
-    "updated": exports.AtomicIntegerSchema
+const BulkImportResult_Of_DeviceSchemaImpl = zod_1.z.object({
+    "created": exports.AtomicIntegerSchema.optional(),
+    "errors": exports.AtomicIntegerSchema.optional(),
+    "errorsList": zod_1.z.array(zod_1.z.string()).optional(),
+    "updated": exports.AtomicIntegerSchema.optional()
 });
-exports.ButtonSchemaSchema = zod_1.z.object({
-    "dashboardId": zod_1.z.string(),
-    "dashboardState": zod_1.z.string(),
-    "enabled": zod_1.z.boolean(),
-    "link": zod_1.z.string(),
-    "linkType": zod_1.z.enum(["DASHBOARD", "LINK"]),
-    "setEntityIdInState": zod_1.z.boolean(),
-    "text": zod_1.z.string()
+const BulkImportResult_Of_EdgeSchemaImpl = zod_1.z.object({
+    "created": exports.AtomicIntegerSchema.optional(),
+    "errors": exports.AtomicIntegerSchema.optional(),
+    "errorsList": zod_1.z.array(zod_1.z.string()).optional(),
+    "updated": exports.AtomicIntegerSchema.optional()
 });
-exports.ByteArrayResourceSchemaSchema = zod_1.z.object({
-    "byteArray": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "file": zod_1.z.string(),
-    "filename": zod_1.z.string(),
-    "inputStream": exports.InputStreamSchema,
-    "open": zod_1.z.boolean(),
-    "readable": zod_1.z.boolean(),
-    "uri": zod_1.z.string(),
-    "url": zod_1.z.string()
+const ButtonSchemaImpl = zod_1.z.object({
+    "dashboardId": zod_1.z.string().optional(),
+    "dashboardState": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "link": zod_1.z.string().optional(),
+    "linkType": zod_1.z.enum(["DASHBOARD", "LINK"]).optional(),
+    "setEntityIdInState": zod_1.z.boolean().optional(),
+    "text": zod_1.z.string().optional()
 });
-exports.ByteBufferSchemaSchema = zod_1.z.object({
-    "char": zod_1.z.string(),
-    "direct": zod_1.z.boolean(),
-    "double": zod_1.z.number(),
-    "float": zod_1.z.number(),
-    "int": zod_1.z.number(),
-    "long": zod_1.z.number(),
-    "readOnly": zod_1.z.boolean(),
-    "short": zod_1.z.number()
+const ByteArrayResourceSchemaImpl = zod_1.z.object({
+    "byteArray": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "file": zod_1.z.string().optional(),
+    "filename": zod_1.z.string().optional(),
+    "inputStream": exports.InputStreamSchema.optional(),
+    "open": zod_1.z.boolean().optional(),
+    "readable": zod_1.z.boolean().optional(),
+    "uri": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional()
 });
-exports.ChangePasswordRequestSchemaSchema = zod_1.z.object({
-    "currentPassword": zod_1.z.string(),
-    "newPassword": zod_1.z.string()
+const ByteBufferSchemaImpl = zod_1.z.object({
+    "char": zod_1.z.string().optional(),
+    "direct": zod_1.z.boolean().optional(),
+    "double": zod_1.z.number().optional(),
+    "float": zod_1.z.number().optional(),
+    "int": zod_1.z.number().optional(),
+    "long": zod_1.z.number().optional(),
+    "readOnly": zod_1.z.boolean().optional(),
+    "short": zod_1.z.number().optional()
 });
-exports.CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaSchema = zod_1.z.object({
-    "provisionDeviceSecret": zod_1.z.string()
+const ChangePasswordRequestSchemaImpl = zod_1.z.object({
+    "currentPassword": zod_1.z.string().optional(),
+    "newPassword": zod_1.z.string().optional()
 });
-exports.ClaimRequestSchemaSchema = zod_1.z.object({
-    "secretKey": zod_1.z.string()
+const CheckPreProvisionedDevicesDeviceProfileProvisionConfigurationSchemaImpl = zod_1.z.object({
+    "provisionDeviceSecret": zod_1.z.string().optional()
 });
-exports.ClearRuleSchemaSchema = zod_1.z.object({
-    "alarmStatuses": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"]))
+const ClaimRequestSchemaImpl = zod_1.z.object({
+    "secretKey": zod_1.z.string().optional()
 });
-exports.ClientAttributesQueryingSnmpCommunicationConfigSchemaSchema = zod_1.z.object({
-    "mappings": zod_1.z.array(exports.SnmpMappingSchema),
-    "queryingFrequencyMs": zod_1.z.number(),
-    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ClearRuleSchemaImpl = zod_1.z.object({
+    "alarmStatuses": zod_1.z.array(zod_1.z.enum(["ACK", "ACTIVE", "ANY", "CLEARED", "UNACK"])).optional()
 });
-exports.CoapDeviceProfileTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.CoapDeviceTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.CoapDeviceTypeConfigurationSchemaSchema = zod_1.z.object({});
-exports.ColumnMappingSchemaSchema = zod_1.z.object({
-    "key": zod_1.z.string(),
-    "type": zod_1.z.enum(["ACCESS_TOKEN", "CLOUD_ENDPOINT", "DESCRIPTION", "EDGE_LICENSE_KEY", "IS_GATEWAY", "LABEL", "LWM2M_BOOTSTRAP_SERVER_PUBLIC_KEY_OR_ID", "LWM2M_BOOTSTRAP_SERVER_SECRET_KEY", "LWM2M_BOOTSTRAP_SERVER_SECURITY_MODE", "LWM2M_CLIENT_CERT", "LWM2M_CLIENT_ENDPOINT", "LWM2M_CLIENT_IDENTITY", "LWM2M_CLIENT_KEY", "LWM2M_CLIENT_SECURITY_CONFIG_MODE", "LWM2M_SERVER_CLIENT_PUBLIC_KEY_OR_ID", "LWM2M_SERVER_CLIENT_SECRET_KEY", "LWM2M_SERVER_SECURITY_MODE", "MQTT_CLIENT_ID", "MQTT_PASSWORD", "MQTT_USER_NAME", "NAME", "ROUTING_KEY", "SECRET", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "SNMP_COMMUNITY_STRING", "SNMP_HOST", "SNMP_PORT", "SNMP_VERSION", "TIMESERIES", "TYPE", "X509"])
+const ClientAttributesQueryingSnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "mappings": zod_1.z.array(exports.SnmpMappingSchema).optional(),
+    "queryingFrequencyMs": zod_1.z.number().optional(),
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
-exports.ComparisonTsValueSchemaSchema = zod_1.z.object({
-    "current": exports.TsValueSchema,
-    "previous": exports.TsValueSchema
+const CoapDeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({
+    "clientSettings": exports.PowerSavingConfigurationSchema.optional(),
+    "coapDeviceTypeConfiguration": exports.CoapDeviceTypeConfigurationSchema.optional()
 });
-exports.ComplexFilterPredicateSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ComplexVersionCreateRequestSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ComponentDescriptorSchemaSchema = zod_1.z.object({
-    "id": exports.ComponentDescriptorIdSchema,
-    "createdTime": zod_1.z.number(),
-    "type": zod_1.z.enum(["ACTION", "ANALYTICS", "ENRICHMENT", "EXTERNAL", "FILTER", "FLOW", "TRANSFORMATION"]),
-    "scope": zod_1.z.enum(["TENANT"]),
-    "clusteringMode": zod_1.z.enum(["ENABLED", "SINGLETON", "USER_PREFERENCE"]),
-    "name": zod_1.z.string(),
-    "clazz": zod_1.z.string(),
-    "configurationDescriptor": exports.JsonNodeSchema,
-    "configurationVersion": zod_1.z.number(),
-    "actions": zod_1.z.string()
+const CoapDeviceTransportConfigurationSchemaImpl = zod_1.z.object({
+    "edrxCycle": zod_1.z.number().optional(),
+    "pagingTransmissionWindow": zod_1.z.number().optional(),
+    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+    "psmActivityTimer": zod_1.z.number().optional()
 });
-exports.ComponentDescriptorIdSchemaSchema = zod_1.z.object({
+const CoapDeviceTypeConfigurationSchemaImpl = zod_1.z.object({});
+const ColumnMappingSchemaImpl = zod_1.z.object({
+    "key": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["ACCESS_TOKEN", "CLOUD_ENDPOINT", "DESCRIPTION", "EDGE_LICENSE_KEY", "IS_GATEWAY", "LABEL", "LWM2M_BOOTSTRAP_SERVER_PUBLIC_KEY_OR_ID", "LWM2M_BOOTSTRAP_SERVER_SECRET_KEY", "LWM2M_BOOTSTRAP_SERVER_SECURITY_MODE", "LWM2M_CLIENT_CERT", "LWM2M_CLIENT_ENDPOINT", "LWM2M_CLIENT_IDENTITY", "LWM2M_CLIENT_KEY", "LWM2M_CLIENT_SECURITY_CONFIG_MODE", "LWM2M_SERVER_CLIENT_PUBLIC_KEY_OR_ID", "LWM2M_SERVER_CLIENT_SECRET_KEY", "LWM2M_SERVER_SECURITY_MODE", "MQTT_CLIENT_ID", "MQTT_PASSWORD", "MQTT_USER_NAME", "NAME", "ROUTING_KEY", "SECRET", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "SNMP_COMMUNITY_STRING", "SNMP_HOST", "SNMP_PORT", "SNMP_VERSION", "TIMESERIES", "TYPE", "X509"]).optional()
+});
+const ComparisonTsValueSchemaImpl = zod_1.z.object({
+    "current": exports.TsValueSchema.optional(),
+    "previous": exports.TsValueSchema.optional()
+});
+const ComplexFilterPredicateSchemaImpl = zod_1.z.object({
+    "operation": zod_1.z.enum(["AND", "OR"]).optional(),
+    "predicates": zod_1.z.array(exports.KeyFilterPredicateSchema).optional()
+});
+const ComplexVersionCreateRequestSchemaImpl = zod_1.z.object({
+    "branch": zod_1.z.string().optional(),
+    "entityTypes": zod_1.z.object({}).optional(),
+    "syncStrategy": zod_1.z.enum(["MERGE", "OVERWRITE"]).optional(),
+    "type": zod_1.z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+    "versionName": zod_1.z.string().optional()
+});
+const ComponentDescriptorSchemaImpl = zod_1.z.object({
+    "id": exports.ComponentDescriptorIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "type": zod_1.z.enum(["ACTION", "ANALYTICS", "ENRICHMENT", "EXTERNAL", "FILTER", "FLOW", "TRANSFORMATION"]).optional(),
+    "scope": zod_1.z.enum(["TENANT"]).optional(),
+    "clusteringMode": zod_1.z.enum(["ENABLED", "SINGLETON", "USER_PREFERENCE"]).optional(),
+    "name": zod_1.z.string().optional(),
+    "clazz": zod_1.z.string().optional(),
+    "configurationDescriptor": exports.JsonNodeSchema.optional(),
+    "configurationVersion": zod_1.z.number().optional(),
+    "actions": zod_1.z.string().optional()
+});
+const ComponentDescriptorIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.ContactBased_Of_objectSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "address": zod_1.z.string(),
-    "address2": zod_1.z.string(),
-    "city": zod_1.z.string(),
-    "country": zod_1.z.string(),
-    "createdTime": zod_1.z.number(),
-    "email": zod_1.z.string(),
-    "id": zod_1.z.object({}),
-    "name": zod_1.z.string(),
-    "phone": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "zip": zod_1.z.string()
+const ContactBased_Of_objectSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "address": zod_1.z.string().optional(),
+    "address2": zod_1.z.string().optional(),
+    "city": zod_1.z.string().optional(),
+    "country": zod_1.z.string().optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "email": zod_1.z.string().optional(),
+    "id": zod_1.z.object({}).optional(),
+    "name": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "zip": zod_1.z.string().optional()
 });
-exports.ConverterSchemaSchema = zod_1.z.object({
-    "id": exports.ConverterIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
+const ConverterSchemaImpl = zod_1.z.object({
+    "id": exports.ConverterIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.enum(["DOWNLINK", "UPLINK"]),
-    "debugMode": zod_1.z.boolean(),
-    "configuration": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema,
-    "edgeTemplate": zod_1.z.boolean()
+    "debugMode": zod_1.z.boolean().optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "edgeTemplate": zod_1.z.boolean().optional()
 });
-exports.ConverterIdSchemaSchema = zod_1.z.object({
+const ConverterIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["CONVERTER"])
 });
-exports.CustomMenuSchemaSchema = zod_1.z.object({
+const CustomMenuSchemaImpl = zod_1.z.object({
     "disabledMenuItems": zod_1.z.array(zod_1.z.string()),
     "menuItems": zod_1.z.array(exports.CustomMenuItemSchema)
 });
-exports.CustomMenuItemSchemaSchema = zod_1.z.object({
+const CustomMenuItemSchemaImpl = zod_1.z.object({
     "name": zod_1.z.string(),
-    "iconUrl": zod_1.z.string(),
-    "materialIcon": zod_1.z.string(),
-    "iframeUrl": zod_1.z.string(),
-    "dashboardId": zod_1.z.string(),
-    "hideDashboardToolbar": zod_1.z.boolean(),
-    "setAccessToken": zod_1.z.boolean(),
-    "childMenuItems": zod_1.z.array(exports.CustomMenuItemSchema)
+    "iconUrl": zod_1.z.string().optional(),
+    "materialIcon": zod_1.z.string().optional(),
+    "iframeUrl": zod_1.z.string().optional(),
+    "dashboardId": zod_1.z.string().optional(),
+    "hideDashboardToolbar": zod_1.z.boolean().optional(),
+    "setAccessToken": zod_1.z.boolean().optional(),
+    "childMenuItems": zod_1.z.array(exports.CustomMenuItemSchema).optional()
 });
-exports.CustomTimeScheduleSchemaSchema = zod_1.z.object({
-    "dynamicValue": exports.DynamicValue_Of_stringSchema,
-    "items": zod_1.z.array(exports.CustomTimeScheduleItemSchema),
-    "timezone": zod_1.z.string(),
-    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const CustomTimeScheduleSchemaImpl = zod_1.z.object({
+    "dynamicValue": exports.DynamicValue_Of_stringSchema.optional(),
+    "items": zod_1.z.array(exports.CustomTimeScheduleItemSchema).optional(),
+    "timezone": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
-exports.CustomTimeScheduleItemSchemaSchema = zod_1.z.object({
-    "dayOfWeek": zod_1.z.number(),
-    "enabled": zod_1.z.boolean(),
-    "endsOn": zod_1.z.number(),
-    "startsOn": zod_1.z.number()
+const CustomTimeScheduleItemSchemaImpl = zod_1.z.object({
+    "dayOfWeek": zod_1.z.number().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "endsOn": zod_1.z.number().optional(),
+    "startsOn": zod_1.z.number().optional()
 });
-exports.CustomTranslationSchemaSchema = zod_1.z.object({
-    "translationMap": zod_1.z.record(zod_1.z.string(), zod_1.z.string())
+const CustomTranslationSchemaImpl = zod_1.z.object({
+    "translationMap": zod_1.z.object({})
 });
-exports.CustomerSchemaSchema = zod_1.z.object({
-    "id": exports.CustomerIdSchema,
-    "createdTime": zod_1.z.number(),
+const CustomerSchemaImpl = zod_1.z.object({
+    "id": exports.CustomerIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "title": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema,
-    "parentCustomerId": exports.CustomerIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "country": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "city": zod_1.z.string(),
-    "address": zod_1.z.string(),
-    "address2": zod_1.z.string(),
-    "zip": zod_1.z.string(),
-    "phone": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "parentCustomerId": exports.CustomerIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "country": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "city": zod_1.z.string().optional(),
+    "address": zod_1.z.string().optional(),
+    "address2": zod_1.z.string().optional(),
+    "zip": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
     "email": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.CustomerIdSchemaSchema = zod_1.z.object({
+const CustomerIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["CUSTOMER"])
 });
-exports.CustomerInfoSchemaSchema = zod_1.z.object({
-    "id": exports.CustomerIdSchema,
-    "createdTime": zod_1.z.number(),
+const CustomerInfoSchemaImpl = zod_1.z.object({
+    "id": exports.CustomerIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "title": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema,
-    "parentCustomerId": exports.CustomerIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "country": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "city": zod_1.z.string(),
-    "address": zod_1.z.string(),
-    "address2": zod_1.z.string(),
-    "zip": zod_1.z.string(),
-    "phone": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "parentCustomerId": exports.CustomerIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "country": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "city": zod_1.z.string().optional(),
+    "address": zod_1.z.string().optional(),
+    "address2": zod_1.z.string().optional(),
+    "zip": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
     "email": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema)
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional()
 });
-exports.CustomerUsersFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DashboardSchemaSchema = zod_1.z.object({
-    "id": exports.DashboardIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "title": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema),
-    "mobileHide": zod_1.z.boolean(),
-    "mobileOrder": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "configuration": exports.JsonNodeSchema
+const CustomerUsersFilterSchemaImpl = zod_1.z.object({
+    "customerId": zod_1.z.string().optional()
 });
-exports.DashboardIdSchemaSchema = zod_1.z.object({
+const DashboardSchemaImpl = zod_1.z.object({
+    "id": exports.DashboardIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "title": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema).optional(),
+    "mobileHide": zod_1.z.boolean().optional(),
+    "mobileOrder": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "configuration": exports.JsonNodeSchema.optional()
+});
+const DashboardIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["DASHBOARD"])
 });
-exports.DashboardInfoSchemaSchema = zod_1.z.object({
-    "id": exports.DashboardIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "title": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema),
-    "mobileHide": zod_1.z.boolean(),
-    "mobileOrder": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "configuration": exports.JsonNodeSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema)
+const DashboardInfoSchemaImpl = zod_1.z.object({
+    "id": exports.DashboardIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "title": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema).optional(),
+    "mobileHide": zod_1.z.boolean().optional(),
+    "mobileOrder": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional()
 });
-exports.DebugConverterEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DebugIntegrationEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DefaultCoapDeviceTypeConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DefaultDeviceConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DefaultDeviceProfileConfigurationSchemaSchema = zod_1.z.object({});
-exports.DefaultDeviceProfileTransportConfigurationSchemaSchema = zod_1.z.object({});
-exports.DefaultDeviceTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DefaultRuleChainCreateRequestSchemaSchema = zod_1.z.object({
+const DebugConverterEventFilterSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.boolean().optional(),
+    "in": zod_1.z.string().optional(),
+    "metadata": zod_1.z.string().optional(),
+    "notEmpty": zod_1.z.boolean().optional(),
+    "out": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "errorStr": zod_1.z.string().optional()
+});
+const DebugIntegrationEventFilterSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.boolean().optional(),
+    "message": zod_1.z.string().optional(),
+    "notEmpty": zod_1.z.boolean().optional(),
+    "statusIntegration": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "errorStr": zod_1.z.string().optional()
+});
+const DefaultCoapDeviceTypeConfigurationSchemaImpl = zod_1.z.object({
+    "transportPayloadTypeConfiguration": exports.TransportPayloadTypeConfigurationSchema.optional()
+});
+const DefaultDeviceConfigurationSchemaImpl = zod_1.z.any();
+const DefaultDeviceProfileConfigurationSchemaImpl = zod_1.z.object({});
+const DefaultDeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({});
+const DefaultDeviceTransportConfigurationSchemaImpl = zod_1.z.any();
+const DefaultRuleChainCreateRequestSchemaImpl = zod_1.z.object({
     "name": zod_1.z.string()
 });
-exports.DefaultTenantProfileConfigurationSchemaSchema = zod_1.z.object({
-    "alarmsTtlDays": zod_1.z.number(),
-    "cassandraQueryTenantRateLimitsConfiguration": zod_1.z.string(),
-    "customerServerRestLimitsConfiguration": zod_1.z.string(),
-    "defaultStorageTtlDays": zod_1.z.number(),
-    "integrationMsgsPerDeviceRateLimit": zod_1.z.string(),
-    "integrationMsgsPerTenantRateLimit": zod_1.z.string(),
-    "maxAssets": zod_1.z.number(),
-    "maxConverters": zod_1.z.number(),
-    "maxCreatedAlarms": zod_1.z.number(),
-    "maxCustomers": zod_1.z.number(),
-    "maxDPStorageDays": zod_1.z.number(),
-    "maxDashboards": zod_1.z.number(),
-    "maxDevices": zod_1.z.number(),
-    "maxEmails": zod_1.z.number(),
-    "maxIntegrations": zod_1.z.number(),
-    "maxJSExecutions": zod_1.z.number(),
-    "maxOtaPackagesInBytes": zod_1.z.number(),
-    "maxREExecutions": zod_1.z.number(),
-    "maxResourceSize": zod_1.z.number(),
-    "maxResourcesInBytes": zod_1.z.number(),
-    "maxRuleChains": zod_1.z.number(),
-    "maxRuleNodeExecutionsPerMessage": zod_1.z.number(),
-    "maxSchedulerEvents": zod_1.z.number(),
-    "maxSms": zod_1.z.number(),
-    "maxTbelExecutions": zod_1.z.number(),
-    "maxTransportDataPoints": zod_1.z.number(),
-    "maxTransportMessages": zod_1.z.number(),
-    "maxUsers": zod_1.z.number(),
-    "maxWsSessionsPerCustomer": zod_1.z.number(),
-    "maxWsSessionsPerPublicUser": zod_1.z.number(),
-    "maxWsSessionsPerRegularUser": zod_1.z.number(),
-    "maxWsSessionsPerTenant": zod_1.z.number(),
-    "maxWsSubscriptionsPerCustomer": zod_1.z.number(),
-    "maxWsSubscriptionsPerPublicUser": zod_1.z.number(),
-    "maxWsSubscriptionsPerRegularUser": zod_1.z.number(),
-    "maxWsSubscriptionsPerTenant": zod_1.z.number(),
-    "queueStatsTtlDays": zod_1.z.number(),
-    "rpcTtlDays": zod_1.z.number(),
-    "ruleEngineExceptionsTtlDays": zod_1.z.number(),
-    "smsEnabled": zod_1.z.boolean(),
-    "tenantEntityExportRateLimit": zod_1.z.string(),
-    "tenantEntityImportRateLimit": zod_1.z.string(),
-    "tenantNotificationRequestsPerRuleRateLimit": zod_1.z.string(),
-    "tenantNotificationRequestsRateLimit": zod_1.z.string(),
-    "tenantServerRestLimitsConfiguration": zod_1.z.string(),
-    "transportDeviceMsgRateLimit": zod_1.z.string(),
-    "transportDeviceTelemetryDataPointsRateLimit": zod_1.z.string(),
-    "transportDeviceTelemetryMsgRateLimit": zod_1.z.string(),
-    "transportTenantMsgRateLimit": zod_1.z.string(),
-    "transportTenantTelemetryDataPointsRateLimit": zod_1.z.string(),
-    "transportTenantTelemetryMsgRateLimit": zod_1.z.string(),
-    "warnThreshold": zod_1.z.number(),
-    "wsMsgQueueLimitPerSession": zod_1.z.number(),
-    "wsUpdatesPerSessionRateLimit": zod_1.z.string()
+const DefaultTenantProfileConfigurationSchemaImpl = zod_1.z.object({
+    "alarmsTtlDays": zod_1.z.number().optional(),
+    "cassandraQueryTenantRateLimitsConfiguration": zod_1.z.string().optional(),
+    "customerServerRestLimitsConfiguration": zod_1.z.string().optional(),
+    "defaultStorageTtlDays": zod_1.z.number().optional(),
+    "integrationMsgsPerDeviceRateLimit": zod_1.z.string().optional(),
+    "integrationMsgsPerTenantRateLimit": zod_1.z.string().optional(),
+    "maxAssets": zod_1.z.number().optional(),
+    "maxConverters": zod_1.z.number().optional(),
+    "maxCreatedAlarms": zod_1.z.number().optional(),
+    "maxCustomers": zod_1.z.number().optional(),
+    "maxDPStorageDays": zod_1.z.number().optional(),
+    "maxDashboards": zod_1.z.number().optional(),
+    "maxDevices": zod_1.z.number().optional(),
+    "maxEmails": zod_1.z.number().optional(),
+    "maxIntegrations": zod_1.z.number().optional(),
+    "maxJSExecutions": zod_1.z.number().optional(),
+    "maxOtaPackagesInBytes": zod_1.z.number().optional(),
+    "maxREExecutions": zod_1.z.number().optional(),
+    "maxResourceSize": zod_1.z.number().optional(),
+    "maxResourcesInBytes": zod_1.z.number().optional(),
+    "maxRuleChains": zod_1.z.number().optional(),
+    "maxRuleNodeExecutionsPerMessage": zod_1.z.number().optional(),
+    "maxSchedulerEvents": zod_1.z.number().optional(),
+    "maxSms": zod_1.z.number().optional(),
+    "maxTbelExecutions": zod_1.z.number().optional(),
+    "maxTransportDataPoints": zod_1.z.number().optional(),
+    "maxTransportMessages": zod_1.z.number().optional(),
+    "maxUsers": zod_1.z.number().optional(),
+    "maxWsSessionsPerCustomer": zod_1.z.number().optional(),
+    "maxWsSessionsPerPublicUser": zod_1.z.number().optional(),
+    "maxWsSessionsPerRegularUser": zod_1.z.number().optional(),
+    "maxWsSessionsPerTenant": zod_1.z.number().optional(),
+    "maxWsSubscriptionsPerCustomer": zod_1.z.number().optional(),
+    "maxWsSubscriptionsPerPublicUser": zod_1.z.number().optional(),
+    "maxWsSubscriptionsPerRegularUser": zod_1.z.number().optional(),
+    "maxWsSubscriptionsPerTenant": zod_1.z.number().optional(),
+    "queueStatsTtlDays": zod_1.z.number().optional(),
+    "rpcTtlDays": zod_1.z.number().optional(),
+    "ruleEngineExceptionsTtlDays": zod_1.z.number().optional(),
+    "smsEnabled": zod_1.z.boolean().optional(),
+    "tenantEntityExportRateLimit": zod_1.z.string().optional(),
+    "tenantEntityImportRateLimit": zod_1.z.string().optional(),
+    "tenantNotificationRequestsPerRuleRateLimit": zod_1.z.string().optional(),
+    "tenantNotificationRequestsRateLimit": zod_1.z.string().optional(),
+    "tenantServerRestLimitsConfiguration": zod_1.z.string().optional(),
+    "transportDeviceMsgRateLimit": zod_1.z.string().optional(),
+    "transportDeviceTelemetryDataPointsRateLimit": zod_1.z.string().optional(),
+    "transportDeviceTelemetryMsgRateLimit": zod_1.z.string().optional(),
+    "transportTenantMsgRateLimit": zod_1.z.string().optional(),
+    "transportTenantTelemetryDataPointsRateLimit": zod_1.z.string().optional(),
+    "transportTenantTelemetryMsgRateLimit": zod_1.z.string().optional(),
+    "warnThreshold": zod_1.z.number().optional(),
+    "wsMsgQueueLimitPerSession": zod_1.z.number().optional(),
+    "wsUpdatesPerSessionRateLimit": zod_1.z.string().optional()
 });
-exports.DeferredResult_Of_EntityDataDiffSchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_EntityDataDiffSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_EntityDataInfoSchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_EntityDataInfoSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_List_BranchInfo_SchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_List_Of_BranchInfoSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_List_VersionedEntityInfo_SchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_List_Of_VersionedEntityInfoSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_PageData_EntityVersion_SchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_PageData_Of_EntityVersionSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_RepositorySettingsSchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_RepositorySettingsSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_ResponseEntitySchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_ResponseEntitySchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_VoidSchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_VoidSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeferredResult_Of_uuidSchemaSchema = zod_1.z.object({
-    "result": zod_1.z.object({}),
-    "setOrExpired": zod_1.z.boolean()
+const DeferredResult_Of_uuidSchemaImpl = zod_1.z.object({
+    "result": zod_1.z.object({}).optional(),
+    "setOrExpired": zod_1.z.boolean().optional()
 });
-exports.DeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.object({
-    "body": zod_1.z.string(),
-    "enabled": zod_1.z.boolean()
+const DeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "body": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional()
 });
-exports.DeviceSchemaSchema = zod_1.z.object({
-    "id": exports.DeviceIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
+const DeviceSchemaImpl = zod_1.z.object({
+    "id": exports.DeviceIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
+    "type": zod_1.z.string().optional(),
+    "label": zod_1.z.string().optional(),
     "deviceProfileId": exports.DeviceProfileIdSchema,
-    "deviceData": exports.DeviceDataSchema,
-    "firmwareId": exports.OtaPackageIdSchema,
-    "softwareId": exports.OtaPackageIdSchema,
-    "additionalInfo": exports.JsonNodeSchema
+    "deviceData": exports.DeviceDataSchema.optional(),
+    "firmwareId": exports.OtaPackageIdSchema.optional(),
+    "softwareId": exports.OtaPackageIdSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.DeviceActivityNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DeviceConfigurationSchemaSchema = zod_1.z.object({});
-exports.DeviceCredentialsSchemaSchema = zod_1.z.object({
+const DeviceActivityNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "deviceProfiles": zod_1.z.array(zod_1.z.string()).optional(),
+    "devices": zod_1.z.array(zod_1.z.string()).optional(),
+    "notifyOn": zod_1.z.array(zod_1.z.enum(["ACTIVE", "INACTIVE"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
+const DeviceConfigurationSchemaImpl = zod_1.z.object({});
+const DeviceCredentialsSchemaImpl = zod_1.z.object({
     "id": exports.DeviceCredentialsIdSchema,
-    "createdTime": zod_1.z.number(),
+    "createdTime": zod_1.z.number().optional(),
     "deviceId": exports.DeviceIdSchema,
-    "credentialsType": zod_1.z.enum(["ACCESS_TOKEN", "LWM2M_CREDENTIALS", "MQTT_BASIC", "X509_CERTIFICATE"]),
+    "credentialsType": zod_1.z.enum(["ACCESS_TOKEN", "LWM2M_CREDENTIALS", "MQTT_BASIC", "X509_CERTIFICATE"]).optional(),
     "credentialsId": zod_1.z.string(),
-    "credentialsValue": zod_1.z.string()
+    "credentialsValue": zod_1.z.string().optional()
 });
-exports.DeviceCredentialsIdSchemaSchema = zod_1.z.object({
+const DeviceCredentialsIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.DeviceDataSchemaSchema = zod_1.z.object({
-    "configuration": exports.DeviceConfigurationSchema,
-    "transportConfiguration": exports.DeviceTransportConfigurationSchema
+const DeviceDataSchemaImpl = zod_1.z.object({
+    "configuration": exports.DeviceConfigurationSchema.optional(),
+    "transportConfiguration": exports.DeviceTransportConfigurationSchema.optional()
 });
-exports.DeviceExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DeviceGroupOtaPackageSchemaSchema = zod_1.z.object({
-    "groupId": exports.EntityGroupIdSchema,
-    "id": zod_1.z.string(),
-    "otaPackageId": exports.OtaPackageIdSchema,
-    "otaPackageType": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]),
-    "otaPackageUpdateTime": zod_1.z.number()
+const DeviceExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "credentials": exports.DeviceCredentialsSchema.optional(),
+    "entity": exports.DeviceSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
 });
-exports.DeviceIdSchemaSchema = zod_1.z.object({
+const DeviceGroupOtaPackageSchemaImpl = zod_1.z.object({
+    "groupId": exports.EntityGroupIdSchema.optional(),
+    "id": zod_1.z.string().optional(),
+    "otaPackageId": exports.OtaPackageIdSchema.optional(),
+    "otaPackageType": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+    "otaPackageUpdateTime": zod_1.z.number().optional()
+});
+const DeviceIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["DEVICE"])
 });
-exports.DeviceInfoSchemaSchema = zod_1.z.object({
-    "id": exports.DeviceIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
+const DeviceInfoSchemaImpl = zod_1.z.object({
+    "id": exports.DeviceIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
     "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
+    "type": zod_1.z.string().optional(),
+    "label": zod_1.z.string().optional(),
     "deviceProfileId": exports.DeviceProfileIdSchema,
-    "deviceData": exports.DeviceDataSchema,
-    "firmwareId": exports.OtaPackageIdSchema,
-    "softwareId": exports.OtaPackageIdSchema,
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema),
-    "active": zod_1.z.boolean()
+    "deviceData": exports.DeviceDataSchema.optional(),
+    "firmwareId": exports.OtaPackageIdSchema.optional(),
+    "softwareId": exports.OtaPackageIdSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional(),
+    "active": zod_1.z.boolean().optional()
 });
-exports.DeviceProfileSchemaSchema = zod_1.z.object({
-    "id": exports.DeviceProfileIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "name": zod_1.z.string(),
-    "default": zod_1.z.boolean(),
-    "defaultDashboardId": exports.DashboardIdSchema,
-    "defaultRuleChainId": exports.RuleChainIdSchema,
-    "defaultQueueName": zod_1.z.string(),
-    "firmwareId": exports.OtaPackageIdSchema,
-    "softwareId": exports.OtaPackageIdSchema,
-    "description": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "provisionDeviceKey": zod_1.z.string(),
-    "transportType": zod_1.z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]),
-    "provisionType": zod_1.z.enum(["ALLOW_CREATE_NEW_DEVICES", "CHECK_PRE_PROVISIONED_DEVICES", "DISABLED", "X509_CERTIFICATE_CHAIN"]),
-    "profileData": exports.DeviceProfileDataSchema,
-    "type": zod_1.z.enum(["DEFAULT"]),
-    "defaultEdgeRuleChainId": exports.RuleChainIdSchema
+const DeviceProfileSchemaImpl = zod_1.z.object({
+    "id": exports.DeviceProfileIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "default": zod_1.z.boolean().optional(),
+    "defaultDashboardId": exports.DashboardIdSchema.optional(),
+    "defaultRuleChainId": exports.RuleChainIdSchema.optional(),
+    "defaultQueueName": zod_1.z.string().optional(),
+    "firmwareId": exports.OtaPackageIdSchema.optional(),
+    "softwareId": exports.OtaPackageIdSchema.optional(),
+    "description": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "provisionDeviceKey": zod_1.z.string().optional(),
+    "transportType": zod_1.z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]).optional(),
+    "provisionType": zod_1.z.enum(["ALLOW_CREATE_NEW_DEVICES", "CHECK_PRE_PROVISIONED_DEVICES", "DISABLED", "X509_CERTIFICATE_CHAIN"]).optional(),
+    "profileData": exports.DeviceProfileDataSchema.optional(),
+    "type": zod_1.z.enum(["DEFAULT"]).optional(),
+    "defaultEdgeRuleChainId": exports.RuleChainIdSchema.optional()
 });
-exports.DeviceProfileAlarmSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.string(),
-    "alarmType": zod_1.z.string(),
-    "createRules": zod_1.z.record(zod_1.z.string(), exports.AlarmRuleSchema),
-    "clearRule": exports.AlarmRuleSchema,
-    "propagate": zod_1.z.boolean(),
-    "propagateToOwner": zod_1.z.boolean(),
-    "propagateToOwnerHierarchy": zod_1.z.boolean(),
-    "propagateToTenant": zod_1.z.boolean(),
-    "propagateRelationTypes": zod_1.z.array(zod_1.z.string())
+const DeviceProfileAlarmSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.string().optional(),
+    "alarmType": zod_1.z.string().optional(),
+    "createRules": zod_1.z.object({}).optional(),
+    "clearRule": exports.AlarmRuleSchema.optional(),
+    "propagate": zod_1.z.boolean().optional(),
+    "propagateToOwner": zod_1.z.boolean().optional(),
+    "propagateToOwnerHierarchy": zod_1.z.boolean().optional(),
+    "propagateToTenant": zod_1.z.boolean().optional(),
+    "propagateRelationTypes": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.DeviceProfileConfigurationSchemaSchema = zod_1.z.object({});
-exports.DeviceProfileDataSchemaSchema = zod_1.z.object({
-    "configuration": exports.DeviceProfileConfigurationSchema,
-    "transportConfiguration": exports.DeviceProfileTransportConfigurationSchema,
-    "provisionConfiguration": exports.DeviceProfileProvisionConfigurationSchema,
-    "alarms": zod_1.z.array(exports.DeviceProfileAlarmSchema)
+const DeviceProfileConfigurationSchemaImpl = zod_1.z.object({});
+const DeviceProfileDataSchemaImpl = zod_1.z.object({
+    "configuration": exports.DeviceProfileConfigurationSchema.optional(),
+    "transportConfiguration": exports.DeviceProfileTransportConfigurationSchema.optional(),
+    "provisionConfiguration": exports.DeviceProfileProvisionConfigurationSchema.optional(),
+    "alarms": zod_1.z.array(exports.DeviceProfileAlarmSchema).optional()
 });
-exports.DeviceProfileIdSchemaSchema = zod_1.z.object({
+const DeviceProfileIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["DEVICE_PROFILE"])
 });
-exports.DeviceProfileInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "defaultDashboardId": exports.DashboardIdSchema,
-    "type": zod_1.z.enum(["DEFAULT"]),
-    "transportType": zod_1.z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]),
-    "tenantId": exports.TenantIdSchema
+const DeviceProfileInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "defaultDashboardId": exports.DashboardIdSchema.optional(),
+    "type": zod_1.z.enum(["DEFAULT"]).optional(),
+    "transportType": zod_1.z.enum(["COAP", "DEFAULT", "LWM2M", "MQTT", "SNMP"]).optional(),
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.DeviceProfileProvisionConfigurationSchemaSchema = zod_1.z.object({
-    "provisionDeviceSecret": zod_1.z.string()
+const DeviceProfileProvisionConfigurationSchemaImpl = zod_1.z.object({
+    "provisionDeviceSecret": zod_1.z.string().optional()
 });
-exports.DeviceProfileTransportConfigurationSchemaSchema = zod_1.z.object({});
-exports.DeviceSearchQuerySchemaSchema = zod_1.z.object({
-    "relationType": zod_1.z.string(),
-    "deviceTypes": zod_1.z.array(zod_1.z.string()),
-    "parameters": exports.RelationsSearchParametersSchema
+const DeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({});
+const DeviceSearchQuerySchemaImpl = zod_1.z.object({
+    "relationType": zod_1.z.string().optional(),
+    "deviceTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "parameters": exports.RelationsSearchParametersSchema.optional()
 });
-exports.DeviceSearchQueryFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DeviceTransportConfigurationSchemaSchema = zod_1.z.object({});
-exports.DeviceTypeFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DisabledDeviceProfileProvisionConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DurationAlarmConditionSpecSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.DynamicValue_Of_booleanSchemaSchema = zod_1.z.object({
-    "inherit": zod_1.z.boolean(),
-    "sourceAttribute": zod_1.z.string(),
-    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DeviceSearchQueryFilterSchemaImpl = zod_1.z.object({
+    "deviceTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "relationType": zod_1.z.string().optional(),
+    "rootEntity": exports.EntityIdSchema.optional()
 });
-exports.DynamicValue_Of_doubleSchemaSchema = zod_1.z.object({
-    "inherit": zod_1.z.boolean(),
-    "sourceAttribute": zod_1.z.string(),
-    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DeviceTransportConfigurationSchemaImpl = zod_1.z.object({});
+const DeviceTypeFilterSchemaImpl = zod_1.z.object({
+    "deviceNameFilter": zod_1.z.string().optional(),
+    "deviceTypes": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.DynamicValue_Of_intSchemaSchema = zod_1.z.object({
-    "inherit": zod_1.z.boolean(),
-    "sourceAttribute": zod_1.z.string(),
-    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DisabledDeviceProfileProvisionConfigurationSchemaImpl = zod_1.z.object({
+    "provisionDeviceSecret": zod_1.z.string().optional()
 });
-exports.DynamicValue_Of_longSchemaSchema = zod_1.z.object({
-    "inherit": zod_1.z.boolean(),
-    "sourceAttribute": zod_1.z.string(),
-    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DurationAlarmConditionSpecSchemaImpl = zod_1.z.object({
+    "predicate": exports.FilterPredicateValue_Of_longSchema.optional(),
+    "unit": zod_1.z.enum(["DAYS", "HOURS", "MICROSECONDS", "MILLISECONDS", "MINUTES", "NANOSECONDS", "SECONDS"]).optional()
 });
-exports.DynamicValue_Of_stringSchemaSchema = zod_1.z.object({
-    "inherit": zod_1.z.boolean(),
-    "sourceAttribute": zod_1.z.string(),
-    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"])
+const DynamicValue_Of_booleanSchemaImpl = zod_1.z.object({
+    "inherit": zod_1.z.boolean().optional(),
+    "sourceAttribute": zod_1.z.string().optional(),
+    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
 });
-exports.EdgeSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema,
-    "id": exports.EdgeIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "rootRuleChainId": exports.RuleChainIdSchema,
+const DynamicValue_Of_doubleSchemaImpl = zod_1.z.object({
+    "inherit": zod_1.z.boolean().optional(),
+    "sourceAttribute": zod_1.z.string().optional(),
+    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
+});
+const DynamicValue_Of_intSchemaImpl = zod_1.z.object({
+    "inherit": zod_1.z.boolean().optional(),
+    "sourceAttribute": zod_1.z.string().optional(),
+    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
+});
+const DynamicValue_Of_longSchemaImpl = zod_1.z.object({
+    "inherit": zod_1.z.boolean().optional(),
+    "sourceAttribute": zod_1.z.string().optional(),
+    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
+});
+const DynamicValue_Of_stringSchemaImpl = zod_1.z.object({
+    "inherit": zod_1.z.boolean().optional(),
+    "sourceAttribute": zod_1.z.string().optional(),
+    "sourceType": zod_1.z.enum(["CURRENT_CUSTOMER", "CURRENT_DEVICE", "CURRENT_TENANT", "CURRENT_USER"]).optional()
+});
+const EdgeSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "id": exports.EdgeIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "rootRuleChainId": exports.RuleChainIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
+    "label": zod_1.z.string().optional(),
     "routingKey": zod_1.z.string(),
     "secret": zod_1.z.string(),
     "edgeLicenseKey": zod_1.z.string(),
     "cloudEndpoint": zod_1.z.string()
 });
-exports.EdgeEventSchemaSchema = zod_1.z.object({
-    "action": zod_1.z.enum(["ADDED", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_UNASSIGNED", "ASSIGNED_TO_EDGE", "ATTRIBUTES_DELETED", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_REQUEST", "CREDENTIALS_UPDATED", "DELETED", "ENTITY_MERGE_REQUEST", "POST_ATTRIBUTES", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "RPC_CALL", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_EDGE", "UPDATED"]),
-    "body": exports.JsonNodeSchema,
-    "createdTime": zod_1.z.number(),
-    "edgeId": exports.EdgeIdSchema,
-    "entityGroupId": zod_1.z.string(),
-    "entityId": zod_1.z.string(),
-    "id": exports.EdgeEventIdSchema,
-    "seqId": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "type": zod_1.z.enum(["ADMIN_SETTINGS", "ALARM", "ASSET", "ASSET_PROFILE", "CONVERTER", "CUSTOMER", "CUSTOM_TRANSLATION", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "LOGIN_WHITE_LABELING", "MAIL_TEMPLATES", "OTA_PACKAGE", "QUEUE", "RELATION", "ROLE", "RULE_CHAIN", "RULE_CHAIN_METADATA", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "uid": zod_1.z.string()
+const EdgeEventSchemaImpl = zod_1.z.object({
+    "action": zod_1.z.enum(["ADDED", "ADDED_TO_ENTITY_GROUP", "ALARM_ACK", "ALARM_ASSIGNED", "ALARM_CLEAR", "ALARM_UNASSIGNED", "ASSIGNED_TO_EDGE", "ATTRIBUTES_DELETED", "ATTRIBUTES_UPDATED", "CHANGE_OWNER", "CREDENTIALS_REQUEST", "CREDENTIALS_UPDATED", "DELETED", "ENTITY_MERGE_REQUEST", "POST_ATTRIBUTES", "RELATION_ADD_OR_UPDATE", "RELATION_DELETED", "REMOVED_FROM_ENTITY_GROUP", "RPC_CALL", "TIMESERIES_UPDATED", "UNASSIGNED_FROM_EDGE", "UPDATED"]).optional(),
+    "body": exports.JsonNodeSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "edgeId": exports.EdgeIdSchema.optional(),
+    "entityGroupId": zod_1.z.string().optional(),
+    "entityId": zod_1.z.string().optional(),
+    "id": exports.EdgeEventIdSchema.optional(),
+    "seqId": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "type": zod_1.z.enum(["ADMIN_SETTINGS", "ALARM", "ASSET", "ASSET_PROFILE", "CONVERTER", "CUSTOMER", "CUSTOM_TRANSLATION", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "LOGIN_WHITE_LABELING", "MAIL_TEMPLATES", "OTA_PACKAGE", "QUEUE", "RELATION", "ROLE", "RULE_CHAIN", "RULE_CHAIN_METADATA", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WHITE_LABELING", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "uid": zod_1.z.string().optional()
 });
-exports.EdgeEventIdSchemaSchema = zod_1.z.object({
+const EdgeEventIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.EdgeIdSchemaSchema = zod_1.z.object({
+const EdgeIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["EDGE"])
 });
-exports.EdgeInfoSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema,
-    "id": exports.EdgeIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "rootRuleChainId": exports.RuleChainIdSchema,
+const EdgeInfoSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "id": exports.EdgeIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "rootRuleChainId": exports.RuleChainIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
-    "label": zod_1.z.string(),
+    "label": zod_1.z.string().optional(),
     "routingKey": zod_1.z.string(),
     "secret": zod_1.z.string(),
     "edgeLicenseKey": zod_1.z.string(),
     "cloudEndpoint": zod_1.z.string(),
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema)
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional()
 });
-exports.EdgeInstructionsSchemaSchema = zod_1.z.object({
-    "instructions": zod_1.z.string()
+const EdgeInstructionsSchemaImpl = zod_1.z.object({
+    "instructions": zod_1.z.string().optional()
 });
-exports.EdgeSearchQuerySchemaSchema = zod_1.z.object({
-    "relationType": zod_1.z.string(),
-    "edgeTypes": zod_1.z.array(zod_1.z.string()),
-    "parameters": exports.RelationsSearchParametersSchema
+const EdgeSearchQuerySchemaImpl = zod_1.z.object({
+    "relationType": zod_1.z.string().optional(),
+    "edgeTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "parameters": exports.RelationsSearchParametersSchema.optional()
 });
-exports.EdgeSearchQueryFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EdgeTypeFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EfentoCoapDeviceTypeConfigurationSchemaSchema = zod_1.z.object({});
-exports.EmailDeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EmailTwoFaAccountConfigSchemaSchema = zod_1.z.object({
+const EdgeSearchQueryFilterSchemaImpl = zod_1.z.object({
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "edgeTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "relationType": zod_1.z.string().optional(),
+    "rootEntity": exports.EntityIdSchema.optional()
+});
+const EdgeTypeFilterSchemaImpl = zod_1.z.object({
+    "edgeNameFilter": zod_1.z.string().optional(),
+    "edgeTypes": zod_1.z.array(zod_1.z.string()).optional()
+});
+const EfentoCoapDeviceTypeConfigurationSchemaImpl = zod_1.z.object({});
+const EmailDeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "body": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "subject": zod_1.z.string().optional()
+});
+const EmailTwoFaAccountConfigSchemaImpl = zod_1.z.object({
     "email": zod_1.z.string(),
-    "useByDefault": zod_1.z.boolean()
+    "useByDefault": zod_1.z.boolean().optional()
 });
-exports.EmailTwoFaProviderConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntitiesByGroupNameFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntitiesLimitNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityActionNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityCountQuerySchemaSchema = zod_1.z.object({
-    "entityFilter": exports.EntityFilterSchema,
-    "keyFilters": zod_1.z.array(exports.KeyFilterSchema)
+const EmailTwoFaProviderConfigSchemaImpl = zod_1.z.object({
+    "verificationCodeLifetime": zod_1.z.number().optional()
 });
-exports.EntityDataSchemaSchema = zod_1.z.object({
-    "aggLatest": zod_1.z.record(zod_1.z.string(), exports.ComparisonTsValueSchema),
-    "entityId": exports.EntityIdSchema,
-    "latest": zod_1.z.record(zod_1.z.string(), zod_1.z.object({})),
-    "readAttrs": zod_1.z.boolean(),
-    "readTs": zod_1.z.boolean(),
-    "timeseries": zod_1.z.record(zod_1.z.string(), zod_1.z.array(exports.TsValueSchema))
+const EntitiesByGroupNameFilterSchemaImpl = zod_1.z.object({
+    "entityGroupNameFilter": zod_1.z.string().optional(),
+    "groupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "ownerId": exports.EntityIdSchema.optional()
 });
-exports.EntityDataDiffSchemaSchema = zod_1.z.object({
-    "currentVersion": exports.EntityExportData_Of_objectSchema,
-    "otherVersion": exports.EntityExportData_Of_objectSchema
+const EntitiesLimitNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "entityTypes": zod_1.z.array(zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+    "threshold": zod_1.z.number().optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.EntityDataInfoSchemaSchema = zod_1.z.object({
-    "hasAttributes": zod_1.z.boolean(),
-    "hasCredentials": zod_1.z.boolean(),
-    "hasGroupEntities": zod_1.z.boolean(),
-    "hasPermissions": zod_1.z.boolean(),
-    "hasRelations": zod_1.z.boolean()
+const EntityActionNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "created": zod_1.z.boolean().optional(),
+    "deleted": zod_1.z.boolean().optional(),
+    "entityTypes": zod_1.z.array(zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional(),
+    "updated": zod_1.z.boolean().optional()
 });
-exports.EntityDataPageLinkSchemaSchema = zod_1.z.object({
-    "dynamic": zod_1.z.boolean(),
-    "page": zod_1.z.number(),
-    "pageSize": zod_1.z.number(),
-    "sortOrder": exports.EntityDataSortOrderSchema,
-    "textSearch": zod_1.z.string()
+const EntityCountQuerySchemaImpl = zod_1.z.object({
+    "entityFilter": exports.EntityFilterSchema.optional(),
+    "keyFilters": zod_1.z.array(exports.KeyFilterSchema).optional()
 });
-exports.EntityDataQuerySchemaSchema = zod_1.z.object({
-    "entityFields": zod_1.z.array(exports.EntityKeySchema),
-    "entityFilter": exports.EntityFilterSchema,
-    "keyFilters": zod_1.z.array(exports.KeyFilterSchema),
-    "latestValues": zod_1.z.array(exports.EntityKeySchema),
-    "pageLink": exports.EntityDataPageLinkSchema
+const EntityDataSchemaImpl = zod_1.z.object({
+    "aggLatest": zod_1.z.object({}).optional(),
+    "entityId": exports.EntityIdSchema.optional(),
+    "latest": zod_1.z.object({}).optional(),
+    "readAttrs": zod_1.z.boolean().optional(),
+    "readTs": zod_1.z.boolean().optional(),
+    "timeseries": zod_1.z.object({}).optional()
 });
-exports.EntityDataSortOrderSchemaSchema = zod_1.z.object({
-    "direction": zod_1.z.enum(["ASC", "DESC"]),
-    "key": exports.EntityKeySchema
+const EntityDataDiffSchemaImpl = zod_1.z.object({
+    "currentVersion": exports.EntityExportData_Of_objectSchema.optional(),
+    "otherVersion": exports.EntityExportData_Of_objectSchema.optional()
 });
-exports.EntityExportData_Of_objectSchemaSchema = zod_1.z.object({
-    "attributes": zod_1.z.record(zod_1.z.string(), zod_1.z.array(exports.AttributeExportDataSchema)),
-    "entity": zod_1.z.object({}),
-    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "relations": zod_1.z.array(exports.EntityRelationSchema)
+const EntityDataInfoSchemaImpl = zod_1.z.object({
+    "hasAttributes": zod_1.z.boolean().optional(),
+    "hasCredentials": zod_1.z.boolean().optional(),
+    "hasGroupEntities": zod_1.z.boolean().optional(),
+    "hasPermissions": zod_1.z.boolean().optional(),
+    "hasRelations": zod_1.z.boolean().optional()
 });
-exports.EntityFilterSchemaSchema = zod_1.z.object({});
-exports.EntityGroupSchemaSchema = zod_1.z.object({
-    "id": exports.EntityGroupIdSchema,
-    "createdTime": zod_1.z.number(),
-    "ownerId": exports.EntityIdSchema,
+const EntityDataPageLinkSchemaImpl = zod_1.z.object({
+    "dynamic": zod_1.z.boolean().optional(),
+    "page": zod_1.z.number().optional(),
+    "pageSize": zod_1.z.number().optional(),
+    "sortOrder": exports.EntityDataSortOrderSchema.optional(),
+    "textSearch": zod_1.z.string().optional()
+});
+const EntityDataQuerySchemaImpl = zod_1.z.object({
+    "entityFields": zod_1.z.array(exports.EntityKeySchema).optional(),
+    "entityFilter": exports.EntityFilterSchema.optional(),
+    "keyFilters": zod_1.z.array(exports.KeyFilterSchema).optional(),
+    "latestValues": zod_1.z.array(exports.EntityKeySchema).optional(),
+    "pageLink": exports.EntityDataPageLinkSchema.optional()
+});
+const EntityDataSortOrderSchemaImpl = zod_1.z.object({
+    "direction": zod_1.z.enum(["ASC", "DESC"]).optional(),
+    "key": exports.EntityKeySchema.optional()
+});
+const EntityExportData_Of_objectSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": zod_1.z.object({}).optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
+});
+const EntityFilterSchemaImpl = zod_1.z.object({});
+const EntityGroupSchemaImpl = zod_1.z.object({
+    "id": exports.EntityGroupIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.enum(["ASSET", "CUSTOMER", "DASHBOARD", "DEVICE", "EDGE", "ENTITY_VIEW", "USER"]),
-    "additionalInfo": exports.JsonNodeSchema,
-    "configuration": exports.JsonNodeSchema,
-    "groupAll": zod_1.z.boolean(),
-    "edgeGroupAll": zod_1.z.boolean()
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "groupAll": zod_1.z.boolean().optional(),
+    "edgeGroupAll": zod_1.z.boolean().optional()
 });
-exports.EntityGroupExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityGroupFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityGroupIdSchemaSchema = zod_1.z.object({
+const EntityGroupExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": exports.EntityGroupSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "groupEntities": zod_1.z.boolean().optional(),
+    "permissions": zod_1.z.array(exports.GroupPermissionSchema).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
+});
+const EntityGroupFilterSchemaImpl = zod_1.z.object({
+    "entityGroup": zod_1.z.string().optional(),
+    "groupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
+const EntityGroupIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ENTITY_GROUP"])
 });
-exports.EntityGroupInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EntityGroupIdSchema,
-    "createdTime": zod_1.z.number(),
-    "ownerId": exports.EntityIdSchema,
+const EntityGroupInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EntityGroupIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.enum(["ASSET", "CUSTOMER", "DASHBOARD", "DEVICE", "EDGE", "ENTITY_VIEW", "USER"]),
-    "additionalInfo": exports.JsonNodeSchema,
-    "configuration": exports.JsonNodeSchema,
-    "groupAll": zod_1.z.boolean(),
-    "edgeGroupAll": zod_1.z.boolean(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "groupAll": zod_1.z.boolean().optional(),
+    "edgeGroupAll": zod_1.z.boolean().optional(),
     "ownerIds": zod_1.z.array(exports.EntityIdSchema)
 });
-exports.EntityGroupListFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityGroupNameFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityIdSchemaSchema = zod_1.z.object({
+const EntityGroupListFilterSchemaImpl = zod_1.z.object({
+    "entityGroupList": zod_1.z.array(zod_1.z.string()).optional(),
+    "groupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
+const EntityGroupNameFilterSchemaImpl = zod_1.z.object({
+    "entityGroupNameFilter": zod_1.z.string().optional(),
+    "groupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
+});
+const EntityIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])
 });
-exports.EntityInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EntityIdSchema,
-    "name": zod_1.z.string()
+const EntityInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional()
 });
-exports.EntityKeySchemaSchema = zod_1.z.object({
-    "key": zod_1.z.string(),
-    "type": zod_1.z.enum(["ALARM_FIELD", "ATTRIBUTE", "CLIENT_ATTRIBUTE", "ENTITY_FIELD", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "TIME_SERIES"])
+const EntityKeySchemaImpl = zod_1.z.object({
+    "key": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["ALARM_FIELD", "ATTRIBUTE", "CLIENT_ATTRIBUTE", "ENTITY_FIELD", "SERVER_ATTRIBUTE", "SHARED_ATTRIBUTE", "TIME_SERIES"]).optional()
 });
-exports.EntityListFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityLoadErrorSchemaSchema = zod_1.z.object({
-    "message": zod_1.z.string(),
-    "source": exports.EntityIdSchema,
-    "target": exports.EntityIdSchema,
-    "type": zod_1.z.string()
+const EntityListFilterSchemaImpl = zod_1.z.object({
+    "entityList": zod_1.z.array(zod_1.z.string()).optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
 });
-exports.EntityNameFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityRelationSchemaSchema = zod_1.z.object({
-    "from": exports.EntityIdSchema,
-    "to": exports.EntityIdSchema,
-    "type": zod_1.z.string(),
-    "typeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-    "additionalInfo": exports.JsonNodeSchema
+const EntityLoadErrorSchemaImpl = zod_1.z.object({
+    "message": zod_1.z.string().optional(),
+    "source": exports.EntityIdSchema.optional(),
+    "target": exports.EntityIdSchema.optional(),
+    "type": zod_1.z.string().optional()
 });
-exports.EntityRelationInfoSchemaSchema = zod_1.z.object({
-    "from": exports.EntityIdSchema,
-    "to": exports.EntityIdSchema,
-    "type": zod_1.z.string(),
-    "typeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-    "additionalInfo": exports.JsonNodeSchema,
-    "fromName": zod_1.z.string(),
-    "toName": zod_1.z.string()
+const EntityNameFilterSchemaImpl = zod_1.z.object({
+    "entityNameFilter": zod_1.z.string().optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
 });
-exports.EntityRelationsQuerySchemaSchema = zod_1.z.object({
-    "filters": zod_1.z.array(exports.RelationEntityTypeFilterSchema),
-    "parameters": exports.RelationsSearchParametersSchema
+const EntityRelationSchemaImpl = zod_1.z.object({
+    "from": exports.EntityIdSchema.optional(),
+    "to": exports.EntityIdSchema.optional(),
+    "type": zod_1.z.string().optional(),
+    "typeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.EntitySubtypeSchemaSchema = zod_1.z.object({
-    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "tenantId": exports.TenantIdSchema,
-    "type": zod_1.z.string()
+const EntityRelationInfoSchemaImpl = zod_1.z.object({
+    "from": exports.EntityIdSchema.optional(),
+    "to": exports.EntityIdSchema.optional(),
+    "type": zod_1.z.string().optional(),
+    "typeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "fromName": zod_1.z.string().optional(),
+    "toName": zod_1.z.string().optional()
 });
-exports.EntityTypeFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityTypeLoadResultSchemaSchema = zod_1.z.object({
-    "created": zod_1.z.number(),
-    "deleted": zod_1.z.number(),
-    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "groupsCreated": zod_1.z.number(),
-    "groupsDeleted": zod_1.z.number(),
-    "groupsUpdated": zod_1.z.number(),
-    "updated": zod_1.z.number()
+const EntityRelationsQuerySchemaImpl = zod_1.z.object({
+    "filters": zod_1.z.array(exports.RelationEntityTypeFilterSchema).optional(),
+    "parameters": exports.RelationsSearchParametersSchema.optional()
 });
-exports.EntityTypeVersionCreateConfigSchemaSchema = zod_1.z.object({
-    "allEntities": zod_1.z.boolean(),
-    "entityIds": zod_1.z.array(zod_1.z.string()),
-    "saveAttributes": zod_1.z.boolean(),
-    "saveCredentials": zod_1.z.boolean(),
-    "saveGroupEntities": zod_1.z.boolean(),
-    "savePermissions": zod_1.z.boolean(),
-    "saveRelations": zod_1.z.boolean(),
-    "syncStrategy": zod_1.z.enum(["MERGE", "OVERWRITE"])
+const EntitySubtypeSchemaImpl = zod_1.z.object({
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "type": zod_1.z.string().optional()
 });
-exports.EntityTypeVersionLoadConfigSchemaSchema = zod_1.z.object({
-    "autoGenerateIntegrationKey": zod_1.z.boolean(),
-    "findExistingEntityByName": zod_1.z.boolean(),
-    "loadAttributes": zod_1.z.boolean(),
-    "loadCredentials": zod_1.z.boolean(),
-    "loadGroupEntities": zod_1.z.boolean(),
-    "loadPermissions": zod_1.z.boolean(),
-    "loadRelations": zod_1.z.boolean(),
-    "removeOtherEntities": zod_1.z.boolean()
+const EntityTypeFilterSchemaImpl = zod_1.z.object({
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional()
 });
-exports.EntityTypeVersionLoadRequestSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityVersionSchemaSchema = zod_1.z.object({
-    "author": zod_1.z.string(),
-    "id": zod_1.z.string(),
+const EntityTypeLoadResultSchemaImpl = zod_1.z.object({
+    "created": zod_1.z.number().optional(),
+    "deleted": zod_1.z.number().optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "groupsCreated": zod_1.z.number().optional(),
+    "groupsDeleted": zod_1.z.number().optional(),
+    "groupsUpdated": zod_1.z.number().optional(),
+    "updated": zod_1.z.number().optional()
+});
+const EntityTypeVersionCreateConfigSchemaImpl = zod_1.z.object({
+    "allEntities": zod_1.z.boolean().optional(),
+    "entityIds": zod_1.z.array(zod_1.z.string()).optional(),
+    "saveAttributes": zod_1.z.boolean().optional(),
+    "saveCredentials": zod_1.z.boolean().optional(),
+    "saveGroupEntities": zod_1.z.boolean().optional(),
+    "savePermissions": zod_1.z.boolean().optional(),
+    "saveRelations": zod_1.z.boolean().optional(),
+    "syncStrategy": zod_1.z.enum(["MERGE", "OVERWRITE"]).optional()
+});
+const EntityTypeVersionLoadConfigSchemaImpl = zod_1.z.object({
+    "autoGenerateIntegrationKey": zod_1.z.boolean().optional(),
+    "findExistingEntityByName": zod_1.z.boolean().optional(),
+    "loadAttributes": zod_1.z.boolean().optional(),
+    "loadCredentials": zod_1.z.boolean().optional(),
+    "loadGroupEntities": zod_1.z.boolean().optional(),
+    "loadPermissions": zod_1.z.boolean().optional(),
+    "loadRelations": zod_1.z.boolean().optional(),
+    "removeOtherEntities": zod_1.z.boolean().optional()
+});
+const EntityTypeVersionLoadRequestSchemaImpl = zod_1.z.object({
+    "entityTypes": zod_1.z.object({}).optional(),
+    "type": zod_1.z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+    "versionId": zod_1.z.string().optional()
+});
+const EntityVersionSchemaImpl = zod_1.z.object({
+    "author": zod_1.z.string().optional(),
+    "id": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "timestamp": zod_1.z.number().optional()
+});
+const EntityViewSchemaImpl = zod_1.z.object({
+    "id": exports.EntityViewIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
-    "timestamp": zod_1.z.number()
-});
-exports.EntityViewSchemaSchema = zod_1.z.object({
-    "id": exports.EntityViewIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "name": zod_1.z.string(),
     "type": zod_1.z.string(),
-    "entityId": exports.EntityIdSchema,
-    "keys": exports.TelemetryEntityViewSchema,
-    "startTimeMs": zod_1.z.number(),
-    "endTimeMs": zod_1.z.number(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema
+    "entityId": exports.EntityIdSchema.optional(),
+    "keys": exports.TelemetryEntityViewSchema.optional(),
+    "startTimeMs": zod_1.z.number().optional(),
+    "endTimeMs": zod_1.z.number().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional()
 });
-exports.EntityViewIdSchemaSchema = zod_1.z.object({
+const EntityViewIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ENTITY_VIEW"])
 });
-exports.EntityViewInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EntityViewIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const EntityViewInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EntityViewIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.string(),
-    "entityId": exports.EntityIdSchema,
-    "keys": exports.TelemetryEntityViewSchema,
-    "startTimeMs": zod_1.z.number(),
-    "endTimeMs": zod_1.z.number(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema),
-    "ownerId": exports.EntityIdSchema
+    "entityId": exports.EntityIdSchema.optional(),
+    "keys": exports.TelemetryEntityViewSchema.optional(),
+    "startTimeMs": zod_1.z.number().optional(),
+    "endTimeMs": zod_1.z.number().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional(),
+    "ownerId": exports.EntityIdSchema.optional()
 });
-exports.EntityViewSearchQuerySchemaSchema = zod_1.z.object({
-    "relationType": zod_1.z.string(),
-    "entityViewTypes": zod_1.z.array(zod_1.z.string()),
-    "parameters": exports.RelationsSearchParametersSchema
+const EntityViewSearchQuerySchemaImpl = zod_1.z.object({
+    "relationType": zod_1.z.string().optional(),
+    "entityViewTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "parameters": exports.RelationsSearchParametersSchema.optional()
 });
-exports.EntityViewSearchQueryFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EntityViewTypeFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ErrorEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.EscalatedNotificationRuleRecipientsConfigSchemaSchema = zod_1.z.object({
-    "escalationTable": zod_1.z.record(zod_1.z.string(), zod_1.z.array(zod_1.z.string())),
+const EntityViewSearchQueryFilterSchemaImpl = zod_1.z.object({
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "entityViewTypes": zod_1.z.array(zod_1.z.string()).optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "relationType": zod_1.z.string().optional(),
+    "rootEntity": exports.EntityIdSchema.optional()
+});
+const EntityViewTypeFilterSchemaImpl = zod_1.z.object({
+    "entityViewNameFilter": zod_1.z.string().optional(),
+    "entityViewTypes": zod_1.z.array(zod_1.z.string()).optional()
+});
+const ErrorEventFilterSchemaImpl = zod_1.z.object({
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "method": zod_1.z.string().optional(),
+    "errorStr": zod_1.z.string().optional()
+});
+const EscalatedNotificationRuleRecipientsConfigSchemaImpl = zod_1.z.object({
+    "escalationTable": zod_1.z.object({}).optional(),
     "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
-exports.EventFilterSchemaSchema = zod_1.z.object({
-    "notEmpty": zod_1.z.boolean(),
+const EventFilterSchemaImpl = zod_1.z.object({
+    "notEmpty": zod_1.z.boolean().optional(),
     "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"])
 });
-exports.EventIdSchemaSchema = zod_1.z.object({
+const EventIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.EventInfoSchemaSchema = zod_1.z.object({
-    "id": exports.EventIdSchema,
-    "tenantId": exports.TenantIdSchema,
-    "type": zod_1.z.string(),
-    "uid": zod_1.z.string(),
-    "entityId": exports.EntityIdSchema,
-    "body": exports.JsonNodeSchema,
-    "createdTime": zod_1.z.number()
+const EventInfoSchemaImpl = zod_1.z.object({
+    "id": exports.EventIdSchema.optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "type": zod_1.z.string().optional(),
+    "uid": zod_1.z.string().optional(),
+    "entityId": exports.EntityIdSchema.optional(),
+    "body": exports.JsonNodeSchema.optional(),
+    "createdTime": zod_1.z.number().optional()
 });
-exports.ExportableEntity_Of_EntityIdSchemaSchema = zod_1.z.object({
-    "createdTime": zod_1.z.number(),
-    "id": exports.EntityIdSchema,
-    "name": zod_1.z.string()
+const ExportableEntity_Of_EntityIdSchemaImpl = zod_1.z.object({
+    "createdTime": zod_1.z.number().optional(),
+    "id": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional()
 });
-exports.FaviconSchemaSchema = zod_1.z.object({
-    "url": zod_1.z.string()
+const FaviconSchemaImpl = zod_1.z.object({
+    "url": zod_1.z.string().optional()
 });
-exports.FeaturesInfoSchemaSchema = zod_1.z.object({
-    "emailEnabled": zod_1.z.boolean(),
-    "notificationEnabled": zod_1.z.boolean(),
-    "oauthEnabled": zod_1.z.boolean(),
-    "smsEnabled": zod_1.z.boolean(),
-    "twoFaEnabled": zod_1.z.boolean(),
-    "whiteLabelingEnabled": zod_1.z.boolean()
+const FeaturesInfoSchemaImpl = zod_1.z.object({
+    "emailEnabled": zod_1.z.boolean().optional(),
+    "notificationEnabled": zod_1.z.boolean().optional(),
+    "oauthEnabled": zod_1.z.boolean().optional(),
+    "smsEnabled": zod_1.z.boolean().optional(),
+    "twoFaEnabled": zod_1.z.boolean().optional(),
+    "whiteLabelingEnabled": zod_1.z.boolean().optional()
 });
-exports.FilterPredicateValue_Of_booleanSchemaSchema = zod_1.z.object({
-    "defaultValue": zod_1.z.boolean(),
-    "dynamicValue": exports.DynamicValue_Of_booleanSchema,
-    "userValue": zod_1.z.boolean()
+const FilterPredicateValue_Of_booleanSchemaImpl = zod_1.z.object({
+    "defaultValue": zod_1.z.boolean().optional(),
+    "dynamicValue": exports.DynamicValue_Of_booleanSchema.optional(),
+    "userValue": zod_1.z.boolean().optional()
 });
-exports.FilterPredicateValue_Of_doubleSchemaSchema = zod_1.z.object({
-    "defaultValue": zod_1.z.number(),
-    "dynamicValue": exports.DynamicValue_Of_doubleSchema,
-    "userValue": zod_1.z.number()
+const FilterPredicateValue_Of_doubleSchemaImpl = zod_1.z.object({
+    "defaultValue": zod_1.z.number().optional(),
+    "dynamicValue": exports.DynamicValue_Of_doubleSchema.optional(),
+    "userValue": zod_1.z.number().optional()
 });
-exports.FilterPredicateValue_Of_intSchemaSchema = zod_1.z.object({
-    "defaultValue": zod_1.z.number(),
-    "dynamicValue": exports.DynamicValue_Of_intSchema,
-    "userValue": zod_1.z.number()
+const FilterPredicateValue_Of_intSchemaImpl = zod_1.z.object({
+    "defaultValue": zod_1.z.number().optional(),
+    "dynamicValue": exports.DynamicValue_Of_intSchema.optional(),
+    "userValue": zod_1.z.number().optional()
 });
-exports.FilterPredicateValue_Of_longSchemaSchema = zod_1.z.object({
-    "defaultValue": zod_1.z.number(),
-    "dynamicValue": exports.DynamicValue_Of_longSchema,
-    "userValue": zod_1.z.number()
+const FilterPredicateValue_Of_longSchemaImpl = zod_1.z.object({
+    "defaultValue": zod_1.z.number().optional(),
+    "dynamicValue": exports.DynamicValue_Of_longSchema.optional(),
+    "userValue": zod_1.z.number().optional()
 });
-exports.FilterPredicateValue_Of_stringSchemaSchema = zod_1.z.object({
-    "defaultValue": zod_1.z.string(),
-    "dynamicValue": exports.DynamicValue_Of_stringSchema,
-    "userValue": zod_1.z.string()
+const FilterPredicateValue_Of_stringSchemaImpl = zod_1.z.object({
+    "defaultValue": zod_1.z.string().optional(),
+    "dynamicValue": exports.DynamicValue_Of_stringSchema.optional(),
+    "userValue": zod_1.z.string().optional()
 });
-exports.GroupEntityExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.GroupPermissionSchemaSchema = zod_1.z.object({
-    "public": zod_1.z.boolean(),
-    "id": exports.GroupPermissionIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "userGroupId": exports.EntityGroupIdSchema,
-    "roleId": exports.RoleIdSchema,
-    "entityGroupId": exports.EntityGroupIdSchema,
-    "entityGroupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "name": zod_1.z.string()
+const GroupEntityExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": exports.ExportableEntity_Of_EntityIdSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
 });
-exports.GroupPermissionIdSchemaSchema = zod_1.z.object({
+const GroupPermissionSchemaImpl = zod_1.z.object({
+    "public": zod_1.z.boolean().optional(),
+    "id": exports.GroupPermissionIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "userGroupId": exports.EntityGroupIdSchema.optional(),
+    "roleId": exports.RoleIdSchema.optional(),
+    "entityGroupId": exports.EntityGroupIdSchema.optional(),
+    "entityGroupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "name": zod_1.z.string().optional()
+});
+const GroupPermissionIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["GROUP_PERMISSION"])
 });
-exports.GroupPermissionInfoSchemaSchema = zod_1.z.object({
-    "public": zod_1.z.boolean(),
-    "readOnly": zod_1.z.boolean(),
-    "id": exports.GroupPermissionIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "userGroupId": exports.EntityGroupIdSchema,
-    "roleId": exports.RoleIdSchema,
-    "entityGroupId": exports.EntityGroupIdSchema,
-    "entityGroupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "name": zod_1.z.string(),
-    "role": exports.RoleSchema,
-    "entityGroupName": zod_1.z.string(),
-    "entityGroupOwnerId": exports.EntityIdSchema,
-    "entityGroupOwnerName": zod_1.z.string(),
-    "userGroupName": zod_1.z.string(),
-    "userGroupOwnerId": exports.EntityIdSchema,
-    "userGroupOwnerName": zod_1.z.string()
+const GroupPermissionInfoSchemaImpl = zod_1.z.object({
+    "public": zod_1.z.boolean().optional(),
+    "readOnly": zod_1.z.boolean().optional(),
+    "id": exports.GroupPermissionIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "userGroupId": exports.EntityGroupIdSchema.optional(),
+    "roleId": exports.RoleIdSchema.optional(),
+    "entityGroupId": exports.EntityGroupIdSchema.optional(),
+    "entityGroupType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "name": zod_1.z.string().optional(),
+    "role": exports.RoleSchema.optional(),
+    "entityGroupName": zod_1.z.string().optional(),
+    "entityGroupOwnerId": exports.EntityIdSchema.optional(),
+    "entityGroupOwnerName": zod_1.z.string().optional(),
+    "userGroupName": zod_1.z.string().optional(),
+    "userGroupOwnerId": exports.EntityIdSchema.optional(),
+    "userGroupOwnerName": zod_1.z.string().optional()
 });
-exports.HasId_Of_objectSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.object({})
+const HasId_Of_objectSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.object({}).optional()
 });
-exports.HomeDashboardSchemaSchema = zod_1.z.object({
-    "id": exports.DashboardIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "title": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema),
-    "mobileHide": zod_1.z.boolean(),
-    "mobileOrder": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "configuration": exports.JsonNodeSchema,
-    "hideDashboardToolbar": zod_1.z.boolean()
+const HomeDashboardSchemaImpl = zod_1.z.object({
+    "id": exports.DashboardIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "title": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "assignedCustomers": zod_1.z.array(exports.ShortCustomerInfoSchema).optional(),
+    "mobileHide": zod_1.z.boolean().optional(),
+    "mobileOrder": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "hideDashboardToolbar": zod_1.z.boolean().optional()
 });
-exports.HomeDashboardInfoSchemaSchema = zod_1.z.object({
-    "dashboardId": exports.DashboardIdSchema,
-    "hideDashboardToolbar": zod_1.z.boolean()
+const HomeDashboardInfoSchemaImpl = zod_1.z.object({
+    "dashboardId": exports.DashboardIdSchema.optional(),
+    "hideDashboardToolbar": zod_1.z.boolean().optional()
 });
-exports.ImageExportDataSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.string(),
-    "fileName": zod_1.z.string(),
-    "mediaType": zod_1.z.string(),
-    "public": zod_1.z.boolean(),
-    "publicResourceKey": zod_1.z.string(),
-    "resourceKey": zod_1.z.string(),
-    "title": zod_1.z.string()
+const ImageExportDataSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.string().optional(),
+    "fileName": zod_1.z.string().optional(),
+    "mediaType": zod_1.z.string().optional(),
+    "public": zod_1.z.boolean().optional(),
+    "publicResourceKey": zod_1.z.string().optional(),
+    "resourceKey": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional()
 });
-exports.InputStreamSchemaSchema = zod_1.z.object({});
-exports.IntegrationSchemaSchema = zod_1.z.object({
-    "id": exports.IntegrationIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
+const InputStreamSchemaImpl = zod_1.z.object({});
+const IntegrationSchemaImpl = zod_1.z.object({
+    "id": exports.IntegrationIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
     "defaultConverterId": exports.ConverterIdSchema,
-    "downlinkConverterId": exports.ConverterIdSchema,
+    "downlinkConverterId": exports.ConverterIdSchema.optional(),
     "routingKey": zod_1.z.string(),
     "type": zod_1.z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"]),
-    "debugMode": zod_1.z.boolean(),
-    "enabled": zod_1.z.boolean(),
-    "remote": zod_1.z.boolean(),
-    "allowCreateDevicesOrAssets": zod_1.z.boolean(),
-    "secret": zod_1.z.string(),
+    "debugMode": zod_1.z.boolean().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "remote": zod_1.z.boolean().optional(),
+    "allowCreateDevicesOrAssets": zod_1.z.boolean().optional(),
+    "secret": zod_1.z.string().optional(),
     "configuration": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema,
+    "additionalInfo": exports.JsonNodeSchema.optional(),
     "name": zod_1.z.string(),
-    "edgeTemplate": zod_1.z.boolean()
+    "edgeTemplate": zod_1.z.boolean().optional()
 });
-exports.IntegrationIdSchemaSchema = zod_1.z.object({
+const IntegrationIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["INTEGRATION"])
 });
-exports.IntegrationInfoSchemaSchema = zod_1.z.object({
-    "stats": exports.ArrayNodeSchema,
-    "status": exports.ObjectNodeSchema,
-    "id": exports.IntegrationIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
+const IntegrationInfoSchemaImpl = zod_1.z.object({
+    "stats": exports.ArrayNodeSchema.optional(),
+    "status": exports.ObjectNodeSchema.optional(),
+    "id": exports.IntegrationIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
     "type": zod_1.z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"]),
-    "debugMode": zod_1.z.boolean(),
-    "enabled": zod_1.z.boolean(),
-    "remote": zod_1.z.boolean(),
-    "allowCreateDevicesOrAssets": zod_1.z.boolean(),
+    "debugMode": zod_1.z.boolean().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "remote": zod_1.z.boolean().optional(),
+    "allowCreateDevicesOrAssets": zod_1.z.boolean().optional(),
     "name": zod_1.z.string(),
-    "edgeTemplate": zod_1.z.boolean()
+    "edgeTemplate": zod_1.z.boolean().optional()
 });
-exports.IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaSchema = zod_1.z.object({
-    "integrationTypes": zod_1.z.array(zod_1.z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"])),
-    "integrations": zod_1.z.array(zod_1.z.string()),
-    "notifyOn": zod_1.z.array(zod_1.z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])),
-    "onlyOnError": zod_1.z.boolean(),
-    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const IntegrationLifecycleEventNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "integrationTypes": zod_1.z.array(zod_1.z.enum(["APACHE_PULSAR", "AWS_IOT", "AWS_KINESIS", "AWS_SQS", "AZURE_EVENT_HUB", "AZURE_IOT_HUB", "AZURE_SERVICE_BUS", "CHIRPSTACK", "COAP", "CUSTOM", "HTTP", "IBM_WATSON_IOT", "KAFKA", "KPN", "LORIOT", "MQTT", "OCEANCONNECT", "OPC_UA", "PARTICLE", "PUB_SUB", "RABBITMQ", "SIGFOX", "TCP", "THINGPARK", "TMOBILE_IOT_CDP", "TPE", "TTI", "TTN", "TUYA", "UDP"])).optional(),
+    "integrations": zod_1.z.array(zod_1.z.string()).optional(),
+    "notifyOn": zod_1.z.array(zod_1.z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+    "onlyOnError": zod_1.z.boolean().optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.JWT_PairSchemaSchema = zod_1.z.object({
-    "scope": zod_1.z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-    "refreshToken": zod_1.z.string(),
-    "token": zod_1.z.string()
+const JWT_PairSchemaImpl = zod_1.z.object({
+    "scope": zod_1.z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]).optional(),
+    "refreshToken": zod_1.z.string().optional(),
+    "token": zod_1.z.string().optional()
 });
-exports.JWT_SettingsSchemaSchema = zod_1.z.object({
-    "tokenExpirationTime": zod_1.z.number(),
-    "refreshTokenExpTime": zod_1.z.number(),
-    "tokenIssuer": zod_1.z.string(),
-    "tokenSigningKey": zod_1.z.string()
+const JWT_SettingsSchemaImpl = zod_1.z.object({
+    "tokenExpirationTime": zod_1.z.number().optional(),
+    "refreshTokenExpTime": zod_1.z.number().optional(),
+    "tokenIssuer": zod_1.z.string().optional(),
+    "tokenSigningKey": zod_1.z.string().optional()
 });
-exports.JsonNodeSchemaSchema = zod_1.z.object({});
-exports.JsonTransportPayloadConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.KeyFilterSchemaSchema = zod_1.z.object({
-    "key": exports.EntityKeySchema,
-    "predicate": exports.KeyFilterPredicateSchema,
-    "valueType": zod_1.z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"])
+const JsonNodeSchemaImpl = zod_1.z.object({});
+const JsonTransportPayloadConfigurationSchemaImpl = zod_1.z.any();
+const KeyFilterSchemaImpl = zod_1.z.object({
+    "key": exports.EntityKeySchema.optional(),
+    "predicate": exports.KeyFilterPredicateSchema.optional(),
+    "valueType": zod_1.z.enum(["BOOLEAN", "DATE_TIME", "NUMERIC", "STRING"]).optional()
 });
-exports.KeyFilterPredicateSchemaSchema = zod_1.z.object({});
-exports.LastVisitedDashboardInfoSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.string(),
-    "title": zod_1.z.string(),
-    "starred": zod_1.z.boolean(),
-    "lastVisited": zod_1.z.number()
+const KeyFilterPredicateSchemaImpl = zod_1.z.object({});
+const LastVisitedDashboardInfoSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "starred": zod_1.z.boolean().optional(),
+    "lastVisited": zod_1.z.number().optional()
 });
-exports.LicenseUsageInfoSchemaSchema = zod_1.z.object({
-    "assetsCount": zod_1.z.number(),
-    "dashboardsCount": zod_1.z.number(),
-    "development": zod_1.z.boolean(),
-    "devicesCount": zod_1.z.number(),
-    "integrationsCount": zod_1.z.number(),
-    "maxAssets": zod_1.z.number(),
-    "maxDevices": zod_1.z.number(),
-    "plan": zod_1.z.string(),
-    "whiteLabelingEnabled": zod_1.z.boolean()
+const LicenseUsageInfoSchemaImpl = zod_1.z.object({
+    "assetsCount": zod_1.z.number().optional(),
+    "dashboardsCount": zod_1.z.number().optional(),
+    "development": zod_1.z.boolean().optional(),
+    "devicesCount": zod_1.z.number().optional(),
+    "integrationsCount": zod_1.z.number().optional(),
+    "maxAssets": zod_1.z.number().optional(),
+    "maxDevices": zod_1.z.number().optional(),
+    "plan": zod_1.z.string().optional(),
+    "whiteLabelingEnabled": zod_1.z.boolean().optional()
 });
-exports.LifeCycleEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.LoginRequestSchemaSchema = zod_1.z.object({
+const LifeCycleEventFilterSchemaImpl = zod_1.z.object({
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "event": zod_1.z.string().optional(),
+    "status": zod_1.z.enum(["Failure", "Success"]).optional(),
+    "errorStr": zod_1.z.string().optional()
+});
+const LoginRequestSchemaImpl = zod_1.z.object({
     "username": zod_1.z.string(),
     "password": zod_1.z.string()
 });
-exports.LoginResponseSchemaSchema = zod_1.z.object({
+const LoginResponseSchemaImpl = zod_1.z.object({
     "token": zod_1.z.string(),
     "refreshToken": zod_1.z.string()
 });
-exports.LoginWhiteLabelingParamsSchemaSchema = zod_1.z.object({
-    "logoImageUrl": zod_1.z.string(),
-    "logoImageHeight": zod_1.z.number(),
-    "appTitle": zod_1.z.string(),
-    "favicon": exports.FaviconSchema,
-    "paletteSettings": exports.PaletteSettingsSchema,
-    "helpLinkBaseUrl": zod_1.z.string(),
-    "uiHelpBaseUrl": zod_1.z.string(),
-    "enableHelpLinks": zod_1.z.boolean(),
-    "whiteLabelingEnabled": zod_1.z.boolean(),
-    "showNameVersion": zod_1.z.boolean(),
-    "platformName": zod_1.z.string(),
-    "platformVersion": zod_1.z.string(),
-    "customCss": zod_1.z.string(),
-    "pageBackgroundColor": zod_1.z.string(),
-    "darkForeground": zod_1.z.boolean(),
-    "domainName": zod_1.z.string(),
-    "baseUrl": zod_1.z.string(),
-    "prohibitDifferentUrl": zod_1.z.boolean(),
-    "adminSettingsId": zod_1.z.string(),
-    "showNameBottom": zod_1.z.boolean()
+const LoginWhiteLabelingParamsSchemaImpl = zod_1.z.object({
+    "logoImageUrl": zod_1.z.string().optional(),
+    "logoImageHeight": zod_1.z.number().optional(),
+    "appTitle": zod_1.z.string().optional(),
+    "favicon": exports.FaviconSchema.optional(),
+    "paletteSettings": exports.PaletteSettingsSchema.optional(),
+    "helpLinkBaseUrl": zod_1.z.string().optional(),
+    "uiHelpBaseUrl": zod_1.z.string().optional(),
+    "enableHelpLinks": zod_1.z.boolean().optional(),
+    "whiteLabelingEnabled": zod_1.z.boolean().optional(),
+    "showNameVersion": zod_1.z.boolean().optional(),
+    "platformName": zod_1.z.string().optional(),
+    "platformVersion": zod_1.z.string().optional(),
+    "customCss": zod_1.z.string().optional(),
+    "pageBackgroundColor": zod_1.z.string().optional(),
+    "darkForeground": zod_1.z.boolean().optional(),
+    "domainName": zod_1.z.string().optional(),
+    "baseUrl": zod_1.z.string().optional(),
+    "prohibitDifferentUrl": zod_1.z.boolean().optional(),
+    "adminSettingsId": zod_1.z.string().optional(),
+    "showNameBottom": zod_1.z.boolean().optional()
 });
-exports.LwM2MBootstrapServerCredentialSchemaSchema = zod_1.z.object({});
-exports.LwM2mInstanceSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.number(),
-    "resources": zod_1.z.array(exports.LwM2mResourceObserveSchema)
+const LwM2MBootstrapServerCredentialSchemaImpl = zod_1.z.object({});
+const LwM2mInstanceSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.number().optional(),
+    "resources": zod_1.z.array(exports.LwM2mResourceObserveSchema).optional()
 });
-exports.LwM2mObjectSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.number(),
-    "keyId": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "multiple": zod_1.z.boolean(),
-    "mandatory": zod_1.z.boolean(),
-    "instances": zod_1.z.array(exports.LwM2mInstanceSchema)
+const LwM2mObjectSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.number().optional(),
+    "keyId": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "multiple": zod_1.z.boolean().optional(),
+    "mandatory": zod_1.z.boolean().optional(),
+    "instances": zod_1.z.array(exports.LwM2mInstanceSchema).optional()
 });
-exports.LwM2mResourceObserveSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "observe": zod_1.z.boolean(),
-    "attribute": zod_1.z.boolean(),
-    "telemetry": zod_1.z.boolean(),
-    "keyName": zod_1.z.string()
+const LwM2mResourceObserveSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "observe": zod_1.z.boolean().optional(),
+    "attribute": zod_1.z.boolean().optional(),
+    "telemetry": zod_1.z.boolean().optional(),
+    "keyName": zod_1.z.string().optional()
 });
-exports.Lwm2mDeviceProfileTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.Lwm2mDeviceTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.MappingSchemaSchema = zod_1.z.object({
-    "columns": zod_1.z.array(exports.ColumnMappingSchema),
-    "delimiter": zod_1.z.string(),
-    "header": zod_1.z.boolean(),
-    "update": zod_1.z.boolean()
+const Lwm2mDeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({
+    "bootstrap": zod_1.z.array(exports.LwM2MBootstrapServerCredentialSchema).optional(),
+    "bootstrapServerUpdateEnable": zod_1.z.boolean().optional(),
+    "clientLwM2mSettings": exports.OtherConfigurationSchema.optional(),
+    "observeAttr": exports.TelemetryMappingConfigurationSchema.optional()
 });
-exports.MergedGroupPermissionInfoSchemaSchema = zod_1.z.object({
-    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "operations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"]))
+const Lwm2mDeviceTransportConfigurationSchemaImpl = zod_1.z.object({
+    "edrxCycle": zod_1.z.number().optional(),
+    "pagingTransmissionWindow": zod_1.z.number().optional(),
+    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+    "psmActivityTimer": zod_1.z.number().optional()
 });
-exports.MergedGroupTypePermissionInfoSchemaSchema = zod_1.z.object({
-    "hasGenericRead": zod_1.z.boolean(),
-    "entityGroupIds": zod_1.z.array(exports.EntityGroupIdSchema)
+const MappingSchemaImpl = zod_1.z.object({
+    "columns": zod_1.z.array(exports.ColumnMappingSchema).optional(),
+    "delimiter": zod_1.z.string().optional(),
+    "header": zod_1.z.boolean().optional(),
+    "update": zod_1.z.boolean().optional()
 });
-exports.MergedUserPermissionsSchemaSchema = zod_1.z.object({
-    "genericPermissions": zod_1.z.record(zod_1.z.string(), zod_1.z.array(zod_1.z.string())),
-    "groupPermissions": zod_1.z.record(zod_1.z.string(), exports.MergedGroupPermissionInfoSchema),
-    "readGroupPermissions": zod_1.z.record(zod_1.z.string(), exports.MergedGroupTypePermissionInfoSchema),
-    "readEntityPermissions": zod_1.z.record(zod_1.z.string(), exports.MergedGroupTypePermissionInfoSchema),
-    "readAttrPermissions": zod_1.z.record(zod_1.z.string(), exports.MergedGroupTypePermissionInfoSchema),
-    "readTsPermissions": zod_1.z.record(zod_1.z.string(), exports.MergedGroupTypePermissionInfoSchema)
+const MergedGroupPermissionInfoSchemaImpl = zod_1.z.object({
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "operations": zod_1.z.array(zod_1.z.enum(["ADD_TO_GROUP", "ALL", "ASSIGN_TO_TENANT", "CHANGE_OWNER", "CLAIM_DEVICES", "CREATE", "DELETE", "IMPERSONATE", "READ", "READ_ATTRIBUTES", "READ_CREDENTIALS", "READ_TELEMETRY", "REMOVE_FROM_GROUP", "RPC_CALL", "SHARE_GROUP", "WRITE", "WRITE_ATTRIBUTES", "WRITE_CREDENTIALS", "WRITE_TELEMETRY"])).optional()
 });
-exports.MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.object({
-    "body": zod_1.z.string(),
-    "button": exports.ButtonSchema,
-    "enabled": zod_1.z.boolean(),
-    "subject": zod_1.z.string(),
-    "themeColor": zod_1.z.string()
+const MergedGroupTypePermissionInfoSchemaImpl = zod_1.z.object({
+    "hasGenericRead": zod_1.z.boolean().optional(),
+    "entityGroupIds": zod_1.z.array(exports.EntityGroupIdSchema).optional()
 });
-exports.MicrosoftTeamsNotificationTargetConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.MqttDeviceProfileTransportConfigurationSchemaSchema = zod_1.z.object({
-    "deviceAttributesSubscribeTopic": zod_1.z.string(),
-    "deviceAttributesTopic": zod_1.z.string(),
-    "deviceTelemetryTopic": zod_1.z.string(),
-    "sendAckOnValidationException": zod_1.z.boolean(),
-    "sparkplug": zod_1.z.boolean(),
-    "sparkplugAttributesMetricNames": zod_1.z.array(zod_1.z.string()),
-    "transportPayloadTypeConfiguration": exports.TransportPayloadTypeConfigurationSchema
+const MergedUserPermissionsSchemaImpl = zod_1.z.object({
+    "genericPermissions": zod_1.z.object({}).optional(),
+    "groupPermissions": zod_1.z.object({}).optional(),
+    "readGroupPermissions": zod_1.z.object({}).optional(),
+    "readEntityPermissions": zod_1.z.object({}).optional(),
+    "readAttrPermissions": zod_1.z.object({}).optional(),
+    "readTsPermissions": zod_1.z.object({}).optional()
 });
-exports.MqttDeviceTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.NewPlatformVersionNotificationRuleTriggerConfigSchemaSchema = zod_1.z.object({
-    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const MicrosoftTeamsDeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "body": zod_1.z.string().optional(),
+    "button": exports.ButtonSchema.optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "subject": zod_1.z.string().optional(),
+    "themeColor": zod_1.z.string().optional()
 });
-exports.NoSecLwM2MBootstrapServerCredentialSchemaSchema = zod_1.z.object({
-    "shortServerId": zod_1.z.number(),
-    "bootstrapServerIs": zod_1.z.boolean(),
-    "host": zod_1.z.string(),
-    "port": zod_1.z.number(),
-    "clientHoldOffTime": zod_1.z.number(),
-    "serverPublicKey": zod_1.z.string(),
-    "serverCertificate": zod_1.z.string(),
-    "bootstrapServerAccountTimeout": zod_1.z.number(),
-    "lifetime": zod_1.z.number(),
-    "defaultMinPeriod": zod_1.z.number(),
-    "notifIfDisabled": zod_1.z.boolean(),
-    "binding": zod_1.z.string()
+const MicrosoftTeamsNotificationTargetConfigSchemaImpl = zod_1.z.object({
+    "channelName": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "email": zod_1.z.string().optional(),
+    "firstName": zod_1.z.string().optional(),
+    "id": zod_1.z.object({}).optional(),
+    "lastName": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "webhookUrl": zod_1.z.string().optional()
 });
-exports.NodeConnectionInfoSchemaSchema = zod_1.z.object({
+const MqttDeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({
+    "deviceAttributesSubscribeTopic": zod_1.z.string().optional(),
+    "deviceAttributesTopic": zod_1.z.string().optional(),
+    "deviceTelemetryTopic": zod_1.z.string().optional(),
+    "sendAckOnValidationException": zod_1.z.boolean().optional(),
+    "sparkplug": zod_1.z.boolean().optional(),
+    "sparkplugAttributesMetricNames": zod_1.z.array(zod_1.z.string()).optional(),
+    "transportPayloadTypeConfiguration": exports.TransportPayloadTypeConfigurationSchema.optional()
+});
+const MqttDeviceTransportConfigurationSchemaImpl = zod_1.z.any();
+const NewPlatformVersionNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
+});
+const NoSecLwM2MBootstrapServerCredentialSchemaImpl = zod_1.z.object({
+    "shortServerId": zod_1.z.number().optional(),
+    "bootstrapServerIs": zod_1.z.boolean().optional(),
+    "host": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "clientHoldOffTime": zod_1.z.number().optional(),
+    "serverPublicKey": zod_1.z.string().optional(),
+    "serverCertificate": zod_1.z.string().optional(),
+    "bootstrapServerAccountTimeout": zod_1.z.number().optional(),
+    "lifetime": zod_1.z.number().optional(),
+    "defaultMinPeriod": zod_1.z.number().optional(),
+    "notifIfDisabled": zod_1.z.boolean().optional(),
+    "binding": zod_1.z.string().optional()
+});
+const NodeConnectionInfoSchemaImpl = zod_1.z.object({
     "fromIndex": zod_1.z.number(),
     "toIndex": zod_1.z.number(),
     "type": zod_1.z.string()
 });
-exports.NotificationSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.JsonNodeSchema,
-    "createdTime": zod_1.z.number(),
-    "id": exports.NotificationIdSchema,
-    "info": exports.NotificationInfoSchema,
-    "recipientId": exports.UserIdSchema,
-    "requestId": exports.NotificationRequestIdSchema,
-    "status": zod_1.z.enum(["READ", "SENT"]),
-    "subject": zod_1.z.string(),
-    "text": zod_1.z.string(),
-    "type": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"])
+const NotificationSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.JsonNodeSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "id": exports.NotificationIdSchema.optional(),
+    "info": exports.NotificationInfoSchema.optional(),
+    "recipientId": exports.UserIdSchema.optional(),
+    "requestId": exports.NotificationRequestIdSchema.optional(),
+    "status": zod_1.z.enum(["READ", "SENT"]).optional(),
+    "subject": zod_1.z.string().optional(),
+    "text": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"]).optional()
 });
-exports.NotificationDeliveryMethodConfigSchemaSchema = zod_1.z.object({});
-exports.NotificationIdSchemaSchema = zod_1.z.object({
+const NotificationDeliveryMethodConfigSchemaImpl = zod_1.z.object({});
+const NotificationIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["NOTIFICATION"])
 });
-exports.NotificationInfoSchemaSchema = zod_1.z.object({
-    "stateEntityId": exports.EntityIdSchema
+const NotificationInfoSchemaImpl = zod_1.z.object({
+    "stateEntityId": exports.EntityIdSchema.optional()
 });
-exports.NotificationPrefSchemaSchema = zod_1.z.object({
-    "enabled": zod_1.z.boolean(),
-    "enabledDeliveryMethods": zod_1.z.record(zod_1.z.string(), zod_1.z.boolean())
+const NotificationPrefSchemaImpl = zod_1.z.object({
+    "enabled": zod_1.z.boolean().optional(),
+    "enabledDeliveryMethods": zod_1.z.object({})
 });
-exports.NotificationRequestSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.NotificationRequestConfigSchema,
-    "createdTime": zod_1.z.number(),
-    "id": exports.NotificationRequestIdSchema,
-    "info": exports.NotificationInfoSchema,
-    "originatorEntityId": exports.EntityIdSchema,
-    "ruleId": exports.NotificationRuleIdSchema,
-    "stats": exports.NotificationRequestStatsSchema,
-    "status": zod_1.z.enum(["PROCESSING", "SCHEDULED", "SENT"]),
-    "targets": zod_1.z.array(zod_1.z.string()),
-    "template": exports.NotificationTemplateSchema,
-    "templateId": exports.NotificationTemplateIdSchema,
-    "tenantId": exports.TenantIdSchema
+const NotificationRequestSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.NotificationRequestConfigSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "id": exports.NotificationRequestIdSchema.optional(),
+    "info": exports.NotificationInfoSchema.optional(),
+    "originatorEntityId": exports.EntityIdSchema.optional(),
+    "ruleId": exports.NotificationRuleIdSchema.optional(),
+    "stats": exports.NotificationRequestStatsSchema.optional(),
+    "status": zod_1.z.enum(["PROCESSING", "SCHEDULED", "SENT"]).optional(),
+    "targets": zod_1.z.array(zod_1.z.string()).optional(),
+    "template": exports.NotificationTemplateSchema.optional(),
+    "templateId": exports.NotificationTemplateIdSchema.optional(),
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.NotificationRequestConfigSchemaSchema = zod_1.z.object({
-    "sendingDelayInSec": zod_1.z.number()
+const NotificationRequestConfigSchemaImpl = zod_1.z.object({
+    "sendingDelayInSec": zod_1.z.number().optional()
 });
-exports.NotificationRequestIdSchemaSchema = zod_1.z.object({
+const NotificationRequestIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["NOTIFICATION_REQUEST"])
 });
-exports.NotificationRequestInfoSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.NotificationRequestConfigSchema,
-    "createdTime": zod_1.z.number(),
-    "deliveryMethods": zod_1.z.array(zod_1.z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])),
-    "id": exports.NotificationRequestIdSchema,
-    "info": exports.NotificationInfoSchema,
-    "originatorEntityId": exports.EntityIdSchema,
-    "ruleId": exports.NotificationRuleIdSchema,
-    "stats": exports.NotificationRequestStatsSchema,
-    "status": zod_1.z.enum(["PROCESSING", "SCHEDULED", "SENT"]),
-    "targets": zod_1.z.array(zod_1.z.string()),
-    "template": exports.NotificationTemplateSchema,
-    "templateId": exports.NotificationTemplateIdSchema,
-    "templateName": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema
+const NotificationRequestInfoSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.NotificationRequestConfigSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "deliveryMethods": zod_1.z.array(zod_1.z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])).optional(),
+    "id": exports.NotificationRequestIdSchema.optional(),
+    "info": exports.NotificationInfoSchema.optional(),
+    "originatorEntityId": exports.EntityIdSchema.optional(),
+    "ruleId": exports.NotificationRuleIdSchema.optional(),
+    "stats": exports.NotificationRequestStatsSchema.optional(),
+    "status": zod_1.z.enum(["PROCESSING", "SCHEDULED", "SENT"]).optional(),
+    "targets": zod_1.z.array(zod_1.z.string()).optional(),
+    "template": exports.NotificationTemplateSchema.optional(),
+    "templateId": exports.NotificationTemplateIdSchema.optional(),
+    "templateName": zod_1.z.string().optional(),
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.NotificationRequestPreviewSchemaSchema = zod_1.z.object({
-    "processedTemplates": zod_1.z.record(zod_1.z.string(), exports.DeliveryMethodNotificationTemplateSchema),
-    "recipientsCountByTarget": zod_1.z.record(zod_1.z.string(), zod_1.z.number()),
-    "recipientsPreview": zod_1.z.array(zod_1.z.string()),
-    "totalRecipientsCount": zod_1.z.number()
+const NotificationRequestPreviewSchemaImpl = zod_1.z.object({
+    "processedTemplates": zod_1.z.object({}).optional(),
+    "recipientsCountByTarget": zod_1.z.object({}).optional(),
+    "recipientsPreview": zod_1.z.array(zod_1.z.string()).optional(),
+    "totalRecipientsCount": zod_1.z.number().optional()
 });
-exports.NotificationRequestStatsSchemaSchema = zod_1.z.object({
-    "error": zod_1.z.string(),
-    "errors": zod_1.z.record(zod_1.z.string(), zod_1.z.object({})),
-    "sent": zod_1.z.record(zod_1.z.string(), exports.AtomicIntegerSchema)
+const NotificationRequestStatsSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.string().optional(),
+    "errors": zod_1.z.object({}).optional(),
+    "sent": zod_1.z.object({}).optional()
 });
-exports.NotificationRuleSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.NotificationRuleConfigSchema,
-    "createdTime": zod_1.z.number(),
-    "enabled": zod_1.z.boolean(),
+const NotificationRuleSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.NotificationRuleConfigSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "enabled": zod_1.z.boolean().optional(),
     "name": zod_1.z.string(),
     "recipientsConfig": exports.NotificationRuleRecipientsConfigSchema,
     "templateId": exports.NotificationTemplateIdSchema,
-    "tenantId": exports.TenantIdSchema,
+    "tenantId": exports.TenantIdSchema.optional(),
     "triggerConfig": exports.NotificationRuleTriggerConfigSchema,
     "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
-exports.NotificationRuleConfigSchemaSchema = zod_1.z.object({
-    "description": zod_1.z.string()
+const NotificationRuleConfigSchemaImpl = zod_1.z.object({
+    "description": zod_1.z.string().optional()
 });
-exports.NotificationRuleIdSchemaSchema = zod_1.z.object({
+const NotificationRuleIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["NOTIFICATION_RULE"])
 });
-exports.NotificationRuleInfoSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.NotificationRuleConfigSchema,
-    "createdTime": zod_1.z.number(),
-    "deliveryMethods": zod_1.z.array(zod_1.z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])),
-    "enabled": zod_1.z.boolean(),
+const NotificationRuleInfoSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.NotificationRuleConfigSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "deliveryMethods": zod_1.z.array(zod_1.z.enum(["EMAIL", "MICROSOFT_TEAMS", "SLACK", "SMS", "WEB"])).optional(),
+    "enabled": zod_1.z.boolean().optional(),
     "name": zod_1.z.string(),
     "recipientsConfig": exports.NotificationRuleRecipientsConfigSchema,
     "templateId": exports.NotificationTemplateIdSchema,
-    "templateName": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema,
+    "templateName": zod_1.z.string().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
     "triggerConfig": exports.NotificationRuleTriggerConfigSchema,
     "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
-exports.NotificationRuleRecipientsConfigSchemaSchema = zod_1.z.object({
+const NotificationRuleRecipientsConfigSchemaImpl = zod_1.z.object({
     "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
 });
-exports.NotificationRuleTriggerConfigSchemaSchema = zod_1.z.object({
-    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const NotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.NotificationSettingsSchemaSchema = zod_1.z.object({
-    "deliveryMethodsConfigs": zod_1.z.record(zod_1.z.string(), exports.NotificationDeliveryMethodConfigSchema)
+const NotificationSettingsSchemaImpl = zod_1.z.object({
+    "deliveryMethodsConfigs": zod_1.z.object({})
 });
-exports.NotificationTargetSchemaSchema = zod_1.z.object({
+const NotificationTargetSchemaImpl = zod_1.z.object({
     "configuration": exports.NotificationTargetConfigSchema,
-    "createdTime": zod_1.z.number(),
+    "createdTime": zod_1.z.number().optional(),
     "name": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.NotificationTargetConfigSchemaSchema = zod_1.z.object({
-    "description": zod_1.z.string()
+const NotificationTargetConfigSchemaImpl = zod_1.z.object({
+    "description": zod_1.z.string().optional()
 });
-exports.NotificationTemplateSchemaSchema = zod_1.z.object({
+const NotificationTemplateSchemaImpl = zod_1.z.object({
     "configuration": exports.NotificationTemplateConfigSchema,
-    "createdTime": zod_1.z.number(),
-    "name": zod_1.z.string(),
+    "createdTime": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
     "notificationType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "GENERAL", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", "RULE_NODE"]),
-    "tenantId": exports.TenantIdSchema
+    "tenantId": exports.TenantIdSchema.optional()
 });
-exports.NotificationTemplateConfigSchemaSchema = zod_1.z.object({
-    "deliveryMethodsTemplates": zod_1.z.record(zod_1.z.string(), exports.DeliveryMethodNotificationTemplateSchema)
+const NotificationTemplateConfigSchemaImpl = zod_1.z.object({
+    "deliveryMethodsTemplates": zod_1.z.object({}).optional()
 });
-exports.NotificationTemplateIdSchemaSchema = zod_1.z.object({
+const NotificationTemplateIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["NOTIFICATION_TEMPLATE"])
 });
-exports.NumericFilterPredicateSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.OAuth2BasicMapperConfigSchemaSchema = zod_1.z.object({
-    "alwaysFullScreen": zod_1.z.boolean(),
-    "customerNamePattern": zod_1.z.string(),
-    "defaultDashboardName": zod_1.z.string(),
-    "emailAttributeKey": zod_1.z.string(),
-    "firstNameAttributeKey": zod_1.z.string(),
-    "lastNameAttributeKey": zod_1.z.string(),
-    "parentCustomerNamePattern": zod_1.z.string(),
-    "tenantNamePattern": zod_1.z.string(),
+const NumericFilterPredicateSchemaImpl = zod_1.z.object({
+    "operation": zod_1.z.enum(["EQUAL", "GREATER", "GREATER_OR_EQUAL", "LESS", "LESS_OR_EQUAL", "NOT_EQUAL"]).optional(),
+    "value": exports.FilterPredicateValue_Of_doubleSchema.optional()
+});
+const OAuth2BasicMapperConfigSchemaImpl = zod_1.z.object({
+    "alwaysFullScreen": zod_1.z.boolean().optional(),
+    "customerNamePattern": zod_1.z.string().optional(),
+    "defaultDashboardName": zod_1.z.string().optional(),
+    "emailAttributeKey": zod_1.z.string().optional(),
+    "firstNameAttributeKey": zod_1.z.string().optional(),
+    "lastNameAttributeKey": zod_1.z.string().optional(),
+    "parentCustomerNamePattern": zod_1.z.string().optional(),
+    "tenantNamePattern": zod_1.z.string().optional(),
     "tenantNameStrategy": zod_1.z.enum(["CUSTOM", "DOMAIN", "EMAIL"]),
-    "userGroupsNamePattern": zod_1.z.array(zod_1.z.string())
+    "userGroupsNamePattern": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.OAuth2ClientInfoSchemaSchema = zod_1.z.object({
-    "icon": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "url": zod_1.z.string()
+const OAuth2ClientInfoSchemaImpl = zod_1.z.object({
+    "icon": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional()
 });
-exports.OAuth2ClientRegistrationTemplateSchemaSchema = zod_1.z.object({
-    "accessTokenUri": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "authorizationUri": zod_1.z.string(),
-    "clientAuthenticationMethod": zod_1.z.string(),
-    "comment": zod_1.z.string(),
-    "createdTime": zod_1.z.number(),
-    "helpLink": zod_1.z.string(),
-    "id": exports.OAuth2ClientRegistrationTemplateIdSchema,
-    "jwkSetUri": zod_1.z.string(),
-    "loginButtonIcon": zod_1.z.string(),
-    "loginButtonLabel": zod_1.z.string(),
-    "mapperConfig": exports.OAuth2MapperConfigSchema,
-    "name": zod_1.z.string(),
+const OAuth2ClientRegistrationTemplateSchemaImpl = zod_1.z.object({
+    "accessTokenUri": zod_1.z.string().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "authorizationUri": zod_1.z.string().optional(),
+    "clientAuthenticationMethod": zod_1.z.string().optional(),
+    "comment": zod_1.z.string().optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "helpLink": zod_1.z.string().optional(),
+    "id": exports.OAuth2ClientRegistrationTemplateIdSchema.optional(),
+    "jwkSetUri": zod_1.z.string().optional(),
+    "loginButtonIcon": zod_1.z.string().optional(),
+    "loginButtonLabel": zod_1.z.string().optional(),
+    "mapperConfig": exports.OAuth2MapperConfigSchema.optional(),
+    "name": zod_1.z.string().optional(),
     "providerId": zod_1.z.string(),
-    "scope": zod_1.z.array(zod_1.z.string()),
-    "userInfoUri": zod_1.z.string(),
-    "userNameAttributeName": zod_1.z.string()
+    "scope": zod_1.z.array(zod_1.z.string()).optional(),
+    "userInfoUri": zod_1.z.string().optional(),
+    "userNameAttributeName": zod_1.z.string().optional()
 });
-exports.OAuth2ClientRegistrationTemplateIdSchemaSchema = zod_1.z.object({
+const OAuth2ClientRegistrationTemplateIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string()
 });
-exports.OAuth2CustomMapperConfigSchemaSchema = zod_1.z.object({
-    "password": zod_1.z.string(),
-    "sendToken": zod_1.z.boolean(),
-    "url": zod_1.z.string(),
-    "username": zod_1.z.string()
+const OAuth2CustomMapperConfigSchemaImpl = zod_1.z.object({
+    "password": zod_1.z.string().optional(),
+    "sendToken": zod_1.z.boolean().optional(),
+    "url": zod_1.z.string().optional(),
+    "username": zod_1.z.string().optional()
 });
-exports.OAuth2DomainInfoSchemaSchema = zod_1.z.object({
+const OAuth2DomainInfoSchemaImpl = zod_1.z.object({
     "name": zod_1.z.string(),
     "scheme": zod_1.z.enum(["HTTP", "HTTPS", "MIXED"])
 });
-exports.OAuth2InfoSchemaSchema = zod_1.z.object({
-    "enabled": zod_1.z.boolean(),
+const OAuth2InfoSchemaImpl = zod_1.z.object({
+    "enabled": zod_1.z.boolean().optional(),
     "oauth2ParamsInfos": zod_1.z.array(exports.OAuth2ParamsInfoSchema)
 });
-exports.OAuth2MapperConfigSchemaSchema = zod_1.z.object({
-    "activateUser": zod_1.z.boolean(),
-    "allowUserCreation": zod_1.z.boolean(),
-    "basic": exports.OAuth2BasicMapperConfigSchema,
-    "custom": exports.OAuth2CustomMapperConfigSchema,
+const OAuth2MapperConfigSchemaImpl = zod_1.z.object({
+    "activateUser": zod_1.z.boolean().optional(),
+    "allowUserCreation": zod_1.z.boolean().optional(),
+    "basic": exports.OAuth2BasicMapperConfigSchema.optional(),
+    "custom": exports.OAuth2CustomMapperConfigSchema.optional(),
     "type": zod_1.z.enum(["APPLE", "BASIC", "CUSTOM", "GITHUB"])
 });
-exports.OAuth2MobileInfoSchemaSchema = zod_1.z.object({
+const OAuth2MobileInfoSchemaImpl = zod_1.z.object({
     "appSecret": zod_1.z.string(),
     "pkgName": zod_1.z.string()
 });
-exports.OAuth2ParamsInfoSchemaSchema = zod_1.z.object({
+const OAuth2ParamsInfoSchemaImpl = zod_1.z.object({
     "clientRegistrations": zod_1.z.array(exports.OAuth2RegistrationInfoSchema),
     "domainInfos": zod_1.z.array(exports.OAuth2DomainInfoSchema),
     "mobileInfos": zod_1.z.array(exports.OAuth2MobileInfoSchema)
 });
-exports.OAuth2RegistrationInfoSchemaSchema = zod_1.z.object({
+const OAuth2RegistrationInfoSchemaImpl = zod_1.z.object({
     "accessTokenUri": zod_1.z.string(),
     "additionalInfo": exports.JsonNodeSchema,
     "authorizationUri": zod_1.z.string(),
     "clientAuthenticationMethod": zod_1.z.string(),
     "clientId": zod_1.z.string(),
     "clientSecret": zod_1.z.string(),
-    "jwkSetUri": zod_1.z.string(),
-    "loginButtonIcon": zod_1.z.string(),
+    "jwkSetUri": zod_1.z.string().optional(),
+    "loginButtonIcon": zod_1.z.string().optional(),
     "loginButtonLabel": zod_1.z.string(),
     "mapperConfig": exports.OAuth2MapperConfigSchema,
-    "platforms": zod_1.z.array(zod_1.z.enum(["ANDROID", "IOS", "WEB"])),
+    "platforms": zod_1.z.array(zod_1.z.enum(["ANDROID", "IOS", "WEB"])).optional(),
     "scope": zod_1.z.array(zod_1.z.string()),
-    "userInfoUri": zod_1.z.string(),
-    "userNameAttributeName": zod_1.z.string()
+    "userInfoUri": zod_1.z.string().optional(),
+    "userNameAttributeName": zod_1.z.string().optional()
 });
-exports.ObjectAttributesSchemaSchema = zod_1.z.object({
-    "dim": zod_1.z.number(),
-    "gt": zod_1.z.number(),
-    "lt": zod_1.z.number(),
-    "pmax": zod_1.z.number(),
-    "pmin": zod_1.z.number(),
-    "st": zod_1.z.number(),
-    "ver": zod_1.z.string()
+const ObjectAttributesSchemaImpl = zod_1.z.object({
+    "dim": zod_1.z.number().optional(),
+    "gt": zod_1.z.number().optional(),
+    "lt": zod_1.z.number().optional(),
+    "pmax": zod_1.z.number().optional(),
+    "pmin": zod_1.z.number().optional(),
+    "st": zod_1.z.number().optional(),
+    "ver": zod_1.z.string().optional()
 });
-exports.ObjectNodeSchemaSchema = zod_1.z.object({});
-exports.OriginatorEntityOwnerUsersFilterSchemaSchema = zod_1.z.object({});
-exports.OtaPackageSchemaSchema = zod_1.z.object({
-    "id": exports.OtaPackageIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "deviceProfileId": exports.DeviceProfileIdSchema,
-    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]),
-    "title": zod_1.z.string(),
-    "version": zod_1.z.string(),
-    "tag": zod_1.z.string(),
-    "url": zod_1.z.string(),
-    "hasData": zod_1.z.boolean(),
-    "fileName": zod_1.z.string(),
-    "contentType": zod_1.z.string(),
-    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-    "checksum": zod_1.z.string(),
-    "dataSize": zod_1.z.number(),
-    "data": exports.ByteBufferSchema,
-    "additionalInfo": exports.JsonNodeSchema
+const ObjectNodeSchemaImpl = zod_1.z.object({});
+const OriginatorEntityOwnerUsersFilterSchemaImpl = zod_1.z.object({});
+const OtaPackageSchemaImpl = zod_1.z.object({
+    "id": exports.OtaPackageIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "deviceProfileId": exports.DeviceProfileIdSchema.optional(),
+    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+    "title": zod_1.z.string().optional(),
+    "version": zod_1.z.string().optional(),
+    "tag": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional(),
+    "hasData": zod_1.z.boolean().optional(),
+    "fileName": zod_1.z.string().optional(),
+    "contentType": zod_1.z.string().optional(),
+    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+    "checksum": zod_1.z.string().optional(),
+    "dataSize": zod_1.z.number().optional(),
+    "data": exports.ByteBufferSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.OtaPackageIdSchemaSchema = zod_1.z.object({
+const OtaPackageIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["OTA_PACKAGE"])
 });
-exports.OtaPackageInfoSchemaSchema = zod_1.z.object({
-    "id": exports.OtaPackageIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "deviceProfileId": exports.DeviceProfileIdSchema,
-    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]),
-    "title": zod_1.z.string(),
-    "version": zod_1.z.string(),
-    "tag": zod_1.z.string(),
-    "url": zod_1.z.string(),
-    "hasData": zod_1.z.boolean(),
-    "fileName": zod_1.z.string(),
-    "contentType": zod_1.z.string(),
-    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-    "checksum": zod_1.z.string(),
-    "dataSize": zod_1.z.number(),
-    "additionalInfo": exports.JsonNodeSchema
+const OtaPackageInfoSchemaImpl = zod_1.z.object({
+    "id": exports.OtaPackageIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "deviceProfileId": exports.DeviceProfileIdSchema.optional(),
+    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+    "title": zod_1.z.string().optional(),
+    "version": zod_1.z.string().optional(),
+    "tag": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional(),
+    "hasData": zod_1.z.boolean().optional(),
+    "fileName": zod_1.z.string().optional(),
+    "contentType": zod_1.z.string().optional(),
+    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+    "checksum": zod_1.z.string().optional(),
+    "dataSize": zod_1.z.number().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.OtherConfigurationSchemaSchema = zod_1.z.object({
-    "clientOnlyObserveAfterConnect": zod_1.z.number(),
-    "edrxCycle": zod_1.z.number(),
-    "fwUpdateResource": zod_1.z.string(),
-    "fwUpdateStrategy": zod_1.z.number(),
-    "pagingTransmissionWindow": zod_1.z.number(),
-    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]),
-    "psmActivityTimer": zod_1.z.number(),
-    "swUpdateResource": zod_1.z.string(),
-    "swUpdateStrategy": zod_1.z.number()
+const OtherConfigurationSchemaImpl = zod_1.z.object({
+    "clientOnlyObserveAfterConnect": zod_1.z.number().optional(),
+    "edrxCycle": zod_1.z.number().optional(),
+    "fwUpdateResource": zod_1.z.string().optional(),
+    "fwUpdateStrategy": zod_1.z.number().optional(),
+    "pagingTransmissionWindow": zod_1.z.number().optional(),
+    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+    "psmActivityTimer": zod_1.z.number().optional(),
+    "swUpdateResource": zod_1.z.string().optional(),
+    "swUpdateStrategy": zod_1.z.number().optional()
 });
-exports.PSKLwM2MBootstrapServerCredentialSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.PageData_Of_AlarmCommentInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AlarmCommentInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PSKLwM2MBootstrapServerCredentialSchemaImpl = zod_1.z.object({
+    "shortServerId": zod_1.z.number().optional(),
+    "bootstrapServerIs": zod_1.z.boolean().optional(),
+    "host": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "clientHoldOffTime": zod_1.z.number().optional(),
+    "serverPublicKey": zod_1.z.string().optional(),
+    "serverCertificate": zod_1.z.string().optional(),
+    "bootstrapServerAccountTimeout": zod_1.z.number().optional(),
+    "lifetime": zod_1.z.number().optional(),
+    "defaultMinPeriod": zod_1.z.number().optional(),
+    "notifIfDisabled": zod_1.z.boolean().optional(),
+    "binding": zod_1.z.string().optional()
 });
-exports.PageData_Of_AlarmDataSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AlarmDataSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AlarmCommentInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AlarmCommentInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AlarmInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AlarmInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AlarmDataSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AlarmDataSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AssetInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AssetInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AlarmInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AlarmInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AssetProfileInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AssetProfileInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AssetInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AssetInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AssetProfileSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AssetProfileSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AssetProfileInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AssetProfileInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AssetSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AssetSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AssetProfileSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AssetProfileSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_AuditLogSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.AuditLogSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AssetSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AssetSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_BlobEntityWithCustomerInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.BlobEntityWithCustomerInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_AuditLogSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.AuditLogSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_ContactBased_object_SchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.ContactBased_Of_objectSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_BlobEntityWithCustomerInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.BlobEntityWithCustomerInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_ConverterSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.ConverterSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_ContactBased_Of_objectSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.ContactBased_Of_objectSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_CustomerInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.CustomerInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_ConverterSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.ConverterSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_CustomerSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.CustomerSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_CustomerInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.CustomerInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_DashboardInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.DashboardInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_CustomerSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.CustomerSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_DeviceInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.DeviceInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_DashboardInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.DashboardInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_DeviceProfileInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.DeviceProfileInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_DeviceInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.DeviceInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_DeviceProfileSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.DeviceProfileSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_DeviceProfileInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.DeviceProfileInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_DeviceSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.DeviceSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_DeviceProfileSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.DeviceProfileSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EdgeEventSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EdgeEventSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_DeviceSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.DeviceSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EdgeInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EdgeInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EdgeEventSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EdgeEventSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EdgeSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EdgeSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EdgeInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EdgeInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityDataSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityDataSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EdgeSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EdgeSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityGroupInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityGroupInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityDataSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityDataSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityGroupInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityGroupInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntitySubtypeSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntitySubtypeSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityVersionSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityVersionSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntitySubtypeSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntitySubtypeSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityViewInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityViewInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityVersionSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityVersionSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EntityViewSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EntityViewSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityViewInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityViewInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_EventInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.EventInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EntityViewSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EntityViewSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_IntegrationInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.IntegrationInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_EventInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.EventInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_IntegrationSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.IntegrationSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_IntegrationInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.IntegrationInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_NotificationRequestInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.NotificationRequestInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_IntegrationSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.IntegrationSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_NotificationRuleInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.NotificationRuleInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_NotificationRequestInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.NotificationRequestInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_NotificationTargetSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.NotificationTargetSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_NotificationRuleInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.NotificationRuleInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_NotificationTemplateSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.NotificationTemplateSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_NotificationTargetSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.NotificationTargetSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_NotificationSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.NotificationSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_NotificationTemplateSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.NotificationTemplateSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_OtaPackageInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.OtaPackageInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_NotificationSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.NotificationSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_QueueSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.QueueSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_OtaPackageInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.OtaPackageInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_RoleSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.RoleSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_QueueSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.QueueSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_RuleChainSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.RuleChainSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_RoleSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.RoleSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_SchedulerEventInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.SchedulerEventInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_RuleChainSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.RuleChainSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_ShortEntityViewSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.ShortEntityViewSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_SchedulerEventInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.SchedulerEventInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_TbResourceInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.TbResourceInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_ShortEntityViewSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.ShortEntityViewSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_TenantInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.TenantInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_TbResourceInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.TbResourceInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_TenantProfileSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.TenantProfileSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_TenantInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.TenantInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_TenantSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.TenantSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_TenantProfileSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.TenantProfileSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_UserEmailInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.UserEmailInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_TenantSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.TenantSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_UserInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.UserInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_UserEmailInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.UserEmailInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_UserSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.UserSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_UserInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.UserInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_WidgetTypeInfoSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.WidgetTypeInfoSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_UserSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.UserSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PageData_Of_WidgetsBundleSchemaSchema = zod_1.z.object({
-    "data": zod_1.z.array(exports.WidgetsBundleSchema),
-    "totalPages": zod_1.z.number(),
-    "totalElements": zod_1.z.number(),
-    "hasNext": zod_1.z.boolean()
+const PageData_Of_WidgetTypeInfoSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.WidgetTypeInfoSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
 });
-exports.PaletteSchemaSchema = zod_1.z.object({
+const PageData_Of_WidgetsBundleSchemaImpl = zod_1.z.object({
+    "data": zod_1.z.array(exports.WidgetsBundleSchema).optional(),
+    "totalPages": zod_1.z.number().optional(),
+    "totalElements": zod_1.z.number().optional(),
+    "hasNext": zod_1.z.boolean().optional()
+});
+const PaletteSchemaImpl = zod_1.z.object({
     "type": zod_1.z.string(),
-    "extends": zod_1.z.string(),
-    "colors": zod_1.z.record(zod_1.z.string(), zod_1.z.string())
+    "extends": zod_1.z.string().optional(),
+    "colors": zod_1.z.object({}).optional()
 });
-exports.PaletteSettingsSchemaSchema = zod_1.z.object({
+const PaletteSettingsSchemaImpl = zod_1.z.object({
     "primaryPalette": exports.PaletteSchema,
     "accentPalette": exports.PaletteSchema
 });
-exports.PlatformTwoFaSettingsSchemaSchema = zod_1.z.object({
-    "maxVerificationFailuresBeforeUserLockout": zod_1.z.number(),
+const PlatformTwoFaSettingsSchemaImpl = zod_1.z.object({
+    "maxVerificationFailuresBeforeUserLockout": zod_1.z.number().optional(),
     "minVerificationCodeSendPeriod": zod_1.z.number(),
     "providers": zod_1.z.array(exports.TwoFaProviderConfigSchema),
     "totalAllowedTimeForVerification": zod_1.z.number(),
-    "useSystemTwoFactorAuthSettings": zod_1.z.boolean(),
-    "verificationCodeCheckRateLimit": zod_1.z.string()
+    "useSystemTwoFactorAuthSettings": zod_1.z.boolean().optional(),
+    "verificationCodeCheckRateLimit": zod_1.z.string().optional()
 });
-exports.PlatformUsersNotificationTargetConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.PowerSavingConfigurationSchemaSchema = zod_1.z.object({
-    "edrxCycle": zod_1.z.number(),
-    "pagingTransmissionWindow": zod_1.z.number(),
-    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]),
-    "psmActivityTimer": zod_1.z.number()
+const PlatformUsersNotificationTargetConfigSchemaImpl = zod_1.z.object({
+    "description": zod_1.z.string().optional(),
+    "usersFilter": exports.UsersFilterSchema.optional()
 });
-exports.ProcessingStrategySchemaSchema = zod_1.z.object({
-    "failurePercentage": zod_1.z.number(),
-    "maxPauseBetweenRetries": zod_1.z.number(),
-    "pauseBetweenRetries": zod_1.z.number(),
-    "retries": zod_1.z.number(),
-    "type": zod_1.z.enum(["RETRY_ALL", "RETRY_FAILED", "RETRY_FAILED_AND_TIMED_OUT", "RETRY_TIMED_OUT", "SKIP_ALL_FAILURES", "SKIP_ALL_FAILURES_AND_TIMED_OUT"])
+const PowerSavingConfigurationSchemaImpl = zod_1.z.object({
+    "edrxCycle": zod_1.z.number().optional(),
+    "pagingTransmissionWindow": zod_1.z.number().optional(),
+    "powerMode": zod_1.z.enum(["DRX", "E_DRX", "PSM"]).optional(),
+    "psmActivityTimer": zod_1.z.number().optional()
 });
-exports.ProtoTransportPayloadConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.QueueSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "consumerPerPartition": zod_1.z.boolean(),
-    "createdTime": zod_1.z.number(),
-    "id": exports.QueueIdSchema,
-    "name": zod_1.z.string(),
-    "packProcessingTimeout": zod_1.z.number(),
-    "partitions": zod_1.z.number(),
-    "pollInterval": zod_1.z.number(),
-    "processingStrategy": exports.ProcessingStrategySchema,
-    "submitStrategy": exports.SubmitStrategySchema,
-    "tenantId": exports.TenantIdSchema,
-    "topic": zod_1.z.string()
+const ProcessingStrategySchemaImpl = zod_1.z.object({
+    "failurePercentage": zod_1.z.number().optional(),
+    "maxPauseBetweenRetries": zod_1.z.number().optional(),
+    "pauseBetweenRetries": zod_1.z.number().optional(),
+    "retries": zod_1.z.number().optional(),
+    "type": zod_1.z.enum(["RETRY_ALL", "RETRY_FAILED", "RETRY_FAILED_AND_TIMED_OUT", "RETRY_TIMED_OUT", "SKIP_ALL_FAILURES", "SKIP_ALL_FAILURES_AND_TIMED_OUT"]).optional()
 });
-exports.QueueIdSchemaSchema = zod_1.z.object({
+const ProtoTransportPayloadConfigurationSchemaImpl = zod_1.z.object({
+    "deviceAttributesProtoSchema": zod_1.z.string().optional(),
+    "deviceRpcRequestProtoSchema": zod_1.z.string().optional(),
+    "deviceRpcResponseProtoSchema": zod_1.z.string().optional(),
+    "deviceTelemetryProtoSchema": zod_1.z.string().optional(),
+    "enableCompatibilityWithJsonPayloadFormat": zod_1.z.boolean().optional(),
+    "useJsonPayloadFormatForDefaultDownlinkTopics": zod_1.z.boolean().optional()
+});
+const QueueSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "consumerPerPartition": zod_1.z.boolean().optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "id": exports.QueueIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "packProcessingTimeout": zod_1.z.number().optional(),
+    "partitions": zod_1.z.number().optional(),
+    "pollInterval": zod_1.z.number().optional(),
+    "processingStrategy": exports.ProcessingStrategySchema.optional(),
+    "submitStrategy": exports.SubmitStrategySchema.optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "topic": zod_1.z.string().optional()
+});
+const QueueIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["QUEUE"])
 });
-exports.RPKLwM2MBootstrapServerCredentialSchemaSchema = zod_1.z.object({
-    "shortServerId": zod_1.z.number(),
-    "bootstrapServerIs": zod_1.z.boolean(),
-    "host": zod_1.z.string(),
-    "port": zod_1.z.number(),
-    "clientHoldOffTime": zod_1.z.number(),
-    "serverPublicKey": zod_1.z.string(),
-    "serverCertificate": zod_1.z.string(),
-    "bootstrapServerAccountTimeout": zod_1.z.number(),
-    "lifetime": zod_1.z.number(),
-    "defaultMinPeriod": zod_1.z.number(),
-    "notifIfDisabled": zod_1.z.boolean(),
-    "binding": zod_1.z.string()
+const RPKLwM2MBootstrapServerCredentialSchemaImpl = zod_1.z.object({
+    "shortServerId": zod_1.z.number().optional(),
+    "bootstrapServerIs": zod_1.z.boolean().optional(),
+    "host": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "clientHoldOffTime": zod_1.z.number().optional(),
+    "serverPublicKey": zod_1.z.string().optional(),
+    "serverCertificate": zod_1.z.string().optional(),
+    "bootstrapServerAccountTimeout": zod_1.z.number().optional(),
+    "lifetime": zod_1.z.number().optional(),
+    "defaultMinPeriod": zod_1.z.number().optional(),
+    "notifIfDisabled": zod_1.z.boolean().optional(),
+    "binding": zod_1.z.string().optional()
 });
-exports.RateLimitsNotificationRuleTriggerConfigSchemaSchema = zod_1.z.object({
-    "apis": zod_1.z.array(zod_1.z.enum(["CASSANDRA_QUERIES", "ENTITY_EXPORT", "ENTITY_IMPORT", "INTEGRATION_MSGS_PER_DEVICE", "INTEGRATION_MSGS_PER_TENANT", "NOTIFICATION_REQUESTS", "NOTIFICATION_REQUESTS_PER_RULE", "PASSWORD_RESET", "REPORTS", "REST_REQUESTS_PER_CUSTOMER", "REST_REQUESTS_PER_TENANT", "TRANSPORT_MESSAGES_PER_DEVICE", "TRANSPORT_MESSAGES_PER_TENANT", "TWO_FA_VERIFICATION_CODE_CHECK", "TWO_FA_VERIFICATION_CODE_SEND", "WS_UPDATES_PER_SESSION"])),
-    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"])
+const RateLimitsNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "apis": zod_1.z.array(zod_1.z.enum(["CASSANDRA_QUERIES", "ENTITY_EXPORT", "ENTITY_IMPORT", "INTEGRATION_MSGS_PER_DEVICE", "INTEGRATION_MSGS_PER_TENANT", "NOTIFICATION_REQUESTS", "NOTIFICATION_REQUESTS_PER_RULE", "PASSWORD_RESET", "REPORTS", "REST_REQUESTS_PER_CUSTOMER", "REST_REQUESTS_PER_TENANT", "TRANSPORT_MESSAGES_PER_DEVICE", "TRANSPORT_MESSAGES_PER_TENANT", "TWO_FA_VERIFICATION_CODE_CHECK", "TWO_FA_VERIFICATION_CODE_SEND", "WS_UPDATES_PER_SESSION"])).optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.RawDataEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RelationEntityTypeFilterSchemaSchema = zod_1.z.object({
-    "relationType": zod_1.z.string(),
-    "entityTypes": zod_1.z.array(zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]))
+const RawDataEventFilterSchemaImpl = zod_1.z.object({
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "uuid": zod_1.z.string().optional(),
+    "messageType": zod_1.z.string().optional(),
+    "message": zod_1.z.string().optional()
 });
-exports.RelationsQueryFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RelationsSearchParametersSchemaSchema = zod_1.z.object({
-    "rootId": zod_1.z.string(),
-    "rootType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]),
-    "direction": zod_1.z.enum(["FROM", "TO"]),
-    "relationTypeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]),
-    "maxLevel": zod_1.z.number(),
-    "fetchLastLevelOnly": zod_1.z.boolean()
+const RelationEntityTypeFilterSchemaImpl = zod_1.z.object({
+    "relationType": zod_1.z.string().optional(),
+    "entityTypes": zod_1.z.array(zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"])).optional()
 });
-exports.RepeatingAlarmConditionSpecSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ReportConfigSchemaSchema = zod_1.z.object({
-    "baseUrl": zod_1.z.string(),
-    "dashboardId": zod_1.z.string(),
-    "namePattern": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "timewindow": exports.JsonNodeSchema,
-    "timezone": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "useCurrentUserCredentials": zod_1.z.boolean(),
-    "useDashboardTimewindow": zod_1.z.boolean(),
-    "userId": zod_1.z.string()
+const RelationsQueryFilterSchemaImpl = zod_1.z.object({
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional(),
+    "filters": zod_1.z.array(exports.RelationEntityTypeFilterSchema).optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "multiRoot": zod_1.z.boolean().optional(),
+    "multiRootEntitiesType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "multiRootEntityIds": zod_1.z.array(zod_1.z.string()).optional(),
+    "rootEntity": exports.EntityIdSchema.optional()
 });
-exports.RepositorySettingsSchemaSchema = zod_1.z.object({
-    "authMethod": zod_1.z.enum(["PRIVATE_KEY", "USERNAME_PASSWORD"]),
-    "defaultBranch": zod_1.z.string(),
-    "password": zod_1.z.string(),
-    "privateKey": zod_1.z.string(),
-    "privateKeyFileName": zod_1.z.string(),
-    "privateKeyPassword": zod_1.z.string(),
-    "readOnly": zod_1.z.boolean(),
-    "repositoryUri": zod_1.z.string(),
-    "showMergeCommits": zod_1.z.boolean(),
-    "username": zod_1.z.string()
+const RelationsSearchParametersSchemaImpl = zod_1.z.object({
+    "rootId": zod_1.z.string().optional(),
+    "rootType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "direction": zod_1.z.enum(["FROM", "TO"]).optional(),
+    "relationTypeGroup": zod_1.z.enum(["COMMON", "DASHBOARD", "EDGE", "EDGE_AUTO_ASSIGN_RULE_CHAIN", "FROM_ENTITY_GROUP", "RULE_CHAIN", "RULE_NODE"]).optional(),
+    "maxLevel": zod_1.z.number().optional(),
+    "fetchLastLevelOnly": zod_1.z.boolean().optional()
 });
-exports.RepositorySettingsInfoSchemaSchema = zod_1.z.object({
-    "configured": zod_1.z.boolean(),
-    "readOnly": zod_1.z.boolean()
+const RepeatingAlarmConditionSpecSchemaImpl = zod_1.z.object({
+    "predicate": exports.FilterPredicateValue_Of_intSchema.optional()
 });
-exports.ResetPasswordEmailRequestSchemaSchema = zod_1.z.object({
-    "email": zod_1.z.string()
+const ReportConfigSchemaImpl = zod_1.z.object({
+    "baseUrl": zod_1.z.string().optional(),
+    "dashboardId": zod_1.z.string().optional(),
+    "namePattern": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "timewindow": exports.JsonNodeSchema.optional(),
+    "timezone": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "useCurrentUserCredentials": zod_1.z.boolean().optional(),
+    "useDashboardTimewindow": zod_1.z.boolean().optional(),
+    "userId": zod_1.z.string().optional()
 });
-exports.ResetPasswordRequestSchemaSchema = zod_1.z.object({
-    "resetToken": zod_1.z.string(),
-    "password": zod_1.z.string()
+const RepositorySettingsSchemaImpl = zod_1.z.object({
+    "authMethod": zod_1.z.enum(["PRIVATE_KEY", "USERNAME_PASSWORD"]).optional(),
+    "defaultBranch": zod_1.z.string().optional(),
+    "password": zod_1.z.string().optional(),
+    "privateKey": zod_1.z.string().optional(),
+    "privateKeyFileName": zod_1.z.string().optional(),
+    "privateKeyPassword": zod_1.z.string().optional(),
+    "readOnly": zod_1.z.boolean().optional(),
+    "repositoryUri": zod_1.z.string().optional(),
+    "showMergeCommits": zod_1.z.boolean().optional(),
+    "username": zod_1.z.string().optional()
 });
-exports.ResourceSchemaSchema = zod_1.z.object({
-    "description": zod_1.z.string(),
-    "file": zod_1.z.string(),
-    "filename": zod_1.z.string(),
-    "inputStream": exports.InputStreamSchema,
-    "open": zod_1.z.boolean(),
-    "readable": zod_1.z.boolean(),
-    "uri": zod_1.z.string(),
-    "url": zod_1.z.string()
+const RepositorySettingsInfoSchemaImpl = zod_1.z.object({
+    "configured": zod_1.z.boolean().optional(),
+    "readOnly": zod_1.z.boolean().optional()
 });
-exports.ResponseEntitySchemaSchema = zod_1.z.object({
-    "body": zod_1.z.object({}),
-    "statusCode": zod_1.z.enum(["ACCEPTED", "ALREADY_REPORTED", "BAD_GATEWAY", "BAD_REQUEST", "BANDWIDTH_LIMIT_EXCEEDED", "CHECKPOINT", "CONFLICT", "CONTINUE", "CREATED", "DESTINATION_LOCKED", "EXPECTATION_FAILED", "FAILED_DEPENDENCY", "FORBIDDEN", "FOUND", "GATEWAY_TIMEOUT", "GONE", "HTTP_VERSION_NOT_SUPPORTED", "IM_USED", "INSUFFICIENT_SPACE_ON_RESOURCE", "INSUFFICIENT_STORAGE", "INTERNAL_SERVER_ERROR", "I_AM_A_TEAPOT", "LENGTH_REQUIRED", "LOCKED", "LOOP_DETECTED", "METHOD_FAILURE", "METHOD_NOT_ALLOWED", "MOVED_PERMANENTLY", "MOVED_TEMPORARILY", "MULTIPLE_CHOICES", "MULTI_STATUS", "NETWORK_AUTHENTICATION_REQUIRED", "NON_AUTHORITATIVE_INFORMATION", "NOT_ACCEPTABLE", "NOT_EXTENDED", "NOT_FOUND", "NOT_IMPLEMENTED", "NOT_MODIFIED", "NO_CONTENT", "OK", "PARTIAL_CONTENT", "PAYLOAD_TOO_LARGE", "PAYMENT_REQUIRED", "PERMANENT_REDIRECT", "PRECONDITION_FAILED", "PRECONDITION_REQUIRED", "PROCESSING", "PROXY_AUTHENTICATION_REQUIRED", "REQUESTED_RANGE_NOT_SATISFIABLE", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_HEADER_FIELDS_TOO_LARGE", "REQUEST_TIMEOUT", "REQUEST_URI_TOO_LONG", "RESET_CONTENT", "SEE_OTHER", "SERVICE_UNAVAILABLE", "SWITCHING_PROTOCOLS", "TEMPORARY_REDIRECT", "TOO_EARLY", "TOO_MANY_REQUESTS", "UNAUTHORIZED", "UNAVAILABLE_FOR_LEGAL_REASONS", "UNPROCESSABLE_ENTITY", "UNSUPPORTED_MEDIA_TYPE", "UPGRADE_REQUIRED", "URI_TOO_LONG", "USE_PROXY", "VARIANT_ALSO_NEGOTIATES"]),
-    "statusCodeValue": zod_1.z.number()
+const ResetPasswordEmailRequestSchemaImpl = zod_1.z.object({
+    "email": zod_1.z.string().optional()
 });
-exports.RoleSchemaSchema = zod_1.z.object({
-    "id": exports.RoleIdSchema,
-    "createdTime": zod_1.z.number(),
+const ResetPasswordRequestSchemaImpl = zod_1.z.object({
+    "resetToken": zod_1.z.string().optional(),
+    "password": zod_1.z.string().optional()
+});
+const ResourceSchemaImpl = zod_1.z.object({
+    "description": zod_1.z.string().optional(),
+    "file": zod_1.z.string().optional(),
+    "filename": zod_1.z.string().optional(),
+    "inputStream": exports.InputStreamSchema.optional(),
+    "open": zod_1.z.boolean().optional(),
+    "readable": zod_1.z.boolean().optional(),
+    "uri": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional()
+});
+const ResponseEntitySchemaImpl = zod_1.z.object({
+    "body": zod_1.z.object({}).optional(),
+    "statusCode": zod_1.z.enum(["ACCEPTED", "ALREADY_REPORTED", "BAD_GATEWAY", "BAD_REQUEST", "BANDWIDTH_LIMIT_EXCEEDED", "CHECKPOINT", "CONFLICT", "CONTINUE", "CREATED", "DESTINATION_LOCKED", "EXPECTATION_FAILED", "FAILED_DEPENDENCY", "FORBIDDEN", "FOUND", "GATEWAY_TIMEOUT", "GONE", "HTTP_VERSION_NOT_SUPPORTED", "IM_USED", "INSUFFICIENT_SPACE_ON_RESOURCE", "INSUFFICIENT_STORAGE", "INTERNAL_SERVER_ERROR", "I_AM_A_TEAPOT", "LENGTH_REQUIRED", "LOCKED", "LOOP_DETECTED", "METHOD_FAILURE", "METHOD_NOT_ALLOWED", "MOVED_PERMANENTLY", "MOVED_TEMPORARILY", "MULTIPLE_CHOICES", "MULTI_STATUS", "NETWORK_AUTHENTICATION_REQUIRED", "NON_AUTHORITATIVE_INFORMATION", "NOT_ACCEPTABLE", "NOT_EXTENDED", "NOT_FOUND", "NOT_IMPLEMENTED", "NOT_MODIFIED", "NO_CONTENT", "OK", "PARTIAL_CONTENT", "PAYLOAD_TOO_LARGE", "PAYMENT_REQUIRED", "PERMANENT_REDIRECT", "PRECONDITION_FAILED", "PRECONDITION_REQUIRED", "PROCESSING", "PROXY_AUTHENTICATION_REQUIRED", "REQUESTED_RANGE_NOT_SATISFIABLE", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_HEADER_FIELDS_TOO_LARGE", "REQUEST_TIMEOUT", "REQUEST_URI_TOO_LONG", "RESET_CONTENT", "SEE_OTHER", "SERVICE_UNAVAILABLE", "SWITCHING_PROTOCOLS", "TEMPORARY_REDIRECT", "TOO_EARLY", "TOO_MANY_REQUESTS", "UNAUTHORIZED", "UNAVAILABLE_FOR_LEGAL_REASONS", "UNPROCESSABLE_ENTITY", "UNSUPPORTED_MEDIA_TYPE", "UPGRADE_REQUIRED", "URI_TOO_LONG", "USE_PROXY", "VARIANT_ALSO_NEGOTIATES"]).optional(),
+    "statusCodeValue": zod_1.z.number().optional()
+});
+const RoleSchemaImpl = zod_1.z.object({
+    "id": exports.RoleIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "ownerId": exports.EntityIdSchema,
+    "customerId": exports.CustomerIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
     "name": zod_1.z.string(),
     "type": zod_1.z.enum(["GENERIC", "GROUP"]),
-    "permissions": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema
+    "permissions": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.RoleIdSchemaSchema = zod_1.z.object({
+const RoleIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["ROLE"])
 });
-exports.RpcSchemaSchema = zod_1.z.object({
-    "id": exports.RpcIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "deviceId": exports.DeviceIdSchema,
-    "expirationTime": zod_1.z.number(),
-    "request": exports.JsonNodeSchema,
-    "response": exports.JsonNodeSchema,
-    "status": zod_1.z.enum(["DELETED", "DELIVERED", "EXPIRED", "FAILED", "QUEUED", "SENT", "SUCCESSFUL", "TIMEOUT"]),
-    "additionalInfo": exports.JsonNodeSchema
+const RpcSchemaImpl = zod_1.z.object({
+    "id": exports.RpcIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "deviceId": exports.DeviceIdSchema.optional(),
+    "expirationTime": zod_1.z.number().optional(),
+    "request": exports.JsonNodeSchema.optional(),
+    "response": exports.JsonNodeSchema.optional(),
+    "status": zod_1.z.enum(["DELETED", "DELIVERED", "EXPIRED", "FAILED", "QUEUED", "SENT", "SUCCESSFUL", "TIMEOUT"]).optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.RpcIdSchemaSchema = zod_1.z.object({
+const RpcIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["RPC"])
 });
-exports.RuleChainSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "id": exports.RuleChainIdSchema,
-    "createdTime": zod_1.z.number(),
+const RuleChainSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "id": exports.RuleChainIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "tenantId": exports.TenantIdSchema,
     "name": zod_1.z.string(),
-    "type": zod_1.z.enum(["CORE", "EDGE"]),
-    "firstRuleNodeId": exports.RuleNodeIdSchema,
-    "root": zod_1.z.boolean(),
-    "debugMode": zod_1.z.boolean(),
-    "configuration": exports.JsonNodeSchema
+    "type": zod_1.z.enum(["CORE", "EDGE"]).optional(),
+    "firstRuleNodeId": exports.RuleNodeIdSchema.optional(),
+    "root": zod_1.z.boolean().optional(),
+    "debugMode": zod_1.z.boolean().optional(),
+    "configuration": exports.JsonNodeSchema.optional()
 });
-exports.RuleChainConnectionInfoSchemaSchema = zod_1.z.object({
+const RuleChainConnectionInfoSchemaImpl = zod_1.z.object({
     "fromIndex": zod_1.z.number(),
     "targetRuleChainId": exports.RuleChainIdSchema,
     "additionalInfo": exports.JsonNodeSchema,
     "type": zod_1.z.string()
 });
-exports.RuleChainDataSchemaSchema = zod_1.z.object({
+const RuleChainDataSchemaImpl = zod_1.z.object({
     "ruleChains": zod_1.z.array(exports.RuleChainSchema),
     "metadata": zod_1.z.array(exports.RuleChainMetaDataSchema)
 });
-exports.RuleChainDebugEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RuleChainExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RuleChainIdSchemaSchema = zod_1.z.object({
+const RuleChainDebugEventFilterSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.boolean().optional(),
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "message": zod_1.z.string().optional(),
+    "errorStr": zod_1.z.string().optional()
+});
+const RuleChainExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": exports.RuleChainSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "metaData": exports.RuleChainMetaDataSchema.optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
+});
+const RuleChainIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["RULE_CHAIN"])
 });
-exports.RuleChainImportResultSchemaSchema = zod_1.z.object({
-    "error": zod_1.z.string(),
-    "ruleChainId": exports.RuleChainIdSchema,
-    "ruleChainName": zod_1.z.string(),
-    "updated": zod_1.z.boolean()
+const RuleChainImportResultSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.string().optional(),
+    "ruleChainId": exports.RuleChainIdSchema.optional(),
+    "ruleChainName": zod_1.z.string().optional(),
+    "updated": zod_1.z.boolean().optional()
 });
-exports.RuleChainMetaDataSchemaSchema = zod_1.z.object({
+const RuleChainMetaDataSchemaImpl = zod_1.z.object({
     "ruleChainId": exports.RuleChainIdSchema,
     "firstNodeIndex": zod_1.z.number(),
     "nodes": zod_1.z.array(exports.RuleNodeSchema),
     "connections": zod_1.z.array(exports.NodeConnectionInfoSchema),
     "ruleChainConnections": zod_1.z.array(exports.RuleChainConnectionInfoSchema)
 });
-exports.RuleChainOutputLabelsUsageSchemaSchema = zod_1.z.object({
+const RuleChainOutputLabelsUsageSchemaImpl = zod_1.z.object({
     "ruleChainId": exports.RuleChainIdSchema,
     "ruleNodeId": exports.RuleNodeIdSchema,
     "ruleChainName": zod_1.z.string(),
     "ruleNodeName": zod_1.z.string(),
     "labels": zod_1.z.array(zod_1.z.string())
 });
-exports.RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RuleNodeSchemaSchema = zod_1.z.object({
-    "externalId": exports.RuleNodeIdSchema,
-    "id": exports.RuleNodeIdSchema,
-    "createdTime": zod_1.z.number(),
-    "ruleChainId": exports.RuleChainIdSchema,
-    "type": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "debugMode": zod_1.z.boolean(),
-    "singletonMode": zod_1.z.boolean(),
-    "configurationVersion": zod_1.z.number(),
-    "configuration": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema
+const RuleEngineComponentLifecycleEventNotificationRuleTriggerConfigSchemaImpl = zod_1.z.object({
+    "onlyRuleChainLifecycleFailures": zod_1.z.boolean().optional(),
+    "onlyRuleNodeLifecycleFailures": zod_1.z.boolean().optional(),
+    "ruleChainEvents": zod_1.z.array(zod_1.z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+    "ruleChains": zod_1.z.array(zod_1.z.string()).optional(),
+    "ruleNodeEvents": zod_1.z.array(zod_1.z.enum(["ACTIVATED", "CREATED", "DEACTIVATED", "DELETED", "FAILED", "STARTED", "STOPPED", "SUSPENDED", "UPDATED"])).optional(),
+    "trackRuleNodeEvents": zod_1.z.boolean().optional(),
+    "triggerType": zod_1.z.enum(["ALARM", "ALARM_ASSIGNMENT", "ALARM_COMMENT", "API_USAGE_LIMIT", "DEVICE_ACTIVITY", "ENTITIES_LIMIT", "ENTITY_ACTION", "INTEGRATION_LIFECYCLE_EVENT", "NEW_PLATFORM_VERSION", "RATE_LIMITS", "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"]).optional()
 });
-exports.RuleNodeDebugEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.RuleNodeIdSchemaSchema = zod_1.z.object({
+const RuleNodeSchemaImpl = zod_1.z.object({
+    "externalId": exports.RuleNodeIdSchema.optional(),
+    "id": exports.RuleNodeIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "ruleChainId": exports.RuleChainIdSchema.optional(),
+    "type": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "debugMode": zod_1.z.boolean().optional(),
+    "singletonMode": zod_1.z.boolean().optional(),
+    "configurationVersion": zod_1.z.number().optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
+});
+const RuleNodeDebugEventFilterSchemaImpl = zod_1.z.object({
+    "error": zod_1.z.boolean().optional(),
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "msgDirectionType": zod_1.z.enum(["IN", "OUT"]).optional(),
+    "entityId": zod_1.z.string().optional(),
+    "errorStr": zod_1.z.string().optional(),
+    "entityType": zod_1.z.enum(["DEVICE"]).optional(),
+    "msgId": zod_1.z.string().optional(),
+    "msgType": zod_1.z.string().optional(),
+    "relationType": zod_1.z.string().optional(),
+    "dataSearch": zod_1.z.string().optional(),
+    "metadataSearch": zod_1.z.string().optional()
+});
+const RuleNodeIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["RULE_NODE"])
 });
-exports.SaveDeviceWithCredentialsRequestSchemaSchema = zod_1.z.object({
+const SaveDeviceWithCredentialsRequestSchemaImpl = zod_1.z.object({
     "device": exports.DeviceSchema,
     "credentials": exports.DeviceCredentialsSchema
 });
-exports.SaveOtaPackageInfoRequestSchemaSchema = zod_1.z.object({
-    "id": exports.OtaPackageIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "deviceProfileId": exports.DeviceProfileIdSchema,
-    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]),
-    "title": zod_1.z.string(),
-    "version": zod_1.z.string(),
-    "tag": zod_1.z.string(),
-    "url": zod_1.z.string(),
-    "hasData": zod_1.z.boolean(),
-    "fileName": zod_1.z.string(),
-    "contentType": zod_1.z.string(),
-    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]),
-    "checksum": zod_1.z.string(),
-    "dataSize": zod_1.z.number(),
-    "usesUrl": zod_1.z.boolean(),
-    "additionalInfo": exports.JsonNodeSchema
+const SaveOtaPackageInfoRequestSchemaImpl = zod_1.z.object({
+    "id": exports.OtaPackageIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "deviceProfileId": exports.DeviceProfileIdSchema.optional(),
+    "type": zod_1.z.enum(["FIRMWARE", "SOFTWARE"]).optional(),
+    "title": zod_1.z.string().optional(),
+    "version": zod_1.z.string().optional(),
+    "tag": zod_1.z.string().optional(),
+    "url": zod_1.z.string().optional(),
+    "hasData": zod_1.z.boolean().optional(),
+    "fileName": zod_1.z.string().optional(),
+    "contentType": zod_1.z.string().optional(),
+    "checksumAlgorithm": zod_1.z.enum(["CRC32", "MD5", "MURMUR3_128", "MURMUR3_32", "SHA256", "SHA384", "SHA512"]).optional(),
+    "checksum": zod_1.z.string().optional(),
+    "dataSize": zod_1.z.number().optional(),
+    "usesUrl": zod_1.z.boolean().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.SchedulerEventSchemaSchema = zod_1.z.object({
-    "id": exports.SchedulerEventIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "originatorId": exports.EntityIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "schedule": exports.JsonNodeSchema,
-    "configuration": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema
+const SchedulerEventSchemaImpl = zod_1.z.object({
+    "id": exports.SchedulerEventIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "originatorId": exports.EntityIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "schedule": exports.JsonNodeSchema.optional(),
+    "configuration": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.SchedulerEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SchedulerEventIdSchemaSchema = zod_1.z.object({
+const SchedulerEventFilterSchemaImpl = zod_1.z.object({
+    "eventType": zod_1.z.string().optional(),
+    "originator": exports.EntityIdSchema.optional()
+});
+const SchedulerEventIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["SCHEDULER_EVENT"])
 });
-exports.SchedulerEventInfoSchemaSchema = zod_1.z.object({
-    "id": exports.SchedulerEventIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "originatorId": exports.EntityIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "schedule": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema
+const SchedulerEventInfoSchemaImpl = zod_1.z.object({
+    "id": exports.SchedulerEventIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "originatorId": exports.EntityIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "schedule": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.SchedulerEventWithCustomerInfoSchemaSchema = zod_1.z.object({
-    "id": exports.SchedulerEventIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "originatorId": exports.EntityIdSchema,
-    "ownerId": exports.EntityIdSchema,
-    "name": zod_1.z.string(),
-    "type": zod_1.z.string(),
-    "schedule": exports.JsonNodeSchema,
-    "additionalInfo": exports.JsonNodeSchema,
-    "customerTitle": zod_1.z.string(),
-    "customerIsPublic": zod_1.z.object({})
+const SchedulerEventWithCustomerInfoSchemaImpl = zod_1.z.object({
+    "id": exports.SchedulerEventIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "originatorId": exports.EntityIdSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "name": zod_1.z.string().optional(),
+    "type": zod_1.z.string().optional(),
+    "schedule": exports.JsonNodeSchema.optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "customerTitle": zod_1.z.string().optional(),
+    "customerIsPublic": zod_1.z.object({}).optional()
 });
-exports.SecuritySettingsSchemaSchema = zod_1.z.object({
-    "passwordPolicy": exports.UserPasswordPolicySchema,
-    "maxFailedLoginAttempts": zod_1.z.number(),
-    "userLockoutNotificationEmail": zod_1.z.string()
+const SecuritySettingsSchemaImpl = zod_1.z.object({
+    "passwordPolicy": exports.UserPasswordPolicySchema.optional(),
+    "maxFailedLoginAttempts": zod_1.z.number().optional(),
+    "userLockoutNotificationEmail": zod_1.z.string().optional()
 });
-exports.SelfRegistrationParamsSchemaSchema = zod_1.z.object({
-    "adminSettingsId": zod_1.z.string(),
-    "signUpTextMessage": zod_1.z.string(),
-    "captchaSiteKey": zod_1.z.string(),
-    "captchaVersion": zod_1.z.string(),
-    "captchaAction": zod_1.z.string(),
-    "showPrivacyPolicy": zod_1.z.boolean(),
-    "showTermsOfUse": zod_1.z.boolean(),
-    "domainName": zod_1.z.string(),
-    "captchaSecretKey": zod_1.z.string(),
-    "privacyPolicy": zod_1.z.string(),
-    "termsOfUse": zod_1.z.string(),
-    "notificationEmail": zod_1.z.string(),
-    "defaultDashboardId": zod_1.z.string(),
-    "defaultDashboardFullscreen": zod_1.z.boolean(),
-    "permissions": zod_1.z.array(exports.GroupPermissionSchema),
-    "pkgName": zod_1.z.string(),
-    "appSecret": zod_1.z.string(),
-    "appScheme": zod_1.z.string(),
-    "appHost": zod_1.z.string()
+const SelfRegistrationParamsSchemaImpl = zod_1.z.object({
+    "adminSettingsId": zod_1.z.string().optional(),
+    "signUpTextMessage": zod_1.z.string().optional(),
+    "captchaSiteKey": zod_1.z.string().optional(),
+    "captchaVersion": zod_1.z.string().optional(),
+    "captchaAction": zod_1.z.string().optional(),
+    "showPrivacyPolicy": zod_1.z.boolean().optional(),
+    "showTermsOfUse": zod_1.z.boolean().optional(),
+    "domainName": zod_1.z.string().optional(),
+    "captchaSecretKey": zod_1.z.string().optional(),
+    "privacyPolicy": zod_1.z.string().optional(),
+    "termsOfUse": zod_1.z.string().optional(),
+    "notificationEmail": zod_1.z.string().optional(),
+    "defaultDashboardId": zod_1.z.string().optional(),
+    "defaultDashboardFullscreen": zod_1.z.boolean().optional(),
+    "permissions": zod_1.z.array(exports.GroupPermissionSchema).optional(),
+    "pkgName": zod_1.z.string().optional(),
+    "appSecret": zod_1.z.string().optional(),
+    "appScheme": zod_1.z.string().optional(),
+    "appHost": zod_1.z.string().optional()
 });
-exports.ShareGroupRequestSchemaSchema = zod_1.z.object({
+const ShareGroupRequestSchemaImpl = zod_1.z.object({
     "allUserGroup": zod_1.z.boolean(),
-    "ownerId": exports.EntityIdSchema,
-    "userGroupId": exports.EntityGroupIdSchema,
-    "readElseWrite": zod_1.z.boolean(),
-    "roleIds": zod_1.z.array(exports.RoleIdSchema)
+    "ownerId": exports.EntityIdSchema.optional(),
+    "userGroupId": exports.EntityGroupIdSchema.optional(),
+    "readElseWrite": zod_1.z.boolean().optional(),
+    "roleIds": zod_1.z.array(exports.RoleIdSchema).optional()
 });
-exports.SharedAttributesSettingSnmpCommunicationConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.ShortCustomerInfoSchemaSchema = zod_1.z.object({
-    "public": zod_1.z.boolean(),
-    "customerId": exports.CustomerIdSchema,
-    "title": zod_1.z.string()
+const SharedAttributesSettingSnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "mappings": zod_1.z.array(exports.SnmpMappingSchema).optional(),
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
-exports.ShortEntityViewSchemaSchema = zod_1.z.object({
+const ShortCustomerInfoSchemaImpl = zod_1.z.object({
+    "public": zod_1.z.boolean().optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "title": zod_1.z.string().optional()
+});
+const ShortEntityViewSchemaImpl = zod_1.z.object({
     "id": exports.EntityIdSchema,
     "name": zod_1.z.string()
 });
-exports.SignUpRequestSchemaSchema = zod_1.z.object({
-    "firstName": zod_1.z.string(),
-    "lastName": zod_1.z.string(),
-    "email": zod_1.z.string(),
-    "password": zod_1.z.string(),
-    "recaptchaResponse": zod_1.z.string(),
-    "pkgName": zod_1.z.string(),
-    "appSecret": zod_1.z.string()
+const SignUpRequestSchemaImpl = zod_1.z.object({
+    "firstName": zod_1.z.string().optional(),
+    "lastName": zod_1.z.string().optional(),
+    "email": zod_1.z.string().optional(),
+    "password": zod_1.z.string().optional(),
+    "recaptchaResponse": zod_1.z.string().optional(),
+    "pkgName": zod_1.z.string().optional(),
+    "appSecret": zod_1.z.string().optional()
 });
-exports.SignUpSelfRegistrationParamsSchemaSchema = zod_1.z.object({
-    "signUpTextMessage": zod_1.z.string(),
-    "captchaSiteKey": zod_1.z.string(),
-    "captchaVersion": zod_1.z.string(),
-    "captchaAction": zod_1.z.string(),
-    "showPrivacyPolicy": zod_1.z.boolean(),
-    "showTermsOfUse": zod_1.z.boolean()
+const SignUpSelfRegistrationParamsSchemaImpl = zod_1.z.object({
+    "signUpTextMessage": zod_1.z.string().optional(),
+    "captchaSiteKey": zod_1.z.string().optional(),
+    "captchaVersion": zod_1.z.string().optional(),
+    "captchaAction": zod_1.z.string().optional(),
+    "showPrivacyPolicy": zod_1.z.boolean().optional(),
+    "showTermsOfUse": zod_1.z.boolean().optional()
 });
-exports.SimpleAlarmConditionSpecSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SingleEntityFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SingleEntityVersionCreateRequestSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SingleEntityVersionLoadRequestSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SlackConversationSchemaSchema = zod_1.z.object({
-    "email": zod_1.z.string(),
-    "id": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "title": zod_1.z.string(),
+const SimpleAlarmConditionSpecSchemaImpl = zod_1.z.any();
+const SingleEntityFilterSchemaImpl = zod_1.z.object({
+    "singleEntity": exports.EntityIdSchema.optional()
+});
+const SingleEntityVersionCreateRequestSchemaImpl = zod_1.z.object({
+    "branch": zod_1.z.string().optional(),
+    "config": exports.VersionCreateConfigSchema.optional(),
+    "entityId": exports.EntityIdSchema.optional(),
+    "type": zod_1.z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+    "versionName": zod_1.z.string().optional()
+});
+const SingleEntityVersionLoadRequestSchemaImpl = zod_1.z.object({
+    "config": exports.VersionLoadConfigSchema.optional(),
+    "externalEntityId": exports.EntityIdSchema.optional(),
+    "internalEntityId": exports.EntityIdSchema.optional(),
+    "type": zod_1.z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+    "versionId": zod_1.z.string().optional()
+});
+const SlackConversationSchemaImpl = zod_1.z.object({
+    "email": zod_1.z.string().optional(),
+    "id": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
     "type": zod_1.z.enum(["DIRECT", "PRIVATE_CHANNEL", "PUBLIC_CHANNEL"]),
-    "wholeName": zod_1.z.string()
+    "wholeName": zod_1.z.string().optional()
 });
-exports.SlackDeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.object({
-    "body": zod_1.z.string(),
-    "enabled": zod_1.z.boolean()
+const SlackDeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "body": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional()
 });
-exports.SlackNotificationDeliveryMethodConfigSchemaSchema = zod_1.z.object({
-    "botToken": zod_1.z.string()
+const SlackNotificationDeliveryMethodConfigSchemaImpl = zod_1.z.object({
+    "botToken": zod_1.z.string().optional()
 });
-exports.SlackNotificationTargetConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SmppSmsProviderConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SmsDeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.object({
-    "body": zod_1.z.string(),
-    "enabled": zod_1.z.boolean()
+const SlackNotificationTargetConfigSchemaImpl = zod_1.z.object({
+    "conversation": exports.SlackConversationSchema.optional(),
+    "conversationType": zod_1.z.enum(["DIRECT", "PRIVATE_CHANNEL", "PUBLIC_CHANNEL"]).optional(),
+    "description": zod_1.z.string().optional()
 });
-exports.SmsProviderConfigurationSchemaSchema = zod_1.z.object({});
-exports.SmsTwoFaAccountConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SmsTwoFaProviderConfigSchemaSchema = zod_1.z.object({
+const SmppSmsProviderConfigurationSchemaImpl = zod_1.z.object({
+    "addressRange": zod_1.z.string().optional(),
+    "bindType": zod_1.z.enum(["RX", "TRX", "TX"]).optional(),
+    "codingScheme": zod_1.z.string().optional(),
+    "destinationNpi": zod_1.z.string().optional(),
+    "destinationTon": zod_1.z.string().optional(),
+    "host": zod_1.z.string().optional(),
+    "password": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "protocolVersion": zod_1.z.enum(["3.3", "3.4"]).optional(),
+    "serviceType": zod_1.z.string().optional(),
+    "sourceAddress": zod_1.z.string().optional(),
+    "sourceNpi": zod_1.z.string().optional(),
+    "sourceTon": zod_1.z.string().optional(),
+    "systemId": zod_1.z.string().optional(),
+    "systemType": zod_1.z.string().optional()
+});
+const SmsDeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "body": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional()
+});
+const SmsProviderConfigurationSchemaImpl = zod_1.z.object({});
+const SmsTwoFaAccountConfigSchemaImpl = zod_1.z.object({
+    "phoneNumber": zod_1.z.string().optional(),
+    "useByDefault": zod_1.z.boolean().optional()
+});
+const SmsTwoFaProviderConfigSchemaImpl = zod_1.z.object({
     "smsVerificationMessageTemplate": zod_1.z.string(),
-    "verificationCodeLifetime": zod_1.z.number()
+    "verificationCodeLifetime": zod_1.z.number().optional()
 });
-exports.SnmpCommunicationConfigSchemaSchema = zod_1.z.object({
-    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const SnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
-exports.SnmpDeviceProfileTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SnmpDeviceTransportConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SnmpMappingSchemaSchema = zod_1.z.object({
-    "dataType": zod_1.z.enum(["BOOLEAN", "DOUBLE", "JSON", "LONG", "STRING"]),
-    "key": zod_1.z.string(),
-    "oid": zod_1.z.string()
+const SnmpDeviceProfileTransportConfigurationSchemaImpl = zod_1.z.object({
+    "communicationConfigs": zod_1.z.array(exports.SnmpCommunicationConfigSchema).optional(),
+    "retries": zod_1.z.number().optional(),
+    "timeoutMs": zod_1.z.number().optional()
 });
-exports.SolutionInstallResponseSchemaSchema = zod_1.z.object({
-    "dashboardGroupId": exports.EntityGroupIdSchema,
-    "dashboardId": exports.DashboardIdSchema,
-    "publicId": exports.CustomerIdSchema,
-    "mainDashboardPublic": zod_1.z.boolean(),
-    "success": zod_1.z.boolean(),
-    "details": zod_1.z.string()
+const SnmpDeviceTransportConfigurationSchemaImpl = zod_1.z.object({
+    "authenticationPassphrase": zod_1.z.string().optional(),
+    "authenticationProtocol": zod_1.z.enum(["MD5", "SHA_1", "SHA_224", "SHA_256", "SHA_384", "SHA_512"]).optional(),
+    "community": zod_1.z.string().optional(),
+    "contextName": zod_1.z.string().optional(),
+    "engineId": zod_1.z.string().optional(),
+    "host": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "privacyPassphrase": zod_1.z.string().optional(),
+    "privacyProtocol": zod_1.z.enum(["AES_128", "AES_192", "AES_256", "DES"]).optional(),
+    "protocolVersion": zod_1.z.enum(["V1", "V2C", "V3"]).optional(),
+    "securityName": zod_1.z.string().optional(),
+    "username": zod_1.z.string().optional()
 });
-exports.SpecificTimeScheduleSchemaSchema = zod_1.z.object({
-    "daysOfWeek": zod_1.z.array(zod_1.z.number()),
-    "dynamicValue": exports.DynamicValue_Of_stringSchema,
-    "endsOn": zod_1.z.number(),
-    "startsOn": zod_1.z.number(),
-    "timezone": zod_1.z.string(),
-    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"])
+const SnmpMappingSchemaImpl = zod_1.z.object({
+    "dataType": zod_1.z.enum(["BOOLEAN", "DOUBLE", "JSON", "LONG", "STRING"]).optional(),
+    "key": zod_1.z.string().optional(),
+    "oid": zod_1.z.string().optional()
 });
-exports.StarredDashboardInfoSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.string(),
-    "title": zod_1.z.string(),
-    "starredAt": zod_1.z.number()
+const SolutionInstallResponseSchemaImpl = zod_1.z.object({
+    "dashboardGroupId": exports.EntityGroupIdSchema.optional(),
+    "dashboardId": exports.DashboardIdSchema.optional(),
+    "publicId": exports.CustomerIdSchema.optional(),
+    "mainDashboardPublic": zod_1.z.boolean().optional(),
+    "success": zod_1.z.boolean().optional(),
+    "details": zod_1.z.string().optional()
 });
-exports.StateEntityOwnerFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.StatisticsEventFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.StringFilterPredicateSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.SubmitStrategySchemaSchema = zod_1.z.object({
-    "batchSize": zod_1.z.number(),
-    "type": zod_1.z.enum(["BATCH", "BURST", "SEQUENTIAL", "SEQUENTIAL_BY_ORIGINATOR", "SEQUENTIAL_BY_TENANT"])
+const SpecificTimeScheduleSchemaImpl = zod_1.z.object({
+    "daysOfWeek": zod_1.z.array(zod_1.z.number()).optional(),
+    "dynamicValue": exports.DynamicValue_Of_stringSchema.optional(),
+    "endsOn": zod_1.z.number().optional(),
+    "startsOn": zod_1.z.number().optional(),
+    "timezone": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["ANY_TIME", "CUSTOM", "SPECIFIC_TIME"]).optional()
 });
-exports.SystemAdministratorsFilterSchemaSchema = zod_1.z.object({});
-exports.SystemInfoSchemaSchema = zod_1.z.object({
-    "monolith": zod_1.z.boolean(),
-    "systemData": zod_1.z.array(exports.SystemInfoDataSchema)
+const StarredDashboardInfoSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "starredAt": zod_1.z.number().optional()
 });
-exports.SystemInfoDataSchemaSchema = zod_1.z.object({
-    "serviceId": zod_1.z.string(),
-    "serviceType": zod_1.z.string(),
-    "cpuUsage": zod_1.z.number(),
-    "cpuCount": zod_1.z.number(),
-    "memoryUsage": zod_1.z.number(),
-    "totalMemory": zod_1.z.number(),
-    "discUsage": zod_1.z.number(),
-    "totalDiscSpace": zod_1.z.number()
+const StateEntityOwnerFilterSchemaImpl = zod_1.z.object({
+    "singleEntity": exports.EntityIdSchema.optional()
 });
-exports.TbImageDeleteResultSchemaSchema = zod_1.z.object({
-    "references": zod_1.z.record(zod_1.z.string(), zod_1.z.array(exports.HasId_Of_objectSchema)),
-    "success": zod_1.z.boolean(),
-    "whiteLabelingList": zod_1.z.array(exports.WhiteLabelingSchema)
+const StatisticsEventFilterSchemaImpl = zod_1.z.object({
+    "notEmpty": zod_1.z.boolean().optional(),
+    "eventType": zod_1.z.enum(["DEBUG_CONVERTER", "DEBUG_INTEGRATION", "DEBUG_RULE_CHAIN", "DEBUG_RULE_NODE", "ERROR", "LC_EVENT", "RAW_DATA", "STATS"]).optional(),
+    "server": zod_1.z.string().optional(),
+    "minMessagesProcessed": zod_1.z.number().optional(),
+    "maxMessagesProcessed": zod_1.z.number().optional(),
+    "minErrorsOccurred": zod_1.z.number().optional(),
+    "maxErrorsOccurred": zod_1.z.number().optional()
 });
-exports.TbResourceSchemaSchema = zod_1.z.object({
-    "descriptor": exports.JsonNodeSchema,
-    "link": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "preview": zod_1.z.string(),
-    "public": zod_1.z.boolean(),
-    "publicLink": zod_1.z.string(),
-    "publicResourceKey": zod_1.z.string(),
-    "id": exports.TbResourceIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "title": zod_1.z.string(),
-    "resourceType": zod_1.z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]),
-    "resourceKey": zod_1.z.string(),
-    "etag": zod_1.z.string(),
-    "fileName": zod_1.z.string(),
-    "data": zod_1.z.string()
+const StringFilterPredicateSchemaImpl = zod_1.z.object({
+    "ignoreCase": zod_1.z.boolean().optional(),
+    "operation": zod_1.z.enum(["CONTAINS", "ENDS_WITH", "EQUAL", "IN", "NOT_CONTAINS", "NOT_EQUAL", "NOT_IN", "STARTS_WITH"]).optional(),
+    "value": exports.FilterPredicateValue_Of_stringSchema.optional()
 });
-exports.TbResourceIdSchemaSchema = zod_1.z.object({
+const SubmitStrategySchemaImpl = zod_1.z.object({
+    "batchSize": zod_1.z.number().optional(),
+    "type": zod_1.z.enum(["BATCH", "BURST", "SEQUENTIAL", "SEQUENTIAL_BY_ORIGINATOR", "SEQUENTIAL_BY_TENANT"]).optional()
+});
+const SystemAdministratorsFilterSchemaImpl = zod_1.z.object({});
+const SystemInfoSchemaImpl = zod_1.z.object({
+    "monolith": zod_1.z.boolean().optional(),
+    "systemData": zod_1.z.array(exports.SystemInfoDataSchema).optional()
+});
+const SystemInfoDataSchemaImpl = zod_1.z.object({
+    "serviceId": zod_1.z.string().optional(),
+    "serviceType": zod_1.z.string().optional(),
+    "cpuUsage": zod_1.z.number().optional(),
+    "cpuCount": zod_1.z.number().optional(),
+    "memoryUsage": zod_1.z.number().optional(),
+    "totalMemory": zod_1.z.number().optional(),
+    "discUsage": zod_1.z.number().optional(),
+    "totalDiscSpace": zod_1.z.number().optional()
+});
+const TbImageDeleteResultSchemaImpl = zod_1.z.object({
+    "references": zod_1.z.object({}).optional(),
+    "success": zod_1.z.boolean().optional(),
+    "whiteLabelingList": zod_1.z.array(exports.WhiteLabelingSchema).optional()
+});
+const TbResourceSchemaImpl = zod_1.z.object({
+    "descriptor": exports.JsonNodeSchema.optional(),
+    "link": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "preview": zod_1.z.string().optional(),
+    "public": zod_1.z.boolean().optional(),
+    "publicLink": zod_1.z.string().optional(),
+    "publicResourceKey": zod_1.z.string().optional(),
+    "id": exports.TbResourceIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "title": zod_1.z.string().optional(),
+    "resourceType": zod_1.z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]).optional(),
+    "resourceKey": zod_1.z.string().optional(),
+    "etag": zod_1.z.string().optional(),
+    "fileName": zod_1.z.string().optional(),
+    "data": zod_1.z.string().optional()
+});
+const TbResourceIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["TB_RESOURCE"])
 });
-exports.TbResourceInfoSchemaSchema = zod_1.z.object({
-    "descriptor": exports.JsonNodeSchema,
-    "link": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "public": zod_1.z.boolean(),
-    "publicLink": zod_1.z.string(),
-    "publicResourceKey": zod_1.z.string(),
-    "id": exports.TbResourceIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
-    "title": zod_1.z.string(),
-    "resourceType": zod_1.z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]),
-    "resourceKey": zod_1.z.string(),
-    "etag": zod_1.z.string(),
-    "fileName": zod_1.z.string()
+const TbResourceInfoSchemaImpl = zod_1.z.object({
+    "descriptor": exports.JsonNodeSchema.optional(),
+    "link": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "public": zod_1.z.boolean().optional(),
+    "publicLink": zod_1.z.string().optional(),
+    "publicResourceKey": zod_1.z.string().optional(),
+    "id": exports.TbResourceIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
+    "title": zod_1.z.string().optional(),
+    "resourceType": zod_1.z.enum(["IMAGE", "JKS", "JS_MODULE", "LWM2M_MODEL", "PKCS_12"]).optional(),
+    "resourceKey": zod_1.z.string().optional(),
+    "etag": zod_1.z.string().optional(),
+    "fileName": zod_1.z.string().optional()
 });
-exports.TelemetryEntityViewSchemaSchema = zod_1.z.object({
+const TelemetryEntityViewSchemaImpl = zod_1.z.object({
     "timeseries": zod_1.z.array(zod_1.z.string()),
     "attributes": exports.AttributesEntityViewSchema
 });
-exports.TelemetryMappingConfigurationSchemaSchema = zod_1.z.object({
-    "attribute": zod_1.z.array(zod_1.z.string()),
-    "attributeLwm2m": zod_1.z.record(zod_1.z.string(), exports.ObjectAttributesSchema),
-    "keyName": zod_1.z.record(zod_1.z.string(), zod_1.z.string()),
-    "observe": zod_1.z.array(zod_1.z.string()),
-    "telemetry": zod_1.z.array(zod_1.z.string())
+const TelemetryMappingConfigurationSchemaImpl = zod_1.z.object({
+    "attribute": zod_1.z.array(zod_1.z.string()).optional(),
+    "attributeLwm2m": zod_1.z.object({}).optional(),
+    "keyName": zod_1.z.object({}).optional(),
+    "observe": zod_1.z.array(zod_1.z.string()).optional(),
+    "telemetry": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.TelemetryQueryingSnmpCommunicationConfigSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.TenantSchemaSchema = zod_1.z.object({
-    "id": exports.TenantIdSchema,
-    "createdTime": zod_1.z.number(),
+const TelemetryQueryingSnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "mappings": zod_1.z.array(exports.SnmpMappingSchema).optional(),
+    "queryingFrequencyMs": zod_1.z.number().optional(),
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
+});
+const TenantSchemaImpl = zod_1.z.object({
+    "id": exports.TenantIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "title": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "region": zod_1.z.string(),
-    "tenantProfileId": exports.TenantProfileIdSchema,
-    "country": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "city": zod_1.z.string(),
-    "address": zod_1.z.string(),
-    "address2": zod_1.z.string(),
-    "zip": zod_1.z.string(),
-    "phone": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
+    "region": zod_1.z.string().optional(),
+    "tenantProfileId": exports.TenantProfileIdSchema.optional(),
+    "country": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "city": zod_1.z.string().optional(),
+    "address": zod_1.z.string().optional(),
+    "address2": zod_1.z.string().optional(),
+    "zip": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
     "email": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema
+    "additionalInfo": exports.JsonNodeSchema.optional()
 });
-exports.TenantAdministratorsFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.TenantIdSchemaSchema = zod_1.z.object({
+const TenantAdministratorsFilterSchemaImpl = zod_1.z.object({
+    "tenantProfilesIds": zod_1.z.array(zod_1.z.string()).optional(),
+    "tenantsIds": zod_1.z.array(zod_1.z.string()).optional()
+});
+const TenantIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["TENANT"])
 });
-exports.TenantInfoSchemaSchema = zod_1.z.object({
-    "id": exports.TenantIdSchema,
-    "createdTime": zod_1.z.number(),
+const TenantInfoSchemaImpl = zod_1.z.object({
+    "id": exports.TenantIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
     "title": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "region": zod_1.z.string(),
-    "tenantProfileId": exports.TenantProfileIdSchema,
-    "country": zod_1.z.string(),
-    "state": zod_1.z.string(),
-    "city": zod_1.z.string(),
-    "address": zod_1.z.string(),
-    "address2": zod_1.z.string(),
-    "zip": zod_1.z.string(),
-    "phone": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
+    "region": zod_1.z.string().optional(),
+    "tenantProfileId": exports.TenantProfileIdSchema.optional(),
+    "country": zod_1.z.string().optional(),
+    "state": zod_1.z.string().optional(),
+    "city": zod_1.z.string().optional(),
+    "address": zod_1.z.string().optional(),
+    "address2": zod_1.z.string().optional(),
+    "zip": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
     "email": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "tenantProfileName": zod_1.z.string()
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "tenantProfileName": zod_1.z.string().optional()
 });
-exports.TenantProfileSchemaSchema = zod_1.z.object({
-    "default": zod_1.z.boolean(),
-    "id": exports.TenantProfileIdSchema,
-    "createdTime": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "isolatedTbRuleEngine": zod_1.z.boolean(),
-    "profileData": exports.TenantProfileDataSchema
+const TenantProfileSchemaImpl = zod_1.z.object({
+    "default": zod_1.z.boolean().optional(),
+    "id": exports.TenantProfileIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "isolatedTbRuleEngine": zod_1.z.boolean().optional(),
+    "profileData": exports.TenantProfileDataSchema.optional()
 });
-exports.TenantProfileConfigurationSchemaSchema = zod_1.z.object({});
-exports.TenantProfileDataSchemaSchema = zod_1.z.object({
-    "configuration": exports.TenantProfileConfigurationSchema,
-    "queueConfiguration": zod_1.z.array(exports.TenantProfileQueueConfigurationSchema)
+const TenantProfileConfigurationSchemaImpl = zod_1.z.object({});
+const TenantProfileDataSchemaImpl = zod_1.z.object({
+    "configuration": exports.TenantProfileConfigurationSchema.optional(),
+    "queueConfiguration": zod_1.z.array(exports.TenantProfileQueueConfigurationSchema).optional()
 });
-exports.TenantProfileIdSchemaSchema = zod_1.z.object({
+const TenantProfileIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["TENANT_PROFILE"])
 });
-exports.TenantProfileQueueConfigurationSchemaSchema = zod_1.z.object({
-    "additionalInfo": exports.JsonNodeSchema,
-    "consumerPerPartition": zod_1.z.boolean(),
-    "name": zod_1.z.string(),
-    "packProcessingTimeout": zod_1.z.number(),
-    "partitions": zod_1.z.number(),
-    "pollInterval": zod_1.z.number(),
-    "processingStrategy": exports.ProcessingStrategySchema,
-    "submitStrategy": exports.SubmitStrategySchema,
-    "topic": zod_1.z.string()
+const TenantProfileQueueConfigurationSchemaImpl = zod_1.z.object({
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "consumerPerPartition": zod_1.z.boolean().optional(),
+    "name": zod_1.z.string().optional(),
+    "packProcessingTimeout": zod_1.z.number().optional(),
+    "partitions": zod_1.z.number().optional(),
+    "pollInterval": zod_1.z.number().optional(),
+    "processingStrategy": exports.ProcessingStrategySchema.optional(),
+    "submitStrategy": exports.SubmitStrategySchema.optional(),
+    "topic": zod_1.z.string().optional()
 });
-exports.TenantSolutionTemplateDetailsSchemaSchema = zod_1.z.object({
-    "description": zod_1.z.string(),
-    "highlights": zod_1.z.string(),
-    "imageUrls": zod_1.z.array(zod_1.z.string()),
-    "installed": zod_1.z.boolean(),
-    "id": zod_1.z.string(),
-    "title": zod_1.z.string(),
-    "level": zod_1.z.enum(["MAKER", "PROTOTYPE", "STARTUP"]),
-    "installTimeoutMs": zod_1.z.number(),
-    "tenantTelemetryKeys": zod_1.z.array(zod_1.z.string()),
-    "tenantAttributeKeys": zod_1.z.array(zod_1.z.string())
+const TenantSolutionTemplateDetailsSchemaImpl = zod_1.z.object({
+    "description": zod_1.z.string().optional(),
+    "highlights": zod_1.z.string().optional(),
+    "imageUrls": zod_1.z.array(zod_1.z.string()).optional(),
+    "installed": zod_1.z.boolean().optional(),
+    "id": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "level": zod_1.z.enum(["MAKER", "PROTOTYPE", "STARTUP"]).optional(),
+    "installTimeoutMs": zod_1.z.number().optional(),
+    "tenantTelemetryKeys": zod_1.z.array(zod_1.z.string()).optional(),
+    "tenantAttributeKeys": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.TenantSolutionTemplateInfoSchemaSchema = zod_1.z.object({
-    "id": zod_1.z.string(),
-    "title": zod_1.z.string(),
-    "level": zod_1.z.enum(["MAKER", "PROTOTYPE", "STARTUP"]),
-    "installTimeoutMs": zod_1.z.number(),
-    "tenantTelemetryKeys": zod_1.z.array(zod_1.z.string()),
-    "tenantAttributeKeys": zod_1.z.array(zod_1.z.string()),
-    "previewImageUrl": zod_1.z.string(),
-    "shortDescription": zod_1.z.string(),
-    "installed": zod_1.z.boolean(),
-    "videoPreviewImageUrl": zod_1.z.string(),
-    "previewMp4Url": zod_1.z.string(),
-    "previewWebmUrl": zod_1.z.string()
+const TenantSolutionTemplateInfoSchemaImpl = zod_1.z.object({
+    "id": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "level": zod_1.z.enum(["MAKER", "PROTOTYPE", "STARTUP"]).optional(),
+    "installTimeoutMs": zod_1.z.number().optional(),
+    "tenantTelemetryKeys": zod_1.z.array(zod_1.z.string()).optional(),
+    "tenantAttributeKeys": zod_1.z.array(zod_1.z.string()).optional(),
+    "previewImageUrl": zod_1.z.string().optional(),
+    "shortDescription": zod_1.z.string().optional(),
+    "installed": zod_1.z.boolean().optional(),
+    "videoPreviewImageUrl": zod_1.z.string().optional(),
+    "previewMp4Url": zod_1.z.string().optional(),
+    "previewWebmUrl": zod_1.z.string().optional()
 });
-exports.TenantSolutionTemplateInstructionsSchemaSchema = zod_1.z.object({
-    "dashboardGroupId": exports.EntityGroupIdSchema,
-    "dashboardId": exports.DashboardIdSchema,
-    "publicId": exports.CustomerIdSchema,
-    "mainDashboardPublic": zod_1.z.boolean(),
-    "details": zod_1.z.string()
+const TenantSolutionTemplateInstructionsSchemaImpl = zod_1.z.object({
+    "dashboardGroupId": exports.EntityGroupIdSchema.optional(),
+    "dashboardId": exports.DashboardIdSchema.optional(),
+    "publicId": exports.CustomerIdSchema.optional(),
+    "mainDashboardPublic": zod_1.z.boolean().optional(),
+    "details": zod_1.z.string().optional()
 });
-exports.TestSmsRequestSchemaSchema = zod_1.z.object({
-    "providerConfiguration": exports.SmsProviderConfigurationSchema,
-    "numberTo": zod_1.z.string(),
-    "message": zod_1.z.string()
+const TestSmsRequestSchemaImpl = zod_1.z.object({
+    "providerConfiguration": exports.SmsProviderConfigurationSchema.optional(),
+    "numberTo": zod_1.z.string().optional(),
+    "message": zod_1.z.string().optional()
 });
-exports.ThingsboardCredentialsExpiredResponseSchemaSchema = zod_1.z.object({
-    "subscriptionEntry": zod_1.z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]),
-    "subscriptionErrorCode": zod_1.z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]),
-    "subscriptionValue": exports.JsonNodeSchema,
-    "status": zod_1.z.number(),
-    "message": zod_1.z.string(),
-    "errorCode": zod_1.z.object({}),
-    "timestamp": zod_1.z.string(),
-    "resetToken": zod_1.z.string()
+const ThingsboardCredentialsExpiredResponseSchemaImpl = zod_1.z.object({
+    "subscriptionEntry": zod_1.z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]).optional(),
+    "subscriptionErrorCode": zod_1.z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]).optional(),
+    "subscriptionValue": exports.JsonNodeSchema.optional(),
+    "status": zod_1.z.number().optional(),
+    "message": zod_1.z.string().optional(),
+    "errorCode": zod_1.z.object({}).optional(),
+    "timestamp": zod_1.z.string().optional(),
+    "resetToken": zod_1.z.string().optional()
 });
-exports.ThingsboardErrorResponseSchemaSchema = zod_1.z.object({
-    "subscriptionEntry": zod_1.z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]),
-    "subscriptionErrorCode": zod_1.z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]),
-    "subscriptionValue": exports.JsonNodeSchema,
-    "status": zod_1.z.number(),
-    "message": zod_1.z.string(),
-    "errorCode": zod_1.z.object({}),
-    "timestamp": zod_1.z.string()
+const ThingsboardErrorResponseSchemaImpl = zod_1.z.object({
+    "subscriptionEntry": zod_1.z.enum(["ASSET_COUNT", "DEVICE_COUNT", "WHITE_LABELING"]).optional(),
+    "subscriptionErrorCode": zod_1.z.enum(["FEATURE_DISABLED", "LIMIT_REACHED", "UNSUPPORTED_SOLUTION_TEMPLATE_PLAN"]).optional(),
+    "subscriptionValue": exports.JsonNodeSchema.optional(),
+    "status": zod_1.z.number().optional(),
+    "message": zod_1.z.string().optional(),
+    "errorCode": zod_1.z.object({}).optional(),
+    "timestamp": zod_1.z.string().optional()
 });
-exports.ToDeviceRpcRequestSnmpCommunicationConfigSchemaSchema = zod_1.z.object({
-    "mappings": zod_1.z.array(exports.SnmpMappingSchema),
-    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ToDeviceRpcRequestSnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "mappings": zod_1.z.array(exports.SnmpMappingSchema).optional(),
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
-exports.ToServerRpcRequestSnmpCommunicationConfigSchemaSchema = zod_1.z.object({
-    "mappings": zod_1.z.array(exports.SnmpMappingSchema),
-    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"])
+const ToServerRpcRequestSnmpCommunicationConfigSchemaImpl = zod_1.z.object({
+    "mappings": zod_1.z.array(exports.SnmpMappingSchema).optional(),
+    "spec": zod_1.z.enum(["CLIENT_ATTRIBUTES_QUERYING", "SHARED_ATTRIBUTES_SETTING", "TELEMETRY_QUERYING", "TO_DEVICE_RPC_REQUEST", "TO_SERVER_RPC_REQUEST"]).optional()
 });
-exports.TotpTwoFaAccountConfigSchemaSchema = zod_1.z.object({
+const TotpTwoFaAccountConfigSchemaImpl = zod_1.z.object({
     "authUrl": zod_1.z.string(),
-    "useByDefault": zod_1.z.boolean()
+    "useByDefault": zod_1.z.boolean().optional()
 });
-exports.TotpTwoFaProviderConfigSchemaSchema = zod_1.z.object({
+const TotpTwoFaProviderConfigSchemaImpl = zod_1.z.object({
     "issuerName": zod_1.z.string()
 });
-exports.TransportPayloadTypeConfigurationSchemaSchema = zod_1.z.object({});
-exports.TsValueSchemaSchema = zod_1.z.object({
-    "count": zod_1.z.number(),
-    "ts": zod_1.z.number(),
-    "value": zod_1.z.string()
+const TransportPayloadTypeConfigurationSchemaImpl = zod_1.z.object({});
+const TsValueSchemaImpl = zod_1.z.object({
+    "count": zod_1.z.number().optional(),
+    "ts": zod_1.z.number().optional(),
+    "value": zod_1.z.string().optional()
 });
-exports.TwilioSmsProviderConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.TwoFaAccountConfigSchemaSchema = zod_1.z.object({
-    "useByDefault": zod_1.z.boolean()
+const TwilioSmsProviderConfigurationSchemaImpl = zod_1.z.object({
+    "accountSid": zod_1.z.string().optional(),
+    "accountToken": zod_1.z.string().optional(),
+    "numberFrom": zod_1.z.string().optional()
 });
-exports.TwoFaAccountConfigUpdateRequestSchemaSchema = zod_1.z.object({
-    "useByDefault": zod_1.z.boolean()
+const TwoFaAccountConfigSchemaImpl = zod_1.z.object({
+    "useByDefault": zod_1.z.boolean().optional()
 });
-exports.TwoFaProviderConfigSchemaSchema = zod_1.z.object({});
-exports.TwoFaProviderInfoSchemaSchema = zod_1.z.object({
-    "contact": zod_1.z.string(),
-    "default": zod_1.z.boolean(),
-    "minVerificationCodeSendPeriod": zod_1.z.number(),
-    "type": zod_1.z.enum(["BACKUP_CODE", "EMAIL", "SMS", "TOTP"])
+const TwoFaAccountConfigUpdateRequestSchemaImpl = zod_1.z.object({
+    "useByDefault": zod_1.z.boolean().optional()
 });
-exports.UpdateMessageSchemaSchema = zod_1.z.object({
-    "updateAvailable": zod_1.z.boolean(),
-    "currentVersion": zod_1.z.string(),
-    "latestVersion": zod_1.z.string(),
-    "upgradeInstructionsUrl": zod_1.z.string(),
-    "currentVersionReleaseNotesUrl": zod_1.z.string(),
-    "latestVersionReleaseNotesUrl": zod_1.z.string()
+const TwoFaProviderConfigSchemaImpl = zod_1.z.object({});
+const TwoFaProviderInfoSchemaImpl = zod_1.z.object({
+    "contact": zod_1.z.string().optional(),
+    "default": zod_1.z.boolean().optional(),
+    "minVerificationCodeSendPeriod": zod_1.z.number().optional(),
+    "type": zod_1.z.enum(["BACKUP_CODE", "EMAIL", "SMS", "TOTP"]).optional()
 });
-exports.UsageInfoSchemaSchema = zod_1.z.object({
-    "alarms": zod_1.z.number(),
-    "assets": zod_1.z.number(),
-    "customers": zod_1.z.number(),
-    "dashboards": zod_1.z.number(),
-    "devices": zod_1.z.number(),
-    "emails": zod_1.z.number(),
-    "jsExecutions": zod_1.z.number(),
-    "maxAlarms": zod_1.z.number(),
-    "maxAssets": zod_1.z.number(),
-    "maxCustomers": zod_1.z.number(),
-    "maxDashboards": zod_1.z.number(),
-    "maxDevices": zod_1.z.number(),
-    "maxEmails": zod_1.z.number(),
-    "maxJsExecutions": zod_1.z.number(),
-    "maxSms": zod_1.z.number(),
-    "maxTbelExecutions": zod_1.z.number(),
-    "maxTransportMessages": zod_1.z.number(),
-    "maxUsers": zod_1.z.number(),
-    "sms": zod_1.z.number(),
-    "smsEnabled": zod_1.z.boolean(),
-    "tbelExecutions": zod_1.z.number(),
-    "transportMessages": zod_1.z.number(),
-    "users": zod_1.z.number()
+const UpdateMessageSchemaImpl = zod_1.z.object({
+    "updateAvailable": zod_1.z.boolean().optional(),
+    "currentVersion": zod_1.z.string().optional(),
+    "latestVersion": zod_1.z.string().optional(),
+    "upgradeInstructionsUrl": zod_1.z.string().optional(),
+    "currentVersionReleaseNotesUrl": zod_1.z.string().optional(),
+    "latestVersionReleaseNotesUrl": zod_1.z.string().optional()
 });
-exports.UserSchemaSchema = zod_1.z.object({
-    "id": exports.UserIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const UsageInfoSchemaImpl = zod_1.z.object({
+    "alarms": zod_1.z.number().optional(),
+    "assets": zod_1.z.number().optional(),
+    "customers": zod_1.z.number().optional(),
+    "dashboards": zod_1.z.number().optional(),
+    "devices": zod_1.z.number().optional(),
+    "emails": zod_1.z.number().optional(),
+    "jsExecutions": zod_1.z.number().optional(),
+    "maxAlarms": zod_1.z.number().optional(),
+    "maxAssets": zod_1.z.number().optional(),
+    "maxCustomers": zod_1.z.number().optional(),
+    "maxDashboards": zod_1.z.number().optional(),
+    "maxDevices": zod_1.z.number().optional(),
+    "maxEmails": zod_1.z.number().optional(),
+    "maxJsExecutions": zod_1.z.number().optional(),
+    "maxSms": zod_1.z.number().optional(),
+    "maxTbelExecutions": zod_1.z.number().optional(),
+    "maxTransportMessages": zod_1.z.number().optional(),
+    "maxUsers": zod_1.z.number().optional(),
+    "sms": zod_1.z.number().optional(),
+    "smsEnabled": zod_1.z.boolean().optional(),
+    "tbelExecutions": zod_1.z.number().optional(),
+    "transportMessages": zod_1.z.number().optional(),
+    "users": zod_1.z.number().optional()
+});
+const UserSchemaImpl = zod_1.z.object({
+    "id": exports.UserIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "email": zod_1.z.string(),
-    "name": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
     "authority": zod_1.z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-    "firstName": zod_1.z.string(),
-    "lastName": zod_1.z.string(),
-    "phone": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema
+    "firstName": zod_1.z.string().optional(),
+    "lastName": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional()
 });
-exports.UserDashboardsInfoSchemaSchema = zod_1.z.object({
-    "last": zod_1.z.array(exports.LastVisitedDashboardInfoSchema),
-    "starred": zod_1.z.array(exports.StarredDashboardInfoSchema)
+const UserDashboardsInfoSchemaImpl = zod_1.z.object({
+    "last": zod_1.z.array(exports.LastVisitedDashboardInfoSchema).optional(),
+    "starred": zod_1.z.array(exports.StarredDashboardInfoSchema).optional()
 });
-exports.UserEmailInfoSchemaSchema = zod_1.z.object({
-    "id": exports.UserIdSchema,
-    "email": zod_1.z.string(),
-    "firstName": zod_1.z.string(),
-    "lastName": zod_1.z.string()
+const UserEmailInfoSchemaImpl = zod_1.z.object({
+    "id": exports.UserIdSchema.optional(),
+    "email": zod_1.z.string().optional(),
+    "firstName": zod_1.z.string().optional(),
+    "lastName": zod_1.z.string().optional()
 });
-exports.UserGroupListFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.UserIdSchemaSchema = zod_1.z.object({
+const UserGroupListFilterSchemaImpl = zod_1.z.object({
+    "groupsIds": zod_1.z.array(zod_1.z.string()).optional()
+});
+const UserIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["USER"])
 });
-exports.UserInfoSchemaSchema = zod_1.z.object({
-    "id": exports.UserIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "customerId": exports.CustomerIdSchema,
+const UserInfoSchemaImpl = zod_1.z.object({
+    "id": exports.UserIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "customerId": exports.CustomerIdSchema.optional(),
     "email": zod_1.z.string(),
-    "name": zod_1.z.string(),
+    "name": zod_1.z.string().optional(),
     "authority": zod_1.z.enum(["CUSTOMER_USER", "PRE_VERIFICATION_TOKEN", "REFRESH_TOKEN", "SYS_ADMIN", "TENANT_ADMIN"]),
-    "firstName": zod_1.z.string(),
-    "lastName": zod_1.z.string(),
-    "phone": zod_1.z.string(),
-    "additionalInfo": exports.JsonNodeSchema,
-    "ownerId": exports.EntityIdSchema,
-    "ownerName": zod_1.z.string(),
-    "groups": zod_1.z.array(exports.EntityInfoSchema)
+    "firstName": zod_1.z.string().optional(),
+    "lastName": zod_1.z.string().optional(),
+    "phone": zod_1.z.string().optional(),
+    "additionalInfo": exports.JsonNodeSchema.optional(),
+    "ownerId": exports.EntityIdSchema.optional(),
+    "ownerName": zod_1.z.string().optional(),
+    "groups": zod_1.z.array(exports.EntityInfoSchema).optional()
 });
-exports.UserListFilterSchemaSchema = zod_1.z.object({
-    "usersIds": zod_1.z.array(zod_1.z.string())
+const UserListFilterSchemaImpl = zod_1.z.object({
+    "usersIds": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.UserNotificationSettingsSchemaSchema = zod_1.z.object({
-    "prefs": zod_1.z.record(zod_1.z.string(), exports.NotificationPrefSchema)
+const UserNotificationSettingsSchemaImpl = zod_1.z.object({
+    "prefs": zod_1.z.object({})
 });
-exports.UserPasswordPolicySchemaSchema = zod_1.z.object({
-    "allowWhitespaces": zod_1.z.boolean(),
-    "forceUserToResetPasswordIfNotValid": zod_1.z.boolean(),
-    "maximumLength": zod_1.z.number(),
-    "minimumDigits": zod_1.z.number(),
-    "minimumLength": zod_1.z.number(),
-    "minimumLowercaseLetters": zod_1.z.number(),
-    "minimumSpecialCharacters": zod_1.z.number(),
-    "minimumUppercaseLetters": zod_1.z.number(),
-    "passwordExpirationPeriodDays": zod_1.z.number(),
-    "passwordReuseFrequencyDays": zod_1.z.number()
+const UserPasswordPolicySchemaImpl = zod_1.z.object({
+    "allowWhitespaces": zod_1.z.boolean().optional(),
+    "forceUserToResetPasswordIfNotValid": zod_1.z.boolean().optional(),
+    "maximumLength": zod_1.z.number().optional(),
+    "minimumDigits": zod_1.z.number().optional(),
+    "minimumLength": zod_1.z.number().optional(),
+    "minimumLowercaseLetters": zod_1.z.number().optional(),
+    "minimumSpecialCharacters": zod_1.z.number().optional(),
+    "minimumUppercaseLetters": zod_1.z.number().optional(),
+    "passwordExpirationPeriodDays": zod_1.z.number().optional(),
+    "passwordReuseFrequencyDays": zod_1.z.number().optional()
 });
-exports.UserRoleFilterSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.UsersFilterSchemaSchema = zod_1.z.object({});
-exports.VersionCreateConfigSchemaSchema = zod_1.z.object({
-    "saveAttributes": zod_1.z.boolean(),
-    "saveCredentials": zod_1.z.boolean(),
-    "saveGroupEntities": zod_1.z.boolean(),
-    "savePermissions": zod_1.z.boolean(),
-    "saveRelations": zod_1.z.boolean()
+const UserRoleFilterSchemaImpl = zod_1.z.object({
+    "rolesIds": zod_1.z.array(zod_1.z.string()).optional()
 });
-exports.VersionCreateRequestSchemaSchema = zod_1.z.object({
-    "branch": zod_1.z.string(),
-    "type": zod_1.z.enum(["COMPLEX", "SINGLE_ENTITY"]),
-    "versionName": zod_1.z.string()
+const UsersFilterSchemaImpl = zod_1.z.object({});
+const VersionCreateConfigSchemaImpl = zod_1.z.object({
+    "saveAttributes": zod_1.z.boolean().optional(),
+    "saveCredentials": zod_1.z.boolean().optional(),
+    "saveGroupEntities": zod_1.z.boolean().optional(),
+    "savePermissions": zod_1.z.boolean().optional(),
+    "saveRelations": zod_1.z.boolean().optional()
 });
-exports.VersionCreationResultSchemaSchema = zod_1.z.object({
-    "added": zod_1.z.number(),
-    "done": zod_1.z.boolean(),
-    "error": zod_1.z.string(),
-    "modified": zod_1.z.number(),
-    "removed": zod_1.z.number(),
-    "version": exports.EntityVersionSchema
+const VersionCreateRequestSchemaImpl = zod_1.z.object({
+    "branch": zod_1.z.string().optional(),
+    "type": zod_1.z.enum(["COMPLEX", "SINGLE_ENTITY"]).optional(),
+    "versionName": zod_1.z.string().optional()
 });
-exports.VersionLoadConfigSchemaSchema = zod_1.z.object({
-    "autoGenerateIntegrationKey": zod_1.z.boolean(),
-    "loadAttributes": zod_1.z.boolean(),
-    "loadCredentials": zod_1.z.boolean(),
-    "loadGroupEntities": zod_1.z.boolean(),
-    "loadPermissions": zod_1.z.boolean(),
-    "loadRelations": zod_1.z.boolean()
+const VersionCreationResultSchemaImpl = zod_1.z.object({
+    "added": zod_1.z.number().optional(),
+    "done": zod_1.z.boolean().optional(),
+    "error": zod_1.z.string().optional(),
+    "modified": zod_1.z.number().optional(),
+    "removed": zod_1.z.number().optional(),
+    "version": exports.EntityVersionSchema.optional()
 });
-exports.VersionLoadRequestSchemaSchema = zod_1.z.object({
-    "type": zod_1.z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]),
-    "versionId": zod_1.z.string()
+const VersionLoadConfigSchemaImpl = zod_1.z.object({
+    "autoGenerateIntegrationKey": zod_1.z.boolean().optional(),
+    "loadAttributes": zod_1.z.boolean().optional(),
+    "loadCredentials": zod_1.z.boolean().optional(),
+    "loadGroupEntities": zod_1.z.boolean().optional(),
+    "loadPermissions": zod_1.z.boolean().optional(),
+    "loadRelations": zod_1.z.boolean().optional()
 });
-exports.VersionLoadResultSchemaSchema = zod_1.z.object({
-    "done": zod_1.z.boolean(),
-    "error": exports.EntityLoadErrorSchema,
-    "result": zod_1.z.array(exports.EntityTypeLoadResultSchema)
+const VersionLoadRequestSchemaImpl = zod_1.z.object({
+    "type": zod_1.z.enum(["ENTITY_TYPE", "SINGLE_ENTITY"]).optional(),
+    "versionId": zod_1.z.string().optional()
 });
-exports.VersionedEntityInfoSchemaSchema = zod_1.z.object({
-    "externalId": exports.EntityIdSchema,
-    "path": zod_1.z.string()
+const VersionLoadResultSchemaImpl = zod_1.z.object({
+    "done": zod_1.z.boolean().optional(),
+    "error": exports.EntityLoadErrorSchema.optional(),
+    "result": zod_1.z.array(exports.EntityTypeLoadResultSchema).optional()
 });
-exports.WebDeliveryMethodNotificationTemplateSchemaSchema = zod_1.z.object({
-    "additionalConfig": exports.JsonNodeSchema,
-    "body": zod_1.z.string(),
-    "enabled": zod_1.z.boolean(),
-    "subject": zod_1.z.string()
+const VersionedEntityInfoSchemaImpl = zod_1.z.object({
+    "externalId": exports.EntityIdSchema.optional(),
+    "path": zod_1.z.string().optional()
 });
-exports.WhiteLabelingSchemaSchema = zod_1.z.object({
-    "customerId": exports.CustomerIdSchema,
-    "domain": zod_1.z.string(),
-    "settings": exports.JsonNodeSchema,
-    "tenantId": exports.TenantIdSchema,
-    "type": zod_1.z.enum(["GENERAL", "LOGIN", "MAIL_TEMPLATES"])
+const WebDeliveryMethodNotificationTemplateSchemaImpl = zod_1.z.object({
+    "additionalConfig": exports.JsonNodeSchema.optional(),
+    "body": zod_1.z.string().optional(),
+    "enabled": zod_1.z.boolean().optional(),
+    "subject": zod_1.z.string().optional()
 });
-exports.WhiteLabelingParamsSchemaSchema = zod_1.z.object({
-    "logoImageUrl": zod_1.z.string(),
-    "logoImageHeight": zod_1.z.number(),
-    "appTitle": zod_1.z.string(),
-    "favicon": exports.FaviconSchema,
-    "paletteSettings": exports.PaletteSettingsSchema,
-    "helpLinkBaseUrl": zod_1.z.string(),
-    "uiHelpBaseUrl": zod_1.z.string(),
-    "enableHelpLinks": zod_1.z.boolean(),
-    "whiteLabelingEnabled": zod_1.z.boolean(),
-    "showNameVersion": zod_1.z.boolean(),
-    "platformName": zod_1.z.string(),
-    "platformVersion": zod_1.z.string(),
-    "customCss": zod_1.z.string()
+const WhiteLabelingSchemaImpl = zod_1.z.object({
+    "customerId": exports.CustomerIdSchema.optional(),
+    "domain": zod_1.z.string().optional(),
+    "settings": exports.JsonNodeSchema.optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "type": zod_1.z.enum(["GENERAL", "LOGIN", "MAIL_TEMPLATES"]).optional()
 });
-exports.WidgetTypeSchemaSchema = zod_1.z.object({
-    "id": exports.WidgetTypeIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "fqn": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "deprecated": zod_1.z.boolean(),
-    "descriptor": exports.JsonNodeSchema
+const WhiteLabelingParamsSchemaImpl = zod_1.z.object({
+    "logoImageUrl": zod_1.z.string().optional(),
+    "logoImageHeight": zod_1.z.number().optional(),
+    "appTitle": zod_1.z.string().optional(),
+    "favicon": exports.FaviconSchema.optional(),
+    "paletteSettings": exports.PaletteSettingsSchema.optional(),
+    "helpLinkBaseUrl": zod_1.z.string().optional(),
+    "uiHelpBaseUrl": zod_1.z.string().optional(),
+    "enableHelpLinks": zod_1.z.boolean().optional(),
+    "whiteLabelingEnabled": zod_1.z.boolean().optional(),
+    "showNameVersion": zod_1.z.boolean().optional(),
+    "platformName": zod_1.z.string().optional(),
+    "platformVersion": zod_1.z.string().optional(),
+    "customCss": zod_1.z.string().optional()
 });
-exports.WidgetTypeDetailsSchemaSchema = zod_1.z.object({
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "fqn": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "deprecated": zod_1.z.boolean(),
-    "descriptor": exports.JsonNodeSchema,
-    "image": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "tags": zod_1.z.array(zod_1.z.string())
+const WidgetTypeSchemaImpl = zod_1.z.object({
+    "id": exports.WidgetTypeIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "fqn": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "deprecated": zod_1.z.boolean().optional(),
+    "descriptor": exports.JsonNodeSchema.optional()
 });
-exports.WidgetTypeExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.WidgetTypeIdSchemaSchema = zod_1.z.object({
+const WidgetTypeDetailsSchemaImpl = zod_1.z.object({
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "fqn": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "deprecated": zod_1.z.boolean().optional(),
+    "descriptor": exports.JsonNodeSchema.optional(),
+    "image": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "tags": zod_1.z.array(zod_1.z.string()).optional()
+});
+const WidgetTypeExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": exports.WidgetTypeDetailsSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional()
+});
+const WidgetTypeIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["WIDGET_TYPE"])
 });
-exports.WidgetTypeInfoSchemaSchema = zod_1.z.object({
-    "id": exports.WidgetTypeIdSchema,
-    "createdTime": zod_1.z.number(),
-    "tenantId": exports.TenantIdSchema,
-    "fqn": zod_1.z.string(),
-    "name": zod_1.z.string(),
-    "deprecated": zod_1.z.boolean(),
-    "image": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "tags": zod_1.z.array(zod_1.z.string()),
-    "widgetType": zod_1.z.string()
+const WidgetTypeInfoSchemaImpl = zod_1.z.object({
+    "id": exports.WidgetTypeIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "fqn": zod_1.z.string().optional(),
+    "name": zod_1.z.string().optional(),
+    "deprecated": zod_1.z.boolean().optional(),
+    "image": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "tags": zod_1.z.array(zod_1.z.string()).optional(),
+    "widgetType": zod_1.z.string().optional()
 });
-exports.WidgetsBundleSchemaSchema = zod_1.z.object({
-    "id": exports.WidgetsBundleIdSchema,
-    "createdTime": zod_1.z.number(),
-    "name": zod_1.z.string(),
-    "tenantId": exports.TenantIdSchema,
-    "alias": zod_1.z.string(),
-    "title": zod_1.z.string(),
-    "image": zod_1.z.string(),
-    "description": zod_1.z.string(),
-    "order": zod_1.z.number()
+const WidgetsBundleSchemaImpl = zod_1.z.object({
+    "id": exports.WidgetsBundleIdSchema.optional(),
+    "createdTime": zod_1.z.number().optional(),
+    "name": zod_1.z.string().optional(),
+    "tenantId": exports.TenantIdSchema.optional(),
+    "alias": zod_1.z.string().optional(),
+    "title": zod_1.z.string().optional(),
+    "image": zod_1.z.string().optional(),
+    "description": zod_1.z.string().optional(),
+    "order": zod_1.z.number().optional()
 });
-exports.WidgetsBundleExportDataSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.WidgetsBundleIdSchemaSchema = zod_1.z.object({
+const WidgetsBundleExportDataSchemaImpl = zod_1.z.object({
+    "attributes": zod_1.z.object({}).optional(),
+    "entity": exports.WidgetsBundleSchema.optional(),
+    "entityType": zod_1.z.enum(["ALARM", "API_USAGE_STATE", "ASSET", "ASSET_PROFILE", "BLOB_ENTITY", "CONVERTER", "CUSTOMER", "DASHBOARD", "DEVICE", "DEVICE_PROFILE", "EDGE", "ENTITY_GROUP", "ENTITY_VIEW", "GROUP_PERMISSION", "INTEGRATION", "NOTIFICATION", "NOTIFICATION_REQUEST", "NOTIFICATION_RULE", "NOTIFICATION_TARGET", "NOTIFICATION_TEMPLATE", "OTA_PACKAGE", "QUEUE", "ROLE", "RPC", "RULE_CHAIN", "RULE_NODE", "SCHEDULER_EVENT", "TB_RESOURCE", "TENANT", "TENANT_PROFILE", "USER", "WIDGETS_BUNDLE", "WIDGET_TYPE"]).optional(),
+    "fqns": zod_1.z.array(zod_1.z.string()).optional(),
+    "relations": zod_1.z.array(exports.EntityRelationSchema).optional(),
+    "widgets": zod_1.z.array(exports.ObjectNodeSchema).optional()
+});
+const WidgetsBundleIdSchemaImpl = zod_1.z.object({
     "id": zod_1.z.string(),
     "entityType": zod_1.z.enum(["WIDGETS_BUNDLE"])
 });
-exports.X509CertificateChainProvisionConfigurationSchemaSchema = zod_1.z.lazy(() => zod_1.z.object({}));
-exports.X509LwM2MBootstrapServerCredentialSchemaSchema = zod_1.z.object({
-    "shortServerId": zod_1.z.number(),
-    "bootstrapServerIs": zod_1.z.boolean(),
-    "host": zod_1.z.string(),
-    "port": zod_1.z.number(),
-    "clientHoldOffTime": zod_1.z.number(),
-    "serverPublicKey": zod_1.z.string(),
-    "serverCertificate": zod_1.z.string(),
-    "bootstrapServerAccountTimeout": zod_1.z.number(),
-    "lifetime": zod_1.z.number(),
-    "defaultMinPeriod": zod_1.z.number(),
-    "notifIfDisabled": zod_1.z.boolean(),
-    "binding": zod_1.z.string()
+const X509CertificateChainProvisionConfigurationSchemaImpl = zod_1.z.object({
+    "allowCreateNewDevicesByX509Certificate": zod_1.z.boolean().optional(),
+    "certificateRegExPattern": zod_1.z.string().optional(),
+    "provisionDeviceSecret": zod_1.z.string().optional()
+});
+const X509LwM2MBootstrapServerCredentialSchemaImpl = zod_1.z.object({
+    "shortServerId": zod_1.z.number().optional(),
+    "bootstrapServerIs": zod_1.z.boolean().optional(),
+    "host": zod_1.z.string().optional(),
+    "port": zod_1.z.number().optional(),
+    "clientHoldOffTime": zod_1.z.number().optional(),
+    "serverPublicKey": zod_1.z.string().optional(),
+    "serverCertificate": zod_1.z.string().optional(),
+    "bootstrapServerAccountTimeout": zod_1.z.number().optional(),
+    "lifetime": zod_1.z.number().optional(),
+    "defaultMinPeriod": zod_1.z.number().optional(),
+    "notifIfDisabled": zod_1.z.boolean().optional(),
+    "binding": zod_1.z.string().optional()
 });

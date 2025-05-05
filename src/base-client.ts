@@ -18,13 +18,12 @@ type LoginResponse = z.infer<typeof LoginResponseSchema>;
  * ```
  */
 export class BaseVXOlympusClient {
-  protected baseUrl: string;
+  protected readonly baseUrl: string;
   protected token?: string;
   protected refreshToken?: string;
 
-  constructor(baseUrl: string, token?: string) {
+  constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
-    this.token = token;
   }
 
   /**
@@ -47,37 +46,18 @@ export class BaseVXOlympusClient {
       headers,
     });
 
-    // Handle 401 with token refresh
-    if (response.status === 401 && this.refreshToken) {
-      try {
-        await this.refreshAuthToken();
-        // Retry the request with the new token
-        const retryResponse = await fetch(url, {
-          ...options,
-          headers: {
-            ...headers,
-            'X-Authorization': `Bearer ${this.token}`,
-          },
-        });
-        if (!retryResponse.ok) {
-          throw new Error(`HTTP error! status: ${retryResponse.status}`);
-        }
-        return retryResponse.json();
-      } catch (refreshError) {
-        throw new Error('Token refresh failed');
-      }
-    }
-
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    // For 204 No Content responses, return null
+    // Handle void return type
     if (response.status === 204) {
-      return null as T;
+      return undefined as T;
     }
 
-    return response.json();
+    // Parse JSON response
+    const data = await response.json();
+    return data as T;
   }
 
   /**

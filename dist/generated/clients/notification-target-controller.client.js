@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotificationTargetControllerClient = void 0;
 const base_client_1 = require("../../base-client");
 class NotificationTargetControllerClient extends base_client_1.BaseVXOlympusClient {
-    async saveNotificationTargetUsingPOST(data, options = {}) {
+    async saveNotificationTargetWithData(data, options = {}) {
         const url = `${this.baseUrl}/api/notification/target`;
         const response = await this.makeRequest(url, {
             method: 'POST',
@@ -12,16 +12,37 @@ class NotificationTargetControllerClient extends base_client_1.BaseVXOlympusClie
         });
         return response;
     }
-    async getRecipientsForNotificationTargetConfigUsingPOST(data, queryParams, options = {}) {
+    /**
+     * @param {object} data - Request body
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_User>}
+     */
+    async getRecipientsForNotificationTargetConfigWithData(data, queryParams, options = {}) {
         const url = `${this.baseUrl}/api/notification/target/recipients{?page,pageSize}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'POST',
             body: JSON.stringify(data),
             ...options,
         });
         return response;
     }
-    async getNotificationTargetByIdUsingGET(id, options = {}) {
+    /**
+     * @param {string} id - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.NotificationTarget>}
+     */
+    async getNotificationTargetById(id, options = {}) {
         const url = `${this.baseUrl}/api/notification/target/${encodeURIComponent(id)}`;
         const response = await this.makeRequest(url, {
             method: 'GET',
@@ -29,7 +50,12 @@ class NotificationTargetControllerClient extends base_client_1.BaseVXOlympusClie
         });
         return response;
     }
-    async deleteNotificationTargetByIdUsingDELETE(id, options = {}) {
+    /**
+     * @param {string} id - Path parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<void>}
+     */
+    async deleteNotificationTargetById(id, options = {}) {
         const url = `${this.baseUrl}/api/notification/target/${encodeURIComponent(id)}`;
         const response = await this.makeRequest(url, {
             method: 'DELETE',
@@ -37,25 +63,88 @@ class NotificationTargetControllerClient extends base_client_1.BaseVXOlympusClie
         });
         return response;
     }
-    async getNotificationTargetsByIdsUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {string} queryParams.ids - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<Array<schemas.NotificationTarget>>}
+     */
+    async getNotificationTargetsByIds(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/notification/targets{?ids}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.ids !== undefined)
+                params.set('ids', String(queryParams.ids));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async getNotificationTargetsBySupportedNotificationTypeUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {string} queryParams.notificationType - Query parameter
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_NotificationTarget>}
+     */
+    async getNotificationTargetsBySupportedNotificationType(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/notification/targets{?notificationType,page,pageSize,sortOrder,sortProperty,textSearch}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.notificationType !== undefined)
+                params.set('notificationType', String(queryParams.notificationType));
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
         return response;
     }
-    async getNotificationTargetsUsingGET(queryParams, options = {}) {
+    /**
+     * @param {object} queryParams - Query parameters
+     * @param {integer} queryParams.pageSize - Query parameter
+     * @param {integer} queryParams.page - Query parameter
+     * @param {string} queryParams.textSearch - Query parameter
+     * @param {string} queryParams.sortProperty - Query parameter
+     * @param {string} queryParams.sortOrder - Query parameter
+     * @param {RequestInit} [options] - Fetch options
+     * @returns {Promise<schemas.PageData_Of_NotificationTarget>}
+     */
+    async getNotificationTargets(queryParams, options = {}) {
         const url = `${this.baseUrl}/api/notification/targets{?page,pageSize,sortOrder,sortProperty,textSearch}`;
-        const response = await this.makeRequest(url, {
+        const params = new URLSearchParams();
+        if (queryParams) {
+            if (queryParams.pageSize !== undefined)
+                params.set('pageSize', String(queryParams.pageSize));
+            if (queryParams.page !== undefined)
+                params.set('page', String(queryParams.page));
+            if (queryParams.textSearch !== undefined)
+                params.set('textSearch', String(queryParams.textSearch));
+            if (queryParams.sortProperty !== undefined)
+                params.set('sortProperty', String(queryParams.sortProperty));
+            if (queryParams.sortOrder !== undefined)
+                params.set('sortOrder', String(queryParams.sortOrder));
+        }
+        const queryString = params.toString();
+        const response = await this.makeRequest(url + (queryString ? `?${queryString}` : ''), {
             method: 'GET',
             ...options,
         });
