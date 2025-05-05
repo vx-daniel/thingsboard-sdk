@@ -4,75 +4,73 @@ import { join } from 'path';
 import { z } from 'zod';
 
 /**
- * OpenAPI operation interface representing a single API endpoint.
- * 
- * @description This interface represents a single API endpoint, including its unique identifier, parameters, request body, responses, tags, summary, and description.
+ * OpenAPI operation schema representing a single API endpoint.
  */
-interface OpenAPIOperation {
+const OpenAPIOperationSchema = z.object({
   /** Unique identifier for the operation */
-  operationId?: string;
+  operationId: z.string().optional(),
   /** Array of operation parameters */
-  parameters?: Array<{
+  parameters: z.array(z.object({
     /** Parameter location (path, query, etc.) */
-    in: string;
+    in: z.string(),
     /** Parameter name */
-    name: string;
+    name: z.string(),
     /** Parameter description */
-    description?: string;
+    description: z.string().optional(),
     /** Parameter schema */
-    schema?: {
+    schema: z.object({
       /** Data type */
-      type?: string;
+      type: z.string().optional(),
       /** Possible enum values */
-      enum?: string[];
-    };
-  }>;
+      enum: z.array(z.string()).optional(),
+    }).optional(),
+  })).optional(),
   /** Request body definition */
-  requestBody?: {
-    content?: {
-      'application/json'?: {
-        schema?: any;
-      };
-    };
-  };
+  requestBody: z.object({
+    content: z.object({
+      'application/json': z.object({
+        schema: z.any(),
+      }).optional(),
+    }).optional(),
+  }).optional(),
   /** Response definitions */
-  responses?: {
-    [key: string]: {
-      content?: {
-        'application/json'?: {
-          schema?: any;
-        };
-      };
-    };
-  };
+  responses: z.record(z.object({
+    content: z.object({
+      'application/json': z.object({
+        schema: z.any(),
+      }).optional(),
+    }).optional(),
+  })).optional(),
   /** Operation tags */
-  tags?: string[];
+  tags: z.array(z.string()).optional(),
   /** Operation summary */
-  summary?: string;
+  summary: z.string().optional(),
   /** Operation description */
-  description?: string;
-}
+  description: z.string().optional(),
+});
+
+type OpenAPIOperation = z.infer<typeof OpenAPIOperationSchema>;
 
 /**
- * OpenAPI path item interface representing a single API endpoint.
+ * OpenAPI path item schema representing a single API endpoint.
  * Contains operations for different HTTP methods (GET, POST, etc.)
  */
-interface OpenAPIPathItem {
-  [method: string]: OpenAPIOperation;
-}
+const OpenAPIPathItemSchema = z.record(OpenAPIOperationSchema);
+
+type OpenAPIPathItem = z.infer<typeof OpenAPIPathItemSchema>;
 
 /**
- * OpenAPI specification interface.
+ * OpenAPI specification schema.
  * Contains paths and components sections of the OpenAPI spec.
  */
-interface OpenAPISpec {
-  paths: {
-    [path: string]: OpenAPIPathItem;
-  };
-  components?: {
-    schemas?: any;
-  };
-}
+const OpenAPISpecSchema = z.object({
+  paths: z.record(OpenAPIPathItemSchema),
+  components: z.object({
+    schemas: z.record(z.any()),
+  }).optional(),
+});
+
+type OpenAPISpec = z.infer<typeof OpenAPISpecSchema>;
 
 /**
  * Sanitizes a class name by removing special characters and converting to PascalCase.
@@ -551,12 +549,15 @@ async function generate() {
   extendZodWithOpenApi(z);
 
   // Read the OpenAPI spec
-  const apiSpec: OpenAPISpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
+  const rawSpec = JSON.parse(readFileSync(join(__dirname, '../api-docs.json'), 'utf-8'));
+  
+  // Parse and validate the spec
+  const apiSpec = OpenAPISpecSchema.parse(rawSpec);
 
   const registry = new OpenAPIRegistry();
 
   // Generate the schemas
-  const schemaTypes = generateSchemas(apiSpec.components?.schemas);
+  const schemaTypes = generateSchemas(apiSpec.components?.schemas || {});
 
   // Ensure the generated directory exists
   mkdirSync(join(__dirname, '../src/generated'), { recursive: true });
